@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Created by Alex on 20/04/2016.
@@ -47,6 +48,7 @@ public class MobHunter {
 
         GameRegistry.registerItem(itemBoneMail,"itemBoneMail");
         GameRegistry.addRecipe(new ItemStack(itemBoneMail), new Object[] {"xyx", "yxy", "xyx", 'x', Items.string, 'y', Items.bone});
+        GameRegistry.addShapelessRecipe(new ItemStack(Items.skull,1,0), new ItemStack(Items.skull,1,OreDictionary.WILDCARD_VALUE));
     }
 
     @Mod.EventHandler
