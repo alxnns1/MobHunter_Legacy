@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * Created by alxnns1 on 20/04/2016.
+ * Created by Alex on 20/04/2016.
  */
 
 @Mod(modid= Reference.MOD_ID, name= Reference.MOD_NAME, version= Reference.VERSION)
@@ -28,7 +28,7 @@ public class MobHunter {
 
         @Override
         public Item getTabIconItem() {
-            return Items.bone;
+            return itemBoneMail;
         }
 
         @Override
@@ -38,13 +38,13 @@ public class MobHunter {
 
     };
 
-    public static final ItemResource boneMail = new ItemResource("boneMail");
+    public static final ItemResource itemBoneMail = new ItemResource("itemBoneMail");
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         //Initializing and registering items, blocks and configs
 
-        GameRegistry.registerItem(boneMail,"boneMail");
+        GameRegistry.registerItem(itemBoneMail,"itemBoneMail");
     }
 
     @Mod.EventHandler
@@ -52,7 +52,7 @@ public class MobHunter {
         //Initializing and registering textures, models, GUIs, tile entities, recipes and event handlers
 
         ItemModelMesherForge m = (ItemModelMesherForge) Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-        m.register(boneMail,0,new ModelResourceLocation(Reference.MOD_ID + ":" + boneMail.getUnlocalizedName().substring(boneMail.getUnlocalizedName().indexOf(".")+1),"inventory"));
+        m.register(itemBoneMail,0,new ModelResourceLocation(Reference.MOD_ID + ":" + itemBoneMail.getUnlocalizedName().substring(itemBoneMail.getUnlocalizedName().indexOf(".")+1),"inventory"));
     }
 
     @Mod.EventHandler
