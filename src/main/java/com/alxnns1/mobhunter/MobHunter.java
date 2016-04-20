@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.item.ItemArmourResource;
 import com.alxnns1.mobhunter.item.ItemResource;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.Minecraft;
@@ -7,8 +8,10 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.ItemModelMesherForge;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -40,6 +43,12 @@ public class MobHunter {
 
     };
 
+    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone",Reference.MOD_NAME + ":armourBone",10,new int[]{2,4,3,2},20);
+    public static ItemArmor armourBoneHelmet = new ItemArmourResource(boneArmourMaterial,0,0,"armourBoneHelmet");
+    public static ItemArmor armourBoneChestplate = new ItemArmourResource(boneArmourMaterial,0,1,"armourBoneChestplate");
+    public static ItemArmor armourBoneLeggings = new ItemArmourResource(boneArmourMaterial,1,2,"armourBoneLeggings");
+    public static ItemArmor armourBoneBoots = new ItemArmourResource(boneArmourMaterial,0,3,"armourBoneBoots");
+
     public static final ItemResource itemBoneMail = new ItemResource("itemBoneMail");
 
     @Mod.EventHandler
@@ -47,7 +56,19 @@ public class MobHunter {
         //Initializing and registering items, blocks and configs
 
         GameRegistry.registerItem(itemBoneMail,"itemBoneMail");
+
+        GameRegistry.registerItem(armourBoneHelmet,"armourBoneHelmet");
+        GameRegistry.registerItem(armourBoneChestplate,"armourBoneChestplate");
+        GameRegistry.registerItem(armourBoneLeggings,"armourBoneLeggings");
+        GameRegistry.registerItem(armourBoneBoots,"armourBoneBoots");
+
         GameRegistry.addRecipe(new ItemStack(itemBoneMail), new Object[] {"xyx", "yxy", "xyx", 'x', Items.string, 'y', Items.bone});
+
+        GameRegistry.addRecipe(new ItemStack(armourBoneHelmet), new Object[] {"wxw", "yzy", "   ", 'w', Items.bone, 'x', new ItemStack(Items.skull,1,0), 'y', itemBoneMail, 'z', Items.leather});
+        GameRegistry.addRecipe(new ItemStack(armourBoneChestplate), new Object[] {"y y", "yxy", "zzz", 'x', Items.string, 'y', itemBoneMail, 'z', Items.leather});
+        GameRegistry.addRecipe(new ItemStack(armourBoneLeggings), new Object[] {"zzz", "x x", "y y", 'x', Items.string, 'y', itemBoneMail, 'z', Items.leather});
+        GameRegistry.addRecipe(new ItemStack(armourBoneBoots), new Object[] {"   ", "y y", "z z", 'y', itemBoneMail, 'z', Items.leather});
+
         GameRegistry.addShapelessRecipe(new ItemStack(Items.skull,1,0), new ItemStack(Items.skull,1,OreDictionary.WILDCARD_VALUE));
     }
 
