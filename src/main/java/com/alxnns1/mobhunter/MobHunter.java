@@ -7,6 +7,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.ItemModelMesherForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -45,6 +46,7 @@ public class MobHunter {
         //Initializing and registering items, blocks and configs
 
         GameRegistry.registerItem(itemBoneMail,"itemBoneMail");
+        GameRegistry.addRecipe(new ItemStack(itemBoneMail), new Object[] {"xyx", "yxy", "xyx", 'x', Items.string, 'y', Items.bone});
     }
 
     @Mod.EventHandler
