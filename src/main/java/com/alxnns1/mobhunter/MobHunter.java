@@ -43,11 +43,12 @@ public class MobHunter {
 
     };
 
-    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone",Reference.MOD_NAME + ":armourBone",10,new int[]{2,4,3,2},20);
-    public static ItemArmor armourBoneHelmet = new ItemArmourResource(boneArmourMaterial,0,0,"armourBoneHelmet");
-    public static ItemArmor armourBoneChestplate = new ItemArmourResource(boneArmourMaterial,0,1,"armourBoneChestplate");
-    public static ItemArmor armourBoneLeggings = new ItemArmourResource(boneArmourMaterial,1,2,"armourBoneLeggings");
-    public static ItemArmor armourBoneBoots = new ItemArmourResource(boneArmourMaterial,0,3,"armourBoneBoots");
+    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone",Reference.MOD_ID + ":bone",10,new int[]{2,4,3,2},20);
+
+    public static ItemArmor armourBoneHelmet = new ItemArmourResource(boneArmourMaterial,1,0,"armourBoneHelmet");
+    public static ItemArmor armourBoneChestplate = new ItemArmourResource(boneArmourMaterial,1,1,"armourBoneChestplate");
+    public static ItemArmor armourBoneLeggings = new ItemArmourResource(boneArmourMaterial,2,2,"armourBoneLeggings");
+    public static ItemArmor armourBoneBoots = new ItemArmourResource(boneArmourMaterial,1,3,"armourBoneBoots");
 
     public static final ItemResource itemBoneMail = new ItemResource("itemBoneMail");
 
@@ -77,7 +78,13 @@ public class MobHunter {
         //Initializing and registering textures, models, GUIs, tile entities, recipes and event handlers
 
         ItemModelMesherForge m = (ItemModelMesherForge) Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+
         m.register(itemBoneMail,0,new ModelResourceLocation(Reference.MOD_ID + ":" + itemBoneMail.getUnlocalizedName().substring(itemBoneMail.getUnlocalizedName().indexOf(".")+1),"inventory"));
+
+        m.register(armourBoneHelmet,0,new ModelResourceLocation(Reference.MOD_ID + ":" + armourBoneHelmet.getUnlocalizedName().substring(armourBoneHelmet.getUnlocalizedName().indexOf(".")+1),"inventory"));
+        m.register(armourBoneChestplate,0,new ModelResourceLocation(Reference.MOD_ID + ":" + armourBoneChestplate.getUnlocalizedName().substring(armourBoneChestplate.getUnlocalizedName().indexOf(".")+1),"inventory"));
+        m.register(armourBoneLeggings,0,new ModelResourceLocation(Reference.MOD_ID + ":" + armourBoneLeggings.getUnlocalizedName().substring(armourBoneLeggings.getUnlocalizedName().indexOf(".")+1),"inventory"));
+        m.register(armourBoneBoots,0,new ModelResourceLocation(Reference.MOD_ID + ":" + armourBoneBoots.getUnlocalizedName().substring(armourBoneBoots.getUnlocalizedName().indexOf(".")+1),"inventory"));
     }
 
     @Mod.EventHandler
