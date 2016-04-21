@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class EntityEventHandler
 {
-    private ArrayList<Object[]> mobDrops = new ArrayList<Object[]>();
+    private static ArrayList<Object[]> mobDrops = new ArrayList<Object[]>();
 
     /**
      * Adds a drop to a mob
@@ -24,7 +24,7 @@ public class EntityEventHandler
      * @param item The item which will drop
      * @param chance Chance that the item will be able to drop (between 0 and 1)
      */
-    public void addMobDrop(String mobName, Item item, float chance)
+    public static void addMobDrop(String mobName, Item item, float chance)
     {
         addMobDrop(mobName, item, 1, 1, chance);
     }
@@ -37,7 +37,7 @@ public class EntityEventHandler
      * @param qtyMax Max amount of the item will drop
      * @param chance Chance that the item will be able to drop at all (between 0 and 1)
      */
-    public void addMobDrop(String mobName, Item item, int qtyMin, int qtyMax, float chance)
+    public static void addMobDrop(String mobName, Item item, int qtyMin, int qtyMax, float chance)
     {
         if(chance <= 0)
             chance = 0.01f;
