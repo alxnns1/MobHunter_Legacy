@@ -1,5 +1,7 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.entity.EntityPopo;
+import com.alxnns1.mobhunter.entity.render.RenderPopo;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.init.MHRecipes;
@@ -8,6 +10,7 @@ import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -45,6 +48,8 @@ public class MobHunter {
 
         MHItems.init();
         MHBlocks.init();
+
+        if(event.getSide() == Side.CLIENT) RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
     }
 
     @Mod.EventHandler
