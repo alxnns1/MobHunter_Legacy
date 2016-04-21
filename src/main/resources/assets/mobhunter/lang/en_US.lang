@@ -3,8 +3,15 @@
 //Items
 
 item.itemBoneMail.name=Bonemail
+item.itemMachaliteIngot.name=Machalite Ingot
+item.itemEarthCrystal.name=Earth Crystal
 
 item.armourBoneHelmet.name=Bone Helm
 item.armourBoneChestplate.name=Bone Mail
 item.armourBoneLeggings.name=Bone Faulds
 item.armourBoneBoots.name=Bone Greaves
+
+//Blocks
+
+tile.blockOreMachalite.name=Machalite Ore
+tile.blockOreEarthCrystal.name=Earth Crystal Ore
