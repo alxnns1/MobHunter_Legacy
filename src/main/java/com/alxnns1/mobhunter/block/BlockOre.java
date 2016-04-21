@@ -19,19 +19,20 @@ public class BlockOre extends Block
     //The item that this block will drop with mined
     private Item drop;
 
-    public BlockOre(String blockName, Item itemDrop)
+    public BlockOre(String blockName, int harvestLevel, Item itemDrop)
     {
-        this(blockName);
+        this(blockName,harvestLevel);
         drop = itemDrop;
     }
 
-    public BlockOre(String blockName)
+    public BlockOre(String blockName, int harvestLevel)
     {
         super(Material.rock);
         setUnlocalizedName(blockName);
         setCreativeTab(MobHunter.MH_TAB);
         setHardness(3.0F);
         setResistance(5.0F);
+        setHarvestLevel("pickaxe",harvestLevel);
         setStepSound(soundTypePiston);
     }
 

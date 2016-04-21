@@ -11,8 +11,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class MHBlocks
 {
-    public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE);
-    public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, MHItems.itemEarthCrystal);
+    public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 2);
+    public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
 
     public static void init()
     {
