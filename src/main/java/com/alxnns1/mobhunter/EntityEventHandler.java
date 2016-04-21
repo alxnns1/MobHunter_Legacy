@@ -3,6 +3,8 @@ package com.alxnns1.mobhunter;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.item.Item;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -16,6 +18,9 @@ import java.util.Random;
  */
 public class EntityEventHandler
 {
+    public static final String AGGRESSIVE_WILDCARD = "/a";
+    public static final String PASSIVE_WILDCARD = "/p";
+
     private static ArrayList<Object[]> mobDrops = new ArrayList<Object[]>();
 
     /**
@@ -67,12 +72,14 @@ public class EntityEventHandler
             //This all checks if the entity's localised name or unlocalised name matches the name in the list
             EntityLivingBase entity = event.entityLiving;
             String s = EntityList.getEntityString(entity);
-            if (s == null)
+            if(s == null)
                 s = "generic";
             String mobUnlocName = "entity." + s + ".name";
             String mobName = StatCollector.translateToLocal(mobUnlocName);
 
-            if((mobName.equals(o[0]) || mobUnlocName.equals(o[0])) && rand.nextFloat() < (Float) o[4])
+            if(     ((o[0].equals(AGGRESSIVE_WILDCARD) && entity instanceof EntityMob) ||
+                    (o[0].equals(PASSIVE_WILDCARD) && entity instanceof EntityAnimal) ||
+                    ((mobName.equals(o[0]) || mobUnlocName.equals(o[0])))) && rand.nextFloat() < (Float) o[4])
             {
                 LogHelper.info("Mob can drop " + ((Item)o[1]).getUnlocalizedName());
                 //Can spawn mob drop!
