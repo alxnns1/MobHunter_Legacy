@@ -18,6 +18,7 @@ import java.util.Random;
  */
 public class EntityEventHandler
 {
+    public static final String ALL_WILDCARD = "/*";
     public static final String AGGRESSIVE_WILDCARD = "/a";
     public static final String PASSIVE_WILDCARD = "/p";
 
@@ -77,7 +78,8 @@ public class EntityEventHandler
             String mobUnlocName = "entity." + s + ".name";
             String mobName = StatCollector.translateToLocal(mobUnlocName);
 
-            if(     ((o[0].equals(AGGRESSIVE_WILDCARD) && entity instanceof EntityMob) ||
+            if(     ((o[0].equals(ALL_WILDCARD)) ||
+                    (o[0].equals(AGGRESSIVE_WILDCARD) && entity instanceof EntityMob) ||
                     (o[0].equals(PASSIVE_WILDCARD) && entity instanceof EntityAnimal) ||
                     ((mobName.equals(o[0]) || mobUnlocName.equals(o[0])))) && rand.nextFloat() < (Float) o[4])
             {
