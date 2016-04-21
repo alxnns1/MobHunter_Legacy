@@ -1,0 +1,10 @@
+//Use '§' for text formatting
+
+//Items
+
+item.itemBoneMail.name=Bone Mail
+
+item.armourBoneHelmet.name=Bone Helmet
+item.armourBoneChestplate.name=Bone Chestplate
+item.armourBoneLeggings.name=Bone Leggings
+item.armourBoneBoots.name=Bone Boots
