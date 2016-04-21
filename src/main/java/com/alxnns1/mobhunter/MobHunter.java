@@ -7,6 +7,7 @@ import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -28,7 +29,7 @@ public class MobHunter {
 
         @Override
         public Item getTabIconItem() {
-            return MHItems.itemBoneMail;
+            return MHItems.itemMonsterBoneS;
         }
 
         @Override
@@ -59,6 +60,10 @@ public class MobHunter {
 
         MHRecipes.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
+
+        MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
+        EntityEventHandler.addMobDrop("/*",MHItems.itemMysteryBone,1,1,0.5f);
+        EntityEventHandler.addMobDrop("/a",MHItems.itemMonsterBoneS,1,2,0.5f);
     }
 
     @Mod.EventHandler
