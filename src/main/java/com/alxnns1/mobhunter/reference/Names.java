@@ -9,10 +9,18 @@ public class Names
     public static class Items
     {
         public static final String BONE_MAIL = "itemBoneMail";
+        public static final String MALACHITE_INGOT = "itemMalachiteIngot";
+        public static final String EARTH_CRYSTAL = "itemEarthCrystal";
 
         public static final String BONE_HELMET = "armourBoneHelmet";
         public static final String BONE_CHESTPLATE = "armourBoneChestplate";
         public static final String BONE_LEGGINGS = "armourBoneLeggings";
         public static final String BONE_BOOTS = "armourBoneBoots";
+    }
+
+    public static class Blocks
+    {
+        public static final String ORE_MALACHITE = "blockOreMalachite";
+        public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
     }
 }

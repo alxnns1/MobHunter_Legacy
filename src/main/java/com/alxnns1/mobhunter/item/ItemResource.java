@@ -10,12 +10,9 @@ import net.minecraft.item.Item;
  */
 public class ItemResource extends Item {
 
-    private ModelResourceLocation model;
-
     public ItemResource(String itemName){
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
-        model = new ModelResourceLocation(Reference.MOD_ID + ":" + itemName,"inventory");
     }
 
 }

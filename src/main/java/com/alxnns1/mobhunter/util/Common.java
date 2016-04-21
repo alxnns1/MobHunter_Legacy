@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.util;
 
 import com.alxnns1.mobhunter.reference.Reference;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -21,6 +22,15 @@ public class Common
      */
     public static void regModel(Item item)
     {
-        m.register(item,0,new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(item.getUnlocalizedName().indexOf(".")+1),"inventory"));
+        regModel(item, 0);
+    }
+    public static void regModel(Block block)
+    {
+        regModel(Item.getItemFromBlock(block), 0);
+    }
+
+    public static void regModel(Item item, int meta)
+    {
+        m.register(item,meta,new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(item.getUnlocalizedName().indexOf(".")+1),"inventory"));
     }
 }

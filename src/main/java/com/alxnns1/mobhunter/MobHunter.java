@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.init.MHRecipes;
 import com.alxnns1.mobhunter.reference.Reference;
@@ -40,6 +41,7 @@ public class MobHunter {
         //Initializing and registering items, blocks and configs
 
         MHItems.init();
+        MHBlocks.init();
     }
 
     @Mod.EventHandler
@@ -50,6 +52,7 @@ public class MobHunter {
         if(event.getSide() == Side.CLIENT)
         {
             MHItems.regModels();
+            MHBlocks.regModels();
         }
 
         MHRecipes.init();
