@@ -2,9 +2,9 @@
 
 //Items
 
-item.itemBoneMail.name=Bone Mail
+item.itemBoneMail.name=Bonemail
 
-item.armourBoneHelmet.name=Bone Helmet
-item.armourBoneChestplate.name=Bone Chestplate
-item.armourBoneLeggings.name=Bone Leggings
-item.armourBoneBoots.name=Bone Boots
+item.armourBoneHelmet.name=Bone Helm
+item.armourBoneChestplate.name=Bone Mail
+item.armourBoneLeggings.name=Bone Faulds
+item.armourBoneBoots.name=Bone Greaves
