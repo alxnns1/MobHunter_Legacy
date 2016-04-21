@@ -23,8 +23,10 @@ public class MHItems
     public static ItemArmor armourBoneBoots = new ItemArmourResource(boneArmourMaterial,1,3,Names.Items.BONE_BOOTS);
 
     public static final ItemResource itemBoneMail = new ItemResource(Names.Items.BONE_MAIL);
-    public static final ItemResource itemMachaliteIngot = new ItemResource(Names.Items.MACHALITE_INGOT);
     public static final ItemResource itemEarthCrystal = new ItemResource(Names.Items.EARTH_CRYSTAL);
+    public static final ItemResource itemMachaliteIngot = new ItemResource(Names.Items.MACHALITE_INGOT);
+    public static final ItemResource itemMysteryBone = new ItemResource(Names.Items.MYSTERY_BONE);
+    public static final ItemResource itemMonsterBoneS = new ItemResource(Names.Items.MONSTER_BONE_S);
 
     /**
      * Registers the items
@@ -32,8 +34,10 @@ public class MHItems
     public static void init()
     {
         GameRegistry.registerItem(itemBoneMail, Names.Items.BONE_MAIL);
-        GameRegistry.registerItem(itemMachaliteIngot, Names.Items.MACHALITE_INGOT);
         GameRegistry.registerItem(itemEarthCrystal, Names.Items.EARTH_CRYSTAL);
+        GameRegistry.registerItem(itemMachaliteIngot, Names.Items.MACHALITE_INGOT);
+        GameRegistry.registerItem(itemMysteryBone, Names.Items.MYSTERY_BONE);
+        GameRegistry.registerItem(itemMonsterBoneS, Names.Items.MONSTER_BONE_S);
 
         GameRegistry.registerItem(armourBoneHelmet,Names.Items.BONE_HELMET);
         GameRegistry.registerItem(armourBoneChestplate,Names.Items.BONE_CHESTPLATE);
@@ -50,6 +54,8 @@ public class MHItems
         Common.regModel(itemBoneMail);
         Common.regModel(itemMachaliteIngot);
         Common.regModel(itemEarthCrystal);
+        Common.regModel(itemMysteryBone);
+        Common.regModel(itemMonsterBoneS);
 
         Common.regModel(armourBoneHelmet);
         Common.regModel(armourBoneChestplate);
