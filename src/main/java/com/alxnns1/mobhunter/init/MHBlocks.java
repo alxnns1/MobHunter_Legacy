@@ -1,7 +1,6 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.BlockOre;
-import com.alxnns1.mobhunter.block.BlockOreGem;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.Common;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -12,18 +11,18 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class MHBlocks
 {
-    public static BlockOre blockOreMalachite = new BlockOre(Names.Blocks.ORE_MALACHITE);
-    public static BlockOre blockOreEarthCrystal = new BlockOreGem(Names.Blocks.ORE_EARTH_CRYSTAL, MHItems.itemEarthCrystal);
+    public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE);
+    public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, MHItems.itemEarthCrystal);
 
     public static void init()
     {
-        GameRegistry.registerBlock(blockOreMalachite, Names.Blocks.ORE_MALACHITE);
+        GameRegistry.registerBlock(blockOreMachalite, Names.Blocks.ORE_MACHALITE);
         GameRegistry.registerBlock(blockOreEarthCrystal, Names.Blocks.ORE_EARTH_CRYSTAL);
     }
 
     public static void regModels()
     {
-        Common.regModel(blockOreMalachite);
+        Common.regModel(blockOreMachalite);
         Common.regModel(blockOreEarthCrystal);
     }
 }

@@ -9,7 +9,7 @@ public class Names
     public static class Items
     {
         public static final String BONE_MAIL = "itemBoneMail";
-        public static final String MALACHITE_INGOT = "itemMalachiteIngot";
+        public static final String MACHALITE_INGOT = "itemMachaliteIngot";
         public static final String EARTH_CRYSTAL = "itemEarthCrystal";
 
         public static final String BONE_HELMET = "armourBoneHelmet";
@@ -20,7 +20,7 @@ public class Names
 
     public static class Blocks
     {
-        public static final String ORE_MALACHITE = "blockOreMalachite";
+        public static final String ORE_MACHALITE = "blockOreMachalite";
         public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
     }
 }
