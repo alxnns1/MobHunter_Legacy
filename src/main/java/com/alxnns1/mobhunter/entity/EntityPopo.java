@@ -4,7 +4,6 @@ import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.DifficultyInstance;
@@ -19,17 +18,19 @@ public class EntityPopo extends EntityCow
      * This value will affect the mob's health and size
      * Between 0.79 and 1.24
      */
-    private float sizeMult;
-    private static final String KEY_MULT = "sizemult";
+    private static final String KEY_SCALE = "scale";
+    private static final int WATCHER_SCALE = 20;
 
     public EntityPopo(World worldIn)
     {
         super(worldIn);
     }
 
-    protected void applyEntityAttributes()
+    protected void entityInit()
     {
-        super.applyEntityAttributes();
+        super.entityInit();
+        //Creates the datawatcher object to save the entity scale in
+        this.dataWatcher.addObject(WATCHER_SCALE, 1.0f);
     }
 
     /**
@@ -38,12 +39,19 @@ public class EntityPopo extends EntityCow
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
-        sizeMult = (this.rand.nextFloat() * 0.45f) + 0.79f;
-        this.setSize(0.9F * sizeMult, 1.3F * sizeMult);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(10.0D * sizeMult));
-        this.setHealth(this.getMaxHealth());
-        LogHelper.info("SizeMult: " + sizeMult + "   Health: " + this.getMaxHealth());
+        float scale = (this.rand.nextFloat() * 0.45f) + 0.79f;
+        this.setPopoScale(scale);
         return super.onInitialSpawn(difficulty, livingdata);
+    }
+
+    private void setPopoScale(float scale)
+    {
+        //Gets the datawatcher value for the entity scale
+        this.dataWatcher.updateObject(WATCHER_SCALE, scale);
+        this.setSize(0.9F * scale, 1.3F * scale);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(10.0D * scale));
+        this.setHealth(this.getMaxHealth());
+        LogHelper.info("Scale: " + scale + "   Health: " + this.getMaxHealth());
     }
 
     public EntityPopo createChild(EntityAgeable ageable)
@@ -51,19 +59,19 @@ public class EntityPopo extends EntityCow
         return new EntityPopo(this.worldObj);
     }
 
-    public float getSizeMult(){
-        return sizeMult;
+    public float getPopoScale(){
+        return this.dataWatcher.getWatchableObjectFloat(WATCHER_SCALE);
     }
 
     public void writeEntityToNBT(NBTTagCompound tagCompound)
     {
         super.writeEntityToNBT(tagCompound);
-        tagCompound.setFloat(KEY_MULT, sizeMult);
+        tagCompound.setFloat(KEY_SCALE, getPopoScale());
     }
 
     public void readEntityFromNBT(NBTTagCompound tagCompund)
     {
         super.readEntityFromNBT(tagCompund);
-        sizeMult = tagCompund.getFloat(KEY_MULT);
+        setPopoScale(tagCompund.getFloat(KEY_SCALE));
     }
 }
