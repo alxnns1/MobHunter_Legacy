@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -48,6 +49,10 @@ public class MobHunter {
 
         MHItems.init();
         MHBlocks.init();
+
+        EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100,
+                MobHunter.instance, 64, 1, false);
+        EntityRegistry.registerEgg(EntityPopo.class,0,0);
 
         if(event.getSide() == Side.CLIENT) RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
     }
