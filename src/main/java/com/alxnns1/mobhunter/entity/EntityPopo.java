@@ -36,4 +36,8 @@ public class EntityPopo extends EntityCow
     {
         return new EntityPopo(this.worldObj);
     }
+
+    public float getSizeMult(){
+        return sizeMult;
+    }
 }

@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.entity.render;
 
 import com.alxnns1.mobhunter.entity.EntityPopo;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderCow;
@@ -39,6 +40,8 @@ public class RenderPopo extends RenderCow
 
     protected void preRenderCallbackPopo(EntityPopo entity, float f)
     {
-        GL11.glScalef(2,2,2); //sizemult will replace the 2s
+        float tSizeMult = entity.getSizeMult();
+        GL11.glScalef(tSizeMult,tSizeMult,tSizeMult);
+        LogHelper.info("Popo size scaled by " + tSizeMult);
     }
 }
