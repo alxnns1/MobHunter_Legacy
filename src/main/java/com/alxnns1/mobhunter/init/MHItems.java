@@ -28,7 +28,10 @@ public class MHItems
     public static final ItemResource itemMachaliteIngot = new ItemResource(Names.Items.MACHALITE_INGOT);
     public static final ItemResource itemMysteryBone = new ItemResource(Names.Items.MYSTERY_BONE);
     public static final ItemResource itemMonsterBoneS = new ItemResource(Names.Items.MONSTER_BONE_S);
+
     public static final Item itemRawMeat = new ItemFood(3, 0.3F, true).setUnlocalizedName(Names.Items.RAW_MEAT);
+    public static final Item itemRareSteak = new ItemFood(5, 0.4F, true).setUnlocalizedName(Names.Items.RARE_STEAK);
+    public static final Item itemDoneSteak = new ItemFood(10, 1.0F, true).setUnlocalizedName(Names.Items.DONE_STEAK);
 
     /**
      * Registers the items
@@ -39,7 +42,10 @@ public class MHItems
         GameRegistry.registerItem(itemMachaliteIngot, Names.Items.MACHALITE_INGOT);
         GameRegistry.registerItem(itemMysteryBone, Names.Items.MYSTERY_BONE);
         GameRegistry.registerItem(itemMonsterBoneS, Names.Items.MONSTER_BONE_S);
+
         GameRegistry.registerItem(itemRawMeat, Names.Items.RAW_MEAT);
+        GameRegistry.registerItem(itemRareSteak, Names.Items.RARE_STEAK);
+        GameRegistry.registerItem(itemDoneSteak, Names.Items.DONE_STEAK);
 
         GameRegistry.registerItem(armourBoneHelmet,Names.Items.BONE_HELMET);
         GameRegistry.registerItem(armourBoneChestplate,Names.Items.BONE_CHESTPLATE);
@@ -57,7 +63,10 @@ public class MHItems
         Common.regModel(itemEarthCrystal);
         Common.regModel(itemMysteryBone);
         Common.regModel(itemMonsterBoneS);
+
         Common.regModel(itemRawMeat);
+        Common.regModel(itemRareSteak);
+        Common.regModel(itemDoneSteak);
 
         Common.regModel(armourBoneHelmet);
         Common.regModel(armourBoneChestplate);
