@@ -16,27 +16,55 @@ import net.minecraft.util.ITickable;
 public class TileBbq extends TileEntity implements ITickable
 {
     private int cookTime = 0;
-    private int DONE_TIME = 100; //5 secs
-    private int BURN_TIME = DONE_TIME + 20; //1 sec after done time
-    private Item cookItem = null;
+    private int RARE_TIME = 120; //6 secs
+    private int DONE_TIME = 180; //9 secs
+    private int BURN_TIME = 200; //10 secs
+    private boolean isCooking = false;
 
 
     public TileBbq() {}
 
-    public void putRawMeat()
+    /**
+     * If not already cooking, will start the cooking of a piece of raw meat.
+     * @return If a new cooking process has started.
+     */
+    public boolean putRawMeat()
     {
-        cookItem = MHItems.itemRawMeat;
-        cookTime = 0;
+        if(!isCooking)
+            isCooking = true;
+        return isCooking;
     }
 
-    public ItemStack getRawMeat()
+    /**
+     * Gets the meat at the current cooking time.
+     * This is ONLY used to see the item. Use retrieveItem() to take the item out.
+     * @return
+     */
+    public Item getMeat()
     {
-        if(cookTime < DONE_TIME)
-            return new ItemStack(MHItems.itemRareSteak);
+        //If not cooking, then return null
+        if(!isCooking)
+            return null;
+        //If cooking, then return relevant item
+        if(cookTime < RARE_TIME)
+            return MHItems.itemRawMeat;
+        else if(cookTime < DONE_TIME)
+            return MHItems.itemRareSteak;
         else if(cookTime < BURN_TIME)
-            return new ItemStack(MHItems.itemDoneSteak);
+            return MHItems.itemDoneSteak;
         else
-            return new ItemStack(Items.coal, 1, 1);
+            return MHItems.itemBurntMeat;
+    }
+
+    /**
+     * Gets the meat from the bbq at whatever stage of cooking it's at.
+     * @return
+     */
+    public Item retrieveItem()
+    {
+        isCooking = false;
+        cookTime = 0;
+        return getMeat();
     }
 
     public void readFromNBT(NBTTagCompound tag)
@@ -70,6 +98,7 @@ public class TileBbq extends TileEntity implements ITickable
     @Override
     public void update()
     {
-
+        if(isCooking)
+            cookTime++;
     }
 }

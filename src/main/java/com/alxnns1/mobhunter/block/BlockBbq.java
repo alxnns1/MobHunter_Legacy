@@ -17,9 +17,9 @@ import net.minecraft.world.World;
  */
 public class BlockBbq extends BlockContainer
 {
-    public BlockBbq(Material materialIn)
+    public BlockBbq()
     {
-        super(materialIn);
+        super(Material.rock);
     }
 
     public TileEntity createNewTileEntity(World worldIn, int meta)
@@ -41,8 +41,8 @@ public class BlockBbq extends BlockContainer
         if(item.equals(MHItems.itemRawMeat))
         {
             TileBbq te = (TileBbq) worldIn.getTileEntity(pos);
-            te.putRawMeat();
-            playerIn.getCurrentEquippedItem().stackSize--;
+            if(te.putRawMeat())
+                playerIn.getCurrentEquippedItem().stackSize--;
         }
         return true;
     }
