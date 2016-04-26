@@ -24,5 +24,6 @@ public class MHRecipes
 
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
         GameRegistry.addSmelting(MHItems.itemRareSteak, new ItemStack(MHItems.itemDoneSteak), 0.2f);
+        GameRegistry.addSmelting(MHItems.itemDoneSteak, new ItemStack(MHItems.itemBurntMeat), 0.2f);
     }
 }
