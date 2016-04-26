@@ -22,6 +22,12 @@ public class Names
         public static final String BONE_CHESTPLATE = "armourBoneChestplate";
         public static final String BONE_LEGGINGS = "armourBoneLeggings";
         public static final String BONE_BOOTS = "armourBoneBoots";
+
+        public static final String IRON_SWORD_PLUS = "itemIronSwordPlus";
+        public static final String BUSTER_SWORD = "itemBusterSword";
+        public static final String BUSTER_SWORD_PLUS = "itemBusterSwordPlus";
+        public static final String BONE_BLADE = "itemBoneBlade";
+        public static final String BONE_BLADE_PLUS = "itemBoneBladePlus";
     }
 
     public static class Blocks
