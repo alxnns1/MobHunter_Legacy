@@ -30,9 +30,12 @@ public class TileBbq extends TileEntity implements ITickable
      */
     public boolean putRawMeat()
     {
-        if(!isCooking)
+        if(!isCooking) {
             isCooking = true;
-        return isCooking;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -62,9 +65,10 @@ public class TileBbq extends TileEntity implements ITickable
      */
     public Item retrieveItem()
     {
+        Item product = getMeat();
         isCooking = false;
         cookTime = 0;
-        return getMeat();
+        return product;
     }
 
     public void readFromNBT(NBTTagCompound tag)

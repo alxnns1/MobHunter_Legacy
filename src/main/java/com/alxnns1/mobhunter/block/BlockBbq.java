@@ -1,12 +1,15 @@
 package com.alxnns1.mobhunter.block;
 
+import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -20,6 +23,8 @@ public class BlockBbq extends BlockContainer
     public BlockBbq()
     {
         super(Material.rock);
+        setUnlocalizedName("BBQ");
+        setCreativeTab(MobHunter.MH_TAB);
     }
 
     public TileEntity createNewTileEntity(World worldIn, int meta)
@@ -37,12 +42,24 @@ public class BlockBbq extends BlockContainer
     {
         if(worldIn.isRemote)
             return true;
-        Item item = playerIn.getCurrentEquippedItem().getItem();
-        if(item.equals(MHItems.itemRawMeat))
+        TileBbq te = (TileBbq) worldIn.getTileEntity(pos);
+        Item item;
+        if(playerIn.getCurrentEquippedItem() != null) {
+            item = playerIn.getCurrentEquippedItem().getItem();
+        }else{
+            item = null;
+        }
+        if(item != null && item.equals(MHItems.itemRawMeat))
         {
-            TileBbq te = (TileBbq) worldIn.getTileEntity(pos);
-            if(te.putRawMeat())
+            if(te.putRawMeat()) {
                 playerIn.getCurrentEquippedItem().stackSize--;
+                LogHelper.info("Inserting Raw Meat");
+            }
+        }else if(item==null){
+            Item product = te.retrieveItem();
+            if(product != null){
+                playerIn.inventory.addItemStackToInventory(new ItemStack(product));
+            }
         }
         return true;
     }

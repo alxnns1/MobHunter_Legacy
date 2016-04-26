@@ -5,6 +5,7 @@ import com.alxnns1.mobhunter.entity.render.RenderPopo;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.init.MHRecipes;
+import com.alxnns1.mobhunter.init.MHTileEntities;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
@@ -49,6 +50,7 @@ public class MobHunter {
 
         MHItems.init();
         MHBlocks.init();
+        MHTileEntities.init();
 
         EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100, MobHunter.instance, 64, 1, false);
         EntityRegistry.registerEgg(EntityPopo.class,0,0);
