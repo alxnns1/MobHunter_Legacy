@@ -69,6 +69,7 @@ public class MHItems
         Common.regModel(itemRawMeat);
         Common.regModel(itemRareSteak);
         Common.regModel(itemDoneSteak);
+        Common.regModel(itemBurntMeat);
 
         Common.regModel(armourBoneHelmet);
         Common.regModel(armourBoneChestplate);
