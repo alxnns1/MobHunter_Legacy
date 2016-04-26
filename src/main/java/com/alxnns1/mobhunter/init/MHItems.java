@@ -22,12 +22,6 @@ public class MHItems
 {
     public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 10, new int[]{2, 4, 3, 2}, 20);
 
-    public static ItemSword.ToolMaterial ironPlusSwordMaterial = EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0);
-    public static ItemSword.ToolMaterial busterSwordMaterial = EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0);
-    public static ItemSword.ToolMaterial busterPlusSwordMaterial = EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,5.0f,0);
-    public static ItemSword.ToolMaterial boneSwordMaterial = EnumHelper.addToolMaterial("Bone",0,59,0.0f,3.0f,0);
-    public static ItemSword.ToolMaterial bonePlusSwordMaterial = EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,4.0f,0);
-
     public static ItemArmor armourBoneHelmet = new ItemMHArmour(boneArmourMaterial,1,0,Names.Items.BONE_HELMET);
     public static ItemArmor armourBoneChestplate = new ItemMHArmour(boneArmourMaterial,1,1,Names.Items.BONE_CHESTPLATE);
     public static ItemArmor armourBoneLeggings = new ItemMHArmour(boneArmourMaterial,2,2,Names.Items.BONE_LEGGINGS);
@@ -43,11 +37,11 @@ public class MHItems
     public static final ItemMHFood itemDoneSteak = new ItemMHFood(10, 1.0F, true, Names.Items.DONE_STEAK);
     public static final ItemMHFood itemBurntMeat = new ItemMHFood(5, 0.3F, true, Names.Items.BURNT_MEAT);
 
-    public static final ItemMHSword itemIronSwordPlus = new ItemMHSword(ironPlusSwordMaterial, Names.Items.IRON_SWORD_PLUS);
-    public static final ItemMHSword itemBusterSword = new ItemMHSword(busterSwordMaterial, Names.Items.BUSTER_SWORD);
-    public static final ItemMHSword itemBusterSwordPlus = new ItemMHSword(busterPlusSwordMaterial, Names.Items.BUSTER_SWORD_PLUS);
-    public static final ItemMHSword itemBoneBlade = new ItemMHSword(boneSwordMaterial, Names.Items.BONE_BLADE);
-    public static final ItemMHSword itemBoneBladePlus = new ItemMHSword(bonePlusSwordMaterial, Names.Items.BONE_BLADE_PLUS);
+    public static final ItemMHSword itemIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0), Names.Items.IRON_SWORD_PLUS);
+    public static final ItemMHSword itemBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0), Names.Items.BUSTER_SWORD);
+    public static final ItemMHSword itemBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,5.0f,0), Names.Items.BUSTER_SWORD_PLUS);
+    public static final ItemMHSword itemBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,3.0f,0), Names.Items.BONE_BLADE);
+    public static final ItemMHSword itemBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,4.0f,0), Names.Items.BONE_BLADE_PLUS);
 
     /**
      * Registers the items
