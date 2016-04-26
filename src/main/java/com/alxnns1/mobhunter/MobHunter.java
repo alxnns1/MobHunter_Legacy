@@ -50,8 +50,7 @@ public class MobHunter {
         MHItems.init();
         MHBlocks.init();
 
-        EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100,
-                MobHunter.instance, 64, 1, false);
+        EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100, MobHunter.instance, 64, 1, false);
         EntityRegistry.registerEgg(EntityPopo.class,0,0);
 
         if(event.getSide() == Side.CLIENT) RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
@@ -72,8 +71,8 @@ public class MobHunter {
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
 
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
-        EntityEventHandler.addMobDrop("/*",MHItems.itemMysteryBone,1,1,0.5f);
-        EntityEventHandler.addMobDrop("/a",MHItems.itemMonsterBoneS,1,2,0.5f);
+        EntityEventHandler.addMobDrop(EntityEventHandler.ALL_VANILLA_WILDCARD,MHItems.itemMysteryBone,1,1,0.5f);
+        EntityEventHandler.addMobDrop(EntityEventHandler.AGGRESSIVE_WILDCARD,MHItems.itemMonsterBoneS,1,2,0.5f);
     }
 
     @Mod.EventHandler
