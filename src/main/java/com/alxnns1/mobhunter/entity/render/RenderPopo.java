@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.entity.render;
 
 import com.alxnns1.mobhunter.entity.EntityPopo;
 import com.alxnns1.mobhunter.entity.models.ModelPopo;
-import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderCow;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -16,7 +15,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderPopo extends RenderCow {
     public static final Factory FACTORY = new Factory();
-    private static final ResourceLocation popoTextures = new ResourceLocation("mobhunter:textures/entities/Popo.png");
+    private static final ResourceLocation popoTextures = new ResourceLocation("mobhunter:textures/entities/popo.png");
 
     public RenderPopo(RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelPopo(), 0.7f);

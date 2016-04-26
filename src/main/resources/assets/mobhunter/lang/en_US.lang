@@ -2,11 +2,14 @@
 
 //Items
 
-item.itemBoneMail.name=Bonemail
 item.itemMachaliteIngot.name=Machalite Ingot
 item.itemEarthCrystal.name=Earth Crystal
 item.itemMysteryBone.name=Mystery Bone
 item.itemMonsterBoneS.name=Monster Bone S
+item.itemRawMeat.name=Raw Meat
+item.itemRareSteak.name=Rare Steak
+item.itemDoneSteak.name=Well-done Steak
+item.itemBurntMeat.name=Burnt Meat
 
 item.armourBoneHelmet.name=Bone Helm
 item.armourBoneChestplate.name=Bone Mail

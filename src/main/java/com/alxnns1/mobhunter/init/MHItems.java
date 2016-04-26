@@ -32,6 +32,7 @@ public class MHItems
     public static final Item itemRawMeat = new ItemFood(3, 0.3F, true).setUnlocalizedName(Names.Items.RAW_MEAT);
     public static final Item itemRareSteak = new ItemFood(5, 0.4F, true).setUnlocalizedName(Names.Items.RARE_STEAK);
     public static final Item itemDoneSteak = new ItemFood(10, 1.0F, true).setUnlocalizedName(Names.Items.DONE_STEAK);
+    public static final Item itemBurntMeat = new ItemFood(5, 0.3F, true).setUnlocalizedName(Names.Items.RAW_MEAT);
 
     /**
      * Registers the items
@@ -46,6 +47,7 @@ public class MHItems
         GameRegistry.registerItem(itemRawMeat, Names.Items.RAW_MEAT);
         GameRegistry.registerItem(itemRareSteak, Names.Items.RARE_STEAK);
         GameRegistry.registerItem(itemDoneSteak, Names.Items.DONE_STEAK);
+        GameRegistry.registerItem(itemBurntMeat, Names.Items.BURNT_MEAT);
 
         GameRegistry.registerItem(armourBoneHelmet,Names.Items.BONE_HELMET);
         GameRegistry.registerItem(armourBoneChestplate,Names.Items.BONE_CHESTPLATE);

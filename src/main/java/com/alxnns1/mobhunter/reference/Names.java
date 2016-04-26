@@ -16,6 +16,7 @@ public class Names
         public static final String RAW_MEAT = "itemRawMeat";
         public static final String RARE_STEAK = "itemRareSteak";
         public static final String DONE_STEAK = "itemDoneSteak";
+        public static final String BURNT_MEAT = "itemBurntMeat";
 
         public static final String BONE_HELMET = "armourBoneHelmet";
         public static final String BONE_CHESTPLATE = "armourBoneChestplate";
