@@ -21,8 +21,16 @@ public class TileBbq extends TileEntity implements ITickable
     private int BURN_TIME = 200; //10 secs
     private boolean isCooking = false;
 
+    //These are just used as keys for the NBT saving/reading
+    private String KEY_TIME = "cookTime";
+    private String KEY_COOKING = "cooking";
 
     public TileBbq() {}
+
+    public boolean isCooking()
+    {
+        return isCooking;
+    }
 
     /**
      * If not already cooking, will start the cooking of a piece of raw meat.
@@ -73,12 +81,16 @@ public class TileBbq extends TileEntity implements ITickable
 
     public void readFromNBT(NBTTagCompound tag)
     {
-
+        super.readFromNBT(tag);
+        isCooking = tag.getBoolean(KEY_COOKING);
+        cookTime = tag.getInteger(KEY_TIME);
     }
 
     public void writeToNBT(NBTTagCompound tag)
     {
-
+        super.writeToNBT(tag);
+        tag.setBoolean(KEY_COOKING, isCooking);
+        tag.setInteger(KEY_TIME, cookTime);
     }
 
     /**
@@ -103,6 +115,9 @@ public class TileBbq extends TileEntity implements ITickable
     public void update()
     {
         if(isCooking)
+        {
+            //Increase time meat has been cooking for
             cookTime++;
+        }
     }
 }
