@@ -61,9 +61,6 @@ public class BlockBbq extends BlockContainer
 
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        //If this is on the client, then just return.
-        if(worldIn.isRemote) return true;
-
         TileBbq te = (TileBbq) worldIn.getTileEntity(pos);
 
         if(playerIn.getCurrentEquippedItem() != null && playerIn.getCurrentEquippedItem().getItem().equals(MHItems.itemRawMeat) && !te.isCooking())
@@ -77,19 +74,16 @@ public class BlockBbq extends BlockContainer
             }
             return false;
         }
-        else if(!te.isCooking())
+        else if(te.isCooking())
         {
             //Try to get the item from the bbq spit
             Item product = te.retrieveItem();
-            if(product != null)
+            if(product != null && !worldIn.isRemote)
             {
-                if(!playerIn.inventory.addItemStackToInventory(new ItemStack(product)))
-                {
-                    //If can't place in inventory, then drop item on the ground
-                    BlockPos dropPos = pos.offset(side);
-                    EntityItem itemDrop = new EntityItem(worldIn, dropPos.getX() + 0.5d, dropPos.getY() + 0.5d, dropPos.getZ() + 0.5d, new ItemStack(product));
-                    worldIn.spawnEntityInWorld(itemDrop);
-                }
+                //Drop item on the ground
+                BlockPos dropPos = pos.offset(side);
+                EntityItem itemDrop = new EntityItem(worldIn, dropPos.getX() + 0.5d, dropPos.getY() + 0.5d, dropPos.getZ() + 0.5d, new ItemStack(product));
+                worldIn.spawnEntityInWorld(itemDrop);
                 return true;
             }
         }
@@ -98,9 +92,9 @@ public class BlockBbq extends BlockContainer
 
     private void spawnParticle(World world, BlockPos pos, Random rand, boolean isFire)
     {
-        double x = pos.getX() + 0.4375d + (rand.nextDouble() * 0.375d);
-        double y = pos.getY() + 0.1875d + (rand.nextDouble() * 0.125d);
-        double z = pos.getZ() + 0.4375d + (rand.nextDouble() * 0.375d);
+        double x = pos.getX() + 0.375d + (rand.nextDouble() * 0.25d);
+        double y = pos.getY() + 0.25d + (rand.nextDouble() * 0.125d);
+        double z = pos.getZ() + 0.375d + (rand.nextDouble() * 0.25d);
         EnumParticleTypes type;
         if(isFire)
             type = EnumParticleTypes.FLAME;
@@ -116,13 +110,13 @@ public class BlockBbq extends BlockContainer
         boolean cooking = ((TileBbq) worldIn.getTileEntity(pos)).isCooking();
         if(cooking)
         {
-            //Spawns between 1 and 3 fire particles
-            for(int i = 0; i < rand.nextInt(2); i++)
+            //Spawns between 1 and 5 fire particles
+            for(int i = 0; i < rand.nextInt(4); i++)
             {
                 spawnParticle(worldIn, pos, rand, true);
             }
-            //Spawns between 0 and 2 smoke particles
-            for(int i = 1; i < rand.nextInt(3); i++)
+            //Spawns between 0 and 3 smoke particles
+            for(int i = 1; i < rand.nextInt(4); i++)
             {
                 spawnParticle(worldIn, pos, rand, false);
             }

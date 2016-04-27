@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.tileentity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -118,6 +119,9 @@ public class TileBbq extends TileEntity implements ITickable
         {
             //Increase time meat has been cooking for
             cookTime++;
+            if(cookTime == RARE_TIME) LogHelper.info("Cooked to Rare");
+            else if(cookTime == DONE_TIME) LogHelper.info("Cooked to Well Done");
+            else if(cookTime == BURN_TIME) LogHelper.info("Cooked to Burnt");
         }
     }
 }
