@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.entity.EntityKelbi;
 import com.alxnns1.mobhunter.entity.EntityPopo;
 import com.alxnns1.mobhunter.entity.render.RenderPopo;
 import com.alxnns1.mobhunter.init.MHBlocks;
@@ -53,7 +54,9 @@ public class MobHunter {
         MHTileEntities.init();
 
         EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100, MobHunter.instance, 64, 1, false);
+        EntityRegistry.registerModEntity(EntityKelbi.class, "Kelbi", 102, MobHunter.instance, 64, 1, false);
         EntityRegistry.registerEgg(EntityPopo.class,0,0);
+        EntityRegistry.registerEgg(EntityKelbi.class,0,0);
 
         if(event.getSide() == Side.CLIENT) RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
     }
