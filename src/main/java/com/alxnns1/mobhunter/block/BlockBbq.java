@@ -81,8 +81,9 @@ public class BlockBbq extends BlockContainer
             if(product != null && !worldIn.isRemote)
             {
                 //Drop item on the ground
-                BlockPos dropPos = pos.offset(side);
-                EntityItem itemDrop = new EntityItem(worldIn, dropPos.getX() + 0.5d, dropPos.getY() + 0.5d, dropPos.getZ() + 0.5d, new ItemStack(product));
+                BlockPos pPos = playerIn.getPosition();
+                EntityItem itemDrop = new EntityItem(worldIn, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, new ItemStack(product));
+                itemDrop.setNoPickupDelay();
                 worldIn.spawnEntityInWorld(itemDrop);
                 return true;
             }
