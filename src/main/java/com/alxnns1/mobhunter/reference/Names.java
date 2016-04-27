@@ -10,13 +10,19 @@ public class Names
     {
         public static final String MACHALITE_INGOT = "itemMachaliteIngot";
         public static final String EARTH_CRYSTAL = "itemEarthCrystal";
+
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
+        public static final String BRUTE_BONE = "itemBruteBone";
+        public static final String JUMBO_BONE = "itemJumboBone";
 
         public static final String RAW_MEAT = "itemRawMeat";
         public static final String RARE_STEAK = "itemRareSteak";
         public static final String DONE_STEAK = "itemDoneSteak";
         public static final String BURNT_MEAT = "itemBurntMeat";
+
+        public static final String KELBI_HORN = "itemKelbiHorn";
+        public static final String WARM_PELT = "itemWarmPelt";
 
         public static final String BONE_HELMET = "armourBoneHelmet";
         public static final String BONE_CHESTPLATE = "armourBoneChestplate";

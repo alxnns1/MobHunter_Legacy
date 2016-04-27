@@ -2,21 +2,39 @@
 
 //Items
 
+//Minerals
+
 item.itemMachaliteIngot.name=Machalite Ingot
 item.itemEarthCrystal.name=Earth Crystal
+
+//Bones
+
 item.itemMysteryBone.name=Mystery Bone
+item.itemBruteBone.name=Brute Bone
+item.itemJumboBone.name=Jumbo Bone
 item.itemMonsterBoneS.name=Monster Bone S
+
+//Meats
 
 item.itemRawMeat.name=Raw Meat
 item.itemRareSteak.name=Rare Steak
 item.itemDoneSteak.name=Well-done Steak
 item.itemBurntMeat.name=Burnt Meat
 
+//Kelbi
+
+item.itemKelbiHorn.name=Kelbi Horn
+item.itemWarmPelt.name=Warm Pelt
+
+//Swords
+
 item.itemIronSwordPlus.name=Iron Sword+
 item.itemBusterSword.name=Buster Sword
 item.itemBusterSwordPlus.name=Buster Sword+
 item.itemBoneBlade.name=Bone Blade
 item.itemBoneBladePlus.name=Bone Blade+
+
+//Armour
 
 item.armourBoneHelmet.name=Bone Helm
 item.armourBoneChestplate.name=Bone Mail

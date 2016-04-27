@@ -6,7 +6,6 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.DifficultyInstance;
@@ -25,6 +24,7 @@ public class EntityPopo extends EntityCow
     public EntityPopo(World worldIn)
     {
         super(worldIn);
+        this.setSize(1.9F, 2.5F);
     }
 
     protected void entityInit()
@@ -42,20 +42,31 @@ public class EntityPopo extends EntityCow
     /**
      * Drop 0-2 items of this living's type
      */
-    protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
+    protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
-        int i = this.rand.nextInt(3) + this.rand.nextInt(1 + p_70628_2_);
+        if(!hitByPlayer) {
+            int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
+            for (int j = 0; j < i; ++j) {
+                this.dropItem(MHItems.itemMysteryBone, 1);
+            }
+            i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
+            for (int k = 0; k < i; ++k) {
+                this.dropItem(MHItems.itemRawMeat, 1);
+            }
+        }else{
+            for(int n=0;n<2+lootingLevel;n++) {
+                int i = this.rand.nextInt(99);
+                if(i<45){
+                    this.dropItem(MHItems.itemMysteryBone, 1);
+                }else if(i<75){
+                    this.dropItem(MHItems.itemRawMeat, 1);
+                }else if(i<95){
+                    this.dropItem(MHItems.itemBruteBone, 1);
+                }else if(i<100){
+                    this.dropItem(MHItems.itemJumboBone, 1);
+                }
+            }
 
-        for (int j = 0; j < i; ++j)
-        {
-            this.dropItem(MHItems.itemMonsterBoneS, 1);
-        }
-
-        i = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + p_70628_2_);
-
-        for (int k = 0; k < i; ++k)
-        {
-            this.dropItem(MHItems.itemRawMeat, 1);
         }
     }
 
@@ -65,7 +76,7 @@ public class EntityPopo extends EntityCow
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
-        float scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
+        float scale = ((this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin)*2;
         this.setPopoScale(scale);
         return super.onInitialSpawn(difficulty, livingdata);
     }
@@ -74,8 +85,9 @@ public class EntityPopo extends EntityCow
     {
         //Gets the datawatcher value for the entity scale
         this.dataWatcher.updateObject(WATCHER_SCALE, scale);
-        this.setSize(0.9F * scale, 1.3F * scale);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(10.0D * scale));
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(5.0D * scale));
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.1D * scale);
+        this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(0.2D * scale);
         this.setHealth(this.getMaxHealth());
         LogHelper.info("Scale: " + scale + "   Health: " + this.getMaxHealth());
     }

@@ -94,8 +94,7 @@ public class ModelPopo extends ModelBase {
 
         if (this.isChild) {
             GlStateManager.pushMatrix();
-            GlStateManager.scale(0.5f,0.5f,0.5f);
-            GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+            GlStateManager.scale(1f,1f,1f);
             this.body.render(scale);
             GlStateManager.popMatrix();
         }
