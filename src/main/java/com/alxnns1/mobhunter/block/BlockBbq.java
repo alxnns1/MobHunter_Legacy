@@ -17,6 +17,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -33,7 +35,7 @@ public class BlockBbq extends BlockContainer
         super(Material.rock);
         setUnlocalizedName(Names.Blocks.BBQ);
         setCreativeTab(MobHunter.MH_TAB);
-        setLightOpacity(0);
+        //setLightOpacity(0);
     }
 
     public TileEntity createNewTileEntity(World worldIn, int meta)
@@ -57,6 +59,17 @@ public class BlockBbq extends BlockContainer
     public int getRenderType()
     {
         return 3;
+    }
+
+    @Override
+    public int getLightValue(IBlockAccess world, BlockPos pos)
+    {
+        TileBbq te = (TileBbq) world.getTileEntity(pos);
+        if(te.isCooking()){
+            return 14;
+        }else{
+            return 0;
+        }
     }
 
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
@@ -107,6 +120,8 @@ public class BlockBbq extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
+        worldIn.markBlockForUpdate(pos);
+        worldIn.checkLightFor(EnumSkyBlock.BLOCK, pos);
         //This is where the particles are spawned when cooking
         boolean cooking = ((TileBbq) worldIn.getTileEntity(pos)).isCooking();
         if(cooking)
