@@ -40,7 +40,7 @@ public class RenderPopo extends RenderLiving<EntityPopo>
     @Override
     protected void preRenderCallback(EntityPopo entity, float f)
     {
-        float tSizeMult = entity.getPopoScale();
+        float tSizeMult = entity.getScale();
         GL11.glScalef(tSizeMult,tSizeMult,tSizeMult);
     }
 }

@@ -14,24 +14,12 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 27/04/2016.
  */
-public class EntityKelbi extends EntityCow
+public class EntityKelbi extends EntityScalable
 {
-    private static final String KEY_SCALE = "scale";
-    private static final int WATCHER_SCALE = 20;
-    private static final float scaleMax = 1.24f;
-    private static final float scaleMin = 0.79f;
-
     public EntityKelbi(World worldIn)
     {
-        super(worldIn);
+        super(worldIn, 0.79f, 1.24f);
         this.setSize(0.9F, 1.3F);
-    }
-
-    protected void entityInit()
-    {
-        super.entityInit();
-        //Creates the datawatcher object to save the entity scale in
-        this.dataWatcher.addObject(WATCHER_SCALE, 1.0f);
     }
 
     protected Item getDropItem()
@@ -70,46 +58,8 @@ public class EntityKelbi extends EntityCow
         }
     }
 
-    /**
-     * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
-     * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
-     */
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
-        float scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
-        this.setKelbiScale(scale);
-        return super.onInitialSpawn(difficulty, livingdata);
-    }
-
-    private void setKelbiScale(float scale)
-    {
-        //Gets the datawatcher value for the entity scale
-        this.dataWatcher.updateObject(WATCHER_SCALE, scale);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(5.0D * scale));
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D * scale);
-        this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(0.5D * scale);
-        this.setHealth(this.getMaxHealth());
-        LogHelper.info("Scale: " + scale + "   Health: " + this.getMaxHealth());
-    }
-
     public EntityKelbi createChild(EntityAgeable ageable)
     {
         return new EntityKelbi(this.worldObj);
-    }
-
-    public float getKelbiScale(){
-        return this.dataWatcher.getWatchableObjectFloat(WATCHER_SCALE);
-    }
-
-    public void writeEntityToNBT(NBTTagCompound tagCompound)
-    {
-        super.writeEntityToNBT(tagCompound);
-        tagCompound.setFloat(KEY_SCALE, getKelbiScale());
-    }
-
-    public void readEntityFromNBT(NBTTagCompound tagCompund)
-    {
-        super.readEntityFromNBT(tagCompund);
-        setKelbiScale(tagCompund.getFloat(KEY_SCALE));
     }
 }

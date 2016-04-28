@@ -41,7 +41,7 @@ public class RenderKelbi extends RenderLiving<EntityKelbi>
     @Override
     protected void preRenderCallback(EntityKelbi entity, float f)
     {
-        float tSizeMult = entity.getKelbiScale();
+        float tSizeMult = entity.getScale();
         GL11.glScalef(tSizeMult,tSizeMult,tSizeMult);
     }
 }
