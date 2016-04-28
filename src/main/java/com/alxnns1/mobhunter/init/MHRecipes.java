@@ -15,12 +15,12 @@ public class MHRecipes
     @SuppressWarnings("all")
     public static void init()
     {
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), new Object[] {"xyx", " z ", "   ", 'x', MHItems.itemMysteryBone, 'y', new ItemStack(Items.skull,1,0), 'z', Items.string});
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), new Object[] {"w w", "xyx", "xzx", 'w', MHItems.itemMonsterBoneS, 'x', MHItems.itemMysteryBone, 'y', Items.leather, 'z', Items.string});
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), new Object[] {"xxx", "y y", "z z", 'x', Items.leather, 'y', MHItems.itemMysteryBone, 'z', MHItems.itemMonsterBoneS});
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneBoots), new Object[] {"   ", "y y", "z z", 'y', MHItems.itemMonsterBoneS, 'z', MHItems.itemMysteryBone});
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), new Object[] {"xyx", " z ", "   ", 'x', new ItemStack(MHItems.itemBones, 1, 1), 'y', new ItemStack(Items.skull,1,0), 'z', Items.string});
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), new Object[] {"w w", "xyx", "xzx", 'w', new ItemStack(MHItems.itemBones, 1, 0), 'x', new ItemStack(MHItems.itemBones, 1, 1), 'y', Items.leather, 'z', Items.string});
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), new Object[] {"xxx", "y y", "z z", 'x', Items.leather, 'y', new ItemStack(MHItems.itemBones, 1, 1), 'z', new ItemStack(MHItems.itemBones, 1, 0)});
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneBoots), new Object[] {"   ", "y y", "z z", 'y', new ItemStack(MHItems.itemBones, 1, 0), 'z', new ItemStack(MHItems.itemBones, 1, 1)});
 
-        GameRegistry.addRecipe(new ItemStack(MHItems.itemBoneBlade), new Object[] {" y "," y "," z ",'y',MHItems.itemMonsterBoneS,'z',Items.leather});
+        GameRegistry.addRecipe(new ItemStack(MHItems.itemBoneBlade), new Object[] {" y "," y "," z ",'y',new ItemStack(MHItems.itemBones, 1, 0),'z',Items.leather});
 
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemIronSwordPlus),new Object[] {
                 new ItemStack(Items.iron_sword),
@@ -51,10 +51,10 @@ public class MHRecipes
                 new ItemStack(MHItems.itemMachaliteIngot)});
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemBoneBladePlus),new Object[] {
                 new ItemStack(MHItems.itemBoneBlade),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
+                new ItemStack(MHItems.itemBones, 1, 0),
+                new ItemStack(MHItems.itemBones, 1, 0),
+                new ItemStack(MHItems.itemBones, 1, 0),
+                new ItemStack(MHItems.itemBones, 1, 0),
                 new ItemStack(Items.leather),
                 new ItemStack(Items.leather)});
 

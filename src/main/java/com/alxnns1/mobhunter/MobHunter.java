@@ -12,6 +12,7 @@ import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -36,7 +37,8 @@ public class MobHunter {
 
         @Override
         public Item getTabIconItem() {
-            return MHItems.itemMonsterBoneS;
+            return new ItemStack(MHItems.itemBones, 1, 0).getItem();
+            //return MHItems.itemMonsterBoneS;
         }
 
         @Override
@@ -81,8 +83,8 @@ public class MobHunter {
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
 
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
-        EntityEventHandler.addMobDrop(EntityEventHandler.ALL_VANILLA_WILDCARD,MHItems.itemMysteryBone,1,1,0.5f);
-        EntityEventHandler.addMobDrop(EntityEventHandler.AGGRESSIVE_WILDCARD,MHItems.itemMonsterBoneS,1,2,0.5f);
+        EntityEventHandler.addMobDrop(EntityEventHandler.ALL_VANILLA_WILDCARD,new ItemStack(MHItems.itemBones, 1, 1),1,1,0.5f);
+        EntityEventHandler.addMobDrop(EntityEventHandler.AGGRESSIVE_WILDCARD,new ItemStack(MHItems.itemBones, 1, 0),1,2,0.5f);
     }
 
     @Mod.EventHandler

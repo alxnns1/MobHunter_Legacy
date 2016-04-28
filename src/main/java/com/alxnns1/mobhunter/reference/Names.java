@@ -11,6 +11,7 @@ public class Names
         public static final String MACHALITE_INGOT = "itemMachaliteIngot";
         public static final String EARTH_CRYSTAL = "itemEarthCrystal";
 
+        public static final String BONE = "bone";
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
         public static final String BRUTE_BONE = "itemBruteBone";

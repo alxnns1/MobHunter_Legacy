@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -60,7 +61,7 @@ public class EntityEventHandler
      * @param item The item which will drop
      * @param chance Chance that the item will be able to drop (between 0 and 1)
      */
-    public static void addMobDrop(String mobName, Item item, float chance)
+    public static void addMobDrop(String mobName, ItemStack item, float chance)
     {
         addMobDrop(mobName, item, 1, 1, chance);
     }
@@ -73,7 +74,7 @@ public class EntityEventHandler
      * @param qtyMax Max amount of the item will drop
      * @param chance Chance that the item will be able to drop at all (between 0 and 1)
      */
-    public static void addMobDrop(String mobName, Item item, int qtyMin, int qtyMax, float chance)
+    public static void addMobDrop(String mobName, ItemStack item, int qtyMin, int qtyMax, float chance)
     {
         if(chance <= 0)
             chance = 0.01f;
@@ -115,13 +116,13 @@ public class EntityEventHandler
                         (o[0].equals(ALL_WILDCARD) && entity instanceof EntityLiving) ||    //Any registered mob
                         ((mobName.equals(o[0]) || mobUnlocName.equals(o[0]))))              //Exact mob
                 {
-                    LogHelper.info("Mob can drop " + ((Item) o[1]).getUnlocalizedName());
+                    LogHelper.info("Mob can drop " + ((ItemStack) o[1]).getUnlocalizedName());
                     //Can spawn mob drop!
                     int min = (Integer) o[2];
                     int max = (Integer) o[3];
                     int randQty = rand.nextInt(max) + min;
                     if (randQty > 0) {
-                        event.entityLiving.dropItem((Item) o[1], randQty);
+                        event.entityLiving.entityDropItem((ItemStack) o[1], 0);
                         LogHelper.info("Mob dropped " + randQty);
                     }
                 }

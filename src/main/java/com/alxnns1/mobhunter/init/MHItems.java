@@ -1,9 +1,6 @@
 package com.alxnns1.mobhunter.init;
 
-import com.alxnns1.mobhunter.item.ItemMHArmour;
-import com.alxnns1.mobhunter.item.ItemMHFood;
-import com.alxnns1.mobhunter.item.ItemMHResource;
-import com.alxnns1.mobhunter.item.ItemMHSword;
+import com.alxnns1.mobhunter.item.*;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.Common;
@@ -30,10 +27,13 @@ public class MHItems
     public static final ItemMHResource itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL);
     public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT);
 
+    public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
+    /*
     public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
     public static final ItemMHResource itemMysteryBone = new ItemMHResource(Names.Items.MYSTERY_BONE);
     public static final ItemMHResource itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE);
     public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
+    */
 
     public static final ItemMHFood itemRawMeat = new ItemMHFood(3, 0.3F, true, Names.Items.RAW_MEAT);
     public static final ItemMHFood itemRareSteak = new ItemMHFood(5, 0.4F, true, Names.Items.RARE_STEAK);
@@ -57,10 +57,13 @@ public class MHItems
         GameRegistry.registerItem(itemEarthCrystal, Names.Items.EARTH_CRYSTAL);
         GameRegistry.registerItem(itemMachaliteIngot, Names.Items.MACHALITE_INGOT);
 
+        GameRegistry.registerItem(itemBones, "bones");
+        /*
         GameRegistry.registerItem(itemMysteryBone, Names.Items.MYSTERY_BONE);
         GameRegistry.registerItem(itemMonsterBoneS, Names.Items.MONSTER_BONE_S);
         GameRegistry.registerItem(itemBruteBone, Names.Items.BRUTE_BONE);
         GameRegistry.registerItem(itemJumboBone, Names.Items.JUMBO_BONE);
+        */
 
         GameRegistry.registerItem(itemRawMeat, Names.Items.RAW_MEAT);
         GameRegistry.registerItem(itemRareSteak, Names.Items.RARE_STEAK);
@@ -91,10 +94,16 @@ public class MHItems
         Common.regModel(itemMachaliteIngot);
         Common.regModel(itemEarthCrystal);
 
+        for(int i = 0; i < itemBones.getMaxMeta(); i++)
+        {
+            Common.regModel(itemBones, i);
+        }
+        /*
         Common.regModel(itemMysteryBone);
         Common.regModel(itemMonsterBoneS);
         Common.regModel(itemBruteBone);
         Common.regModel(itemJumboBone);
+        */
 
         Common.regModel(itemRawMeat);
         Common.regModel(itemRareSteak);

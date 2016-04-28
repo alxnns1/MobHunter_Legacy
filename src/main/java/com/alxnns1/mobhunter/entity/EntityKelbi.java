@@ -7,6 +7,7 @@ import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
@@ -35,7 +36,8 @@ public class EntityKelbi extends EntityScalable
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemMysteryBone, 1);
+                this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 1), 0);
+                //this.dropItem(MHItems.itemMysteryBone, 1);
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
@@ -49,7 +51,8 @@ public class EntityKelbi extends EntityScalable
                 }else if(i<75){
                     this.dropItem(MHItems.itemWarmPelt, 1);
                 }else if(i<90){
-                    this.dropItem(MHItems.itemMysteryBone, 1);
+                    this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 1), 0);
+                    //this.dropItem(MHItems.itemMysteryBone, 1);
                 }else if(i<100){
                     this.dropItem(MHItems.itemRawMeat, 1);
                 }
