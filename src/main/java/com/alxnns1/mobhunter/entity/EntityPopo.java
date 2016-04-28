@@ -12,7 +12,7 @@ public class EntityPopo extends EntityScalable
 {
     public EntityPopo(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f);
+        super(worldIn, 0.79f*2, 1.24f*2);
         this.setSize(1.9F, 2.5F);
     }
 

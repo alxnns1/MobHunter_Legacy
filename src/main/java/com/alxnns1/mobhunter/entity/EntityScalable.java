@@ -68,7 +68,7 @@ public abstract class EntityScalable extends EntityAnimal
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
-        float scale = ((this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin)*2;
+        float scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
         this.setEntityScale(scale);
         return super.onInitialSpawn(difficulty, livingdata);
     }

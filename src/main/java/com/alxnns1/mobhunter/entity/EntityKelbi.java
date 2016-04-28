@@ -42,16 +42,16 @@ public class EntityKelbi extends EntityScalable
                 this.dropItem(MHItems.itemRawMeat, 1);
             }
         }else{
-            for(int n=0;n<2+lootingLevel;n++) {
+            for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<45){
-                    this.dropItem(MHItems.itemMysteryBone, 1);
+                    this.dropItem(MHItems.itemKelbiHorn, 1);
                 }else if(i<75){
-                    this.dropItem(MHItems.itemRawMeat, 1);
-                }else if(i<95){
-                    this.dropItem(MHItems.itemBruteBone, 1);
+                    this.dropItem(MHItems.itemWarmPelt, 1);
+                }else if(i<90){
+                    this.dropItem(MHItems.itemMysteryBone, 1);
                 }else if(i<100){
-                    this.dropItem(MHItems.itemJumboBone, 1);
+                    this.dropItem(MHItems.itemRawMeat, 1);
                 }
             }
 

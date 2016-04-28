@@ -56,8 +56,8 @@ public class MobHunter {
 
         EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100, MobHunter.instance, 64, 1, false);
         EntityRegistry.registerModEntity(EntityKelbi.class, "Kelbi", 102, MobHunter.instance, 64, 1, false);
-        EntityRegistry.registerEgg(EntityPopo.class,0,0);
-        EntityRegistry.registerEgg(EntityKelbi.class,0,0);
+        EntityRegistry.registerEgg(EntityPopo.class,0x402a00,0x403400);
+        EntityRegistry.registerEgg(EntityKelbi.class,0x20402b,0xbfbf8f);
 
         if(event.getSide() == Side.CLIENT)
         {
