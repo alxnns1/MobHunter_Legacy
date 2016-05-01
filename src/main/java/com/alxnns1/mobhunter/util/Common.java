@@ -31,6 +31,7 @@ public class Common
 
     public static void regModel(Item item, int meta)
     {
+        LogHelper.info(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(item.getUnlocalizedName().indexOf(".")+1));
         m.register(item,meta,new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(item.getUnlocalizedName().indexOf(".")+1),"inventory"));
     }
 }

@@ -15,6 +15,9 @@ public class EntityPopo extends EntityScalable
     {
         super(worldIn, 0.79f*2, 1.24f*2);
         this.setSize(1.9F, 2.5F);
+        setBaseHealth(5);
+        setBaseSpeed(0.1);
+        setBaseKnockback(0.5);
     }
 
     protected Item getDropItem()

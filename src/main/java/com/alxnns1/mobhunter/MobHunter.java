@@ -1,7 +1,9 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.entity.EntityJaggi;
 import com.alxnns1.mobhunter.entity.EntityKelbi;
 import com.alxnns1.mobhunter.entity.EntityPopo;
+import com.alxnns1.mobhunter.entity.render.RenderJaggi;
 import com.alxnns1.mobhunter.entity.render.RenderKelbi;
 import com.alxnns1.mobhunter.entity.render.RenderPopo;
 import com.alxnns1.mobhunter.init.MHBlocks;
@@ -57,14 +59,17 @@ public class MobHunter {
         MHTileEntities.init();
 
         EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100, MobHunter.instance, 64, 1, false);
-        EntityRegistry.registerModEntity(EntityKelbi.class, "Kelbi", 102, MobHunter.instance, 64, 1, false);
+        EntityRegistry.registerModEntity(EntityKelbi.class, "Kelbi", 101, MobHunter.instance, 64, 1, false);
+        EntityRegistry.registerModEntity(EntityJaggi.class, "Jaggi", 102, MobHunter.instance, 64, 1, false);
         EntityRegistry.registerEgg(EntityPopo.class,0x402a00,0x403400);
         EntityRegistry.registerEgg(EntityKelbi.class,0x20402b,0xbfbf8f);
+        EntityRegistry.registerEgg(EntityJaggi.class,0xd56a00,0xbf80ff);
 
         if(event.getSide() == Side.CLIENT)
         {
             RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
         }
     }
 

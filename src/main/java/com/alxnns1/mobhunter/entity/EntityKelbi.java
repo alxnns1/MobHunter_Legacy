@@ -21,6 +21,9 @@ public class EntityKelbi extends EntityScalable
     {
         super(worldIn, 0.79f, 1.24f);
         this.setSize(0.9F, 1.3F);
+        setBaseHealth(5);
+        setBaseSpeed(0.2);
+        setBaseKnockback(0.2);
     }
 
     protected Item getDropItem()

@@ -107,13 +107,13 @@ public abstract class EntityScalable extends EntityAnimal
         baseHealth = (double) health;
     }
 
-    protected void setBaseSpeed(int speed)
+    protected void setBaseSpeed(double speed)
     {
-        baseSpeed = (double) speed;
+        baseSpeed = speed;
     }
 
-    protected void setBaseKnockback(int knockback)
+    protected void setBaseKnockback(double knockback)
     {
-        baseKnockback = (double) knockback;
+        baseKnockback = knockback;
     }
 }
