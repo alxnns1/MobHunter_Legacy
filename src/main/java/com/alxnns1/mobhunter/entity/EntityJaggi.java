@@ -30,28 +30,12 @@ public class EntityJaggi extends EntityMHWyvern
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityVillager.class,1.0D,false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPig.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPig.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityCow.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCow.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntitySheep.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntitySheep.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityHorse.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityHorse.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityChicken.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, true));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityAnimal.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityAnimal.class, true));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityWitch.class,1.0D,false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWitch.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityWolf.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWolf.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityOcelot.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityOcelot.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityRabbit.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityRabbit.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPopo.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPopo.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityKelbi.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityKelbi.class, true));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityMHHerbivore.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMHHerbivore.class, true));
     }
 
     protected Item getDropItem()
@@ -89,6 +73,12 @@ public class EntityJaggi extends EntityMHWyvern
             }
 
         }
+    }
+
+    @Override
+    protected boolean isValidLightLevel()
+    {
+        return true; //lets it spawn during the day
     }
 
     public EntityJaggi createChild(EntityAgeable ageable)

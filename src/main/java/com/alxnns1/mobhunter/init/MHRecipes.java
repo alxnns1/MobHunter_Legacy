@@ -20,7 +20,7 @@ public class MHRecipes
         GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), new Object[] {"xxx", "y y", "z z", 'x', Items.leather, 'y', new ItemStack(MHItems.itemBones, 1, 1), 'z', new ItemStack(MHItems.itemBones, 1, 0)});
         GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneBoots), new Object[] {"   ", "y y", "z z", 'y', new ItemStack(MHItems.itemBones, 1, 0), 'z', new ItemStack(MHItems.itemBones, 1, 1)});
 
-        GameRegistry.addRecipe(new ItemStack(MHItems.itemBoneBlade), new Object[] {" y "," y "," z ",'y',new ItemStack(MHItems.itemBones, 1, 0),'z',Items.leather});
+        GameRegistry.addRecipe(new ItemStack(MHItems.itemBoneBlade), new Object[] {" y "," y "," z ",'y',new ItemStack(MHItems.itemBones, 1, 0),'z',MHItems.itemJaggiHide});
 
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemIronSwordPlus),new Object[] {
                 new ItemStack(Items.iron_sword),
@@ -55,8 +55,8 @@ public class MHRecipes
                 new ItemStack(MHItems.itemBones, 1, 0),
                 new ItemStack(MHItems.itemBones, 1, 0),
                 new ItemStack(MHItems.itemBones, 1, 0),
-                new ItemStack(Items.leather),
-                new ItemStack(Items.leather)});
+                new ItemStack(MHItems.itemJaggiHide),
+                new ItemStack(MHItems.itemJaggiHide)});
 
         GameRegistry.addShapelessRecipe(new ItemStack(Items.skull,1,0), new ItemStack(Items.skull,1, OreDictionary.WILDCARD_VALUE));
 

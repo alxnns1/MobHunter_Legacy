@@ -25,7 +25,7 @@ public class Names
         public static final String KELBI_HORN = "itemKelbiHorn";
         public static final String WARM_PELT = "itemWarmPelt";
 
-        public static final String BIRD_WYVERN_FANG = "itemBirdWyvrnFang";
+        public static final String BIRD_WYVERN_FANG = "itemBirdWyvernFang";
 
         public static final String JAGGI_HIDE = "itemJaggiHide";
         public static final String JAGGI_SCALE = "itemJaggiScale";
