@@ -9,13 +9,14 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 27/04/2016.
  */
-public class EntityJaggi extends EntityScalable
+public class EntityJaggi extends EntityWyvern
 {
     public EntityJaggi(World worldIn)
     {
         super(worldIn, 0.79f, 1.24f);
         this.setSize(1.0F, 1.0F);
         setBaseHealth(9);
+        setBaseAttack(3);
         setBaseSpeed(0.3);
         setBaseKnockback(0.1);
     }
