@@ -43,6 +43,11 @@ public class MHItems
     public static final ItemMHResource itemKelbiHorn = new ItemMHResource(Names.Items.KELBI_HORN);
     public static final ItemMHResource itemWarmPelt = new ItemMHResource(Names.Items.WARM_PELT);
 
+    public static final ItemMHResource itemBirdWyvernFang = new ItemMHResource(Names.Items.BIRD_WYVERN_FANG);
+
+    public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
+    public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
+
     public static final ItemMHSword itemIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0), Names.Items.IRON_SWORD_PLUS);
     public static final ItemMHSword itemBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0), Names.Items.BUSTER_SWORD);
     public static final ItemMHSword itemBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,5.0f,0), Names.Items.BUSTER_SWORD_PLUS);
@@ -72,6 +77,11 @@ public class MHItems
 
         GameRegistry.registerItem(itemKelbiHorn, Names.Items.KELBI_HORN);
         GameRegistry.registerItem(itemWarmPelt, Names.Items.WARM_PELT);
+
+        GameRegistry.registerItem(itemBirdWyvernFang, Names.Items.BIRD_WYVERN_FANG);
+
+        GameRegistry.registerItem(itemJaggiHide, Names.Items.JAGGI_HIDE);
+        GameRegistry.registerItem(itemJaggiScale, Names.Items.JAGGI_SCALE);
 
         GameRegistry.registerItem(armourBoneHelmet,Names.Items.BONE_HELMET);
         GameRegistry.registerItem(armourBoneChestplate,Names.Items.BONE_CHESTPLATE);
@@ -112,6 +122,11 @@ public class MHItems
 
         Common.regModel(itemKelbiHorn);
         Common.regModel(itemWarmPelt);
+
+        Common.regModel(itemBirdWyvernFang);
+
+        Common.regModel(itemJaggiHide);
+        Common.regModel(itemJaggiScale);
 
         Common.regModel(armourBoneHelmet);
         Common.regModel(armourBoneChestplate);

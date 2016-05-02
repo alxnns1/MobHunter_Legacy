@@ -26,6 +26,15 @@ item.itemBurntMeat.name=Burnt Meat
 item.itemKelbiHorn.name=Kelbi Horn
 item.itemWarmPelt.name=Warm Pelt
 
+//Bird Wyvern
+
+item.itemBirdWyvernFang.name=Bird Wyvern Fang
+
+//Jaggi
+
+item.itemJaggiHide.name=Jaggi Hide
+item.itemJaggiScale.name=Jaggi Scale
+
 //Swords
 
 item.itemIronSwordPlus.name=Iron Sword+

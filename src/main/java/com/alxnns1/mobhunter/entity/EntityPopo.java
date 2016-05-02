@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 /**
  * Created by Mark on 21/04/2016.
  */
-public class EntityPopo extends EntityScalable
+public class EntityPopo extends EntityMHHerbivore
 {
     public EntityPopo(World worldIn)
     {

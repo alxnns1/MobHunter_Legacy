@@ -4,7 +4,7 @@ import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,9 +13,9 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 /**
- * Created by Mark on 28/04/2016.
+ * Created by Alex on 02/05/2016.
  */
-public abstract class EntityScalable extends EntityAnimal
+public abstract class EntityMHWyvern extends EntityMob
 {
     private static final String KEY_SCALE = "scale";
     private static final int WATCHER_SCALE = 20;
@@ -24,13 +24,14 @@ public abstract class EntityScalable extends EntityAnimal
     private double baseHealth = 5d;
     private double baseSpeed = 0.1d;
     private double baseKnockback = 0.2d;
+    private double baseAttack = 0.2d;
 
-    public EntityScalable(World world)
+    public EntityMHWyvern(World world)
     {
         this(world, 1f, 1f);
     }
 
-    public EntityScalable(World world, float minScale, float maxScale)
+    public EntityMHWyvern(World world, float minScale, float maxScale)
     {
         super(world);
         this.setSize(0.9F, 1.3F); //Same as cow
@@ -38,13 +39,13 @@ public abstract class EntityScalable extends EntityAnimal
         scaleMax = maxScale;
         ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
-        this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
-        this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.tasks.addTask(2, new EntityAILeapAtTarget(this,2.0f));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this,EntityPlayer.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
     }
 
     protected void entityInit()
@@ -80,6 +81,7 @@ public abstract class EntityScalable extends EntityAnimal
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(baseHealth * scale));
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(baseSpeed * scale);
         this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(baseKnockback * scale);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(baseAttack * scale);
         this.setHealth(this.getMaxHealth());
         //this.setScale(scale);
         LogHelper.info("Scale: " + scale + "   Health: " + this.getMaxHealth());
@@ -115,5 +117,9 @@ public abstract class EntityScalable extends EntityAnimal
     protected void setBaseKnockback(double knockback)
     {
         baseKnockback = knockback;
+    }
+
+    protected void setBaseAttack(double attack){
+        baseAttack = attack;
     }
 }
