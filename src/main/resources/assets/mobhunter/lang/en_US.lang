@@ -1,42 +1,66 @@
 //Use '§' for text formatting
 
-//Items
+//ITEMS
 
 //Minerals
-
 item.itemMachaliteIngot.name=Machalite Ingot
 item.itemEarthCrystal.name=Earth Crystal
 
-//Bones
+//Herbs
+item.itemHerb.name=Herb
+item.itemAntidoteHerb.name=Antidote Herb
+item.itemFireHerb.name=Fire Herb
+item.itemSleepHerb.name=Sleep Herb
+item.itemSapPlant.name=Sap Plant
+item.itemHotPepper=Hot Pepper
 
+//Shrooms
+item.itemBlueMushroom.name=Blue Mushroom
+item.itemNitroshroom.name=Nitroshroom
+item.itemParashroom.name=Parashroom
+item.itemToadstool.name=Toadstool
+item.itemExciteshroom.name=Exciteshroom
+item.itemDragonToadstool.name=Dragon Toadstool
+
+//Berries
+item.itemPaintberry.name=Paintberry
+item.itemMightSeed.name=Might Seed
+item.itemAdamantSeed.name=Adamant Seed
+item.itemNulberry.name=Nulberry
+item.itemHuskberry.name=Huskberry
+
+//Bugs
+item.itemInsectHusk.name=Insect Husk
+item.itemGodbug.name=Godbug
+item.itemBitterbug.name=Bitterbug
+item.itemFlashbug.name=Flashbug
+item.itemThunderbug.name=Thunderbug
+item.itemGlueglopper.name=Glueglopper
+
+//Bones
 item.itemMysteryBone.name=Mystery Bone
 item.itemBruteBone.name=Brute Bone
 item.itemJumboBone.name=Jumbo Bone
 item.itemMonsterBoneS.name=Monster Bone S
 
 //Meats
-
 item.itemRawMeat.name=Raw Meat
 item.itemRareSteak.name=Rare Steak
 item.itemDoneSteak.name=Well-done Steak
 item.itemBurntMeat.name=Burnt Meat
 
 //Kelbi
-
 item.itemKelbiHorn.name=Kelbi Horn
 item.itemWarmPelt.name=Warm Pelt
 
 //Bird Wyvern
-
 item.itemBirdWyvernFang.name=Bird Wyvern Fang
 
 //Jaggi
-
 item.itemJaggiHide.name=Jaggi Hide
 item.itemJaggiScale.name=Jaggi Scale
 
 //Swords
-
 item.itemIronSwordPlus.name=Iron Sword+
 item.itemBusterSword.name=Buster Sword
 item.itemBusterSwordPlus.name=Buster Sword+
@@ -44,13 +68,15 @@ item.itemBoneBlade.name=Bone Blade
 item.itemBoneBladePlus.name=Bone Blade+
 
 //Armour
-
 item.armourBoneHelmet.name=Bone Helm
 item.armourBoneChestplate.name=Bone Mail
 item.armourBoneLeggings.name=Bone Faulds
 item.armourBoneBoots.name=Bone Greaves
 
-//Blocks
+//BLOCKS
 
+//Materials
 tile.blockOreMachalite.name=Machalite Ore
 tile.blockOreEarthCrystal.name=Earth Crystal Ore
+
+//Machines

@@ -11,6 +11,13 @@ public class Names
         public static final String MACHALITE_INGOT = "itemMachaliteIngot";
         public static final String EARTH_CRYSTAL = "itemEarthCrystal";
 
+        public static final String HERB = "itemHerb";
+        public static final String ANTIDOTE_HERB = "itemAntidoteHerb";
+        public static final String SLEEP_HERB = "itemSleepHerb";
+        public static final String SAP_PLANT = "itemSapPlant";
+        public static final String FIRE_HERB = "itemFireHerb";
+        public static final String HOT_PEPPER = "itemHotPepper";
+
         public static final String BONE = "bone";
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
