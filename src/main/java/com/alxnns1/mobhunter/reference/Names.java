@@ -54,6 +54,8 @@ public class Names
         public static final String ORE_MACHALITE = "blockOreMachalite";
         public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
 
+        public static final String HERB = "blockHerb";
+
         public static final String BBQ = "blockBbq";
     }
 }
