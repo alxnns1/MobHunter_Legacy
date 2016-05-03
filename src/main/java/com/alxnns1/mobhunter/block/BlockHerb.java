@@ -8,7 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.world.ColorizerFoliage;
+import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,21 +33,19 @@ public class BlockHerb extends BlockBush {
     }
 
     @SideOnly(Side.CLIENT)
-    public int getBlockColor()
-    {
-        return ColorizerFoliage.getFoliageColorBasic();
+    public int getBlockColor() {
+        return ColorizerGrass.getGrassColor(0.5D, 1.0D);
     }
 
     @SideOnly(Side.CLIENT)
-    public int getRenderColor(IBlockState state)
-    {
-        return ColorizerFoliage.getFoliageColorBasic();
+    public int getRenderColor(IBlockState state) {
+        return ColorizerGrass.getGrassColor(0.5D, 1.0D);
     }
 
     @SideOnly(Side.CLIENT)
     public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
     {
-        return worldIn.getBiomeGenForCoords(pos).getFoliageColorAtPos(pos);
+        return worldIn.getBiomeGenForCoords(pos).getGrassColorAtPos(pos);
     }
 
     @Override
