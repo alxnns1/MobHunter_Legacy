@@ -29,7 +29,7 @@ public class WorldGenHandler implements IWorldGenerator
         {
             case -1:
                 //Nether
-                genBushes(world, random, chunkX, chunkZ);
+                genNether(world, random, chunkX,  chunkZ);
                 break;
             case 1:
                 //End
@@ -43,7 +43,12 @@ public class WorldGenHandler implements IWorldGenerator
 
     private BlockPos getRandXZInChunk(Random random, int chunkX, int chunkZ)
     {
-        return new BlockPos(chunkX * 16 + random.nextInt(16), 0, chunkZ * 16 + random.nextInt(16));
+        return getRandXZInChunk(random, chunkX, 0, chunkZ);
+    }
+
+    private BlockPos getRandXZInChunk(Random random, int chunkX, int y, int chunkZ)
+    {
+        return new BlockPos(chunkX * 16 + random.nextInt(16), y, chunkZ * 16 + random.nextInt(16));
     }
 
     private void genOverworld(World world, Random random, int chunkX, int chunkZ)
@@ -51,13 +56,12 @@ public class WorldGenHandler implements IWorldGenerator
         genOre(world, random, chunkX, chunkZ, 20, oreEarthCrystal, 0, 128);
         genOre(world, random, chunkX, chunkZ, 20, oreMachalite, 0, 64);
 
-        genBushes(world, random, chunkX, chunkZ);
+        bushHerb.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
     }
 
-    private void genBushes(World world, Random random, int chunkX, int chunkZ)
+    private void genNether(World world, Random random, int chunkX, int chunkZ)
     {
-        BlockPos pos = getRandXZInChunk(random, chunkX, chunkZ);
-        bushHerb.generate(world, random, world.getHeight(pos));
+        bushHerb.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
     }
 
     /**
