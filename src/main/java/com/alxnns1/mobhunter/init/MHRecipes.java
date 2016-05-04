@@ -61,7 +61,5 @@ public class MHRecipes
         GameRegistry.addShapelessRecipe(new ItemStack(Items.skull,1,0), new ItemStack(Items.skull,1, OreDictionary.WILDCARD_VALUE));
 
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
-        GameRegistry.addSmelting(MHItems.itemRareSteak, new ItemStack(MHItems.itemDoneSteak), 0.2f);
-        GameRegistry.addSmelting(MHItems.itemDoneSteak, new ItemStack(MHItems.itemBurntMeat), 0.2f);
     }
 }

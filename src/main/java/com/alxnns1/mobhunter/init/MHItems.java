@@ -41,7 +41,7 @@ public class MHItems
     public static final ItemMHResource itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE);
     public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
 
-    public static final ItemMHFood itemRawMeat = new ItemMHFood(3, 0.3F, true, Names.Items.RAW_MEAT);
+    public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
     public static final ItemMHFood itemRareSteak = new ItemMHFood(5, 0.4F, true, Names.Items.RARE_STEAK);
     public static final ItemMHFood itemDoneSteak = new ItemMHFood(10, 1.0F, true, Names.Items.DONE_STEAK);
     public static final ItemMHFood itemBurntMeat = new ItemMHFood(5, 0.3F, true, Names.Items.BURNT_MEAT);
