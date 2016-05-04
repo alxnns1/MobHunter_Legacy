@@ -34,6 +34,13 @@ public class MHItems
     public static final ItemMHResource itemFireHerb = new ItemMHResource(Names.Items.FIRE_HERB);
     public static final ItemMHResource itemHotPepper = new ItemMHResource(Names.Items.HOT_PEPPER);
 
+    public static final ItemMHResource itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM);
+    public static final ItemMHResource itemNitroshroom = new ItemMHResource(Names.Items.NITROSHROOM);
+    public static final ItemMHResource itemParashroom = new ItemMHResource(Names.Items.PARASHROOM);
+    public static final ItemMHResource itemToadstool = new ItemMHResource(Names.Items.TOADSTOOL);
+    public static final ItemMHResource itemExciteshroom = new ItemMHResource(Names.Items.EXCITESHROOM);
+    public static final ItemMHResource itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL);
+
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
     public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
@@ -74,6 +81,13 @@ public class MHItems
         GameRegistry.registerItem(itemSapPlant, Names.Items.SAP_PLANT);
         GameRegistry.registerItem(itemFireHerb, Names.Items.FIRE_HERB);
         GameRegistry.registerItem(itemHotPepper, Names.Items.HOT_PEPPER);
+
+        GameRegistry.registerItem(itemBlueMushroom, Names.Items.BLUE_MUSHROOM);
+        GameRegistry.registerItem(itemNitroshroom, Names.Items.NITROSHROOM);
+        GameRegistry.registerItem(itemParashroom, Names.Items.PARASHROOM);
+        GameRegistry.registerItem(itemToadstool, Names.Items.TOADSTOOL);
+        GameRegistry.registerItem(itemExciteshroom, Names.Items.EXCITESHROOM);
+        GameRegistry.registerItem(itemDragonToadstool, Names.Items.DRAGON_TOADSTOOL);
 
         //GameRegistry.registerItem(itemBones, "bones");
 
@@ -122,6 +136,13 @@ public class MHItems
         Common.regModel(itemSapPlant);
         Common.regModel(itemFireHerb);
         Common.regModel(itemHotPepper);
+
+        Common.regModel(itemBlueMushroom);
+        Common.regModel(itemNitroshroom);
+        Common.regModel(itemParashroom);
+        Common.regModel(itemToadstool);
+        Common.regModel(itemExciteshroom);
+        Common.regModel(itemDragonToadstool);
 
         /*
         for(int i = 0; i < itemBones.getMaxMeta(); i++)

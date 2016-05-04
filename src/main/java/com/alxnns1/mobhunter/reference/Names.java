@@ -18,6 +18,13 @@ public class Names
         public static final String FIRE_HERB = "itemFireHerb";
         public static final String HOT_PEPPER = "itemHotPepper";
 
+        public static final String BLUE_MUSHROOM = "itemBlueMushroom";
+        public static final String NITROSHROOM = "itemNitroshroom";
+        public static final String PARASHROOM = "itemParashroom";
+        public static final String TOADSTOOL = "itemToadstool";
+        public static final String EXCITESHROOM = "itemExciteshroom";
+        public static final String DRAGON_TOADSTOOL = "itemDragonToadstool";
+
         public static final String BONE = "bone";
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
@@ -55,6 +62,7 @@ public class Names
         public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
 
         public static final String HERB = "blockHerb";
+        public static final String SHROOM = "blockShroom";
 
         public static final String BBQ = "blockBbq";
     }

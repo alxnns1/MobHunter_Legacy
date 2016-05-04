@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.init;
 import com.alxnns1.mobhunter.block.BlockBbq;
 import com.alxnns1.mobhunter.block.BlockHerb;
 import com.alxnns1.mobhunter.block.BlockOre;
+import com.alxnns1.mobhunter.block.BlockShroom;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.Common;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -17,6 +18,7 @@ public class MHBlocks
     public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
 
     public static BlockHerb blockHerb = new BlockHerb();
+    public static BlockShroom blockShroom = new BlockShroom();
 
     public static BlockBbq blockBbq = new BlockBbq();
 
@@ -26,6 +28,7 @@ public class MHBlocks
         GameRegistry.registerBlock(blockOreEarthCrystal, Names.Blocks.ORE_EARTH_CRYSTAL);
 
         GameRegistry.registerBlock(blockHerb, Names.Blocks.HERB);
+        GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
 
         GameRegistry.registerBlock(blockBbq, Names.Blocks.BBQ);
     }
@@ -36,6 +39,7 @@ public class MHBlocks
         Common.regModel(blockOreEarthCrystal);
 
         Common.regModel(blockHerb);
+        Common.regModel(blockShroom);
 
         Common.regModel(blockBbq);
     }

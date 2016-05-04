@@ -9,9 +9,9 @@ item.itemEarthCrystal.name=Earth Crystal
 //Herbs
 item.itemHerb.name=Herb
 item.itemAntidoteHerb.name=Antidote Herb
-item.itemFireHerb.name=Fire Herb
 item.itemSleepHerb.name=Sleep Herb
 item.itemSapPlant.name=Sap Plant
+item.itemFireHerb.name=Fire Herb
 item.itemHotPepper=Hot Pepper
 
 //Shrooms
