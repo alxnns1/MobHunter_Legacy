@@ -6,10 +6,7 @@ import com.alxnns1.mobhunter.entity.EntityPopo;
 import com.alxnns1.mobhunter.entity.render.RenderJaggi;
 import com.alxnns1.mobhunter.entity.render.RenderKelbi;
 import com.alxnns1.mobhunter.entity.render.RenderPopo;
-import com.alxnns1.mobhunter.init.MHBlocks;
-import com.alxnns1.mobhunter.init.MHItems;
-import com.alxnns1.mobhunter.init.MHRecipes;
-import com.alxnns1.mobhunter.init.MHTileEntities;
+import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
@@ -61,53 +58,7 @@ public class MobHunter {
         MHItems.init();
         MHBlocks.init();
         MHTileEntities.init();
-
-        EntityRegistry.registerModEntity(EntityPopo.class, "Popo", 100, MobHunter.instance, 64, 1, false);
-        EntityRegistry.registerEgg(EntityPopo.class,0x402a00,0x403400);
-        EntityRegistry.addSpawn(EntityPopo.class,1000,5,5, EnumCreatureType.CREATURE,
-                BiomeGenBase.coldBeach,
-                BiomeGenBase.coldTaiga,
-                BiomeGenBase.coldTaigaHills,
-                BiomeGenBase.frozenOcean,
-                BiomeGenBase.frozenRiver,
-                BiomeGenBase.iceMountains,
-                BiomeGenBase.icePlains);
-        EntityRegistry.registerModEntity(EntityKelbi.class, "Kelbi", 101, MobHunter.instance, 64, 1, false);
-        EntityRegistry.registerEgg(EntityKelbi.class,0x20402b,0xbfbf8f);
-        EntityRegistry.addSpawn(EntityKelbi.class,1000,5,5, EnumCreatureType.CREATURE,
-                BiomeDictionary.getBiomesForType(BiomeDictionary.Type.PLAINS));
-        EntityRegistry.registerModEntity(EntityJaggi.class, "Jaggi", 102, MobHunter.instance, 64, 1, false);
-        EntityRegistry.registerEgg(EntityJaggi.class,0xd56a00,0xbf80ff);
-        EntityRegistry.addSpawn(EntityJaggi.class,1000,5,5, EnumCreatureType.CREATURE,
-                BiomeGenBase.extremeHills,
-                BiomeGenBase.extremeHillsEdge,
-                BiomeGenBase.extremeHillsPlus,
-                BiomeGenBase.taiga,
-                BiomeGenBase.taigaHills,
-                BiomeGenBase.megaTaiga,
-                BiomeGenBase.megaTaigaHills,
-                BiomeGenBase.beach,
-                BiomeGenBase.stoneBeach,
-                BiomeGenBase.plains,
-                BiomeGenBase.forest,
-                BiomeGenBase.forestHills,
-                BiomeGenBase.birchForestHills,
-                BiomeGenBase.birchForest,
-                BiomeGenBase.roofedForest,
-                BiomeGenBase.desert,
-                BiomeGenBase.desertHills,
-                BiomeGenBase.savanna,
-                BiomeGenBase.savannaPlateau,
-                BiomeGenBase.mesa,
-                BiomeGenBase.mesaPlateau,
-                BiomeGenBase.mesaPlateau_F);
-
-        if(event.getSide() == Side.CLIENT)
-        {
-            RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
-        }
+        MHEntities.init(event.getSide() == Side.CLIENT);
     }
 
     @Mod.EventHandler

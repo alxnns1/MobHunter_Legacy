@@ -80,9 +80,4 @@ public class EntityJaggi extends EntityMHWyvern
     {
         return true; //lets it spawn during the day
     }
-
-    public EntityJaggi createChild(EntityAgeable ageable)
-    {
-        return new EntityJaggi(this.worldObj);
-    }
 }

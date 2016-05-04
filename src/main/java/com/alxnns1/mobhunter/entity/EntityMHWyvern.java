@@ -86,7 +86,6 @@ public abstract class EntityMHWyvern extends EntityMob
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(baseAttack * scale);
         this.setHealth(this.getMaxHealth());
         //this.setScale(scale);
-        LogHelper.info("Scale: " + scale + "   Health: " + this.getMaxHealth());
     }
 
     public float getScale()
