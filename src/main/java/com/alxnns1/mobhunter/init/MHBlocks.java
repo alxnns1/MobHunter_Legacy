@@ -4,8 +4,11 @@ import com.alxnns1.mobhunter.block.BlockBbq;
 import com.alxnns1.mobhunter.block.BlockHerb;
 import com.alxnns1.mobhunter.block.BlockOre;
 import com.alxnns1.mobhunter.block.BlockShroom;
+import com.alxnns1.mobhunter.block.render.RenderBbq;
 import com.alxnns1.mobhunter.reference.Names;
+import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.Common;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -42,5 +45,6 @@ public class MHBlocks
         Common.regModel(blockShroom);
 
         Common.regModel(blockBbq);
+        ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
     }
 }
