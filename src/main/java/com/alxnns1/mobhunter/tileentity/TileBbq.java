@@ -18,6 +18,7 @@ import net.minecraft.world.EnumSkyBlock;
 public class TileBbq extends TileEntity implements ITickable
 {
     private int cookTime = 0;
+    private int rotationAngles = 64;
     private int RARE_TIME = 120; //6 secs
     private int DONE_TIME = 180; //9 secs
     private int BURN_TIME = 200; //10 secs
@@ -67,6 +68,34 @@ public class TileBbq extends TileEntity implements ITickable
             return MHItems.itemDoneSteak;
         else
             return MHItems.itemBurntMeat;
+    }
+
+    /**
+     * Gets an integer referring to the stage of cooking. Used for the renderer.
+     * @return Cooking stage
+     */
+    public int getCookingStage()
+    {
+        Item item = getMeat();
+        if(item == null || item.equals(MHItems.itemRawMeat))
+            return 0;
+        else if(item.equals(MHItems.itemRareSteak))
+            return 1;
+        else if(item.equals(MHItems.itemDoneSteak))
+            return 2;
+        else if(item.equals(MHItems.itemBurntMeat))
+            return 3;
+        else
+            return 0;
+    }
+
+    /**
+     * Gets the rotation for the meat render in radians.
+     * @return Angle in radians
+     */
+    public double getMeatRotation()
+    {
+        return Math.toRadians(((cookTime % rotationAngles) / rotationAngles) * 360);
     }
 
     /**
