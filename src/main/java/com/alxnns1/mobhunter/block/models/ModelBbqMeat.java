@@ -12,6 +12,9 @@ public class ModelBbqMeat extends ModelBase
 
     public ModelBbqMeat()
     {
+        textureWidth = 32;
+        textureHeight = 32;
+
         meat = new ModelRenderer(this, "meat");
 
         setTextureOffset("meat.middle",     0, 0);
