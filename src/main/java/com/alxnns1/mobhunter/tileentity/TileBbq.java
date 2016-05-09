@@ -93,9 +93,9 @@ public class TileBbq extends TileEntity implements ITickable
      * Gets the rotation for the meat render in radians.
      * @return Angle in radians
      */
-    public double getMeatRotation()
+    public float getMeatRotation()
     {
-        return Math.toRadians(((cookTime % rotationAngles) / rotationAngles) * 360);
+        return (((float)cookTime % (float)rotationAngles) / (float)rotationAngles) * 360f;
     }
 
     /**

@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.block.render;
 import com.alxnns1.mobhunter.block.models.ModelBbqMeat;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -13,7 +14,10 @@ import net.minecraft.util.ResourceLocation;
 public class RenderBbq extends TileEntitySpecialRenderer<TileBbq>
 {
     private static final ModelBbqMeat model = new ModelBbqMeat();
-    private static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + "textures/models/blocks/meat.png");
+    private static final ResourceLocation tRaw = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatRaw.png");
+    private static final ResourceLocation tRare = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatRare.png");
+    private static final ResourceLocation tDone = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatDone.png");
+    private static final ResourceLocation tBurnt = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatBurnt.png");
 
     @Override
     public void renderTileEntityAt(TileBbq te, double x, double y, double z, float partialTicks, int destroyStage)
@@ -22,16 +26,32 @@ public class RenderBbq extends TileEntitySpecialRenderer<TileBbq>
         if(te.isCooking())
         {
             GlStateManager.pushMatrix();
-            GlStateManager.translate(x, y, z);
 
             //Set the model position and rotation
-            double rotation = te.getMeatRotation();
+            GlStateManager.translate(x, y + 0.84375f, z + 0.5f);
+            model.rotateX((float) Math.toRadians(te.getMeatRotation()));
 
             //Set the texture to use for the meat model
+            ResourceLocation texture;
+            switch(te.getCookingStage())
+            {
+                case 1:
+                    texture = tRare;
+                    break;
+                case 2:
+                    texture = tDone;
+                    break;
+                case 3:
+                    texture = tBurnt;
+                    break;
+                case 0:
+                default:
+                    texture = tRaw;
+            }
             bindTexture(texture);
 
             //Render model
-            model.render(te.getCookingStage());
+            model.render();
 
             GlStateManager.popMatrix();
         }
