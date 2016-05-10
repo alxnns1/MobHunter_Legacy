@@ -12,7 +12,7 @@ item.itemAntidoteHerb.name=Antidote Herb
 item.itemSleepHerb.name=Sleep Herb
 item.itemSapPlant.name=Sap Plant
 item.itemFireHerb.name=Fire Herb
-item.itemHotPepper=Hot Pepper
+item.itemHotPepper.name=Hot Pepper
 
 //Shrooms
 item.itemBlueMushroom.name=Blue Mushroom
