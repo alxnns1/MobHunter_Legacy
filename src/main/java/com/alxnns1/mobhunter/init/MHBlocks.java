@@ -20,6 +20,8 @@ public class MHBlocks
     public static BlockHerb blockHerb = new BlockHerb();
     public static BlockShroom blockShroom = new BlockShroom();
     public static BlockBerry blockBerry = new BlockBerry();
+    public static BlockBug blockBug = new BlockBug();
+    //public static BlockBone blockBone = new BlockBone();
 
     public static BlockBbq blockBbq = new BlockBbq();
 
@@ -31,6 +33,8 @@ public class MHBlocks
         GameRegistry.registerBlock(blockHerb, Names.Blocks.HERB);
         GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
         GameRegistry.registerBlock(blockBerry, Names.Blocks.BERRY);
+        GameRegistry.registerBlock(blockBug, Names.Blocks.BUG);
+        //GameRegistry.registerBlock(blockBone, Names.Blocks.BONE);
 
         GameRegistry.registerBlock(blockBbq, Names.Blocks.BBQ);
     }
@@ -43,6 +47,8 @@ public class MHBlocks
         Common.regModel(blockHerb);
         Common.regModel(blockShroom);
         Common.regModel(blockBerry);
+        Common.regModel(blockBug);
+        //Common.regModel(blockBone);
 
         Common.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
