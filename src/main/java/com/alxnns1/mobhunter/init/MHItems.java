@@ -45,6 +45,17 @@ public class MHItems
     public static final ItemMHResource itemMopeshroom = new ItemMHResource(Names.Items.MOPESHROOM);
     public static final ItemMHResource itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL);
 
+    public static final ItemMHResource itemHuskberry = new ItemMHResource(Names.Items.HUSKBERRY);
+    public static final ItemMHResource itemPaintberry = new ItemMHResource(Names.Items.PAINTBERRY);
+    public static final ItemMHResource itemMightSeed = new ItemMHResource(Names.Items.MIGHT_SEED);
+    public static final ItemMHResource itemAdamantSeed = new ItemMHResource(Names.Items.ADAMANT_SEED);
+    public static final ItemMHResource itemNulberry = new ItemMHResource(Names.Items.NULBERRY);
+    public static final ItemMHResource itemDragonfellBerry = new ItemMHResource(Names.Items.DRAGONFELL_BERRY);
+    public static final ItemMHResource itemScatternut = new ItemMHResource(Names.Items.SCATTERNUT);
+    public static final ItemMHResource itemNeedleberry = new ItemMHResource(Names.Items.NEEDLEBERRY);
+    public static final ItemMHResource itemLatchberry = new ItemMHResource(Names.Items.LATCHBERRY);
+    public static final ItemMHResource itemBomberry = new ItemMHResource(Names.Items.BOMBERRY);
+
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
     public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
@@ -96,6 +107,17 @@ public class MHItems
         GameRegistry.registerItem(itemExciteshroom, Names.Items.EXCITESHROOM);
         GameRegistry.registerItem(itemMopeshroom, Names.Items.MOPESHROOM);
         GameRegistry.registerItem(itemDragonToadstool, Names.Items.DRAGON_TOADSTOOL);
+
+        GameRegistry.registerItem(itemHuskberry, Names.Items.HUSKBERRY);
+        GameRegistry.registerItem(itemPaintberry, Names.Items.PAINTBERRY);
+        GameRegistry.registerItem(itemMightSeed, Names.Items.MIGHT_SEED);
+        GameRegistry.registerItem(itemAdamantSeed, Names.Items.ADAMANT_SEED);
+        GameRegistry.registerItem(itemNulberry, Names.Items.NULBERRY);
+        GameRegistry.registerItem(itemDragonfellBerry, Names.Items.DRAGONFELL_BERRY);
+        GameRegistry.registerItem(itemScatternut, Names.Items.SCATTERNUT);
+        GameRegistry.registerItem(itemNeedleberry, Names.Items.NEEDLEBERRY);
+        GameRegistry.registerItem(itemLatchberry, Names.Items.LATCHBERRY);
+        GameRegistry.registerItem(itemBomberry, Names.Items.BOMBERRY);
 
         //GameRegistry.registerItem(itemBones, "bones");
 
@@ -155,6 +177,17 @@ public class MHItems
         Common.regModel(itemExciteshroom);
         Common.regModel(itemMopeshroom);
         Common.regModel(itemDragonToadstool);
+
+        Common.regModel(itemHuskberry);
+        Common.regModel(itemPaintberry);
+        Common.regModel(itemMightSeed);
+        Common.regModel(itemAdamantSeed);
+        Common.regModel(itemNulberry);
+        Common.regModel(itemDragonfellBerry);
+        Common.regModel(itemScatternut);
+        Common.regModel(itemNeedleberry);
+        Common.regModel(itemLatchberry);
+        Common.regModel(itemBomberry);
 
         /*
         for(int i = 0; i < itemBones.getMaxMeta(); i++)

@@ -27,12 +27,16 @@ item.itemMopeshroom.name=Mopeshroom
 item.itemDragonToadstool.name=Dragon Toadstool
 
 //Berries
+item.itemHuskberry.name=Huskberry
 item.itemPaintberry.name=Paintberry
 item.itemMightSeed.name=Might Seed
 item.itemAdamantSeed.name=Adamant Seed
 item.itemNulberry.name=Nulberry
 item.itemDragonfellBerry.name=Dragonfell Berry
-item.itemHuskberry.name=Huskberry
+item.itemScatternut.name=Scatternut
+item.itemNeedleberry.name=Needleberry
+item.itemLatchberry.name=Latchberry
+item.itemBomberry.name=Bomberry
 
 //Bugs
 item.itemInsectHusk.name=Insect Husk
@@ -83,6 +87,8 @@ item.armourBoneBoots.name=Bone Greaves
 //Materials
 tile.blockOreMachalite.name=Machalite Ore
 tile.blockOreEarthCrystal.name=Earth Crystal Ore
-tile.blockHerb.name=Herb
+tile.blockHerb.name=Herb Block
+tile.blockShroom.name=Mushroom Block
+tile.blockBerry.name=Berry Block
 
 //Machines

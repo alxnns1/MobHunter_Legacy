@@ -29,6 +29,17 @@ public class Names
         public static final String MOPESHROOM = "itemMopeshroom";
         public static final String DRAGON_TOADSTOOL = "itemDragonToadstool";
 
+        public static final String HUSKBERRY = "itemHuskberry";
+        public static final String PAINTBERRY = "itemPaintberry";
+        public static final String MIGHT_SEED = "itemMightSeed";
+        public static final String ADAMANT_SEED = "itemAdamantSeed";
+        public static final String NULBERRY = "itemNulberry";
+        public static final String DRAGONFELL_BERRY = "itemDragonfellBerry";
+        public static final String SCATTERNUT = "itemScatternut";
+        public static final String NEEDLEBERRY = "itemNeedleberry";
+        public static final String LATCHBERRY = "itemLatchberry";
+        public static final String BOMBERRY = "itemBomberry";
+
         public static final String BONE = "bone";
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
@@ -67,6 +78,7 @@ public class Names
 
         public static final String HERB = "blockHerb";
         public static final String SHROOM = "blockShroom";
+        public static final String BERRY = "blockBerry";
 
         public static final String BBQ = "blockBbq";
     }

@@ -1,9 +1,6 @@
 package com.alxnns1.mobhunter.init;
 
-import com.alxnns1.mobhunter.block.BlockBbq;
-import com.alxnns1.mobhunter.block.BlockHerb;
-import com.alxnns1.mobhunter.block.BlockOre;
-import com.alxnns1.mobhunter.block.BlockShroom;
+import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
@@ -22,6 +19,7 @@ public class MHBlocks
 
     public static BlockHerb blockHerb = new BlockHerb();
     public static BlockShroom blockShroom = new BlockShroom();
+    public static BlockBerry blockBerry = new BlockBerry();
 
     public static BlockBbq blockBbq = new BlockBbq();
 
@@ -32,6 +30,7 @@ public class MHBlocks
 
         GameRegistry.registerBlock(blockHerb, Names.Blocks.HERB);
         GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
+        GameRegistry.registerBlock(blockBerry, Names.Blocks.BERRY);
 
         GameRegistry.registerBlock(blockBbq, Names.Blocks.BBQ);
     }
@@ -43,6 +42,7 @@ public class MHBlocks
 
         Common.regModel(blockHerb);
         Common.regModel(blockShroom);
+        Common.regModel(blockBerry);
 
         Common.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());

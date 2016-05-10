@@ -22,6 +22,7 @@ public class WorldGenHandler implements IWorldGenerator
 
     MHPlantGen bushHerb = new MHPlantGen(MHBlocks.blockHerb);
     MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
+    MHPlantGen bushBerry = new MHPlantGen(MHBlocks.blockBerry);
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -59,12 +60,14 @@ public class WorldGenHandler implements IWorldGenerator
 
         bushHerb.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
         bushShroom.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
+        bushBerry.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
     }
 
     private void genNether(World world, Random random, int chunkX, int chunkZ)
     {
         bushHerb.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
         bushShroom.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
+        bushBerry.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
     }
 
     /**
