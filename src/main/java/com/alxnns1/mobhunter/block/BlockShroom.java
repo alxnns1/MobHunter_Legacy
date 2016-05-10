@@ -64,7 +64,7 @@ public class BlockShroom extends BlockBush {
                 } else if (i<0.60969387755102040816326530612245) {
                     drops.add(new ItemStack(MHItems.itemExciteshroom));
                 } else {
-                    //drops.add(new ItemStack(MHItems.itemMopeshroom));
+                    drops.add(new ItemStack(MHItems.itemMopeshroom));
                 }
             }else if(blockUnderneath== Blocks.netherrack || blockUnderneath==Blocks.nether_brick || blockUnderneath==Blocks.soul_sand) {
                 //On top of nether blocks
@@ -88,7 +88,7 @@ public class BlockShroom extends BlockBush {
                 } else if (i<0.65215883474943644876018727241201) {
                     drops.add(new ItemStack(MHItems.itemExciteshroom));
                 } else if (i<0.95283509623721172186578810473385) {
-                    //drops.add(new ItemStack(MHItems.itemMopeshroom));
+                    drops.add(new ItemStack(MHItems.itemMopeshroom));
                 } else {
                     drops.add(new ItemStack(MHItems.itemDragonToadstool));
                 }
@@ -103,7 +103,7 @@ public class BlockShroom extends BlockBush {
                 } else if (i<0.79764526131308138228553453466951) {
                     drops.add(new ItemStack(MHItems.itemExciteshroom));
                 } else {
-                    //drops.add(new ItemStack(MHItems.itemMopeshroom));
+                    drops.add(new ItemStack(MHItems.itemMopeshroom));
                 }
             }
         }

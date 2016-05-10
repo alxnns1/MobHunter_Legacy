@@ -29,9 +29,12 @@ public class MHItems
 
     public static final ItemMHResource itemHerb = new ItemMHResource(Names.Items.HERB);
     public static final ItemMHResource itemAntidoteHerb = new ItemMHResource(Names.Items.ANTIDOTE_HERB);
+    public static final ItemMHResource itemFireHerb = new ItemMHResource(Names.Items.FIRE_HERB);
+    public static final ItemMHResource itemIvy = new ItemMHResource(Names.Items.IVY);
     public static final ItemMHResource itemSleepHerb = new ItemMHResource(Names.Items.SLEEP_HERB);
     public static final ItemMHResource itemSapPlant = new ItemMHResource(Names.Items.SAP_PLANT);
-    public static final ItemMHResource itemFireHerb = new ItemMHResource(Names.Items.FIRE_HERB);
+    public static final ItemMHResource itemFelvine = new ItemMHResource(Names.Items.FELVINE);
+    public static final ItemMHResource itemGloamgrassRoot = new ItemMHResource(Names.Items.GLOAMGRASS_ROOT);
     public static final ItemMHResource itemHotPepper = new ItemMHResource(Names.Items.HOT_PEPPER);
 
     public static final ItemMHResource itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM);
@@ -39,6 +42,7 @@ public class MHItems
     public static final ItemMHResource itemParashroom = new ItemMHResource(Names.Items.PARASHROOM);
     public static final ItemMHResource itemToadstool = new ItemMHResource(Names.Items.TOADSTOOL);
     public static final ItemMHResource itemExciteshroom = new ItemMHResource(Names.Items.EXCITESHROOM);
+    public static final ItemMHResource itemMopeshroom = new ItemMHResource(Names.Items.MOPESHROOM);
     public static final ItemMHResource itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL);
 
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
@@ -77,9 +81,12 @@ public class MHItems
 
         GameRegistry.registerItem(itemHerb, Names.Items.HERB);
         GameRegistry.registerItem(itemAntidoteHerb, Names.Items.ANTIDOTE_HERB);
+        GameRegistry.registerItem(itemFireHerb, Names.Items.FIRE_HERB);
+        GameRegistry.registerItem(itemIvy, Names.Items.IVY);
         GameRegistry.registerItem(itemSleepHerb, Names.Items.SLEEP_HERB);
         GameRegistry.registerItem(itemSapPlant, Names.Items.SAP_PLANT);
-        GameRegistry.registerItem(itemFireHerb, Names.Items.FIRE_HERB);
+        GameRegistry.registerItem(itemFelvine, Names.Items.FELVINE);
+        GameRegistry.registerItem(itemGloamgrassRoot, Names.Items.GLOAMGRASS_ROOT);
         GameRegistry.registerItem(itemHotPepper, Names.Items.HOT_PEPPER);
 
         GameRegistry.registerItem(itemBlueMushroom, Names.Items.BLUE_MUSHROOM);
@@ -87,6 +94,7 @@ public class MHItems
         GameRegistry.registerItem(itemParashroom, Names.Items.PARASHROOM);
         GameRegistry.registerItem(itemToadstool, Names.Items.TOADSTOOL);
         GameRegistry.registerItem(itemExciteshroom, Names.Items.EXCITESHROOM);
+        GameRegistry.registerItem(itemMopeshroom, Names.Items.MOPESHROOM);
         GameRegistry.registerItem(itemDragonToadstool, Names.Items.DRAGON_TOADSTOOL);
 
         //GameRegistry.registerItem(itemBones, "bones");
@@ -132,9 +140,12 @@ public class MHItems
 
         Common.regModel(itemHerb);
         Common.regModel(itemAntidoteHerb);
+        Common.regModel(itemFireHerb);
+        Common.regModel(itemIvy);
         Common.regModel(itemSleepHerb);
         Common.regModel(itemSapPlant);
-        Common.regModel(itemFireHerb);
+        Common.regModel(itemFelvine);
+        Common.regModel(itemGloamgrassRoot);
         Common.regModel(itemHotPepper);
 
         Common.regModel(itemBlueMushroom);
@@ -142,6 +153,7 @@ public class MHItems
         Common.regModel(itemParashroom);
         Common.regModel(itemToadstool);
         Common.regModel(itemExciteshroom);
+        Common.regModel(itemMopeshroom);
         Common.regModel(itemDragonToadstool);
 
         /*

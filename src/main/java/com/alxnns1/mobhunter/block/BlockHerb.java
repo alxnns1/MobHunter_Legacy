@@ -71,9 +71,9 @@ public class BlockHerb extends BlockBush {
                 } else if (i<0.63162546053091314551476172769419) {
                     drops.add(new ItemStack(MHItems.itemSapPlant));
                 } else if (i<0.75964119522022087121252695090918) {
-                    //drops.add(new ItemStack(MHItems.itemFelvine));
+                    drops.add(new ItemStack(MHItems.itemFelvine));
                 } else if (i<0.8934382856696908812966428616242) {
-                    //drops.add(new ItemStack(MHItems.itemGloamgrassRoot));
+                    drops.add(new ItemStack(MHItems.itemGloamgrassRoot));
                 } else {
                     drops.add(new ItemStack(MHItems.itemHotPepper));
                 }
@@ -86,11 +86,11 @@ public class BlockHerb extends BlockBush {
                 } else if (i<0.58640226628895184135977337110485) {
                     drops.add(new ItemStack(MHItems.itemFireHerb));
                 } else if (i<0.75637393767705382436260623229466) {
-                    //drops.add(new ItemStack(MHItems.itemIvy));
+                    drops.add(new ItemStack(MHItems.itemIvy));
                 } else if (i<0.84135977337110481586402266288957) {
                     drops.add(new ItemStack(MHItems.itemSapPlant));
                 } else {
-                    //drops.add(new ItemStack(MHItems.itemGloamgrassRoot));
+                    drops.add(new ItemStack(MHItems.itemGloamgrassRoot));
                 }
             }else if(blockUnderneath.getMaterial()==Material.snow || blockUnderneath.getMaterial()==Material.craftedSnow || blockUnderneath.getMaterial()==Material.ice || blockUnderneath.getMaterial()==Material.packedIce){
                 //On top of snow and ice
@@ -101,7 +101,7 @@ public class BlockHerb extends BlockBush {
                 } else if (i<0.65130759651307596513075965130759) {
                     drops.add(new ItemStack(MHItems.itemSapPlant));
                 } else {
-                    //drops.add(new ItemStack(MHItems.itemFelvine));
+                    drops.add(new ItemStack(MHItems.itemFelvine));
                 }
             }else if(blockUnderneath.getMaterial()==Material.rock) {
                 //On top of stone and rock material outliers
@@ -112,13 +112,13 @@ public class BlockHerb extends BlockBush {
                 } else if (i<0.50129261921197601548435998429908) {
                     drops.add(new ItemStack(MHItems.itemFireHerb));
                 } else if (i<0.63837793207996643250632774326282) {
-                    //drops.add(new ItemStack(MHItems.itemIvy));
+                    drops.add(new ItemStack(MHItems.itemIvy));
                 } else if (i<0.75954575601304800963711915106726) {
                     drops.add(new ItemStack(MHItems.itemSapPlant));
                 } else if (i<0.84400590138195205803927938170843) {
-                    //drops.add(new ItemStack(MHItems.itemFelvine));
+                    drops.add(new ItemStack(MHItems.itemFelvine));
                 } else {
-                    //drops.add(new ItemStack(MHItems.itemGloamgrassRoot));
+                    drops.add(new ItemStack(MHItems.itemGloamgrassRoot));
                 }
             }else{
                 //On top of grass and other outliers
@@ -127,13 +127,13 @@ public class BlockHerb extends BlockBush {
                 } else if (i<0.35843886134033408081858071111877) {
                     drops.add(new ItemStack(MHItems.itemAntidoteHerb));
                 } else if (i<0.48309057811764829542106967932635) {
-                    //drops.add(new ItemStack(MHItems.itemIvy));
+                    drops.add(new ItemStack(MHItems.itemIvy));
                 } else if (i<0.59136575706185465777724422736793) {
                     drops.add(new ItemStack(MHItems.itemSleepHerb));
                 } else if (i<0.77048450265861149198405745351408) {
                     drops.add(new ItemStack(MHItems.itemSapPlant));
                 } else if (i<0.8508311912399560415608067252761) {
-                    //drops.add(new ItemStack(MHItems.itemFelvine));
+                    drops.add(new ItemStack(MHItems.itemFelvine));
                 } else {
                     drops.add(new ItemStack(MHItems.itemHotPepper));
                 }

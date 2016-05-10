@@ -9,9 +9,12 @@ item.itemEarthCrystal.name=Earth Crystal
 //Herbs
 item.itemHerb.name=Herb
 item.itemAntidoteHerb.name=Antidote Herb
+item.itemFireHerb.name=Fire Herb
+item.itemIvy.name=Ivy
 item.itemSleepHerb.name=Sleep Herb
 item.itemSapPlant.name=Sap Plant
-item.itemFireHerb.name=Fire Herb
+item.itemFelvine.name=Felvine
+item.itemGloamgrassRoot.name=Gloamgrass Root
 item.itemHotPepper.name=Hot Pepper
 
 //Shrooms
@@ -20,6 +23,7 @@ item.itemNitroshroom.name=Nitroshroom
 item.itemParashroom.name=Parashroom
 item.itemToadstool.name=Toadstool
 item.itemExciteshroom.name=Exciteshroom
+item.itemMopeshroom.name=Mopeshroom
 item.itemDragonToadstool.name=Dragon Toadstool
 
 //Berries
@@ -27,6 +31,7 @@ item.itemPaintberry.name=Paintberry
 item.itemMightSeed.name=Might Seed
 item.itemAdamantSeed.name=Adamant Seed
 item.itemNulberry.name=Nulberry
+item.itemDragonfellBerry.name=Dragonfell Berry
 item.itemHuskberry.name=Huskberry
 
 //Bugs

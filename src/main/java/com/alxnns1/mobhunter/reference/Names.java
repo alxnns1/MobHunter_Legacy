@@ -13,9 +13,12 @@ public class Names
 
         public static final String HERB = "itemHerb";
         public static final String ANTIDOTE_HERB = "itemAntidoteHerb";
+        public static final String FIRE_HERB = "itemFireHerb";
+        public static final String IVY = "itemIvy";
         public static final String SLEEP_HERB = "itemSleepHerb";
         public static final String SAP_PLANT = "itemSapPlant";
-        public static final String FIRE_HERB = "itemFireHerb";
+        public static final String FELVINE = "itemFelvine";
+        public static final String GLOAMGRASS_ROOT = "itemGloamgrassRoot";
         public static final String HOT_PEPPER = "itemHotPepper";
 
         public static final String BLUE_MUSHROOM = "itemBlueMushroom";
@@ -23,6 +26,7 @@ public class Names
         public static final String PARASHROOM = "itemParashroom";
         public static final String TOADSTOOL = "itemToadstool";
         public static final String EXCITESHROOM = "itemExciteshroom";
+        public static final String MOPESHROOM = "itemMopeshroom";
         public static final String DRAGON_TOADSTOOL = "itemDragonToadstool";
 
         public static final String BONE = "bone";
