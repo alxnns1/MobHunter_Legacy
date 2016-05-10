@@ -40,11 +40,16 @@ item.itemBomberry.name=Bomberry
 
 //Bugs
 item.itemInsectHusk.name=Insect Husk
+item.itemStinkhopper.name=Stinkhopper
+item.itemSnakebeeLarva.name=Snakebee Larva
 item.itemGodbug.name=Godbug
 item.itemBitterbug.name=Bitterbug
 item.itemFlashbug.name=Flashbug
 item.itemThunderbug.name=Thunderbug
 item.itemGlueglopper.name=Glueglopper
+item.itemKillerBeetle.name=Killer Beetle
+item.itemHercudrome.name=Hercudrome
+item.itemRareScarab.name=Rare Scarab
 
 //Bones
 item.itemMysteryBone.name=Mystery Bone
@@ -90,5 +95,7 @@ tile.blockOreEarthCrystal.name=Earth Crystal Ore
 tile.blockHerb.name=Herb Block
 tile.blockShroom.name=Mushroom Block
 tile.blockBerry.name=Berry Block
+tile.blockBug.name=Bug Nest
+tile.blockBone.name=Bone Pile
 
 //Machines

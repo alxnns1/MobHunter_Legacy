@@ -56,6 +56,18 @@ public class MHItems
     public static final ItemMHResource itemLatchberry = new ItemMHResource(Names.Items.LATCHBERRY);
     public static final ItemMHResource itemBomberry = new ItemMHResource(Names.Items.BOMBERRY);
 
+    public static final ItemMHResource itemInsectHusk = new ItemMHResource(Names.Items.INSECT_HUSK);
+    public static final ItemMHResource itemStinkhopper = new ItemMHResource(Names.Items.STINKHOPPER);
+    public static final ItemMHResource itemSnakebeeLarva = new ItemMHResource(Names.Items.SNAKEBEE_LARVA);
+    public static final ItemMHResource itemGodbug = new ItemMHResource(Names.Items.GODBUG);
+    public static final ItemMHResource itemBitterbug = new ItemMHResource(Names.Items.BITTERBUG);
+    public static final ItemMHResource itemFlashbug = new ItemMHResource(Names.Items.FLASHBUG);
+    public static final ItemMHResource itemThunderbug = new ItemMHResource(Names.Items.THUNDERBUG);
+    public static final ItemMHResource itemGlueglopper = new ItemMHResource(Names.Items.GLUEGLOPPER);
+    public static final ItemMHResource itemKillerBeetle = new ItemMHResource(Names.Items.KILLER_BEETLE);
+    public static final ItemMHResource itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME);
+    public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB);
+
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
     public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
@@ -118,6 +130,18 @@ public class MHItems
         GameRegistry.registerItem(itemNeedleberry, Names.Items.NEEDLEBERRY);
         GameRegistry.registerItem(itemLatchberry, Names.Items.LATCHBERRY);
         GameRegistry.registerItem(itemBomberry, Names.Items.BOMBERRY);
+
+        GameRegistry.registerItem(itemInsectHusk, Names.Items.INSECT_HUSK);
+        GameRegistry.registerItem(itemStinkhopper, Names.Items.STINKHOPPER);
+        GameRegistry.registerItem(itemSnakebeeLarva, Names.Items.SNAKEBEE_LARVA);
+        GameRegistry.registerItem(itemGodbug, Names.Items.GODBUG);
+        GameRegistry.registerItem(itemBitterbug, Names.Items.BITTERBUG);
+        GameRegistry.registerItem(itemFlashbug, Names.Items.FLASHBUG);
+        GameRegistry.registerItem(itemThunderbug, Names.Items.THUNDERBUG);
+        GameRegistry.registerItem(itemGlueglopper, Names.Items.GLUEGLOPPER);
+        GameRegistry.registerItem(itemKillerBeetle, Names.Items.KILLER_BEETLE);
+        GameRegistry.registerItem(itemHercudrome, Names.Items.HERCUDROME);
+        GameRegistry.registerItem(itemRareScarab, Names.Items.RARE_SCARAB);
 
         //GameRegistry.registerItem(itemBones, "bones");
 
@@ -188,6 +212,18 @@ public class MHItems
         Common.regModel(itemNeedleberry);
         Common.regModel(itemLatchberry);
         Common.regModel(itemBomberry);
+
+        Common.regModel(itemInsectHusk);
+        Common.regModel(itemStinkhopper);
+        Common.regModel(itemSnakebeeLarva);
+        Common.regModel(itemGodbug);
+        Common.regModel(itemBitterbug);
+        Common.regModel(itemFlashbug);
+        Common.regModel(itemThunderbug);
+        Common.regModel(itemGlueglopper);
+        Common.regModel(itemKillerBeetle);
+        Common.regModel(itemHercudrome);
+        Common.regModel(itemRareScarab);
 
         /*
         for(int i = 0; i < itemBones.getMaxMeta(); i++)

@@ -40,6 +40,18 @@ public class Names
         public static final String LATCHBERRY = "itemLatchberry";
         public static final String BOMBERRY = "itemBomberry";
 
+        public static final String INSECT_HUSK = "itemInsectHusk";
+        public static final String STINKHOPPER = "itemStinkhopper";
+        public static final String SNAKEBEE_LARVA = "itemSnakebeeLarva";
+        public static final String GODBUG = "itemGodbug";
+        public static final String BITTERBUG = "itemBitterbug";
+        public static final String FLASHBUG = "itemFlashbug";
+        public static final String THUNDERBUG = "itemThunderbug";
+        public static final String GLUEGLOPPER = "itemGlueglopper";
+        public static final String KILLER_BEETLE = "itemKillerBeetle";
+        public static final String HERCUDROME = "itemHercudrome";
+        public static final String RARE_SCARAB = "itemRareScarab";
+
         public static final String BONE = "bone";
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
@@ -79,6 +91,8 @@ public class Names
         public static final String HERB = "blockHerb";
         public static final String SHROOM = "blockShroom";
         public static final String BERRY = "blockBerry";
+        public static final String BUG = "blockBug";
+        public static final String BONE = "blockBone";
 
         public static final String BBQ = "blockBbq";
     }
