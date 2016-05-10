@@ -95,5 +95,7 @@ public class Names
         public static final String BONE = "blockBone";
 
         public static final String BBQ = "blockBbq";
+        public static final String WEAPON_UPGRADE = "blockWeaponUpgrade";
+        public static final String ARMOUR_UPGRADE = "blockArmourUpgrade";
     }
 }

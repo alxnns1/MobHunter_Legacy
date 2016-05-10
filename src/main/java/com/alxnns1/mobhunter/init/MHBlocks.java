@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
+import com.alxnns1.mobhunter.block.upgrading.BlockWeaponUpgrade;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.Common;
@@ -24,6 +25,7 @@ public class MHBlocks
     //public static BlockBone blockBone = new BlockBone();
 
     public static BlockBbq blockBbq = new BlockBbq();
+    public static BlockWeaponUpgrade blockWeaponUpgrade = new BlockWeaponUpgrade();
 
     public static void init()
     {
@@ -37,6 +39,7 @@ public class MHBlocks
         //GameRegistry.registerBlock(blockBone, Names.Blocks.BONE);
 
         GameRegistry.registerBlock(blockBbq, Names.Blocks.BBQ);
+        GameRegistry.registerBlock(blockWeaponUpgrade, Names.Blocks.WEAPON_UPGRADE);
     }
 
     public static void regModels()
@@ -52,5 +55,6 @@ public class MHBlocks
 
         Common.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
+        Common.regModel(blockWeaponUpgrade);
     }
 }
