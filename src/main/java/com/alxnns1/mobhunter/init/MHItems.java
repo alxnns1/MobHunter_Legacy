@@ -17,12 +17,30 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class MHItems
 {
-    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 10, new int[]{2, 4, 3, 2}, 20);
+    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 6);
+    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 8);
+    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 8);
+    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 6);
+
+    public static ItemArmor armourDerringHelmet = new ItemMHArmour(derringArmourMaterial,1,0,Names.Items.DERRING_HELMET);
+    public static ItemArmor armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,1,1,Names.Items.DERRING_CHESTPLATE);
+    public static ItemArmor armourDerringLeggings = new ItemMHArmour(derringArmourMaterial,2,2,Names.Items.DERRING_LEGGINGS);
+    public static ItemArmor armourDerringBoots = new ItemMHArmour(derringArmourMaterial,1,3,Names.Items.DERRING_BOOTS);
+
+    public static ItemArmor armourHunterHelmet = new ItemMHArmour(hunterArmourMaterial,1,0,Names.Items.HUNTER_HELMET);
+    public static ItemArmor armourHunterChestplate = new ItemMHArmour(hunterArmourMaterial,1,1,Names.Items.HUNTER_CHESTPLATE);
+    public static ItemArmor armourHunterLeggings = new ItemMHArmour(hunterArmourMaterial,2,2,Names.Items.HUNTER_LEGGINGS);
+    public static ItemArmor armourHunterBoots = new ItemMHArmour(hunterArmourMaterial,1,3,Names.Items.HUNTER_BOOTS);
 
     public static ItemArmor armourBoneHelmet = new ItemMHArmour(boneArmourMaterial,1,0,Names.Items.BONE_HELMET);
     public static ItemArmor armourBoneChestplate = new ItemMHArmour(boneArmourMaterial,1,1,Names.Items.BONE_CHESTPLATE);
     public static ItemArmor armourBoneLeggings = new ItemMHArmour(boneArmourMaterial,2,2,Names.Items.BONE_LEGGINGS);
     public static ItemArmor armourBoneBoots = new ItemMHArmour(boneArmourMaterial,1,3,Names.Items.BONE_BOOTS);
+
+    public static ItemArmor armourAlloyHelmet = new ItemMHArmour(alloyArmourMaterial,1,0,Names.Items.ALLOY_HELMET);
+    public static ItemArmor armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,1,1,Names.Items.ALLOY_CHESTPLATE);
+    public static ItemArmor armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,2,2,Names.Items.ALLOY_LEGGINGS);
+    public static ItemArmor armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,1,3,Names.Items.ALLOY_BOOTS);
 
     public static final ItemMHResource itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL);
     public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT);
@@ -173,10 +191,25 @@ public class MHItems
         GameRegistry.registerItem(itemJaggiHide, Names.Items.JAGGI_HIDE);
         GameRegistry.registerItem(itemJaggiScale, Names.Items.JAGGI_SCALE);
 
+        GameRegistry.registerItem(armourDerringHelmet,Names.Items.DERRING_HELMET);
+        GameRegistry.registerItem(armourDerringChestplate,Names.Items.DERRING_CHESTPLATE);
+        GameRegistry.registerItem(armourDerringLeggings,Names.Items.DERRING_LEGGINGS);
+        GameRegistry.registerItem(armourDerringBoots,Names.Items.DERRING_BOOTS);
+
+        GameRegistry.registerItem(armourHunterHelmet,Names.Items.HUNTER_HELMET);
+        GameRegistry.registerItem(armourHunterChestplate,Names.Items.HUNTER_CHESTPLATE);
+        GameRegistry.registerItem(armourHunterLeggings,Names.Items.HUNTER_LEGGINGS);
+        GameRegistry.registerItem(armourHunterBoots,Names.Items.HUNTER_BOOTS);
+
         GameRegistry.registerItem(armourBoneHelmet,Names.Items.BONE_HELMET);
         GameRegistry.registerItem(armourBoneChestplate,Names.Items.BONE_CHESTPLATE);
         GameRegistry.registerItem(armourBoneLeggings,Names.Items.BONE_LEGGINGS);
         GameRegistry.registerItem(armourBoneBoots,Names.Items.BONE_BOOTS);
+
+        GameRegistry.registerItem(armourAlloyHelmet,Names.Items.ALLOY_HELMET);
+        GameRegistry.registerItem(armourAlloyChestplate,Names.Items.ALLOY_CHESTPLATE);
+        GameRegistry.registerItem(armourAlloyLeggings,Names.Items.ALLOY_LEGGINGS);
+        GameRegistry.registerItem(armourAlloyBoots,Names.Items.ALLOY_BOOTS);
 
         GameRegistry.registerItem(weaponIronSwordPlus,Names.Items.IRON_SWORD_PLUS);
         GameRegistry.registerItem(weaponBusterSword,Names.Items.BUSTER_SWORD);
@@ -267,10 +300,25 @@ public class MHItems
         Common.regModel(itemJaggiHide);
         Common.regModel(itemJaggiScale);
 
+        Common.regModel(armourDerringHelmet);
+        Common.regModel(armourDerringChestplate);
+        Common.regModel(armourDerringLeggings);
+        Common.regModel(armourDerringBoots);
+
+        Common.regModel(armourHunterHelmet);
+        Common.regModel(armourHunterChestplate);
+        Common.regModel(armourHunterLeggings);
+        Common.regModel(armourHunterBoots);
+
         Common.regModel(armourBoneHelmet);
         Common.regModel(armourBoneChestplate);
         Common.regModel(armourBoneLeggings);
         Common.regModel(armourBoneBoots);
+
+        Common.regModel(armourAlloyHelmet);
+        Common.regModel(armourAlloyChestplate);
+        Common.regModel(armourAlloyLeggings);
+        Common.regModel(armourAlloyBoots);
 
         Common.regModel(weaponIronSwordPlus);
         Common.regModel(weaponBusterSword);

@@ -15,10 +15,41 @@ public class MHRecipes
     @SuppressWarnings("all")
     public static void init()
     {
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), new Object[] {"xyx", " z ", "   ", 'x', MHItems.itemMysteryBone, 'y', MHItems.itemUnknownSkull, 'z', Items.string});
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), new Object[] {"w w", "xyx", "xzx", 'w', MHItems.itemMonsterBoneS, 'x', MHItems.itemMysteryBone, 'y', Items.leather, 'z', Items.string});
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), new Object[] {"xxx", "y y", "z z", 'x', Items.leather, 'y', MHItems.itemMysteryBone, 'z', MHItems.itemMonsterBoneS});
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneBoots), new Object[] {"   ", "y y", "z z", 'y', MHItems.itemMonsterBoneS, 'z', MHItems.itemMysteryBone});
+        //1 Monster Bone S
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringHelmet), new Object[] {"yzy", "y y", "   ", 'y', Items.string, 'z', MHItems.itemMonsterBoneS});
+        //2 Monster Bone S + 1 Iron Ingot
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringChestplate), new Object[] {"x x", "xyx", "zzz", 'x', MHItems.itemMonsterBoneS, 'y', Items.iron_ingot, 'z', Items.string});
+        //1 Monster Bone S + 1 Iron Ingot
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringLeggings), new Object[] {"yzy", "   ", "   ", 'y', MHItems.itemMonsterBoneS, 'z', Items.iron_ingot});
+        //1 Monster Bone S
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringBoots), new Object[] {"   ", "y y", "z z", 'y', Items.string, 'z', MHItems.itemMonsterBoneS});
+
+        //1 Machalite Ingot + 1 Iron Ore + 2 Glueglopper
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterHelmet), new Object[] {"xyx", "z z", "   ", 'x', Items.iron_ingot, 'y', MHItems.itemMachaliteIngot, 'z', MHItems.itemGlueglopper});
+        //2 Iron Ingot + 3 Jaggi Scale + 2 Monster Bone S + 1 Earth Crystal + 1 Ivy
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterChestplate), new Object[] {"w w", "xyx", "zxz", 'w', Items.iron_ingot, 'x', MHItems.itemJaggiScale, 'y', MHItems.itemEarthCrystal, 'z', MHItems.itemMonsterBoneS});
+        //2 Machalite Ingot + 1 Iron Ingot + 1 Glueglopper
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterLeggings), new Object[] {"xyx", "z z", "   ", 'x', MHItems.itemMachaliteIngot, 'y', MHItems.itemGlueglopper, 'z', Items.iron_ingot});
+        //1 Iron Ingot + 1 Earth Crystal + 2 Monster Bone S
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterBoots), new Object[] {"   ", "y y", "z z", 'y', Items.iron_ingot, 'z', MHItems.itemMonsterBoneS});
+
+        //2 Mystery Bone + 1 Unknown Skull + 1 Altaroth Jaw(use Insect Husk for now)
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), new Object[] {"xyx", "z z", "   ", 'x', MHItems.itemMysteryBone, 'y', MHItems.itemUnknownSkull, 'z', MHItems.itemInsectHusk});
+        //4 Mystery Bone + 1 Jumbo Bone + 2 Altaroth Stomach(use Insect Husk for now) + 2 Monster Bone S + 2 Moster Fluid(use Insect Husk for now)
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), new Object[] {"w w", "xyx", "xzx", 'w', MHItems.itemMonsterBoneS, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemJumboBone, 'z', MHItems.itemInsectHusk});
+        //2 Mystery Bone + 2 Monster Bone S + 2 Sharp Fang(use Bird Wyvern Fang for now)
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), new Object[] {"wxw", "y y", "z z", 'w', MHItems.itemBirdWyvernFang, 'x', Items.string, 'y', MHItems.itemMysteryBone, 'z', MHItems.itemMonsterBoneS});
+        //2 Mystery Bone + 1 Monster Bone M + 1 Sharp Fang(use Bird Wyvern Fang for now)
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneBoots), new Object[] {"   ", "y y", "z z", 'y', MHItems.itemMysteryBone, 'z', MHItems.itemMonsterBoneM});
+
+        //3 Machalite Ingot + 2 Earth Crystal + 3 Iron Ingot
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyHelmet), new Object[] {"xyx", "z z", "   ", 'x', MHItems.itemMachaliteIngot, 'y', MHItems.itemEarthCrystal, 'z', Items.iron_ingot});
+        //5 Machalite Ingot + 2 Monster Bone S + 6 Iron Ingot + 2 Earth Crystal
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyChestplate), new Object[] {"x x", "yxy", "yzy", 'x', MHItems.itemMachaliteIngot, 'y', Items.iron_ingot, 'z', MHItems.itemEarthCrystal});
+        //2 Machalite Ingot + 2 Monster Bone S + 3 Iron Ore
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyLeggings), new Object[] {"xyx", "z z", "y y", 'x', MHItems.itemMachaliteIngot, 'y', Items.iron_ingot, 'z', MHItems.itemMonsterBoneS});
+        //4 Machalite Ingot + 2 Earth Crystal + 2 Iron Ore
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyBoots), new Object[] {"   ", "y y", "z z", 'y', Items.iron_ingot, 'z', MHItems.itemMachaliteIngot});
 
         //1 Iron Sword + 5 Iron Ingot
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponIronSwordPlus),new Object[] {

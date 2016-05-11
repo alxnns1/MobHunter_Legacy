@@ -74,10 +74,25 @@ public class Names
         public static final String JAGGI_HIDE = "itemJaggiHide";
         public static final String JAGGI_SCALE = "itemJaggiScale";
 
+        public static final String DERRING_HELMET = "armourDerringHelmet";
+        public static final String DERRING_CHESTPLATE = "armourDerringChestplate";
+        public static final String DERRING_LEGGINGS = "armourDerringLeggings";
+        public static final String DERRING_BOOTS = "armourDerringBoots";
+
+        public static final String HUNTER_HELMET = "armourHunterHelmet";
+        public static final String HUNTER_CHESTPLATE = "armourHunterChestplate";
+        public static final String HUNTER_LEGGINGS = "armourHunterLeggings";
+        public static final String HUNTER_BOOTS = "armourHunterBoots";
+
         public static final String BONE_HELMET = "armourBoneHelmet";
         public static final String BONE_CHESTPLATE = "armourBoneChestplate";
         public static final String BONE_LEGGINGS = "armourBoneLeggings";
         public static final String BONE_BOOTS = "armourBoneBoots";
+
+        public static final String ALLOY_HELMET = "armourAlloyHelmet";
+        public static final String ALLOY_CHESTPLATE = "armourAlloyChestplate";
+        public static final String ALLOY_LEGGINGS = "armourAlloyLeggings";
+        public static final String ALLOY_BOOTS = "armourAlloyBoots";
 
         public static final String IRON_SWORD_PLUS = "weaponIronSwordPlus";
         public static final String BUSTER_SWORD = "weaponBusterSword";

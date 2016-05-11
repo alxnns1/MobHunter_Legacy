@@ -89,10 +89,25 @@ item.weaponJawblade.name=Jawblade
 item.weaponGiantJawblade.name=Giant Jawblade
 
 //Armour
+item.armourDerringHelmet.name=Derring Headgear
+item.armourDerringChestplate.name=Derring Jacket
+item.armourDerringLeggings.name=Derring Belt
+item.armourDerringBoots.name=Derring Trousers
+
+item.armourHunterHelmet.name=Hunter's Helm
+item.armourHunterChestplate.name=Hunter's Mail
+item.armourHunterLeggings.name=Hunter's Faulds
+item.armourHunterBoots.name=Hunter's Greaves
+
 item.armourBoneHelmet.name=Bone Helm
 item.armourBoneChestplate.name=Bone Mail
 item.armourBoneLeggings.name=Bone Faulds
 item.armourBoneBoots.name=Bone Greaves
+
+item.armourAlloyHelmet.name=Alloy Helm
+item.armourAlloyChestplate.name=Alloy Mail
+item.armourAlloyLeggings.name=Alloy Coil
+item.armourAlloyBoots.name=Alloy Greaves
 
 //BLOCKS
 
