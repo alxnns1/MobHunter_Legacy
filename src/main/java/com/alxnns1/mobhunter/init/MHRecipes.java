@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.init;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -127,6 +128,7 @@ public class MHRecipes
                 new ItemStack(MHItems.itemEarthCrystal),
                 new ItemStack(MHItems.itemEarthCrystal)});
 
+        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq), new Object[] {"w w", "wxw", "yzy", 'w', Items.iron_ingot, 'x', Items.flint_and_steel, 'y', new ItemStack(Blocks.stone), 'z', new ItemStack(Blocks.netherrack)});
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
     }
 }
