@@ -71,7 +71,9 @@ public class MHItems
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
     public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
+    public static final ItemMHResource itemMonsterBoneM = new ItemMHResource(Names.Items.MONSTER_BONE_M);
     public static final ItemMHResource itemMysteryBone = new ItemMHResource(Names.Items.MYSTERY_BONE);
+    public static final ItemMHResource itemUnknownSkull = new ItemMHResource(Names.Items.UNKNOWN_SKULL);
     public static final ItemMHResource itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE);
     public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
 
@@ -145,8 +147,10 @@ public class MHItems
 
         //GameRegistry.registerItem(itemBones, "bones");
 
-        GameRegistry.registerItem(itemMysteryBone, Names.Items.MYSTERY_BONE);
         GameRegistry.registerItem(itemMonsterBoneS, Names.Items.MONSTER_BONE_S);
+        GameRegistry.registerItem(itemMonsterBoneM, Names.Items.MONSTER_BONE_M);
+        GameRegistry.registerItem(itemMysteryBone, Names.Items.MYSTERY_BONE);
+        GameRegistry.registerItem(itemUnknownSkull, Names.Items.UNKNOWN_SKULL);
         GameRegistry.registerItem(itemBruteBone, Names.Items.BRUTE_BONE);
         GameRegistry.registerItem(itemJumboBone, Names.Items.JUMBO_BONE);
 
@@ -232,8 +236,10 @@ public class MHItems
         }
         */
 
-        Common.regModel(itemMysteryBone);
         Common.regModel(itemMonsterBoneS);
+        Common.regModel(itemMonsterBoneM);
+        Common.regModel(itemMysteryBone);
+        Common.regModel(itemUnknownSkull);
         Common.regModel(itemBruteBone);
         Common.regModel(itemJumboBone);
 

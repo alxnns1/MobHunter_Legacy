@@ -52,10 +52,12 @@ item.itemHercudrome.name=Hercudrome
 item.itemRareScarab.name=Rare Scarab
 
 //Bones
+item.itemMonsterBoneS.name=Monster Bone S
+item.itemMonsterBoneM.name=Monster Bone M
 item.itemMysteryBone.name=Mystery Bone
+item.itemUnknownSkull.name=Unknown Skull
 item.itemBruteBone.name=Brute Bone
 item.itemJumboBone.name=Jumbo Bone
-item.itemMonsterBoneS.name=Monster Bone S
 
 //Meats
 item.itemRawMeat.name=Raw Meat

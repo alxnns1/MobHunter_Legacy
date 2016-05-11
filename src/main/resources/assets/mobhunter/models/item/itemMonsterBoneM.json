@@ -1,6 +1,6 @@
 {
   "parent": "mobhunter:item/itemDefault",
   "textures": {
-    "layer0": "mobhunter:items/bitterbug"
+    "layer0": "mobhunter:items/monster_bone_m"
   }
 }

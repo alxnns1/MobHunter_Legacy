@@ -24,7 +24,7 @@ public class WorldGenHandler implements IWorldGenerator
     MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
     MHPlantGen bushBerry = new MHPlantGen(MHBlocks.blockBerry);
     MHPlantGen bushBug = new MHPlantGen(MHBlocks.blockBug);
-    //MHPlantGen bushBone = new MHPlantGen(MHBlocks.blockBone);
+    MHPlantGen bushBone = new MHPlantGen(MHBlocks.blockBone);
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -65,7 +65,7 @@ public class WorldGenHandler implements IWorldGenerator
         bushShroom.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
         bushBerry.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
         bushBug.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
-        //bushBone.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
+        bushBone.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
     }
 
     private void genNether(World world, Random random, int chunkX, int chunkZ)
@@ -74,7 +74,7 @@ public class WorldGenHandler implements IWorldGenerator
         bushShroom.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
         bushBerry.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
         bushBug.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
-        //bushBone.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
+        bushBone.generate(world, random, getRandXZInChunk(random, chunkX, random.nextInt(128), chunkZ));
     }
 
     private void genEnd(World world, Random random, int chunkX, int chunkZ)

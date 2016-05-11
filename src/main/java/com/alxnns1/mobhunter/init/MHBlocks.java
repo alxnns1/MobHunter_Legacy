@@ -22,7 +22,7 @@ public class MHBlocks
     public static BlockShroom blockShroom = new BlockShroom();
     public static BlockBerry blockBerry = new BlockBerry();
     public static BlockBug blockBug = new BlockBug();
-    //public static BlockBone blockBone = new BlockBone();
+    public static BlockBone blockBone = new BlockBone();
 
     public static BlockBbq blockBbq = new BlockBbq();
     public static BlockWeaponUpgrade blockWeaponUpgrade = new BlockWeaponUpgrade();
@@ -36,7 +36,7 @@ public class MHBlocks
         GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
         GameRegistry.registerBlock(blockBerry, Names.Blocks.BERRY);
         GameRegistry.registerBlock(blockBug, Names.Blocks.BUG);
-        //GameRegistry.registerBlock(blockBone, Names.Blocks.BONE);
+        GameRegistry.registerBlock(blockBone, Names.Blocks.BONE);
 
         GameRegistry.registerBlock(blockBbq, Names.Blocks.BBQ);
         GameRegistry.registerBlock(blockWeaponUpgrade, Names.Blocks.WEAPON_UPGRADE);
@@ -51,7 +51,7 @@ public class MHBlocks
         Common.regModel(blockShroom);
         Common.regModel(blockBerry);
         Common.regModel(blockBug);
-        //Common.regModel(blockBone);
+        Common.regModel(blockBone);
 
         Common.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
