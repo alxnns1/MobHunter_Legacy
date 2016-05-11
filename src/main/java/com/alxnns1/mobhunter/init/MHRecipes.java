@@ -73,7 +73,7 @@ public class MHRecipes
                 new ItemStack(MHItems.itemMonsterBoneS),
                 new ItemStack(MHItems.itemJaggiHide),
                 new ItemStack(MHItems.itemJaggiHide)});
-        //1 Jawblade + 7 Monster Bone S + 5 Monster Bone M
+        //1 Bone Blade+ + 7 Monster Bone S + 5 Monster Bone M
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponJawblade),new Object[] {
                 new ItemStack(MHItems.weaponBoneBladePlus),
                 new ItemStack(MHItems.itemMonsterBoneS),
@@ -84,17 +84,17 @@ public class MHRecipes
                 new ItemStack(MHItems.itemMonsterBoneM),
                 new ItemStack(MHItems.itemMonsterBoneM),
                 new ItemStack(MHItems.itemMonsterBoneM)});
-        //1 Giant Jawblade + 5 Monster Bone M + 3 Jumbo Bone + 5 Earth Crystal
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponJawblade),new Object[] {
-                new ItemStack(MHItems.weaponBoneBladePlus),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
+        //1 Jawblade + 5 Monster Bone M + 3 Jumbo Bone + 5 Earth Crystal
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponGiantJawblade),new Object[] {
+                new ItemStack(MHItems.weaponJawblade),
                 new ItemStack(MHItems.itemMonsterBoneM),
                 new ItemStack(MHItems.itemMonsterBoneM),
-                new ItemStack(MHItems.itemMonsterBoneM)});
+                new ItemStack(MHItems.itemMonsterBoneM),
+                new ItemStack(MHItems.itemJumboBone),
+                new ItemStack(MHItems.itemJumboBone),
+                new ItemStack(MHItems.itemEarthCrystal),
+                new ItemStack(MHItems.itemEarthCrystal),
+                new ItemStack(MHItems.itemEarthCrystal)});
 
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
     }

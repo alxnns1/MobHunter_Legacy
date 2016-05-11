@@ -78,10 +78,10 @@ item.itemJaggiHide.name=Jaggi Hide
 item.itemJaggiScale.name=Jaggi Scale
 
 //Swords
-item.itemIronSwordPlus.name=Iron Sword+
-item.itemBusterSword.name=Buster Sword
-item.itemBusterSwordPlus.name=Buster Sword+
-item.itemRavagerBlade.name=Ravager Blade
+item.weaponIronSwordPlus.name=Iron Sword+
+item.weaponBusterSword.name=Buster Sword
+item.weaponBusterSwordPlus.name=Buster Sword+
+item.weaponRavagerBlade.name=Ravager Blade
 
 item.weaponBoneBlade.name=Bone Blade
 item.weaponBoneBladePlus.name=Bone Blade+
