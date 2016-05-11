@@ -7,12 +7,15 @@ import com.alxnns1.mobhunter.entity.EntityPopo;
 import com.alxnns1.mobhunter.entity.render.RenderJaggi;
 import com.alxnns1.mobhunter.entity.render.RenderKelbi;
 import com.alxnns1.mobhunter.entity.render.RenderPopo;
+import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+import java.util.ArrayList;
 
 /**
  * Created by Mark on 04/05/2016.
@@ -31,41 +34,29 @@ public class MHEntities
     public static void init(boolean isClientSide)
     {
         registerMobWithEgg(EntityPopo.class, "Popo", 0x402a00, 0x403400);
-        EntityRegistry.addSpawn(EntityPopo.class,spawnRarity,5,5, EnumCreatureType.CREATURE,
-                BiomeGenBase.coldBeach,
-                BiomeGenBase.coldTaiga,
-                BiomeGenBase.coldTaigaHills,
-                BiomeGenBase.frozenOcean,
-                BiomeGenBase.frozenRiver,
-                BiomeGenBase.iceMountains,
-                BiomeGenBase.icePlains);
+        EntityRegistry.addSpawn(EntityPopo.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.SNOWY));
+        EntityRegistry.addSpawn(EntityPopo.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.MOUNTAIN));
         registerMobWithEgg(EntityKelbi.class, "Kelbi", 0x20402b, 0xbfbf8f);
-        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE,
-                BiomeDictionary.getBiomesForType(BiomeDictionary.Type.PLAINS));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.MESA));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.FOREST));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.PLAINS));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.MOUNTAIN));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.HILLS));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.SWAMP));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.SANDY));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.WASTELAND));
+        EntityRegistry.addSpawn(EntityKelbi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.BEACH));
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
-        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE,
-                BiomeGenBase.extremeHills,
-                BiomeGenBase.extremeHillsEdge,
-                BiomeGenBase.extremeHillsPlus,
-                BiomeGenBase.taiga,
-                BiomeGenBase.taigaHills,
-                BiomeGenBase.megaTaiga,
-                BiomeGenBase.megaTaigaHills,
-                BiomeGenBase.beach,
-                BiomeGenBase.stoneBeach,
-                BiomeGenBase.plains,
-                BiomeGenBase.forest,
-                BiomeGenBase.forestHills,
-                BiomeGenBase.birchForestHills,
-                BiomeGenBase.birchForest,
-                BiomeGenBase.roofedForest,
-                BiomeGenBase.desert,
-                BiomeGenBase.desertHills,
-                BiomeGenBase.savanna,
-                BiomeGenBase.savannaPlateau,
-                BiomeGenBase.mesa,
-                BiomeGenBase.mesaPlateau,
-                BiomeGenBase.mesaPlateau_F);
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.MESA));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.FOREST));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.PLAINS));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.MOUNTAIN));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.HILLS));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.SWAMP));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.SANDY));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.SNOWY));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.WASTELAND));
+        EntityRegistry.addSpawn(EntityJaggi.class,spawnRarity,5,5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(BiomeDictionary.Type.BEACH));
 
         if(isClientSide)
         {

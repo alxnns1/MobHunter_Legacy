@@ -18,7 +18,7 @@ public class MHPlantGen extends WorldGenerator
 
     public MHPlantGen(BlockBush blockToSpawn)
     {
-        this(blockToSpawn, 8);
+        this(blockToSpawn, 4);
     }
 
     public MHPlantGen(BlockBush blockToSpawn, int groupSize)
