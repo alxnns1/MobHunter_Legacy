@@ -101,4 +101,5 @@ tile.blockBug.name=Bug Nest
 tile.blockBone.name=Bone Pile
 
 //Machines
+tile.blockBbq.name=BBQ Spit
 tile.blockWeaponUpgrade.name=Weapon Upgrade Table
