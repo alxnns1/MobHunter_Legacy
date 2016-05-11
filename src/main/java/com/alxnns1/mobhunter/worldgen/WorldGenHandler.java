@@ -4,7 +4,6 @@ import com.alxnns1.mobhunter.init.MHBlocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.GeneratorBushFeature;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -17,8 +16,9 @@ import java.util.Random;
 public class WorldGenHandler implements IWorldGenerator
 {
     //WorldGenMineable(block state, number of blocks to spawn)
-    WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 17);
-    WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 9);
+    WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 4);
+    WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 2);
+    WorldGenMinable oreDragonite = new WorldGenMinable(MHBlocks.blockOreDragonite.getDefaultState(), 1);
 
     MHPlantGen bushHerb = new MHPlantGen(MHBlocks.blockHerb);
     MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
@@ -58,8 +58,9 @@ public class WorldGenHandler implements IWorldGenerator
 
     private void genOverworld(World world, Random random, int chunkX, int chunkZ)
     {
-        genOre(world, random, chunkX, chunkZ, 20, oreEarthCrystal, 0, 128);
-        genOre(world, random, chunkX, chunkZ, 20, oreMachalite, 0, 64);
+        genOre(world, random, chunkX, chunkZ, 15, oreEarthCrystal, 0, 128);
+        genOre(world, random, chunkX, chunkZ, 15, oreMachalite, 0, 64);
+        genOre(world, random, chunkX, chunkZ, 10, oreDragonite, 0, 64);
 
         bushHerb.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
         bushShroom.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));

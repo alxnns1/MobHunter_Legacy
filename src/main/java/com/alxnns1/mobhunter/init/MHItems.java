@@ -26,6 +26,7 @@ public class MHItems
 
     public static final ItemMHResource itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL);
     public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT);
+    public static final ItemMHResource itemDragoniteIngot = new ItemMHResource(Names.Items.DRAGONITE_INGOT);
 
     public static final ItemMHResource itemHerb = new ItemMHResource(Names.Items.HERB);
     public static final ItemMHResource itemAntidoteHerb = new ItemMHResource(Names.Items.ANTIDOTE_HERB);
@@ -90,11 +91,15 @@ public class MHItems
     public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
     public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
 
-    public static final ItemMHSword itemIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0), Names.Items.IRON_SWORD_PLUS);
-    public static final ItemMHSword itemBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0), Names.Items.BUSTER_SWORD);
-    public static final ItemMHSword itemBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,5.0f,0), Names.Items.BUSTER_SWORD_PLUS);
-    public static final ItemMHSword itemBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,3.0f,0), Names.Items.BONE_BLADE);
-    public static final ItemMHSword itemBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,4.0f,0), Names.Items.BONE_BLADE_PLUS);
+    public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0), Names.Items.IRON_SWORD_PLUS);
+    public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0), Names.Items.BUSTER_SWORD);
+    public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,5.0f,0), Names.Items.BUSTER_SWORD_PLUS);
+    public static final ItemMHSword weaponRavagerBlade = new ItemMHSword(EnumHelper.addToolMaterial("RavagerPlus",0,1500,0.0f,6.0f,0), Names.Items.RAVAGER_BLADE);
+
+    public static final ItemMHSword weaponBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,3.0f,0), Names.Items.BONE_BLADE);
+    public static final ItemMHSword weaponBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,4.0f,0), Names.Items.BONE_BLADE_PLUS);
+    public static final ItemMHSword weaponJawblade = new ItemMHSword(EnumHelper.addToolMaterial("Jawblade",0,177,0.0f,5.0f,0), Names.Items.JAWBLADE);
+    public static final ItemMHSword weaponGiantJawblade = new ItemMHSword(EnumHelper.addToolMaterial("GiantJawblade",0,236,0.0f,6.0f,0), Names.Items.GIANT_JAWBLADE);
 
     /**
      * Registers the items
@@ -103,6 +108,7 @@ public class MHItems
     {
         GameRegistry.registerItem(itemEarthCrystal, Names.Items.EARTH_CRYSTAL);
         GameRegistry.registerItem(itemMachaliteIngot, Names.Items.MACHALITE_INGOT);
+        GameRegistry.registerItem(itemDragoniteIngot, Names.Items.DRAGONITE_INGOT);
 
         GameRegistry.registerItem(itemHerb, Names.Items.HERB);
         GameRegistry.registerItem(itemAntidoteHerb, Names.Items.ANTIDOTE_HERB);
@@ -172,11 +178,15 @@ public class MHItems
         GameRegistry.registerItem(armourBoneLeggings,Names.Items.BONE_LEGGINGS);
         GameRegistry.registerItem(armourBoneBoots,Names.Items.BONE_BOOTS);
 
-        GameRegistry.registerItem(itemIronSwordPlus,Names.Items.IRON_SWORD_PLUS);
-        GameRegistry.registerItem(itemBusterSword,Names.Items.BUSTER_SWORD);
-        GameRegistry.registerItem(itemBusterSwordPlus,Names.Items.BUSTER_SWORD_PLUS);
-        GameRegistry.registerItem(itemBoneBlade,Names.Items.BONE_BLADE);
-        GameRegistry.registerItem(itemBoneBladePlus,Names.Items.BONE_BLADE_PLUS);
+        GameRegistry.registerItem(weaponIronSwordPlus,Names.Items.IRON_SWORD_PLUS);
+        GameRegistry.registerItem(weaponBusterSword,Names.Items.BUSTER_SWORD);
+        GameRegistry.registerItem(weaponBusterSwordPlus,Names.Items.BUSTER_SWORD_PLUS);
+        GameRegistry.registerItem(weaponRavagerBlade,Names.Items.RAVAGER_BLADE);
+
+        GameRegistry.registerItem(weaponBoneBlade,Names.Items.BONE_BLADE);
+        GameRegistry.registerItem(weaponBoneBladePlus,Names.Items.BONE_BLADE_PLUS);
+        GameRegistry.registerItem(weaponJawblade,Names.Items.JAWBLADE);
+        GameRegistry.registerItem(weaponGiantJawblade,Names.Items.GIANT_JAWBLADE);
     }
 
     /**
@@ -185,8 +195,9 @@ public class MHItems
      */
     public static void regModels()
     {
-        Common.regModel(itemMachaliteIngot);
         Common.regModel(itemEarthCrystal);
+        Common.regModel(itemMachaliteIngot);
+        Common.regModel(itemDragoniteIngot);
 
         Common.regModel(itemHerb);
         Common.regModel(itemAntidoteHerb);
@@ -261,10 +272,14 @@ public class MHItems
         Common.regModel(armourBoneLeggings);
         Common.regModel(armourBoneBoots);
 
-        Common.regModel(itemIronSwordPlus);
-        Common.regModel(itemBusterSword);
-        Common.regModel(itemBusterSwordPlus);
-        Common.regModel(itemBoneBlade);
-        Common.regModel(itemBoneBladePlus);
+        Common.regModel(weaponIronSwordPlus);
+        Common.regModel(weaponBusterSword);
+        Common.regModel(weaponBusterSwordPlus);
+        Common.regModel(weaponRavagerBlade);
+
+        Common.regModel(weaponBoneBlade);
+        Common.regModel(weaponBoneBladePlus);
+        Common.regModel(weaponJawblade);
+        Common.regModel(weaponGiantJawblade);
     }
 }

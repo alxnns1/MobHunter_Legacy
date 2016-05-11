@@ -15,8 +15,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class MHBlocks
 {
-    public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 2);
     public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
+    public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1);
+    public static BlockOre blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2);
 
     public static BlockHerb blockHerb = new BlockHerb();
     public static BlockShroom blockShroom = new BlockShroom();
@@ -29,8 +30,9 @@ public class MHBlocks
 
     public static void init()
     {
-        GameRegistry.registerBlock(blockOreMachalite, Names.Blocks.ORE_MACHALITE);
         GameRegistry.registerBlock(blockOreEarthCrystal, Names.Blocks.ORE_EARTH_CRYSTAL);
+        GameRegistry.registerBlock(blockOreMachalite, Names.Blocks.ORE_MACHALITE);
+        GameRegistry.registerBlock(blockOreDragonite, Names.Blocks.ORE_DRAGONITE);
 
         GameRegistry.registerBlock(blockHerb, Names.Blocks.HERB);
         GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
@@ -44,8 +46,9 @@ public class MHBlocks
 
     public static void regModels()
     {
-        Common.regModel(blockOreMachalite);
         Common.regModel(blockOreEarthCrystal);
+        Common.regModel(blockOreMachalite);
+        Common.regModel(blockOreDragonite);
 
         Common.regModel(blockHerb);
         Common.regModel(blockShroom);

@@ -3,8 +3,9 @@
 //ITEMS
 
 //Minerals
-item.itemMachaliteIngot.name=Machalite Ingot
 item.itemEarthCrystal.name=Earth Crystal
+item.itemMachaliteIngot.name=Machalite Ingot
+item.itemDragoniteIngot.name=Dragonite Ingot
 
 //Herbs
 item.itemHerb.name=Herb
@@ -80,8 +81,12 @@ item.itemJaggiScale.name=Jaggi Scale
 item.itemIronSwordPlus.name=Iron Sword+
 item.itemBusterSword.name=Buster Sword
 item.itemBusterSwordPlus.name=Buster Sword+
-item.itemBoneBlade.name=Bone Blade
-item.itemBoneBladePlus.name=Bone Blade+
+item.itemRavagerBlade.name=Ravager Blade
+
+item.weaponBoneBlade.name=Bone Blade
+item.weaponBoneBladePlus.name=Bone Blade+
+item.weaponJawblade.name=Jawblade
+item.weaponGiantJawblade.name=Giant Jawblade
 
 //Armour
 item.armourBoneHelmet.name=Bone Helm
@@ -92,8 +97,10 @@ item.armourBoneBoots.name=Bone Greaves
 //BLOCKS
 
 //Materials
-tile.blockOreMachalite.name=Machalite Ore
 tile.blockOreEarthCrystal.name=Earth Crystal Ore
+tile.blockOreMachalite.name=Machalite Ore
+tile.blockOreDragonite.name=Dragonite Ore
+
 tile.blockHerb.name=Herb Block
 tile.blockShroom.name=Mushroom Block
 tile.blockBerry.name=Berry Block

@@ -8,8 +8,9 @@ public class Names
 {
     public static class Items
     {
-        public static final String MACHALITE_INGOT = "itemMachaliteIngot";
         public static final String EARTH_CRYSTAL = "itemEarthCrystal";
+        public static final String MACHALITE_INGOT = "itemMachaliteIngot";
+        public static final String DRAGONITE_INGOT = "itemDragoniteIngot";
 
         public static final String HERB = "itemHerb";
         public static final String ANTIDOTE_HERB = "itemAntidoteHerb";
@@ -78,17 +79,22 @@ public class Names
         public static final String BONE_LEGGINGS = "armourBoneLeggings";
         public static final String BONE_BOOTS = "armourBoneBoots";
 
-        public static final String IRON_SWORD_PLUS = "itemIronSwordPlus";
-        public static final String BUSTER_SWORD = "itemBusterSword";
-        public static final String BUSTER_SWORD_PLUS = "itemBusterSwordPlus";
-        public static final String BONE_BLADE = "itemBoneBlade";
-        public static final String BONE_BLADE_PLUS = "itemBoneBladePlus";
+        public static final String IRON_SWORD_PLUS = "weaponIronSwordPlus";
+        public static final String BUSTER_SWORD = "weaponBusterSword";
+        public static final String BUSTER_SWORD_PLUS = "weaponBusterSwordPlus";
+        public static final String RAVAGER_BLADE = "weaponRavagerBlade";
+
+        public static final String BONE_BLADE = "weaponBoneBlade";
+        public static final String BONE_BLADE_PLUS = "weaponBoneBladePlus";
+        public static final String JAWBLADE = "weaponJawblade";
+        public static final String GIANT_JAWBLADE = "weaponGiantJawblade";
     }
 
     public static class Blocks
     {
-        public static final String ORE_MACHALITE = "blockOreMachalite";
         public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
+        public static final String ORE_MACHALITE = "blockOreMachalite";
+        public static final String ORE_DRAGONITE = "blockOreDragonite";
 
         public static final String HERB = "blockHerb";
         public static final String SHROOM = "blockShroom";
