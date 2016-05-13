@@ -2,10 +2,28 @@
 
 //ITEMS
 
-//Minerals
-item.itemEarthCrystal.name=Earth Crystal
-item.itemMachaliteIngot.name=Machalite Ingot
-item.itemDragoniteIngot.name=Dragonite Ingot
+//Potions
+item.itemPotion.name=Potion
+item.itemMegaPotion.name=Mega Potion
+item.itemNutrients.name=Nutrients
+item.itemMegaNutrients.name=Mega Nutrients
+item.itemAntidote.name=Antidote
+item.itemImmunizer.name=Immunizer
+item.itemDashJuice.name=Dash Juice
+item.itemMegaDashJuice.name=Mega Dash Juice
+item.itemDemondrug.name=Demondrug
+item.itemMegaDemondrug.name=Mega Demondrug
+item.itemMightPill.name=Might Pill
+item.itemArmorskin.name=Armorskin
+item.itemMegaArmorskin.name=Mega Armorskin
+item.itemAdamantPill.name=Adamant Pill
+item.itemEnergyDrink.name=Energy Drink
+
+//Meats
+item.itemRawMeat.name=Raw Meat
+item.itemRareSteak.name=Rare Steak
+item.itemDoneSteak.name=Well-done Steak
+item.itemBurntMeat.name=Burnt Meat
 
 //Herbs
 item.itemHerb.name=Herb
@@ -39,6 +57,11 @@ item.itemNeedleberry.name=Needleberry
 item.itemLatchberry.name=Latchberry
 item.itemBomberry.name=Bomberry
 
+//Minerals
+item.itemEarthCrystal.name=Earth Crystal
+item.itemMachaliteIngot.name=Machalite Ingot
+item.itemDragoniteIngot.name=Dragonite Ingot
+
 //Bugs
 item.itemInsectHusk.name=Insect Husk
 item.itemStinkhopper.name=Stinkhopper
@@ -55,16 +78,12 @@ item.itemRareScarab.name=Rare Scarab
 //Bones
 item.itemMonsterBoneS.name=Monster Bone S
 item.itemMonsterBoneM.name=Monster Bone M
+item.itemMonsterBoneL.name=Monster Bone L
+item.itemMonsterBonePlus.name=Monster Bone+
 item.itemMysteryBone.name=Mystery Bone
 item.itemUnknownSkull.name=Unknown Skull
 item.itemBruteBone.name=Brute Bone
 item.itemJumboBone.name=Jumbo Bone
-
-//Meats
-item.itemRawMeat.name=Raw Meat
-item.itemRareSteak.name=Rare Steak
-item.itemDoneSteak.name=Well-done Steak
-item.itemBurntMeat.name=Burnt Meat
 
 //Kelbi
 item.itemKelbiHorn.name=Kelbi Horn
@@ -113,8 +132,11 @@ item.armourAlloyBoots.name=Alloy Greaves
 
 //Materials
 tile.blockOreEarthCrystal.name=Earth Crystal Ore
+tile.blockEarthCrystal.name=Block of Earth Crystal
 tile.blockOreMachalite.name=Machalite Ore
+tile.blockMachalite.name=Block of Machalite
 tile.blockOreDragonite.name=Dragonite Ore
+tile.blockDragonite.name=Block of Dragonite
 
 tile.blockHerb.name=Herb Block
 tile.blockShroom.name=Mushroom Block
@@ -125,9 +147,109 @@ tile.blockBone.name=Bone Pile
 //Machines
 tile.blockBbq.name=BBQ Spit
 tile.blockWeaponUpgrade.name=Weapon Upgrade Table
+tile.blockArmourUpgrade.name=Armour Upgrade Table
 
 //ENTITIES
 
-entity.MobHunter.Popo.name=Popo
+//Lynians
+entity.MobHunter.Felyne.name=Felyne
+entity.MobHunter.Melynx.name=Melynx
+
+//Neopteron Minions
+entity.MobHunter.Altaroth.name=Altaroth
+entity.MobHunter.Konchu.name=Konchu
+entity.MobHunter.Bnahabra.name=Bnahabra
+
+//Piscine Wyvern Minions
+entity.MobHunter.Delex.name=Delex
+entity.MobHunter.Cephalos.name=Cephalos
+
+//Herbivores
 entity.MobHunter.Kelbi.name=Kelbi
+entity.MobHunter.Aptonoth.name=Aptonoth
+entity.MobHunter.Rhenoplos.name=Rhenoplos
+entity.MobHunter.Slagtoth.name=Slagtoth
+entity.MobHunter.Popo.name=Popo
+entity.MobHunter.Apceros.name=Apceros
+
+//Bird Wyvern Minions
+entity.MobHunter.Gargwa.name=Gargwa
 entity.MobHunter.Jaggi.name=Jaggi
+entity.MobHunter.Jaggia.name=Jaggia
+entity.MobHunter.Velociprey.name=Velociprey
+entity.MobHunter.Genprey.name=Genprey
+entity.MobHunter.Ioprey.name=Ioprey
+
+//Carapaceon Minions
+entity.MobHunter.Hermitaur.name=Hermitaur
+
+//Fanged Beast Minions
+entity.MobHunter.Conga.name=Conga
+
+//Amphibian Minions
+entity.MobHunter.Zamite.name=Zamite
+
+//Snake Wyvern Minions
+entity.MobHunter.Remobra.name=Remobra
+
+//Neopterans
+entity.MobHunter.Seltas.name=Seltas
+entity.MobHunter.SeltasQueen.name=Seltas Queen
+entity.MobHunter.Nerscylla.name=Nerscylla
+
+//Piscine Wyverns
+entity.MobHunter.Cephadrome.name=Cephadrome
+
+//Bird Wyverns
+entity.MobHunter.GreatJaggi.name=Great Jaggi
+entity.MobHunter.Velocidrome.name=Velocidrome
+entity.MobHunter.Gendrome.name=Gendrome
+entity.MobHunter.Iodrome.name=Iodrome
+entity.MobHunter.YianKutKu.name=Yian Kut-Ku
+entity.MobHunter.Gypceros.name=Gypceros
+entity.MobHunter.YianGaruga.name=Yian Garuga
+
+//Carapaceons
+entity.MobHunter.DaimyoHermitaur.name=Daimyo Hermitaur
+
+//Fanged Beasts
+entity.MobHunter.KechaWacha.name=Kecha Wacha
+entity.MobHunter.Lagombi.name=Lagombi
+entity.MobHunter.Congalala.name=Congalala
+entity.MobHunter.Rajang.name=Rajang
+entity.MobHunter.Tetsucabra.name=Tetsucabra
+
+//Amphibians
+entity.MobHunter.Zamtrios.name=Zamtrios
+
+//Snake Wyverns
+entity.MobHunter.Najarala.name=Najarala
+
+//Brute Wyverns
+entity.MobHunter.Brachydios.name=Brachydios
+entity.MobHunter.Deviljho.name=Deviljho
+
+//Flying Wyverns
+entity.MobHunter.Khezu.name=Khezu
+entity.MobHunter.Basarios.name=Basarios
+entity.MobHunter.Gravios.name=Gravios
+entity.MobHunter.Rathian.name=Rathian
+entity.MobHunter.Rathalos.name=Rathalos
+entity.MobHunter.Tigrex.name=Tigrex
+entity.MobHunter.Diablos.name=Diablos
+entity.MobHunter.Monoblos.name=Monoblos
+entity.MobHunter.Seregios.name=Seregios
+entity.MobHunter.Akantor.name=Akantor
+entity.MobHunter.Ukanlos.name=Ukanlos
+
+//Fanged Wyverns
+entity.MobHunter.Zinogre.name=Zinogre
+
+//Elder Dragons
+entity.MobHunter.Kirin.name=Kirin
+entity.MobHunter.GoreMagala.name=Gore Magala
+entity.MobHunter.ShagaruMagala.name=Shagaru Magala
+entity.MobHunter.KushalaDaora.name=Kushala Daora
+entity.MobHunter.Teostra.name=Teostra
+entity.MobHunter.Chameleos.name=Chameleos
+entity.MobHunter.Fatalis.name=Fatalis

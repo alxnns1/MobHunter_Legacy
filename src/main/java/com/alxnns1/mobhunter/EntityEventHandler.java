@@ -1,9 +1,6 @@
 package com.alxnns1.mobhunter;
 
-import com.alxnns1.mobhunter.entity.EntityJaggi;
-import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
-import com.alxnns1.mobhunter.entity.EntityMHWyvern;
-import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -135,10 +132,10 @@ public class EntityEventHandler
     public void mobSpawn(LivingSpawnEvent event)
     {
         EntityLivingBase entity = event.entityLiving;
-        if(entity instanceof EntityMHWyvern) //|| entity instanceof EntityMHHerbivore)
+        if(entity instanceof EntityMHBirdWyvern) //|| entity instanceof EntityMHHerbivore)
         {
             float scale = -1;
-            if(entity instanceof EntityMHWyvern) scale = ((EntityMHWyvern) entity).getScale();
+            if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
             //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
             LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale + " at " + entity.getPosition().toString());
         }

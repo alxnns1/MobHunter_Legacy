@@ -81,7 +81,6 @@ public abstract class EntityMHHerbivore extends EntityAnimal
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(baseSpeed * scale);
         this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(baseKnockback * scale);
         this.setHealth(this.getMaxHealth());
-        //this.setScale(scale);
     }
 
     public float getScale()

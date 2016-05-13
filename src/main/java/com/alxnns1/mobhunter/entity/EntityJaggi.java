@@ -1,7 +1,6 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -9,17 +8,16 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 /**
  * Created by Alex on 27/04/2016.
  */
-public class EntityJaggi extends EntityMHWyvern
+public class EntityJaggi extends EntityMHBirdWyvern
 {
     public EntityJaggi(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f);
+        super(worldIn, 0.79f, 1.24f, MHItems.itemRawMeat);
         this.setSize(1.0F, 1.0F);
         setBaseHealth(9);
         setBaseAttack(3);
@@ -51,11 +49,11 @@ public class EntityJaggi extends EntityMHWyvern
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemBirdWyvernFang, 1);
+                this.dropItem(MHItems.itemMonsterBoneS, 1);
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropItem(MHItems.itemJaggiHide, 1);
+                this.dropItem(MHItems.itemBirdWyvernFang, 1);
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {

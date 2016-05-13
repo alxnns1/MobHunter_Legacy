@@ -10,9 +10,8 @@ import net.minecraft.item.Item;
  * Created by Alex on 20/04/2016.
  */
 public class ItemMHResource extends Item {
-
-    public ItemMHResource(String itemName){
-        setCreativeTab(MobHunter.MH_TAB);
+    public ItemMHResource(String itemName, boolean puInTab){
+        if(puInTab){setCreativeTab(MobHunter.MH_TAB);}
         setUnlocalizedName(itemName);
     }
 }

@@ -7,10 +7,13 @@ import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Mark on 06/05/2016.
  */
+@SideOnly(Side.CLIENT)
 public class RenderBbq extends TileEntitySpecialRenderer<TileBbq>
 {
     private static final ModelBbqMeat model = new ModelBbqMeat();

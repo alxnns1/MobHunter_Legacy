@@ -6,6 +6,10 @@ import com.alxnns1.mobhunter.block.upgrading.BlockWeaponUpgrade;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.Common;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -16,8 +20,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class MHBlocks
 {
     public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
+    public static BlockMetal blockEarthCrystal = new BlockMetal(Names.Blocks.EARTH_CRYSTAL, 1);
     public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1);
+    public static BlockMetal blockMachalite = new BlockMetal(Names.Blocks.MACHALITE, 1);
     public static BlockOre blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2);
+    public static BlockMetal blockDragonite = new BlockMetal(Names.Blocks.DRAGONITE, 2);
 
     public static BlockHerb blockHerb = new BlockHerb();
     public static BlockShroom blockShroom = new BlockShroom();
@@ -31,8 +38,11 @@ public class MHBlocks
     public static void init()
     {
         GameRegistry.registerBlock(blockOreEarthCrystal, Names.Blocks.ORE_EARTH_CRYSTAL);
+        GameRegistry.registerBlock(blockEarthCrystal, Names.Blocks.EARTH_CRYSTAL);
         GameRegistry.registerBlock(blockOreMachalite, Names.Blocks.ORE_MACHALITE);
+        GameRegistry.registerBlock(blockMachalite, Names.Blocks.MACHALITE);
         GameRegistry.registerBlock(blockOreDragonite, Names.Blocks.ORE_DRAGONITE);
+        GameRegistry.registerBlock(blockDragonite, Names.Blocks.DRAGONITE);
 
         GameRegistry.registerBlock(blockHerb, Names.Blocks.HERB);
         GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
@@ -47,8 +57,11 @@ public class MHBlocks
     public static void regModels()
     {
         Common.regModel(blockOreEarthCrystal);
+        Common.regModel(blockEarthCrystal);
         Common.regModel(blockOreMachalite);
+        Common.regModel(blockMachalite);
         Common.regModel(blockOreDragonite);
+        Common.regModel(blockDragonite);
 
         Common.regModel(blockHerb);
         Common.regModel(blockShroom);

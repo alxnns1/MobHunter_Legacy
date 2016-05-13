@@ -8,9 +8,26 @@ public class Names
 {
     public static class Items
     {
-        public static final String EARTH_CRYSTAL = "itemEarthCrystal";
-        public static final String MACHALITE_INGOT = "itemMachaliteIngot";
-        public static final String DRAGONITE_INGOT = "itemDragoniteIngot";
+        public static final String POTION = "itemPotion";
+        public static final String MEGA_POTION = "itemMegaPotion";
+        public static final String NUTRIENTS = "itemNutrients";
+        public static final String MEGA_NUTRIENTS = "itemMegaNutrients";
+        public static final String ANTIDOTE = "itemAntidote";
+        public static final String IMMUNIZER = "itemImmunizer";
+        public static final String DASH_JUICE = "itemDashJuice";
+        public static final String MEGA_DASH_JUICE = "itemMegaDashJuice";
+        public static final String DEMONDRUG = "itemDemondrug";
+        public static final String MEGA_DEMONDRUG = "itemMegaDemondrug";
+        public static final String MIGHT_PILL = "itemMightPill";
+        public static final String ARMORSKIN = "itemArmorskin";
+        public static final String MEGA_ARMOSKIN = "itemMegaArmorskin";
+        public static final String ADAMANT_PILL = "itemAdamantPill";
+        public static final String ENERGY_DRINK = "itemEnergyDrink";
+
+        public static final String RAW_MEAT = "itemRawMeat";
+        public static final String RARE_STEAK = "itemRareSteak";
+        public static final String DONE_STEAK = "itemDoneSteak";
+        public static final String BURNT_MEAT = "itemBurntMeat";
 
         public static final String HERB = "itemHerb";
         public static final String ANTIDOTE_HERB = "itemAntidoteHerb";
@@ -41,6 +58,10 @@ public class Names
         public static final String LATCHBERRY = "itemLatchberry";
         public static final String BOMBERRY = "itemBomberry";
 
+        public static final String EARTH_CRYSTAL = "itemEarthCrystal";
+        public static final String MACHALITE_INGOT = "itemMachaliteIngot";
+        public static final String DRAGONITE_INGOT = "itemDragoniteIngot";
+
         public static final String INSECT_HUSK = "itemInsectHusk";
         public static final String STINKHOPPER = "itemStinkhopper";
         public static final String SNAKEBEE_LARVA = "itemSnakebeeLarva";
@@ -56,15 +77,11 @@ public class Names
         public static final String BONE = "bone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
         public static final String MONSTER_BONE_M = "itemMonsterBoneM";
+        public static final String MONSTER_BONE_L = "itemMonsterBoneL";
         public static final String MYSTERY_BONE = "itemMysteryBone";
         public static final String UNKNOWN_SKULL = "itemUnknownSkull";
         public static final String BRUTE_BONE = "itemBruteBone";
         public static final String JUMBO_BONE = "itemJumboBone";
-
-        public static final String RAW_MEAT = "itemRawMeat";
-        public static final String RARE_STEAK = "itemRareSteak";
-        public static final String DONE_STEAK = "itemDoneSteak";
-        public static final String BURNT_MEAT = "itemBurntMeat";
 
         public static final String KELBI_HORN = "itemKelbiHorn";
         public static final String WARM_PELT = "itemWarmPelt";
@@ -110,6 +127,10 @@ public class Names
         public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
         public static final String ORE_MACHALITE = "blockOreMachalite";
         public static final String ORE_DRAGONITE = "blockOreDragonite";
+
+        public static final String EARTH_CRYSTAL = "blockEarthCrystal";
+        public static final String MACHALITE = "blockMachalite";
+        public static final String DRAGONITE = "blockDragonite";
 
         public static final String HERB = "blockHerb";
         public static final String SHROOM = "blockShroom";
