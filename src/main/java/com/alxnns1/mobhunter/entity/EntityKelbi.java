@@ -33,7 +33,6 @@ public class EntityKelbi extends EntityMHHerbivore
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 1), 0);
                 this.dropItem(MHItems.itemMysteryBone, 1);
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
@@ -48,7 +47,6 @@ public class EntityKelbi extends EntityMHHerbivore
                 }else if(i<75){
                     this.dropItem(MHItems.itemWarmPelt, 1);
                 }else if(i<90){
-                    //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 1), 0);
                     this.dropItem(MHItems.itemMysteryBone, 1);
                 }else if(i<100){
                     this.dropItem(MHItems.itemRawMeat, 1);

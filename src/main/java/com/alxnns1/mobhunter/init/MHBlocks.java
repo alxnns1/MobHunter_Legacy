@@ -12,6 +12,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Contains all of the mod's items and registering code
@@ -54,6 +56,7 @@ public class MHBlocks
         GameRegistry.registerBlock(blockWeaponUpgrade, Names.Blocks.WEAPON_UPGRADE);
     }
 
+    @SideOnly(Side.CLIENT)
     public static void regModels()
     {
         Common.regModel(blockOreEarthCrystal);

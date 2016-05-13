@@ -33,7 +33,6 @@ public class EntityPopo extends EntityMHHerbivore
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 1), 0);
                 this.dropItem(MHItems.itemMysteryBone, 1);
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
@@ -44,15 +43,12 @@ public class EntityPopo extends EntityMHHerbivore
             for(int n=0;n<2+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<45){
-                    //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 1), 0);
                     this.dropItem(MHItems.itemMysteryBone, 1);
                 }else if(i<75){
                     this.dropItem(MHItems.itemRawMeat, 1);
                 }else if(i<95){
-                    //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 2), 0);
                     this.dropItem(MHItems.itemBruteBone, 1);
                 }else if(i<100){
-                    //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 3), 0);
                     this.dropItem(MHItems.itemJumboBone, 1);
                 }
             }

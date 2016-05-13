@@ -137,7 +137,7 @@ public class EntityEventHandler
             float scale = -1;
             if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
             //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
-            LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale + " at " + entity.getPosition().toString());
+            //LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale + " at " + entity.getPosition().toString());
         }
     }
 }

@@ -65,7 +65,6 @@ public class EntityJaggi extends EntityMHBirdWyvern
                 }else if(i<92){
                     this.dropItem(MHItems.itemJaggiScale, 1);
                 }else if(i<100){
-                    //this.entityDropItem(new ItemStack(MHItems.itemBones, 1, 0), 0);
                     this.dropItem(MHItems.itemMonsterBoneS, 1);
                 }
             }
