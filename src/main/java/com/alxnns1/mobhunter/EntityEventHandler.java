@@ -99,7 +99,6 @@ public class EntityEventHandler
     @SubscribeEvent
     public void mobDeath(LivingDropsEvent event)
     {
-        LogHelper.info("Mob " + event.entityLiving.getName() + " died!");
         //This is called every time a LivingEntityBase dies
         Random rand = new Random();
         //Checks the dead entity against the ones in the list
@@ -120,14 +119,12 @@ public class EntityEventHandler
                         (o[0].equals(ALL_WILDCARD) && entity instanceof EntityLiving) ||    //Any registered mob
                         ((mobName.equals(o[0]) || mobUnlocName.equals(o[0]))))              //Exact mob
                 {
-                    LogHelper.info("Mob can drop " + ((ItemStack) o[1]).getUnlocalizedName());
                     //Can spawn mob drop!
                     int min = (Integer) o[2];
                     int max = (Integer) o[3];
                     int randQty = rand.nextInt(max) + min;
                     if (randQty > 0) {
                         event.entityLiving.entityDropItem((ItemStack) o[1], 0);
-                        LogHelper.info("Mob dropped " + randQty);
                     }
                 }
             }
@@ -143,7 +140,7 @@ public class EntityEventHandler
             float scale = -1;
             if(entity instanceof EntityMHWyvern) scale = ((EntityMHWyvern) entity).getScale();
             //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
-            LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale);
+            LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale + " at " + entity.getPosition().toString());
         }
     }
 }

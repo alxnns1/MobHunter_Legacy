@@ -82,7 +82,6 @@ public class BlockBbq extends BlockContainer
             if(te.putRawMeat())
             {
                 playerIn.getCurrentEquippedItem().stackSize--;
-                LogHelper.info("Inserting Raw Meat");
                 return true;
             }
             return false;

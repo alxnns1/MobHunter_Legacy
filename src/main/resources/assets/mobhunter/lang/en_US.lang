@@ -125,3 +125,9 @@ tile.blockBone.name=Bone Pile
 //Machines
 tile.blockBbq.name=BBQ Spit
 tile.blockWeaponUpgrade.name=Weapon Upgrade Table
+
+//ENTITIES
+
+entity.MobHunter.Popo.name=Popo
+entity.MobHunter.Kelbi.name=Kelbi
+entity.MobHunter.Jaggi.name=Jaggi

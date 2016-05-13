@@ -14,7 +14,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 /**
@@ -74,6 +77,12 @@ public abstract class EntityMHWyvern extends EntityMob
         float scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
         this.setEntityScale(scale);
         return super.onInitialSpawn(difficulty, livingdata);
+    }
+
+    @Override
+    public boolean getCanSpawnHere()
+    {
+        return this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL;
     }
 
     private void setEntityScale(float scale)

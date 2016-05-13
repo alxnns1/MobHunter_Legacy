@@ -149,9 +149,6 @@ public class TileBbq extends TileEntity implements ITickable
         {
             //Increase time meat has been cooking for
             cookTime++;
-            if(cookTime == RARE_TIME) LogHelper.info("Cooked to Rare");
-            else if(cookTime == DONE_TIME) LogHelper.info("Cooked to Well Done");
-            else if(cookTime == BURN_TIME) LogHelper.info("Cooked to Burnt");
         }
     }
 }
