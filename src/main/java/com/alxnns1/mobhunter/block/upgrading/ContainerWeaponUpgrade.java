@@ -11,6 +11,8 @@ import net.minecraft.world.World;
  */
 public class ContainerWeaponUpgrade extends Container
 {
+    //TODO: Finish container for gui
+
     public ContainerWeaponUpgrade(InventoryPlayer invPlayer, World world, int x, int y, int z)
     {
         this(invPlayer, world, new BlockPos(x, y, z));
