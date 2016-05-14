@@ -20,7 +20,7 @@ public class Names
         public static final String MEGA_DEMONDRUG = "itemMegaDemondrug";
         public static final String MIGHT_PILL = "itemMightPill";
         public static final String ARMORSKIN = "itemArmorskin";
-        public static final String MEGA_ARMOSKIN = "itemMegaArmorskin";
+        public static final String MEGA_ARMORSKIN = "itemMegaArmorskin";
         public static final String ADAMANT_PILL = "itemAdamantPill";
         public static final String ENERGY_DRINK = "itemEnergyDrink";
 

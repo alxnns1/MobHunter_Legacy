@@ -43,9 +43,9 @@ public class MHItems
     public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT);
     public static final ItemMHResource itemDragoniteIngot = new ItemMHResource(Names.Items.DRAGONITE_INGOT);
 
-    public static final ItemMHFood itemHerb = new ItemMHFood(Names.Items.HERB, true, ItemMHFood.EAT_DURATION_SHORT);
-    public static final ItemMHFood itemAntidoteHerb = new ItemMHFood(Names.Items.ANTIDOTE_HERB, true, ItemMHFood.EAT_DURATION_SHORT);
-    public static final ItemMHFood itemFireHerb = new ItemMHFood(Names.Items.FIRE_HERB, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemHerb = new ItemMHConsumable(Names.Items.HERB, true, ItemMHConsumable.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemAntidoteHerb = new ItemMHConsumable(Names.Items.ANTIDOTE_HERB, true, ItemMHConsumable.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemFireHerb = new ItemMHConsumable(Names.Items.FIRE_HERB, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHResource itemIvy = new ItemMHResource(Names.Items.IVY);
     public static final ItemMHResource itemSleepHerb = new ItemMHResource(Names.Items.SLEEP_HERB);
     public static final ItemMHResource itemSapPlant = new ItemMHResource(Names.Items.SAP_PLANT);
@@ -54,35 +54,48 @@ public class MHItems
     public static final ItemMHResource itemHotPepper = new ItemMHResource(Names.Items.HOT_PEPPER);
 
     public static final ItemMHResource itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM);
-    public static final ItemMHFood itemNitroshroom = new ItemMHFood(Names.Items.NITROSHROOM, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemNitroshroom = new ItemMHConsumable(Names.Items.NITROSHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHResource itemParashroom = new ItemMHResource(Names.Items.PARASHROOM);
-    public static final ItemMHFood itemToadstool = new ItemMHFood(Names.Items.TOADSTOOL, true, ItemMHFood.EAT_DURATION_SHORT);
-    public static final ItemMHFood itemExciteshroom = new ItemMHFood(Names.Items.EXCITESHROOM, true, ItemMHFood.EAT_DURATION_SHORT);
-    public static final ItemMHFood itemMopeshroom = new ItemMHFood(Names.Items.MOPESHROOM, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemToadstool = new ItemMHConsumable(Names.Items.TOADSTOOL, true, ItemMHConsumable.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemExciteshroom = new ItemMHConsumable(Names.Items.EXCITESHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemMopeshroom = new ItemMHConsumable(Names.Items.MOPESHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHResource itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL);
 
     public static final ItemMHResource itemHuskberry = new ItemMHResource(Names.Items.HUSKBERRY);
     public static final ItemMHResource itemPaintberry = new ItemMHResource(Names.Items.PAINTBERRY);
-    public static final ItemMHFood itemMightSeed = new ItemMHFood(Names.Items.MIGHT_SEED, true, ItemMHFood.EAT_DURATION_SHORT);
-    public static final ItemMHFood itemAdamantSeed = new ItemMHFood(Names.Items.ADAMANT_SEED, true, ItemMHFood.EAT_DURATION_SHORT);
-    public static final ItemMHFood itemNulberry = new ItemMHFood(Names.Items.NULBERRY, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemMightSeed = new ItemMHConsumable(Names.Items.MIGHT_SEED, true, ItemMHConsumable.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemAdamantSeed = new ItemMHConsumable(Names.Items.ADAMANT_SEED, true, ItemMHConsumable.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemNulberry = new ItemMHConsumable(Names.Items.NULBERRY, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHResource itemDragonfellBerry = new ItemMHResource(Names.Items.DRAGONFELL_BERRY);
     public static final ItemMHResource itemScatternut = new ItemMHResource(Names.Items.SCATTERNUT);
-    public static final ItemMHFood itemNeedleberry = new ItemMHFood(Names.Items.NEEDLEBERRY, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemNeedleberry = new ItemMHConsumable(Names.Items.NEEDLEBERRY, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHResource itemLatchberry = new ItemMHResource(Names.Items.LATCHBERRY);
-    public static final ItemMHFood itemBomberry = new ItemMHFood(Names.Items.BOMBERRY, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemBomberry = new ItemMHConsumable(Names.Items.BOMBERRY, true, ItemMHConsumable.EAT_DURATION_SHORT);
 
     public static final ItemMHResource itemInsectHusk = new ItemMHResource(Names.Items.INSECT_HUSK);
     public static final ItemMHResource itemStinkhopper = new ItemMHResource(Names.Items.STINKHOPPER);
     public static final ItemMHResource itemSnakebeeLarva = new ItemMHResource(Names.Items.SNAKEBEE_LARVA);
     public static final ItemMHResource itemGodbug = new ItemMHResource(Names.Items.GODBUG);
-    public static final ItemMHFood itemBitterbug = new ItemMHFood(Names.Items.BITTERBUG, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHConsumable itemBitterbug = new ItemMHConsumable(Names.Items.BITTERBUG, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHResource itemFlashbug = new ItemMHResource(Names.Items.FLASHBUG);
     public static final ItemMHResource itemThunderbug = new ItemMHResource(Names.Items.THUNDERBUG);
     public static final ItemMHResource itemGlueglopper = new ItemMHResource(Names.Items.GLUEGLOPPER);
     public static final ItemMHResource itemKillerBeetle = new ItemMHResource(Names.Items.KILLER_BEETLE);
     public static final ItemMHResource itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME);
     public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB);
+
+    public static final ItemMHDrink itemPotion = new ItemMHDrink(Names.Items.POTION);
+    public static final ItemMHDrink itemMegaPotion = new ItemMHDrink(Names.Items.MEGA_POTION);
+    public static final ItemMHDrink itemNutrients = new ItemMHDrink(Names.Items.NUTRIENTS);
+    public static final ItemMHDrink itemMegaNutrients = new ItemMHDrink(Names.Items.MEGA_NUTRIENTS);
+    public static final ItemMHDrink itemAntidote = new ItemMHDrink(Names.Items.ANTIDOTE);
+    public static final ItemMHDrink itemImmunizer = new ItemMHDrink(Names.Items.IMMUNIZER);
+    public static final ItemMHDrink itemDashJuice = new ItemMHDrink(Names.Items.DASH_JUICE);
+    public static final ItemMHDrink itemMegaDashJuice = new ItemMHDrink(Names.Items.MEGA_DASH_JUICE);
+    public static final ItemMHDrink itemDemondrug = new ItemMHDrink(Names.Items.DEMONDRUG);
+    public static final ItemMHDrink itemMegaDemondrug = new ItemMHDrink(Names.Items.MEGA_DEMONDRUG);
+    public static final ItemMHDrink itemArmorskin = new ItemMHDrink(Names.Items.ARMORSKIN);
+    public static final ItemMHDrink itemMegaArmorskin = new ItemMHDrink(Names.Items.MEGA_ARMORSKIN);
 
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
@@ -94,9 +107,9 @@ public class MHItems
     public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
 
     public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
-    public static final ItemMHFood itemRareSteak = new ItemMHFood(5, 0.4F, true, Names.Items.RARE_STEAK);
-    public static final ItemMHFood itemDoneSteak = new ItemMHFood(10, 1.0F, true, Names.Items.DONE_STEAK);
-    public static final ItemMHFood itemBurntMeat = new ItemMHFood(5, 0.3F, true, Names.Items.BURNT_MEAT);
+    public static final ItemMHConsumable itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK);
+    public static final ItemMHConsumable itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK);
+    public static final ItemMHConsumable itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT);
 
     public static final ItemMHResource itemKelbiHorn = new ItemMHResource(Names.Items.KELBI_HORN);
     public static final ItemMHResource itemWarmPelt = new ItemMHResource(Names.Items.WARM_PELT);
@@ -165,6 +178,19 @@ public class MHItems
         GameRegistry.registerItem(itemKillerBeetle, Names.Items.KILLER_BEETLE);
         GameRegistry.registerItem(itemHercudrome, Names.Items.HERCUDROME);
         GameRegistry.registerItem(itemRareScarab, Names.Items.RARE_SCARAB);
+
+        GameRegistry.registerItem(itemPotion, Names.Items.POTION);
+        GameRegistry.registerItem(itemMegaPotion, Names.Items.MEGA_POTION);
+        //GameRegistry.registerItem(itemNutrients, Names.Items.NUTRIENTS);
+        //GameRegistry.registerItem(itemMegaNutrients, Names.Items.MEGA_NUTRIENTS);
+        GameRegistry.registerItem(itemAntidote, Names.Items.ANTIDOTE);
+        GameRegistry.registerItem(itemImmunizer, Names.Items.IMMUNIZER);
+        GameRegistry.registerItem(itemDashJuice, Names.Items.DASH_JUICE);
+        GameRegistry.registerItem(itemMegaDashJuice, Names.Items.MEGA_DASH_JUICE);
+        GameRegistry.registerItem(itemDemondrug, Names.Items.DEMONDRUG);
+        GameRegistry.registerItem(itemMegaDemondrug, Names.Items.MEGA_DEMONDRUG);
+        GameRegistry.registerItem(itemArmorskin, Names.Items.ARMORSKIN);
+        GameRegistry.registerItem(itemMegaArmorskin, Names.Items.MEGA_ARMORSKIN);
 
         //GameRegistry.registerItem(itemBones, "bones");
 
@@ -269,6 +295,19 @@ public class MHItems
         Common.regModel(itemKillerBeetle);
         Common.regModel(itemHercudrome);
         Common.regModel(itemRareScarab);
+
+        Common.regModel(itemPotion);
+        Common.regModel(itemMegaPotion);
+        //Common.regModel(itemNutrients);
+        //Common.regModel(itemMegaNutrients);
+        Common.regModel(itemAntidote);
+        Common.regModel(itemImmunizer);
+        Common.regModel(itemDashJuice);
+        Common.regModel(itemMegaDashJuice);
+        Common.regModel(itemDemondrug);
+        Common.regModel(itemMegaDemondrug);
+        Common.regModel(itemArmorskin);
+        Common.regModel(itemMegaArmorskin);
 
         /*
         for(int i = 0; i < itemBones.getMaxMeta(); i++)

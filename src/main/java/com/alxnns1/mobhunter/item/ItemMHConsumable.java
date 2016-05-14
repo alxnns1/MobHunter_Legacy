@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -17,25 +16,25 @@ import java.util.Collection;
 /**
  * Created by Alex on 26/04/2016.
  */
-public class ItemMHFood extends ItemFood
+public class ItemMHConsumable extends ItemFood
 {
-    private final int durations = 100;
+    protected final int effectDuration = 100;
     private int eatDuration = this.itemUseDuration;
     public static int EAT_DURATION_SHORT = 8;
 
-    public ItemMHFood(String itemName)
+    public ItemMHConsumable(String itemName)
     {
         this(0, 0, false, itemName);
     }
 
-    public ItemMHFood(String itemName, boolean alwaysEdible, int eatingDuration)
+    public ItemMHConsumable(String itemName, boolean alwaysEdible, int eatingDuration)
     {
         this(0, 0, false, itemName);
         if(alwaysEdible) setAlwaysEdible();
         eatDuration = eatingDuration;
     }
 
-    public ItemMHFood(int amount, float saturation, boolean isWolfFood, String itemName)
+    public ItemMHConsumable(int amount, float saturation, boolean isWolfFood, String itemName)
     {
         super(amount, saturation, isWolfFood);
         setCreativeTab(MobHunter.MH_TAB);
@@ -48,6 +47,11 @@ public class ItemMHFood extends ItemFood
     public int getMaxItemUseDuration(ItemStack stack)
     {
         return eatDuration;
+    }
+
+    public void setMaxItemUseDuration(int duration)
+    {
+        eatDuration = duration;
     }
 
     /**
@@ -68,6 +72,9 @@ public class ItemMHFood extends ItemFood
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
+        //Only want to run on the server
+        if(worldIn.isRemote) return;
+
         Item item = stack.getItem();
         if(item.equals(MHItems.itemHerb))
             player.heal(2f);
@@ -86,22 +93,22 @@ public class ItemMHFood extends ItemFood
                 i++;
             }
         }
-        else if(!worldIn.isRemote && itemRand.nextFloat() < 0.5f)
+        else if(itemRand.nextFloat() < 0.5f)
         {
             if(item.equals(MHItems.itemAntidoteHerb) && player.isPotionActive(Potion.poison))
                 player.removePotionEffect(Potion.poison.getId());
-            else if(item.equals(MHItems.itemToadstool) && !worldIn.isRemote)
-                player.addPotionEffect(new PotionEffect(Potion.poison.getId(), durations));
+            else if(item.equals(MHItems.itemToadstool))
+                player.addPotionEffect(new PotionEffect(Potion.poison.getId(), effectDuration));
             else if(item.equals(MHItems.itemExciteshroom))
                 player.getFoodStats().addStats(-2,0);
             else if(item.equals(MHItems.itemMopeshroom))
                 player.getFoodStats().addStats(2,0);
-            else if(item.equals(MHItems.itemMightSeed) && !worldIn.isRemote)
-                player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), durations));
-            else if(item.equals(MHItems.itemAdamantSeed) && !worldIn.isRemote)
-                player.addPotionEffect(new PotionEffect(Potion.resistance.getId(), durations));
+            else if(item.equals(MHItems.itemMightSeed))
+                player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), effectDuration));
+            else if(item.equals(MHItems.itemAdamantSeed))
+                player.addPotionEffect(new PotionEffect(Potion.resistance.getId(), effectDuration));
             else if(item.equals(MHItems.itemFireHerb))
-                player.setFire(durations / 20);
+                player.setFire(effectDuration / 20);
             else if(item.equals(MHItems.itemBomberry))
             {
                 double rotation = Math.toRadians(player.getRotationYawHead());
@@ -111,10 +118,10 @@ public class ItemMHFood extends ItemFood
             }
             else if(item.equals(MHItems.itemNeedleberry))
                 player.attackEntityFrom(DamageSource.generic, 2);
-            else if(item.equals(MHItems.itemBitterbug) && !worldIn.isRemote)
-                player.addPotionEffect(new PotionEffect(Potion.confusion.getId(), (int) Math.round(durations * 1.5)));
-            else if(item.equals(MHItems.itemNitroshroom) && !worldIn.isRemote)
-                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), durations));
+            else if(item.equals(MHItems.itemBitterbug))
+                player.addPotionEffect(new PotionEffect(Potion.confusion.getId(), (int) Math.round(effectDuration * 1.5)));
+            else if(item.equals(MHItems.itemNitroshroom))
+                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), effectDuration));
         }
     }
 }
