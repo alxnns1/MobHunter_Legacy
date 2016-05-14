@@ -15,6 +15,16 @@ public class MHRecipes
     @SuppressWarnings("all")
     public static void init()
     {
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemPotion), new Object[] {Items.glass_bottle, MHItems.itemHerb, MHItems.itemBlueMushroom});
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemMegaPotion), new Object[] {Items.glass_bottle, MHItems.itemPotion, MHItems.itemHoney});
+        //GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemNutrients), new Object[] {Items.glass_bottle, MHItems.itemBlueMushroom, MHItems.itemGodbug});
+        //GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemMegaNutrients), new Object[] {Items.glass_bottle, MHItems.itemNutrients, MHItems.itemHoney});
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemAntidote), new Object[] {Items.glass_bottle, MHItems.itemBlueMushroom, MHItems.itemAntidoteHerb});
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemImmunizer), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemDragonToadstool});
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemDashJuice), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemRareSteak});
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemDemondrug), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemMightSeed});
+        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemArmourskin), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemAdamantSeed});
+
         //1 Monster Bone S
         GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringHelmet), new Object[] {"yzy", "y y", "   ", 'y', Items.string, 'z', MHItems.itemMonsterBoneS});
         //2 Monster Bone S + 1 Iron Ingot
@@ -53,86 +63,86 @@ public class MHRecipes
 
         //1 Iron Sword + 5 Iron Ingot
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponIronSwordPlus),new Object[] {
-                new ItemStack(Items.iron_sword),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot)});
+                Items.iron_sword,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot});
         //1 Iron Sword+ + 2 Machalite Ingot + 8 Iron Ingot
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBusterSword),new Object[] {
-                new ItemStack(MHItems.weaponIronSwordPlus),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(MHItems.itemMachaliteIngot),
-                new ItemStack(MHItems.itemMachaliteIngot)});
+               MHItems.weaponIronSwordPlus,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                MHItems.itemMachaliteIngot,
+                MHItems.itemMachaliteIngot});
         //1 Buster Sword + 5 Machalite Ingot + 2 Earth Crystal + 5 Iron Ore
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBusterSwordPlus),new Object[] {
-                new ItemStack(MHItems.weaponBusterSword),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(Items.iron_ingot),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemMachaliteIngot),
-                new ItemStack(MHItems.itemMachaliteIngot),
-                new ItemStack(MHItems.itemMachaliteIngot),
-                new ItemStack(MHItems.itemMachaliteIngot)});
+                MHItems.weaponBusterSword,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                Items.iron_ingot,
+                MHItems.itemEarthCrystal,
+                MHItems.itemMachaliteIngot,
+                MHItems.itemMachaliteIngot,
+                MHItems.itemMachaliteIngot,
+                MHItems.itemMachaliteIngot});
         //1 Buster Sword+ + 3 Dragonite Ingot + 5 Machalite Ingot + 10 Earth Crystal + 3 Killer Beetle
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponRavagerBlade),new Object[] {
-                new ItemStack(MHItems.weaponBusterSwordPlus),
-                new ItemStack(MHItems.itemDragoniteIngot),
-                new ItemStack(MHItems.itemMachaliteIngot),
-                new ItemStack(MHItems.itemMachaliteIngot),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemKillerBeetle)});
+                MHItems.weaponBusterSwordPlus,
+                MHItems.itemDragoniteIngot,
+                MHItems.itemMachaliteIngot,
+                MHItems.itemMachaliteIngot,
+                MHItems.itemEarthCrystal,
+                MHItems.itemEarthCrystal,
+                MHItems.itemEarthCrystal,
+                MHItems.itemEarthCrystal,
+                MHItems.itemKillerBeetle});
 
         //2 Monster Bone S + 1 Jaggi Hide
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponBoneBlade), new Object[] {" y "," y "," z ",'y',MHItems.itemMonsterBoneS,'z',MHItems.itemJaggiHide});
         //1 Bone Blade + 4 Monster Bone S + 2 Jaggi Hide
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBoneBladePlus),new Object[] {
-                new ItemStack(MHItems.weaponBoneBlade),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemJaggiHide),
-                new ItemStack(MHItems.itemJaggiHide)});
+                MHItems.weaponBoneBlade,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemJaggiHide,
+                MHItems.itemJaggiHide});
         //1 Bone Blade+ + 7 Monster Bone S + 5 Monster Bone M
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponJawblade),new Object[] {
-                new ItemStack(MHItems.weaponBoneBladePlus),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneS),
-                new ItemStack(MHItems.itemMonsterBoneM),
-                new ItemStack(MHItems.itemMonsterBoneM),
-                new ItemStack(MHItems.itemMonsterBoneM)});
+                MHItems.weaponBoneBladePlus,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneS,
+                MHItems.itemMonsterBoneM,
+                MHItems.itemMonsterBoneM,
+                MHItems.itemMonsterBoneM});
         //1 Jawblade + 5 Monster Bone M + 3 Jumbo Bone + 5 Earth Crystal
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponGiantJawblade),new Object[] {
-                new ItemStack(MHItems.weaponJawblade),
-                new ItemStack(MHItems.itemMonsterBoneM),
-                new ItemStack(MHItems.itemMonsterBoneM),
-                new ItemStack(MHItems.itemMonsterBoneM),
-                new ItemStack(MHItems.itemJumboBone),
-                new ItemStack(MHItems.itemJumboBone),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemEarthCrystal),
-                new ItemStack(MHItems.itemEarthCrystal)});
+                MHItems.weaponJawblade,
+                MHItems.itemMonsterBoneM,
+                MHItems.itemMonsterBoneM,
+                MHItems.itemMonsterBoneM,
+                MHItems.itemJumboBone,
+                MHItems.itemJumboBone,
+                MHItems.itemEarthCrystal,
+                MHItems.itemEarthCrystal,
+                MHItems.itemEarthCrystal});
 
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockEarthCrystal), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemEarthCrystal)});
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemEarthCrystal, 9), new ItemStack(MHBlocks.blockEarthCrystal));
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemEarthCrystal, 9), MHBlocks.blockEarthCrystal);
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockMachalite), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemMachaliteIngot)});
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemMachaliteIngot, 9), new ItemStack(MHBlocks.blockMachalite));
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemMachaliteIngot, 9), MHBlocks.blockMachalite);
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockDragonite), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemDragoniteIngot)});
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDragoniteIngot, 9), new ItemStack(MHBlocks.blockDragonite));
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDragoniteIngot, 9), MHBlocks.blockDragonite);
 
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq), new Object[] {"w w", "wxw", "yzy", 'w', Items.iron_ingot, 'x', Items.flint_and_steel, 'y', new ItemStack(Blocks.stone), 'z', new ItemStack(Blocks.netherrack)});
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);

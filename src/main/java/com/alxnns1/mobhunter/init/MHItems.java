@@ -84,6 +84,8 @@ public class MHItems
     public static final ItemMHResource itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME);
     public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB);
 
+    public static final ItemMHResource itemHoney = new ItemMHResource(Names.Items.HONEY);
+
     public static final ItemMHDrink itemPotion = new ItemMHDrink(Names.Items.POTION);
     public static final ItemMHDrink itemMegaPotion = new ItemMHDrink(Names.Items.MEGA_POTION);
     public static final ItemMHDrink itemNutrients = new ItemMHDrink(Names.Items.NUTRIENTS);
@@ -94,8 +96,8 @@ public class MHItems
     public static final ItemMHDrink itemMegaDashJuice = new ItemMHDrink(Names.Items.MEGA_DASH_JUICE);
     public static final ItemMHDrink itemDemondrug = new ItemMHDrink(Names.Items.DEMONDRUG);
     public static final ItemMHDrink itemMegaDemondrug = new ItemMHDrink(Names.Items.MEGA_DEMONDRUG);
-    public static final ItemMHDrink itemArmorskin = new ItemMHDrink(Names.Items.ARMORSKIN);
-    public static final ItemMHDrink itemMegaArmorskin = new ItemMHDrink(Names.Items.MEGA_ARMORSKIN);
+    public static final ItemMHDrink itemArmourskin = new ItemMHDrink(Names.Items.ARMOURSKIN);
+    public static final ItemMHDrink itemMegaArmourskin = new ItemMHDrink(Names.Items.MEGA_ARMOURSKIN);
 
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
@@ -189,8 +191,8 @@ public class MHItems
         GameRegistry.registerItem(itemMegaDashJuice, Names.Items.MEGA_DASH_JUICE);
         GameRegistry.registerItem(itemDemondrug, Names.Items.DEMONDRUG);
         GameRegistry.registerItem(itemMegaDemondrug, Names.Items.MEGA_DEMONDRUG);
-        GameRegistry.registerItem(itemArmorskin, Names.Items.ARMORSKIN);
-        GameRegistry.registerItem(itemMegaArmorskin, Names.Items.MEGA_ARMORSKIN);
+        GameRegistry.registerItem(itemArmourskin, Names.Items.ARMOURSKIN);
+        GameRegistry.registerItem(itemMegaArmourskin, Names.Items.MEGA_ARMOURSKIN);
 
         //GameRegistry.registerItem(itemBones, "bones");
 
@@ -306,8 +308,8 @@ public class MHItems
         Common.regModel(itemMegaDashJuice);
         Common.regModel(itemDemondrug);
         Common.regModel(itemMegaDemondrug);
-        Common.regModel(itemArmorskin);
-        Common.regModel(itemMegaArmorskin);
+        Common.regModel(itemArmourskin);
+        Common.regModel(itemMegaArmourskin);
 
         /*
         for(int i = 0; i < itemBones.getMaxMeta(); i++)

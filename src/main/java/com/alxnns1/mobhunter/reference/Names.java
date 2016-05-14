@@ -19,8 +19,8 @@ public class Names
         public static final String DEMONDRUG = "itemDemondrug";
         public static final String MEGA_DEMONDRUG = "itemMegaDemondrug";
         public static final String MIGHT_PILL = "itemMightPill";
-        public static final String ARMORSKIN = "itemArmorskin";
-        public static final String MEGA_ARMORSKIN = "itemMegaArmorskin";
+        public static final String ARMOURSKIN = "itemArmourskin";
+        public static final String MEGA_ARMOURSKIN = "itemMegaArmourskin";
         public static final String ADAMANT_PILL = "itemAdamantPill";
         public static final String ENERGY_DRINK = "itemEnergyDrink";
 
@@ -73,6 +73,8 @@ public class Names
         public static final String KILLER_BEETLE = "itemKillerBeetle";
         public static final String HERCUDROME = "itemHercudrome";
         public static final String RARE_SCARAB = "itemRareScarab";
+
+        public static final String HONEY = "itemHoney";
 
         public static final String BONE = "bone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
