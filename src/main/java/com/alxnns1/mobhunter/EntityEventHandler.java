@@ -5,9 +5,11 @@ import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -140,4 +142,13 @@ public class EntityEventHandler
             //LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale + " at " + entity.getPosition().toString());
         }
     }
+
+    /*
+    @SubscribeEvent
+    public void entityHurt(LivingHurtEvent event)
+    {
+        if(event.entityLiving instanceof EntityPlayer)
+            LogHelper.info("Player hurt by " + event.ammount + " damage");
+    }
+    */
 }

@@ -39,72 +39,72 @@ public class MHItems
     public static ItemArmor armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,2,2,Names.Items.ALLOY_LEGGINGS);
     public static ItemArmor armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,1,3,Names.Items.ALLOY_BOOTS);
 
-    public static final ItemMHResource itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL,true);
-    public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT,true);
-    public static final ItemMHResource itemDragoniteIngot = new ItemMHResource(Names.Items.DRAGONITE_INGOT,true);
+    public static final ItemMHResource itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL);
+    public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT);
+    public static final ItemMHResource itemDragoniteIngot = new ItemMHResource(Names.Items.DRAGONITE_INGOT);
 
-    public static final ItemMHResource itemHerb = new ItemMHResource(Names.Items.HERB,true);
-    public static final ItemMHResource itemAntidoteHerb = new ItemMHResource(Names.Items.ANTIDOTE_HERB,true);
-    public static final ItemMHResource itemFireHerb = new ItemMHResource(Names.Items.FIRE_HERB,true);
-    public static final ItemMHResource itemIvy = new ItemMHResource(Names.Items.IVY,true);
-    public static final ItemMHResource itemSleepHerb = new ItemMHResource(Names.Items.SLEEP_HERB,true);
-    public static final ItemMHResource itemSapPlant = new ItemMHResource(Names.Items.SAP_PLANT,true);
-    public static final ItemMHResource itemFelvine = new ItemMHResource(Names.Items.FELVINE,true);
-    public static final ItemMHResource itemGloamgrassRoot = new ItemMHResource(Names.Items.GLOAMGRASS_ROOT,true);
-    public static final ItemMHResource itemHotPepper = new ItemMHResource(Names.Items.HOT_PEPPER,true);
+    public static final ItemMHFood itemHerb = new ItemMHFood(Names.Items.HERB, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHFood itemAntidoteHerb = new ItemMHFood(Names.Items.ANTIDOTE_HERB, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHFood itemFireHerb = new ItemMHFood(Names.Items.FIRE_HERB, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHResource itemIvy = new ItemMHResource(Names.Items.IVY);
+    public static final ItemMHResource itemSleepHerb = new ItemMHResource(Names.Items.SLEEP_HERB);
+    public static final ItemMHResource itemSapPlant = new ItemMHResource(Names.Items.SAP_PLANT);
+    public static final ItemMHResource itemFelvine = new ItemMHResource(Names.Items.FELVINE);
+    public static final ItemMHResource itemGloamgrassRoot = new ItemMHResource(Names.Items.GLOAMGRASS_ROOT);
+    public static final ItemMHResource itemHotPepper = new ItemMHResource(Names.Items.HOT_PEPPER);
 
-    public static final ItemMHResource itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM,true);
-    public static final ItemMHResource itemNitroshroom = new ItemMHResource(Names.Items.NITROSHROOM,true);
-    public static final ItemMHResource itemParashroom = new ItemMHResource(Names.Items.PARASHROOM,true);
-    public static final ItemMHResource itemToadstool = new ItemMHResource(Names.Items.TOADSTOOL,true);
-    public static final ItemMHResource itemExciteshroom = new ItemMHResource(Names.Items.EXCITESHROOM,true);
-    public static final ItemMHResource itemMopeshroom = new ItemMHResource(Names.Items.MOPESHROOM,true);
-    public static final ItemMHResource itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL,true);
+    public static final ItemMHResource itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM);
+    public static final ItemMHFood itemNitroshroom = new ItemMHFood(Names.Items.NITROSHROOM, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHResource itemParashroom = new ItemMHResource(Names.Items.PARASHROOM);
+    public static final ItemMHFood itemToadstool = new ItemMHFood(Names.Items.TOADSTOOL, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHFood itemExciteshroom = new ItemMHFood(Names.Items.EXCITESHROOM, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHFood itemMopeshroom = new ItemMHFood(Names.Items.MOPESHROOM, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHResource itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL);
 
-    public static final ItemMHResource itemHuskberry = new ItemMHResource(Names.Items.HUSKBERRY,true);
-    public static final ItemMHResource itemPaintberry = new ItemMHResource(Names.Items.PAINTBERRY,true);
-    public static final ItemMHResource itemMightSeed = new ItemMHResource(Names.Items.MIGHT_SEED,true);
-    public static final ItemMHResource itemAdamantSeed = new ItemMHResource(Names.Items.ADAMANT_SEED,true);
-    public static final ItemMHResource itemNulberry = new ItemMHResource(Names.Items.NULBERRY,true);
-    public static final ItemMHResource itemDragonfellBerry = new ItemMHResource(Names.Items.DRAGONFELL_BERRY,true);
-    public static final ItemMHResource itemScatternut = new ItemMHResource(Names.Items.SCATTERNUT,true);
-    public static final ItemMHResource itemNeedleberry = new ItemMHResource(Names.Items.NEEDLEBERRY,true);
-    public static final ItemMHResource itemLatchberry = new ItemMHResource(Names.Items.LATCHBERRY,true);
-    public static final ItemMHResource itemBomberry = new ItemMHResource(Names.Items.BOMBERRY,true);
+    public static final ItemMHResource itemHuskberry = new ItemMHResource(Names.Items.HUSKBERRY);
+    public static final ItemMHResource itemPaintberry = new ItemMHResource(Names.Items.PAINTBERRY);
+    public static final ItemMHFood itemMightSeed = new ItemMHFood(Names.Items.MIGHT_SEED, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHFood itemAdamantSeed = new ItemMHFood(Names.Items.ADAMANT_SEED, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHFood itemNulberry = new ItemMHFood(Names.Items.NULBERRY, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHResource itemDragonfellBerry = new ItemMHResource(Names.Items.DRAGONFELL_BERRY);
+    public static final ItemMHResource itemScatternut = new ItemMHResource(Names.Items.SCATTERNUT);
+    public static final ItemMHFood itemNeedleberry = new ItemMHFood(Names.Items.NEEDLEBERRY, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHResource itemLatchberry = new ItemMHResource(Names.Items.LATCHBERRY);
+    public static final ItemMHFood itemBomberry = new ItemMHFood(Names.Items.BOMBERRY, true, ItemMHFood.EAT_DURATION_SHORT);
 
-    public static final ItemMHResource itemInsectHusk = new ItemMHResource(Names.Items.INSECT_HUSK,true);
-    public static final ItemMHResource itemStinkhopper = new ItemMHResource(Names.Items.STINKHOPPER,true);
-    public static final ItemMHResource itemSnakebeeLarva = new ItemMHResource(Names.Items.SNAKEBEE_LARVA,true);
-    public static final ItemMHResource itemGodbug = new ItemMHResource(Names.Items.GODBUG,true);
-    public static final ItemMHResource itemBitterbug = new ItemMHResource(Names.Items.BITTERBUG,true);
-    public static final ItemMHResource itemFlashbug = new ItemMHResource(Names.Items.FLASHBUG,true);
-    public static final ItemMHResource itemThunderbug = new ItemMHResource(Names.Items.THUNDERBUG,true);
-    public static final ItemMHResource itemGlueglopper = new ItemMHResource(Names.Items.GLUEGLOPPER,true);
-    public static final ItemMHResource itemKillerBeetle = new ItemMHResource(Names.Items.KILLER_BEETLE,true);
-    public static final ItemMHResource itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME,true);
-    public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB,true);
+    public static final ItemMHResource itemInsectHusk = new ItemMHResource(Names.Items.INSECT_HUSK);
+    public static final ItemMHResource itemStinkhopper = new ItemMHResource(Names.Items.STINKHOPPER);
+    public static final ItemMHResource itemSnakebeeLarva = new ItemMHResource(Names.Items.SNAKEBEE_LARVA);
+    public static final ItemMHResource itemGodbug = new ItemMHResource(Names.Items.GODBUG);
+    public static final ItemMHFood itemBitterbug = new ItemMHFood(Names.Items.BITTERBUG, true, ItemMHFood.EAT_DURATION_SHORT);
+    public static final ItemMHResource itemFlashbug = new ItemMHResource(Names.Items.FLASHBUG);
+    public static final ItemMHResource itemThunderbug = new ItemMHResource(Names.Items.THUNDERBUG);
+    public static final ItemMHResource itemGlueglopper = new ItemMHResource(Names.Items.GLUEGLOPPER);
+    public static final ItemMHResource itemKillerBeetle = new ItemMHResource(Names.Items.KILLER_BEETLE);
+    public static final ItemMHResource itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME);
+    public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB);
 
     //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
 
-    public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S,true);
-    public static final ItemMHResource itemMonsterBoneM = new ItemMHResource(Names.Items.MONSTER_BONE_M,true);
-    public static final ItemMHResource itemMysteryBone = new ItemMHResource(Names.Items.MYSTERY_BONE,true);
-    public static final ItemMHResource itemUnknownSkull = new ItemMHResource(Names.Items.UNKNOWN_SKULL,true);
-    public static final ItemMHResource itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE,true);
-    public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE,true);
+    public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
+    public static final ItemMHResource itemMonsterBoneM = new ItemMHResource(Names.Items.MONSTER_BONE_M);
+    public static final ItemMHResource itemMysteryBone = new ItemMHResource(Names.Items.MYSTERY_BONE);
+    public static final ItemMHResource itemUnknownSkull = new ItemMHResource(Names.Items.UNKNOWN_SKULL);
+    public static final ItemMHResource itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE);
+    public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
 
-    public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT,true);
+    public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
     public static final ItemMHFood itemRareSteak = new ItemMHFood(5, 0.4F, true, Names.Items.RARE_STEAK);
     public static final ItemMHFood itemDoneSteak = new ItemMHFood(10, 1.0F, true, Names.Items.DONE_STEAK);
     public static final ItemMHFood itemBurntMeat = new ItemMHFood(5, 0.3F, true, Names.Items.BURNT_MEAT);
 
-    public static final ItemMHResource itemKelbiHorn = new ItemMHResource(Names.Items.KELBI_HORN,true);
-    public static final ItemMHResource itemWarmPelt = new ItemMHResource(Names.Items.WARM_PELT,true);
+    public static final ItemMHResource itemKelbiHorn = new ItemMHResource(Names.Items.KELBI_HORN);
+    public static final ItemMHResource itemWarmPelt = new ItemMHResource(Names.Items.WARM_PELT);
 
-    public static final ItemMHResource itemBirdWyvernFang = new ItemMHResource(Names.Items.BIRD_WYVERN_FANG,true);
+    public static final ItemMHResource itemBirdWyvernFang = new ItemMHResource(Names.Items.BIRD_WYVERN_FANG);
 
-    public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE,true);
-    public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE,true);
+    public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
+    public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
 
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0), Names.Items.IRON_SWORD_PLUS);
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0), Names.Items.BUSTER_SWORD);
