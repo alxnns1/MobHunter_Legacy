@@ -1,8 +1,5 @@
 package com.alxnns1.mobhunter.block;
 
-import com.alxnns1.mobhunter.MobHunter;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
@@ -14,7 +11,7 @@ import java.util.Random;
 /**
  * Created by Mark on 21/04/2016.
  */
-public class BlockOre extends Block
+public class BlockOre extends BlockResource
 {
     //The item that this block will drop with mined
     private Item drop;
@@ -27,13 +24,7 @@ public class BlockOre extends Block
 
     public BlockOre(String blockName, int harvestLevel)
     {
-        super(Material.rock);
-        setUnlocalizedName(blockName);
-        setCreativeTab(MobHunter.MH_TAB);
-        setHardness(3.0F);
-        setResistance(5.0F);
-        setHarvestLevel("pickaxe",harvestLevel);
-        setStepSound(soundTypePiston);
+        super(blockName, harvestLevel);
     }
 
     /**
@@ -43,24 +34,6 @@ public class BlockOre extends Block
     {
         //Will return the given item to drop, if set. Otherwise, will just drop the ore block.
         return drop != null ? drop : Item.getItemFromBlock(this);
-    }
-
-    /**
-     * Gets the metadata of the item this Block can drop. This method is called when the block gets destroyed. It
-     * returns the metadata of the dropped item based on the old metadata of the block.
-     */
-    public int damageDropped(IBlockState state)
-    {
-        return 0;
-    }
-
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
-    public int quantityDropped(Random random)
-    {
-        //Always drops 1 item without fortune
-        return 1;
     }
 
     /**

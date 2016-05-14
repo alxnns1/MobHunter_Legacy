@@ -18,11 +18,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MHBlocks
 {
     public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
-    public static BlockMetal blockEarthCrystal = new BlockMetal(Names.Blocks.EARTH_CRYSTAL, 1);
+    public static BlockResource blockEarthCrystal = new BlockResource(Names.Blocks.EARTH_CRYSTAL);
     public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1);
-    public static BlockMetal blockMachalite = new BlockMetal(Names.Blocks.MACHALITE, 1);
+    public static BlockResource blockMachalite = new BlockResource(Names.Blocks.MACHALITE);
     public static BlockOre blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2);
-    public static BlockMetal blockDragonite = new BlockMetal(Names.Blocks.DRAGONITE, 2);
+    public static BlockResource blockDragonite = new BlockResource(Names.Blocks.DRAGONITE, 2);
 
     public static BlockHerb blockHerb = new BlockHerb();
     public static BlockShroom blockShroom = new BlockShroom();

@@ -82,8 +82,8 @@ public class MHRecipes
                 new ItemStack(MHItems.itemMachaliteIngot),
                 new ItemStack(MHItems.itemMachaliteIngot)});
         //1 Buster Sword+ + 3 Dragonite Ingot + 5 Machalite Ingot + 10 Earth Crystal + 3 Killer Beetle
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBusterSwordPlus),new Object[] {
-                new ItemStack(MHItems.weaponBusterSword),
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponRavagerBlade),new Object[] {
+                new ItemStack(MHItems.weaponBusterSwordPlus),
                 new ItemStack(MHItems.itemDragoniteIngot),
                 new ItemStack(MHItems.itemMachaliteIngot),
                 new ItemStack(MHItems.itemMachaliteIngot),
