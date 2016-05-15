@@ -106,6 +106,7 @@ public class MHItems
     public static final ItemMHResource itemUnknownSkull = new ItemMHResource(Names.Items.UNKNOWN_SKULL);
     public static final ItemMHResource itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE);
     public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
+    public static final ItemMHResource itemDung = new ItemMHResource(Names.Items.DUNG);
 
     public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
     public static final ItemMHConsumable itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK);
@@ -202,6 +203,7 @@ public class MHItems
         GameRegistry.registerItem(itemUnknownSkull, Names.Items.UNKNOWN_SKULL);
         GameRegistry.registerItem(itemBruteBone, Names.Items.BRUTE_BONE);
         GameRegistry.registerItem(itemJumboBone, Names.Items.JUMBO_BONE);
+        GameRegistry.registerItem(itemDung, Names.Items.DUNG);
 
         GameRegistry.registerItem(itemRawMeat, Names.Items.RAW_MEAT);
         GameRegistry.registerItem(itemRareSteak, Names.Items.RARE_STEAK);
@@ -325,6 +327,7 @@ public class MHItems
         Common.regModel(itemUnknownSkull);
         Common.regModel(itemBruteBone);
         Common.regModel(itemJumboBone);
+        Common.regModel(itemDung);
 
         Common.regModel(itemRawMeat);
         Common.regModel(itemRareSteak);

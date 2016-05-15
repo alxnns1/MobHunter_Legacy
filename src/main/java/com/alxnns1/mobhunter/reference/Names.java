@@ -83,6 +83,7 @@ public class Names
         public static final String UNKNOWN_SKULL = "itemUnknownSkull";
         public static final String BRUTE_BONE = "itemBruteBone";
         public static final String JUMBO_BONE = "itemJumboBone";
+        public static final String DUNG = "itemDung";
 
         public static final String KELBI_HORN = "itemKelbiHorn";
         public static final String WARM_PELT = "itemWarmPelt";

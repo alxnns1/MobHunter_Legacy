@@ -43,50 +43,60 @@ public class BlockBone extends BlockBush {
             double i = RANDOM.nextDouble();
             if(blockUnderneath.getMaterial()==Material.sand) {
                 //On top of sand and gravel
-                if (i<0.14303959131545338441890166028097) {
+                if (i<0.11303959131545338441890166028097) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-                } else if (i<0.42528735632183908045977011494252) {
+                } else if (i<0.36528735632183908045977011494252) {
+                    drops.add(new ItemStack(MHItems.itemMysteryBone));
+                } else if (i<0.91) {
                     drops.add(new ItemStack(MHItems.itemMysteryBone));
                 } else {
-                    drops.add(new ItemStack(MHItems.itemUnknownSkull));
+                    drops.add(new ItemStack(MHItems.itemDung));
                 }
             }else if(blockUnderneath== Blocks.netherrack || blockUnderneath==Blocks.nether_brick || blockUnderneath==Blocks.soul_sand) {
                 //On top of nether blocks
-                if (i<0.16666666666666666666666666666667) {
+                if (i<0.13666666666666666666666666666667) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-                } else if (i<0.5) {
+                } else if (i<0.44) {
                     drops.add(new ItemStack(MHItems.itemMysteryBone));
-                } else {
+                } else if (i<0.91) {
                     drops.add(new ItemStack(MHItems.itemUnknownSkull));
+                } else {
+                    drops.add(new ItemStack(MHItems.itemDung));
                 }
             }else if(blockUnderneath.getMaterial()==Material.snow || blockUnderneath.getMaterial()==Material.craftedSnow || blockUnderneath.getMaterial()==Material.ice || blockUnderneath.getMaterial()==Material.packedIce){
                 //On top of snow and ice
-                if (i<0.20652173913043478260869565217392) {
+                if (i<0.17652173913043478260869565217392) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-                } else if (i<0.51086956521739130434782608695652) {
+                } else if (i<0.45086956521739130434782608695652) {
                     drops.add(new ItemStack(MHItems.itemMysteryBone));
-                } else {
+                } else if (i<0.91) {
                     drops.add(new ItemStack(MHItems.itemUnknownSkull));
+                } else {
+                    drops.add(new ItemStack(MHItems.itemDung));
                 }
             }else if(blockUnderneath.getMaterial()==Material.rock) {
                 //On top of stone and rock material outliers
-                if (i<0.17319848293299620733249051833123) {
+                if (i<0.14319848293299620733249051833123) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-                } else if (i<0.32490518331226295828065739570165) {
+                } else if (i<0.26490518331226295828065739570165) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneM));
-                } else if (i<0.74968394437420986093552465233883) {
+                } else if (i<0.65968394437420986093552465233883) {
                     drops.add(new ItemStack(MHItems.itemMysteryBone));
-                } else {
+                } else if (i<0.88) {
                     drops.add(new ItemStack(MHItems.itemUnknownSkull));
+                } else {
+                    drops.add(new ItemStack(MHItems.itemDung));
                 }
             }else{
                 //On top of grass and other outliers
-                if (i<0.28305084745762711864406779661017) {
+                if (i<0.25305084745762711864406779661017) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-                } else if (i<0.71525423728813559322033898305083) {
+                } else if (i<0.65525423728813559322033898305083) {
                     drops.add(new ItemStack(MHItems.itemMysteryBone));
-                } else {
+                } else if (i<0.91) {
                     drops.add(new ItemStack(MHItems.itemUnknownSkull));
+                } else {
+                    drops.add(new ItemStack(MHItems.itemDung));
                 }
             }
         }
