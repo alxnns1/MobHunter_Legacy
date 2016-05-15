@@ -15,15 +15,15 @@ public class MHRecipes
     @SuppressWarnings("all")
     public static void init()
     {
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemPotion), new Object[] {Items.glass_bottle, MHItems.itemHerb, MHItems.itemBlueMushroom});
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemMegaPotion), new Object[] {Items.glass_bottle, MHItems.itemPotion, MHItems.itemHoney});
-        //GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemNutrients), new Object[] {Items.glass_bottle, MHItems.itemBlueMushroom, MHItems.itemGodbug});
-        //GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemMegaNutrients), new Object[] {Items.glass_bottle, MHItems.itemNutrients, MHItems.itemHoney});
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemAntidote), new Object[] {Items.glass_bottle, MHItems.itemBlueMushroom, MHItems.itemAntidoteHerb});
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemImmunizer), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemDragonToadstool});
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemDashJuice), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemRareSteak});
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemDemondrug), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemMightSeed});
-        GameRegistry.addShapedRecipe(new ItemStack(MHItems.itemArmourskin), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemAdamantSeed});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemPotion), new Object[] {Items.glass_bottle, MHItems.itemHerb, MHItems.itemBlueMushroom});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemMegaPotion), new Object[] {Items.glass_bottle, MHItems.itemPotion, MHItems.itemHoney});
+        //GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemNutrients), new Object[] {Items.glass_bottle, MHItems.itemBlueMushroom, MHItems.itemGodbug});
+        //GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemMegaNutrients), new Object[] {Items.glass_bottle, MHItems.itemNutrients, MHItems.itemHoney});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemAntidote), new Object[] {Items.glass_bottle, MHItems.itemBlueMushroom, MHItems.itemAntidoteHerb});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemImmunizer), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemDragonToadstool});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDashJuice), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemRareSteak});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDemondrug), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemMightSeed});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemArmourskin), new Object[] {Items.glass_bottle, MHItems.itemHoney, MHItems.itemBitterbug, MHItems.itemAdamantSeed});
 
         //1 Monster Bone S
         GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringHelmet), new Object[] {"yzy", "y y", "   ", 'y', Items.string, 'z', MHItems.itemMonsterBoneS});

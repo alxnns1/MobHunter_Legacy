@@ -73,7 +73,6 @@ public class Names
         public static final String KILLER_BEETLE = "itemKillerBeetle";
         public static final String HERCUDROME = "itemHercudrome";
         public static final String RARE_SCARAB = "itemRareScarab";
-
         public static final String HONEY = "itemHoney";
 
         public static final String BONE = "bone";

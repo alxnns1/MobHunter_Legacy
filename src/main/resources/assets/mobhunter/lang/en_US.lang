@@ -14,8 +14,8 @@ item.itemMegaDashJuice.name=Mega Dash Juice
 item.itemDemondrug.name=Demondrug
 item.itemMegaDemondrug.name=Mega Demondrug
 item.itemMightPill.name=Might Pill
-item.itemArmorskin.name=Armorskin
-item.itemMegaArmorskin.name=Mega Armorskin
+item.itemArmourskin.name=Armourskin
+item.itemMegaArmourskin.name=Mega Armourskin
 item.itemAdamantPill.name=Adamant Pill
 item.itemEnergyDrink.name=Energy Drink
 
@@ -74,6 +74,7 @@ item.itemGlueglopper.name=Glueglopper
 item.itemKillerBeetle.name=Killer Beetle
 item.itemHercudrome.name=Hercudrome
 item.itemRareScarab.name=Rare Scarab
+item.itemHoney.name=Honey
 
 //Bones
 item.itemMonsterBoneS.name=Monster Bone S

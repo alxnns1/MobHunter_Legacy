@@ -83,7 +83,6 @@ public class MHItems
     public static final ItemMHResource itemKillerBeetle = new ItemMHResource(Names.Items.KILLER_BEETLE);
     public static final ItemMHResource itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME);
     public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB);
-
     public static final ItemMHResource itemHoney = new ItemMHResource(Names.Items.HONEY);
 
     public static final ItemMHDrink itemPotion = new ItemMHDrink(Names.Items.POTION);
@@ -180,6 +179,7 @@ public class MHItems
         GameRegistry.registerItem(itemKillerBeetle, Names.Items.KILLER_BEETLE);
         GameRegistry.registerItem(itemHercudrome, Names.Items.HERCUDROME);
         GameRegistry.registerItem(itemRareScarab, Names.Items.RARE_SCARAB);
+        GameRegistry.registerItem(itemHoney, Names.Items.HONEY);
 
         GameRegistry.registerItem(itemPotion, Names.Items.POTION);
         GameRegistry.registerItem(itemMegaPotion, Names.Items.MEGA_POTION);
@@ -297,6 +297,7 @@ public class MHItems
         Common.regModel(itemKillerBeetle);
         Common.regModel(itemHercudrome);
         Common.regModel(itemRareScarab);
+        Common.regModel(itemHoney);
 
         Common.regModel(itemPotion);
         Common.regModel(itemMegaPotion);

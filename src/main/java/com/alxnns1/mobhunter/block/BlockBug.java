@@ -63,8 +63,10 @@ public class BlockBug extends BlockBush {
                     drops.add(new ItemStack(MHItems.itemInsectHusk));
                 } else if (i<0.082644628099173553719008264462811) {
                     drops.add(new ItemStack(MHItems.itemStinkhopper));
-                } else if (i<0.16198347107438016528925619834711) {
+                } else if (i<0.12198347107438016528925619834711) {
                     drops.add(new ItemStack(MHItems.itemSnakebeeLarva));
+                } else if (i<0.16198347107438016528925619834711) {
+                    drops.add(new ItemStack(MHItems.itemHoney));
                 } else if (i<0.25619834710743801652892561983471) {
                     drops.add(new ItemStack(MHItems.itemGodbug));
                 } else if (i<0.38512396694214876033057851239669) {
@@ -103,8 +105,10 @@ public class BlockBug extends BlockBush {
                     drops.add(new ItemStack(MHItems.itemInsectHusk));
                 } else if (i<0.17623546511627906976744186046512) {
                     drops.add(new ItemStack(MHItems.itemStinkhopper));
-                } else if (i<0.23074127906976744186046511627907) {
+                } else if (i<0.20074127906976744186046511627907) {
                     drops.add(new ItemStack(MHItems.itemSnakebeeLarva));
+                } else if (i<0.23074127906976744186046511627907) {
+                    drops.add(new ItemStack(MHItems.itemHoney));
                 } else if (i<0.29069767441860465116279069767442) {
                     drops.add(new ItemStack(MHItems.itemGodbug));
                 } else if (i<0.44331395348837209302325581395349) {
@@ -124,8 +128,10 @@ public class BlockBug extends BlockBush {
                     drops.add(new ItemStack(MHItems.itemInsectHusk));
                 } else if (i<0.14816260490181882283318328622064) {
                     drops.add(new ItemStack(MHItems.itemStinkhopper));
-                } else if (i<0.23982775011174837413985230327564) {
+                } else if (i<0.19982775011174837413985230327564) {
                     drops.add(new ItemStack(MHItems.itemSnakebeeLarva));
+                } else if (i<0.23982775011174837413985230327564) {
+                    drops.add(new ItemStack(MHItems.itemHoney));
                 } else if (i<0.3403068515918634592260087258167) {
                     drops.add(new ItemStack(MHItems.itemGodbug));
                 } else if (i<0.46392258828121557048331958775867) {
@@ -145,8 +151,10 @@ public class BlockBug extends BlockBush {
                     drops.add(new ItemStack(MHItems.itemInsectHusk));
                 } else if (i<0.16849461702711942297669153127505) {
                     drops.add(new ItemStack(MHItems.itemStinkhopper));
-                } else if (i<0.24193394719586623550576406830576) {
+                } else if (i<0.20193394719586623550576406830576) {
                     drops.add(new ItemStack(MHItems.itemSnakebeeLarva));
+                } else if (i<0.24193394719586623550576406830576) {
+                    drops.add(new ItemStack(MHItems.itemHoney));
                 } else if (i<0.38154937707711017580828658375974) {
                     drops.add(new ItemStack(MHItems.itemGodbug));
                 } else if (i<0.46447125811929407676831079452793) {
