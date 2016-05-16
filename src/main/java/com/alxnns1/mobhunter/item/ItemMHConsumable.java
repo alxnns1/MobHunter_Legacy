@@ -100,9 +100,9 @@ public class ItemMHConsumable extends ItemFood
             else if(item.equals(MHItems.itemToadstool))
                 player.addPotionEffect(new PotionEffect(Potion.poison.getId(), effectDuration));
             else if(item.equals(MHItems.itemExciteshroom))
-                player.getFoodStats().addStats(-2,0);
-            else if(item.equals(MHItems.itemMopeshroom))
                 player.getFoodStats().addStats(2,0);
+            else if(item.equals(MHItems.itemMopeshroom))
+                player.getFoodStats().addStats(-2,0);
             else if(item.equals(MHItems.itemMightSeed))
                 player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), effectDuration));
             else if(item.equals(MHItems.itemAdamantSeed))
