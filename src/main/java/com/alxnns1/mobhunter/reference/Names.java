@@ -24,6 +24,8 @@ public class Names
         public static final String ADAMANT_PILL = "itemAdamantPill";
         public static final String ENERGY_DRINK = "itemEnergyDrink";
 
+        public static final String CATALYST = "itemCatalyst";
+
         public static final String RAW_MEAT = "itemRawMeat";
         public static final String RARE_STEAK = "itemRareSteak";
         public static final String DONE_STEAK = "itemDoneSteak";
@@ -88,6 +90,9 @@ public class Names
         public static final String KELBI_HORN = "itemKelbiHorn";
         public static final String WARM_PELT = "itemWarmPelt";
 
+        public static final String GARGWA_FEATHER = "itemGargwaFeather";
+        public static final String STEEL_EGG = "itemSteelEgg";
+
         public static final String BIRD_WYVERN_FANG = "itemBirdWyvernFang";
 
         public static final String JAGGI_HIDE = "itemJaggiHide";
@@ -122,6 +127,12 @@ public class Names
         public static final String BONE_BLADE_PLUS = "weaponBoneBladePlus";
         public static final String JAWBLADE = "weaponJawblade";
         public static final String GIANT_JAWBLADE = "weaponGiantJawblade";
+
+        public static final String ICON_GREAT_JAGGI = "iconGreatJaggi";
+        public static final String ICON_GENDROME = "iconGendrome";
+        public static final String ICON_IODROME = "iconIodrome";
+        public static final String ICON_VELOCIDROME = "iconVelocidrome";
+        public static final String ICON_KIRIN = "iconKirin";
     }
 
     public static class Blocks

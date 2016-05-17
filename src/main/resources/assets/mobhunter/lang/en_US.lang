@@ -19,6 +19,9 @@ item.itemMegaArmourskin.name=Mega Armourskin
 item.itemAdamantPill.name=Adamant Pill
 item.itemEnergyDrink.name=Energy Drink
 
+//Craft
+item.itemCatalyst.name=Catalyst
+
 //Meats
 item.itemRawMeat.name=Raw Meat
 item.itemRareSteak.name=Rare Steak
@@ -90,6 +93,10 @@ item.itemDung.name=Dung
 //Kelbi
 item.itemKelbiHorn.name=Kelbi Horn
 item.itemWarmPelt.name=Warm Pelt
+
+//Gargwa
+item.itemGargwaFeather.name=Gargwa Feather
+item.itemSteelEgg.name=Steel Egg
 
 //Bird Wyvern
 item.itemBirdWyvernFang.name=Bird Wyvern Fang
@@ -173,9 +180,9 @@ entity.MobHunter.Rhenoplos.name=Rhenoplos
 entity.MobHunter.Slagtoth.name=Slagtoth
 entity.MobHunter.Popo.name=Popo
 entity.MobHunter.Apceros.name=Apceros
+entity.MobHunter.Gargwa.name=Gargwa
 
 //Bird Wyvern Minions
-entity.MobHunter.Gargwa.name=Gargwa
 entity.MobHunter.Jaggi.name=Jaggi
 entity.MobHunter.Jaggia.name=Jaggia
 entity.MobHunter.Velociprey.name=Velociprey

@@ -35,8 +35,6 @@ public class EntityJaggi extends EntityMHBirdWyvern
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWitch.class, true));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityMHHerbivore.class,1.0D,false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMHHerbivore.class, true));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityGargwa.class,1.0D,false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityGargwa.class, true));
     }
 
     @Override

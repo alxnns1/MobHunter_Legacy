@@ -49,12 +49,12 @@ public class EntityGargwa extends EntityMHHerbivore {
                 }else if(i<85){
                     this.dropItem(MHItems.itemMonsterBoneS, 1);
                 }else if(i<100){
-                    //this.dropItem(MHItems.itemGargwaFeather, 1);
+                    this.dropItem(MHItems.itemGargwaFeather, 1);
                 }
             }
             int i = this.rand.nextInt(99);
             if(i<60){
-                //this.dropItem(MHItems.itemSteelEgg, 1);
+                this.dropItem(MHItems.itemSteelEgg, 1);
             }else if(i<90){
                 this.dropItem(MHItems.itemHerb, 1);
             }else if(i<100){
