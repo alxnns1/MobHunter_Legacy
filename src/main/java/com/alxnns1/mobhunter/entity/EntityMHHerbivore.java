@@ -7,6 +7,8 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.world.DifficultyInstance;
@@ -24,23 +26,30 @@ public abstract class EntityMHHerbivore extends EntityAnimal
     private double baseHealth = 5d;
     private double baseSpeed = 0.1d;
     private double baseKnockback = 0.2d;
+    private Item breedItem;
 
     public EntityMHHerbivore(World world)
     {
-        this(world, 1f, 1f);
+        this(world, 1f, 1f, Items.wheat);
     }
 
     public EntityMHHerbivore(World world, float minScale, float maxScale)
+    {
+        this(world, minScale, maxScale, Items.wheat);
+    }
+
+    public EntityMHHerbivore(World world, float minScale, float maxScale, Item temptFood)
     {
         super(world);
         this.setSize(0.9F, 1.3F); //Same as cow
         scaleMin = minScale;
         scaleMax = maxScale;
+        breedItem = temptFood;
         ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
-        this.tasks.addTask(3, new EntityAITempt(this, 1.25D, Items.wheat, false));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.25D, temptFood, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -60,6 +69,14 @@ public abstract class EntityMHHerbivore extends EntityAnimal
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+    }
+
+    /**
+     * Checks if the parameter is an item which this animal can be fed to breed it
+     */
+    public boolean isBreedingItem(ItemStack stack)
+    {
+        return stack == null ? false : stack.getItem() == breedItem;
     }
 
     /**

@@ -20,6 +20,12 @@ public class EntityKelbi extends EntityMHHerbivore
         setBaseKnockback(0.2);
     }
 
+    @Override
+    public float getEyeHeight()
+    {
+        return 1.375F;
+    }
+
     protected Item getDropItem()
     {
         return MHItems.itemRawMeat;

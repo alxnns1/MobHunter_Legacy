@@ -7,6 +7,7 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -34,6 +35,14 @@ public class EntityJaggi extends EntityMHBirdWyvern
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWitch.class, true));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityMHHerbivore.class,1.0D,false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMHHerbivore.class, true));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityGargwa.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityGargwa.class, true));
+    }
+
+    @Override
+    public float getEyeHeight()
+    {
+        return 1.375F;
     }
 
     protected Item getDropItem()

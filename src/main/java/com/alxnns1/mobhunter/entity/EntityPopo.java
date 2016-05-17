@@ -20,6 +20,12 @@ public class EntityPopo extends EntityMHHerbivore
         setBaseKnockback(0.5);
     }
 
+    @Override
+    public float getEyeHeight()
+    {
+        return 2.0F;
+    }
+
     protected Item getDropItem()
     {
         return MHItems.itemRawMeat;

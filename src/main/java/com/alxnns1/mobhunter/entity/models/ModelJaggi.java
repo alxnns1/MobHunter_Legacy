@@ -185,10 +185,7 @@ public class ModelJaggi extends ModelBase {
         this.setRotationAngles(p_78088_2_, p_78088_3_, p_78088_4_, p_78088_5_, p_78088_6_, scale, entityIn);
 
         if (this.isChild) {
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(0.5f,0.5f,0.5f);
             this.body.render(scale);
-            GlStateManager.popMatrix();
         }
         else {
             this.body.render(scale);

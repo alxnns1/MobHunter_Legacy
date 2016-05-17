@@ -1,9 +1,11 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.entity.EntityGargwa;
 import com.alxnns1.mobhunter.entity.EntityJaggi;
 import com.alxnns1.mobhunter.entity.EntityKelbi;
 import com.alxnns1.mobhunter.entity.EntityPopo;
+import com.alxnns1.mobhunter.entity.render.RenderGargwa;
 import com.alxnns1.mobhunter.entity.render.RenderJaggi;
 import com.alxnns1.mobhunter.entity.render.RenderKelbi;
 import com.alxnns1.mobhunter.entity.render.RenderPopo;
@@ -58,6 +60,11 @@ public class MHEntities
                 BiomeDictionary.Type.SANDY,
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
+        registerMobWithEgg(EntityGargwa.class, "Gargwa", 0x804000, 0x0000ff);
+        addSpawn(EntityGargwa.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.HILLS});
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
         addSpawn(EntityJaggi.class, spawnRarity, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
@@ -75,6 +82,7 @@ public class MHEntities
         {
             RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityGargwa.class, RenderGargwa.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
         }
     }
