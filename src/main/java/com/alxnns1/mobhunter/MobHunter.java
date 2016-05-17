@@ -64,8 +64,6 @@ public class MobHunter {
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
 
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
-        EntityEventHandler.addMobDrop(EntityEventHandler.ALL_VANILLA_WILDCARD,new ItemStack(MHItems.itemMysteryBone),1,1,0.5f);
-        EntityEventHandler.addMobDrop(EntityEventHandler.AGGRESSIVE_WILDCARD,new ItemStack(MHItems.itemMonsterBoneS),1,2,0.5f);
     }
 
     @Mod.EventHandler

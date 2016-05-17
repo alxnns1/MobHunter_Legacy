@@ -28,28 +28,48 @@ public class MHEntities
         EntityRegistry.registerEgg(entityClass, eggColour, eggSpotColour);
     }
 
-    private static void addSpawn(Class<? extends EntityLiving> entityClass, BiomeDictionary.Type[] biomeTypes)
+    private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type[] biomeTypes)
     {
         for(BiomeDictionary.Type biome : biomeTypes)
         {
-            addSpawn(entityClass, biome);
+            addSpawn(entityClass, rarity, biome);
         }
     }
 
-    private static void addSpawn(Class<? extends EntityLiving> entityClass, BiomeDictionary.Type biomeType)
+    private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type biomeType)
     {
-        EntityRegistry.addSpawn(entityClass, spawnRarity, 5, 5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
+        EntityRegistry.addSpawn(entityClass, rarity, 5, 5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
     }
 
     public static void init(boolean isClientSide)
     {
         registerMobWithEgg(EntityPopo.class, "Popo", 0x402a00, 0x403400);
-        addSpawn(EntityPopo.class, BiomeDictionary.Type.SNOWY);
-        addSpawn(EntityPopo.class, BiomeDictionary.Type.MOUNTAIN);
+        addSpawn(EntityPopo.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.SNOWY,
+                BiomeDictionary.Type.MOUNTAIN});
         registerMobWithEgg(EntityKelbi.class, "Kelbi", 0x20402b, 0xbfbf8f);
-        addSpawn(EntityKelbi.class, new BiomeDictionary.Type[] {BiomeDictionary.Type.MESA, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.SANDY, BiomeDictionary.Type.WASTELAND, BiomeDictionary.Type.BEACH});
+        addSpawn(EntityKelbi.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
-        addSpawn(EntityJaggi.class, new BiomeDictionary.Type[] {BiomeDictionary.Type.MESA, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.SANDY, BiomeDictionary.Type.SNOWY, BiomeDictionary.Type.WASTELAND, BiomeDictionary.Type.BEACH});
+        addSpawn(EntityJaggi.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.SNOWY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
 
         if(isClientSide)
         {

@@ -40,7 +40,7 @@ public abstract class EntityMHBirdWyvern extends EntityMob
         scaleMax = maxScale;
         ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAITempt(this, 1.25D, temptFood, false));
+        this.tasks.addTask(1, new EntityAITempt(this, 1.25D, temptFood, true));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
@@ -104,6 +104,12 @@ public abstract class EntityMHBirdWyvern extends EntityMob
     {
         super.readEntityFromNBT(tagCompund);
         setEntityScale(tagCompund.getFloat(KEY_SCALE));
+    }
+
+    @Override
+    protected boolean canDespawn()
+    {
+        return false;
     }
 
     protected void setBaseHealth(int health)

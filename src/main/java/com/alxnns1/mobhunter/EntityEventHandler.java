@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter;
 
 import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
+import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -98,13 +99,22 @@ public class EntityEventHandler
     @SubscribeEvent
     public void mobDeath(LivingDropsEvent event)
     {
+        EntityLivingBase entity = event.entityLiving;
+        if(entity instanceof EntityMHBirdWyvern)// || entity instanceof EntityMHHerbivore)
+        {
+            float scale = -1;
+            if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
+            //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
+            //LogHelper.info(entity.getDisplayName().getUnformattedText() + " died (" + entity.getEntityId() + ")");
+        }
+
         //This is called every time a LivingEntityBase dies
         Random rand = new Random();
         //Checks the dead entity against the ones in the list
         for(Object[] o : mobDrops)
         {
             //This all checks if the entity's localised name or unlocalised name matches the name in the list
-            EntityLivingBase entity = event.entityLiving;
+            //EntityLivingBase entity = event.entityLiving;
             String s = EntityList.getEntityString(entity);
             if(s == null)
                 s = "generic";
@@ -134,12 +144,12 @@ public class EntityEventHandler
     public void mobSpawn(LivingSpawnEvent event)
     {
         EntityLivingBase entity = event.entityLiving;
-        if(entity instanceof EntityMHBirdWyvern) //|| entity instanceof EntityMHHerbivore)
+        if(entity instanceof EntityMHBirdWyvern)// || entity instanceof EntityMHHerbivore)
         {
             float scale = -1;
             if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
             //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
-            //LogHelper.info(entity.getDisplayName().getUnformattedText() + " spawned with scale " + scale + " at " + entity.getPosition().toString());
+            //LogHelper.info(entity.getDisplayName().getUnformattedText() + ", " + ((EntityMHBirdWyvern) entity).getPosition().toString() + " (" + entity.getEntityId() + ")");
         }
     }
 

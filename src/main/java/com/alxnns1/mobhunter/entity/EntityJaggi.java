@@ -71,10 +71,4 @@ public class EntityJaggi extends EntityMHBirdWyvern
 
         }
     }
-
-    @Override
-    protected boolean isValidLightLevel()
-    {
-        return true; //lets it spawn during the day
-    }
 }
