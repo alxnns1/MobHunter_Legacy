@@ -1,10 +1,7 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.entity.EntityGargwa;
-import com.alxnns1.mobhunter.entity.EntityJaggi;
-import com.alxnns1.mobhunter.entity.EntityKelbi;
-import com.alxnns1.mobhunter.entity.EntityPopo;
+import com.alxnns1.mobhunter.entity.*;
 import com.alxnns1.mobhunter.entity.render.RenderGargwa;
 import com.alxnns1.mobhunter.entity.render.RenderJaggi;
 import com.alxnns1.mobhunter.entity.render.RenderKelbi;
@@ -40,11 +37,23 @@ public class MHEntities
 
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type biomeType)
     {
-        EntityRegistry.addSpawn(entityClass, rarity, 5, 5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
+        EntityRegistry.addSpawn(entityClass, rarity, 3, 5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
     }
 
     public static void init(boolean isClientSide)
     {
+        registerMobWithEgg(EntityAltaroth.class, "Altaroth", 0x8fbf60, 0xbfbf60);
+        addSpawn(EntityAltaroth.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.SNOWY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityPopo.class, "Popo", 0x402a00, 0x403400);
         addSpawn(EntityPopo.class, spawnRarity, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.SNOWY,
