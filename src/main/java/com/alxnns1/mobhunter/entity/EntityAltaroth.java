@@ -9,9 +9,11 @@ import net.minecraft.world.World;
  * Created by Alex on 17/05/2016.
  */
 public class EntityAltaroth extends EntityMHNeopteron {
+    private boolean full = false;
+
     public EntityAltaroth(World worldIn){
         super(worldIn, 1.0f, 1.0f);
-        this.setSize(1.0f,0.5f);
+        this.setSize(0.9f,0.5f);
         setBaseHealth(5);
         setBaseAttack(2);
         setBaseSpeed(0.1);
@@ -22,7 +24,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
     @Override
     public float getEyeHeight()
     {
-        return 1.0F;
+        return 0.25F;
     }
 
     protected Item getDropItem()
@@ -64,5 +66,9 @@ public class EntityAltaroth extends EntityMHNeopteron {
                 //this.dropItem(MHItems.itemAltarothStomach, 1);
             }
         }
+    }
+
+    public boolean isFull(){
+        return full;
     }
 }

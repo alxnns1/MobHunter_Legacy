@@ -2,10 +2,7 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.entity.*;
-import com.alxnns1.mobhunter.entity.render.RenderGargwa;
-import com.alxnns1.mobhunter.entity.render.RenderJaggi;
-import com.alxnns1.mobhunter.entity.render.RenderKelbi;
-import com.alxnns1.mobhunter.entity.render.RenderPopo;
+import com.alxnns1.mobhunter.entity.render.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
@@ -89,6 +86,7 @@ public class MHEntities
 
         if(isClientSide)
         {
+            RenderingRegistry.registerEntityRenderingHandler(EntityAltaroth.class, RenderAltaroth.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityGargwa.class, RenderGargwa.FACTORY);

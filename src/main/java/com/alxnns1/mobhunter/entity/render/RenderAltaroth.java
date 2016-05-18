@@ -1,8 +1,7 @@
 package com.alxnns1.mobhunter.entity.render;
 
 import com.alxnns1.mobhunter.entity.EntityAltaroth;
-import com.alxnns1.mobhunter.entity.EntityJaggi;
-import com.alxnns1.mobhunter.entity.models.ModelJaggi;
+import com.alxnns1.mobhunter.entity.models.ModelAltaroth;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -20,12 +19,15 @@ public class RenderAltaroth extends RenderLiving<EntityAltaroth> {
 
     public RenderAltaroth(RenderManager renderManagerIn)
     {
-        super(renderManagerIn, new ModelJaggi(), 0.7f);
+        super(renderManagerIn, new ModelAltaroth(), 0.7f);
     }
 
     @Override
     protected ResourceLocation getEntityTexture(EntityAltaroth entity)
     {
+        if(entity.isFull()){
+            return altarothFullTextures;
+        }
         return altarothEmptyTextures;
     }
 
