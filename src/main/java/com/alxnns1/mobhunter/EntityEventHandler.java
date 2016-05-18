@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter;
 
 import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
+import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.Entity;
@@ -149,12 +150,13 @@ public class EntityEventHandler
     public void mobSpawn(LivingSpawnEvent event)
     {
         EntityLivingBase entity = event.entityLiving;
-        if(entity instanceof EntityMHBirdWyvern)// || entity instanceof EntityMHHerbivore)
+        if(entity instanceof EntityMHBirdWyvern || entity instanceof EntityMHHerbivore || entity instanceof EntityMHNeopteron)
         {
             float scale = -1;
             if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
-            //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
-            //LogHelper.info(entity.getDisplayName().getUnformattedText() + ", " + ((EntityMHBirdWyvern) entity).getPosition().toString() + " (" + entity.getEntityId() + ")");
+            if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
+            if(entity instanceof EntityMHNeopteron) scale = ((EntityMHNeopteron) entity).getScale();
+            //LogHelper.info(entity.getDisplayName().getUnformattedText() + ", " + entity.getPosition().toString() + " (" + entity.getEntityId() + ")");
         }
     }
 

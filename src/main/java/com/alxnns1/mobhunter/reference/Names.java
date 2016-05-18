@@ -87,11 +87,16 @@ public class Names
         public static final String JUMBO_BONE = "itemJumboBone";
         public static final String DUNG = "itemDung";
 
+        public static final String ALTAROTH_JAW = "itemAltarothJaw";
+        public static final String ALTAROTH_STOMACH = "itemAltarothStomach";
+
         public static final String KELBI_HORN = "itemKelbiHorn";
         public static final String WARM_PELT = "itemWarmPelt";
 
         public static final String GARGWA_FEATHER = "itemGargwaFeather";
         public static final String STEEL_EGG = "itemSteelEgg";
+
+        public static final String MONSTER_FLUID = "itemMonsterFluid";
 
         public static final String BIRD_WYVERN_FANG = "itemBirdWyvernFang";
 

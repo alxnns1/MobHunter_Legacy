@@ -115,11 +115,16 @@ public class MHItems
     public static final ItemMHResource itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE);
     public static final ItemMHResource itemDung = new ItemMHResource(Names.Items.DUNG);
 
+    public static final ItemMHResource itemAltarothJaw = new ItemMHResource(Names.Items.ALTAROTH_JAW);
+    public static final ItemMHResource itemAltarothStomach = new ItemMHResource(Names.Items.ALTAROTH_STOMACH);
+
     public static final ItemMHResource itemKelbiHorn = new ItemMHResource(Names.Items.KELBI_HORN);
     public static final ItemMHResource itemWarmPelt = new ItemMHResource(Names.Items.WARM_PELT);
 
     public static final ItemMHResource itemGargwaFeather = new ItemMHResource(Names.Items.GARGWA_FEATHER);
     public static final ItemMHResource itemSteelEgg = new ItemMHResource(Names.Items.STEEL_EGG);
+
+    public static final ItemMHResource itemMonsterFluid = new ItemMHResource(Names.Items.MONSTER_FLUID);
 
     public static final ItemMHResource itemBirdWyvernFang = new ItemMHResource(Names.Items.BIRD_WYVERN_FANG);
 
@@ -223,11 +228,16 @@ public class MHItems
         GameRegistry.registerItem(itemJumboBone, Names.Items.JUMBO_BONE);
         GameRegistry.registerItem(itemDung, Names.Items.DUNG);
 
+        GameRegistry.registerItem(itemAltarothJaw, Names.Items.ALTAROTH_JAW);
+        GameRegistry.registerItem(itemAltarothStomach, Names.Items.ALTAROTH_STOMACH);
+
         GameRegistry.registerItem(itemKelbiHorn, Names.Items.KELBI_HORN);
         GameRegistry.registerItem(itemWarmPelt, Names.Items.WARM_PELT);
 
         GameRegistry.registerItem(itemGargwaFeather, Names.Items.GARGWA_FEATHER);
         GameRegistry.registerItem(itemSteelEgg, Names.Items.STEEL_EGG);
+
+        GameRegistry.registerItem(itemMonsterFluid, Names.Items.MONSTER_FLUID);
 
         GameRegistry.registerItem(itemBirdWyvernFang, Names.Items.BIRD_WYVERN_FANG);
 
@@ -358,11 +368,16 @@ public class MHItems
         Common.regModel(itemJumboBone);
         Common.regModel(itemDung);
 
+        Common.regModel(itemAltarothJaw);
+        Common.regModel(itemAltarothStomach);
+
         Common.regModel(itemKelbiHorn);
         Common.regModel(itemWarmPelt);
 
         Common.regModel(itemGargwaFeather);
         Common.regModel(itemSteelEgg);
+
+        Common.regModel(itemMonsterFluid);
 
         Common.regModel(itemBirdWyvernFang);
 

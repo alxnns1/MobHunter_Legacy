@@ -90,6 +90,10 @@ item.itemBruteBone.name=Brute Bone
 item.itemJumboBone.name=Jumbo Bone
 item.itemDung.name=Dung
 
+//Altaroth
+item.itemAltarothJaw.name=Altaroth Jaw
+item.itemAltarothStomach.name=Altaroth Stomach
+
 //Kelbi
 item.itemKelbiHorn.name=Kelbi Horn
 item.itemWarmPelt.name=Warm Pelt
@@ -97,6 +101,9 @@ item.itemWarmPelt.name=Warm Pelt
 //Gargwa
 item.itemGargwaFeather.name=Gargwa Feather
 item.itemSteelEgg.name=Steel Egg
+
+//Neopteron
+item.itemMonsterFluid.name=Monster Fluid
 
 //Bird Wyvern
 item.itemBirdWyvernFang.name=Bird Wyvern Fang
