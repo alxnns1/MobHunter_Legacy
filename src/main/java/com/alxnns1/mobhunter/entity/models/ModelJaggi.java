@@ -184,12 +184,7 @@ public class ModelJaggi extends ModelBase {
 
         this.setRotationAngles(p_78088_2_, p_78088_3_, p_78088_4_, p_78088_5_, p_78088_6_, scale, entityIn);
 
-        if (this.isChild) {
-            this.body.render(scale);
-        }
-        else {
-            this.body.render(scale);
-        }
+        this.body.render(scale);
     }
 
     public void setRotationAngles(float p_78087_1_, float p_78087_2_, float p_78087_3_, float p_78087_4_, float p_78087_5_, float p_78087_6_, Entity entityIn)

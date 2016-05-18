@@ -14,8 +14,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderAltaroth extends RenderLiving<EntityAltaroth> {
     public static final RenderAltaroth.Factory FACTORY = new RenderAltaroth.Factory();
-    private static final ResourceLocation altarothEmptyTextures = new ResourceLocation("mobhunter:textures/entities/altaroth_empty.png");
-    private static final ResourceLocation altarothFullTextures = new ResourceLocation("mobhunter:textures/entities/altaroth_full.png");
+    private static final ResourceLocation altarothTextures = new ResourceLocation("mobhunter:textures/entities/altaroth.png");
 
     public RenderAltaroth(RenderManager renderManagerIn)
     {
@@ -25,10 +24,7 @@ public class RenderAltaroth extends RenderLiving<EntityAltaroth> {
     @Override
     protected ResourceLocation getEntityTexture(EntityAltaroth entity)
     {
-        if(entity.isFull()){
-            return altarothFullTextures;
-        }
-        return altarothEmptyTextures;
+        return altarothTextures;
     }
 
     public static class Factory implements IRenderFactory<EntityAltaroth>
