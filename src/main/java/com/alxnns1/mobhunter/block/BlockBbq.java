@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
@@ -97,6 +98,8 @@ public class BlockBbq extends BlockContainer
                 EntityItem itemDrop = new EntityItem(worldIn, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, new ItemStack(product));
                 itemDrop.setNoPickupDelay();
                 worldIn.spawnEntityInWorld(itemDrop);
+                if(product.equals(MHItems.itemDoneSteak))
+                    playerIn.triggerAchievement(MHAchievements.cookMeat);
                 return true;
             }
         }

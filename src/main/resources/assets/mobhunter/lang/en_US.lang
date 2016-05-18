@@ -1,6 +1,6 @@
-//Use '§' for text formatting
-
-//ITEMS
+//Achievements
+achievement.cookMeat=Mmm So Tasty!
+achievement.cookMeat.desc=Cook your first piece of Well-Done Steak.
 
 //Potions
 item.itemPotion.name=Potion

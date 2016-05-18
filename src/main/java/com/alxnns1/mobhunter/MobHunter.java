@@ -5,7 +5,6 @@ import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -61,8 +60,8 @@ public class MobHunter {
         }
 
         MHRecipes.init();
+        MHAchievements.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
-
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
     }
 
