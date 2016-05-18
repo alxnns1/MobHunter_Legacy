@@ -16,6 +16,7 @@ public class MHRecipes
     public static void init()
     {
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemCatalyst), new Object[] {MHItems.itemHoney, MHItems.itemBitterbug});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemWhetstone), new Object[] {MHItems.itemMonsterBoneS, Items.iron_ingot});
 
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemPotion), new Object[] {Items.glass_bottle, MHItems.itemHerb, MHItems.itemBlueMushroom});
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemMegaPotion), new Object[] {Items.glass_bottle, MHItems.itemPotion, MHItems.itemHoney});

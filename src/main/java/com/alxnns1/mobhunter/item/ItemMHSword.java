@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class ItemMHSword extends ItemSword {
     public ItemMHSword(ToolMaterial material, String itemName) {
-        super(material);
+        super(material.setRepairItem(new ItemStack(MHItems.itemWhetstone)));
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
     }
@@ -28,4 +29,6 @@ public class ItemMHSword extends ItemSword {
     {
         Common.addTooltip(stack, tooltip);
     }
+
+
 }

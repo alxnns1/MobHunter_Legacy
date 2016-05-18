@@ -55,6 +55,8 @@ public class MHItems
 
     public static final ItemMHResource itemCatalyst = new ItemMHResource(Names.Items.CATALYST);
 
+    public static final ItemMHResource itemWhetstone = new ItemMHResource(Names.Items.WHETSTONE);
+
     public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
     public static final ItemMHConsumable itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK);
     public static final ItemMHConsumable itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK);
@@ -132,15 +134,15 @@ public class MHItems
     public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
     public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
 
-    public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,2.0f,0), Names.Items.IRON_SWORD_PLUS);
-    public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,3.0f,0), Names.Items.BUSTER_SWORD);
-    public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,5.0f,0), Names.Items.BUSTER_SWORD_PLUS);
-    public static final ItemMHSword weaponRavagerBlade = new ItemMHSword(EnumHelper.addToolMaterial("RavagerPlus",0,1500,0.0f,6.0f,0), Names.Items.RAVAGER_BLADE);
+    public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS);
+    public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,4.0f,0), Names.Items.BUSTER_SWORD);
+    public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,6.0f,0), Names.Items.BUSTER_SWORD_PLUS);
+    public static final ItemMHSword weaponRavagerBlade = new ItemMHSword(EnumHelper.addToolMaterial("RavagerPlus",0,1500,0.0f,7.0f,0), Names.Items.RAVAGER_BLADE);
 
-    public static final ItemMHSword weaponBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,3.0f,0), Names.Items.BONE_BLADE);
-    public static final ItemMHSword weaponBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,4.0f,0), Names.Items.BONE_BLADE_PLUS);
-    public static final ItemMHSword weaponJawblade = new ItemMHSword(EnumHelper.addToolMaterial("Jawblade",0,177,0.0f,5.0f,0), Names.Items.JAWBLADE);
-    public static final ItemMHSword weaponGiantJawblade = new ItemMHSword(EnumHelper.addToolMaterial("GiantJawblade",0,236,0.0f,6.0f,0), Names.Items.GIANT_JAWBLADE);
+    public static final ItemMHSword weaponBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,4.0f,0), Names.Items.BONE_BLADE);
+    public static final ItemMHSword weaponBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,5.0f,0), Names.Items.BONE_BLADE_PLUS);
+    public static final ItemMHSword weaponJawblade = new ItemMHSword(EnumHelper.addToolMaterial("Jawblade",0,177,0.0f,6.0f,0), Names.Items.JAWBLADE);
+    public static final ItemMHSword weaponGiantJawblade = new ItemMHSword(EnumHelper.addToolMaterial("GiantJawblade",0,236,0.0f,7.0f,0), Names.Items.GIANT_JAWBLADE);
 
     public static final ItemMHResource iconGreatJaggi = new ItemMHResource(Names.Items.ICON_GREAT_JAGGI,false);
     public static final ItemMHResource iconGendrome = new ItemMHResource(Names.Items.ICON_GENDROME,false);
@@ -167,6 +169,8 @@ public class MHItems
         GameRegistry.registerItem(itemMegaArmourskin, Names.Items.MEGA_ARMOURSKIN);
 
         GameRegistry.registerItem(itemCatalyst, Names.Items.CATALYST);
+
+        GameRegistry.registerItem(itemWhetstone, Names.Items.WHETSTONE);
 
         GameRegistry.registerItem(itemRawMeat, Names.Items.RAW_MEAT);
         GameRegistry.registerItem(itemRareSteak, Names.Items.RARE_STEAK);
@@ -302,6 +306,8 @@ public class MHItems
         Common.regModel(itemMegaArmourskin);
 
         Common.regModel(itemCatalyst);
+
+        Common.regModel(itemWhetstone);
 
         Common.regModel(itemRawMeat);
         Common.regModel(itemRareSteak);
