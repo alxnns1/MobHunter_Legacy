@@ -2,13 +2,18 @@ package com.alxnns1.mobhunter;
 
 import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
+import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.util.LogHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
@@ -152,6 +157,23 @@ public class EntityEventHandler
             //LogHelper.info(entity.getDisplayName().getUnformattedText() + ", " + ((EntityMHBirdWyvern) entity).getPosition().toString() + " (" + entity.getEntityId() + ")");
         }
     }
+
+    /*
+    @SubscribeEvent
+    public void entityKilled(LivingDeathEvent event)
+    {
+        EntityLivingBase entity = event.entityLiving;
+        DamageSource source = event.source;
+
+        //If a player killed the entity
+        if(source instanceof EntityDamageSource && source.getSourceOfDamage() instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) source.getSourceOfDamage();
+            if(entity instanceof )
+                player.triggerAchievement(MHAchievements.);
+        }
+    }
+    */
 
     /*
     @SubscribeEvent
