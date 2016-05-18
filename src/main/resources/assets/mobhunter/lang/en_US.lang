@@ -4,6 +4,7 @@ achievement.cookMeat.desc=Cook your first piece of Well-Done Steak.
 
 //Potions
 item.itemPotion.name=Potion
+item.itemPotion.tooltip=This is probably healthier than that pizza I ate the other night...
 item.itemMegaPotion.name=Mega Potion
 item.itemNutrients.name=Nutrients
 item.itemMegaNutrients.name=Mega Nutrients

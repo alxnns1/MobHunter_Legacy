@@ -4,8 +4,13 @@ import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.client.ItemModelMesherForge;
+
+import java.util.List;
 
 /**
  * This class will contain methods which will get used in multiple places
@@ -32,5 +37,33 @@ public class Common
     public static void regModel(Item item, int meta)
     {
         m.register(item,meta,new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(item.getUnlocalizedName().indexOf(".")+1),"inventory"));
+    }
+
+    private static int maxLength = 30;
+
+    public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
+    {
+        String unlocName = stack.getUnlocalizedName();
+        String tooltipText = StatCollector.translateToLocal(unlocName + ".tooltip");
+        //Convert string to array to we can wrap by word
+        String[] tooltipArray = tooltipText.split(" ");
+        int l = 0;
+        String line = "";
+        for(String s : tooltipArray)
+        {
+            l += s.length(); //Get word length
+            line += s + " "; //Add word to the line
+            if(l > maxLength)
+            {
+                //If current line is long enough, go to next line
+                tooltip.add(line);
+                line = "";
+                l = 0;
+            }
+        }
+        if(l > 0)
+            tooltip.add(line);
+
+        return tooltip;
     }
 }

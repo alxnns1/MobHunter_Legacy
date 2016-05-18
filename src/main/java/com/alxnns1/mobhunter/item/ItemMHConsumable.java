@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -10,8 +11,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Alex on 26/04/2016.
@@ -123,5 +127,14 @@ public class ItemMHConsumable extends ItemFood
             else if(item.equals(MHItems.itemNitroshroom))
                 player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), effectDuration));
         }
+    }
+
+    /**
+     * Allows items to add custom lines of information to the mouseover description
+     */
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    {
+        Common.addTooltip(stack, tooltip);
     }
 }

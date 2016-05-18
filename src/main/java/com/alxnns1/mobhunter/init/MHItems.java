@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * Contains all of the mod's items and registering code
  * Created by Mark on 21/04/2016.
  */
+@SuppressWarnings("all")
 public class MHItems
 {
     public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 6);
