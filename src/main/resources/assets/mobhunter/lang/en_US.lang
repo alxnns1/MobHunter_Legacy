@@ -4,146 +4,253 @@ achievement.cookMeat.desc=Cook your first piece of Well-Done Steak.
 
 //Potions
 item.itemPotion.name=Potion
-item.itemPotion.tooltip=This is probably healthier than that pizza I ate the other night...
+item.itemPotion.tooltip=Restores a small amount of health.
 item.itemMegaPotion.name=Mega Potion
+item.itemMegaPotion.tooltip=Restores a moderate amount of health.
 item.itemNutrients.name=Nutrients
+item.itemNutrients.tooltip=Very slightly increases your maximum Health level.
 item.itemMegaNutrients.name=Mega Nutrients
+item.itemMegaNutrients.tooltip=Slightly increases your maximum Health level.
 item.itemAntidote.name=Antidote
+item.itemAntidote.tooltip=Removes all traces of poison from your system.
 item.itemImmunizer.name=Immunizer
+item.itemImmunizer.tooltip=Boosts your natural ability to heal.
 item.itemDashJuice.name=Dash Juice
+item.itemDashJuice.tooltip=Lets you run without tiring for a short period of time.
 item.itemMegaDashJuice.name=Mega Dash Juice
+item.itemMegaDashJuice.tooltip=Lets you run without tiring for longer than regular Dash Juice does.
 item.itemDemondrug.name=Demondrug
+item.itemDemondrug.tooltip=Boosts your Attack by filling you with -- guess what? -- demonic strength.
 item.itemMegaDemondrug.name=Mega Demondrug
+item.itemMegaDemondrug.tooltip=Boosts your Attack even more than a regular Demondrug.
 item.itemMightPill.name=Might Pill
+item.itemMightPill.tooltip=Temporarily endows you with the strength of a mighty god. Potent!
 item.itemArmourskin.name=Armourskin
+item.itemArmourskin.tooltip=Boosts your Defense by turning your skin as hard as rock.
 item.itemMegaArmourskin.name=Mega Armourskin
+item.itemMegaArmourskin.tooltip=Boosts your Defense even more than a regular Armourskin.
 item.itemAdamantPill.name=Adamant Pill
+item.itemAdamantPill.tooltip=Temporarily makes your skin as hard as adamant. Potent!
 item.itemEnergyDrink.name=Energy Drink
+item.itemEnergyDrink.tooltip=A Guild-approved beverage that boosts your Stamina. Helps shake off sleep, too!
 
 //Craft
 item.itemCatalyst.name=Catalyst
+item.itemCatalyst.tooltip=Works with other materials to enhance their effects. Cannot be used by itself.
+
+//Tools
+item.itemWhetstone.name=Whetstone
+item.itemWhetstone.tooltip=A standard-sized Whetstone. Use it to restore a weapon's Sharpness.
 
 //Meats
 item.itemRawMeat.name=Raw Meat
+item.itemRawMeat.tooltip=Meat carved from a monster. Can be cooked, combined, or used to set a trap.
 item.itemRareSteak.name=Rare Steak
+item.itemRareSteak.tooltip=Provides a small boost to your Stamina. This one's still red in the middle.
 item.itemDoneSteak.name=Well-done Steak
+item.itemDoneSteak.tooltip=Provides a moderate boost to your Stamina. Meat done right!
 item.itemBurntMeat.name=Burnt Meat
+item.itemBurntMeat.tooltip=Meat that has been burnt to a crisp. It might boost your Stamina, or it might drain it...
 
 //Herbs
 item.itemHerb.name=Herb
+item.itemHerb.tooltip=Restores a very small amount of Health. Not very flavorful.
 item.itemAntidoteHerb.name=Antidote Herb
+item.itemAntidoteHerb.tooltip=A plant used in antidotes. It sometimes cures poison when eaten by itself.
 item.itemFireHerb.name=Fire Herb
+item.itemFireHerb.tooltip=A wondrous, flammable plant.
 item.itemIvy.name=Ivy
+item.itemIvy.tooltip=A lightweight and extremely strong plant.
 item.itemSleepHerb.name=Sleep Herb
+item.itemSleepHerb.tooltip=A plant containing sleeping agents.
 item.itemSapPlant.name=Sap Plant
+item.itemSapPlant.tooltip=A plant with leaves coated in sticky sap. Difficult to remove once attached.
 item.itemFelvine.name=Felvine
+item.itemFelvine.tooltip=Melynxes' favorite food -- they just have to steal it.
 item.itemGloamgrassRoot.name=Gloamgrass Root
+item.itemGloamgrassRoot.tooltip=Possesses antidotal agents, but it will not work by itself.
 item.itemHotPepper.name=Hot Pepper
+item.itemHotPepper.tooltip=Blazingly spicy. Sure, it'll warm you up, but it's too hot to handle on its own.
 
 //Shrooms
 item.itemBlueMushroom.name=Blue Mushroom
+item.itemBlueMushroom.tooltip=Rare mushroom with a power-enhancing effect.
 item.itemNitroshroom.name=Nitroshroom
+item.itemNitroshroom.tooltip=A hard-to-find mushroom with the power to generate blazing heat.
 item.itemParashroom.name=Parashroom
+item.itemParashroom.tooltip=A mushroom that induces paralysis.
 item.itemToadstool.name=Toadstool
+item.itemToadstool.tooltip=Logic says not to eat this poisonous fungus, but don't write it off completely.
 item.itemExciteshroom.name=Exciteshroom
+item.itemExciteshroom.tooltip=This one has a very strange aroma... But is it edible? Only one way to find out.
 item.itemMopeshroom.name=Mopeshroom
+item.itemMopeshroom.tooltip=A mushroom that contains a Stamina-stealing constituent.
 item.itemDragonToadstool.name=Dragon Toadstool
+item.itemDragonToadstool.tooltip=A dangerous fungus said to draw the life out of people. Beware.
 
 //Berries
 item.itemHuskberry.name=Huskberry
+item.itemHuskberry.tooltip=A berry that is hollow on the inside. Tough enough to grow just about anywhere.
 item.itemPaintberry.name=Paintberry
+item.itemPaintberry.tooltip=A berry with a shocking hue and an overwhelming scent. Look out: It WILL stain!
 item.itemMightSeed.name=Might Seed
+item.itemMightSeed.tooltip=Temporarily raises your Attack when ingested by improving energy flow.
 item.itemAdamantSeed.name=Adamant Seed
+item.itemAdamantSeed.tooltip=Temporarily raises your Defense when ingested by hardening tissue.
 item.itemNulberry.name=Nulberry
+item.itemNulberry.tooltip=A mysterious berry that cures various Blights and also protects from unknown viruses.
 item.itemDragonfellBerry.name=Dragonfell Berry
+item.itemDragonfellBerry.tooltip=A mysterious berry, rumored since ancient times to be loathed by dragons.
 item.itemScatternut.name=Scatternut
+item.itemScatternut.tooltip=A nut that violently ejects its contents when struck.
 item.itemNeedleberry.name=Needleberry
+item.itemNeedleberry.tooltip=A berry covered with needle- like thorns. Used as a material for ammo.
 item.itemLatchberry.name=Latchberry
+item.itemLatchberry.tooltip=A berry with spiral grooves. It spins when it falls to firmly embed itself in soil.
 item.itemBomberry.name=Bomberry
+item.itemBomberry.tooltip=A berry that explodes when struck.
 
 //Minerals
 item.itemEarthCrystal.name=Earth Crystal
+item.itemEarthCrystal.tooltip=Crystallized microbes which are prized as an abrasive when forging weapons.
 item.itemMachaliteIngot.name=Machalite Ingot
+item.itemMachaliteIngot.tooltip=An better metal than Iron.
 item.itemDragoniteIngot.name=Dragonite Ingot
+item.itemDragoniteIngot.tooltip=A metal superior to Machalite. Rare and valuable.
 
 //Bugs
 item.itemInsectHusk.name=Insect Husk
+item.itemInsectHusk.tooltip=The remains of a dead insect.
 item.itemStinkhopper.name=Stinkhopper
+item.itemStinkhopper.tooltip=A grasshopper with a foul odor.
 item.itemSnakebeeLarva.name=Snakebee Larva
+item.itemSnakebeeLarva.tooltip=An unusual larva.
 item.itemGodbug.name=Godbug
+item.itemGodbug.tooltip=An insect said to live for a thousand years.
 item.itemBitterbug.name=Bitterbug
+item.itemBitterbug.tooltip=A sharp-tasting bug with innate healing abilities.
 item.itemFlashbug.name=Flashbug
+item.itemFlashbug.tooltip=An insect that emits a powerful flash when it dies.
 item.itemThunderbug.name=Thunderbug
+item.itemThunderbug.tooltip=An insect that emits electricity when struck. Has many applications.
 item.itemGlueglopper.name=Glueglopper
+item.itemGlueglopper.tooltip=A cricket-like insect that disgorges an extremely powerful adhesive.
 item.itemKillerBeetle.name=Killer Beetle
+item.itemKillerBeetle.tooltip=An insect with dazzling wings. Its hard shell is often used as an abrasive.
 item.itemHercudrome.name=Hercudrome
+item.itemHercudrome.tooltip=Said to be the world's strongest bug. Used in forging and other things.
 item.itemRareScarab.name=Rare Scarab
+item.itemRareScarab.tooltip=A rare and valuable insect that greatly assists in the bonding of metals.
 item.itemHoney.name=Honey
+item.itemHoney.tooltip=Sweet, golden honey. High in nutritional value.
 
 //Bones
 item.itemMonsterBoneS.name=Monster Bone S
+item.itemMonsterBoneS.tooltip=A very useful material; indispensable for both hunting and daily life.
 item.itemMonsterBoneM.name=Monster Bone M
+item.itemMonsterBoneM.tooltip=A nicely-sized bone. Strong yet flexible, it's as reliable as steel and wood.
 item.itemMonsterBoneL.name=Monster Bone L
+item.itemMonsterBoneL.tooltip=Wyvern bone needed to craft larger items. The right item will fuse this to a shell.
 item.itemMonsterBonePlus.name=Monster Bone+
+item.itemMonsterBonePlus.tooltip=A high-quality monster bone. Hard to obtain, but vital for crafting powerful equipment.
 item.itemMysteryBone.name=Mystery Bone
+item.itemMysteryBone.tooltip=A weathered bone. Not sturdy enough to use for crafting.
 item.itemUnknownSkull.name=Unknown Skull
+item.itemUnknownSkull.tooltip=Animal skull. So worn and weathered, it's unidentifiable.
 item.itemBruteBone.name=Brute Bone
+item.itemBruteBone.tooltip=The stout bone of a brutish monster. An easy-to-work material.
 item.itemJumboBone.name=Jumbo Bone
+item.itemJumboBone.tooltip=A large, thick bone. Often cut apart in workshops for use in crafting.
 item.itemDung.name=Dung
+item.itemDung.tooltip=That's right: monster poop. The odor reveals (too) much about the monster's diet.
 
 //Altaroth
 item.itemAltarothJaw.name=Altaroth Jaw
+item.itemAltarothJaw.tooltip=These durable mouthparts are surprisingly difficult to carve loose.
 item.itemAltarothStomach.name=Altaroth Stomach
+item.itemAltarothStomach.tooltip=A transparent sac cut from an Altaroth's abdomen, used to store who knows what.
 
 //Kelbi
 item.itemKelbiHorn.name=Kelbi Horn
+item.itemKelbiHorn.tooltip=An infusion of powdered Kelbi Horn that works wonders on stomachaches.
 item.itemWarmPelt.name=Warm Pelt
+item.itemWarmPelt.tooltip=A pelt from a small animal. Used for many things, but mostly just regular clothes.
 
 //Gargwa
 item.itemGargwaFeather.name=Gargwa Feather
+item.itemGargwaFeather.tooltip=A big, beautiful feather plucked from a Gargwa. Often used as a fashion accessory.
 item.itemSteelEgg.name=Steel Egg
+item.itemSteelEgg.tooltip=An egg of glittering steel. Very valuable and rare, but of no use to a hunter.
 
 //Neopteron
 item.itemMonsterFluid.name=Monster Fluid
+item.itemMonsterFluid.tooltip=A liquid bugs suck from monsters. Mixes with insect gastric fluids to form adhesive.
 
 //Bird Wyvern
 item.itemBirdWyvernFang.name=Bird Wyvern Fang
+item.itemBirdWyvernFang.tooltip=A sharp, durable fang from a bird wyvern.
 
 //Jaggi
 item.itemJaggiHide.name=Jaggi Hide
+item.itemJaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and easy to work with, it has numerous uses.
 item.itemJaggiScale.name=Jaggi Scale
+item.itemJaggiScale.tooltip=A scale carved from a Jaggi. Popular among hunters for its beauty and crafting versatility.
 
 //Swords
 item.weaponIronSwordPlus.name=Iron Sword+
+item.weaponIronSwordPlus.tooltip=A weapon that even novice hunters can use.
 item.weaponBusterSword.name=Buster Sword
+item.weaponBusterSword.tooltip=A strong blade made from high-purity iron. A popular choice among hunters.
 item.weaponBusterSwordPlus.name=Buster Sword+
+item.weaponBusterSwordPlus.tooltip=A strong blade made from high-purity iron. A popular choice among hunters.
 item.weaponRavagerBlade.name=Ravager Blade
+item.weaponRavagerBlade.tooltip=A fearsome steel sword with giant, talon-like spikes that protrude from its blade.
 
 item.weaponBoneBlade.name=Bone Blade
+item.weaponBoneBlade.tooltip=A Sword forged from monster bone. It can fend off many monsters at once.
 item.weaponBoneBladePlus.name=Bone Blade+
+item.weaponBoneBladePlus.tooltip=A blade made from high-quality bone. Though duller than iron, it has ample destructive power.
 item.weaponJawblade.name=Jawblade
+item.weaponJawblade.tooltip=A blade made with numerous high-quality bones, forged together in a traditional style.
 item.weaponGiantJawblade.name=Giant Jawblade
+item.weaponGiantJawblade.tooltip=A blade made with numerous high-quality bones, forged together in a traditional style.
 
 //Armour
 item.armourDerringHelmet.name=Derring Headgear
+item.armourDerringHelmet.tooltip=Head armor tailored for the Caravan and engraved with their unmistakable emblem.
 item.armourDerringChestplate.name=Derring Jacket
+item.armourDerringChestplate.tooltip=Chest armor tailored for the Caravan. Set forth into the unknown with shoulders high.
 item.armourDerringLeggings.name=Derring Belt
+item.armourDerringLeggings.tooltip=Waist armor tailored for the Caravan. Sturdy and designed to get the job done.
 item.armourDerringBoots.name=Derring Trousers
+item.armourDerringBoots.tooltip=Leg armor tailored for the Caravan that holds up well on long treks and climbs.
 
 item.armourHunterHelmet.name=Hunter's Helm
+item.armourHunterHelmet.tooltip=Head armor made especially for hunters. Firm yet flexible; a hunter favorite.
 item.armourHunterChestplate.name=Hunter's Mail
+item.armourHunterChestplate.tooltip=Chest armor made especially for hunters. Common equipment worn by many.
 item.armourHunterLeggings.name=Hunter's Faulds
+item.armourHunterLeggings.tooltip=Waist armor made especially for hunters. Pliant yet durable, used by many hunters.
 item.armourHunterBoots.name=Hunter's Greaves
+item.armourHunterBoots.tooltip=Leg armor made especially for hunters. Stout equipment made for maneuverability.
 
 item.armourBoneHelmet.name=Bone Helm
+item.armourBoneHelmet.tooltip=Head armor fashioned from monster bones. It smells as wild as it looks.
 item.armourBoneChestplate.name=Bone Mail
+item.armourBoneChestplate.tooltip=Chest armor crafted from monster bones. Evocative of the natural world.
 item.armourBoneLeggings.name=Bone Faulds
+item.armourBoneLeggings.tooltip=Waist armor adorned with monster bones. The spines on its rear are a key feature.
 item.armourBoneBoots.name=Bone Greaves
+item.armourBoneBoots.tooltip=Leg armor crafted from monster bones. Provides superb, rugged leg protection.
 
 item.armourAlloyHelmet.name=Alloy Helm
+item.armourAlloyHelmet.tooltip=Head armor made with quality Machalite Ore. Highly functional defensive armor.
 item.armourAlloyChestplate.name=Alloy Mail
+item.armourAlloyChestplate.tooltip=Chest armor made with quality Machalite Ore. Has a logical, no-frills construction.
 item.armourAlloyLeggings.name=Alloy Coil
+item.armourAlloyLeggings.tooltip=Waist armor made with quality Machalite Ore. Its sleek design has real beauty.
 item.armourAlloyBoots.name=Alloy Greaves
+item.armourAlloyBoots.tooltip=Leg armor made with quality Machalite Ore. Its design is extremely practical.
 
 //BLOCKS
 
