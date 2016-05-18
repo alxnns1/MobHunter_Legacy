@@ -45,10 +45,10 @@ public class MHRecipes
         //1 Iron Ingot + 1 Earth Crystal + 2 Monster Bone S
         GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterBoots), new Object[] {"   ", "y y", "z z", 'y', Items.iron_ingot, 'z', MHItems.itemMonsterBoneS});
 
-        //2 Mystery Bone + 1 Unknown Skull + 1 Altaroth Jaw(use Insect Husk for now)
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), new Object[] {"xyx", "z z", "   ", 'x', MHItems.itemMysteryBone, 'y', MHItems.itemUnknownSkull, 'z', MHItems.itemInsectHusk});
-        //4 Mystery Bone + 1 Jumbo Bone + 2 Altaroth Stomach(use Insect Husk for now) + 2 Monster Bone S + 2 Moster Fluid(use Insect Husk for now)
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), new Object[] {"w w", "xyx", "xzx", 'w', MHItems.itemMonsterBoneS, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemJumboBone, 'z', MHItems.itemInsectHusk});
+        //2 Mystery Bone + 1 Unknown Skull + 1 Altaroth Jaw
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), new Object[] {"xyx", "z z", "   ", 'x', MHItems.itemMysteryBone, 'y', MHItems.itemUnknownSkull, 'z', MHItems.itemAltarothJaw});
+        //4 Mystery Bone + 1 Jumbo Bone + 2 Altaroth Stomach + 2 Monster Bone S + 2 Moster Fluid
+        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), new Object[] {"w w", "xyx", "xzx", 'w', MHItems.itemMonsterBoneS, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemJumboBone, 'z', MHItems.itemAltarothStomach});
         //2 Mystery Bone + 2 Monster Bone S + 2 Sharp Fang(use Bird Wyvern Fang for now)
         GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), new Object[] {"wxw", "y y", "z z", 'w', MHItems.itemBirdWyvernFang, 'x', Items.string, 'y', MHItems.itemMysteryBone, 'z', MHItems.itemMonsterBoneS});
         //2 Mystery Bone + 1 Monster Bone M + 1 Sharp Fang(use Bird Wyvern Fang for now)
