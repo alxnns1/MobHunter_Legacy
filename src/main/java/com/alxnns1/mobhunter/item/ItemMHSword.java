@@ -7,12 +7,11 @@ import com.alxnns1.mobhunter.util.LogHelper;
 import com.alxnns1.mobhunter.util.NBTHelper;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,9 +35,6 @@ public class ItemMHSword extends ItemSword
     {
         this(material, itemName);
         this.maxSharpness = maxSharpness;
-        this.damageLevels = sharpnessDamageLevels;
-        //this.sharpnessDamage = sharpnessDamageLevels[sharpnessDamageLevels.length - 1];
-        this.baseAttackDamage = 4.0f + material.getDamageVsEntity(); //Same as in ItemSword
         if(sharpnessDamageLevels.length - 1 != maxSharpness.getId())
             LogHelper.warn("Sword " + getUnlocalizedName() + " has " + sharpnessDamageLevels.length + " sharpness damages and a max sharpness id of " + maxSharpness.getId() + "!");
     }
@@ -74,51 +70,19 @@ public class ItemMHSword extends ItemSword
     }
 
     /**
-     * Calculates the actual damage of this weapon using the sharpness
      */
-    public float getActualAttackDamage(ItemStack stack)
-    {
-        EnumSharpness currentSharpness = getSharpness(stack);
-        LogHelper.info("Damage: " + baseAttackDamage * currentSharpness.getDamageMult());
-        return baseAttackDamage * currentSharpness.getDamageMult();
-    }
-
-    public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
-    {
-        Multimap<String, AttributeModifier> multimap = HashMultimap.create();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(itemModifierUUID, "Weapon modifier", (double)getActualAttackDamage(stack), 0));
-        return multimap;
-    }
-
-    /**
-     * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
-     * the damage on the stack.
-     */
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
     {
         EnumSharpness currentSharpness = getSharpness(stack);
         int sharpnessDamage = getSharpnessDamage(stack, currentSharpness);
 
-        //Reduces sharpness damage on every hit depending on target's armour
-        sharpnessDamage -= Math.max((int) Math.ceil((float) target.getTotalArmorValue() / 4f), 1);
-        //If damage reaches 0, then reduce sharpness level
         if(sharpnessDamage <= 0)
         {
-            EnumSharpness prev = currentSharpness.getPrevSharpness();
-            if(EnumSharpness.isSame(currentSharpness, prev))
-                sharpnessDamage = 0;
-            else
             {
-                NBTHelper.setInteger(stack, KEY_SHARPNESS_LEVEL, prev.getId());
-                sharpnessDamage = damageLevels[currentSharpness.getId()];
             }
         }
 
         NBTHelper.setInteger(stack, KEY_SHARPNESS_DAMAGE, sharpnessDamage);
-
         LogHelper.info("Sharpness Damage: " + sharpnessDamage);
-
-        return super.hitEntity(stack, target, attacker);
     }
 
     /**
