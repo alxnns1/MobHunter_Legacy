@@ -134,15 +134,15 @@ public class MHItems
     public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
     public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
 
-    public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,500,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {30, 20, 15});
-    public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,4.0f,0), Names.Items.BUSTER_SWORD);
-    public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,6.0f,0), Names.Items.BUSTER_SWORD_PLUS);
-    public static final ItemMHSword weaponRavagerBlade = new ItemMHSword(EnumHelper.addToolMaterial("RavagerPlus",0,1500,0.0f,7.0f,0), Names.Items.RAVAGER_BLADE);
+    public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,39,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {18, 32});
+    public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,750,0.0f,4.0f,0), Names.Items.BUSTER_SWORD, EnumSharpness.GREEN, new int[] {16, 30, 38});
+    public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,1000,0.0f,6.0f,0), Names.Items.BUSTER_SWORD_PLUS, EnumSharpness.GREEN, new int[] {8, 16, 34});
+    public static final ItemMHSword weaponRavagerBlade = new ItemMHSword(EnumHelper.addToolMaterial("RavagerPlus",0,1500,0.0f,7.0f,0), Names.Items.RAVAGER_BLADE, EnumSharpness.GREEN, new int[] {14, 22, 32});
 
-    public static final ItemMHSword weaponBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,4.0f,0), Names.Items.BONE_BLADE);
-    public static final ItemMHSword weaponBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,5.0f,0), Names.Items.BONE_BLADE_PLUS);
-    public static final ItemMHSword weaponJawblade = new ItemMHSword(EnumHelper.addToolMaterial("Jawblade",0,177,0.0f,6.0f,0), Names.Items.JAWBLADE);
-    public static final ItemMHSword weaponGiantJawblade = new ItemMHSword(EnumHelper.addToolMaterial("GiantJawblade",0,236,0.0f,7.0f,0), Names.Items.GIANT_JAWBLADE);
+    public static final ItemMHSword weaponBoneBlade = new ItemMHSword(EnumHelper.addToolMaterial("Bone",0,59,0.0f,4.0f,0), Names.Items.BONE_BLADE, EnumSharpness.ORANGE, new int[] {16});
+    public static final ItemMHSword weaponBoneBladePlus = new ItemMHSword(EnumHelper.addToolMaterial("BonePlus",0,118,0.0f,5.0f,0), Names.Items.BONE_BLADE_PLUS, EnumSharpness.YELLOW, new int[] {20, 38});
+    public static final ItemMHSword weaponJawblade = new ItemMHSword(EnumHelper.addToolMaterial("Jawblade",0,177,0.0f,6.0f,0), Names.Items.JAWBLADE, EnumSharpness.YELLOW, new int[] {30, 34});
+    public static final ItemMHSword weaponGiantJawblade = new ItemMHSword(EnumHelper.addToolMaterial("GiantJawblade",0,236,0.0f,7.0f,0), Names.Items.GIANT_JAWBLADE, EnumSharpness.YELLOW, new int[] {6, 10});
 
     public static final ItemMHResource iconGreatJaggi = new ItemMHResource(Names.Items.ICON_GREAT_JAGGI,false);
     public static final ItemMHResource iconGendrome = new ItemMHResource(Names.Items.ICON_GENDROME,false);
