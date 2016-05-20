@@ -10,6 +10,12 @@ sharpness.purple.name=Purple
 //Achievements
 achievement.cookMeat=Mmm So Tasty!
 achievement.cookMeat.desc=Cook your first piece of Well-Done Steak.
+achievement.firstSword=Swish swish, stab, stab
+achievement.firstSword.desc=Create your first Mob Hunter sword.
+achievement.smallCrown=Small Crown
+achievement.smallCrown.desc=Kill a very small monster.
+achievement.largeCrown=Large Crown
+achievement.largeCrown.desc=Kill a very large monster.
 
 //Potions
 item.itemPotion.name=Potion

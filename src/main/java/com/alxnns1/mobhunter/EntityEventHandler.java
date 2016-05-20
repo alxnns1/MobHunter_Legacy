@@ -4,12 +4,14 @@ import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
+import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
@@ -19,6 +21,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -106,13 +109,6 @@ public class EntityEventHandler
     public void mobDeath(LivingDropsEvent event)
     {
         EntityLivingBase entity = event.entityLiving;
-        if(entity instanceof EntityMHBirdWyvern)// || entity instanceof EntityMHHerbivore)
-        {
-            float scale = -1;
-            if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
-            //if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
-            //LogHelper.info(entity.getDisplayName().getUnformattedText() + " died (" + entity.getEntityId() + ")");
-        }
 
         //This is called every time a LivingEntityBase dies
         Random rand = new Random();
@@ -147,6 +143,16 @@ public class EntityEventHandler
     }
 
     @SubscribeEvent
+    public void onCrafting(PlayerEvent.ItemCraftedEvent event)
+    {
+        Item item = event.crafting.getItem();
+        EntityPlayer player = event.player;
+        if(item instanceof ItemMHSword)
+            player.triggerAchievement(MHAchievements.firstSword);
+    }
+
+    /*
+    @SubscribeEvent
     public void mobSpawn(LivingSpawnEvent event)
     {
         EntityLivingBase entity = event.entityLiving;
@@ -159,23 +165,30 @@ public class EntityEventHandler
             //LogHelper.info(entity.getDisplayName().getUnformattedText() + ", " + entity.getPosition().toString() + " (" + entity.getEntityId() + ")");
         }
     }
+    */
 
-    /*
     @SubscribeEvent
     public void entityKilled(LivingDeathEvent event)
     {
         EntityLivingBase entity = event.entityLiving;
-        DamageSource source = event.source;
 
-        //If a player killed the entity
-        if(source instanceof EntityDamageSource && source.getSourceOfDamage() instanceof EntityPlayer)
+        float scale = -1f;
+        if(entity instanceof EntityMHBirdWyvern)
+            scale = ((EntityMHBirdWyvern)entity).getScale();
+        else if(entity instanceof EntityMHHerbivore)
+            scale = ((EntityMHHerbivore)entity).getScale();
+        else if(entity instanceof EntityMHNeopteron)
+            scale = ((EntityMHNeopteron)entity).getScale();
+
+        if(scale != -1f && event.source instanceof EntityDamageSource && event.source.getSourceOfDamage() instanceof EntityPlayer)
         {
-            EntityPlayer player = (EntityPlayer) source.getSourceOfDamage();
-            if(entity instanceof )
-                player.triggerAchievement(MHAchievements.);
+            EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            if(scale < 0.84f)
+                player.triggerAchievement(MHAchievements.smallCrown);
+            else if(scale > 1.19f)
+                player.triggerAchievement(MHAchievements.largeCrown);
         }
     }
-    */
 
     /*
     @SubscribeEvent
