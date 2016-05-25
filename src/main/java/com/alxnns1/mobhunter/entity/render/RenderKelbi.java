@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.entity.render;
 
 import com.alxnns1.mobhunter.entity.EntityKelbi;
 import com.alxnns1.mobhunter.entity.models.ModelKelbi;
-import com.alxnns1.mobhunter.entity.models.ModelPopo;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
