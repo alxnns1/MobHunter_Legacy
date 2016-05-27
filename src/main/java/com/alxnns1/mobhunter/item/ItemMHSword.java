@@ -53,14 +53,11 @@ public class ItemMHSword extends ItemSword
         if(damageLevels != null) {
             for (int i = 0; i < damageLevels.length; i++) {
                 if ((stack.getMaxDamage() - stack.getItemDamage()) < damageLevels[i]) {
-                    LogHelper.info(stack.getDisplayName() + "'s sharpness is less than it's max.");
                     return EnumSharpness.getById(i);
                 }
             }
-            LogHelper.info(stack.getDisplayName() + "'s sharpness is it's max.");
             return maxSharpness;
         }
-        LogHelper.info(stack.getDisplayName() + "'s sharpness is undefined.");
         return EnumSharpness.RED;
     }
 

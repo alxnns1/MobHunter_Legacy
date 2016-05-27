@@ -39,6 +39,15 @@ public class MHEntities
 
     public static void init(boolean isClientSide)
     {
+        registerMobWithEgg(EntityAptonoth.class, "Aptonoth", 0x7f6d59, 0x382c1e);
+        addSpawn(EntityAptonoth.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityAltaroth.class, "Altaroth", 0x8fbf60, 0xbfbf60);
         addSpawn(EntityAltaroth.class, spawnRarity, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
@@ -86,6 +95,7 @@ public class MHEntities
 
         if(isClientSide)
         {
+            RenderingRegistry.registerEntityRenderingHandler(EntityAptonoth.class, RenderAptonoth.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityAltaroth.class, RenderAltaroth.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
