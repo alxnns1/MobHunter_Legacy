@@ -26,6 +26,7 @@ public class ItemMHSword extends ItemSword
     private EnumSharpness maxSharpness = EnumSharpness.RED;
     private int[] damageLevels;
     private float baseAttackDamage = 4f;
+    private int nextSharpen = 200;
 
     public ItemMHSword(ToolMaterial material, String itemName, EnumSharpness maxSharp, int[] sharpnessDamageLevels)
     {
@@ -68,6 +69,14 @@ public class ItemMHSword extends ItemSword
     {
         EnumSharpness currentSharpness = getSharpness(stack);
         return baseAttackDamage * currentSharpness.getDamageMult();
+    }
+
+    public void repairSharpness(ItemStack stack, int amount){
+        if(stack.getItemDamage()<amount){
+            stack.setItemDamage(0);
+        }else{
+            stack.setItemDamage(stack.getItemDamage()-amount);
+        }
     }
 
     public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
@@ -113,7 +122,7 @@ public class ItemMHSword extends ItemSword
      */
     public EnumAction getItemUseAction(ItemStack stack)
     {
-        return EnumAction.BLOCK;
+        return EnumAction.EAT;
     }
 
     /**
@@ -121,7 +130,7 @@ public class ItemMHSword extends ItemSword
      */
     public int getMaxItemUseDuration(ItemStack stack)
     {
-        return 72000;
+        return 200;
     }
 
     /**
@@ -129,7 +138,31 @@ public class ItemMHSword extends ItemSword
      */
     public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
     {
-        playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
+        if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0) {
+            /*if(playerIn.inventory.hasItem(MHItems.itemMiniWhetstone)) {
+                nextSharpen = 100;
+                playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
+            }else */if(playerIn.inventory.hasItem(MHItems.itemWhetstone)) {
+                nextSharpen = 200;
+                playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
+            }
+        }
         return itemStackIn;
     }
+
+    /**
+     * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
+     * the Item before the action is complete.
+     */
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityPlayer playerIn)
+    {
+        repairSharpness(stack,nextSharpen);
+        if(nextSharpen==200) {
+            playerIn.inventory.consumeInventoryItem(MHItems.itemWhetstone);
+        }else if(nextSharpen==100){
+            //playerIn.inventory.consumeInventoryItem(MHItems.itemMiniWhetstone);
+        }
+        return stack;
+    }
+
 }
