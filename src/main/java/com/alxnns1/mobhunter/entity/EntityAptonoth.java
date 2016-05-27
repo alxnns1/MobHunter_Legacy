@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public class EntityAptonoth extends EntityMHHerbivore{
     public EntityAptonoth(World worldIn)
     {
-        super(worldIn, 1f, 1f);
+        super(worldIn, 0.79f, 1.24f);
         this.setSize(3.0F, 3.5F);
         setBaseHealth(8);
         setBaseSpeed(0.15);

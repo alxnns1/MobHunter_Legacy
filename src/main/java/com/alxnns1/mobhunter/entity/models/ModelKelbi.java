@@ -27,6 +27,7 @@ public class ModelKelbi extends ModelBase {
     ModelRenderer leg2;
     ModelRenderer leg3;
     ModelRenderer leg4;
+    ModelRenderer tail;
 
     public ModelKelbi() {
         this.textureHeight = 64;
@@ -102,6 +103,12 @@ public class ModelKelbi extends ModelBase {
         this.h2.addChild(h4);
         this.h4.addBox(0.0f,0.0f,0.0f,1,1,2);
         this.h4.setRotationPoint(0.0f,0.0f,-2.0f);
+
+        this.tail = new ModelRenderer(this,20,23);
+        this.body.addChild(tail);
+        this.tail.addBox(-1.5f,0.0f,-1.0f,3,7,1);
+        this.tail.setRotationPoint(0.0f,-8.0f,0.0f);
+        this.tail.rotateAngleX = (float)Math.PI/6;
     }
 
     public void render(Entity entityIn, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float scale) {
@@ -120,5 +127,6 @@ public class ModelKelbi extends ModelBase {
         this.leg2.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F + (float)Math.PI) * 1.4F * p_78087_2_;
         this.leg3.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F + (float)Math.PI) * 1.4F * p_78087_2_;
         this.leg4.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F) * 1.4F * p_78087_2_;
+        this.tail.rotateAngleX = (Math.abs(MathHelper.cos(p_78087_1_ * 0.6662F) * 1.4F * p_78087_2_)/2) + (float)Math.PI/6;
     }
 }
