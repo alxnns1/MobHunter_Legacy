@@ -66,11 +66,7 @@ public class BlockBbq extends BlockContainer
     public int getLightValue(IBlockAccess world, BlockPos pos)
     {
         TileBbq te = (TileBbq) world.getTileEntity(pos);
-        if(te.isCooking()){
-            return 14;
-        }else{
-            return 0;
-        }
+        return te == null || !te.isCooking() ? 0 : 14;
     }
 
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
