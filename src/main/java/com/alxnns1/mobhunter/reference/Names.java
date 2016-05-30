@@ -105,6 +105,9 @@ public class Names
         public static final String JAGGI_HIDE = "itemJaggiHide";
         public static final String JAGGI_SCALE = "itemJaggiScale";
 
+        public static final String VELOCIPREY_HIDE = "itemVelocipreyHide";
+        public static final String VELOCIPREY_SCALE = "itemVelocipreyScale";
+
         public static final String DERRING_HELMET = "armourDerringHelmet";
         public static final String DERRING_CHESTPLATE = "armourDerringChestplate";
         public static final String DERRING_LEGGINGS = "armourDerringLeggings";

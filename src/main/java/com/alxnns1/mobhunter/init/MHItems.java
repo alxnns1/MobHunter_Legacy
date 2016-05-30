@@ -134,6 +134,9 @@ public class MHItems
     public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
     public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
 
+    public static final ItemMHResource itemVelocipreyHide = new ItemMHResource(Names.Items.VELOCIPREY_HIDE);
+    public static final ItemMHResource itemVelocipreyScale = new ItemMHResource(Names.Items.VELOCIPREY_SCALE);
+
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,399,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {180, 320});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,399,0.0f,4.0f,0), Names.Items.BUSTER_SWORD, EnumSharpness.GREEN, new int[] {160, 300, 380});
     public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,399,0.0f,6.0f,0), Names.Items.BUSTER_SWORD_PLUS, EnumSharpness.GREEN, new int[] {80, 160, 340});
@@ -248,6 +251,9 @@ public class MHItems
 
         GameRegistry.registerItem(itemJaggiHide, Names.Items.JAGGI_HIDE);
         GameRegistry.registerItem(itemJaggiScale, Names.Items.JAGGI_SCALE);
+
+        GameRegistry.registerItem(itemVelocipreyHide, Names.Items.VELOCIPREY_HIDE);
+        GameRegistry.registerItem(itemVelocipreyScale, Names.Items.VELOCIPREY_SCALE);
 
         GameRegistry.registerItem(armourDerringHelmet,Names.Items.DERRING_HELMET);
         GameRegistry.registerItem(armourDerringChestplate,Names.Items.DERRING_CHESTPLATE);
@@ -390,6 +396,9 @@ public class MHItems
 
         Common.regModel(itemJaggiHide);
         Common.regModel(itemJaggiScale);
+
+        Common.regModel(itemVelocipreyHide);
+        Common.regModel(itemVelocipreyScale);
 
         Common.regModel(armourDerringHelmet);
         Common.regModel(armourDerringChestplate);

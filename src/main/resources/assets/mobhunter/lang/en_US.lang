@@ -211,6 +211,12 @@ item.itemJaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and ea
 item.itemJaggiScale.name=Jaggi Scale
 item.itemJaggiScale.tooltip=A scale carved from a Jaggi. Popular among hunters for its beauty and crafting versatility.
 
+//Velociprey
+item.itemVelocipreyHide.name=Velociprey Hide
+item.itemVelocipreyHide.tooltip=A hide stripped of it's scales. Used to join the plates in a suit of armour.
+item.itemVelocipreyScale.name=Velociprey Scale
+item.itemVelocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
+
 //Swords
 item.weaponIronSwordPlus.name=Iron Sword+
 item.weaponIronSwordPlus.tooltip=A weapon that even novice hunters can use.

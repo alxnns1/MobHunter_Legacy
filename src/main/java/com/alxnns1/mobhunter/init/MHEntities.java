@@ -92,6 +92,27 @@ public class MHEntities
                 BiomeDictionary.Type.SNOWY,
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
+        registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
+        addSpawn(EntityJaggia.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.SNOWY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
+        registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
+        addSpawn(EntityVelociprey.class, spawnRarity, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
 
         if(isClientSide)
         {
@@ -101,6 +122,8 @@ public class MHEntities
             RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityGargwa.class, RenderGargwa.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityJaggia.class, RenderJaggia.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityVelociprey.class, RenderVelociprey.FACTORY);
         }
     }
 }
