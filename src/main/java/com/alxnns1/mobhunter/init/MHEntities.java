@@ -32,9 +32,22 @@ public class MHEntities
         }
     }
 
+    private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, int min, int max, BiomeDictionary.Type[] biomeTypes)
+    {
+        for(BiomeDictionary.Type biome : biomeTypes)
+        {
+            addSpawn(entityClass, rarity, min, max, biome);
+        }
+    }
+
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type biomeType)
     {
         EntityRegistry.addSpawn(entityClass, rarity, 3, 5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
+    }
+
+    private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, int min, int max, BiomeDictionary.Type biomeType)
+    {
+        EntityRegistry.addSpawn(entityClass, rarity, min, max, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
     }
 
     public static void init(boolean isClientSide)
@@ -81,19 +94,8 @@ public class MHEntities
                 BiomeDictionary.Type.PLAINS,
                 BiomeDictionary.Type.HILLS});
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
-        addSpawn(EntityJaggi.class, spawnRarity, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.MOUNTAIN,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.SWAMP,
-                BiomeDictionary.Type.SANDY,
-                BiomeDictionary.Type.SNOWY,
-                BiomeDictionary.Type.WASTELAND,
-                BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
-        addSpawn(EntityJaggia.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityJaggi.class, spawnRarity, 5, 10, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -105,7 +107,7 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
-        addSpawn(EntityVelociprey.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityVelociprey.class, spawnRarity, 5, 10, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
