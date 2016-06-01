@@ -1,6 +1,8 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.util.LogHelper;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -9,6 +11,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 /**
@@ -77,4 +80,22 @@ public class EntityVelociprey extends EntityMHBirdWyvern {
 
         }
     }
+
+    /**
+     * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
+     * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
+     */
+    /*
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
+    {
+        double rand = Math.random();
+        if(rand<0.1){
+            EntityVelocidrome drome = new EntityVelocidrome(worldObj);
+            worldObj.spawnEntityInWorld(drome);
+            drome.setPosition(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ());
+            this.kill();
+        }
+        return super.onInitialSpawn(difficulty, livingdata);
+    }
+    */
 }

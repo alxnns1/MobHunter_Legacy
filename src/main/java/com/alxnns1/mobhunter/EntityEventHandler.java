@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.entity.EntityGreatJaggi;
 import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
@@ -173,7 +174,9 @@ public class EntityEventHandler
         EntityLivingBase entity = event.entityLiving;
 
         float scale = -1f;
-        if(entity instanceof EntityMHBirdWyvern)
+        if(entity instanceof EntityGreatJaggi)
+            scale = ((EntityGreatJaggi)entity).getScale()*1.5f;
+        else if(entity instanceof EntityMHBirdWyvern)
             scale = ((EntityMHBirdWyvern)entity).getScale();
         else if(entity instanceof EntityMHHerbivore)
             scale = ((EntityMHHerbivore)entity).getScale();

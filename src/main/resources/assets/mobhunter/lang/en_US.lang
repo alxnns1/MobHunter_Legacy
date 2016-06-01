@@ -205,6 +205,10 @@ item.itemMonsterFluid.tooltip=A liquid bugs suck from monsters. Mixes with insec
 item.itemBirdWyvernFang.name=Bird Wyvern Fang
 item.itemBirdWyvernFang.tooltip=A sharp, durable fang from a bird wyvern.
 
+//Wyvern
+item.itemScreamerSac.name=Screamer Sac
+item.itemScreamerSac.tooltip=A monster organ that emits an earsplitting sonic blast when ruptured.
+
 //Jaggi
 item.itemJaggiHide.name=Jaggi Hide
 item.itemJaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and easy to work with, it has numerous uses.
@@ -216,6 +220,16 @@ item.itemVelocipreyHide.name=Velociprey Hide
 item.itemVelocipreyHide.tooltip=A hide stripped of it's scales. Used to join the plates in a suit of armour.
 item.itemVelocipreyScale.name=Velociprey Scale
 item.itemVelocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
+
+//Great Jaggi
+item.itemGreatJaggiHide.name=Great Jaggi Hide
+item.itemGreatJaggiHide.tooltip=Durable, elegantly patterned hide from a Great Jaggi. Befits its position as pack leader.
+item.itemGreatJaggiClaw.name=Great Jaggi Claw
+item.itemGreatJaggiClaw.tooltip=A hook-shaped claw cut from a Great Jaggi. Just like a Jaggi claw, only much, much larger.
+item.itemGreatJaggiHead.name=Great Jaggi Head
+item.itemGreatJaggiHead.tooltip=The frills would be truly stunning...if they weren't attached to a severed head.
+item.itemKingsFrill.name=King's Frill
+item.itemKingsFrill.tooltip=Proof of who's top Jaggi. Bigger and bolder frills mean a tougher monster.
 
 //Swords
 item.weaponIronSwordPlus.name=Iron Sword+

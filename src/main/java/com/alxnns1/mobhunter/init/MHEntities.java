@@ -80,7 +80,7 @@ public class MHEntities
                 BiomeDictionary.Type.HILLS});
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
         registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
-        addSpawn(EntityJaggi.class, spawnRarity, 5, 10, new BiomeDictionary.Type[] {
+        addSpawn(EntityJaggi.class, spawnRarity, 3, 7, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -92,7 +92,7 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
-        addSpawn(EntityVelociprey.class, spawnRarity, 5, 10, new BiomeDictionary.Type[] {
+        addSpawn(EntityVelociprey.class, spawnRarity, 3, 7, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -100,6 +100,12 @@ public class MHEntities
                 BiomeDictionary.Type.SANDY,
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
+
+        registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
+        /*
+        registerMobWithEgg(EntityVelocidrome.class, "Velocidrome", 0x0080ff, 0x402000);
+        */
+
 
         if(isClientSide)
         {
@@ -111,6 +117,11 @@ public class MHEntities
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggia.class, RenderJaggia.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityVelociprey.class, RenderVelociprey.FACTORY);
+
+            RenderingRegistry.registerEntityRenderingHandler(EntityGreatJaggi.class, RenderGreatJaggi.FACTORY);
+            /*
+            RenderingRegistry.registerEntityRenderingHandler(EntityVelocidrome.class, RenderVelocidrome.FACTORY);
+            */
         }
     }
 }

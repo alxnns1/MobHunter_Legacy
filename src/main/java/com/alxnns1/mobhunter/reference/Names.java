@@ -108,6 +108,13 @@ public class Names
         public static final String VELOCIPREY_HIDE = "itemVelocipreyHide";
         public static final String VELOCIPREY_SCALE = "itemVelocipreyScale";
 
+        public static final String SCREAMER_SAC = "itemScreamerSac";
+
+        public static final String GREAT_JAGGI_HIDE = "itemGreatJaggiHide";
+        public static final String GREAT_JAGGI_CLAW = "itemGreatJaggiClaw";
+        public static final String GREAT_JAGGI_Head = "itemGreatJaggiHead";
+        public static final String KINGS_FRILL = "itemKingsFrill";
+
         public static final String DERRING_HELMET = "armourDerringHelmet";
         public static final String DERRING_CHESTPLATE = "armourDerringChestplate";
         public static final String DERRING_LEGGINGS = "armourDerringLeggings";
