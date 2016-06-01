@@ -26,28 +26,13 @@ public class MHEntities
 
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type[] biomeTypes)
     {
-        for(BiomeDictionary.Type biome : biomeTypes)
-        {
-            addSpawn(entityClass, rarity, biome);
-        }
+        addSpawn(entityClass, rarity, 3, 5, biomeTypes);
     }
 
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, int min, int max, BiomeDictionary.Type[] biomeTypes)
     {
         for(BiomeDictionary.Type biome : biomeTypes)
-        {
-            addSpawn(entityClass, rarity, min, max, biome);
-        }
-    }
-
-    private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type biomeType)
-    {
-        EntityRegistry.addSpawn(entityClass, rarity, 3, 5, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
-    }
-
-    private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, int min, int max, BiomeDictionary.Type biomeType)
-    {
-        EntityRegistry.addSpawn(entityClass, rarity, min, max, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biomeType));
+            EntityRegistry.addSpawn(entityClass, rarity, min, max, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biome));
     }
 
     public static void init(boolean isClientSide)
