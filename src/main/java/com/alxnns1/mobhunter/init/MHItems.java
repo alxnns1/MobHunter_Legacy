@@ -141,7 +141,7 @@ public class MHItems
 
     public static final ItemMHResource itemGreatJaggiHide = new ItemMHResource(Names.Items.GREAT_JAGGI_HIDE);
     public static final ItemMHResource itemGreatJaggiClaw = new ItemMHResource(Names.Items.GREAT_JAGGI_CLAW);
-    public static final ItemMHResource itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_Head);
+    public static final ItemMHResource itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_HEAD);
     public static final ItemMHResource itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL);
 
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,399,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {180, 320});
@@ -266,7 +266,7 @@ public class MHItems
 
         GameRegistry.registerItem(itemGreatJaggiHide, Names.Items.GREAT_JAGGI_HIDE);
         GameRegistry.registerItem(itemGreatJaggiClaw, Names.Items.GREAT_JAGGI_CLAW);
-        GameRegistry.registerItem(itemGreatJaggiHead, Names.Items.GREAT_JAGGI_Head);
+        GameRegistry.registerItem(itemGreatJaggiHead, Names.Items.GREAT_JAGGI_HEAD);
         GameRegistry.registerItem(itemKingsFrill, Names.Items.KINGS_FRILL);
 
         GameRegistry.registerItem(armourDerringHelmet,Names.Items.DERRING_HELMET);

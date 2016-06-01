@@ -112,7 +112,7 @@ public class Names
 
         public static final String GREAT_JAGGI_HIDE = "itemGreatJaggiHide";
         public static final String GREAT_JAGGI_CLAW = "itemGreatJaggiClaw";
-        public static final String GREAT_JAGGI_Head = "itemGreatJaggiHead";
+        public static final String GREAT_JAGGI_HEAD = "itemGreatJaggiHead";
         public static final String KINGS_FRILL = "itemKingsFrill";
 
         public static final String DERRING_HELMET = "armourDerringHelmet";
@@ -171,5 +171,10 @@ public class Names
         public static final String BBQ = "blockBbq";
         public static final String WEAPON_UPGRADE = "blockWeaponUpgrade";
         public static final String ARMOUR_UPGRADE = "blockArmourUpgrade";
+    }
+
+    public static class Potions
+    {
+        public static final String PARALYSE = "paralyse";
     }
 }

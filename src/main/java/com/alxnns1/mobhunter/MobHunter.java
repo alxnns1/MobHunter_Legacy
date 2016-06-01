@@ -46,6 +46,7 @@ public class MobHunter {
         MHBlocks.init();
         MHTileEntities.init();
         MHEntities.init(event.getSide() == Side.CLIENT);
+        MHPotions.init();
     }
 
     @Mod.EventHandler

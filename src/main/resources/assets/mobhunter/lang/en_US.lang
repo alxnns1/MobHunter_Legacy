@@ -17,6 +17,9 @@ achievement.smallCrown.desc=Kill a very small monster.
 achievement.largeCrown=Large Crown
 achievement.largeCrown.desc=Kill a very large monster.
 
+//Potion Effects
+potion.paralyse.name=Paralysed
+
 //Potions
 item.itemPotion.name=Potion
 item.itemPotion.tooltip=Restores a small amount of health.
