@@ -131,11 +131,18 @@ public class MHItems
 
     public static final ItemMHResource itemBirdWyvernFang = new ItemMHResource(Names.Items.BIRD_WYVERN_FANG);
 
+    public static final ItemMHResource itemScreamerSac = new ItemMHResource(Names.Items.SCREAMER_SAC);
+
     public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
     public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
 
     public static final ItemMHResource itemVelocipreyHide = new ItemMHResource(Names.Items.VELOCIPREY_HIDE);
     public static final ItemMHResource itemVelocipreyScale = new ItemMHResource(Names.Items.VELOCIPREY_SCALE);
+
+    public static final ItemMHResource itemGreatJaggiHide = new ItemMHResource(Names.Items.GREAT_JAGGI_HIDE);
+    public static final ItemMHResource itemGreatJaggiClaw = new ItemMHResource(Names.Items.GREAT_JAGGI_CLAW);
+    public static final ItemMHResource itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_Head);
+    public static final ItemMHResource itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL);
 
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,399,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {180, 320});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,399,0.0f,4.0f,0), Names.Items.BUSTER_SWORD, EnumSharpness.GREEN, new int[] {160, 300, 380});
@@ -249,11 +256,18 @@ public class MHItems
 
         GameRegistry.registerItem(itemBirdWyvernFang, Names.Items.BIRD_WYVERN_FANG);
 
+        GameRegistry.registerItem(itemScreamerSac, Names.Items.SCREAMER_SAC);
+
         GameRegistry.registerItem(itemJaggiHide, Names.Items.JAGGI_HIDE);
         GameRegistry.registerItem(itemJaggiScale, Names.Items.JAGGI_SCALE);
 
         GameRegistry.registerItem(itemVelocipreyHide, Names.Items.VELOCIPREY_HIDE);
         GameRegistry.registerItem(itemVelocipreyScale, Names.Items.VELOCIPREY_SCALE);
+
+        GameRegistry.registerItem(itemGreatJaggiHide, Names.Items.GREAT_JAGGI_HIDE);
+        GameRegistry.registerItem(itemGreatJaggiClaw, Names.Items.GREAT_JAGGI_CLAW);
+        GameRegistry.registerItem(itemGreatJaggiHead, Names.Items.GREAT_JAGGI_Head);
+        GameRegistry.registerItem(itemKingsFrill, Names.Items.KINGS_FRILL);
 
         GameRegistry.registerItem(armourDerringHelmet,Names.Items.DERRING_HELMET);
         GameRegistry.registerItem(armourDerringChestplate,Names.Items.DERRING_CHESTPLATE);
@@ -394,11 +408,18 @@ public class MHItems
 
         Common.regModel(itemBirdWyvernFang);
 
+        Common.regModel(itemScreamerSac);
+
         Common.regModel(itemJaggiHide);
         Common.regModel(itemJaggiScale);
 
         Common.regModel(itemVelocipreyHide);
         Common.regModel(itemVelocipreyScale);
+
+        Common.regModel(itemGreatJaggiHide);
+        Common.regModel(itemGreatJaggiClaw);
+        Common.regModel(itemGreatJaggiHead);
+        Common.regModel(itemKingsFrill);
 
         Common.regModel(armourDerringHelmet);
         Common.regModel(armourDerringChestplate);
