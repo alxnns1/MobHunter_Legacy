@@ -137,6 +137,7 @@ public class Names
 
         public static final String IRON_SWORD_PLUS = "weaponIronSwordPlus";
         public static final String BUSTER_SWORD = "weaponBusterSword";
+        public static final String RUGGED_GREAT_SWORD = "weaponRuggedGreatSword";
         public static final String BUSTER_SWORD_PLUS = "weaponBusterSwordPlus";
         public static final String RAVAGER_BLADE = "weaponRavagerBlade";
 

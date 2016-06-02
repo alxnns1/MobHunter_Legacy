@@ -83,6 +83,17 @@ public class MHRecipes
                 Items.iron_ingot,
                 MHItems.itemMachaliteIngot,
                 MHItems.itemMachaliteIngot});
+        //1 Iron Sword+ + 4 Great Jaggi Claw + 8 Jaggi Hide + 3 Macahlite Ingot
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponRuggedGreatSword),new Object[] {
+                MHItems.weaponIronSwordPlus,
+                MHItems.itemGreatJaggiClaw,
+                MHItems.itemGreatJaggiClaw,
+                MHItems.itemJaggiHide,
+                MHItems.itemJaggiHide,
+                MHItems.itemJaggiHide,
+                MHItems.itemJaggiHide,
+                MHItems.itemJaggiHide,
+                MHItems.itemMachaliteIngot});
         //1 Buster Sword + 5 Machalite Ingot + 2 Earth Crystal + 5 Iron Ore
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBusterSwordPlus),new Object[] {
                 MHItems.weaponBusterSword,

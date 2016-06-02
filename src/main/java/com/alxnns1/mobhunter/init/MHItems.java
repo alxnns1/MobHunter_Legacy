@@ -146,6 +146,7 @@ public class MHItems
 
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,399,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {180, 320});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,399,0.0f,4.0f,0), Names.Items.BUSTER_SWORD, EnumSharpness.GREEN, new int[] {160, 300, 380});
+    public static final ItemMHSword weaponRuggedGreatSword = new ItemMHSword(EnumHelper.addToolMaterial("Rugged",0,399,0.0f,6.0f,0), Names.Items.RUGGED_GREAT_SWORD, EnumSharpness.GREEN, new int[] {80, 200, 360});
     public static final ItemMHSword weaponBusterSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("BusterPlus",0,399,0.0f,6.0f,0), Names.Items.BUSTER_SWORD_PLUS, EnumSharpness.GREEN, new int[] {80, 160, 340});
     public static final ItemMHSword weaponRavagerBlade = new ItemMHSword(EnumHelper.addToolMaterial("RavagerPlus",0,399,0.0f,7.0f,0), Names.Items.RAVAGER_BLADE, EnumSharpness.GREEN, new int[] {140, 220, 320});
 
@@ -291,6 +292,7 @@ public class MHItems
 
         GameRegistry.registerItem(weaponIronSwordPlus,Names.Items.IRON_SWORD_PLUS);
         GameRegistry.registerItem(weaponBusterSword,Names.Items.BUSTER_SWORD);
+        GameRegistry.registerItem(weaponRuggedGreatSword,Names.Items.RUGGED_GREAT_SWORD);
         GameRegistry.registerItem(weaponBusterSwordPlus,Names.Items.BUSTER_SWORD_PLUS);
         GameRegistry.registerItem(weaponRavagerBlade,Names.Items.RAVAGER_BLADE);
 
@@ -443,6 +445,7 @@ public class MHItems
 
         Common.regModel(weaponIronSwordPlus);
         Common.regModel(weaponBusterSword);
+        Common.regModel(weaponRuggedGreatSword);
         Common.regModel(weaponBusterSwordPlus);
         Common.regModel(weaponRavagerBlade);
 
