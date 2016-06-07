@@ -5,13 +5,11 @@ import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -36,6 +34,8 @@ public class BlockBbq extends BlockContainer
         super(Material.rock);
         setUnlocalizedName(Names.Blocks.BBQ);
         setCreativeTab(MobHunter.MH_TAB);
+        setHardness(2f);
+        setResistance(10f);
         //setLightOpacity(0);
     }
 

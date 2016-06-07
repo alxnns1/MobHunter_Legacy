@@ -14,7 +14,7 @@ public class MHPotions
     private static PotionMH createPotion(String name, boolean isBad, int iconX, int iconY)
     {
         PotionMH potion = new PotionMH(name, isBad, 0x000000);
-        potion.setPotionName(StatCollector.translateToLocal("potion." + name + ".name"));
+        potion.setPotionName(StatCollector.translateToLocal("effect." + name + ".name"));
         potion.setIconIndex(iconX, iconY);
         return potion;
     }

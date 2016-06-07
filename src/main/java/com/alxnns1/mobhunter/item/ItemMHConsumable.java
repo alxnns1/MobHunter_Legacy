@@ -2,7 +2,10 @@ package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.util.Common;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -103,6 +106,8 @@ public class ItemMHConsumable extends ItemFood
                 player.removePotionEffect(Potion.poison.getId());
             else if(item.equals(MHItems.itemToadstool))
                 player.addPotionEffect(new PotionEffect(Potion.poison.getId(), effectDuration));
+            else if(item.equals(MHItems.itemParashroom))
+                player.addPotionEffect(new PotionEffectParalyse(effectDuration));
             else if(item.equals(MHItems.itemExciteshroom))
                 player.getFoodStats().addStats(2,0);
             else if(item.equals(MHItems.itemMopeshroom))
@@ -127,6 +132,14 @@ public class ItemMHConsumable extends ItemFood
             else if(item.equals(MHItems.itemNitroshroom))
                 player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), effectDuration));
         }
+    }
+
+    //TODO: Temp testing
+    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+    {
+        if(entity instanceof EntityLivingBase)
+            ((EntityLivingBase)entity).addPotionEffect(new PotionEffectParalyse(200));
+        return super.onLeftClickEntity(stack, player, entity);
     }
 
     /**

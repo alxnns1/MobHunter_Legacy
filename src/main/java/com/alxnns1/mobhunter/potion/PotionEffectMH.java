@@ -1,7 +1,6 @@
 package com.alxnns1.mobhunter.potion;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 /**
@@ -11,9 +10,9 @@ public class PotionEffectMH extends PotionEffect
 {
     private boolean applyEffect = true;
 
-    public PotionEffectMH(int id, int effectDuration, int effectAmplifier, boolean ambient, boolean showParticles)
+    public PotionEffectMH(int id, int effectDuration, int effectAmplifier)
     {
-        super(id, effectDuration, effectAmplifier, ambient, showParticles);
+        super(id, effectDuration, effectAmplifier, false, false);
     }
 
     /**

@@ -74,7 +74,7 @@ public class MHItems
 
     public static final ItemMHResource itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM);
     public static final ItemMHConsumable itemNitroshroom = new ItemMHConsumable(Names.Items.NITROSHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
-    public static final ItemMHResource itemParashroom = new ItemMHResource(Names.Items.PARASHROOM);
+    public static final ItemMHConsumable itemParashroom = new ItemMHConsumable(Names.Items.PARASHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHConsumable itemToadstool = new ItemMHConsumable(Names.Items.TOADSTOOL, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHConsumable itemExciteshroom = new ItemMHConsumable(Names.Items.EXCITESHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
     public static final ItemMHConsumable itemMopeshroom = new ItemMHConsumable(Names.Items.MOPESHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT);
