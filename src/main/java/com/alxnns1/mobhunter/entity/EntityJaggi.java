@@ -22,10 +22,6 @@ public class EntityJaggi extends EntityMHBirdWyvern
     {
         super(worldIn, 0.79f, 1.24f, MHItems.itemRawMeat);
         this.setSize(1.0F, 1.0F);
-        setBaseHealth(9);
-        setBaseAttack(3);
-        setBaseSpeed(0.3);
-        setBaseKnockback(0.1);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class,1.0D,false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
@@ -87,17 +83,23 @@ public class EntityJaggi extends EntityMHBirdWyvern
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
+        setBaseHealth(9);
+        setBaseAttack(3);
+        setBaseSpeed(0.3);
+        setBaseKnockback(0.1);
         double rand = Math.random();
         if(rand<0.1){
             EntityGreatJaggi great = new EntityGreatJaggi(worldObj);
+            great.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
+            great.onInitialSpawn(difficulty,livingdata);
             worldObj.spawnEntityInWorld(great);
-            great.setPosition(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ());
-            this.kill();
+            this.setDead();
         }else if(rand<0.35){
             EntityJaggia jaggia = new EntityJaggia(worldObj);
+            jaggia.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
+            jaggia.onInitialSpawn(difficulty,livingdata);
             worldObj.spawnEntityInWorld(jaggia);
-            jaggia.setPosition(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ());
-            this.kill();
+            this.setDead();
         }
         return super.onInitialSpawn(difficulty, livingdata);
     }
