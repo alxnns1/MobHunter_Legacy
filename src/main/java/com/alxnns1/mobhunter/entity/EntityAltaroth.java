@@ -1,7 +1,12 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -19,6 +24,12 @@ public class EntityAltaroth extends EntityMHNeopteron {
         setBaseSpeed(0.2);
         setBaseKnockback(0.3);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityVillager.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
+        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityWitch.class,1.0D,false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWitch.class, true));
     }
 
     @Override
