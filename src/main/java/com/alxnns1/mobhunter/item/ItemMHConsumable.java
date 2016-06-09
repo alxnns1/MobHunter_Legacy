@@ -134,13 +134,13 @@ public class ItemMHConsumable extends ItemFood
         }
     }
 
-    //TODO: Temp testing
+    /*
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
         if(entity instanceof EntityLivingBase)
             ((EntityLivingBase)entity).addPotionEffect(new PotionEffectParalyse(200));
         return super.onLeftClickEntity(stack, player, entity);
-    }
+    }*/
 
     /**
      * Allows items to add custom lines of information to the mouseover description
