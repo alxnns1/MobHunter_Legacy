@@ -139,6 +139,10 @@ public class MHItems
     public static final ItemMHResource itemVelocipreyHide = new ItemMHResource(Names.Items.VELOCIPREY_HIDE);
     public static final ItemMHResource itemVelocipreyScale = new ItemMHResource(Names.Items.VELOCIPREY_SCALE);
 
+    public static final ItemMHResource itemGenpreyHide = new ItemMHResource(Names.Items.GENPREY_HIDE);
+    public static final ItemMHResource itemGenpreyScale = new ItemMHResource(Names.Items.GENPREY_SCALE);
+    public static final ItemMHResource itemGenpreyFang = new ItemMHResource(Names.Items.GENPREY_FANG);
+
     public static final ItemMHResource itemGreatJaggiHide = new ItemMHResource(Names.Items.GREAT_JAGGI_HIDE);
     public static final ItemMHResource itemGreatJaggiClaw = new ItemMHResource(Names.Items.GREAT_JAGGI_CLAW);
     public static final ItemMHResource itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_HEAD);
@@ -264,6 +268,10 @@ public class MHItems
 
         GameRegistry.registerItem(itemVelocipreyHide, Names.Items.VELOCIPREY_HIDE);
         GameRegistry.registerItem(itemVelocipreyScale, Names.Items.VELOCIPREY_SCALE);
+
+        GameRegistry.registerItem(itemGenpreyHide, Names.Items.GENPREY_HIDE);
+        GameRegistry.registerItem(itemGenpreyScale, Names.Items.GENPREY_SCALE);
+        GameRegistry.registerItem(itemGenpreyFang, Names.Items.GENPREY_FANG);
 
         GameRegistry.registerItem(itemGreatJaggiHide, Names.Items.GREAT_JAGGI_HIDE);
         GameRegistry.registerItem(itemGreatJaggiClaw, Names.Items.GREAT_JAGGI_CLAW);
@@ -417,6 +425,10 @@ public class MHItems
 
         Common.regModel(itemVelocipreyHide);
         Common.regModel(itemVelocipreyScale);
+
+        Common.regModel(itemGenpreyHide);
+        Common.regModel(itemGenpreyScale);
+        Common.regModel(itemGenpreyFang);
 
         Common.regModel(itemGreatJaggiHide);
         Common.regModel(itemGreatJaggiClaw);

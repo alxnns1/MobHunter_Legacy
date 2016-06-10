@@ -224,6 +224,14 @@ item.itemVelocipreyHide.tooltip=A hide stripped of it's scales. Used to join the
 item.itemVelocipreyScale.name=Velociprey Scale
 item.itemVelocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
 
+//Genprey
+item.itemGenpreyHide.name=Genprey Hide
+item.itemGenpreyHide.tooltip=A hide with all the scales removed. Can be tanned and turned into leather.
+item.itemGenpreyScale.name=Genprey Scale
+item.itemGenpreyScale.tooltip=Scale from a Genprey. Acts as camouflage in desert areas.
+item.itemGenpreyFang.name=Genprey Fang
+item.itemGenpreyFang.tooltip=The poisonous fang of a Genprey. The paralysing toxin works even on wyverns.
+
 //Great Jaggi
 item.itemGreatJaggiHide.name=Great Jaggi Hide
 item.itemGreatJaggiHide.tooltip=Durable, elegantly patterned hide from a Great Jaggi. Befits its position as pack leader.

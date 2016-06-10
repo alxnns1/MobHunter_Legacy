@@ -108,6 +108,10 @@ public class Names
         public static final String VELOCIPREY_HIDE = "itemVelocipreyHide";
         public static final String VELOCIPREY_SCALE = "itemVelocipreyScale";
 
+        public static final String GENPREY_HIDE = "itemGenpreyHide";
+        public static final String GENPREY_SCALE = "itemGenpreyScale";
+        public static final String GENPREY_FANG = "itemGenpreyFang";
+
         public static final String SCREAMER_SAC = "itemScreamerSac";
 
         public static final String GREAT_JAGGI_HIDE = "itemGreatJaggiHide";

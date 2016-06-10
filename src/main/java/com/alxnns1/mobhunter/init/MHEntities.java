@@ -100,10 +100,18 @@ public class MHEntities
                 BiomeDictionary.Type.SANDY,
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
+        registerMobWithEgg(EntityGenprey.class, "Genprey", 0x408040, 0x806040);
+        addSpawn(EntityGenprey.class, spawnRarity, 3, 7, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.WASTELAND});
 
         registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
         /*
         registerMobWithEgg(EntityVelocidrome.class, "Velocidrome", 0x0080ff, 0x402000);
+        registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
         */
 
 
@@ -117,10 +125,12 @@ public class MHEntities
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggia.class, RenderJaggia.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityVelociprey.class, RenderVelociprey.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityGenprey.class, RenderGenprey.FACTORY);
 
             RenderingRegistry.registerEntityRenderingHandler(EntityGreatJaggi.class, RenderGreatJaggi.FACTORY);
             /*
             RenderingRegistry.registerEntityRenderingHandler(EntityVelocidrome.class, RenderVelocidrome.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityGendrome.class, RenderGendrome.FACTORY);
             */
         }
     }
