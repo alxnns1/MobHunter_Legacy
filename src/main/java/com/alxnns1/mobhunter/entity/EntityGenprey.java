@@ -83,7 +83,9 @@ public class EntityGenprey extends EntityMHBirdWyvern {
     {
         if (super.attackEntityAsMob(entityIn))
         {
-            ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffectParalyse(320));
+            if (entityIn.getHorizontalFacing() == this.getHorizontalFacing()) {
+                ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffectParalyse(320));
+            }
             return true;
         }
         else
