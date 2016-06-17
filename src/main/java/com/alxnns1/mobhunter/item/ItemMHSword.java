@@ -11,7 +11,10 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -82,7 +85,7 @@ public class ItemMHSword extends ItemSword
     public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
     {
         Multimap<String, AttributeModifier> multimap = HashMultimap.create();
-        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(itemModifierUUID, "Weapon modifier", (double)getActualAttackDamage(stack), 0));
+        multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)getActualAttackDamage(stack), 0));
         return multimap;
     }
 
@@ -110,8 +113,8 @@ public class ItemMHSword extends ItemSword
         EnumSharpness currentSharpness = getSharpness(stack);
         if(currentSharpness != null)
         {
-            tooltip.add("Sharpness: " + currentSharpness.getChatColour() + StatCollector.translateToLocal(currentSharpness.getUnlocalizedName()));
-            tooltip.add("Max Sharpness: " + maxSharpness.getChatColour() + StatCollector.translateToLocal(maxSharpness.getUnlocalizedName()));
+            tooltip.add("Sharpness: " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
+            tooltip.add("Max Sharpness: " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
         }
 
         Common.addTooltip(stack, tooltip);
@@ -136,33 +139,32 @@ public class ItemMHSword extends ItemSword
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0) {
-            /*if(playerIn.inventory.hasItem(MHItems.itemMiniWhetstone)) {
-                nextSharpen = 100;
-                playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
-            }else */if(playerIn.inventory.hasItem(MHItems.itemWhetstone)) {
+            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetstone))) {
                 nextSharpen = 200;
-                playerIn.setItemInUse(itemStackIn, this.getMaxItemUseDuration(itemStackIn));
+                playerIn.setActiveHand(hand);
+                return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
             }
         }
-        return itemStackIn;
+        return new ActionResult(EnumActionResult.FAIL, itemStackIn);
     }
 
     /**
      * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
      * the Item before the action is complete.
      */
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityPlayer playerIn)
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
-        repairSharpness(stack,nextSharpen);
-        if(nextSharpen==200) {
-            playerIn.inventory.consumeInventoryItem(MHItems.itemWhetstone);
-        }else if(nextSharpen==100){
-            //playerIn.inventory.consumeInventoryItem(MHItems.itemMiniWhetstone);
+        if (entityLiving instanceof EntityPlayer) {
+            repairSharpness(stack, nextSharpen);
+            if (nextSharpen == 200) {
+                ((EntityPlayer) entityLiving).inventory.decrStackSize(((EntityPlayer) entityLiving).inventory.getSlotFor(new ItemStack(MHItems.itemWhetstone)),1);
+            } else if (nextSharpen == 100) {
+                //playerIn.inventory.consumeInventoryItem(MHItems.itemMiniWhetstone);
+            }
         }
         return stack;
     }
-
 }
