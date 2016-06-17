@@ -1,4 +1,4 @@
-package com.alxnns1.mobhunter.block.upgrading;
+package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
 import net.minecraft.block.BlockBush;
