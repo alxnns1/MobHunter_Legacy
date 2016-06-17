@@ -3,11 +3,11 @@ package com.alxnns1.mobhunter.util;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.ItemModelMesherForge;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class Common
     public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
     {
         String unlocName = stack.getUnlocalizedName();
-        String tooltipText = StatCollector.translateToLocal(unlocName + ".tooltip");
+        String tooltipText = new TextComponentTranslation(unlocName + ".tooltip").getUnformattedText();
         //Convert string to array to we can wrap by word
         String[] tooltipArray = tooltipText.split(" ");
         int l = 0;

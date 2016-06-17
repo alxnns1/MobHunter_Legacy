@@ -6,7 +6,6 @@ import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.item.ItemMHSword;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -14,13 +13,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -109,7 +105,7 @@ public class EntityEventHandler
     @SubscribeEvent
     public void mobDeath(LivingDropsEvent event)
     {
-        EntityLivingBase entity = event.entityLiving;
+        EntityLivingBase entity = event.getEntityLiving();
 
         //This is called every time a LivingEntityBase dies
         Random rand = new Random();
@@ -122,7 +118,7 @@ public class EntityEventHandler
             if(s == null)
                 s = "generic";
             String mobUnlocName = "entity." + s + ".name";
-            String mobName = StatCollector.translateToLocal(mobUnlocName);
+            String mobName = new TextComponentTranslation(mobUnlocName).getUnformattedText();
 
             if(rand.nextFloat() < (Float) o[4]) {
                 if(     (o[0].equals(PASSIVE_WILDCARD) && checkMobName(false, s)) ||        //Passive vanilla mob
@@ -136,7 +132,7 @@ public class EntityEventHandler
                     int max = (Integer) o[3];
                     int randQty = rand.nextInt(max) + min;
                     if (randQty > 0) {
-                        event.entityLiving.entityDropItem((ItemStack) o[1], 0);
+                        event.getEntityLiving().entityDropItem((ItemStack) o[1], 0);
                     }
                 }
             }
@@ -149,7 +145,7 @@ public class EntityEventHandler
         Item item = event.crafting.getItem();
         EntityPlayer player = event.player;
         if(item instanceof ItemMHSword)
-            player.triggerAchievement(MHAchievements.firstSword);
+            player.addStat(MHAchievements.firstSword);
     }
 
     /*
@@ -171,7 +167,7 @@ public class EntityEventHandler
     @SubscribeEvent
     public void entityKilled(LivingDeathEvent event)
     {
-        EntityLivingBase entity = event.entityLiving;
+        EntityLivingBase entity = event.getEntityLiving();
 
         float scale = -1f;
         if(entity instanceof EntityGreatJaggi)
@@ -183,13 +179,13 @@ public class EntityEventHandler
         else if(entity instanceof EntityMHNeopteron)
             scale = ((EntityMHNeopteron)entity).getScale();
 
-        if(scale != -1f && event.source instanceof EntityDamageSource && event.source.getSourceOfDamage() instanceof EntityPlayer)
+        if(scale != -1f && event.getSource() instanceof EntityDamageSource && event.getSource().getSourceOfDamage() instanceof EntityPlayer)
         {
-            EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
             if(scale < 0.84f)
-                player.triggerAchievement(MHAchievements.smallCrown);
+                player.addStat(MHAchievements.smallCrown);
             else if(scale > 1.19f)
-                player.triggerAchievement(MHAchievements.largeCrown);
+                player.addStat(MHAchievements.largeCrown);
         }
     }
 
