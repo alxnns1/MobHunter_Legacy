@@ -2,8 +2,9 @@ package com.alxnns1.mobhunter.block;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -60,7 +61,7 @@ public class BlockOre extends BlockResource
     }
 
     @Override
-    public int getExpDrop(net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune)
+    public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune)
     {
         Random rand = world instanceof World ? ((World)world).rand : new Random();
         if (drop != null)

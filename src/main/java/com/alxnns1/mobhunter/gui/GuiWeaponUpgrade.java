@@ -6,7 +6,7 @@ import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
@@ -45,7 +45,7 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         //TODO: Adjust text position according to texture.
         //Draw text
-        this.fontRendererObj.drawString(StatCollector.translateToLocal(MHBlocks.blockWeaponUpgrade.getUnlocalizedName() + ".name"), 12, 5, 4210752);
-        this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 98, 4210752);
+        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponUpgrade.getUnlocalizedName() + ".name").getUnformattedText(), 12, 5, 4210752);
+        this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 98, 4210752);
     }
 }

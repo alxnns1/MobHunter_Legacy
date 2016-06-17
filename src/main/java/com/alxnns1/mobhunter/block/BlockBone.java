@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.block.upgrading.BlockNatural;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.block.Block;
@@ -10,6 +11,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -22,17 +25,10 @@ import java.util.ArrayList;
 /**
  * Created by Alex on 11/05/2016.
  */
-public class BlockBone extends BlockBush {
+public class BlockBone extends BlockNatural
+{
     public BlockBone(){
-        super(Material.vine);
-        setUnlocalizedName(Names.Blocks.BONE);
-        this.setBlockBounds(0.1f, 0.0f, 0.1f, 0.9f, 0.75f, 0.9f);
-        this.setCreativeTab(MobHunter.MH_TAB);
-    }
-
-    public boolean isReplaceable(World worldIn, BlockPos pos)
-    {
-        return false;
+        super(Names.Blocks.BONE, new AxisAlignedBB(0.1f, 0.0f, 0.1f, 0.9f, 0.75f, 0.9f));
     }
 
     @Override
@@ -41,7 +37,7 @@ public class BlockBone extends BlockBush {
         ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
         for(int n=0;n<RANDOM.nextInt(2)+1+fortune;n++){
             double i = RANDOM.nextDouble();
-            if(blockUnderneath.getMaterial()==Material.sand) {
+            if(blockstate.getMaterial() == Material.SAND) {
                 //On top of sand and gravel
                 if (i<0.11303959131545338441890166028097) {
                     drops.add(new ItemStack(MHItems.itemMonsterBoneS));

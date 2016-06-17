@@ -4,7 +4,7 @@ import com.alxnns1.mobhunter.block.upgrading.ContainerWeaponUpgrade;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
