@@ -9,6 +9,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -18,7 +21,7 @@ import net.minecraft.world.World;
 public abstract class EntityMHHerbivore extends EntityAnimal
 {
     private static final String KEY_SCALE = "scale";
-    private static final int WATCHER_SCALE = 20;
+    private static final DataParameter<Float> ENTITY_SCALE = EntityDataManager.createKey(EntityMHHerbivore.class, DataSerializers.FLOAT);
     private static float scaleMax; //= 1.24f;
     private static float scaleMin; //= 0.79f;
     private double baseHealth = 5d;
@@ -57,15 +60,15 @@ public abstract class EntityMHHerbivore extends EntityAnimal
     {
         super.entityInit();
         //Creates the datawatcher object to save the entity scale in
-        this.dataWatcher.addObject(WATCHER_SCALE, 1.0f);
+        this.dataManager.register(ENTITY_SCALE, 1.0f);
     }
 
     //Same as pig
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
     }
 
     /**
@@ -90,16 +93,16 @@ public abstract class EntityMHHerbivore extends EntityAnimal
     private void setEntityScale(float scale)
     {
         //Gets the datawatcher value for the entity scale
-        this.dataWatcher.updateObject(WATCHER_SCALE, scale);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double) Math.round(baseHealth * scale));
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(baseSpeed * scale);
-        this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(baseKnockback * scale);
+        this.dataManager.set(ENTITY_SCALE, scale);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double) Math.round(baseHealth * scale));
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(baseSpeed * scale);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(baseKnockback * scale);
         this.setHealth(this.getMaxHealth());
     }
 
     public float getScale()
     {
-        return this.dataWatcher.getWatchableObjectFloat(WATCHER_SCALE);
+        return this.dataManager.get(ENTITY_SCALE);
     }
 
     public void writeEntityToNBT(NBTTagCompound tagCompound)
