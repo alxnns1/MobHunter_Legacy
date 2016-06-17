@@ -1,6 +1,5 @@
 package com.alxnns1.mobhunter.entity;
 
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -10,7 +9,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -30,12 +28,12 @@ public abstract class EntityMHHerbivore extends EntityAnimal
 
     public EntityMHHerbivore(World world)
     {
-        this(world, 1f, 1f, Items.wheat);
+        this(world, 1f, 1f, Items.WHEAT);
     }
 
     public EntityMHHerbivore(World world, float minScale, float maxScale)
     {
-        this(world, minScale, maxScale, Items.wheat);
+        this(world, minScale, maxScale, Items.WHEAT);
     }
 
     public EntityMHHerbivore(World world, float minScale, float maxScale, Item temptFood)
@@ -45,7 +43,6 @@ public abstract class EntityMHHerbivore extends EntityAnimal
         scaleMin = minScale;
         scaleMax = maxScale;
         breedItem = temptFood;
-        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
