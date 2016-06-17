@@ -1,6 +1,5 @@
 package com.alxnns1.mobhunter.block;
 
-import com.alxnns1.mobhunter.block.upgrading.BlockNatural;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.item.ItemStack;
