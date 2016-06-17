@@ -3,9 +3,6 @@ package com.alxnns1.mobhunter.init;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.init.Items;
 import net.minecraft.stats.Achievement;
-import net.minecraft.stats.StatBase;
-import net.minecraft.stats.StatBasic;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.common.AchievementPage;
 
 /**
@@ -17,8 +14,8 @@ public class MHAchievements
 
     public static Achievement cookMeat = new Achievement("achievment.cookMeat", "cookMeat", -1, -1, MHItems.itemDoneSteak, null);
     public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", 1, -1, MHItems.weaponIronSwordPlus, null);
-    public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", -1, 1, Items.iron_helmet, null);
-    public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 1, 1, Items.golden_helmet, null);
+    public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", -1, 1, Items.IRON_HELMET, null);
+    public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 1, 1, Items.GOLDEN_HELMET, null);
 
     public static void init()
     {
