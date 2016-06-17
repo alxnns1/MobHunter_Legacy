@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.world.EnumSkyBlock;
@@ -117,11 +117,12 @@ public class TileBbq extends TileEntity implements ITickable
         cookTime = tag.getInteger(KEY_TIME);
     }
 
-    public void writeToNBT(NBTTagCompound tag)
+    public NBTTagCompound writeToNBT(NBTTagCompound tag)
     {
         super.writeToNBT(tag);
         tag.setBoolean(KEY_COOKING, isCooking);
         tag.setInteger(KEY_TIME, cookTime);
+        return tag;
     }
 
     /**
@@ -131,13 +132,13 @@ public class TileBbq extends TileEntity implements ITickable
     {
         NBTTagCompound nbt = new NBTTagCompound();
         writeToNBT(nbt);
-        return new S35PacketUpdateTileEntity(pos, 0, nbt);
+        return new SPacketUpdateTileEntity(pos, 0, nbt);
     }
 
     /**
      * Use this to update the block when a packet is received.
      */
-    public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.S35PacketUpdateTileEntity pkt)
+    public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.SPacketUpdateTileEntity pkt)
     {
         readFromNBT(pkt.getNbtCompound());
     }
