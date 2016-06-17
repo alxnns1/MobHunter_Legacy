@@ -1,24 +1,24 @@
 package com.alxnns1.mobhunter.item;
 
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 
 /**
  * Created by Mark on 19/05/2016.
  */
 public enum EnumSharpness
 {
-    RED(0, EnumChatFormatting.RED, "sharpness.red.name", 0.5f, 0.25f),
-    ORANGE(1, EnumChatFormatting.GOLD, "sharpness.orange.name", 0.75f, 0.5f),
-    YELLOW(2, EnumChatFormatting.YELLOW, "sharpness.yellow.name", 1f, 0.75f),
-    GREEN(3, EnumChatFormatting.GREEN, "sharpness.green.name", 1.05f, 1f),
-    BLUE(4, EnumChatFormatting.BLUE, "sharpness.blue.name", 1.2f, 1.0625f),
-    WHITE(5, EnumChatFormatting.WHITE, "sharpness.white.name", 1.32f, 1.125f),
-    PURPLE(6, EnumChatFormatting.LIGHT_PURPLE, "sharpness.purple.name", 1.45f, 1.2f);
+    RED(0, TextFormatting.RED, "sharpness.red.name", 0.5f, 0.25f),
+    ORANGE(1, TextFormatting.GOLD, "sharpness.orange.name", 0.75f, 0.5f),
+    YELLOW(2, TextFormatting.YELLOW, "sharpness.yellow.name", 1f, 0.75f),
+    GREEN(3, TextFormatting.GREEN, "sharpness.green.name", 1.05f, 1f),
+    BLUE(4, TextFormatting.BLUE, "sharpness.blue.name", 1.2f, 1.0625f),
+    WHITE(5, TextFormatting.WHITE, "sharpness.white.name", 1.32f, 1.125f),
+    PURPLE(6, TextFormatting.LIGHT_PURPLE, "sharpness.purple.name", 1.45f, 1.2f);
 
     private static final EnumSharpness[] allValues = new EnumSharpness[values().length];
     private final int id;
-    private final EnumChatFormatting colour;
+    private final TextFormatting colour;
     private final String name;
     private final float damage;
     private final float element;
@@ -32,7 +32,7 @@ public enum EnumSharpness
         }
     }
 
-    EnumSharpness(int id, EnumChatFormatting chatColour, String unlocalisedName, float damageMult, float elementMult)
+    EnumSharpness(int id, TextFormatting chatColour, String unlocalisedName, float damageMult, float elementMult)
     {
         this.id = id;
         this.colour = chatColour;
@@ -96,7 +96,7 @@ public enum EnumSharpness
         return allValues[id - i];
     }
 
-    public EnumChatFormatting getChatColour()
+    public TextFormatting getChatColour()
     {
         return colour;
     }
@@ -108,7 +108,7 @@ public enum EnumSharpness
 
     public String getLocalizedName()
     {
-        return StatCollector.translateToLocal(name);
+        return new TextComponentTranslation(name).getUnformattedText();
     }
 
     public float getDamageMult()

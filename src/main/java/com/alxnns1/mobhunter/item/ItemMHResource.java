@@ -1,10 +1,7 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.Common;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
