@@ -47,6 +47,8 @@ public class BlockBbq extends BlockContainer
         return new TileBbq();
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
     public boolean isOpaqueCube(IBlockState state)
     {
         return false;
