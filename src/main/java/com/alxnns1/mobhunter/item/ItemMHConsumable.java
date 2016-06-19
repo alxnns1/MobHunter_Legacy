@@ -7,12 +7,16 @@ import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -64,17 +68,17 @@ public class ItemMHConsumable extends ItemFood
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(itemStackIn.getItem().equals(MHItems.itemHerb))
         {
             if(playerIn.shouldHeal())
-                super.onItemRightClick(itemStackIn, worldIn, playerIn);
+                super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
         }
         else
-            super.onItemRightClick(itemStackIn, worldIn, playerIn);
+            super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 
-        return itemStackIn;
+        return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
     }
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
@@ -94,7 +98,7 @@ public class ItemMHConsumable extends ItemFood
             {
                 if(i == rand)
                 {
-                    player.removePotionEffect(effect.getPotionID());
+                    player.removePotionEffect(effect.getPotion());
                     break;
                 }
                 i++;
@@ -102,10 +106,10 @@ public class ItemMHConsumable extends ItemFood
         }
         else if(itemRand.nextFloat() < 0.5f)
         {
-            if(item.equals(MHItems.itemAntidoteHerb) && player.isPotionActive(Potion.poison))
-                player.removePotionEffect(Potion.poison.getId());
+            if(item.equals(MHItems.itemAntidoteHerb) && player.isPotionActive(MobEffects.POISON))
+                player.removePotionEffect(MobEffects.POISON);
             else if(item.equals(MHItems.itemToadstool))
-                player.addPotionEffect(new PotionEffect(Potion.poison.getId(), effectDuration));
+                player.addPotionEffect(new PotionEffect(MobEffects.POISON, effectDuration));
             else if(item.equals(MHItems.itemParashroom))
                 player.addPotionEffect(new PotionEffectParalyse(effectDuration));
             else if(item.equals(MHItems.itemExciteshroom))
@@ -113,9 +117,9 @@ public class ItemMHConsumable extends ItemFood
             else if(item.equals(MHItems.itemMopeshroom))
                 player.getFoodStats().addStats(-2,0);
             else if(item.equals(MHItems.itemMightSeed))
-                player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), effectDuration));
+                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, effectDuration));
             else if(item.equals(MHItems.itemAdamantSeed))
-                player.addPotionEffect(new PotionEffect(Potion.resistance.getId(), effectDuration));
+                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, effectDuration));
             else if(item.equals(MHItems.itemFireHerb))
                 player.setFire(effectDuration / 20);
             else if(item.equals(MHItems.itemBomberry))
@@ -128,9 +132,9 @@ public class ItemMHConsumable extends ItemFood
             else if(item.equals(MHItems.itemNeedleberry))
                 player.attackEntityFrom(DamageSource.generic, 2);
             else if(item.equals(MHItems.itemBitterbug))
-                player.addPotionEffect(new PotionEffect(Potion.confusion.getId(), (int) Math.round(effectDuration * 1.5)));
+                player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) Math.round(effectDuration * 1.5)));
             else if(item.equals(MHItems.itemNitroshroom))
-                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), effectDuration));
+                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, effectDuration));
         }
     }
 

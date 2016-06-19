@@ -16,7 +16,7 @@ public class PotionMH extends Potion
 
     public PotionMH(String name, boolean badEffect, int potionColor)
     {
-        super(new ResourceLocation(Reference.MOD_ID, name), badEffect, potionColor);
+        super(badEffect, potionColor);
     }
 
     @Override

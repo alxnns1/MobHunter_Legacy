@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -15,8 +16,8 @@ import java.util.List;
  * Created by Alex on 20/04/2016.
  */
 public class ItemMHArmour extends ItemArmor {
-    public ItemMHArmour(ArmorMaterial material, int renderIndex, int armourType, String itemName){
-        super(material, renderIndex, armourType);
+    public ItemMHArmour(ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipSlot, String itemName){
+        super(material, renderIndex, equipSlot);
         setUnlocalizedName(itemName);
         setCreativeTab(MobHunter.MH_TAB);
     }

@@ -15,7 +15,7 @@ public class PotionEffectParalyse extends PotionEffectMH
 
     public PotionEffectParalyse(int effectDuration)
     {
-        super(MHPotions.potionParalyse.getId(), effectDuration, 0);
+        super(MHPotions.potionParalyse, effectDuration, 0);
     }
 
     /**
@@ -39,7 +39,7 @@ public class PotionEffectParalyse extends PotionEffectMH
         //TODO: Try to allow falling - Use Slowness and Jumping without showing teh potion effect?
         //LogHelper.info("Paralysing!");
         if(entityIn instanceof EntityPlayerMP)
-            ((EntityPlayerMP)entityIn).playerNetServerHandler.setPlayerLocation(this.x, this.y, this.z, this.yaw, this.pitch);
+            ((EntityPlayerMP)entityIn).connection.setPlayerLocation(this.x, this.y, this.z, this.yaw, this.pitch);
         else
         {
             entityIn.motionX = 0f;

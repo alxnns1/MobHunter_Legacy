@@ -13,14 +13,9 @@ import net.minecraft.util.ResourceLocation;
  */
 public class PotionNoRender extends Potion
 {
-    public PotionNoRender(int potionID, ResourceLocation location, boolean badEffect, int potionColor)
+    public PotionNoRender(boolean badEffect, int potionColor)
     {
-        super(potionID, location, badEffect, potionColor);
-    }
-
-    public PotionNoRender(ResourceLocation location, boolean badEffect, int potionColor)
-    {
-        super(location, badEffect, potionColor);
+        super(badEffect, potionColor);
     }
 
     /**

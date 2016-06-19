@@ -11,7 +11,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -46,7 +45,6 @@ public class EntityMHNeopteron extends EntityMob
         this.setSize(0.9F, 1.3F); //Same as cow
         scaleMin = minScale;
         scaleMax = maxScale;
-        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAITempt(this, 1.25D, temptFood, true));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
