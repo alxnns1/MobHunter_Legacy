@@ -50,6 +50,7 @@ public class ItemMHConsumable extends ItemFood
         super(amount, saturation, isWolfFood);
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
+        setRegistryName(itemName);
     }
 
     /**

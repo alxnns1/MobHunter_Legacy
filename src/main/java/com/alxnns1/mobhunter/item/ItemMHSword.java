@@ -46,6 +46,7 @@ public class ItemMHSword extends ItemSword
         super(material.setRepairItem(new ItemStack(MHItems.itemWhetstone)));
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
+        setRegistryName(itemName);
         baseAttackDamage = 4.0f + material.getDamageVsEntity(); //Same as in ItemSword
     }
 

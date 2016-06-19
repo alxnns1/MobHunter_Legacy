@@ -20,6 +20,7 @@ public class ItemMHResourceMeta extends Item
     public ItemMHResourceMeta(String unlocName, String[] metaNames)
     {
         setUnlocalizedName(unlocName);
+        setRegistryName(unlocName);
         this.metaNames = metaNames;
         maxMeta = metaNames.length > 16 ? 16 : metaNames.length;
         setCreativeTab(MobHunter.MH_TAB);

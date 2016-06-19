@@ -27,6 +27,7 @@ public class ItemMHResource extends Item
         if(putInTab)setCreativeTab(MobHunter.MH_TAB);
         addInfo = putInTab;
         setUnlocalizedName(itemName);
+        setRegistryName(itemName);
     }
 
     /**

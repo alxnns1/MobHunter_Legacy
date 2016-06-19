@@ -5,6 +5,7 @@ import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
