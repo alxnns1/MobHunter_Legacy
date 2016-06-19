@@ -16,6 +16,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,28 +27,30 @@ import java.util.List;
  */
 public class ItemMHSword extends ItemSword
 {
-    private EnumSharpness maxSharpness = EnumSharpness.RED;
-    private int[] damageLevels;
+    private final EnumSharpness maxSharpness;
+    private final int[] damageLevels;
+    private final String damageLevelsString;
     private float baseAttackDamage = 4f;
     private int nextSharpen = 200;
 
-    public ItemMHSword(ToolMaterial material, String itemName, EnumSharpness maxSharp, int[] sharpnessDamageLevels)
+    public ItemMHSword(String itemName, float damage, int[] sharpnessDamageLevels)
     {
-        this(material, itemName);
-        maxSharpness = maxSharp;
+        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage, 0).setRepairItem(new ItemStack(MHItems.itemWhetstone)));
+        maxSharpness = EnumSharpness.getById(sharpnessDamageLevels.length - 1);
+        if(maxSharpness == null) LogHelper.warn("Sword " + getUnlocalizedName() + " has a null sharpness! Something must be wrong!");
         damageLevels = sharpnessDamageLevels;
-        if(sharpnessDamageLevels.length - 1 != maxSharpness.getId())
-            LogHelper.warn("Sword " + getUnlocalizedName() + " has " + sharpnessDamageLevels.length + " sharpness damages and a max sharpness id of " + maxSharpness.getId() + "!");
-    }
-
-    //This constructor will be removed once weapons are converted to using sharpness
-    public ItemMHSword(ToolMaterial material, String itemName)
-    {
-        super(material.setRepairItem(new ItemStack(MHItems.itemWhetstone)));
+        String levels = "";
+        for(int i = 0; i < damageLevels.length; i++)
+        {
+            levels += damageLevels[i];
+            if(i < damageLevels.length - 1)
+                levels += " <- ";
+        }
+        damageLevelsString = levels;
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
-        baseAttackDamage = 4.0f + material.getDamageVsEntity(); //Same as in ItemSword
+        baseAttackDamage = 4f + getDamageVsEntity();
     }
 
     /**
@@ -116,6 +119,8 @@ public class ItemMHSword extends ItemSword
         {
             tooltip.add("Sharpness: " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
             tooltip.add("Max Sharpness: " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
+            if(playerIn.isCreative())
+                tooltip.add(damageLevelsString);
         }
 
         Common.addTooltip(stack, tooltip);
