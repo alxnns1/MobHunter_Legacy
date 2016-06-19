@@ -5,6 +5,7 @@ import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -25,6 +26,7 @@ public class EntityGenprey extends EntityMHBirdWyvern {
         super(worldIn, 0.79f, 1.24f, MHItems.itemRawMeat);
         this.setSize(1.5F, 1.8125F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
+        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
