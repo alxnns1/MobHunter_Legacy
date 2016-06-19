@@ -150,6 +150,8 @@ public class MHItems
     public static final ItemMHResource itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_HEAD);
     public static final ItemMHResource itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL);
 
+    public static final ItemMHSword weaponTest = new ItemMHSword(EnumHelper.addToolMaterial("Test",0,35,0.0f,1.0f,0), "weaponTest", EnumSharpness.PURPLE, new int[] {5, 10, 15, 20, 25, 30});
+
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(EnumHelper.addToolMaterial("IronPlus",0,399,0.0f,3.0f,0), Names.Items.IRON_SWORD_PLUS, EnumSharpness.YELLOW, new int[] {180, 320});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(EnumHelper.addToolMaterial("Buster",0,399,0.0f,4.0f,0), Names.Items.BUSTER_SWORD, EnumSharpness.GREEN, new int[] {160, 300, 380});
     public static final ItemMHSword weaponRuggedGreatSword = new ItemMHSword(EnumHelper.addToolMaterial("Rugged",0,399,0.0f,6.0f,0), Names.Items.RUGGED_GREAT_SWORD, EnumSharpness.GREEN, new int[] {80, 200, 360});
@@ -299,6 +301,8 @@ public class MHItems
         GameRegistry.register(armourAlloyChestplate);
         GameRegistry.register(armourAlloyLeggings);
         GameRegistry.register(armourAlloyBoots);
+
+        GameRegistry.register(weaponTest);
 
         GameRegistry.register(weaponIronSwordPlus);
         GameRegistry.register(weaponBusterSword);
@@ -456,6 +460,8 @@ public class MHItems
         Common.regModel(armourAlloyChestplate);
         Common.regModel(armourAlloyLeggings);
         Common.regModel(armourAlloyBoots);
+
+        Common.regModel(weaponTest);
 
         Common.regModel(weaponIronSwordPlus);
         Common.regModel(weaponBusterSword);
