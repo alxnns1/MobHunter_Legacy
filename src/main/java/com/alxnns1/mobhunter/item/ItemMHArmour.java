@@ -15,11 +15,17 @@ import java.util.List;
 /**
  * Created by Alex on 20/04/2016.
  */
-public class ItemMHArmour extends ItemArmor {
+public class ItemMHArmour extends ItemArmor
+{
     public ItemMHArmour(ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipSlot, String itemName){
         super(material, renderIndex, equipSlot);
         setUnlocalizedName(itemName);
-        setRegistryName(itemName);
+        setCreativeTab(MobHunter.MH_TAB);
+    }
+
+    public ItemMHArmour(ArmorMaterial material, EntityEquipmentSlot equipSlot, String itemName){
+        super(material, equipSlot.equals(EntityEquipmentSlot.LEGS) ? 2 : 1, equipSlot);
+        setUnlocalizedName(itemName);
         setCreativeTab(MobHunter.MH_TAB);
     }
 

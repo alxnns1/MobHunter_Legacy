@@ -3,9 +3,12 @@ package com.alxnns1.mobhunter.init;
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
 import com.alxnns1.mobhunter.block.upgrading.BlockWeaponUpgrade;
+import com.alxnns1.mobhunter.item.ItemBlockBasic;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.Common;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,23 +36,30 @@ public class MHBlocks
     public static BlockBbq blockBbq = new BlockBbq();
     public static BlockWeaponUpgrade blockWeaponUpgrade = new BlockWeaponUpgrade();
 
+    private static void regBlock(Block block)
+    {
+        GameRegistry.register(block);
+        ItemBlock itemBlock = new ItemBlockBasic(block);
+        GameRegistry.register(itemBlock);
+    }
+
     public static void init()
     {
-        GameRegistry.registerBlock(blockOreEarthCrystal, Names.Blocks.ORE_EARTH_CRYSTAL);
-        GameRegistry.registerBlock(blockEarthCrystal, Names.Blocks.EARTH_CRYSTAL);
-        GameRegistry.registerBlock(blockOreMachalite, Names.Blocks.ORE_MACHALITE);
-        GameRegistry.registerBlock(blockMachalite, Names.Blocks.MACHALITE);
-        GameRegistry.registerBlock(blockOreDragonite, Names.Blocks.ORE_DRAGONITE);
-        GameRegistry.registerBlock(blockDragonite, Names.Blocks.DRAGONITE);
+        regBlock(blockOreEarthCrystal);
+        regBlock(blockEarthCrystal);
+        regBlock(blockOreMachalite);
+        regBlock(blockMachalite);
+        regBlock(blockOreDragonite);
+        regBlock(blockDragonite);
 
-        GameRegistry.registerBlock(blockHerb, Names.Blocks.HERB);
-        GameRegistry.registerBlock(blockShroom, Names.Blocks.SHROOM);
-        GameRegistry.registerBlock(blockBerry, Names.Blocks.BERRY);
-        GameRegistry.registerBlock(blockBug, Names.Blocks.BUG);
-        GameRegistry.registerBlock(blockBone, Names.Blocks.BONE);
+        regBlock(blockHerb);
+        regBlock(blockShroom);
+        regBlock(blockBerry);
+        regBlock(blockBug);
+        regBlock(blockBone);
 
-        GameRegistry.registerBlock(blockBbq, Names.Blocks.BBQ);
-        GameRegistry.registerBlock(blockWeaponUpgrade, Names.Blocks.WEAPON_UPGRADE);
+        regBlock(blockBbq);
+        regBlock(blockWeaponUpgrade);
     }
 
     @SideOnly(Side.CLIENT)

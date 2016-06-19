@@ -4,6 +4,8 @@ import com.alxnns1.mobhunter.item.*;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.Common;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -15,30 +17,30 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @SuppressWarnings("all")
 public class MHItems
 {
-    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 6);
-    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 8);
-    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 8);
-    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 6);
+    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 6, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 6, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
 
-    public static ItemArmor armourDerringHelmet = new ItemMHArmour(derringArmourMaterial,1,0,Names.Items.DERRING_HELMET);
-    public static ItemArmor armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,1,1,Names.Items.DERRING_CHESTPLATE);
-    public static ItemArmor armourDerringLeggings = new ItemMHArmour(derringArmourMaterial,2,2,Names.Items.DERRING_LEGGINGS);
-    public static ItemArmor armourDerringBoots = new ItemMHArmour(derringArmourMaterial,1,3,Names.Items.DERRING_BOOTS);
+    public static ItemArmor armourDerringHelmet = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.DERRING_HELMET);
+    public static ItemArmor armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.DERRING_CHESTPLATE);
+    public static ItemArmor armourDerringLeggings = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.DERRING_LEGGINGS);
+    public static ItemArmor armourDerringBoots = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.DERRING_BOOTS);
 
-    public static ItemArmor armourHunterHelmet = new ItemMHArmour(hunterArmourMaterial,1,0,Names.Items.HUNTER_HELMET);
-    public static ItemArmor armourHunterChestplate = new ItemMHArmour(hunterArmourMaterial,1,1,Names.Items.HUNTER_CHESTPLATE);
-    public static ItemArmor armourHunterLeggings = new ItemMHArmour(hunterArmourMaterial,2,2,Names.Items.HUNTER_LEGGINGS);
-    public static ItemArmor armourHunterBoots = new ItemMHArmour(hunterArmourMaterial,1,3,Names.Items.HUNTER_BOOTS);
+    public static ItemArmor armourHunterHelmet = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.HUNTER_HELMET);
+    public static ItemArmor armourHunterChestplate = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.HUNTER_CHESTPLATE);
+    public static ItemArmor armourHunterLeggings = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.HUNTER_LEGGINGS);
+    public static ItemArmor armourHunterBoots = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.HUNTER_BOOTS);
 
-    public static ItemArmor armourBoneHelmet = new ItemMHArmour(boneArmourMaterial,1,0,Names.Items.BONE_HELMET);
-    public static ItemArmor armourBoneChestplate = new ItemMHArmour(boneArmourMaterial,1,1,Names.Items.BONE_CHESTPLATE);
-    public static ItemArmor armourBoneLeggings = new ItemMHArmour(boneArmourMaterial,2,2,Names.Items.BONE_LEGGINGS);
-    public static ItemArmor armourBoneBoots = new ItemMHArmour(boneArmourMaterial,1,3,Names.Items.BONE_BOOTS);
+    public static ItemArmor armourBoneHelmet = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.BONE_HELMET);
+    public static ItemArmor armourBoneChestplate = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.BONE_CHESTPLATE);
+    public static ItemArmor armourBoneLeggings = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.BONE_LEGGINGS);
+    public static ItemArmor armourBoneBoots = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.BONE_BOOTS);
 
-    public static ItemArmor armourAlloyHelmet = new ItemMHArmour(alloyArmourMaterial,1,0,Names.Items.ALLOY_HELMET);
-    public static ItemArmor armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,1,1,Names.Items.ALLOY_CHESTPLATE);
-    public static ItemArmor armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,2,2,Names.Items.ALLOY_LEGGINGS);
-    public static ItemArmor armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,1,3,Names.Items.ALLOY_BOOTS);
+    public static ItemArmor armourAlloyHelmet = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.ALLOY_HELMET);
+    public static ItemArmor armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.ALLOY_CHESTPLATE);
+    public static ItemArmor armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.ALLOY_LEGGINGS);
+    public static ItemArmor armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.ALLOY_BOOTS);
 
     public static final ItemMHDrink itemPotion = new ItemMHDrink(Names.Items.POTION);
     public static final ItemMHDrink itemMegaPotion = new ItemMHDrink(Names.Items.MEGA_POTION);
@@ -170,150 +172,150 @@ public class MHItems
      */
     public static void init()
     {
-        GameRegistry.registerItem(itemPotion, Names.Items.POTION);
-        GameRegistry.registerItem(itemMegaPotion, Names.Items.MEGA_POTION);
-        //GameRegistry.registerItem(itemNutrients, Names.Items.NUTRIENTS);
-        //GameRegistry.registerItem(itemMegaNutrients, Names.Items.MEGA_NUTRIENTS);
-        GameRegistry.registerItem(itemAntidote, Names.Items.ANTIDOTE);
-        GameRegistry.registerItem(itemImmunizer, Names.Items.IMMUNIZER);
-        GameRegistry.registerItem(itemDashJuice, Names.Items.DASH_JUICE);
-        GameRegistry.registerItem(itemMegaDashJuice, Names.Items.MEGA_DASH_JUICE);
-        GameRegistry.registerItem(itemDemondrug, Names.Items.DEMONDRUG);
-        GameRegistry.registerItem(itemMegaDemondrug, Names.Items.MEGA_DEMONDRUG);
-        GameRegistry.registerItem(itemArmourskin, Names.Items.ARMOURSKIN);
-        GameRegistry.registerItem(itemMegaArmourskin, Names.Items.MEGA_ARMOURSKIN);
+        GameRegistry.register(itemPotion);
+        GameRegistry.register(itemMegaPotion);
+        //GameRegistry.register(itemNutrients);
+        //GameRegistry.register(itemMegaNutrients);
+        GameRegistry.register(itemAntidote);
+        GameRegistry.register(itemImmunizer);
+        GameRegistry.register(itemDashJuice);
+        GameRegistry.register(itemMegaDashJuice);
+        GameRegistry.register(itemDemondrug);
+        GameRegistry.register(itemMegaDemondrug);
+        GameRegistry.register(itemArmourskin);
+        GameRegistry.register(itemMegaArmourskin);
 
-        GameRegistry.registerItem(itemCatalyst, Names.Items.CATALYST);
+        GameRegistry.register(itemCatalyst);
 
-        GameRegistry.registerItem(itemWhetstone, Names.Items.WHETSTONE);
+        GameRegistry.register(itemWhetstone);
 
-        GameRegistry.registerItem(itemRawMeat, Names.Items.RAW_MEAT);
-        GameRegistry.registerItem(itemRareSteak, Names.Items.RARE_STEAK);
-        GameRegistry.registerItem(itemDoneSteak, Names.Items.DONE_STEAK);
-        GameRegistry.registerItem(itemBurntMeat, Names.Items.BURNT_MEAT);
+        GameRegistry.register(itemRawMeat);
+        GameRegistry.register(itemRareSteak);
+        GameRegistry.register(itemDoneSteak);
+        GameRegistry.register(itemBurntMeat);
 
-        GameRegistry.registerItem(itemHerb, Names.Items.HERB);
-        GameRegistry.registerItem(itemAntidoteHerb, Names.Items.ANTIDOTE_HERB);
-        GameRegistry.registerItem(itemFireHerb, Names.Items.FIRE_HERB);
-        GameRegistry.registerItem(itemIvy, Names.Items.IVY);
-        GameRegistry.registerItem(itemSleepHerb, Names.Items.SLEEP_HERB);
-        GameRegistry.registerItem(itemSapPlant, Names.Items.SAP_PLANT);
-        GameRegistry.registerItem(itemFelvine, Names.Items.FELVINE);
-        GameRegistry.registerItem(itemGloamgrassRoot, Names.Items.GLOAMGRASS_ROOT);
-        GameRegistry.registerItem(itemHotPepper, Names.Items.HOT_PEPPER);
+        GameRegistry.register(itemHerb);
+        GameRegistry.register(itemAntidoteHerb);
+        GameRegistry.register(itemFireHerb);
+        GameRegistry.register(itemIvy);
+        GameRegistry.register(itemSleepHerb);
+        GameRegistry.register(itemSapPlant);
+        GameRegistry.register(itemFelvine);
+        GameRegistry.register(itemGloamgrassRoot);
+        GameRegistry.register(itemHotPepper);
 
-        GameRegistry.registerItem(itemBlueMushroom, Names.Items.BLUE_MUSHROOM);
-        GameRegistry.registerItem(itemNitroshroom, Names.Items.NITROSHROOM);
-        GameRegistry.registerItem(itemParashroom, Names.Items.PARASHROOM);
-        GameRegistry.registerItem(itemToadstool, Names.Items.TOADSTOOL);
-        GameRegistry.registerItem(itemExciteshroom, Names.Items.EXCITESHROOM);
-        GameRegistry.registerItem(itemMopeshroom, Names.Items.MOPESHROOM);
-        GameRegistry.registerItem(itemDragonToadstool, Names.Items.DRAGON_TOADSTOOL);
+        GameRegistry.register(itemBlueMushroom);
+        GameRegistry.register(itemNitroshroom);
+        GameRegistry.register(itemParashroom);
+        GameRegistry.register(itemToadstool);
+        GameRegistry.register(itemExciteshroom);
+        GameRegistry.register(itemMopeshroom);
+        GameRegistry.register(itemDragonToadstool);
 
-        GameRegistry.registerItem(itemHuskberry, Names.Items.HUSKBERRY);
-        GameRegistry.registerItem(itemPaintberry, Names.Items.PAINTBERRY);
-        GameRegistry.registerItem(itemMightSeed, Names.Items.MIGHT_SEED);
-        GameRegistry.registerItem(itemAdamantSeed, Names.Items.ADAMANT_SEED);
-        GameRegistry.registerItem(itemNulberry, Names.Items.NULBERRY);
-        GameRegistry.registerItem(itemDragonfellBerry, Names.Items.DRAGONFELL_BERRY);
-        GameRegistry.registerItem(itemScatternut, Names.Items.SCATTERNUT);
-        GameRegistry.registerItem(itemNeedleberry, Names.Items.NEEDLEBERRY);
-        GameRegistry.registerItem(itemLatchberry, Names.Items.LATCHBERRY);
-        GameRegistry.registerItem(itemBomberry, Names.Items.BOMBERRY);
+        GameRegistry.register(itemHuskberry);
+        GameRegistry.register(itemPaintberry);
+        GameRegistry.register(itemMightSeed);
+        GameRegistry.register(itemAdamantSeed);
+        GameRegistry.register(itemNulberry);
+        GameRegistry.register(itemDragonfellBerry);
+        GameRegistry.register(itemScatternut);
+        GameRegistry.register(itemNeedleberry);
+        GameRegistry.register(itemLatchberry);
+        GameRegistry.register(itemBomberry);
 
-        GameRegistry.registerItem(itemEarthCrystal, Names.Items.EARTH_CRYSTAL);
-        GameRegistry.registerItem(itemMachaliteIngot, Names.Items.MACHALITE_INGOT);
-        GameRegistry.registerItem(itemDragoniteIngot, Names.Items.DRAGONITE_INGOT);
+        GameRegistry.register(itemEarthCrystal);
+        GameRegistry.register(itemMachaliteIngot);
+        GameRegistry.register(itemDragoniteIngot);
 
-        GameRegistry.registerItem(itemInsectHusk, Names.Items.INSECT_HUSK);
-        GameRegistry.registerItem(itemStinkhopper, Names.Items.STINKHOPPER);
-        GameRegistry.registerItem(itemSnakebeeLarva, Names.Items.SNAKEBEE_LARVA);
-        GameRegistry.registerItem(itemGodbug, Names.Items.GODBUG);
-        GameRegistry.registerItem(itemBitterbug, Names.Items.BITTERBUG);
-        GameRegistry.registerItem(itemFlashbug, Names.Items.FLASHBUG);
-        GameRegistry.registerItem(itemThunderbug, Names.Items.THUNDERBUG);
-        GameRegistry.registerItem(itemGlueglopper, Names.Items.GLUEGLOPPER);
-        GameRegistry.registerItem(itemKillerBeetle, Names.Items.KILLER_BEETLE);
-        GameRegistry.registerItem(itemHercudrome, Names.Items.HERCUDROME);
-        GameRegistry.registerItem(itemRareScarab, Names.Items.RARE_SCARAB);
-        GameRegistry.registerItem(itemHoney, Names.Items.HONEY);
+        GameRegistry.register(itemInsectHusk);
+        GameRegistry.register(itemStinkhopper);
+        GameRegistry.register(itemSnakebeeLarva);
+        GameRegistry.register(itemGodbug);
+        GameRegistry.register(itemBitterbug);
+        GameRegistry.register(itemFlashbug);
+        GameRegistry.register(itemThunderbug);
+        GameRegistry.register(itemGlueglopper);
+        GameRegistry.register(itemKillerBeetle);
+        GameRegistry.register(itemHercudrome);
+        GameRegistry.register(itemRareScarab);
+        GameRegistry.register(itemHoney);
 
-        //GameRegistry.registerItem(itemBones, "bones");
+        //GameRegistry.register(itemBones, "bones");
 
-        GameRegistry.registerItem(itemMonsterBoneS, Names.Items.MONSTER_BONE_S);
-        GameRegistry.registerItem(itemMonsterBoneM, Names.Items.MONSTER_BONE_M);
-        GameRegistry.registerItem(itemMysteryBone, Names.Items.MYSTERY_BONE);
-        GameRegistry.registerItem(itemUnknownSkull, Names.Items.UNKNOWN_SKULL);
-        GameRegistry.registerItem(itemBruteBone, Names.Items.BRUTE_BONE);
-        GameRegistry.registerItem(itemJumboBone, Names.Items.JUMBO_BONE);
-        GameRegistry.registerItem(itemDung, Names.Items.DUNG);
+        GameRegistry.register(itemMonsterBoneS);
+        GameRegistry.register(itemMonsterBoneM);
+        GameRegistry.register(itemMysteryBone);
+        GameRegistry.register(itemUnknownSkull);
+        GameRegistry.register(itemBruteBone);
+        GameRegistry.register(itemJumboBone);
+        GameRegistry.register(itemDung);
 
-        GameRegistry.registerItem(itemAltarothJaw, Names.Items.ALTAROTH_JAW);
-        GameRegistry.registerItem(itemAltarothStomach, Names.Items.ALTAROTH_STOMACH);
+        GameRegistry.register(itemAltarothJaw);
+        GameRegistry.register(itemAltarothStomach);
 
-        GameRegistry.registerItem(itemKelbiHorn, Names.Items.KELBI_HORN);
-        GameRegistry.registerItem(itemWarmPelt, Names.Items.WARM_PELT);
+        GameRegistry.register(itemKelbiHorn);
+        GameRegistry.register(itemWarmPelt);
 
-        GameRegistry.registerItem(itemGargwaFeather, Names.Items.GARGWA_FEATHER);
-        GameRegistry.registerItem(itemSteelEgg, Names.Items.STEEL_EGG);
+        GameRegistry.register(itemGargwaFeather);
+        GameRegistry.register(itemSteelEgg);
 
-        GameRegistry.registerItem(itemMonsterFluid, Names.Items.MONSTER_FLUID);
+        GameRegistry.register(itemMonsterFluid);
 
-        GameRegistry.registerItem(itemBirdWyvernFang, Names.Items.BIRD_WYVERN_FANG);
+        GameRegistry.register(itemBirdWyvernFang);
 
-        GameRegistry.registerItem(itemScreamerSac, Names.Items.SCREAMER_SAC);
+        GameRegistry.register(itemScreamerSac);
 
-        GameRegistry.registerItem(itemJaggiHide, Names.Items.JAGGI_HIDE);
-        GameRegistry.registerItem(itemJaggiScale, Names.Items.JAGGI_SCALE);
+        GameRegistry.register(itemJaggiHide);
+        GameRegistry.register(itemJaggiScale);
 
-        GameRegistry.registerItem(itemVelocipreyHide, Names.Items.VELOCIPREY_HIDE);
-        GameRegistry.registerItem(itemVelocipreyScale, Names.Items.VELOCIPREY_SCALE);
+        GameRegistry.register(itemVelocipreyHide);
+        GameRegistry.register(itemVelocipreyScale);
 
-        GameRegistry.registerItem(itemGenpreyHide, Names.Items.GENPREY_HIDE);
-        GameRegistry.registerItem(itemGenpreyScale, Names.Items.GENPREY_SCALE);
-        GameRegistry.registerItem(itemGenpreyFang, Names.Items.GENPREY_FANG);
+        GameRegistry.register(itemGenpreyHide);
+        GameRegistry.register(itemGenpreyScale);
+        GameRegistry.register(itemGenpreyFang);
 
-        GameRegistry.registerItem(itemGreatJaggiHide, Names.Items.GREAT_JAGGI_HIDE);
-        GameRegistry.registerItem(itemGreatJaggiClaw, Names.Items.GREAT_JAGGI_CLAW);
-        GameRegistry.registerItem(itemGreatJaggiHead, Names.Items.GREAT_JAGGI_HEAD);
-        GameRegistry.registerItem(itemKingsFrill, Names.Items.KINGS_FRILL);
+        GameRegistry.register(itemGreatJaggiHide);
+        GameRegistry.register(itemGreatJaggiClaw);
+        GameRegistry.register(itemGreatJaggiHead);
+        GameRegistry.register(itemKingsFrill);
 
-        GameRegistry.registerItem(armourDerringHelmet,Names.Items.DERRING_HELMET);
-        GameRegistry.registerItem(armourDerringChestplate,Names.Items.DERRING_CHESTPLATE);
-        GameRegistry.registerItem(armourDerringLeggings,Names.Items.DERRING_LEGGINGS);
-        GameRegistry.registerItem(armourDerringBoots,Names.Items.DERRING_BOOTS);
+        GameRegistry.register(armourDerringHelmet);
+        GameRegistry.register(armourDerringChestplate);
+        GameRegistry.register(armourDerringLeggings);
+        GameRegistry.register(armourDerringBoots);
 
-        GameRegistry.registerItem(armourHunterHelmet,Names.Items.HUNTER_HELMET);
-        GameRegistry.registerItem(armourHunterChestplate,Names.Items.HUNTER_CHESTPLATE);
-        GameRegistry.registerItem(armourHunterLeggings,Names.Items.HUNTER_LEGGINGS);
-        GameRegistry.registerItem(armourHunterBoots,Names.Items.HUNTER_BOOTS);
+        GameRegistry.register(armourHunterHelmet);
+        GameRegistry.register(armourHunterChestplate);
+        GameRegistry.register(armourHunterLeggings);
+        GameRegistry.register(armourHunterBoots);
 
-        GameRegistry.registerItem(armourBoneHelmet,Names.Items.BONE_HELMET);
-        GameRegistry.registerItem(armourBoneChestplate,Names.Items.BONE_CHESTPLATE);
-        GameRegistry.registerItem(armourBoneLeggings,Names.Items.BONE_LEGGINGS);
-        GameRegistry.registerItem(armourBoneBoots,Names.Items.BONE_BOOTS);
+        GameRegistry.register(armourBoneHelmet);
+        GameRegistry.register(armourBoneChestplate);
+        GameRegistry.register(armourBoneLeggings);
+        GameRegistry.register(armourBoneBoots);
 
-        GameRegistry.registerItem(armourAlloyHelmet,Names.Items.ALLOY_HELMET);
-        GameRegistry.registerItem(armourAlloyChestplate,Names.Items.ALLOY_CHESTPLATE);
-        GameRegistry.registerItem(armourAlloyLeggings,Names.Items.ALLOY_LEGGINGS);
-        GameRegistry.registerItem(armourAlloyBoots,Names.Items.ALLOY_BOOTS);
+        GameRegistry.register(armourAlloyHelmet);
+        GameRegistry.register(armourAlloyChestplate);
+        GameRegistry.register(armourAlloyLeggings);
+        GameRegistry.register(armourAlloyBoots);
 
-        GameRegistry.registerItem(weaponIronSwordPlus,Names.Items.IRON_SWORD_PLUS);
-        GameRegistry.registerItem(weaponBusterSword,Names.Items.BUSTER_SWORD);
-        GameRegistry.registerItem(weaponRuggedGreatSword,Names.Items.RUGGED_GREAT_SWORD);
-        GameRegistry.registerItem(weaponBusterSwordPlus,Names.Items.BUSTER_SWORD_PLUS);
-        GameRegistry.registerItem(weaponRavagerBlade,Names.Items.RAVAGER_BLADE);
+        GameRegistry.register(weaponIronSwordPlus);
+        GameRegistry.register(weaponBusterSword);
+        GameRegistry.register(weaponRuggedGreatSword);
+        GameRegistry.register(weaponBusterSwordPlus);
+        GameRegistry.register(weaponRavagerBlade);
 
-        GameRegistry.registerItem(weaponBoneBlade,Names.Items.BONE_BLADE);
-        GameRegistry.registerItem(weaponBoneBladePlus,Names.Items.BONE_BLADE_PLUS);
-        GameRegistry.registerItem(weaponJawblade,Names.Items.JAWBLADE);
-        GameRegistry.registerItem(weaponGiantJawblade,Names.Items.GIANT_JAWBLADE);
+        GameRegistry.register(weaponBoneBlade);
+        GameRegistry.register(weaponBoneBladePlus);
+        GameRegistry.register(weaponJawblade);
+        GameRegistry.register(weaponGiantJawblade);
 
-        GameRegistry.registerItem(iconGreatJaggi, Names.Items.ICON_GREAT_JAGGI);
-        GameRegistry.registerItem(iconGendrome, Names.Items.ICON_GENDROME);
-        GameRegistry.registerItem(iconIodrome, Names.Items.ICON_IODROME);
-        GameRegistry.registerItem(iconVelocidrome, Names.Items.ICON_VELOCIDROME);
-        GameRegistry.registerItem(iconKirin, Names.Items.ICON_KIRIN);
+        GameRegistry.register(iconGreatJaggi);
+        GameRegistry.register(iconGendrome);
+        GameRegistry.register(iconIodrome);
+        GameRegistry.register(iconVelocidrome);
+        GameRegistry.register(iconKirin);
     }
 
     /**
