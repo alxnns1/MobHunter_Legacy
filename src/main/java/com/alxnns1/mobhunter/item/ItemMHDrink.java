@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -30,49 +31,45 @@ public class ItemMHDrink extends ItemMHConsumable
      * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
      * the Item before the action is complete.
      */
-    public ItemStack onItemUseFinish(ItemStack stack, World world, EntityPlayer player)
+    public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving)
     {
-        if (!world.isRemote)
-        {
-            Item item = stack.getItem();
-            if(item.equals(MHItems.itemPotion))
-                player.heal(5f);
-            else if(item.equals(MHItems.itemMegaPotion))
-                player.heal(10f);
-            //else if(item.equals(MHItems.itemNutrients))
-            //else if(item.equals(MHItems.itemMegaNutrients))
-            else if(item.equals(MHItems.itemAntidote) && player.isPotionActive(MobEffects.POISON))
-                player.removePotionEffect(MobEffects.POISON);
-            else if(item.equals(MHItems.itemImmunizer))
-                player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200));
-            else if(item.equals(MHItems.itemDashJuice))
-            {
-                FoodStats food = player.getFoodStats();
-                food.setFoodSaturationLevel(Math.min(food.getSaturationLevel() + 10f, 40f));
+        if (entityLiving instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entityLiving;
+            if (!world.isRemote) {
+                Item item = stack.getItem();
+                if (item.equals(MHItems.itemPotion))
+                    player.heal(5f);
+                else if (item.equals(MHItems.itemMegaPotion))
+                    player.heal(10f);
+                    //else if(item.equals(MHItems.itemNutrients))
+                    //else if(item.equals(MHItems.itemMegaNutrients))
+                else if (item.equals(MHItems.itemAntidote) && player.isPotionActive(MobEffects.POISON))
+                    player.removePotionEffect(MobEffects.POISON);
+                else if (item.equals(MHItems.itemImmunizer))
+                    player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200));
+                else if (item.equals(MHItems.itemDashJuice)) {
+                    FoodStats food = player.getFoodStats();
+                    food.setFoodSaturationLevel(Math.min(food.getSaturationLevel() + 10f, 40f));
+                } else if (item.equals(MHItems.itemMegaDashJuice)) {
+                    FoodStats food = player.getFoodStats();
+                    food.setFoodSaturationLevel(Math.min(food.getSaturationLevel() + 20f, 40f));
+                } else if (item.equals(MHItems.itemDemondrug))
+                    player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 200, 1));
+                else if (item.equals(MHItems.itemMegaDemondrug))
+                    player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 400, 1));
+                else if (item.equals(MHItems.itemArmourskin))
+                    player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, 1));
+                else if (item.equals(MHItems.itemMegaArmourskin))
+                    player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 400, 1));
             }
-            else if(item.equals(MHItems.itemMegaDashJuice))
-            {
-                FoodStats food = player.getFoodStats();
-                food.setFoodSaturationLevel(Math.min(food.getSaturationLevel() + 20f, 40f));
+
+            if (!player.capabilities.isCreativeMode) {
+                --stack.stackSize;
+                if (stack.stackSize <= 0)
+                    return new ItemStack(Items.GLASS_BOTTLE);
+                player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
             }
-            else if(item.equals(MHItems.itemDemondrug))
-                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 200, 1));
-            else if(item.equals(MHItems.itemMegaDemondrug))
-                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 400, 1));
-            else if(item.equals(MHItems.itemArmourskin))
-                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, 1));
-            else if(item.equals(MHItems.itemMegaArmourskin))
-                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 400, 1));
         }
-
-        if (!player.capabilities.isCreativeMode)
-        {
-            --stack.stackSize;
-            if (stack.stackSize <= 0)
-                return new ItemStack(Items.GLASS_BOTTLE);
-            player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-        }
-
         return stack;
     }
 
