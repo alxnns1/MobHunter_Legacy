@@ -39,6 +39,7 @@ public class BlockBbq extends BlockContainer
         setCreativeTab(MobHunter.MH_TAB);
         setHardness(2f);
         setResistance(10f);
+        setRegistryName(Names.Blocks.BBQ);
         //setLightOpacity(0);
     }
 

@@ -17,16 +17,17 @@ import java.util.List;
  */
 public class ItemMHArmour extends ItemArmor
 {
-    public ItemMHArmour(ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipSlot, String itemName){
+    public ItemMHArmour(ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipSlot, String itemName)
+    {
         super(material, renderIndex, equipSlot);
         setUnlocalizedName(itemName);
         setCreativeTab(MobHunter.MH_TAB);
+        setRegistryName(itemName);
     }
 
-    public ItemMHArmour(ArmorMaterial material, EntityEquipmentSlot equipSlot, String itemName){
-        super(material, equipSlot.equals(EntityEquipmentSlot.LEGS) ? 2 : 1, equipSlot);
-        setUnlocalizedName(itemName);
-        setCreativeTab(MobHunter.MH_TAB);
+    public ItemMHArmour(ArmorMaterial material, EntityEquipmentSlot equipSlot, String itemName)
+    {
+        this(material, equipSlot.equals(EntityEquipmentSlot.LEGS) ? 2 : 1, equipSlot, itemName);
     }
 
     /**

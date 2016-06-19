@@ -26,6 +26,7 @@ public class BlockWeaponUpgrade extends Block
         setCreativeTab(MobHunter.MH_TAB);
         setHardness(2f);
         setResistance(10f);
+        setRegistryName(Names.Blocks.WEAPON_UPGRADE);
     }
 
     //Used to open the block's GUI
