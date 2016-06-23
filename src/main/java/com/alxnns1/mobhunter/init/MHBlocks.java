@@ -8,11 +8,23 @@ import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.Common;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ColorizerGrass;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 /**
  * Contains all of the mod's items and registering code
@@ -81,5 +93,24 @@ public class MHBlocks
         Common.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
         Common.regModel(blockWeaponUpgrade);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void regColours()
+    {
+        FMLClientHandler.instance().getClient().getBlockColors().registerBlockColorHandler(new IBlockColor()
+        {
+            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex)
+            {
+                return worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : ColorizerGrass.getGrassColor(0.5D, 1.0D);
+            }
+        }, new Block[] {blockHerb,blockBerry,blockBug,blockShroom});
+        FMLClientHandler.instance().getClient().getItemColors().registerItemColorHandler(new IItemColor()
+        {
+            public int getColorFromItemstack(ItemStack stack, int tintIndex)
+            {
+                return ColorizerGrass.getGrassColor(0.5D, 1.0D);
+            }
+        }, new Block[] {blockHerb,blockBerry,blockBug,blockShroom});
     }
 }

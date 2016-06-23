@@ -58,6 +58,7 @@ public class MobHunter {
         {
             MHItems.regModels();
             MHBlocks.regModels();
+            MHBlocks.regColours();
         }
 
         MHRecipes.init();
