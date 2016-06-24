@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.block;
 
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
@@ -68,4 +69,10 @@ public class BlockOre extends BlockResource
             return MathHelper.getRandomIntegerInRange(rand, 2, 5); //Same as xp drop from lapis and quartz ores
         return 0;
     }
+/*
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+    {
+        LogHelper.info(state.getBlock().toString() + " > " + pos.toString());
+    }*/
 }

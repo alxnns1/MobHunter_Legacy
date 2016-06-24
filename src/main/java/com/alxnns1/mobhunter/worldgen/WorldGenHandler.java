@@ -17,9 +17,9 @@ import java.util.Random;
 public class WorldGenHandler implements IWorldGenerator
 {
     //WorldGenMineable(block state, number of blocks to spawn)
-    WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 4);
-    WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 2);
-    WorldGenMinable oreDragonite = new WorldGenMinable(MHBlocks.blockOreDragonite.getDefaultState(), 1);
+    WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 10);
+    WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 8);
+    WorldGenMinable oreDragonite = new WorldGenMinable(MHBlocks.blockOreDragonite.getDefaultState(), 6);
 
     MHPlantGen bushHerb = new MHPlantGen(MHBlocks.blockHerb);
     MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
