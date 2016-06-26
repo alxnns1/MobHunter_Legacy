@@ -153,6 +153,7 @@ public class MHRecipes
 
         GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemMachaliteIngot), 'y', new ItemStack(Items.STICK)});
         GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemDragoniteIngot), 'y', new ItemStack(Items.STICK)});
+        GameRegistry.addRecipe(new ItemStack(MHItems.itemGossamitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemGossamiteIngot), 'y', new ItemStack(Items.STICK)});
 
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockEarthCrystal), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemEarthCrystal)});
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemEarthCrystal, 9), MHBlocks.blockEarthCrystal);
@@ -160,11 +161,18 @@ public class MHRecipes
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemMachaliteIngot, 9), MHBlocks.blockMachalite);
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockDragonite), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemDragoniteIngot)});
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDragoniteIngot, 9), MHBlocks.blockDragonite);
+        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockLightCrystal), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemLightCrystal)});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemLightCrystal, 9), MHBlocks.blockLightCrystal);
+        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockIceCrystal), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemIceCrystal)});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemIceCrystal, 9), MHBlocks.blockIceCrystal);
+        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockGossamite), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemGossamiteIngot)});
+        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemGossamiteIngot, 9), MHBlocks.blockGossamite);
 
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq), new Object[] {"w w", "wxw", "yzy", 'w', Items.IRON_INGOT, 'x', Items.FLINT_AND_STEEL, 'y', new ItemStack(Blocks.STONE), 'z', new ItemStack(Blocks.NETHERRACK)});
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite, new ItemStack(MHItems.itemMachaliteIngot), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreDragonite, new ItemStack(MHItems.itemDragoniteIngot), 0.2f);
+        GameRegistry.addSmelting(MHBlocks.blockOreGossamite, new ItemStack(MHItems.itemGossamiteIngot), 0.2f);
     }
 }

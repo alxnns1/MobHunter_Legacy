@@ -3,9 +3,11 @@ package com.alxnns1.mobhunter.worldgen;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
@@ -20,6 +22,9 @@ public class WorldGenHandler implements IWorldGenerator
     WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 10);
     WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 8);
     WorldGenMinable oreDragonite = new WorldGenMinable(MHBlocks.blockOreDragonite.getDefaultState(), 6);
+    WorldGenMinable oreLightCrystal = new WorldGenMinable(MHBlocks.blockOreLightCrystal.getDefaultState(), 5);
+    WorldGenMinable oreIceCrystal = new WorldGenMinable(MHBlocks.blockOreIceCrystal.getDefaultState(), 10);
+    WorldGenMinable oreGossamite = new WorldGenMinable(MHBlocks.blockOreGossamite.getDefaultState(), 4);
 
     MHPlantGen bushHerb = new MHPlantGen(MHBlocks.blockHerb);
     MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
@@ -59,9 +64,12 @@ public class WorldGenHandler implements IWorldGenerator
 
     private void genOverworld(World world, Random random, int chunkX, int chunkZ)
     {
-        genOre(world, random, chunkX, chunkZ, 15, oreEarthCrystal, 0, 128);
-        genOre(world, random, chunkX, chunkZ, 15, oreMachalite, 0, 64);
-        genOre(world, random, chunkX, chunkZ, 10, oreDragonite, 0, 64);
+        genOre(world, random, chunkX, chunkZ, 16, oreEarthCrystal, 0, 128);
+        genOre(world, random, chunkX, chunkZ, 12, oreMachalite, 0, 64);
+        genOre(world, random, chunkX, chunkZ, 8, oreDragonite, 0, 64);
+        genOre(world, random, chunkX, chunkZ, 8, oreLightCrystal, 128, 256);
+        genOre(world, random, chunkX, chunkZ, 16, oreIceCrystal, 0, 64, BiomeDictionary.Type.COLD);
+        genOre(world, random, chunkX, chunkZ, 4, oreGossamite, 128, 256);
 
         bushHerb.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
         bushShroom.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
@@ -122,6 +130,51 @@ public class WorldGenHandler implements IWorldGenerator
             BlockPos pos = getRandXZInChunk(random, chunkX, chunkZ).add(0, random.nextInt(maxHeight - minHeight) + minHeight, 0);
             //Generates vein
             generator.generate(world, random, pos);
+        }
+    }
+
+    /**
+     * Generates ores into the world dependant on biomes
+     * @param world World object
+     * @param random Random object
+     * @param chunkX Chunk X coord
+     * @param chunkZ Chunk Z coord
+     * @param genCount How many veins to generate per chunk
+     * @param generator The WorldGenMinable object for the ore
+     * @param minHeight The minimum height the veins will spawn at
+     * @param maxHeight The maximum height the veins will spawn at
+     * @param biomes The biomes the veins will spawn in
+     */
+    private void genOre(World world, Random random, int chunkX, int chunkZ, int genCount, WorldGenMinable generator, int minHeight, int maxHeight, BiomeDictionary.Type... biomes)
+    {
+        //Some vanilla checks for the height limits
+        if (maxHeight < minHeight)
+        {
+            int i = minHeight;
+            minHeight = maxHeight;
+            maxHeight = i;
+        }
+        else if (maxHeight == minHeight)
+        {
+            if (minHeight < 255)
+            {
+                ++maxHeight;
+            }
+            else
+            {
+                --minHeight;
+            }
+        }
+
+        for(int i = 0; i < genCount; i++)
+        {
+            //Creates random position in chunk for vein
+            BlockPos pos = getRandXZInChunk(random, chunkX, chunkZ).add(0, random.nextInt(maxHeight - minHeight) + minHeight, 0);
+            //Generates vein
+            for(BiomeDictionary.Type biome : biomes) {
+                if(BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos),biome))
+                    generator.generate(world, random, pos);
+            }
         }
     }
 }

@@ -69,10 +69,11 @@ public class BlockOre extends BlockResource
             return MathHelper.getRandomIntegerInRange(rand, 2, 5); //Same as xp drop from lapis and quartz ores
         return 0;
     }
-/*
+
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
-        LogHelper.info(state.getBlock().toString() + " > " + pos.toString());
-    }*/
+        if(state.getBlock().getUnlocalizedName().contains("Light") || state.getBlock().getUnlocalizedName().contains("Ice") || state.getBlock().getUnlocalizedName().contains("Gossamite"))
+        LogHelper.info(state.getBlock().getUnlocalizedName() + " > " + pos.toString());
+    }
 }

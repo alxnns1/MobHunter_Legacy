@@ -61,6 +61,7 @@ public class MHItems
     public static final ItemMHResource itemWhetstone = new ItemMHResource(Names.Items.WHETSTONE);
     public static final ItemMHPickaxe itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f);
     public static final ItemMHPickaxe itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f);
+    public static final ItemMHPickaxe itemGossamitePickaxe = new ItemMHPickaxe(Names.Items.GOSSAMITE_PICKAXE, 3, 1000, 8.0f, 5f);
 
     public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
     public static final ItemMHConsumable itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK);
@@ -99,6 +100,9 @@ public class MHItems
     public static final ItemMHResource itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL);
     public static final ItemMHResource itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT);
     public static final ItemMHResource itemDragoniteIngot = new ItemMHResource(Names.Items.DRAGONITE_INGOT);
+    public static final ItemMHResource itemLightCrystal = new ItemMHResource(Names.Items.LIGHT_CRYSTAL);
+    public static final ItemMHResource itemIceCrystal = new ItemMHResource(Names.Items.ICE_CRYSTAL);
+    public static final ItemMHResource itemGossamiteIngot = new ItemMHResource(Names.Items.GOSSAMITE_INGOT);
 
     public static final ItemMHResource itemInsectHusk = new ItemMHResource(Names.Items.INSECT_HUSK);
     public static final ItemMHResource itemStinkhopper = new ItemMHResource(Names.Items.STINKHOPPER);
@@ -195,6 +199,7 @@ public class MHItems
         GameRegistry.register(itemWhetstone);
         GameRegistry.register(itemMachalitePickaxe);
         GameRegistry.register(itemDragonitePickaxe);
+        GameRegistry.register(itemGossamitePickaxe);
 
         GameRegistry.register(itemRawMeat);
         GameRegistry.register(itemRareSteak);
@@ -236,6 +241,12 @@ public class MHItems
         OreDictionary.registerOre("ingotMachalite", itemMachaliteIngot);
         GameRegistry.register(itemDragoniteIngot);
         OreDictionary.registerOre("ingotDragonite", itemDragoniteIngot);
+        GameRegistry.register(itemLightCrystal);
+        OreDictionary.registerOre("gemLightCrystal", itemLightCrystal);
+        GameRegistry.register(itemIceCrystal);
+        OreDictionary.registerOre("gemIceCrystal", itemIceCrystal);
+        GameRegistry.register(itemGossamiteIngot);
+        OreDictionary.registerOre("ingotGossamite", itemGossamiteIngot);
 
         GameRegistry.register(itemInsectHusk);
         GameRegistry.register(itemStinkhopper);
@@ -354,6 +365,7 @@ public class MHItems
         Common.regModel(itemWhetstone);
         Common.regModel(itemMachalitePickaxe);
         Common.regModel(itemDragonitePickaxe);
+        Common.regModel(itemGossamitePickaxe);
 
         Common.regModel(itemRawMeat);
         Common.regModel(itemRareSteak);
@@ -392,6 +404,9 @@ public class MHItems
         Common.regModel(itemEarthCrystal);
         Common.regModel(itemMachaliteIngot);
         Common.regModel(itemDragoniteIngot);
+        Common.regModel(itemLightCrystal);
+        Common.regModel(itemIceCrystal);
+        Common.regModel(itemGossamiteIngot);
 
         Common.regModel(itemInsectHusk);
         Common.regModel(itemStinkhopper);

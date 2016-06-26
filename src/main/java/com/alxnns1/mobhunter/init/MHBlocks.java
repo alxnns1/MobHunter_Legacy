@@ -34,11 +34,17 @@ import javax.annotation.Nullable;
 public class MHBlocks
 {
     public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
-    public static BlockResource blockEarthCrystal = new BlockResource(Names.Blocks.EARTH_CRYSTAL);
+    public static BlockResource blockEarthCrystal = new BlockResource(Names.Blocks.EARTH_CRYSTAL, 1);
     public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1);
-    public static BlockResource blockMachalite = new BlockResource(Names.Blocks.MACHALITE);
+    public static BlockResource blockMachalite = new BlockResource(Names.Blocks.MACHALITE, 1);
     public static BlockOre blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2);
     public static BlockResource blockDragonite = new BlockResource(Names.Blocks.DRAGONITE, 2);
+    public static BlockOre blockOreLightCrystal = (BlockOre) new BlockOre(Names.Blocks.ORE_LIGHT_CRYSTAL, 2, MHItems.itemLightCrystal).setLightLevel(1.0f);
+    public static BlockResource blockLightCrystal = (BlockResource) new BlockResource(Names.Blocks.LIGHT_CRYSTAL, 2).setLightLevel(1.0f);
+    public static BlockOre blockOreIceCrystal = new BlockOre(Names.Blocks.ORE_ICE_CRYSTAL, 1, MHItems.itemIceCrystal);
+    public static BlockResource blockIceCrystal = new BlockResource(Names.Blocks.ICE_CRYSTAL, 1);
+    public static BlockOre blockOreGossamite = new BlockOre(Names.Blocks.ORE_GOSSAMITE, 2);
+    public static BlockResource blockGossamite = new BlockResource(Names.Blocks.GOSSAMITE, 2);
 
     public static BlockHerb blockHerb = new BlockHerb();
     public static BlockShroom blockShroom = new BlockShroom();
@@ -69,9 +75,15 @@ public class MHBlocks
         regBlock(blockOreEarthCrystal, "oreEarthCrystal");
         regBlock(blockEarthCrystal, "blockEarthCrystal");
         regBlock(blockOreMachalite, "oreMachalite");
-        regBlock(blockMachalite, "blockMachalit");
+        regBlock(blockMachalite, "blockMachalite");
         regBlock(blockOreDragonite, "oreDragonite");
         regBlock(blockDragonite, "blockDragonite");
+        regBlock(blockOreLightCrystal, "oreLightCrystal");
+        regBlock(blockLightCrystal, "blockLightCrystal");
+        regBlock(blockOreIceCrystal, "oreIceCrystal");
+        regBlock(blockIceCrystal, "blockIceCrystal");
+        regBlock(blockOreGossamite, "oreGossamite");
+        regBlock(blockGossamite, "blockGossamite");
 
         regBlock(blockHerb);
         regBlock(blockShroom);
@@ -92,6 +104,12 @@ public class MHBlocks
         Common.regModel(blockMachalite);
         Common.regModel(blockOreDragonite);
         Common.regModel(blockDragonite);
+        Common.regModel(blockOreLightCrystal);
+        Common.regModel(blockLightCrystal);
+        Common.regModel(blockOreIceCrystal);
+        Common.regModel(blockIceCrystal);
+        Common.regModel(blockOreGossamite);
+        Common.regModel(blockGossamite);
 
         Common.regModel(blockHerb);
         Common.regModel(blockShroom);
