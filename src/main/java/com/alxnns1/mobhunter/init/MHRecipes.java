@@ -151,6 +151,9 @@ public class MHRecipes
                 MHItems.itemEarthCrystal,
                 MHItems.itemEarthCrystal});
 
+        GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemMachaliteIngot), 'y', new ItemStack(Items.STICK)});
+        GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemDragoniteIngot), 'y', new ItemStack(Items.STICK)});
+
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockEarthCrystal), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemEarthCrystal)});
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemEarthCrystal, 9), MHBlocks.blockEarthCrystal);
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockMachalite), new Object[] {"xxx", "xxx", "xxx", 'x', new ItemStack(MHItems.itemMachaliteIngot)});

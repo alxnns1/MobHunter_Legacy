@@ -9,6 +9,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Contains all of the mod's items and registering code
@@ -58,6 +59,8 @@ public class MHItems
     public static final ItemMHResource itemCatalyst = new ItemMHResource(Names.Items.CATALYST);
 
     public static final ItemMHResource itemWhetstone = new ItemMHResource(Names.Items.WHETSTONE);
+    public static final ItemMHPickaxe itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f);
+    public static final ItemMHPickaxe itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f);
 
     public static final ItemMHResource itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT);
     public static final ItemMHConsumable itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK);
@@ -190,6 +193,8 @@ public class MHItems
         GameRegistry.register(itemCatalyst);
 
         GameRegistry.register(itemWhetstone);
+        GameRegistry.register(itemMachalitePickaxe);
+        GameRegistry.register(itemDragonitePickaxe);
 
         GameRegistry.register(itemRawMeat);
         GameRegistry.register(itemRareSteak);
@@ -226,8 +231,11 @@ public class MHItems
         GameRegistry.register(itemBomberry);
 
         GameRegistry.register(itemEarthCrystal);
+        OreDictionary.registerOre("gemEarthCrystal", itemEarthCrystal);
         GameRegistry.register(itemMachaliteIngot);
+        OreDictionary.registerOre("ingotMachalite", itemMachaliteIngot);
         GameRegistry.register(itemDragoniteIngot);
+        OreDictionary.registerOre("ingotDragonite", itemDragoniteIngot);
 
         GameRegistry.register(itemInsectHusk);
         GameRegistry.register(itemStinkhopper);
@@ -344,6 +352,8 @@ public class MHItems
         Common.regModel(itemCatalyst);
 
         Common.regModel(itemWhetstone);
+        Common.regModel(itemMachalitePickaxe);
+        Common.regModel(itemDragonitePickaxe);
 
         Common.regModel(itemRawMeat);
         Common.regModel(itemRareSteak);

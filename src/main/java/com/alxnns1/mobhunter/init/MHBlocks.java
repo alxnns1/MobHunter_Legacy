@@ -23,6 +23,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
 
@@ -48,6 +49,14 @@ public class MHBlocks
     public static BlockBbq blockBbq = new BlockBbq();
     public static BlockWeaponUpgrade blockWeaponUpgrade = new BlockWeaponUpgrade();
 
+    private static void regBlock(Block block, String oreDicName)
+    {
+        GameRegistry.register(block);
+        ItemBlock itemBlock = new ItemBlockBasic(block);
+        GameRegistry.register(itemBlock);
+        OreDictionary.registerOre(oreDicName, block);
+    }
+
     private static void regBlock(Block block)
     {
         GameRegistry.register(block);
@@ -57,12 +66,12 @@ public class MHBlocks
 
     public static void init()
     {
-        regBlock(blockOreEarthCrystal);
-        regBlock(blockEarthCrystal);
-        regBlock(blockOreMachalite);
-        regBlock(blockMachalite);
-        regBlock(blockOreDragonite);
-        regBlock(blockDragonite);
+        regBlock(blockOreEarthCrystal, "oreEarthCrystal");
+        regBlock(blockEarthCrystal, "blockEarthCrystal");
+        regBlock(blockOreMachalite, "oreMachalite");
+        regBlock(blockMachalite, "blockMachalit");
+        regBlock(blockOreDragonite, "oreDragonite");
+        regBlock(blockDragonite, "blockDragonite");
 
         regBlock(blockHerb);
         regBlock(blockShroom);
