@@ -32,10 +32,8 @@ public class BlockWeaponUpgrade extends Block
     //Used to open the block's GUI
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(world.isRemote)
-            return true;
         //Open crafting gui
-        if(!player.isSneaking())
+        if(!world.isRemote && !player.isSneaking())
             player.openGui(MobHunter.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }

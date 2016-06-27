@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.EnumPlantType;
 
@@ -77,9 +77,12 @@ public class BlockNatural extends BlockBush
     @Override
     public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune)
     {
-        Biome biome = world.getBiomeGenForCoords(pos);
+        if(!(world instanceof WorldServer))
+            return new ArrayList<ItemStack>();
+        WorldServer server = (WorldServer) world;
+        Biome biome = server.getBiomeForCoordsBody(pos);
         ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-        Random rand = world instanceof World ? ((World)world).rand : RANDOM;
+        Random rand = server.rand;
         for(int n = 0; n < rand.nextInt(2) + 1 + fortune; n++)
         {
             double i = rand.nextDouble();

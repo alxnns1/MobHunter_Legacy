@@ -17,6 +17,7 @@ public class PotionMH extends Potion
     public PotionMH(String name, boolean badEffect, int potionColor)
     {
         super(badEffect, potionColor);
+        setPotionName(name);
     }
 
     @Override
