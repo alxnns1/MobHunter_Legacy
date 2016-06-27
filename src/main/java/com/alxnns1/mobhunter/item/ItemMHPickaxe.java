@@ -7,11 +7,13 @@ import net.minecraftforge.common.util.EnumHelper;
 /**
  * Created by Alex on 26/06/2016.
  */
-public class ItemMHPickaxe extends ItemPickaxe {
-    public ItemMHPickaxe(String name, int harvestLevel, int maxUses, float efficiency, float damage){
-        super(EnumHelper.addToolMaterial(name, harvestLevel, maxUses, efficiency, damage, 0));
+public class ItemMHPickaxe extends ItemPickaxe
+{
+    public ItemMHPickaxe(String name, int harvestLevel, int maxUses, float efficiency, float damage)
+    {
+        super(EnumHelper.addToolMaterial("Pickaxe" + name, harvestLevel, maxUses, efficiency, damage, 15));
         setCreativeTab(MobHunter.MH_TAB);
-        setUnlocalizedName(name);
-        setRegistryName(name);
+        setUnlocalizedName("item" + name + "Pickaxe");
+        setRegistryName("item" + name + "Pickaxe");
     }
 }

@@ -27,9 +27,9 @@ public class Names
         public static final String CATALYST = "itemCatalyst";
 
         public static final String WHETSTONE = "itemWhetstone";
-        public static final String MACHALITE_PICKAXE = "itemMachalitePickaxe";
-        public static final String DRAGONITE_PICKAXE = "itemDragonitePickaxe";
-        public static final String GOSSAMITE_PICKAXE = "itemGossamitePickaxe";
+        public static final String MACHALITE_PICKAXE = "Machalite";
+        public static final String DRAGONITE_PICKAXE = "Dragonite";
+        public static final String GOSSAMITE_PICKAXE = "Gossamite";
 
         public static final String RAW_MEAT = "itemRawMeat";
         public static final String RARE_STEAK = "itemRareSteak";
