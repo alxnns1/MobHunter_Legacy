@@ -16,6 +16,14 @@ achievement.smallCrown=Small Crown
 achievement.smallCrown.desc=Kill a very small monster.
 achievement.largeCrown=Large Crown
 achievement.largeCrown.desc=Kill a very large monster.
+achievement.greatJaggi=Great Jaggi Esoterica
+achievement.greatJaggi.desc=Kill your first Great Jaggi.
+achievement.velocidrome=Velocidrome Esoterica
+achievement.velocidrome.desc=Kill your first Velocidrome.
+achievement.gendrome=Gendrome Esoterica
+achievement.gendrome.desc=Kill your first Gendrome.
+achievement.iodrome=Iodrome Esoterica
+achievement.iodrome.desc=Kill your first Iodrome.
 
 //Potion Effects
 effect.paralyse.name=Paralysed
@@ -59,6 +67,9 @@ item.itemCatalyst.tooltip=Works with other materials to enhance their effects. C
 //Tools
 item.itemWhetstone.name=Whetstone
 item.itemWhetstone.tooltip=A standard-sized Whetstone. Use it to restore a weapon's Sharpness.
+item.itemMachalitePickaxe.name=Machalite Pickaxe
+item.itemDragonitePickaxe.name=Dragonite Pickaxe
+item.itemGossamitePickaxe.name=Gossamite Pickaxe
 
 //Meats
 item.itemRawMeat.name=Raw Meat
@@ -132,9 +143,15 @@ item.itemBomberry.tooltip=A berry that explodes when struck.
 item.itemEarthCrystal.name=Earth Crystal
 item.itemEarthCrystal.tooltip=Crystallized microbes which are prized as an abrasive when forging weapons.
 item.itemMachaliteIngot.name=Machalite Ingot
-item.itemMachaliteIngot.tooltip=An better metal than Iron.
+item.itemMachaliteIngot.tooltip=A better metal than Iron.
 item.itemDragoniteIngot.name=Dragonite Ingot
 item.itemDragoniteIngot.tooltip=A metal superior to Machalite. Rare and valuable.
+item.itemLightCrystal.name=Lightcrystal
+item.itemLightCrystal.tooltip=An extremely hard substance with a faint glow.
+item.itemIceCrystal.name=Ice Crystal
+item.itemIceCrystal.tooltip=Ice that will not melt at room temperature.
+item.itemGossamiteIngot.name=Gossamite Ingot
+item.itemGossamiteIngot.tooltip=An ore that yields a strong but shockingly light metal. Still a scientific mystery.
 
 //Bugs
 item.itemInsectHusk.name=Insect Husk
@@ -309,6 +326,12 @@ tile.blockOreMachalite.name=Machalite Ore
 tile.blockMachalite.name=Block of Machalite
 tile.blockOreDragonite.name=Dragonite Ore
 tile.blockDragonite.name=Block of Dragonite
+tile.blockOreLightCrystal.name=Light Crystal Ore
+tile.blockLightCrystal.name=Block of Light Crystal
+tile.blockOreIceCrystal.name=Ice Crystal Ore
+tile.blockIceCrystal.name=Block of Ice Crystal
+tile.blockOreGossamite.name=Gossamite Ore
+tile.blockGossamite.name=Block of Gossamite
 
 tile.blockHerb.name=Herb Block
 tile.blockShroom.name=Mushroom Block

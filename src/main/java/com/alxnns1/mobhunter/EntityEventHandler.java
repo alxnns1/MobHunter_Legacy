@@ -187,6 +187,17 @@ public class EntityEventHandler
             else if(scale > 1.19f)
                 player.addStat(MHAchievements.largeCrown);
         }
+
+        if(event.getSource() instanceof EntityDamageSource && event.getSource().getSourceOfDamage() instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
+            if(entity instanceof EntityGreatJaggi) player.addStat(MHAchievements.greatJaggi);
+            /*
+            if(entity instanceof EntityVelocidrome) player.addStat(MHAchievements.velocidrome);
+            if(entity instanceof EntityGendrome) player.addStat(MHAchievements.gendrome);
+            if(entity instanceof EntityIodrome) player.addStat(MHAchievements.iodrome);
+            */
+        }
     }
 
     /*
