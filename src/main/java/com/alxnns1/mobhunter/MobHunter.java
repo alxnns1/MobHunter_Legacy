@@ -1,11 +1,14 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.capability.HunterRankDefault;
+import com.alxnns1.mobhunter.capability.IHunterRank;
 import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -47,6 +50,9 @@ public class MobHunter {
         MHTileEntities.init();
         MHEntities.init(event.getSide() == Side.CLIENT);
         MHPotions.init();
+
+        //TODO: Uncomment Hunter Rank
+        //CapabilityManager.INSTANCE.register(IHunterRank.class, HunterRankDefault.HunterRankStorage.hunterRankStorage, HunterRankDefault.class);
     }
 
     @Mod.EventHandler

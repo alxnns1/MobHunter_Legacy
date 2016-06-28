@@ -1,12 +1,13 @@
 package com.alxnns1.mobhunter;
 
+import com.alxnns1.mobhunter.capability.HunterRankProvider;
 import com.alxnns1.mobhunter.entity.EntityGreatJaggi;
 import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.item.ItemMHSword;
-import net.minecraft.entity.Entity;
+import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,9 +15,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent.Clone;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -179,26 +183,52 @@ public class EntityEventHandler
         else if(entity instanceof EntityMHNeopteron)
             scale = ((EntityMHNeopteron)entity).getScale();
 
-        if(scale != -1f && event.getSource() instanceof EntityDamageSource && event.getSource().getSourceOfDamage() instanceof EntityPlayer)
-        {
-            EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
-            if(scale < 0.84f)
-                player.addStat(MHAchievements.smallCrown);
-            else if(scale > 1.19f)
-                player.addStat(MHAchievements.largeCrown);
-        }
-
         if(event.getSource() instanceof EntityDamageSource && event.getSource().getSourceOfDamage() instanceof EntityPlayer)
         {
+            //Small and Large Crown Achievements
             EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
+            if(scale != -1f)
+            {
+                if(scale < 0.84f)
+                    player.addStat(MHAchievements.smallCrown);
+                else if(scale > 1.19f)
+                    player.addStat(MHAchievements.largeCrown);
+            }
+
+            //Boss Monster Achievements
             if(entity instanceof EntityGreatJaggi) player.addStat(MHAchievements.greatJaggi);
             /*
             if(entity instanceof EntityVelocidrome) player.addStat(MHAchievements.velocidrome);
             if(entity instanceof EntityGendrome) player.addStat(MHAchievements.gendrome);
             if(entity instanceof EntityIodrome) player.addStat(MHAchievements.iodrome);
             */
+
+            //Hunter Rank Incrementation
+            //TODO: Uncomment Hunter Rank Incrementation (And finish)
+            //HunterRankProvider.get(player).changeHunterRankBy(player, AMOUNT);
         }
     }
+
+    //TODO: Uncomment Hunter Rank Events Handlers
+    /*
+    @SubscribeEvent
+    public void attachCapability(AttachCapabilitiesEvent.Entity event)
+    {
+        if(event.getEntity() instanceof EntityPlayer && !event.getEntity().hasCapability(HunterRankProvider.HUNTER_RANK, null))
+            event.addCapability(new ResourceLocation(Reference.MOD_ID, " Player Hunter Rank"), new HunterRankProvider());
+    }
+
+    @SubscribeEvent
+    public void onClonePlayer(Clone event)
+    {
+        if(event.isWasDeath())
+        {
+            EntityPlayer player = event.getEntityPlayer();
+            HunterRankProvider.get(player).loadNBT(HunterRankProvider.get(event.getOriginal()).saveNBT());
+            HunterRankProvider.get(player).dataChanged(player);
+        }
+    }
+    */
 
     /*
     @SubscribeEvent
