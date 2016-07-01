@@ -67,9 +67,9 @@ public class WorldGenHandler implements IWorldGenerator
         genOre(world, random, chunkX, chunkZ, 16, oreEarthCrystal, 0, 128);
         genOre(world, random, chunkX, chunkZ, 12, oreMachalite, 0, 64);
         genOre(world, random, chunkX, chunkZ, 8, oreDragonite, 0, 64);
-        genOre(world, random, chunkX, chunkZ, 8, oreLightCrystal, 128, 256);
+        genOre(world, random, chunkX, chunkZ, 8, oreLightCrystal, 96, 160);
         genOre(world, random, chunkX, chunkZ, 16, oreIceCrystal, 0, 64, BiomeDictionary.Type.COLD);
-        genOre(world, random, chunkX, chunkZ, 4, oreGossamite, 128, 256);
+        genOre(world, random, chunkX, chunkZ, 8, oreGossamite, 96, 160);
 
         bushHerb.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
         bushShroom.generate(world, random, world.getHeight(getRandXZInChunk(random, chunkX, chunkZ)));
