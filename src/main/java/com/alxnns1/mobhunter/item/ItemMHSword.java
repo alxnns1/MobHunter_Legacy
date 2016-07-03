@@ -166,9 +166,9 @@ public class ItemMHSword extends ItemSword
         if (entityLiving instanceof EntityPlayer) {
             repairSharpness(stack, nextSharpen);
             if (nextSharpen == 200) {
-                ((EntityPlayer) entityLiving).inventory.decrStackSize(((EntityPlayer) entityLiving).inventory.getSlotFor(new ItemStack(MHItems.itemWhetstone)),1);
+                ((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemWhetstone, -1, 1, null);
             } else if (nextSharpen == 100) {
-                //playerIn.inventory.consumeInventoryItem(MHItems.itemMiniWhetstone);
+                //((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMiniWhetstone, -1, 1, null);
             }
         }
         return stack;
