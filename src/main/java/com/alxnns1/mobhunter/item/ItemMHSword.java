@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -30,12 +31,11 @@ public class ItemMHSword extends ItemSword
     private final EnumSharpness maxSharpness;
     private final int[] damageLevels;
     private final String damageLevelsString;
-    private float baseAttackDamage = 4f;
     private int nextSharpen = 200;
 
     public ItemMHSword(String itemName, float damage, int[] sharpnessDamageLevels)
     {
-        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage, 0).setRepairItem(new ItemStack(MHItems.itemWhetstone)));
+        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemWhetstone)));
         maxSharpness = EnumSharpness.getById(sharpnessDamageLevels.length - 1);
         if(maxSharpness == null) LogHelper.warn("Sword " + getUnlocalizedName() + " has a null sharpness! Something must be wrong!");
         damageLevels = sharpnessDamageLevels;
@@ -50,7 +50,6 @@ public class ItemMHSword extends ItemSword
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
-        baseAttackDamage = 4f + getDamageVsEntity();
     }
 
     /**
@@ -75,7 +74,7 @@ public class ItemMHSword extends ItemSword
     public float getActualAttackDamage(ItemStack stack)
     {
         EnumSharpness currentSharpness = getSharpness(stack);
-        return baseAttackDamage * currentSharpness.getDamageMult();
+        return getDamageVsEntity() * currentSharpness.getDamageMult();
     }
 
     public void repairSharpness(ItemStack stack, int amount){
@@ -86,10 +85,15 @@ public class ItemMHSword extends ItemSword
         }
     }
 
-    public Multimap<String, AttributeModifier> getAttributeModifiers(ItemStack stack)
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
     {
-        Multimap<String, AttributeModifier> multimap = HashMultimap.create();
-        multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double)getActualAttackDamage(stack), 0));
+        LogHelper.info("Damage Set From Item: " + getActualAttackDamage(stack));
+        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
+        if (slot == EntityEquipmentSlot.MAINHAND)
+        {
+            multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName());
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) getActualAttackDamage(stack), 0));
+        }
         return multimap;
     }
 

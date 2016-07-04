@@ -8,6 +8,7 @@ import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,6 +21,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.Clone;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -234,8 +236,8 @@ public class EntityEventHandler
     @SubscribeEvent
     public void entityHurt(LivingHurtEvent event)
     {
-        if(event.entityLiving instanceof EntityPlayer)
-            LogHelper.info("Player hurt by " + event.ammount + " damage");
+        if(event.getSource().getSourceOfDamage() instanceof EntityPlayer)
+            LogHelper.info("Entity " + event.getEntityLiving().getName() + " hurt by " + event.getAmount() + " damage");
     }
     */
 }
