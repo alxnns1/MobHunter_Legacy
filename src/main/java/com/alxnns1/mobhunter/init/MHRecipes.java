@@ -64,92 +64,13 @@ public class MHRecipes
         //4 Machalite Ingot + 2 Earth Crystal + 2 Iron Ore
         GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyBoots), new Object[] {"   ", "y y", "z z", 'y', Items.IRON_INGOT, 'z', MHItems.itemMachaliteIngot});
 
-        //1 Iron Sword + 5 Iron Ingot
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponIronSwordPlus),new Object[] {
-                Items.IRON_SWORD,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT});
-        //1 Iron Sword+ + 2 Machalite Ingot + 8 Iron Ingot
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBusterSword),new Object[] {
-               MHItems.weaponIronSwordPlus,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                MHItems.itemMachaliteIngot,
-                MHItems.itemMachaliteIngot});
-        //1 Iron Sword+ + 4 Great Jaggi Claw + 8 Jaggi Hide + 3 Macahlite Ingot
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponRuggedGreatSword),new Object[] {
-                MHItems.weaponIronSwordPlus,
-                MHItems.itemGreatJaggiClaw,
-                MHItems.itemGreatJaggiClaw,
-                MHItems.itemJaggiHide,
-                MHItems.itemJaggiHide,
-                MHItems.itemJaggiHide,
-                MHItems.itemJaggiHide,
-                MHItems.itemJaggiHide,
-                MHItems.itemMachaliteIngot});
-        //1 Buster Sword + 5 Machalite Ingot + 2 Earth Crystal + 5 Iron Ore
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBusterSwordPlus),new Object[] {
-                MHItems.weaponBusterSword,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                Items.IRON_INGOT,
-                MHItems.itemEarthCrystal,
-                MHItems.itemMachaliteIngot,
-                MHItems.itemMachaliteIngot,
-                MHItems.itemMachaliteIngot,
-                MHItems.itemMachaliteIngot});
-        //1 Buster Sword+ + 3 Dragonite Ingot + 5 Machalite Ingot + 10 Earth Crystal + 3 Killer Beetle
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponRavagerBlade),new Object[] {
-                MHItems.weaponBusterSwordPlus,
-                MHItems.itemDragoniteIngot,
-                MHItems.itemMachaliteIngot,
-                MHItems.itemMachaliteIngot,
-                MHItems.itemEarthCrystal,
-                MHItems.itemEarthCrystal,
-                MHItems.itemEarthCrystal,
-                MHItems.itemEarthCrystal,
-                MHItems.itemKillerBeetle});
-
-        //2 Monster Bone S + 1 Jaggi Hide
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponBoneBlade), new Object[] {" y "," y "," z ",'y',MHItems.itemMonsterBoneS,'z',MHItems.itemJaggiHide});
-        //1 Bone Blade + 4 Monster Bone S + 2 Jaggi Hide
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponBoneBladePlus),new Object[] {
-                MHItems.weaponBoneBlade,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemJaggiHide,
-                MHItems.itemJaggiHide});
-        //1 Bone Blade+ + 7 Monster Bone S + 5 Monster Bone M
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponJawblade),new Object[] {
-                MHItems.weaponBoneBladePlus,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneS,
-                MHItems.itemMonsterBoneM,
-                MHItems.itemMonsterBoneM,
-                MHItems.itemMonsterBoneM});
-        //1 Jawblade + 5 Monster Bone M + 3 Jumbo Bone + 5 Earth Crystal
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.weaponGiantJawblade),new Object[] {
-                MHItems.weaponJawblade,
-                MHItems.itemMonsterBoneM,
-                MHItems.itemMonsterBoneM,
-                MHItems.itemMonsterBoneM,
-                MHItems.itemJumboBone,
-                MHItems.itemJumboBone,
-                MHItems.itemEarthCrystal,
-                MHItems.itemEarthCrystal,
-                MHItems.itemEarthCrystal});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnife), new Object[] {" z ", " z ", " z ", 'z', Items.IRON_INGOT});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnifePlus), new Object[] {" yy", " yy", " yz", 'y', Items.IRON_INGOT, 'z', MHItems.weaponHuntersKnife});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponSoldiersDagger), new Object[] {"zyx", "zyx", "zvw", 'v', MHItems.weaponHuntersKnifePlus, 'w', MHItems.itemGreatJaggiHide, 'x', MHItems.itemJaggiHide, 'y', MHItems.itemJaggiScale, 'z', MHItems.itemEarthCrystal});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponCommandersDagger), new Object[] {"xzy", "xzy", "ywz", 'w', MHItems.weaponSoldiersDagger, 'x', MHItems.itemGreatJaggiClaw, 'y', MHItems.itemGreatJaggiHide, 'z', MHItems.itemMachaliteIngot});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersDagger), new Object[] {"yxx", "yzx", " wx", 'w', MHItems.weaponHuntersKnife, 'x', MHItems.itemEarthCrystal, 'y', MHItems.itemMachaliteIngot, 'z', MHItems.itemGlueglopper});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponAssassinsDagger), new Object[] {"yxx", "yzx", " wx", 'w', MHItems.weaponHuntersDagger, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemMonsterBoneM, 'z', MHItems.itemGlueglopper});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBite), new Object[] {"yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', MHItems.itemGenpreyHide, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneS});
 
         GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemMachaliteIngot), 'y', new ItemStack(Items.STICK)});
         GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemDragoniteIngot), 'y', new ItemStack(Items.STICK)});

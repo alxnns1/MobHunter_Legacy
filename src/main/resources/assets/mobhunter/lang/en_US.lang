@@ -260,6 +260,21 @@ item.itemKingsFrill.name=King's Frill
 item.itemKingsFrill.tooltip=Proof of who's top Jaggi. Bigger and bolder frills mean a tougher monster.
 
 //Swords
+item.weaponHuntersKnife.name=Hunter's Knife
+item.weaponHuntersKnife.tooltip=A one-handed, easy-to-wield Sword. Not too powerful.
+item.weaponHuntersKnifePlus.name=Hunter's Knife+
+item.weaponHuntersKnifePlus.tooltip=A one-handed, easy-to-wield Sword. Not too powerfu
+item.weaponSoldiersDagger.name=Soldier's Dagger
+item.weaponSoldiersDagger.tooltip=A light Sword crafted from Jaggi materials. Easy to use and widely available.
+item.weaponCommandersDagger.name=Commander's Dagger
+item.weaponCommandersDagger.tooltip=A light Sword crafted from Jaggi materials. Easy to use and widely available.
+item.weaponHuntersDagger.name=Hunter's Dagger
+item.weaponHuntersDagger.tooltip=A Sword crafted of high-purity ore that boosts its strength. Known for its curved blade.
+item.weaponAssassinsDagger.name=Assassin's Dagger
+item.weaponAssassinsDagger.tooltip=A Sword crafted of high-purity ore that boosts its strength. Known for its curved blade.
+item.weaponViperBite.name=Viper Bite
+item.weaponViperBite.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
+
 item.weaponIronSwordPlus.name=Iron Sword+
 item.weaponIronSwordPlus.tooltip=A weapon that even novice hunters can use.
 item.weaponBusterSword.name=Buster Sword

@@ -104,9 +104,7 @@ public class ItemMHSword extends ItemSword
     {
         if (!(attacker instanceof EntityPlayer) || !((EntityPlayer)attacker).capabilities.isCreativeMode)
         {
-            //Reduces sharpness damage on every hit depending on target's armour
-            int damageAmount = Math.max((int) Math.ceil((float) target.getTotalArmorValue() / 4f), 1);
-            stack.damageItem(damageAmount, attacker);
+            stack.damageItem(1, attacker);
         }
         return true;
     }

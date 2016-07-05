@@ -145,6 +145,14 @@ public class Names
         public static final String ALLOY_LEGGINGS = "armourAlloyLeggings";
         public static final String ALLOY_BOOTS = "armourAlloyBoots";
 
+        public static final String HUNTERS_KNIFE = "weaponHuntersKnife";
+        public static final String HUNTERS_KNIFE_PLUS = "weaponHuntersKnifePlus";
+        public static final String SOLDIERS_DAGGER = "weaponSoldiersDagger";
+        public static final String COMMANDERS_DAGGER = "weaponCommandersDagger";
+        public static final String HUNTERS_DAGGER = "weaponHuntersDagger";
+        public static final String ASSASSINS_DAGGER = "weaponAssassinsDagger";
+        public static final String VIPER_BITE = "weaponViperBite";
+
         public static final String IRON_SWORD_PLUS = "weaponIronSwordPlus";
         public static final String BUSTER_SWORD = "weaponBusterSword";
         public static final String RUGGED_GREAT_SWORD = "weaponRuggedGreatSword";

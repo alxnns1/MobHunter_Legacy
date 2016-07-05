@@ -161,6 +161,14 @@ public class MHItems
     public static final ItemMHSword weaponTest = new ItemMHSword("weaponTest", 1f, new int[] {5, 10, 15, 20, 25, 30, 35});
     public static final ItemMHShield shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT);
 
+    public static final ItemMHSword weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, new int[] {140, 280, 399});
+    public static final ItemMHSword weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, new int[] {60, 200, 399});
+    public static final ItemMHSword weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, new int[] {100, 160, 420, 499});
+    public static final ItemMHSword weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, new int[] {100, 240, 400, 499});
+    public static final ItemMHSword weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, new int[] {140, 280, 399});
+    public static final ItemMHSword weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, new int[] {120, 200, 399});
+    public static final ItemMHSword weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, new int[] {120, 200, 440, 500});
+
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(Names.Items.IRON_SWORD_PLUS, 7f, new int[] {180, 320, 399});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(Names.Items.BUSTER_SWORD, 8f, new int[] {160, 300, 380, 399});
     public static final ItemMHSword weaponRuggedGreatSword = new ItemMHSword(Names.Items.RUGGED_GREAT_SWORD, 10f, new int[] {80, 200, 360, 399});
@@ -325,6 +333,14 @@ public class MHItems
 
         GameRegistry.register(weaponTest);
         GameRegistry.register(shieldTest);
+
+        GameRegistry.register(weaponHuntersKnife);
+        GameRegistry.register(weaponHuntersKnifePlus);
+        GameRegistry.register(weaponSoldiersDagger);
+        GameRegistry.register(weaponCommandersDagger);
+        GameRegistry.register(weaponHuntersDagger);
+        GameRegistry.register(weaponAssassinsDagger);
+        GameRegistry.register(weaponViperBite);
 
         GameRegistry.register(weaponIronSwordPlus);
         GameRegistry.register(weaponBusterSword);
@@ -491,6 +507,14 @@ public class MHItems
 
         Common.regModel(weaponTest);
         Common.regModel(shieldTest);
+
+        Common.regModel(weaponHuntersKnife);
+        Common.regModel(weaponHuntersKnifePlus);
+        Common.regModel(weaponSoldiersDagger);
+        Common.regModel(weaponCommandersDagger);
+        Common.regModel(weaponHuntersDagger);
+        Common.regModel(weaponAssassinsDagger);
+        Common.regModel(weaponViperBite);
 
         Common.regModel(weaponIronSwordPlus);
         Common.regModel(weaponBusterSword);
