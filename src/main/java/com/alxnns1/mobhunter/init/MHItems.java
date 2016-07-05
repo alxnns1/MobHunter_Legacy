@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.item.*;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.Common;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
@@ -158,6 +159,7 @@ public class MHItems
     public static final ItemMHResource itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL);
 
     public static final ItemMHSword weaponTest = new ItemMHSword("weaponTest", 1f, new int[] {5, 10, 15, 20, 25, 30, 35});
+    public static final ItemMHShield shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT);
 
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(Names.Items.IRON_SWORD_PLUS, 7f, new int[] {180, 320, 399});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(Names.Items.BUSTER_SWORD, 8f, new int[] {160, 300, 380, 399});
@@ -322,6 +324,7 @@ public class MHItems
         GameRegistry.register(armourAlloyBoots);
 
         GameRegistry.register(weaponTest);
+        GameRegistry.register(shieldTest);
 
         GameRegistry.register(weaponIronSwordPlus);
         GameRegistry.register(weaponBusterSword);
@@ -487,6 +490,7 @@ public class MHItems
         Common.regModel(armourAlloyBoots);
 
         Common.regModel(weaponTest);
+        Common.regModel(shieldTest);
 
         Common.regModel(weaponIronSwordPlus);
         Common.regModel(weaponBusterSword);
