@@ -6,17 +6,27 @@ import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
+import com.alxnns1.mobhunter.item.ItemMHShield;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.Common;
 import com.alxnns1.mobhunter.util.LogHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -232,12 +242,37 @@ public class EntityEventHandler
     }
     */
 
-    /*
     @SubscribeEvent
     public void entityHurt(LivingHurtEvent event)
     {
-        if(event.getSource().getSourceOfDamage() instanceof EntityPlayer)
-            LogHelper.info("Entity " + event.getEntityLiving().getName() + " hurt by " + event.getAmount() + " damage");
+        //This is used to damage our shields in a similar way to the way vanilla damages theirs.
+
+        EntityLivingBase entity = event.getEntityLiving();
+        ItemStack activeStack = entity.getActiveItemStack();
+        if(entity instanceof EntityPlayer &&
+                activeStack != null &&
+                activeStack.getItem() instanceof ItemMHShield &&
+                Common.canBlockDamageSource(entity, event.getSource()) &&
+                event.getAmount() >= 0F)
+        {
+            //Damage shield
+            EntityPlayer player = (EntityPlayer) entity;
+            int i = 1 + MathHelper.floor_float(event.getAmount());
+            activeStack.damageItem(i, player);
+
+            if(activeStack.stackSize <= 0)
+            {
+                EnumHand enumhand = player.getActiveHand();
+                net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, activeStack, enumhand);
+
+                if(enumhand == EnumHand.MAIN_HAND)
+                    player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, null);
+                else
+                    player.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, null);
+
+                player.resetActiveHand();
+                player.playSound(SoundEvents.ITEM_SHIELD_BREAK, 0.8F, 0.8F + player.worldObj.rand.nextFloat() * 0.4F);
+            }
+        }
     }
-    */
 }

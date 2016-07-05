@@ -87,7 +87,6 @@ public class ItemMHSword extends ItemSword
 
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
     {
-        LogHelper.info("Damage Set From Item: " + getActualAttackDamage(stack));
         Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
         if (slot == EntityEquipmentSlot.MAINHAND)
         {

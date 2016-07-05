@@ -4,8 +4,11 @@ import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.ItemModelMesherForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -68,5 +71,32 @@ public class Common
             tooltip.add(line);
 
         return tooltip;
+    }
+
+    /**
+     * Copied from EntityLivingBase due to it being private.
+     * Determines whether the entity can block the damage source based on the damage source's location, whether the
+     * damage source is blockable, and whether the entity is blocking.
+     */
+    public static boolean canBlockDamageSource(EntityLivingBase entity, DamageSource damageSourceIn)
+    {
+        if (!damageSourceIn.isUnblockable() && entity.isActiveItemStackBlocking())
+        {
+            Vec3d vec3d = damageSourceIn.getDamageLocation();
+
+            if (vec3d != null)
+            {
+                Vec3d vec3d1 = entity.getLook(1.0F);
+                Vec3d vec3d2 = vec3d.subtractReverse(new Vec3d(entity.posX, entity.posY, entity.posZ)).normalize();
+                vec3d2 = new Vec3d(vec3d2.xCoord, 0.0D, vec3d2.zCoord);
+
+                if (vec3d2.dotProduct(vec3d1) < 0.0D)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
