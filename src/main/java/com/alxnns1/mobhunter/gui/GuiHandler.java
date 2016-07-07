@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter.gui;
 
-import com.alxnns1.mobhunter.block.upgrading.ContainerWeaponUpgrade;
+import com.alxnns1.mobhunter.container.ContainerWeaponUpgrade;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +20,7 @@ public class GuiHandler implements IGuiHandler
 
         //Server side - returns instance of the container
         if(block == MHBlocks.blockWeaponUpgrade)
-            return new ContainerWeaponUpgrade(player.inventory, world, x, y, z);
+            return new ContainerWeaponUpgrade(player.inventory, world);
 
         return null;
     }

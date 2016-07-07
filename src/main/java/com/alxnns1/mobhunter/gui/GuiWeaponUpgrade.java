@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter.gui;
 
-import com.alxnns1.mobhunter.block.upgrading.ContainerWeaponUpgrade;
+import com.alxnns1.mobhunter.container.ContainerWeaponUpgrade;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -10,6 +10,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
+import java.io.IOException;
+
 /**
  * Created by Mark on 10/05/2016.
  */
@@ -17,14 +19,12 @@ public class GuiWeaponUpgrade extends GuiContainer
 {
     //TODO: Use GuiEnchantment as a gui to make something similar.
 
-    //TODO: Make a texture for the gui.
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.GUI_TEXTURE_DIR + "guiWeaponUpgrade.png");
     private static final ResourceLocation vanillaTempGuiImage = new ResourceLocation("textures/gui/container/enchanting_table.png");
 
     public GuiWeaponUpgrade(InventoryPlayer invPlayer, World world, int x, int y, int z)
     {
-        super(new ContainerWeaponUpgrade(invPlayer, world, x, y, z));
-        //TODO: Set the size of the texture.
+        super(new ContainerWeaponUpgrade(invPlayer, world));
         //this.xSize = ;
         //this.ySize = ;
     }
@@ -34,7 +34,7 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         //Draw gui
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.getTextureManager().bindTexture(vanillaTempGuiImage);
+        this.mc.getTextureManager().bindTexture(guiImage);
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
@@ -47,5 +47,23 @@ public class GuiWeaponUpgrade extends GuiContainer
         //Draw text
         this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponUpgrade.getUnlocalizedName() + ".name").getUnformattedText(), 12, 5, 4210752);
         this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 98, 4210752);
+    }
+
+    /**
+     * Draws the screen and all the components in it.
+     */
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
+    {
+
+    }
+
+    /**
+     * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton
+     */
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
+    {
+
     }
 }

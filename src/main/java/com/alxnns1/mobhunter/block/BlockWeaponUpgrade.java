@@ -1,4 +1,4 @@
-package com.alxnns1.mobhunter.block.upgrading;
+package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.reference.Names;
@@ -30,6 +30,7 @@ public class BlockWeaponUpgrade extends Block
     }
 
     //Used to open the block's GUI
+    @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         //Open crafting gui

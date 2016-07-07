@@ -2,7 +2,7 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
-import com.alxnns1.mobhunter.block.upgrading.BlockWeaponUpgrade;
+import com.alxnns1.mobhunter.block.BlockWeaponUpgrade;
 import com.alxnns1.mobhunter.item.ItemBlockBasic;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
@@ -11,7 +11,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
