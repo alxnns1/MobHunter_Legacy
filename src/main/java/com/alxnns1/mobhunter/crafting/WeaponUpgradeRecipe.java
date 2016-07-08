@@ -1,15 +1,12 @@
 package com.alxnns1.mobhunter.crafting;
 
 import net.minecraft.block.Block;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +26,7 @@ public class WeaponUpgradeRecipe extends ShapelessOreRecipe
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn)
     {
-        return inv.getStackInSlot(0).isItemEqual(inputKey);
+        return inv.getStackInSlot(0) != null && inv.getStackInSlot(0).isItemEqual(inputKey);
     }
 
     @Override

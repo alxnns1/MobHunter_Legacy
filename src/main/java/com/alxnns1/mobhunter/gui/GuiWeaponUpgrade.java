@@ -19,14 +19,17 @@ public class GuiWeaponUpgrade extends GuiContainer
 {
     //TODO: Use GuiEnchantment as a gui to make something similar.
 
-    private static final ResourceLocation guiImage = new ResourceLocation(Reference.GUI_TEXTURE_DIR + "guiWeaponUpgrade.png");
+    private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiWeaponUpgrade.png");
     private static final ResourceLocation vanillaTempGuiImage = new ResourceLocation("textures/gui/container/enchanting_table.png");
+
+    private ContainerWeaponUpgrade container;
 
     public GuiWeaponUpgrade(InventoryPlayer invPlayer, World world, int x, int y, int z)
     {
         super(new ContainerWeaponUpgrade(invPlayer, world));
-        //this.xSize = ;
-        //this.ySize = ;
+        container = (ContainerWeaponUpgrade) inventorySlots;
+        this.xSize = 175;
+        this.ySize = 203;
     }
 
     @Override
@@ -45,8 +48,8 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         //TODO: Adjust text position according to texture.
         //Draw text
-        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponUpgrade.getUnlocalizedName() + ".name").getUnformattedText(), 12, 5, 4210752);
-        this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 98, 4210752);
+        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponUpgrade.getUnlocalizedName() + ".name").getUnformattedText(), 8, 4, 4210752);
+        this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 92, 4210752);
     }
 
     /**
@@ -55,7 +58,7 @@ public class GuiWeaponUpgrade extends GuiContainer
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     /**
@@ -64,6 +67,19 @@ public class GuiWeaponUpgrade extends GuiContainer
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        int i = (this.width - this.xSize) / 2;
+        int j = (this.height - this.ySize) / 2;
 
+        for(int upgrade = 0; upgrade < 5; upgrade++)
+        {
+            int l = mouseX - (i + 60);
+            int i1 = mouseY - (j + 14 + 19 * upgrade);
+
+            if (l >= 0 && i1 >= 0 && l < 108 && i1 < 19 && container.enchantItem(this.mc.thePlayer, upgrade))
+            {
+                this.mc.playerController.sendEnchantPacket(container.windowId, upgrade);
+            }
+        }
     }
 }

@@ -24,12 +24,24 @@ public class MHContainer extends Container
         world = worldIn;
         inventory = inv;
         inventoryPlayer = invPlayer;
+        init();
         addSlots();
         bindPlayerInventory(invPlayer);
     }
 
+    /**
+     * Called first in the constructor for anything which cannot be done in the constructor.
+     */
+    protected void init() {}
+
+    /**
+     * Called after init() to add slots to the container.
+     */
     protected void addSlots() {}
 
+    /**
+     * Adds the player's inventory slots to the container. Called after addSlots().
+     */
     protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
     {
         slotInvStart = inventorySlots.size();
