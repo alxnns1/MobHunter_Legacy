@@ -23,6 +23,11 @@ public class WeaponUpgradeRecipe extends ShapelessOreRecipe
         inputKey = key.copy();
     }
 
+    public ItemStack getKeyInput()
+    {
+        return inputKey;
+    }
+
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn)
     {

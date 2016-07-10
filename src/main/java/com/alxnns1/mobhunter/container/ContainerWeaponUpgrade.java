@@ -22,12 +22,14 @@ import java.util.List;
 public class ContainerWeaponUpgrade extends MHContainer
 {
     /** Used to store the currently viewable recipes for the buttons */
-    private WeaponUpgradeRecipe[] recipes;
+    public WeaponUpgradeRecipe[] recipes;
+    public boolean[] recipesValid;
 
     public ContainerWeaponUpgrade(InventoryPlayer invPlayer, World worldIn)
     {
         super(invPlayer, null, worldIn);
         recipes = new WeaponUpgradeRecipe[5];
+        recipesValid = new boolean[5];
     }
 
     @Override
@@ -118,8 +120,11 @@ public class ContainerWeaponUpgrade extends MHContainer
     {
         ArrayList<Integer> indexes = new ArrayList<Integer>();
         for(int i = 0; i < recipes.size(); i++)
-            if(checkPlayerInv(inv, recipes.get(i).getInput()))
+        {
+            recipesValid[i] = checkPlayerInv(inv, recipes.get(i).getInput());
+            if(recipesValid[i])
                 indexes.add(i);
+        }
         return indexes;
     }
 
@@ -141,6 +146,7 @@ public class ContainerWeaponUpgrade extends MHContainer
             log += upgrades.get(i).toString();
         }
         LogHelper.info(log);
+        detectAndSendChanges();
         //TODO: Do something with the recipes to display them!
     }
 
