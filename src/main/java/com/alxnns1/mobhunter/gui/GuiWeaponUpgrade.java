@@ -122,13 +122,30 @@ public class GuiWeaponUpgrade extends GuiContainer
                 List<String> list = new ArrayList<String>();
                 list.add("Upgrade Weapon To: " + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
                 list.add("Required Materials:");
+                ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, r.getInput());
                 for(Object o : r.getInput())
                 {
+                    TextFormatting colour = TextFormatting.YELLOW;
                     if(o instanceof ItemStack)
-                        list.add(((ItemStack)o).stackSize + " x " + TextFormatting.YELLOW + ((ItemStack)o).getDisplayName());
+                    {
+                        ItemStack stackO = (ItemStack) o;
+                        //Check if enough of the item exists in the inventory (If not, then item in tooltip is coloured red)
+                        for(Object remainingO : remainingItems)
+                        {
+                            if(     (remainingO instanceof ItemStack && stackO.isItemEqual((ItemStack) remainingO)) ||
+                                    (remainingO instanceof List && OreDictionary.containsMatch(false, (List<ItemStack>) remainingO, stackO)))
+                            {
+                                colour = TextFormatting.RED;
+                                break;
+                            }
+                        }
+                        list.add(((ItemStack) o).stackSize + " x " + colour + ((ItemStack) o).getDisplayName());
+                    }
                     else if(o instanceof List)
+                    {
                         //This basically gets the first ore dictionary string for the item.
-                        list.add("1 x Ore:" + TextFormatting.YELLOW + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>)o).get(0))[0]));
+                        list.add("1 x Ore:" + colour + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>) o).get(0))[0]));
+                    }
                 }
                 b.setTooltip(list);
                 b.drawButtonForegroundLayer(mouseX - guiLeft, mouseY - guiTop);

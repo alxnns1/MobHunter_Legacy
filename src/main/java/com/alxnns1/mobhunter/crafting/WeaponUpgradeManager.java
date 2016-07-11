@@ -4,7 +4,6 @@ import com.alxnns1.mobhunter.init.MHItems;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,8 +30,8 @@ public class WeaponUpgradeManager
     private WeaponUpgradeManager()
     {
         //Add recipes here
-        addRecipe(Items.DIAMOND_SWORD, Items.GOLDEN_SWORD, new Object[] {Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.NETHER_STAR});
-        addRecipe(MHItems.weaponBoneBladePlus, MHItems.weaponBoneBlade, new Object[] {new ItemStack(MHItems.itemBruteBone, 2)});
+        addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, new Object[]{MHItems.itemGreatJaggiHide, new ItemStack(MHItems.itemJaggiHide, 3), new ItemStack(MHItems.itemJaggiScale, 3), new ItemStack(MHItems.itemEarthCrystal, 5)});
+        addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new Object[]{new ItemStack(MHItems.itemGreatJaggiClaw, 2), new ItemStack(MHItems.itemGreatJaggiHide, 3), new ItemStack(MHItems.itemMachaliteIngot, 5)});
     }
 
     private void addStack(ArrayList<ItemStack> stacks, ItemStack stack)

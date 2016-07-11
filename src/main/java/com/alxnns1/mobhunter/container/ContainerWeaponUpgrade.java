@@ -55,19 +55,23 @@ public class ContainerWeaponUpgrade extends MHContainer
         });
     }
 
+    public boolean checkHasAllItems(IInventory inv, ArrayList<Object> input)
+    {
+        return checkPlayerInv(inv, input).isEmpty();
+    }
+
     /**
      * Checks the player's inventory for all of the input items, and returns true if they're all present.
      * False if at least 1 item is not there.
      * TODO: Change it so that it returns how many of each item there is for use on the tooltip.
      */
     @SuppressWarnings("unchecked")
-    public boolean checkPlayerInv(IInventory inv, ArrayList<Object> input)
+    public ArrayList<Object> checkPlayerInv(IInventory inv, ArrayList<Object> input)
     {
         ArrayList<Object> required = new ArrayList<Object>(input.size());
         //Go through all of the ingredients
         for(int r = 0; r < input.size(); r++)
         {
-            boolean inRecipe = false;
             Object o = input.get(r);
             if(o instanceof ItemStack)
             {
@@ -96,28 +100,17 @@ public class ContainerWeaponUpgrade extends MHContainer
                 }
                 else if(o instanceof List)
                 {
-                    for(ItemStack oStack : (List<ItemStack>) o)
+                    if(OreDictionary.containsMatch(false, (List<ItemStack>) o, stack))
                     {
-                        if(OreDictionary.itemMatches(oStack, stack, false))
-                        {
-                            required.set(r, null);
-                            break;
-                        }
+                        required.set(r, null);
+                        break;
                     }
                 }
                 //If all of this ingredient is in inventory, then skip to the next one
                 if(required.get(r) == null) break;
             }
-            //If any ingredient isn't in the inventory, then return false
-            if(required.get(r) != null) return false;
         }
-
-        //See if we found all of the ingredients
-        for(Object o : required)
-            if(o != null)
-                return false;
-
-        return true;
+        return required;
     }
 
     private void reloadRecipes()
@@ -125,7 +118,7 @@ public class ContainerWeaponUpgrade extends MHContainer
         recipes = WeaponUpgradeManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
         recipesValid = new ArrayList<Boolean>(5);
         for(WeaponUpgradeRecipe r : recipes)
-            recipesValid.add(checkPlayerInv(inventoryPlayer, r.getInput()));
+            recipesValid.add(checkHasAllItems(inventoryPlayer, r.getInput()));
     }
 
     /**
@@ -161,7 +154,7 @@ public class ContainerWeaponUpgrade extends MHContainer
         ItemStack stack = inventory.getStackInSlot(0);
 
         if(stack == null || recipes.isEmpty() || recipes.get(id) == null) return false;
-        if(playerIn.capabilities.isCreativeMode || checkPlayerInv(inventoryPlayer, recipes.get(id).getInput()))
+        if(playerIn.capabilities.isCreativeMode || checkHasAllItems(inventoryPlayer, recipes.get(id).getInput()))
         {
             if(!world.isRemote)
             {

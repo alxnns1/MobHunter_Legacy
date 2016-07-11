@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class MHContainer extends Container
 {
     public InventoryCrafting inventory;
-    protected InventoryPlayer inventoryPlayer;
+    public InventoryPlayer inventoryPlayer;
     protected World world;
 
     protected int slotInvStart = 1;
