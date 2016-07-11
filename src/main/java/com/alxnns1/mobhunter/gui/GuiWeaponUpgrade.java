@@ -36,7 +36,7 @@ public class GuiWeaponUpgrade extends GuiContainer
 
     private ContainerWeaponUpgrade container;
 
-    public GuiWeaponUpgrade(InventoryPlayer invPlayer, World world, int x, int y, int z)
+    public GuiWeaponUpgrade(InventoryPlayer invPlayer, World world)
     {
         super(new ContainerWeaponUpgrade(invPlayer, world));
         container = (ContainerWeaponUpgrade) inventorySlots;
@@ -49,7 +49,7 @@ public class GuiWeaponUpgrade extends GuiContainer
         super.initGui();
         //Add the buttons to the gui
         for(int i = 0; i < 5; i++)
-            buttonList.add(new UpgradeButton(i, 60, 14 + (19 * i), "Button " + (i + 1)));
+            buttonList.add(new UpgradeButton(i, 60, 14 + (19 * i), "Button " + (i + 1), null));
         buttonList.add(new ArrowButton(5, 44, 34, true));
         buttonList.add(new ArrowButton(6, 44, 72, false));
     }
@@ -61,12 +61,34 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         for(int i = 0; i < 5; i++)
         {
-            GuiButton button = buttonList.get(i);
-            if(container.inventory.getStackInSlot(0) == null || i >= container.recipesValid.size() || container.recipesValid.get(i) == null)
-                button.enabled = false;
+            UpgradeButton button = (UpgradeButton) buttonList.get(i);
+            if(container.inventory.getStackInSlot(0) != null)
+            {
+                //Set button display string
+                if(i < container.recipes.size() && container.recipes.get(i) != null)
+                {
+                    WeaponUpgradeRecipe recipe = container.recipes.get(i);
+                    button.displayString = recipe.getRecipeOutput().getDisplayName();
+                    button.setItem(recipe.getRecipeOutput());
+                }
+                else
+                {
+                    button.displayString = "";
+                    button.setItem(null);
+                }
+                //Set if button enabled
+                if(i < container.recipesValid.size() && container.recipesValid.get(i) != null)
+                    button.enabled = container.recipesValid.get(i);
+                else
+                    button.enabled = false;
+            }
             else
-                button.enabled = container.recipesValid.get(i);
-            buttonList.set(i, button);
+            {
+                button.enabled = false;
+                button.displayString = "";
+                button.setItem(null);
+            }
+            //buttonList.set(i, button);
         }
     }
 
@@ -115,11 +137,19 @@ public class GuiWeaponUpgrade extends GuiContainer
     }
 
     /**
+     * Draws the screen and all the components in it.
+     */
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
+    {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        //TODO: Draw the resultant items ontop of the buttons
+    }
+
+    /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
     protected void actionPerformed(GuiButton button) throws IOException
     {
-        LogHelper.info("Button " + button.id + " Pressed");
         if(button instanceof UpgradeButton)
         {
             container.enchantItem(this.mc.thePlayer, button.id);
@@ -138,9 +168,25 @@ public class GuiWeaponUpgrade extends GuiContainer
     @SideOnly(Side.CLIENT)
     private class UpgradeButton extends Button
     {
-        public UpgradeButton(int buttonId, int x, int y, String buttonText)
+        private ItemStack item;
+
+        public UpgradeButton(int buttonId, int x, int y, String buttonText, ItemStack renderItem)
         {
             super(buttonId, x, y, 108, 19, 0, 204, buttonText);
+            item = renderItem;
+        }
+
+        public void setItem(ItemStack renderItem)
+        {
+            item = renderItem;
+        }
+
+        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        {
+            super.drawButton(mc, mouseX, mouseY);
+            //Draw item at left of button
+            if(item != null)
+                itemRender.renderItemAndEffectIntoGUI(item, xPosition + 1, yPosition + 1);
         }
     }
 
@@ -206,7 +252,7 @@ public class GuiWeaponUpgrade extends GuiContainer
             drawTexturedModalRect(xPosition, yPosition, iconX, y, width, height);
             //Draw text
             if(!displayString.equals(""))
-                drawCenteredString(fontrenderer, displayString, xPosition + width / 2, yPosition + (height - 8) / 2, textColour);
+                drawCenteredString(fontrenderer, displayString, (xPosition + 16) + (width - 16) / 2, yPosition + (height - 8) / 2, textColour);
         }
 
         public void drawButtonForegroundLayer(int mouseX, int mouseY)

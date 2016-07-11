@@ -32,7 +32,7 @@ public class GuiHandler implements IGuiHandler
 
         //Client side - returns instance of the gui
         if(block == MHBlocks.blockWeaponUpgrade)
-            return new GuiWeaponUpgrade(player.inventory, world, x, y, z);
+            return new GuiWeaponUpgrade(player.inventory, world);
 
         return null;
     }
