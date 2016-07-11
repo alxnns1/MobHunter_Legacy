@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.container;
 
 import com.alxnns1.mobhunter.crafting.WeaponUpgradeManager;
 import com.alxnns1.mobhunter.crafting.WeaponUpgradeRecipe;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -106,7 +105,17 @@ public class ContainerWeaponUpgrade extends MHContainer
                     }
                 }
                 //If all of this ingredient is in inventory, then skip to the next one
-                if(required.get(r) == null) break;
+                if(required.get(r) == null)
+                    break;
+            }
+        }
+        //Remove all null items
+        for(int i = 0; i < required.size(); i++)
+        {
+            if(required.get(i) == null)
+            {
+                required.remove(i);
+                i -= 1;
             }
         }
         return required;
@@ -136,7 +145,7 @@ public class ContainerWeaponUpgrade extends MHContainer
                 log += "N - ";
             log += recipes.get(i).toString();
         }
-        LogHelper.info(log);
+        //LogHelper.info(log);
         detectAndSendChanges();
     }
 
@@ -148,8 +157,6 @@ public class ContainerWeaponUpgrade extends MHContainer
     @SuppressWarnings("all")
     public boolean enchantItem(EntityPlayer playerIn, int id)
     {
-        LogHelper.info("Crafting Item!");
-
         ItemStack stack = inventory.getStackInSlot(0);
 
         if(stack == null || recipes.isEmpty() || recipes.get(id) == null) return false;
@@ -162,24 +169,19 @@ public class ContainerWeaponUpgrade extends MHContainer
                 if(!playerIn.capabilities.isCreativeMode)
                 {
                     //Remove ingredients from player inventory
-                    LogHelper.info("Removing items from player's inventory...");
                     for(Object item : recipe.getInput())
                     {
                         if(item instanceof ItemStack)
                         {
                             ItemStack toRemove = (ItemStack) item;
-                            LogHelper.info("Removing " + toRemove.stackSize + " x " + toRemove.getDisplayName());
                             playerIn.inventory.clearMatchingItems(toRemove.getItem(), toRemove.getMetadata(), toRemove.stackSize, null);
                         }
                         else if(item instanceof List)
                         {
                             List<ItemStack> toRemove = (List<ItemStack>) item;
                             for(ItemStack s : toRemove)
-                            {
-                                LogHelper.info("Removing (Ore) " + s.getDisplayName());
                                 if(playerIn.inventory.clearMatchingItems(s.getItem(), s.getMetadata(), 1, null) > 0)
                                     break;
-                            }
                         }
                     }
                 }

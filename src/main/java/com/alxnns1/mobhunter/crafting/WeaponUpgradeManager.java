@@ -31,6 +31,7 @@ public class WeaponUpgradeManager
     private WeaponUpgradeManager()
     {
         //Add recipes here
+        addRecipe(MHItems.weaponHuntersKnife, Items.IRON_INGOT, new Object[]{new ItemStack(Items.IRON_INGOT, 2)});
         addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new Object[]{new ItemStack(Items.IRON_INGOT, 5)});
         addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, new Object[]{MHItems.itemGreatJaggiHide, new ItemStack(MHItems.itemJaggiHide, 3), new ItemStack(MHItems.itemJaggiScale, 3), new ItemStack(MHItems.itemEarthCrystal, 5)});
         addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new Object[]{new ItemStack(MHItems.itemGreatJaggiClaw, 2), new ItemStack(MHItems.itemGreatJaggiHide, 3), new ItemStack(MHItems.itemMachaliteIngot, 5)});

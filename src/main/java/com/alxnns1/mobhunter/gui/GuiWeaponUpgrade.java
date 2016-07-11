@@ -3,8 +3,8 @@ package com.alxnns1.mobhunter.gui;
 import com.alxnns1.mobhunter.container.ContainerWeaponUpgrade;
 import com.alxnns1.mobhunter.crafting.WeaponUpgradeRecipe;
 import com.alxnns1.mobhunter.init.MHBlocks;
+import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.reference.Reference;
-import com.alxnns1.mobhunter.util.LogHelper;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -120,7 +120,12 @@ public class GuiWeaponUpgrade extends GuiContainer
                 WeaponUpgradeRecipe r = container.recipes.get(i);
                 if(r == null) continue;
                 List<String> list = new ArrayList<String>();
-                list.add("Upgrade Weapon To: " + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
+                String line1;
+                if(r.getKeyInput().getItem() instanceof ItemMHSword)
+                    line1 = "Upgrade Weapon To: ";
+                else
+                    line1 = "Craft Weapon: ";
+                list.add(line1 + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
                 list.add("Required Materials:");
                 ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, r.getInput());
                 for(Object o : r.getInput())
