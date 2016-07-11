@@ -11,7 +11,7 @@ import net.minecraft.world.World;
  */
 public class MHContainer extends Container
 {
-    protected InventoryCrafting inventory;
+    public InventoryCrafting inventory;
     protected InventoryPlayer inventoryPlayer;
     protected World world;
 

@@ -85,9 +85,9 @@ public class WeaponUpgradeManager
         recipes.add(new WeaponUpgradeRecipe(result, keyItem, r));
     }
 
-    public ArrayList<WeaponUpgradeRecipe> findMatchingRecipes(InventoryCrafting inv, InventoryPlayer invPlayer, World world)
+    public List<WeaponUpgradeRecipe> findMatchingRecipes(InventoryCrafting inv, InventoryPlayer invPlayer, World world)
     {
-        ArrayList<WeaponUpgradeRecipe> r = new ArrayList<WeaponUpgradeRecipe>();
+        List<WeaponUpgradeRecipe> r = new ArrayList<WeaponUpgradeRecipe>();
         for(int j = 0; j < recipes.size(); ++j)
         {
             WeaponUpgradeRecipe WURecipe = recipes.get(j);

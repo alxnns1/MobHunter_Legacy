@@ -22,14 +22,14 @@ import java.util.List;
 public class ContainerWeaponUpgrade extends MHContainer
 {
     /** Used to store the currently viewable recipes for the buttons */
-    public WeaponUpgradeRecipe[] recipes;
-    public boolean[] recipesValid;
+    public List<WeaponUpgradeRecipe> recipes;
+    public List<Boolean> recipesValid;
 
     public ContainerWeaponUpgrade(InventoryPlayer invPlayer, World worldIn)
     {
         super(invPlayer, null, worldIn);
-        recipes = new WeaponUpgradeRecipe[5];
-        recipesValid = new boolean[5];
+        recipes = new ArrayList<WeaponUpgradeRecipe>(5);
+        recipesValid = new ArrayList<Boolean>(5);
     }
 
     @Override
@@ -63,12 +63,19 @@ public class ContainerWeaponUpgrade extends MHContainer
     @SuppressWarnings("unchecked")
     public boolean checkPlayerInv(IInventory inv, ArrayList<Object> input)
     {
-        ArrayList<Object> required = new ArrayList<Object>(input);
+        ArrayList<Object> required = new ArrayList<Object>(input.size());
         //Go through all of the ingredients
-        for(int r = 0; r < required.size(); r++)
+        for(int r = 0; r < input.size(); r++)
         {
             boolean inRecipe = false;
-            Object o = required.get(r);
+            Object o = input.get(r);
+            if(o instanceof ItemStack)
+            {
+                required.add(((ItemStack) o).copy()); //Want a copy, not a reference
+                o = required.get(r);
+            }
+            else
+                required.add(o);
             //Check if each ingredient is in the player inventory
             for(int i = 0; i < inv.getSizeInventory(); i++)
             {
@@ -113,19 +120,12 @@ public class ContainerWeaponUpgrade extends MHContainer
         return true;
     }
 
-    /**
-     * Creates an array of the indexes of the recipes which the player has all the ingredients for.
-     */
-    private ArrayList<Integer> getValidRecipes(ArrayList<WeaponUpgradeRecipe> recipes, InventoryPlayer inv)
+    private void reloadRecipes()
     {
-        ArrayList<Integer> indexes = new ArrayList<Integer>();
-        for(int i = 0; i < recipes.size(); i++)
-        {
-            recipesValid[i] = checkPlayerInv(inv, recipes.get(i).getInput());
-            if(recipesValid[i])
-                indexes.add(i);
-        }
-        return indexes;
+        recipes = WeaponUpgradeManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
+        recipesValid = new ArrayList<Boolean>(5);
+        for(WeaponUpgradeRecipe r : recipes)
+            recipesValid.add(checkPlayerInv(inventoryPlayer, r.getInput()));
     }
 
     /**
@@ -134,20 +134,18 @@ public class ContainerWeaponUpgrade extends MHContainer
     @Override
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-        ArrayList<WeaponUpgradeRecipe> upgrades = WeaponUpgradeManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
-        ArrayList<Integer> valid = getValidRecipes(upgrades, inventoryPlayer);
+        reloadRecipes();
         String log = "Recipes:\n";
-        for(int i = 0; i < upgrades.size(); i++)
+        for(int i = 0; i < recipes.size(); i++)
         {
-            if(valid.contains(i))
+            if(recipesValid.get(i))
                 log += "Y - ";
             else
                 log += "N - ";
-            log += upgrades.get(i).toString();
+            log += recipes.get(i).toString();
         }
         LogHelper.info(log);
         detectAndSendChanges();
-        //TODO: Do something with the recipes to display them!
     }
 
     /**
@@ -158,31 +156,38 @@ public class ContainerWeaponUpgrade extends MHContainer
     @SuppressWarnings("all")
     public boolean enchantItem(EntityPlayer playerIn, int id)
     {
+        LogHelper.info("Crafting Item!");
+
         ItemStack stack = inventory.getStackInSlot(0);
 
-        if(stack == null || recipes[id] == null) return false;
-        if(playerIn.capabilities.isCreativeMode || checkPlayerInv(inventoryPlayer, recipes[id].getInput()))
+        if(stack == null || recipes.isEmpty() || recipes.get(id) == null) return false;
+        if(playerIn.capabilities.isCreativeMode || checkPlayerInv(inventoryPlayer, recipes.get(id).getInput()))
         {
             if(!world.isRemote)
             {
-                WeaponUpgradeRecipe recipe = recipes[id];
+                WeaponUpgradeRecipe recipe = recipes.get(id);
 
                 if(!playerIn.capabilities.isCreativeMode)
                 {
                     //Remove ingredients from player inventory
+                    LogHelper.info("Removing items from player's inventory...");
                     for(Object item : recipe.getInput())
                     {
                         if(item instanceof ItemStack)
                         {
                             ItemStack toRemove = (ItemStack) item;
+                            LogHelper.info("Removing " + toRemove.stackSize + " x " + toRemove.getDisplayName());
                             playerIn.inventory.clearMatchingItems(toRemove.getItem(), toRemove.getMetadata(), toRemove.stackSize, null);
                         }
                         else if(item instanceof List)
                         {
                             List<ItemStack> toRemove = (List<ItemStack>) item;
                             for(ItemStack s : toRemove)
+                            {
+                                LogHelper.info("Removing (Ore) " + s.getDisplayName());
                                 if(playerIn.inventory.clearMatchingItems(s.getItem(), s.getMetadata(), 1, null) > 0)
                                     break;
+                            }
                         }
                     }
                 }
@@ -193,6 +198,8 @@ public class ContainerWeaponUpgrade extends MHContainer
                     //Copy over enchantments
                     EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
                 inventory.setInventorySlotContents(0, newItem);
+                inventory.markDirty();
+                reloadRecipes();
             }
             return true;
         }
@@ -211,7 +218,9 @@ public class ContainerWeaponUpgrade extends MHContainer
         for (int i = 0; i < this.listeners.size(); ++i)
         {
             IContainerListener listener = this.listeners.get(i);
-            //listener.sendProgressBarUpdate();
+            for(int j = 0; j < recipesValid.size(); j++)
+                if(recipesValid.get(j) != null)
+                    listener.sendProgressBarUpdate(this, j, recipesValid.get(j) ? 1 : 0);
         }
     }
 
@@ -219,7 +228,8 @@ public class ContainerWeaponUpgrade extends MHContainer
     @Override
     public void updateProgressBar(int id, int data)
     {
-
+        if(id >= 0 && id <= 4)
+            recipesValid.set(id, data == 1);
     }
 
     /**

@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.container.ContainerWeaponUpgrade;
 import com.alxnns1.mobhunter.crafting.WeaponUpgradeRecipe;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.LogHelper;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -16,6 +17,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -59,11 +61,11 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         for(int i = 0; i < 5; i++)
         {
-            WeaponUpgradeRecipe r = container.recipes[i];
-            if(r == null) continue;
-            //TODO: Fix buttons not updating!
             GuiButton button = buttonList.get(i);
-            button.enabled = container.recipesValid[i];
+            if(container.inventory.getStackInSlot(0) == null || i >= container.recipesValid.size() || container.recipesValid.get(i) == null)
+                button.enabled = false;
+            else
+                button.enabled = container.recipesValid.get(i);
             buttonList.set(i, button);
         }
     }
@@ -87,25 +89,28 @@ public class GuiWeaponUpgrade extends GuiContainer
         this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 92, 4210752);
 
         //Draw button tooltip
-        for(int i = 0; i < 5; i++)
+        if(container.recipes == null || container.recipes.isEmpty()) return;
+        for(int i = 0; i < container.recipes.size(); i++)
         {
-            WeaponUpgradeRecipe r = container.recipes[i];
-            if(r == null) continue;
             Button b = (Button) buttonList.get(i);
-            List<String> list = new ArrayList<String>();
-            list.add("Upgrade Weapon To: " + r.getRecipeOutput().getDisplayName());
-            list.add("Required Materials:");
-            for(Object o : r.getInput())
-            {
-                if(o instanceof ItemStack)
-                    list.add(((ItemStack)o).stackSize + " x " + ((ItemStack)o).getDisplayName());
-                else if(o instanceof List)
-                    //This basically gets the first ore dictionary string for the item.
-                    list.add("1 x Ore:" + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>)o).get(0))[0]));
-            }
-            b.setTooltip(list);
             if(b.isMouseOver())
+            {
+                WeaponUpgradeRecipe r = container.recipes.get(i);
+                if(r == null) continue;
+                List<String> list = new ArrayList<String>();
+                list.add("Upgrade Weapon To: " + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
+                list.add("Required Materials:");
+                for(Object o : r.getInput())
+                {
+                    if(o instanceof ItemStack)
+                        list.add(((ItemStack)o).stackSize + " x " + TextFormatting.YELLOW + ((ItemStack)o).getDisplayName());
+                    else if(o instanceof List)
+                        //This basically gets the first ore dictionary string for the item.
+                        list.add("1 x Ore:" + TextFormatting.YELLOW + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>)o).get(0))[0]));
+                }
+                b.setTooltip(list);
                 b.drawButtonForegroundLayer(mouseX - guiLeft, mouseY - guiTop);
+            }
         }
     }
 
@@ -114,9 +119,12 @@ public class GuiWeaponUpgrade extends GuiContainer
      */
     protected void actionPerformed(GuiButton button) throws IOException
     {
+        LogHelper.info("Button " + button.id + " Pressed");
         if(button instanceof UpgradeButton)
         {
             container.enchantItem(this.mc.thePlayer, button.id);
+            //if(container.enchantItem(this.mc.thePlayer, button.id))
+                //button.enabled = false;
             mc.playerController.sendEnchantPacket(container.windowId, button.id);
         }
         else if(button instanceof ArrowButton) //Arrow button

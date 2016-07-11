@@ -29,6 +29,9 @@ public class WeaponUpgradeRecipe extends ShapelessOreRecipe
     }
 
     @Override
+    public ItemStack getRecipeOutput(){ return output.copy(); }
+
+    @Override
     public boolean matches(InventoryCrafting inv, World worldIn)
     {
         return inv.getStackInSlot(0) != null && inv.getStackInSlot(0).isItemEqual(inputKey);
