@@ -154,15 +154,6 @@ public class GuiWeaponUpgrade extends GuiContainer
     }
 
     /**
-     * Draws the screen and all the components in it.
-     */
-    public void drawScreen(int mouseX, int mouseY, float partialTicks)
-    {
-        super.drawScreen(mouseX, mouseY, partialTicks);
-        //TODO: Draw the resultant items ontop of the buttons
-    }
-
-    /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
     protected void actionPerformed(GuiButton button) throws IOException

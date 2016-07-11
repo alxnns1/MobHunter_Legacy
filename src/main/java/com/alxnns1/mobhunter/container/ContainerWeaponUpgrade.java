@@ -63,7 +63,6 @@ public class ContainerWeaponUpgrade extends MHContainer
     /**
      * Checks the player's inventory for all of the input items, and returns true if they're all present.
      * False if at least 1 item is not there.
-     * TODO: Change it so that it returns how many of each item there is for use on the tooltip.
      */
     @SuppressWarnings("unchecked")
     public ArrayList<Object> checkPlayerInv(IInventory inv, ArrayList<Object> input)

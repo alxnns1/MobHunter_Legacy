@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.init.MHItems;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,8 +31,12 @@ public class WeaponUpgradeManager
     private WeaponUpgradeManager()
     {
         //Add recipes here
+        addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new Object[]{new ItemStack(Items.IRON_INGOT, 5)});
         addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, new Object[]{MHItems.itemGreatJaggiHide, new ItemStack(MHItems.itemJaggiHide, 3), new ItemStack(MHItems.itemJaggiScale, 3), new ItemStack(MHItems.itemEarthCrystal, 5)});
         addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new Object[]{new ItemStack(MHItems.itemGreatJaggiClaw, 2), new ItemStack(MHItems.itemGreatJaggiHide, 3), new ItemStack(MHItems.itemMachaliteIngot, 5)});
+        addRecipe(MHItems.weaponHuntersDagger, MHItems.weaponHuntersKnifePlus, new Object[]{new ItemStack(MHItems.itemEarthCrystal, 4), new ItemStack(MHItems.itemMachaliteIngot, 2), MHItems.itemGlueglopper});
+        addRecipe(MHItems.weaponAssassinsDagger, MHItems.weaponHuntersDagger, new Object[]{new ItemStack(MHItems.itemEarthCrystal, 4), new ItemStack(MHItems.itemDragoniteIngot, 2), MHItems.itemGlueglopper});
+        addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new Object[]{new ItemStack(MHItems.itemGenpreyHide, 5), new ItemStack(MHItems.itemGenpreyFang, 4), new ItemStack(MHItems.itemMonsterBoneS, 3)});
     }
 
     private void addStack(ArrayList<ItemStack> stacks, ItemStack stack)
