@@ -5,7 +5,10 @@ import com.alxnns1.mobhunter.crafting.WeaponUpgradeRecipe;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -34,6 +37,7 @@ public class ContainerWeaponUpgrade extends MHContainer
     @Override
     protected void init()
     {
+        invStartX = 48;
         invStartY = 122;
         inventory = new InventoryCrafting(this, 1, 1);
     }
@@ -41,7 +45,7 @@ public class ContainerWeaponUpgrade extends MHContainer
     @Override
     protected void addSlots()
     {
-        addSlotToContainer(new Slot(inventory, 0, 13, 53)
+        addSlotToContainer(new Slot(inventory, 0, 14, 53)
         {
             /**
              * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case

@@ -40,7 +40,7 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         super(new ContainerWeaponUpgrade(invPlayer, world));
         container = (ContainerWeaponUpgrade) inventorySlots;
-        this.xSize = 175;
+        this.xSize = 256;
         this.ySize = 203;
     }
 
@@ -185,7 +185,7 @@ public class GuiWeaponUpgrade extends GuiContainer
 
         public UpgradeButton(int buttonId, int x, int y, String buttonText, ItemStack renderItem)
         {
-            super(buttonId, x, y, 108, 19, 0, 204, buttonText);
+            super(buttonId, x, y, 188, 19, 0, 204, buttonText);
             item = renderItem;
         }
 
@@ -210,7 +210,7 @@ public class GuiWeaponUpgrade extends GuiContainer
 
         public ArrowButton(int buttonId, int x, int y, boolean isUpArrow)
         {
-            super(buttonId, x, y, 11, 17, isUpArrow ? 108 : 119, 204, "");
+            super(buttonId, x, y, 11, 17, isUpArrow ? 188 : 199, 204, "");
             isUp = isUpArrow;
         }
 
