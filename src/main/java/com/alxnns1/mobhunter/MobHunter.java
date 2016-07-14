@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter;
 
 import com.alxnns1.mobhunter.capability.HunterRankDefault;
 import com.alxnns1.mobhunter.capability.IHunterRank;
+import com.alxnns1.mobhunter.gui.GuiHandler;
 import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -71,6 +73,8 @@ public class MobHunter {
         MHAchievements.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @Mod.EventHandler
