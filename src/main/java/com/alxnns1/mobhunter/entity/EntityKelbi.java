@@ -13,7 +13,7 @@ public class EntityKelbi extends EntityMHHerbivore
 {
     public EntityKelbi(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f);
+        super(worldIn);
         this.setSize(0.9F, 1.3F);
         setBaseHealth(5);
         setBaseSpeed(0.2);

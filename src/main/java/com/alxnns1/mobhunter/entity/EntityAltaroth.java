@@ -18,7 +18,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
     private boolean full = false;
 
     public EntityAltaroth(World worldIn){
-        super(worldIn, 0.79f, 1.24f);
+        super(worldIn);
         this.setSize(0.9f,0.5f);
         setBaseHealth(5);
         setBaseAttack(2);

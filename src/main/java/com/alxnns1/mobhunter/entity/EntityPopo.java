@@ -13,7 +13,7 @@ public class EntityPopo extends EntityMHHerbivore
 {
     public EntityPopo(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f);
+        super(worldIn);
         this.setSize(1.9F, 2.5F);
         setBaseHealth(5);
         setBaseSpeed(0.1);

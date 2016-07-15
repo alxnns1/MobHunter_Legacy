@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class EntityVelociprey extends EntityMHBirdWyvern {
     public EntityVelociprey(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f, MHItems.itemRawMeat);
+        super(worldIn);
         this.setSize(1.5F, 1.8125F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));

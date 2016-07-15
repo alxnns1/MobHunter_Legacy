@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -20,7 +21,7 @@ public class EntityJaggi extends EntityMHBirdWyvern
 {
     public EntityJaggi(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f, MHItems.itemRawMeat);
+        super(worldIn);
         this.setSize(1.0F, 1.0F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
@@ -84,14 +85,14 @@ public class EntityJaggi extends EntityMHBirdWyvern
         setBaseAttack(3);
         setBaseSpeed(0.3);
         setBaseKnockback(0.1);
-        double rand = Math.random();
-        if(rand<0.1){
+        double rand = this.rand.nextDouble();
+        if(rand< Config.greatJaggiChance){
             EntityGreatJaggi great = new EntityGreatJaggi(worldObj);
             great.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
             great.onInitialSpawn(difficulty,livingdata);
             worldObj.spawnEntityInWorld(great);
             this.setDead();
-        }else if(rand<0.35){
+        }else if(rand<Config.jaggiaChance){
             EntityJaggia jaggia = new EntityJaggia(worldObj);
             jaggia.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
             jaggia.onInitialSpawn(difficulty,livingdata);

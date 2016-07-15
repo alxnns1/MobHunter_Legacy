@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -31,7 +32,7 @@ public abstract class EntityMHBirdWyvern extends EntityMob
 
     public EntityMHBirdWyvern(World world)
     {
-        this(world, 1f, 1f, MHItems.itemRawMeat);
+        this(world, Config.scaleMin, Config.scaleMax, MHItems.itemRawMeat);
     }
 
     public EntityMHBirdWyvern(World world, float minScale, float maxScale, Item temptFood)

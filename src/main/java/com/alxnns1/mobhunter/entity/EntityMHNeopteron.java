@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -31,7 +32,7 @@ public class EntityMHNeopteron extends EntityMob
 
     public EntityMHNeopteron(World world)
     {
-        this(world, 1f, 1f, MHItems.itemBlueMushroom);
+        this(world, Config.scaleMin, Config.scaleMax, MHItems.itemBlueMushroom);
     }
 
     public EntityMHNeopteron(World world, float minScale, float maxScale)

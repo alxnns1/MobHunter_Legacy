@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.init;
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.entity.*;
 import com.alxnns1.mobhunter.entity.render.*;
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
@@ -16,7 +17,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 public class MHEntities
 {
     private static int modEntityID = 0;
-    private static int spawnRarity = 10;
 
     private static void registerMobWithEgg(Class<? extends Entity> entityClass, String name, int eggColour, int eggSpotColour)
     {
@@ -38,7 +38,7 @@ public class MHEntities
     public static void init(boolean isClientSide)
     {
         registerMobWithEgg(EntityAptonoth.class, "Aptonoth", 0x7f6d59, 0x382c1e);
-        addSpawn(EntityAptonoth.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityAptonoth.class, Config.aptonothSpawnChance, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -47,7 +47,7 @@ public class MHEntities
                 BiomeDictionary.Type.SANDY,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityAltaroth.class, "Altaroth", 0x8fbf60, 0xbfbf60);
-        addSpawn(EntityAltaroth.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityAltaroth.class, Config.altarothSpawnChance, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -59,11 +59,11 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityPopo.class, "Popo", 0x402a00, 0x403400);
-        addSpawn(EntityPopo.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityPopo.class, Config.popoSpawnChance, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.SNOWY,
                 BiomeDictionary.Type.MOUNTAIN});
         registerMobWithEgg(EntityKelbi.class, "Kelbi", 0x20402b, 0xbfbf8f);
-        addSpawn(EntityKelbi.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityKelbi.class, Config.kelbiSpawnChance, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -74,13 +74,13 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityGargwa.class, "Gargwa", 0x804000, 0x0000ff);
-        addSpawn(EntityGargwa.class, spawnRarity, new BiomeDictionary.Type[] {
+        addSpawn(EntityGargwa.class, Config.gargwaSpawnChance, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
                 BiomeDictionary.Type.HILLS});
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
         registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
-        addSpawn(EntityJaggi.class, spawnRarity, 3, 7, new BiomeDictionary.Type[] {
+        addSpawn(EntityJaggi.class, Config.jaggiSpawnChance, 3, 7, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -92,7 +92,7 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
-        addSpawn(EntityVelociprey.class, spawnRarity, 3, 7, new BiomeDictionary.Type[] {
+        addSpawn(EntityVelociprey.class, Config.velocipreySpawnChance, 3, 7, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
@@ -101,7 +101,7 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityGenprey.class, "Genprey", 0x408040, 0x806040);
-        addSpawn(EntityGenprey.class, spawnRarity, 3, 7, new BiomeDictionary.Type[] {
+        addSpawn(EntityGenprey.class, Config.genpreySpawnChance, 3, 7, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.SWAMP,

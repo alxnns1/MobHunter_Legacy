@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -18,7 +19,7 @@ import net.minecraft.world.World;
 public class EntityGreatJaggi extends EntityMHBirdWyvern {
     public EntityGreatJaggi(World worldIn)
     {
-        super(worldIn, 0.79f*0.75f, 1.24f*0.75f, MHItems.itemRawMeat);
+        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f, MHItems.itemRawMeat);
         this.setSize(2.25F, 2.5F);
         setBaseHealth(390);
         setBaseAttack(3*1.5);

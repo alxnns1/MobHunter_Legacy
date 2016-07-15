@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 public class EntityJaggia extends EntityMHBirdWyvern {
     public EntityJaggia(World worldIn)
     {
-        super(worldIn, 0.79f, 1.24f, MHItems.itemRawMeat);
+        super(worldIn);
         this.setSize(1.5F, 1.8125F);
         setBaseHealth(12);
         setBaseAttack(3);

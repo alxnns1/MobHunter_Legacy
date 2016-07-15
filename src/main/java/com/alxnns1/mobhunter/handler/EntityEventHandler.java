@@ -1,4 +1,4 @@
-package com.alxnns1.mobhunter;
+package com.alxnns1.mobhunter.handler;
 
 import com.alxnns1.mobhunter.capability.HunterRankProvider;
 import com.alxnns1.mobhunter.entity.EntityGreatJaggi;
@@ -61,7 +61,8 @@ public class EntityEventHandler
     private static final String[] AGGRESIVE_NAMES = {
             "Creeper", "Skeleton", "Spider", "Giant", "Zombie", "Slime", "Ghast",
             "PigZombie", "Enderman", "Endermite", "Silverfish", "CaveSpider", "Blaze",
-            "LavaSlime", "EnderDragon", "WitherBoss", "Witch", "Guardian", "KillerBunny"
+            "LavaSlime", "EnderDragon", "WitherBoss", "Witch", "Guardian", "KillerBunny",
+            "Shulker"
     };
 
     private static ArrayList<Object[]> mobDrops = new ArrayList<Object[]>();
