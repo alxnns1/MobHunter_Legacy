@@ -140,16 +140,6 @@ public class ContainerWeaponUpgrade extends MHContainer
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
         reloadRecipes();
-        String log = "Recipes:\n";
-        for(int i = 0; i < recipes.size(); i++)
-        {
-            if(recipesValid.get(i))
-                log += "Y - ";
-            else
-                log += "N - ";
-            log += recipes.get(i).toString();
-        }
-        //LogHelper.info(log);
         detectAndSendChanges();
     }
 

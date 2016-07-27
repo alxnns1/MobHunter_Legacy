@@ -20,8 +20,7 @@ public class MHEntities
 
     private static void registerMobWithEgg(Class<? extends Entity> entityClass, String name, int eggColour, int eggSpotColour)
     {
-        EntityRegistry.registerModEntity(entityClass, name, ++modEntityID, MobHunter.instance, 64, 1, false);
-        EntityRegistry.registerEgg(entityClass, eggColour, eggSpotColour);
+        EntityRegistry.registerModEntity(entityClass, name, ++modEntityID, MobHunter.instance, 64, 1, false, eggColour, eggSpotColour);
     }
 
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type[] biomeTypes)
