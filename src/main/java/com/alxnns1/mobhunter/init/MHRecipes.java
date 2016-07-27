@@ -65,12 +65,17 @@ public class MHRecipes
         GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyBoots), new Object[] {"   ", "y y", "z z", 'y', Items.IRON_INGOT, 'z', MHItems.itemMachaliteIngot});
 
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnife), new Object[] {" z ", " z ", " z ", 'z', Items.IRON_INGOT});
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnifePlus), new Object[] {" yy", " yy", " yz", 'y', Items.IRON_INGOT, 'z', MHItems.weaponHuntersKnife});
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponSoldiersDagger), new Object[] {"zyx", "zyx", "zvw", 'v', MHItems.weaponHuntersKnifePlus, 'w', MHItems.itemGreatJaggiHide, 'x', MHItems.itemJaggiHide, 'y', MHItems.itemJaggiScale, 'z', MHItems.itemEarthCrystal});
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponCommandersDagger), new Object[] {"xzy", "xzy", "ywz", 'w', MHItems.weaponSoldiersDagger, 'x', MHItems.itemGreatJaggiClaw, 'y', MHItems.itemGreatJaggiHide, 'z', MHItems.itemMachaliteIngot});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponSerpentBite), new Object[] {"yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', MHItems.itemVelocipreyHide, 'y', MHItems.itemVelocipreyFang, 'z', MHItems.itemMonsterBoneS});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponSerpentBitePlus), new Object[] {"yyx", "yzz", "yxz", 'x', MHItems.weaponSerpentBite, 'y', MHItems.itemVelocipreyFang, 'z', MHItems.itemMonsterBoneS});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponDeadlock), new Object[] {"yyx", "yzz", "yxz", 'x', MHItems.weaponSerpentBitePlus, 'y', MHItems.itemVelocipreyFang, 'z', MHItems.itemMonsterBoneM});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBite), new Object[] {"yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', MHItems.itemGenpreyHide, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneS});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBitePlus), new Object[] {"yyx", "yzz", "yxz", 'x', MHItems.weaponViperBite, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneS});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponDeathprize), new Object[] {"yyx", "yzz", "yxz", 'x', MHItems.weaponViperBitePlus, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneM});
+        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnifePlus), new Object[] {" yy", " yy", " yz", 'y', Items.IRON_INGOT, 'z', MHItems.weaponHuntersKnife});
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersDagger), new Object[] {"yxx", "yzx", " wx", 'w', MHItems.weaponHuntersKnife, 'x', MHItems.itemEarthCrystal, 'y', MHItems.itemMachaliteIngot, 'z', MHItems.itemGlueglopper});
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponAssassinsDagger), new Object[] {"yxx", "yzx", " wx", 'w', MHItems.weaponHuntersDagger, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemMonsterBoneM, 'z', MHItems.itemGlueglopper});
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBite), new Object[] {"yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', MHItems.itemGenpreyHide, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneS});
 
         GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemMachaliteIngot), 'y', new ItemStack(Items.STICK)});
         GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), new Object[] {"xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemDragoniteIngot), 'y', new ItemStack(Items.STICK)});
@@ -91,6 +96,7 @@ public class MHRecipes
 
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq), new Object[] {"w w", "wxw", "yzy", 'w', Items.IRON_INGOT, 'x', Items.FLINT_AND_STEEL, 'y', new ItemStack(Blocks.STONE), 'z', new ItemStack(Blocks.NETHERRACK)});
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
+        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockWeaponUpgrade), new Object[] {"www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,14), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF)});
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite, new ItemStack(MHItems.itemMachaliteIngot), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreDragonite, new ItemStack(MHItems.itemDragoniteIngot), 0.2f);

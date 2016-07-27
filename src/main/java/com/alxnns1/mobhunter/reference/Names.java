@@ -85,7 +85,6 @@ public class Names
         public static final String RARE_SCARAB = "itemRareScarab";
         public static final String HONEY = "itemHoney";
 
-        public static final String BONE = "bone";
         public static final String MONSTER_BONE_S = "itemMonsterBoneS";
         public static final String MONSTER_BONE_M = "itemMonsterBoneM";
         public static final String MONSTER_BONE_L = "itemMonsterBoneL";
@@ -110,13 +109,23 @@ public class Names
 
         public static final String JAGGI_HIDE = "itemJaggiHide";
         public static final String JAGGI_SCALE = "itemJaggiScale";
+        public static final String JAGGI_FANG = "itemJaggiFang";
 
         public static final String VELOCIPREY_HIDE = "itemVelocipreyHide";
         public static final String VELOCIPREY_SCALE = "itemVelocipreyScale";
+        public static final String VELOCIPREY_FANG = "itemVelocipreyFang";
+
+        public static final String GIAPREY_HIDE = "itemGiapreyHide";
+        public static final String GIAPREY_SCALE = "itemGiapreyScale";
+        public static final String GIAPREY_FANG = "itemGiapreyFang";
 
         public static final String GENPREY_HIDE = "itemGenpreyHide";
         public static final String GENPREY_SCALE = "itemGenpreyScale";
         public static final String GENPREY_FANG = "itemGenpreyFang";
+
+        public static final String IOPREY_HIDE = "itemIopreyHide";
+        public static final String IOPREY_SCALE = "itemIopreyScale";
+        public static final String IOPREY_FANG = "itemIopreyFang";
 
         public static final String SCREAMER_SAC = "itemScreamerSac";
 
@@ -124,6 +133,22 @@ public class Names
         public static final String GREAT_JAGGI_CLAW = "itemGreatJaggiClaw";
         public static final String GREAT_JAGGI_HEAD = "itemGreatJaggiHead";
         public static final String KINGS_FRILL = "itemKingsFrill";
+
+        public static final String VELOCIDROME_HIDE = "itemVelocidromeHide";
+        public static final String VELOCIDROME_CLAW = "itemVelocidromeClaw";
+        public static final String VELOCIDROME_HEAD = "itemVelocidromeHead";
+
+        public static final String GIADROME_HIDE = "itemGiadromeHide";
+        public static final String GIADROME_CLAW = "itemGiadromeClaw";
+        public static final String GIADROME_HEAD = "itemGiadromeHead";
+
+        public static final String GENDROME_HIDE = "itemGendromeHide";
+        public static final String GENDROME_CLAW = "itemGendromeClaw";
+        public static final String GENDROME_HEAD = "itemGendromeHead";
+
+        public static final String IODROME_HIDE = "itemIodromeHide";
+        public static final String IODROME_CLAW = "itemIodromeClaw";
+        public static final String IODROME_HEAD = "itemIodromeHead";
 
         public static final String DERRING_HELMET = "armourDerringHelmet";
         public static final String DERRING_CHESTPLATE = "armourDerringChestplate";
@@ -146,12 +171,17 @@ public class Names
         public static final String ALLOY_BOOTS = "armourAlloyBoots";
 
         public static final String HUNTERS_KNIFE = "weaponHuntersKnife";
-        public static final String HUNTERS_KNIFE_PLUS = "weaponHuntersKnifePlus";
         public static final String SOLDIERS_DAGGER = "weaponSoldiersDagger";
         public static final String COMMANDERS_DAGGER = "weaponCommandersDagger";
+        public static final String SERPENT_BITE = "weaponSerpentBite";
+        public static final String SERPENT_BITE_PLUS = "weaponSerpentBitePlus";
+        public static final String DEADLOCK = "weaponDeadlock";
+        public static final String VIPER_BITE = "weaponViperBite";
+        public static final String VIPER_BITE_PLUS = "weaponViperBitePlus";
+        public static final String DEATHPRIZE = "weaponDeathprize";
+        public static final String HUNTERS_KNIFE_PLUS = "weaponHuntersKnifePlus";
         public static final String HUNTERS_DAGGER = "weaponHuntersDagger";
         public static final String ASSASSINS_DAGGER = "weaponAssassinsDagger";
-        public static final String VIPER_BITE = "weaponViperBite";
 
         public static final String IRON_SWORD_PLUS = "weaponIronSwordPlus";
         public static final String BUSTER_SWORD = "weaponBusterSword";

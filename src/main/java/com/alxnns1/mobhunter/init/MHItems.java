@@ -118,8 +118,6 @@ public class MHItems
     public static final ItemMHResource itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB);
     public static final ItemMHResource itemHoney = new ItemMHResource(Names.Items.HONEY);
 
-    //public static final ItemMHResourceMeta itemBones = new ItemMHResourceMeta(Names.Items.BONE, new String[] {Names.Items.MONSTER_BONE_S, Names.Items.MYSTERY_BONE, Names.Items.BRUTE_BONE, Names.Items.JUMBO_BONE});
-
     public static final ItemMHResource itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S);
     public static final ItemMHResource itemMonsterBoneM = new ItemMHResource(Names.Items.MONSTER_BONE_M);
     public static final ItemMHResource itemMysteryBone = new ItemMHResource(Names.Items.MYSTERY_BONE);
@@ -145,9 +143,11 @@ public class MHItems
 
     public static final ItemMHResource itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE);
     public static final ItemMHResource itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE);
+    public static final ItemMHResource itemJaggiFang = new ItemMHResource(Names.Items.JAGGI_FANG);
 
     public static final ItemMHResource itemVelocipreyHide = new ItemMHResource(Names.Items.VELOCIPREY_HIDE);
     public static final ItemMHResource itemVelocipreyScale = new ItemMHResource(Names.Items.VELOCIPREY_SCALE);
+    public static final ItemMHResource itemVelocipreyFang = new ItemMHResource(Names.Items.VELOCIPREY_FANG);
 
     public static final ItemMHResource itemGenpreyHide = new ItemMHResource(Names.Items.GENPREY_HIDE);
     public static final ItemMHResource itemGenpreyScale = new ItemMHResource(Names.Items.GENPREY_SCALE);
@@ -161,13 +161,18 @@ public class MHItems
     public static final ItemMHSword weaponTest = new ItemMHSword("weaponTest", 1f, new int[] {5, 10, 15, 20, 25, 30, 35});
     public static final ItemMHShield shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT);
 
-    public static final ItemMHSword weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, new int[] {140, 280, 399});
-    public static final ItemMHSword weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, new int[] {60, 200, 399});
-    public static final ItemMHSword weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, new int[] {100, 160, 420, 499});
-    public static final ItemMHSword weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, new int[] {100, 240, 400, 499});
-    public static final ItemMHSword weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, new int[] {140, 280, 399});
-    public static final ItemMHSword weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, new int[] {120, 200, 399});
+    public static final ItemMHSword weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, new int[] {140, 280, 400});
+    public static final ItemMHSword weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, new int[] {100, 160, 420, 500});
+    public static final ItemMHSword weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, new int[] {100, 240, 400, 500});
+    public static final ItemMHSword weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, new int[] {120, 200, 440, 500});
+    public static final ItemMHSword weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, new int[] {120, 180, 380, 500});
+    public static final ItemMHSword weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, new int[] {140, 200, 400, 580, 600});
     public static final ItemMHSword weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, new int[] {120, 200, 440, 500});
+    public static final ItemMHSword weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, new int[] {120, 180, 380, 500});
+    public static final ItemMHSword weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, new int[] {140, 200, 400, 580, 600});
+    public static final ItemMHSword weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, new int[] {60, 200, 400});
+    public static final ItemMHSword weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, new int[] {140, 280, 400});
+    public static final ItemMHSword weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, new int[] {120, 200, 400});
 
     public static final ItemMHSword weaponIronSwordPlus = new ItemMHSword(Names.Items.IRON_SWORD_PLUS, 7f, new int[] {180, 320, 399});
     public static final ItemMHSword weaponBusterSword = new ItemMHSword(Names.Items.BUSTER_SWORD, 8f, new int[] {160, 300, 380, 399});
@@ -271,8 +276,6 @@ public class MHItems
         GameRegistry.register(itemRareScarab);
         GameRegistry.register(itemHoney);
 
-        //GameRegistry.register(itemBones, "bones");
-
         GameRegistry.register(itemMonsterBoneS);
         GameRegistry.register(itemMonsterBoneM);
         GameRegistry.register(itemMysteryBone);
@@ -298,9 +301,11 @@ public class MHItems
 
         GameRegistry.register(itemJaggiHide);
         GameRegistry.register(itemJaggiScale);
+        GameRegistry.register(itemJaggiFang);
 
         GameRegistry.register(itemVelocipreyHide);
         GameRegistry.register(itemVelocipreyScale);
+        GameRegistry.register(itemVelocipreyFang);
 
         GameRegistry.register(itemGenpreyHide);
         GameRegistry.register(itemGenpreyScale);
@@ -335,12 +340,17 @@ public class MHItems
         GameRegistry.register(shieldTest);
 
         GameRegistry.register(weaponHuntersKnife);
-        GameRegistry.register(weaponHuntersKnifePlus);
         GameRegistry.register(weaponSoldiersDagger);
         GameRegistry.register(weaponCommandersDagger);
+        GameRegistry.register(weaponSerpentBite);
+        GameRegistry.register(weaponSerpentBitePlus);
+        GameRegistry.register(weaponDeadlock);
+        GameRegistry.register(weaponViperBite);
+        GameRegistry.register(weaponViperBitePlus);
+        GameRegistry.register(weaponDeathprize);
+        GameRegistry.register(weaponHuntersKnifePlus);
         GameRegistry.register(weaponHuntersDagger);
         GameRegistry.register(weaponAssassinsDagger);
-        GameRegistry.register(weaponViperBite);
 
         GameRegistry.register(weaponIronSwordPlus);
         GameRegistry.register(weaponBusterSword);
@@ -440,13 +450,6 @@ public class MHItems
         Common.regModel(itemRareScarab);
         Common.regModel(itemHoney);
 
-        /*
-        for(int i = 0; i < itemBones.getMaxMeta(); i++)
-        {
-            Common.regModel(itemBones, i);
-        }
-        */
-
         Common.regModel(itemMonsterBoneS);
         Common.regModel(itemMonsterBoneM);
         Common.regModel(itemMysteryBone);
@@ -472,9 +475,11 @@ public class MHItems
 
         Common.regModel(itemJaggiHide);
         Common.regModel(itemJaggiScale);
+        Common.regModel(itemJaggiFang);
 
         Common.regModel(itemVelocipreyHide);
         Common.regModel(itemVelocipreyScale);
+        Common.regModel(itemVelocipreyFang);
 
         Common.regModel(itemGenpreyHide);
         Common.regModel(itemGenpreyScale);
@@ -509,12 +514,17 @@ public class MHItems
         Common.regModel(shieldTest);
 
         Common.regModel(weaponHuntersKnife);
-        Common.regModel(weaponHuntersKnifePlus);
         Common.regModel(weaponSoldiersDagger);
         Common.regModel(weaponCommandersDagger);
+        Common.regModel(weaponSerpentBite);
+        Common.regModel(weaponSerpentBitePlus);
+        Common.regModel(weaponDeadlock);
+        Common.regModel(weaponViperBite);
+        Common.regModel(weaponViperBitePlus);
+        Common.regModel(weaponDeathprize);
+        Common.regModel(weaponHuntersKnifePlus);
         Common.regModel(weaponHuntersDagger);
         Common.regModel(weaponAssassinsDagger);
-        Common.regModel(weaponViperBite);
 
         Common.regModel(weaponIronSwordPlus);
         Common.regModel(weaponBusterSword);

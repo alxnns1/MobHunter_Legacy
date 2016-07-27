@@ -13,7 +13,7 @@ public class MHAchievements
     //public static StatBase testStat = new StatBasic("stat.MHTest", new ChatComponentTranslation("stat.MHTest", new Object[0]));
 
     public static Achievement cookMeat = new Achievement("achievment.cookMeat", "cookMeat", -2, 0, MHItems.itemDoneSteak, null);
-    public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", -2, 1, MHItems.weaponIronSwordPlus, null);
+    public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", -2, 1, MHItems.weaponHuntersKnife, null);
     public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", 0, 0, Items.IRON_HELMET, null);
     public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 0, 1, Items.GOLDEN_HELMET, null);
     public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", 2, 0, MHItems.iconGreatJaggi, null);
@@ -30,9 +30,11 @@ public class MHAchievements
         smallCrown.registerStat();
         largeCrown.registerStat();
         greatJaggi.registerStat();
-        /*velocidrome.registerStat();
+        /*
+        velocidrome.registerStat();
         gendrome.registerStat();
-        iodrome.registerStat();*/
+        iodrome.registerStat();
+        */
 
         AchievementPage.registerAchievementPage(new AchievementPage(Reference.MOD_ID,
                 cookMeat, firstSword, smallCrown, largeCrown, greatJaggi/*, velocidrome, gendrome, iodrome*/));
