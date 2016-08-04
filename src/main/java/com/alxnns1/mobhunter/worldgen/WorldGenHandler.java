@@ -3,7 +3,6 @@ package com.alxnns1.mobhunter.worldgen;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -19,18 +18,18 @@ import java.util.Random;
 public class WorldGenHandler implements IWorldGenerator
 {
     //WorldGenMineable(block state, number of blocks to spawn)
-    WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 10);
-    WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 8);
-    WorldGenMinable oreDragonite = new WorldGenMinable(MHBlocks.blockOreDragonite.getDefaultState(), 6);
-    WorldGenMinable oreLightCrystal = new WorldGenMinable(MHBlocks.blockOreLightCrystal.getDefaultState(), 5);
-    WorldGenMinable oreIceCrystal = new WorldGenMinable(MHBlocks.blockOreIceCrystal.getDefaultState(), 10);
-    WorldGenMinable oreGossamite = new WorldGenMinable(MHBlocks.blockOreGossamite.getDefaultState(), 4);
+    private WorldGenMinable oreEarthCrystal = new WorldGenMinable(MHBlocks.blockOreEarthCrystal.getDefaultState(), 10);
+    private WorldGenMinable oreMachalite = new WorldGenMinable(MHBlocks.blockOreMachalite.getDefaultState(), 8);
+    private WorldGenMinable oreDragonite = new WorldGenMinable(MHBlocks.blockOreDragonite.getDefaultState(), 6);
+    private WorldGenMinable oreLightCrystal = new WorldGenMinable(MHBlocks.blockOreLightCrystal.getDefaultState(), 5);
+    private WorldGenMinable oreIceCrystal = new WorldGenMinable(MHBlocks.blockOreIceCrystal.getDefaultState(), 10);
+    private WorldGenMinable oreGossamite = new WorldGenMinable(MHBlocks.blockOreGossamite.getDefaultState(), 4);
 
-    MHPlantGen bushHerb = new MHPlantGen(MHBlocks.blockHerb);
-    MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
-    MHPlantGen bushBerry = new MHPlantGen(MHBlocks.blockBerry);
-    MHPlantGen bushBug = new MHPlantGen(MHBlocks.blockBug);
-    MHPlantGen bushBone = new MHPlantGen(MHBlocks.blockBone);
+    private MHPlantGen bushHerb = new MHPlantGen(MHBlocks.blockHerb);
+    private MHPlantGen bushShroom = new MHPlantGen(MHBlocks.blockShroom);
+    private MHPlantGen bushBerry = new MHPlantGen(MHBlocks.blockBerry);
+    private MHPlantGen bushBug = new MHPlantGen(MHBlocks.blockBug);
+    private MHPlantGen bushBone = new MHPlantGen(MHBlocks.blockBone);
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
@@ -127,7 +126,7 @@ public class WorldGenHandler implements IWorldGenerator
         for(int i = 0; i < genCount; i++)
         {
             //Creates random position in chunk for vein
-            BlockPos pos = getRandXZInChunk(random, chunkX, chunkZ).add(0, random.nextInt(maxHeight - minHeight) + minHeight, 0);
+            BlockPos pos = getRandXZInChunk(random, chunkX, random.nextInt(maxHeight - minHeight) + minHeight, chunkZ);
             //Generates vein
             generator.generate(world, random, pos);
         }
@@ -169,7 +168,7 @@ public class WorldGenHandler implements IWorldGenerator
         for(int i = 0; i < genCount; i++)
         {
             //Creates random position in chunk for vein
-            BlockPos pos = getRandXZInChunk(random, chunkX, chunkZ).add(0, random.nextInt(maxHeight - minHeight) + minHeight, 0);
+            BlockPos pos = getRandXZInChunk(random, chunkX, random.nextInt(maxHeight - minHeight) + minHeight, chunkZ);
             //Generates vein
             for(BiomeDictionary.Type biome : biomes) {
                 if(BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos),biome))
