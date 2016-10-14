@@ -99,8 +99,6 @@ public class GuiWeaponUpgrade extends GuiContainer
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(guiImage);
         this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
-
-
     }
 
     @Override
@@ -117,6 +115,7 @@ public class GuiWeaponUpgrade extends GuiContainer
             Button b = (Button) buttonList.get(i);
             if(b.isMouseOver())
             {
+                //Get the recipe for the button
                 WeaponUpgradeRecipe r = container.recipes.get(i);
                 if(r == null) continue;
                 List<String> list = new ArrayList<String>();
@@ -127,7 +126,9 @@ public class GuiWeaponUpgrade extends GuiContainer
                     line1 = "Craft Weapon: ";
                 list.add(line1 + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
                 list.add("Required Materials:");
+                //Get the materials which are not present in player inventory
                 ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, r.getInput());
+                //Add the materials to the tooltip, coloured yellow if player has enough and red if not
                 for(Object o : r.getInput())
                 {
                     TextFormatting colour = TextFormatting.YELLOW;

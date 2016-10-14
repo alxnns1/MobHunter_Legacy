@@ -1,6 +1,5 @@
 package com.alxnns1.mobhunter.block;
 
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
