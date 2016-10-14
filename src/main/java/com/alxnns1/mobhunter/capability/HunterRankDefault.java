@@ -1,7 +1,7 @@
 package com.alxnns1.mobhunter.capability;
 
 import com.alxnns1.mobhunter.message.MessageHunterRank;
-import com.alxnns1.mobhunter.util.Common;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -64,7 +64,7 @@ public class HunterRankDefault implements IHunterRank
     public void dataChanged(EntityPlayer player)
     {
         if(player != null && player instanceof EntityPlayerMP)
-            Common.network.sendTo(new MessageHunterRank(saveNBT()), (EntityPlayerMP) player);
+            CommonUtil.network.sendTo(new MessageHunterRank(saveNBT()), (EntityPlayerMP) player);
     }
 
     public static class HunterRankStorage implements Capability.IStorage<IHunterRank>
@@ -80,7 +80,7 @@ public class HunterRankDefault implements IHunterRank
         @Override
         public void readNBT(Capability<IHunterRank> capability, IHunterRank instance, EnumFacing side, NBTBase nbt)
         {
-            ((HunterRankDefault)instance).storedHR = ((NBTBase.NBTPrimitive)nbt).getFloat();
+            ((HunterRankDefault)instance).storedHR = ((NBTTagFloat)nbt).getFloat();
         }
     }
 }

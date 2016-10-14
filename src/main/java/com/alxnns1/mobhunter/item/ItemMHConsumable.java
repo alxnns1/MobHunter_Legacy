@@ -3,15 +3,12 @@ package com.alxnns1.mobhunter.item;
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
-import com.alxnns1.mobhunter.util.Common;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
@@ -153,6 +150,6 @@ public class ItemMHConsumable extends ItemFood
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        Common.addTooltip(stack, tooltip);
+        CommonUtil.addTooltip(stack, tooltip);
     }
 }

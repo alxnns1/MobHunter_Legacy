@@ -1,8 +1,7 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.util.Common;
-import net.minecraft.creativetab.CreativeTabs;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
@@ -36,6 +35,6 @@ public class ItemMHArmour extends ItemArmor
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        Common.addTooltip(stack, tooltip);
+        CommonUtil.addTooltip(stack, tooltip);
     }
 }

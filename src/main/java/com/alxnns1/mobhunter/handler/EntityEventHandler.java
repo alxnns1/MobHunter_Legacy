@@ -1,6 +1,5 @@
 package com.alxnns1.mobhunter.handler;
 
-import com.alxnns1.mobhunter.capability.HunterRankProvider;
 import com.alxnns1.mobhunter.entity.EntityGreatJaggi;
 import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
@@ -8,31 +7,22 @@ import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.item.ItemMHShield;
 import com.alxnns1.mobhunter.item.ItemMHSword;
-import com.alxnns1.mobhunter.reference.Reference;
-import com.alxnns1.mobhunter.util.Common;
-import com.alxnns1.mobhunter.util.LogHelper;
-import net.minecraft.entity.Entity;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent.Clone;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -253,7 +243,7 @@ public class EntityEventHandler
         if(entity instanceof EntityPlayer &&
                 activeStack != null &&
                 activeStack.getItem() instanceof ItemMHShield &&
-                Common.canBlockDamageSource(entity, event.getSource()) &&
+                CommonUtil.canBlockDamageSource(entity, event.getSource()) &&
                 event.getAmount() >= 0F)
         {
             //Damage shield

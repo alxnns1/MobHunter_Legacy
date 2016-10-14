@@ -6,7 +6,7 @@ import com.alxnns1.mobhunter.block.BlockWeaponUpgrade;
 import com.alxnns1.mobhunter.item.ItemBlockBasic;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
-import com.alxnns1.mobhunter.util.Common;
+import com.alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -97,28 +97,28 @@ public class MHBlocks
     @SideOnly(Side.CLIENT)
     public static void regModels()
     {
-        Common.regModel(blockOreEarthCrystal);
-        Common.regModel(blockEarthCrystal);
-        Common.regModel(blockOreMachalite);
-        Common.regModel(blockMachalite);
-        Common.regModel(blockOreDragonite);
-        Common.regModel(blockDragonite);
-        Common.regModel(blockOreLightCrystal);
-        Common.regModel(blockLightCrystal);
-        Common.regModel(blockOreIceCrystal);
-        Common.regModel(blockIceCrystal);
-        Common.regModel(blockOreGossamite);
-        Common.regModel(blockGossamite);
+        ClientUtil.regModel(blockOreEarthCrystal);
+        ClientUtil.regModel(blockEarthCrystal);
+        ClientUtil.regModel(blockOreMachalite);
+        ClientUtil.regModel(blockMachalite);
+        ClientUtil.regModel(blockOreDragonite);
+        ClientUtil.regModel(blockDragonite);
+        ClientUtil.regModel(blockOreLightCrystal);
+        ClientUtil.regModel(blockLightCrystal);
+        ClientUtil.regModel(blockOreIceCrystal);
+        ClientUtil.regModel(blockIceCrystal);
+        ClientUtil.regModel(blockOreGossamite);
+        ClientUtil.regModel(blockGossamite);
 
-        Common.regModel(blockHerb);
-        Common.regModel(blockShroom);
-        Common.regModel(blockBerry);
-        Common.regModel(blockBug);
-        Common.regModel(blockBone);
+        ClientUtil.regModel(blockHerb);
+        ClientUtil.regModel(blockShroom);
+        ClientUtil.regModel(blockBerry);
+        ClientUtil.regModel(blockBug);
+        ClientUtil.regModel(blockBone);
 
-        Common.regModel(blockBbq);
+        ClientUtil.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
-        Common.regModel(blockWeaponUpgrade);
+        ClientUtil.regModel(blockWeaponUpgrade);
     }
 
     @SideOnly(Side.CLIENT)
@@ -130,13 +130,13 @@ public class MHBlocks
             {
                 return worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : ColorizerGrass.getGrassColor(0.5D, 1.0D);
             }
-        }, new Block[] {blockHerb,blockBerry,blockBug,blockShroom});
+        }, blockHerb,blockBerry,blockBug,blockShroom);
         FMLClientHandler.instance().getClient().getItemColors().registerItemColorHandler(new IItemColor()
         {
             public int getColorFromItemstack(ItemStack stack, int tintIndex)
             {
                 return ColorizerGrass.getGrassColor(0.5D, 1.0D);
             }
-        }, new Block[] {blockHerb,blockBerry,blockBug,blockShroom});
+        }, blockHerb,blockBerry,blockBug,blockShroom);
     }
 }
