@@ -361,8 +361,8 @@ tile.blockBug.name=Bug Nest
 tile.blockBone.name=Bone Pile
 
 tile.blockBbq.name=BBQ Spit
-tile.blockWeaponCraft.name=Weapon Craft Table
-tile.blockArmourCraft.name=Armour Craft Table
+tile.blockWeaponCraft.name=Weapon Crafting Table
+tile.blockArmourCraft.name=Armour Crafting Table
 
 //GUI
 
