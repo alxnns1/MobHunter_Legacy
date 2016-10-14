@@ -25,6 +25,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains all of the mod's items and registering code
@@ -32,33 +34,18 @@ import javax.annotation.Nullable;
  */
 public class MHBlocks
 {
-    public static BlockOre blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal);
-    public static BlockResource blockEarthCrystal = new BlockResource(Names.Blocks.EARTH_CRYSTAL, 1);
-    public static BlockOre blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1);
-    public static BlockResource blockMachalite = new BlockResource(Names.Blocks.MACHALITE, 1);
-    public static BlockOre blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2);
-    public static BlockResource blockDragonite = new BlockResource(Names.Blocks.DRAGONITE, 2);
-    public static BlockOre blockOreLightCrystal = (BlockOre) new BlockOre(Names.Blocks.ORE_LIGHT_CRYSTAL, 2, MHItems.itemLightCrystal).setLightLevel(1.0f);
-    public static BlockResource blockLightCrystal = (BlockResource) new BlockResource(Names.Blocks.LIGHT_CRYSTAL, 2).setLightLevel(1.0f);
-    public static BlockOre blockOreIceCrystal = new BlockOre(Names.Blocks.ORE_ICE_CRYSTAL, 1, MHItems.itemIceCrystal);
-    public static BlockResource blockIceCrystal = new BlockResource(Names.Blocks.ICE_CRYSTAL, 1);
-    public static BlockOre blockOreGossamite = new BlockOre(Names.Blocks.ORE_GOSSAMITE, 2);
-    public static BlockResource blockGossamite = new BlockResource(Names.Blocks.GOSSAMITE, 2);
+    public static List<Block> BLOCKS = new ArrayList<Block>();
 
-    public static BlockHerb blockHerb = new BlockHerb();
-    public static BlockShroom blockShroom = new BlockShroom();
-    public static BlockBerry blockBerry = new BlockBerry();
-    public static BlockBug blockBug = new BlockBug();
-    public static BlockBone blockBone = new BlockBone();
+    public static BlockOre blockOreEarthCrystal, blockOreMachalite, blockOreDragonite, blockOreLightCrystal, blockOreIceCrystal, blockOreGossamite;
+    public static BlockResource blockEarthCrystal, blockMachalite, blockDragonite, blockLightCrystal, blockGossamite, blockIceCrystal;
+    public static BlockNatural blockHerb, blockShroom, blockBerry, blockBug, blockBone;
 
-    public static BlockBbq blockBbq = new BlockBbq();
-    public static BlockWeaponUpgrade blockWeaponUpgrade = new BlockWeaponUpgrade();
+    public static BlockBbq blockBbq;
+    public static BlockWeaponUpgrade blockWeaponUpgrade;
 
     private static void regBlock(Block block, String oreDicName)
     {
-        GameRegistry.register(block);
-        ItemBlock itemBlock = new ItemBlockBasic(block);
-        GameRegistry.register(itemBlock);
+        regBlock(block);
         OreDictionary.registerOre(oreDicName, block);
     }
 
@@ -67,58 +54,47 @@ public class MHBlocks
         GameRegistry.register(block);
         ItemBlock itemBlock = new ItemBlockBasic(block);
         GameRegistry.register(itemBlock);
+        BLOCKS.add(block);
     }
 
-    public static void init()
+    public static void regBlocks()
     {
-        regBlock(blockOreEarthCrystal, "oreEarthCrystal");
-        regBlock(blockEarthCrystal, "blockEarthCrystal");
-        regBlock(blockOreMachalite, "oreMachalite");
-        regBlock(blockMachalite, "blockMachalite");
-        regBlock(blockOreDragonite, "oreDragonite");
-        regBlock(blockDragonite, "blockDragonite");
-        regBlock(blockOreLightCrystal, "oreLightCrystal");
-        regBlock(blockLightCrystal, "blockLightCrystal");
-        regBlock(blockOreIceCrystal, "oreIceCrystal");
-        regBlock(blockIceCrystal, "blockIceCrystal");
-        regBlock(blockOreGossamite, "oreGossamite");
-        regBlock(blockGossamite, "blockGossamite");
+        regBlock(blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal), "oreEarthCrystal");
+        regBlock(blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1), "oreMachalite");
+        regBlock(blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2), "oreDragonite");
+        regBlock(blockOreLightCrystal = (BlockOre) new BlockOre(Names.Blocks.ORE_LIGHT_CRYSTAL, 2, MHItems.itemLightCrystal).setLightLevel(1.0f), "oreLightCrystal");
+        regBlock(blockOreIceCrystal = new BlockOre(Names.Blocks.ORE_ICE_CRYSTAL, 1, MHItems.itemIceCrystal), "oreIceCrystal");
+        regBlock(blockOreGossamite = new BlockOre(Names.Blocks.ORE_GOSSAMITE, 2), "oreGossamite");
 
-        regBlock(blockHerb);
-        regBlock(blockShroom);
-        regBlock(blockBerry);
-        regBlock(blockBug);
-        regBlock(blockBone);
+        regBlock(blockEarthCrystal = new BlockResource(Names.Blocks.EARTH_CRYSTAL, 1), "blockEarthCrystal");
+        regBlock(blockMachalite = new BlockResource(Names.Blocks.MACHALITE, 1), "blockMachalite");
+        regBlock(blockDragonite = new BlockResource(Names.Blocks.DRAGONITE, 2), "blockDragonite");
+        regBlock(blockLightCrystal = (BlockResource) new BlockResource(Names.Blocks.LIGHT_CRYSTAL, 2).setLightLevel(1.0f), "blockLightCrystal");
+        regBlock(blockIceCrystal = new BlockResource(Names.Blocks.ICE_CRYSTAL, 1), "blockIceCrystal");
+        regBlock(blockGossamite = new BlockResource(Names.Blocks.GOSSAMITE, 2), "blockGossamite");
+        
+        regBlock(blockHerb = new BlockHerb());
+        regBlock(blockShroom = new BlockShroom());
+        regBlock(blockBerry = new BlockBerry());
+        regBlock(blockBug = new BlockBug());
+        regBlock(blockBone = new BlockBone());
 
-        regBlock(blockBbq);
-        regBlock(blockWeaponUpgrade);
+        regBlock(blockBbq = new BlockBbq());
+        regBlock(blockWeaponUpgrade = new BlockWeaponUpgrade());
+    }
+
+    public static void regTileEntities()
+    {
+        GameRegistry.registerTileEntity(TileBbq.class, Names.Blocks.BBQ);
     }
 
     @SideOnly(Side.CLIENT)
     public static void regModels()
     {
-        ClientUtil.regModel(blockOreEarthCrystal);
-        ClientUtil.regModel(blockEarthCrystal);
-        ClientUtil.regModel(blockOreMachalite);
-        ClientUtil.regModel(blockMachalite);
-        ClientUtil.regModel(blockOreDragonite);
-        ClientUtil.regModel(blockDragonite);
-        ClientUtil.regModel(blockOreLightCrystal);
-        ClientUtil.regModel(blockLightCrystal);
-        ClientUtil.regModel(blockOreIceCrystal);
-        ClientUtil.regModel(blockIceCrystal);
-        ClientUtil.regModel(blockOreGossamite);
-        ClientUtil.regModel(blockGossamite);
+        for(Block block : BLOCKS)
+            ClientUtil.regModel(block);
 
-        ClientUtil.regModel(blockHerb);
-        ClientUtil.regModel(blockShroom);
-        ClientUtil.regModel(blockBerry);
-        ClientUtil.regModel(blockBug);
-        ClientUtil.regModel(blockBone);
-
-        ClientUtil.regModel(blockBbq);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
-        ClientUtil.regModel(blockWeaponUpgrade);
     }
 
     @SideOnly(Side.CLIENT)
@@ -130,13 +106,13 @@ public class MHBlocks
             {
                 return worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : ColorizerGrass.getGrassColor(0.5D, 1.0D);
             }
-        }, blockHerb,blockBerry,blockBug,blockShroom);
+        }, blockHerb, blockBerry, blockBug, blockShroom);
         FMLClientHandler.instance().getClient().getItemColors().registerItemColorHandler(new IItemColor()
         {
             public int getColorFromItemstack(ItemStack stack, int tintIndex)
             {
                 return ColorizerGrass.getGrassColor(0.5D, 1.0D);
             }
-        }, blockHerb,blockBerry,blockBug,blockShroom);
+        }, blockHerb, blockBerry, blockBug, blockShroom);
     }
 }

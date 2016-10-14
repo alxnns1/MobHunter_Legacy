@@ -46,13 +46,13 @@ public class MobHunter {
     public void preInit(FMLPreInitializationEvent event){
         //Initializing and registering items, blocks and configs
 
-        //Passes suggested configuration file into the init method
+        //Passes suggested configuration file into the regBlocks method
         ConfigHandler.init(event.getSuggestedConfigurationFile());
         MinecraftForge.EVENT_BUS.register(new ConfigHandler());
 
-        MHItems.init();
-        MHBlocks.init();
-        MHTileEntities.init();
+        MHItems.regItems();
+        MHBlocks.regBlocks();
+        MHBlocks.regTileEntities();
         MHEntities.init(event.getSide() == Side.CLIENT);
         MHPotions.init();
 

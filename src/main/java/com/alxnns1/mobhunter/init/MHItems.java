@@ -84,7 +84,7 @@ public class MHItems
     /**
      * Registers the items
      */
-    public static void init()
+    public static void regItems()
     {
         regItem(armourDerringHelmet = new ItemMHArmour(derringArmourMaterial, EntityEquipmentSlot.HEAD,Names.Items.DERRING_HELMET));
         regItem(armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.DERRING_CHESTPLATE));
