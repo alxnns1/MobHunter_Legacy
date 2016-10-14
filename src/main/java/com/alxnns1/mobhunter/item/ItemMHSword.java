@@ -5,6 +5,7 @@ import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -57,11 +58,9 @@ public class ItemMHSword extends ItemSword
     public EnumSharpness getSharpness(ItemStack stack)
     {
         if(damageLevels != null) {
-            for (int i = 0; i < damageLevels.length; i++) {
-                if ((stack.getMaxDamage() - stack.getItemDamage()) < damageLevels[i]) {
+            for (int i = 0; i < damageLevels.length; i++)
+                if ((stack.getMaxDamage() - stack.getItemDamage()) < damageLevels[i])
                     return EnumSharpness.getById(i);
-                }
-            }
             return maxSharpness;
         }
         return EnumSharpness.RED;
@@ -77,11 +76,10 @@ public class ItemMHSword extends ItemSword
     }
 
     public void repairSharpness(ItemStack stack, int amount){
-        if(stack.getItemDamage()<amount){
+        if(stack.getItemDamage()<amount)
             stack.setItemDamage(0);
-        }else{
+        else
             stack.setItemDamage(stack.getItemDamage()-amount);
-        }
     }
 
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
@@ -102,9 +100,7 @@ public class ItemMHSword extends ItemSword
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
     {
         if (!(attacker instanceof EntityPlayer) || !((EntityPlayer)attacker).capabilities.isCreativeMode)
-        {
             stack.damageItem(1, attacker);
-        }
         return true;
     }
 
@@ -117,8 +113,8 @@ public class ItemMHSword extends ItemSword
         EnumSharpness currentSharpness = getSharpness(stack);
         if(currentSharpness != null)
         {
-            tooltip.add("Sharpness: " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
-            tooltip.add("Max Sharpness: " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
+            tooltip.add(I18n.format("item.sharpness") + " " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
+            tooltip.add(I18n.format("item.maxSharpness") + " " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
             if(playerIn.isCreative())
                 tooltip.add(damageLevelsString);
         }
@@ -147,14 +143,16 @@ public class ItemMHSword extends ItemSword
      */
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0) {
-            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetstone))) {
+        if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0)
+        {
+            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetstone)))
+            {
                 nextSharpen = 200;
                 playerIn.setActiveHand(hand);
-                return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
             }
         }
-        return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
     }
 
     /**
@@ -163,12 +161,13 @@ public class ItemMHSword extends ItemSword
      */
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
-        if (entityLiving instanceof EntityPlayer) {
+        if (entityLiving instanceof EntityPlayer)
+        {
             repairSharpness(stack, nextSharpen);
-            if (nextSharpen == 200) {
+            if (nextSharpen == 200)
                 ((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemWhetstone, -1, 1, null);
-            } else if (nextSharpen == 100) {
-                //((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMiniWhetstone, -1, 1, null);
+            else if (nextSharpen == 100) {
+                ((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMiniWhetstone, -1, 1, null);
             }
         }
         return stack;

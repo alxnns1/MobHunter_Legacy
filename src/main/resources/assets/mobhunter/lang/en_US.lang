@@ -7,6 +7,10 @@ sharpness.blue.name=Blue
 sharpness.white.name=White
 sharpness.purple.name=Purple
 
+//Tooltips
+item.sharpness=Sharpness:
+item.maxSharpness=Max Sharpness:
+
 //Achievements
 achievement.cookMeat=Mmm So Tasty!
 achievement.cookMeat.desc=Cook your first piece of Well-Done Steak.
@@ -67,6 +71,8 @@ item.itemCatalyst.tooltip=Works with other materials to enhance their effects. C
 //Tools
 item.itemWhetstone.name=Whetstone
 item.itemWhetstone.tooltip=A standard-sized Whetstone. Use it to restore a weapon's Sharpness.
+item.itemMiniWhetstone.name=Mini Whetstone
+item.itemMiniWhetstone.tooltip=A portable Whetstone for restoring Sharpness to weapons.
 item.itemMachalitePickaxe.name=Machalite Pickaxe
 item.itemDragonitePickaxe.name=Dragonite Pickaxe
 item.itemGossamitePickaxe.name=Gossamite Pickaxe
@@ -354,10 +360,16 @@ tile.blockBerry.name=Berry Block
 tile.blockBug.name=Bug Nest
 tile.blockBone.name=Bone Pile
 
-//Machines
 tile.blockBbq.name=BBQ Spit
-tile.blockWeaponUpgrade.name=Weapon Upgrade Table
-tile.blockArmourUpgrade.name=Armour Upgrade Table
+tile.blockWeaponCraft.name=Weapon Craft Table
+tile.blockArmourCraft.name=Armour Craft Table
+
+//GUI
+
+gui.blockWeaponUpgrade.button.craft.1.1=Upgrade Weapon To:
+gui.blockWeaponUpgrade.button.craft.1.2=Craft Weapon:
+gui.blockWeaponUpgrade.button.craft.2=Required Materials:
+gui.blockWeaponUpgrade.button.craft.ore=1 x Ore:
 
 //ENTITIES
 

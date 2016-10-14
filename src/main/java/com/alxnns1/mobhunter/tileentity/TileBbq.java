@@ -41,12 +41,13 @@ public class TileBbq extends TileEntity implements ITickable
      */
     public boolean putRawMeat()
     {
-        if(!isCooking) {
+        if(!isCooking)
+        {
             isCooking = true;
             return true;
-        } else {
-            return false;
         }
+        else
+            return false;
     }
 
     /**
@@ -147,9 +148,7 @@ public class TileBbq extends TileEntity implements ITickable
     public void update()
     {
         if(isCooking)
-        {
             //Increase time meat has been cooking for
             cookTime++;
-        }
     }
 }

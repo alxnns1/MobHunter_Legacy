@@ -65,10 +65,8 @@ public class EntityEventHandler
         else
             N = PASSIVE_NAMES;
         for(String n : N)
-        {
             if(name.equals(n))
                 return true;
-        }
         return false;
     }
 
@@ -138,9 +136,8 @@ public class EntityEventHandler
                     int min = (Integer) o[2];
                     int max = (Integer) o[3];
                     int randQty = rand.nextInt(max) + min;
-                    if (randQty > 0) {
+                    if (randQty > 0)
                         event.getEntityLiving().entityDropItem((ItemStack) o[1], 0);
-                    }
                 }
             }
         }

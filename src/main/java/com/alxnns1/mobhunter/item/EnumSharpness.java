@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter.item;
 
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.TextFormatting;
 
 /**
@@ -108,7 +108,7 @@ public enum EnumSharpness
 
     public String getLocalizedName()
     {
-        return new TextComponentTranslation(name).getUnformattedText();
+        return I18n.format(name);
     }
 
     public float getDamageMult()

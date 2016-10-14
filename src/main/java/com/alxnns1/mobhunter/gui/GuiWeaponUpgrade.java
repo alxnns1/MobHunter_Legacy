@@ -11,6 +11,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
@@ -33,6 +34,7 @@ import java.util.List;
 public class GuiWeaponUpgrade extends GuiContainer
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiWeaponUpgrade.png");
+    private static final String TOOLTIP = "gui.blockWeaponUpgrade.";
 
     private ContainerWeaponUpgrade container;
 
@@ -49,7 +51,7 @@ public class GuiWeaponUpgrade extends GuiContainer
         super.initGui();
         //Add the buttons to the gui
         for(int i = 0; i < 5; i++)
-            buttonList.add(new UpgradeButton(i, 60, 14 + (19 * i), "Button " + (i + 1), null));
+            buttonList.add(new UpgradeButton(i, 60, 14 + (19 * i), "", null));
         buttonList.add(new ArrowButton(5, 44, 34, true));
         buttonList.add(new ArrowButton(6, 44, 72, false));
     }
@@ -121,11 +123,11 @@ public class GuiWeaponUpgrade extends GuiContainer
                 List<String> list = new ArrayList<String>();
                 String line1;
                 if(r.getKeyInput().getItem() instanceof ItemMHSword)
-                    line1 = "Upgrade Weapon To: ";
+                    line1 = I18n.format(TOOLTIP + "button.craft.1.1") + " ";
                 else
-                    line1 = "Craft Weapon: ";
+                    line1 = I18n.format(TOOLTIP + "button.craft.1.2") + " ";
                 list.add(line1 + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
-                list.add("Required Materials:");
+                list.add(I18n.format(TOOLTIP + "button.craft.2"));
                 //Get the materials which are not present in player inventory
                 ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, r.getInput());
                 //Add the materials to the tooltip, coloured yellow if player has enough and red if not
@@ -150,7 +152,7 @@ public class GuiWeaponUpgrade extends GuiContainer
                     else if(o instanceof List)
                     {
                         //This basically gets the first ore dictionary string for the item.
-                        list.add("1 x Ore:" + colour + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>) o).get(0))[0]));
+                        list.add(I18n.format(TOOLTIP + "button.craft.ore") + colour + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>) o).get(0))[0]));
                     }
                 }
                 b.setTooltip(list);

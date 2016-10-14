@@ -1,11 +1,11 @@
 package com.alxnns1.mobhunter.util;
 
 import com.alxnns1.mobhunter.reference.Reference;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
@@ -24,7 +24,7 @@ public class CommonUtil
     public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
     {
         String unlocName = stack.getUnlocalizedName();
-        String tooltipText = new TextComponentTranslation(unlocName + ".tooltip").getUnformattedText();
+        String tooltipText = I18n.format(unlocName + ".tooltip");
         //Convert string to array to we can wrap by word
         String[] tooltipArray = tooltipText.split(" ");
         int l = 0;

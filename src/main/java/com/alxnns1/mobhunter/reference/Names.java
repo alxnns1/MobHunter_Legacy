@@ -8,228 +8,233 @@ public class Names
 {
     public static class Items
     {
-        public static final String POTION = "itemPotion";
-        public static final String MEGA_POTION = "itemMegaPotion";
-        public static final String NUTRIENTS = "itemNutrients";
-        public static final String MEGA_NUTRIENTS = "itemMegaNutrients";
-        public static final String ANTIDOTE = "itemAntidote";
-        public static final String IMMUNIZER = "itemImmunizer";
-        public static final String DASH_JUICE = "itemDashJuice";
-        public static final String MEGA_DASH_JUICE = "itemMegaDashJuice";
-        public static final String DEMONDRUG = "itemDemondrug";
-        public static final String MEGA_DEMONDRUG = "itemMegaDemondrug";
-        public static final String MIGHT_PILL = "itemMightPill";
-        public static final String ARMOURSKIN = "itemArmourskin";
-        public static final String MEGA_ARMOURSKIN = "itemMegaArmourskin";
-        public static final String ADAMANT_PILL = "itemAdamantPill";
-        public static final String ENERGY_DRINK = "itemEnergyDrink";
-
-        public static final String CATALYST = "itemCatalyst";
-
-        public static final String WHETSTONE = "itemWhetstone";
-        public static final String MACHALITE_PICKAXE = "Machalite";
-        public static final String DRAGONITE_PICKAXE = "Dragonite";
-        public static final String GOSSAMITE_PICKAXE = "Gossamite";
-
-        public static final String RAW_MEAT = "itemRawMeat";
-        public static final String RARE_STEAK = "itemRareSteak";
-        public static final String DONE_STEAK = "itemDoneSteak";
-        public static final String BURNT_MEAT = "itemBurntMeat";
-
-        public static final String HERB = "itemHerb";
-        public static final String ANTIDOTE_HERB = "itemAntidoteHerb";
-        public static final String FIRE_HERB = "itemFireHerb";
-        public static final String IVY = "itemIvy";
-        public static final String SLEEP_HERB = "itemSleepHerb";
-        public static final String SAP_PLANT = "itemSapPlant";
-        public static final String FELVINE = "itemFelvine";
-        public static final String GLOAMGRASS_ROOT = "itemGloamgrassRoot";
-        public static final String HOT_PEPPER = "itemHotPepper";
-
-        public static final String BLUE_MUSHROOM = "itemBlueMushroom";
-        public static final String NITROSHROOM = "itemNitroshroom";
-        public static final String PARASHROOM = "itemParashroom";
-        public static final String TOADSTOOL = "itemToadstool";
-        public static final String EXCITESHROOM = "itemExciteshroom";
-        public static final String MOPESHROOM = "itemMopeshroom";
-        public static final String DRAGON_TOADSTOOL = "itemDragonToadstool";
-
-        public static final String HUSKBERRY = "itemHuskberry";
-        public static final String PAINTBERRY = "itemPaintberry";
-        public static final String MIGHT_SEED = "itemMightSeed";
-        public static final String ADAMANT_SEED = "itemAdamantSeed";
-        public static final String NULBERRY = "itemNulberry";
-        public static final String DRAGONFELL_BERRY = "itemDragonfellBerry";
-        public static final String SCATTERNUT = "itemScatternut";
-        public static final String NEEDLEBERRY = "itemNeedleberry";
-        public static final String LATCHBERRY = "itemLatchberry";
-        public static final String BOMBERRY = "itemBomberry";
-
-        public static final String EARTH_CRYSTAL = "itemEarthCrystal";
-        public static final String MACHALITE_INGOT = "itemMachaliteIngot";
-        public static final String DRAGONITE_INGOT = "itemDragoniteIngot";
-        public static final String LIGHT_CRYSTAL = "itemLightCrystal";
-        public static final String ICE_CRYSTAL = "itemIceCrystal";
-        public static final String GOSSAMITE_INGOT = "itemGossamiteIngot";
-
-        public static final String INSECT_HUSK = "itemInsectHusk";
-        public static final String STINKHOPPER = "itemStinkhopper";
-        public static final String SNAKEBEE_LARVA = "itemSnakebeeLarva";
-        public static final String GODBUG = "itemGodbug";
-        public static final String BITTERBUG = "itemBitterbug";
-        public static final String FLASHBUG = "itemFlashbug";
-        public static final String THUNDERBUG = "itemThunderbug";
-        public static final String GLUEGLOPPER = "itemGlueglopper";
-        public static final String KILLER_BEETLE = "itemKillerBeetle";
-        public static final String HERCUDROME = "itemHercudrome";
-        public static final String RARE_SCARAB = "itemRareScarab";
-        public static final String HONEY = "itemHoney";
-
-        public static final String MONSTER_BONE_S = "itemMonsterBoneS";
-        public static final String MONSTER_BONE_M = "itemMonsterBoneM";
-        public static final String MONSTER_BONE_L = "itemMonsterBoneL";
-        public static final String MYSTERY_BONE = "itemMysteryBone";
-        public static final String UNKNOWN_SKULL = "itemUnknownSkull";
-        public static final String BRUTE_BONE = "itemBruteBone";
-        public static final String JUMBO_BONE = "itemJumboBone";
-        public static final String DUNG = "itemDung";
-
-        public static final String ALTAROTH_JAW = "itemAltarothJaw";
-        public static final String ALTAROTH_STOMACH = "itemAltarothStomach";
-
-        public static final String KELBI_HORN = "itemKelbiHorn";
-        public static final String WARM_PELT = "itemWarmPelt";
-
-        public static final String GARGWA_FEATHER = "itemGargwaFeather";
-        public static final String STEEL_EGG = "itemSteelEgg";
-
-        public static final String MONSTER_FLUID = "itemMonsterFluid";
-
-        public static final String BIRD_WYVERN_FANG = "itemBirdWyvernFang";
-
-        public static final String JAGGI_HIDE = "itemJaggiHide";
-        public static final String JAGGI_SCALE = "itemJaggiScale";
-        public static final String JAGGI_FANG = "itemJaggiFang";
-
-        public static final String VELOCIPREY_HIDE = "itemVelocipreyHide";
-        public static final String VELOCIPREY_SCALE = "itemVelocipreyScale";
-        public static final String VELOCIPREY_FANG = "itemVelocipreyFang";
-
-        public static final String GIAPREY_HIDE = "itemGiapreyHide";
-        public static final String GIAPREY_SCALE = "itemGiapreyScale";
-        public static final String GIAPREY_FANG = "itemGiapreyFang";
-
-        public static final String GENPREY_HIDE = "itemGenpreyHide";
-        public static final String GENPREY_SCALE = "itemGenpreyScale";
-        public static final String GENPREY_FANG = "itemGenpreyFang";
-
-        public static final String IOPREY_HIDE = "itemIopreyHide";
-        public static final String IOPREY_SCALE = "itemIopreyScale";
-        public static final String IOPREY_FANG = "itemIopreyFang";
-
-        public static final String SCREAMER_SAC = "itemScreamerSac";
-
-        public static final String GREAT_JAGGI_HIDE = "itemGreatJaggiHide";
-        public static final String GREAT_JAGGI_CLAW = "itemGreatJaggiClaw";
-        public static final String GREAT_JAGGI_HEAD = "itemGreatJaggiHead";
-        public static final String KINGS_FRILL = "itemKingsFrill";
-
-        public static final String VELOCIDROME_HIDE = "itemVelocidromeHide";
-        public static final String VELOCIDROME_CLAW = "itemVelocidromeClaw";
-        public static final String VELOCIDROME_HEAD = "itemVelocidromeHead";
-
-        public static final String GIADROME_HIDE = "itemGiadromeHide";
-        public static final String GIADROME_CLAW = "itemGiadromeClaw";
-        public static final String GIADROME_HEAD = "itemGiadromeHead";
-
-        public static final String GENDROME_HIDE = "itemGendromeHide";
-        public static final String GENDROME_CLAW = "itemGendromeClaw";
-        public static final String GENDROME_HEAD = "itemGendromeHead";
-
-        public static final String IODROME_HIDE = "itemIodromeHide";
-        public static final String IODROME_CLAW = "itemIodromeClaw";
-        public static final String IODROME_HEAD = "itemIodromeHead";
-
-        public static final String DERRING_HELMET = "armourDerringHelmet";
-        public static final String DERRING_CHESTPLATE = "armourDerringChestplate";
-        public static final String DERRING_LEGGINGS = "armourDerringLeggings";
-        public static final String DERRING_BOOTS = "armourDerringBoots";
-
-        public static final String HUNTER_HELMET = "armourHunterHelmet";
-        public static final String HUNTER_CHESTPLATE = "armourHunterChestplate";
-        public static final String HUNTER_LEGGINGS = "armourHunterLeggings";
-        public static final String HUNTER_BOOTS = "armourHunterBoots";
-
-        public static final String BONE_HELMET = "armourBoneHelmet";
-        public static final String BONE_CHESTPLATE = "armourBoneChestplate";
-        public static final String BONE_LEGGINGS = "armourBoneLeggings";
-        public static final String BONE_BOOTS = "armourBoneBoots";
-
-        public static final String ALLOY_HELMET = "armourAlloyHelmet";
-        public static final String ALLOY_CHESTPLATE = "armourAlloyChestplate";
-        public static final String ALLOY_LEGGINGS = "armourAlloyLeggings";
-        public static final String ALLOY_BOOTS = "armourAlloyBoots";
-
-        public static final String HUNTERS_KNIFE = "weaponHuntersKnife";
-        public static final String SOLDIERS_DAGGER = "weaponSoldiersDagger";
-        public static final String COMMANDERS_DAGGER = "weaponCommandersDagger";
-        public static final String SERPENT_BITE = "weaponSerpentBite";
-        public static final String SERPENT_BITE_PLUS = "weaponSerpentBitePlus";
-        public static final String DEADLOCK = "weaponDeadlock";
-        public static final String VIPER_BITE = "weaponViperBite";
-        public static final String VIPER_BITE_PLUS = "weaponViperBitePlus";
-        public static final String DEATHPRIZE = "weaponDeathprize";
-        public static final String HUNTERS_KNIFE_PLUS = "weaponHuntersKnifePlus";
-        public static final String HUNTERS_DAGGER = "weaponHuntersDagger";
-        public static final String ASSASSINS_DAGGER = "weaponAssassinsDagger";
-
-        public static final String IRON_SWORD_PLUS = "weaponIronSwordPlus";
-        public static final String BUSTER_SWORD = "weaponBusterSword";
-        public static final String RUGGED_GREAT_SWORD = "weaponRuggedGreatSword";
-        public static final String BUSTER_SWORD_PLUS = "weaponBusterSwordPlus";
-        public static final String RAVAGER_BLADE = "weaponRavagerBlade";
-
-        public static final String BONE_BLADE = "weaponBoneBlade";
-        public static final String BONE_BLADE_PLUS = "weaponBoneBladePlus";
-        public static final String JAWBLADE = "weaponJawblade";
-        public static final String GIANT_JAWBLADE = "weaponGiantJawblade";
-
-        public static final String ICON_GREAT_JAGGI = "iconGreatJaggi";
-        public static final String ICON_GENDROME = "iconGendrome";
-        public static final String ICON_IODROME = "iconIodrome";
-        public static final String ICON_VELOCIDROME = "iconVelocidrome";
-        public static final String ICON_KIRIN = "iconKirin";
+        public static final String 
+                POTION = "itemPotion",
+                MEGA_POTION = "itemMegaPotion",
+                NUTRIENTS = "itemNutrients",
+                MEGA_NUTRIENTS = "itemMegaNutrients",
+                ANTIDOTE = "itemAntidote",
+                IMMUNIZER = "itemImmunizer",
+                DASH_JUICE = "itemDashJuice",
+                MEGA_DASH_JUICE = "itemMegaDashJuice",
+                DEMONDRUG = "itemDemondrug",
+                MEGA_DEMONDRUG = "itemMegaDemondrug",
+                MIGHT_PILL = "itemMightPill",
+                ARMOURSKIN = "itemArmourskin",
+                MEGA_ARMOURSKIN = "itemMegaArmourskin",
+                ADAMANT_PILL = "itemAdamantPill",
+                ENERGY_DRINK = "itemEnergyDrink",
+        
+                CATALYST = "itemCatalyst",
+        
+                WHETSTONE = "itemWhetstone",
+                MINI_WHETSTONE = "itemMiniWhetstone",
+                
+                MACHALITE_PICKAXE = "Machalite",
+                DRAGONITE_PICKAXE = "Dragonite",
+                GOSSAMITE_PICKAXE = "Gossamite",
+        
+                RAW_MEAT = "itemRawMeat",
+                RARE_STEAK = "itemRareSteak",
+                DONE_STEAK = "itemDoneSteak",
+                BURNT_MEAT = "itemBurntMeat",
+        
+                HERB = "itemHerb",
+                ANTIDOTE_HERB = "itemAntidoteHerb",
+                FIRE_HERB = "itemFireHerb",
+                IVY = "itemIvy",
+                SLEEP_HERB = "itemSleepHerb",
+                SAP_PLANT = "itemSapPlant",
+                FELVINE = "itemFelvine",
+                GLOAMGRASS_ROOT = "itemGloamgrassRoot",
+                HOT_PEPPER = "itemHotPepper",
+        
+                BLUE_MUSHROOM = "itemBlueMushroom",
+                NITROSHROOM = "itemNitroshroom",
+                PARASHROOM = "itemParashroom",
+                TOADSTOOL = "itemToadstool",
+                EXCITESHROOM = "itemExciteshroom",
+                MOPESHROOM = "itemMopeshroom",
+                DRAGON_TOADSTOOL = "itemDragonToadstool",
+        
+                HUSKBERRY = "itemHuskberry",
+                PAINTBERRY = "itemPaintberry",
+                MIGHT_SEED = "itemMightSeed",
+                ADAMANT_SEED = "itemAdamantSeed",
+                NULBERRY = "itemNulberry",
+                DRAGONFELL_BERRY = "itemDragonfellBerry",
+                SCATTERNUT = "itemScatternut",
+                NEEDLEBERRY = "itemNeedleberry",
+                LATCHBERRY = "itemLatchberry",
+                BOMBERRY = "itemBomberry",
+        
+                EARTH_CRYSTAL = "itemEarthCrystal",
+                MACHALITE_INGOT = "itemMachaliteIngot",
+                DRAGONITE_INGOT = "itemDragoniteIngot",
+                LIGHT_CRYSTAL = "itemLightCrystal",
+                ICE_CRYSTAL = "itemIceCrystal",
+                GOSSAMITE_INGOT = "itemGossamiteIngot",
+        
+                INSECT_HUSK = "itemInsectHusk",
+                STINKHOPPER = "itemStinkhopper",
+                SNAKEBEE_LARVA = "itemSnakebeeLarva",
+                GODBUG = "itemGodbug",
+                BITTERBUG = "itemBitterbug",
+                FLASHBUG = "itemFlashbug",
+                THUNDERBUG = "itemThunderbug",
+                GLUEGLOPPER = "itemGlueglopper",
+                KILLER_BEETLE = "itemKillerBeetle",
+                HERCUDROME = "itemHercudrome",
+                RARE_SCARAB = "itemRareScarab",
+                HONEY = "itemHoney",
+        
+                MONSTER_BONE_S = "itemMonsterBoneS",
+                MONSTER_BONE_M = "itemMonsterBoneM",
+                MONSTER_BONE_L = "itemMonsterBoneL",
+                MYSTERY_BONE = "itemMysteryBone",
+                UNKNOWN_SKULL = "itemUnknownSkull",
+                BRUTE_BONE = "itemBruteBone",
+                JUMBO_BONE = "itemJumboBone",
+                DUNG = "itemDung",
+        
+                ALTAROTH_JAW = "itemAltarothJaw",
+                ALTAROTH_STOMACH = "itemAltarothStomach",
+        
+                KELBI_HORN = "itemKelbiHorn",
+                WARM_PELT = "itemWarmPelt",
+        
+                GARGWA_FEATHER = "itemGargwaFeather",
+                STEEL_EGG = "itemSteelEgg",
+        
+                MONSTER_FLUID = "itemMonsterFluid",
+        
+                BIRD_WYVERN_FANG = "itemBirdWyvernFang",
+        
+                JAGGI_HIDE = "itemJaggiHide",
+                JAGGI_SCALE = "itemJaggiScale",
+                JAGGI_FANG = "itemJaggiFang",
+        
+                VELOCIPREY_HIDE = "itemVelocipreyHide",
+                VELOCIPREY_SCALE = "itemVelocipreyScale",
+                VELOCIPREY_FANG = "itemVelocipreyFang",
+        
+                GIAPREY_HIDE = "itemGiapreyHide",
+                GIAPREY_SCALE = "itemGiapreyScale",
+                GIAPREY_FANG = "itemGiapreyFang",
+        
+                GENPREY_HIDE = "itemGenpreyHide",
+                GENPREY_SCALE = "itemGenpreyScale",
+                GENPREY_FANG = "itemGenpreyFang",
+        
+                IOPREY_HIDE = "itemIopreyHide",
+                IOPREY_SCALE = "itemIopreyScale",
+                IOPREY_FANG = "itemIopreyFang",
+        
+                SCREAMER_SAC = "itemScreamerSac",
+        
+                GREAT_JAGGI_HIDE = "itemGreatJaggiHide",
+                GREAT_JAGGI_CLAW = "itemGreatJaggiClaw",
+                GREAT_JAGGI_HEAD = "itemGreatJaggiHead",
+                KINGS_FRILL = "itemKingsFrill",
+        
+                VELOCIDROME_HIDE = "itemVelocidromeHide",
+                VELOCIDROME_CLAW = "itemVelocidromeClaw",
+                VELOCIDROME_HEAD = "itemVelocidromeHead",
+        
+                GIADROME_HIDE = "itemGiadromeHide",
+                GIADROME_CLAW = "itemGiadromeClaw",
+                GIADROME_HEAD = "itemGiadromeHead",
+        
+                GENDROME_HIDE = "itemGendromeHide",
+                GENDROME_CLAW = "itemGendromeClaw",
+                GENDROME_HEAD = "itemGendromeHead",
+        
+                IODROME_HIDE = "itemIodromeHide",
+                IODROME_CLAW = "itemIodromeClaw",
+                IODROME_HEAD = "itemIodromeHead",
+        
+                DERRING_HELMET = "armourDerringHelmet",
+                DERRING_CHESTPLATE = "armourDerringChestplate",
+                DERRING_LEGGINGS = "armourDerringLeggings",
+                DERRING_BOOTS = "armourDerringBoots",
+        
+                HUNTER_HELMET = "armourHunterHelmet",
+                HUNTER_CHESTPLATE = "armourHunterChestplate",
+                HUNTER_LEGGINGS = "armourHunterLeggings",
+                HUNTER_BOOTS = "armourHunterBoots",
+        
+                BONE_HELMET = "armourBoneHelmet",
+                BONE_CHESTPLATE = "armourBoneChestplate",
+                BONE_LEGGINGS = "armourBoneLeggings",
+                BONE_BOOTS = "armourBoneBoots",
+        
+                ALLOY_HELMET = "armourAlloyHelmet",
+                ALLOY_CHESTPLATE = "armourAlloyChestplate",
+                ALLOY_LEGGINGS = "armourAlloyLeggings",
+                ALLOY_BOOTS = "armourAlloyBoots",
+        
+                HUNTERS_KNIFE = "weaponHuntersKnife",
+                SOLDIERS_DAGGER = "weaponSoldiersDagger",
+                COMMANDERS_DAGGER = "weaponCommandersDagger",
+                SERPENT_BITE = "weaponSerpentBite",
+                SERPENT_BITE_PLUS = "weaponSerpentBitePlus",
+                DEADLOCK = "weaponDeadlock",
+                VIPER_BITE = "weaponViperBite",
+                VIPER_BITE_PLUS = "weaponViperBitePlus",
+                DEATHPRIZE = "weaponDeathprize",
+                HUNTERS_KNIFE_PLUS = "weaponHuntersKnifePlus",
+                HUNTERS_DAGGER = "weaponHuntersDagger",
+                ASSASSINS_DAGGER = "weaponAssassinsDagger",
+        
+                IRON_SWORD_PLUS = "weaponIronSwordPlus",
+                BUSTER_SWORD = "weaponBusterSword",
+                RUGGED_GREAT_SWORD = "weaponRuggedGreatSword",
+                BUSTER_SWORD_PLUS = "weaponBusterSwordPlus",
+                RAVAGER_BLADE = "weaponRavagerBlade",
+        
+                BONE_BLADE = "weaponBoneBlade",
+                BONE_BLADE_PLUS = "weaponBoneBladePlus",
+                JAWBLADE = "weaponJawblade",
+                GIANT_JAWBLADE = "weaponGiantJawblade",
+        
+                ICON_GREAT_JAGGI = "iconGreatJaggi",
+                ICON_GENDROME = "iconGendrome",
+                ICON_IODROME = "iconIodrome",
+                ICON_VELOCIDROME = "iconVelocidrome",
+                ICON_KIRIN = "iconKirin";
     }
 
     public static class Blocks
     {
-        public static final String ORE_EARTH_CRYSTAL = "blockOreEarthCrystal";
-        public static final String ORE_MACHALITE = "blockOreMachalite";
-        public static final String ORE_DRAGONITE = "blockOreDragonite";
-        public static final String ORE_LIGHT_CRYSTAL = "blockOreLightCrystal";
-        public static final String ORE_ICE_CRYSTAL = "blockOreIceCrystal";
-        public static final String ORE_GOSSAMITE = "blockOreGossamite";
+        public static final String
+                ORE_EARTH_CRYSTAL = "blockOreEarthCrystal",
+                ORE_MACHALITE = "blockOreMachalite",
+                ORE_DRAGONITE = "blockOreDragonite",
+                ORE_LIGHT_CRYSTAL = "blockOreLightCrystal",
+                ORE_ICE_CRYSTAL = "blockOreIceCrystal",
+                ORE_GOSSAMITE = "blockOreGossamite",
 
-        public static final String EARTH_CRYSTAL = "blockEarthCrystal";
-        public static final String MACHALITE = "blockMachalite";
-        public static final String DRAGONITE = "blockDragonite";
-        public static final String LIGHT_CRYSTAL = "blockLightCrystal";
-        public static final String ICE_CRYSTAL = "blockIceCrystal";
-        public static final String GOSSAMITE = "blockGossamite";
+                EARTH_CRYSTAL = "blockEarthCrystal",
+                MACHALITE = "blockMachalite",
+                DRAGONITE = "blockDragonite",
+                LIGHT_CRYSTAL = "blockLightCrystal",
+                ICE_CRYSTAL = "blockIceCrystal",
+                GOSSAMITE = "blockGossamite",
 
-        public static final String HERB = "blockHerb";
-        public static final String SHROOM = "blockShroom";
-        public static final String BERRY = "blockBerry";
-        public static final String BUG = "blockBug";
-        public static final String BONE = "blockBone";
+                HERB = "blockHerb",
+                SHROOM = "blockShroom",
+                BERRY = "blockBerry",
+                BUG = "blockBug",
+                BONE = "blockBone",
 
-        public static final String BBQ = "blockBbq";
-        public static final String WEAPON_CRAFT = "blockWeaponCraft";
-        public static final String ARMOUR_CRAFT = "blockArmourCraft";
+                BBQ = "blockBbq",
+                WEAPON_CRAFT = "blockWeaponCraft",
+                ARMOUR_CRAFT = "blockArmourCraft";
     }
 
     public static class Potions
     {
-        public static final String PARALYSE = "paralyse";
+        public static final String
+                PARALYSE = "paralyse";
     }
 }

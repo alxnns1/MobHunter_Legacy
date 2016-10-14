@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class MHRecipes
 {
-    //Using this suppression to remove the "Redundant array creation" warnings
     public static void init()
     {
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemCatalyst), MHItems.itemHoney, MHItems.itemBitterbug);
@@ -48,7 +47,7 @@ public class MHRecipes
 
         //2 Mystery Bone + 1 Unknown Skull + 1 Altaroth Jaw
         GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), "xyx", "z z", "   ", 'x', MHItems.itemMysteryBone, 'y', MHItems.itemUnknownSkull, 'z', MHItems.itemAltarothJaw);
-        //4 Mystery Bone + 1 Jumbo Bone + 2 Altaroth Stomach + 2 Monster Bone S + 2 Moster Fluid
+        //4 Mystery Bone + 1 Jumbo Bone + 2 Altaroth Stomach + 2 Monster Bone S + 2 Monster Fluid
         GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), "w w", "xyx", "xzx", 'w', MHItems.itemMonsterBoneS, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemJumboBone, 'z', MHItems.itemAltarothStomach);
         //2 Mystery Bone + 2 Monster Bone S + 2 Sharp Fang(use Bird Wyvern Fang for now)
         GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), "wxw", "y y", "z z", 'w', MHItems.itemBirdWyvernFang, 'x', Items.STRING, 'y', MHItems.itemMysteryBone, 'z', MHItems.itemMonsterBoneS);

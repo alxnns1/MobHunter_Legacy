@@ -43,7 +43,7 @@ public class MHItems
     public static ItemMHDrink itemPotion, itemMegaPotion, itemNutrients, itemMegaNutrients, itemAntidote, itemImmunizer,
             itemDashJuice, itemMegaDashJuice, itemDemondrug, itemMegaDemondrug, itemArmourskin, itemMegaArmourskin;
 
-    public static ItemMHResource itemCatalyst, itemWhetstone, itemRawMeat;
+    public static ItemMHResource itemCatalyst, itemWhetstone, itemMiniWhetstone, itemRawMeat;
 
     public static ItemMHPickaxe itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
 
@@ -120,6 +120,8 @@ public class MHItems
         regItem(itemCatalyst = new ItemMHResource(Names.Items.CATALYST));
 
         regItem(itemWhetstone = new ItemMHResource(Names.Items.WHETSTONE));
+        regItem(itemMiniWhetstone = new ItemMHResource(Names.Items.MINI_WHETSTONE));
+
         regItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
         regItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));
         regItem(itemGossamitePickaxe = new ItemMHPickaxe(Names.Items.GOSSAMITE_PICKAXE, 3, 1000, 8.0f, 5f));
