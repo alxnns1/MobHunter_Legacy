@@ -75,9 +75,7 @@ public class MHItems
     public static ItemMHSword weaponTest,
             weaponHuntersKnife, weaponSoldiersDagger, weaponCommandersDagger, weaponSerpentBite, weaponSerpentBitePlus,
             weaponDeadlock, weaponViperBite, weaponViperBitePlus, weaponDeathprize, weaponHuntersKnifePlus,
-            weaponHuntersDagger, weaponAssassinsDagger,
-            weaponIronSwordPlus, weaponBusterSword, weaponRuggedGreatSword, weaponBusterSwordPlus, weaponRavagerBlade,
-            weaponBoneBlade, weaponBoneBladePlus, weaponJawblade, weaponGiantJawblade;
+            weaponHuntersDagger, weaponAssassinsDagger;
 
     public static ItemMHShield shieldTest;
 
@@ -235,17 +233,6 @@ public class MHItems
         regItem(weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, new int[] {60, 200, 400}));
         regItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, new int[] {140, 280, 400}));
         regItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, new int[] {120, 200, 400}));
-
-        regItem(weaponIronSwordPlus = new ItemMHSword(Names.Items.IRON_SWORD_PLUS, 7f, new int[] {180, 320, 399}));
-        regItem(weaponBusterSword = new ItemMHSword(Names.Items.BUSTER_SWORD, 8f, new int[] {160, 300, 380, 399}));
-        regItem(weaponRuggedGreatSword = new ItemMHSword(Names.Items.RUGGED_GREAT_SWORD, 10f, new int[] {80, 200, 360, 399}));
-        regItem(weaponBusterSwordPlus = new ItemMHSword(Names.Items.BUSTER_SWORD_PLUS, 10f, new int[] {80, 160, 340, 399}));
-        regItem(weaponRavagerBlade = new ItemMHSword(Names.Items.RAVAGER_BLADE, 11f, new int[] {140, 220, 320, 399}));
-
-        regItem(weaponBoneBlade = new ItemMHSword(Names.Items.BONE_BLADE, 8f, new int[] {160, 399}));
-        regItem(weaponBoneBladePlus = new ItemMHSword(Names.Items.BONE_BLADE_PLUS, 9f, new int[] {200, 380, 399}));
-        regItem(weaponJawblade = new ItemMHSword(Names.Items.JAWBLADE, 10f, new int[] {300, 340, 399}));
-        regItem(weaponGiantJawblade = new ItemMHSword(Names.Items.GIANT_JAWBLADE, 11f, new int[] {60, 100, 399}));
 
         regItem(iconGreatJaggi = new ItemMHResource(Names.Items.ICON_GREAT_JAGGI,false));
         regItem(iconGendrome = new ItemMHResource(Names.Items.ICON_GENDROME,false));

@@ -105,7 +105,7 @@ public class GuiWeaponUpgrade extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         //Draw text
-        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponUpgrade.getUnlocalizedName() + ".name").getUnformattedText(), 8, 4, 4210752);
+        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponCraft.getUnlocalizedName() + ".name").getUnformattedText(), 8, 4, 4210752);
         this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 92, 4210752);
 
         //Draw button tooltip

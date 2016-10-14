@@ -224,8 +224,8 @@ public class Names
         public static final String BONE = "blockBone";
 
         public static final String BBQ = "blockBbq";
-        public static final String WEAPON_UPGRADE = "blockWeaponUpgrade";
-        public static final String ARMOUR_UPGRADE = "blockArmourUpgrade";
+        public static final String WEAPON_CRAFT = "blockWeaponCraft";
+        public static final String ARMOUR_CRAFT = "blockArmourCraft";
     }
 
     public static class Potions

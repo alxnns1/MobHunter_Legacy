@@ -1,5 +1,5 @@
 {
-	"parent": "mobhunter:block/blockWeaponUpgrade",
+	"parent": "mobhunter:block/blockWeaponCraft",
 	"display": {
 		"thirdperson": {
 			"rotation": [ 10, -45, 170 ],

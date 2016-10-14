@@ -19,7 +19,7 @@ public class GuiHandler implements IGuiHandler
         Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
 
         //Server side - returns instance of the container
-        if(block == MHBlocks.blockWeaponUpgrade)
+        if(block == MHBlocks.blockWeaponCraft)
             return new ContainerWeaponUpgrade(player.inventory, world);
 
         return null;
@@ -31,7 +31,7 @@ public class GuiHandler implements IGuiHandler
         Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
 
         //Client side - returns instance of the gui
-        if(block == MHBlocks.blockWeaponUpgrade)
+        if(block == MHBlocks.blockWeaponCraft)
             return new GuiWeaponUpgrade(player.inventory, world);
 
         return null;

@@ -17,16 +17,16 @@ import javax.annotation.Nullable;
 /**
  * Created by Mark on 10/05/2016.
  */
-public class BlockWeaponUpgrade extends Block
+public class BlockWeaponCraft extends Block
 {
-    public BlockWeaponUpgrade()
+    public BlockWeaponCraft()
     {
         super(Material.ROCK);
-        setUnlocalizedName(Names.Blocks.WEAPON_UPGRADE);
+        setUnlocalizedName(Names.Blocks.WEAPON_CRAFT);
         setCreativeTab(MobHunter.MH_TAB);
         setHardness(2f);
         setResistance(10f);
-        setRegistryName(Names.Blocks.WEAPON_UPGRADE);
+        setRegistryName(Names.Blocks.WEAPON_CRAFT);
     }
 
     //Used to open the block's GUI
