@@ -63,18 +63,11 @@ public class MHRecipes
         //4 Machalite Ingot + 2 Earth Crystal + 2 Iron Ore
         GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyBoots), "   ", "y y", "z z", 'y', Items.IRON_INGOT, 'z', MHItems.itemMachaliteIngot);
 
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnife), " z ", " z ", " z ", 'z', Items.IRON_INGOT);
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponSoldiersDagger), "zyx", "zyx", "zvw", 'v', MHItems.weaponHuntersKnifePlus, 'w', MHItems.itemGreatJaggiHide, 'x', MHItems.itemJaggiHide, 'y', MHItems.itemJaggiScale, 'z', MHItems.itemEarthCrystal);
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponCommandersDagger), "xzy", "xzy", "ywz", 'w', MHItems.weaponSoldiersDagger, 'x', MHItems.itemGreatJaggiClaw, 'y', MHItems.itemGreatJaggiHide, 'z', MHItems.itemMachaliteIngot);
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponSerpentBite), "yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', MHItems.itemVelocipreyHide, 'y', MHItems.itemVelocipreyFang, 'z', MHItems.itemMonsterBoneS);
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponSerpentBitePlus), "yyx", "yzz", "yxz", 'x', MHItems.weaponSerpentBite, 'y', MHItems.itemVelocipreyFang, 'z', MHItems.itemMonsterBoneS);
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponDeadlock), "yyx", "yzz", "yxz", 'x', MHItems.weaponSerpentBitePlus, 'y', MHItems.itemVelocipreyFang, 'z', MHItems.itemMonsterBoneM);
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBite), "yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', MHItems.itemGenpreyHide, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneS);
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBitePlus), "yyx", "yzz", "yxz", 'x', MHItems.weaponViperBite, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneS);
         GameRegistry.addRecipe(new ItemStack(MHItems.weaponDeathprize), "yyx", "yzz", "yxz", 'x', MHItems.weaponViperBitePlus, 'y', MHItems.itemGenpreyFang, 'z', MHItems.itemMonsterBoneM);
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersKnifePlus), " yy", " yy", " yz", 'y', Items.IRON_INGOT, 'z', MHItems.weaponHuntersKnife);
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponHuntersDagger), "yxx", "yzx", " wx", 'w', MHItems.weaponHuntersKnife, 'x', MHItems.itemEarthCrystal, 'y', MHItems.itemMachaliteIngot, 'z', MHItems.itemGlueglopper);
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponAssassinsDagger), "yxx", "yzx", " wx", 'w', MHItems.weaponHuntersDagger, 'x', MHItems.itemMysteryBone, 'y', MHItems.itemMonsterBoneM, 'z', MHItems.itemGlueglopper);
 
         GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemMachaliteIngot), 'y', new ItemStack(Items.STICK));
         GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemDragoniteIngot), 'y', new ItemStack(Items.STICK));
@@ -109,5 +102,37 @@ public class MHRecipes
         wum.addRecipe(MHItems.weaponHuntersDagger, MHItems.weaponHuntersKnifePlus, new ItemStack(MHItems.itemEarthCrystal, 4), new ItemStack(MHItems.itemMachaliteIngot, 2), MHItems.itemGlueglopper);
         wum.addRecipe(MHItems.weaponAssassinsDagger, MHItems.weaponHuntersDagger, new ItemStack(MHItems.itemEarthCrystal, 4), new ItemStack(MHItems.itemDragoniteIngot, 2), MHItems.itemGlueglopper);
         wum.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemGenpreyHide, 5), new ItemStack(MHItems.itemGenpreyFang, 4), new ItemStack(MHItems.itemMonsterBoneS, 3));
+
+        wum.addRecipe(MHItems.weaponBoneKris, MHItems.itemMysteryBone, new ItemStack(MHItems.itemMonsterBoneS, 2));
+        wum.addRecipe(MHItems.weaponBoneKrisPlus, MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterBoneS, 3), new ItemStack(MHItems.itemBirdWyvernFang, 3));
+        wum.addRecipe(MHItems.weaponChiefKris, MHItems.weaponBoneKrisPlus, new ItemStack(MHItems.itemMonsterBoneM), new ItemStack(MHItems.itemMonsterBoneS, 2), new ItemStack(MHItems.itemBoneHusk, 5), new ItemStack(Items.IRON_INGOT, 3));
+        wum.addRecipe(MHItems.weaponRottonSword, MHItems.weaponBoneKris, new ItemStack(Items.ROTTEN_FLESH, 7), new ItemStack(Items.SKULL, 1, 2));
+        wum.addRecipe(MHItems.weaponPlaguedSword, MHItems.weaponRottonSword, new ItemStack(Items.ROTTEN_FLESH, 6), new ItemStack(Items.SKULL, 2, 2));
+        wum.addRecipe(MHItems.weaponInfestedSword, MHItems.weaponPlaguedSword, new ItemStack(Items.ROTTEN_FLESH, 5), new ItemStack(Items.SKULL, 3, 2));
+        wum.addRecipe(MHItems.weaponSkeletalSword, MHItems.weaponBoneKris, new ItemStack(Items.BONE, 7), new ItemStack(Items.SKULL, 1, 0));
+        wum.addRecipe(MHItems.weaponSkeletalSwordPlus, MHItems.weaponSkeletalSword, new ItemStack(Items.BONE, 6), new ItemStack(Items.SKULL, 2, 0));
+        wum.addRecipe(MHItems.weaponWitheredSword, MHItems.weaponSkeletalSwordPlus, new ItemStack(Items.BONE, 6), new ItemStack(Items.SKULL, 1, 1), Items.COAL);
+        wum.addRecipe(MHItems.weaponWitheredSwordPlus, MHItems.weaponWitheredSword, new ItemStack(Items.BONE, 3), new ItemStack(Items.SKULL, 2, 1), new ItemStack(Items.COAL, 3));
+        wum.addRecipe(MHItems.weaponNecrosisBlade, MHItems.weaponWitheredSwordPlus, new ItemStack(Items.BONE, 3), new ItemStack(Items.SKULL, 1, 1), Items.NETHER_STAR, new ItemStack(Items.COAL, 3));
+        wum.addRecipe(MHItems.weaponMandiblade, MHItems.weaponBoneKris, new ItemStack(Items.STRING, 7), Items.SPIDER_EYE);
+        wum.addRecipe(MHItems.weaponMandibladePlus, MHItems.weaponMandiblade, new ItemStack(Items.STRING, 6), new ItemStack(Items.SPIDER_EYE, 2));
+        wum.addRecipe(MHItems.weaponStingingMandiblade, MHItems.weaponMandibladePlus, new ItemStack(Items.STRING, 6), Items.SPIDER_EYE, Items.FERMENTED_SPIDER_EYE);
+        wum.addRecipe(MHItems.weaponPoisonStingblade, MHItems.weaponStingingMandiblade, new ItemStack(Items.STRING, 3), new ItemStack(Items.SPIDER_EYE, 3), new ItemStack(Items.FERMENTED_SPIDER_EYE, 2));
+        wum.addRecipe(MHItems.weaponFearSword, MHItems.weaponBoneKris, new ItemStack(Items.GUNPOWDER, 7), new ItemStack(Items.SKULL, 1, 4));
+        wum.addRecipe(MHItems.weaponTerrorSword, MHItems.weaponFearSword, new ItemStack(Items.GUNPOWDER, 6), new ItemStack(Items.SKULL, 2, 4));
+        wum.addRecipe(MHItems.weaponDreadSword, MHItems.weaponTerrorSword, new ItemStack(Items.GUNPOWDER, 3), new ItemStack(Items.SKULL, 3, 4), new ItemStack(Blocks.TNT, 2));
+        wum.addRecipe(MHItems.weaponXenoblade, MHItems.weaponBoneKris, new ItemStack(Items.ENDER_PEARL, 5));
+        wum.addRecipe(MHItems.weaponXenobladePlus, MHItems.weaponXenoblade, new ItemStack(Items.ENDER_PEARL, 7), Items.ENDER_EYE);
+        wum.addRecipe(MHItems.weaponAstralSword, MHItems.weaponXenobladePlus, new ItemStack(Items.ENDER_PEARL, 3), new ItemStack(Items.ENDER_EYE, 2), new ItemStack(Blocks.END_STONE, 3));
+        wum.addRecipe(MHItems.weaponAstralEndsword, MHItems.weaponAstralSword, new ItemStack(Items.ENDER_EYE, 3), Blocks.DRAGON_EGG, Items.DRAGON_BREATH, new ItemStack(Blocks.END_STONE, 3));
+        wum.addRecipe(MHItems.weaponSlimySword, MHItems.weaponBoneKris, new ItemStack(Items.SLIME_BALL, 5));
+        wum.addRecipe(MHItems.weaponSlimySwordPlus, MHItems.weaponSlimySword, new ItemStack(Items.SLIME_BALL, 5), new ItemStack(Blocks.SLIME_BLOCK, 3));
+        wum.addRecipe(MHItems.weaponCrystalizedSlimeblade, MHItems.weaponSlimySwordPlus, new ItemStack(Items.SLIME_BALL, 3), new ItemStack(Items.MAGMA_CREAM, 2), new ItemStack(Blocks.SLIME_BLOCK, 3));
+        wum.addRecipe(MHItems.weaponMagmaticSlimeblade, MHItems.weaponCrystalizedSlimeblade, new ItemStack(Items.MAGMA_CREAM, 3), new ItemStack(Blocks.SLIME_BLOCK, 3), new ItemStack(Items.BLAZE_POWDER, 2));
+        wum.addRecipe(MHItems.weaponBlazingSword, MHItems.weaponBoneKris, new ItemStack(Items.BLAZE_ROD, 2), new ItemStack(Items.BLAZE_POWDER, 3));
+        wum.addRecipe(MHItems.weaponBlazingTempest, MHItems.weaponBlazingSword, new ItemStack(Items.BLAZE_ROD, 6), new ItemStack(Items.BLAZE_POWDER, 3));
+        wum.addRecipe(MHItems.weaponBlazingInferno, MHItems.weaponBlazingTempest, new ItemStack(Items.BLAZE_ROD, 3), new ItemStack(Items.BLAZE_POWDER, 3), new ItemStack(Items.FIRE_CHARGE, 2));
+
+
     }
 }

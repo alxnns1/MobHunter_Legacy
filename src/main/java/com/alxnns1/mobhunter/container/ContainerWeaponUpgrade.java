@@ -217,7 +217,11 @@ public class ContainerWeaponUpgrade extends MHContainer
     public void updateProgressBar(int id, int data)
     {
         if(id >= 0 && id <= 4)
+        {
+            if(recipesValid == null || recipesValid.size() == 0)
+                recipesValid = new ArrayList<Boolean>(5);
             recipesValid.set(id, data == 1);
+        }
     }
 
     /**

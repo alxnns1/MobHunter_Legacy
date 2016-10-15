@@ -96,6 +96,7 @@ public class Names
                 BRUTE_BONE = "itemBruteBone",
                 JUMBO_BONE = "itemJumboBone",
                 DUNG = "itemDung",
+                BONE_HUSK = "itemBoneHusk",
         
                 ALTAROTH_JAW = "itemAltarothJaw",
                 ALTAROTH_STOMACH = "itemAltarothStomach",
@@ -196,6 +197,43 @@ public class Names
                 BONE_BLADE_PLUS = "weaponBoneBladePlus",
                 JAWBLADE = "weaponJawblade",
                 GIANT_JAWBLADE = "weaponGiantJawblade",
+
+                BONE_KRIS = "weaponBoneKris",
+                BONE_KRIS_PLUS = "weaponBoneKrisPlus",
+                CHIEF_KRIS = "weaponChiefKris",
+
+                ROTTEN_SWORD = "weaponRottenSword",
+                PLAGUED_SWORD = "weaponPlaguedSword",
+                INFESTED_SWORD = "weaponInfestedSword",
+
+                SKELETAL_SWORD = "weaponSkeletalSword",
+                SKELETAL_SWORD_PLUS = "weaponSkeletalSwordPlus",
+                WITHERED_SWORD = "weaponWitheredSword",
+                WITHERED_SWORD_PLUS = "weaponWitheredSwordPlus",
+                NECROSIS_BLADE = "weaponNecrosisBlade",
+
+                MANDIBLADE = "weaponMandiblade",
+                MANDIBLADE_PLUS = "weaponMandibladePlus",
+                STINGING_MANDIBLADE = "weaponStingingMandiblade",
+                POISON_STINGBLADE = "weaponPoisonStingblade",
+
+                FEAR_SWORD = "weaponFearSword",
+                TERROR_SWORD = "weaponTerrorSword",
+                DREAD_SWORD = "weaponDreadSword",
+
+                XENOBLADE = "weaponXenoblade",
+                XENOBLADE_PLUS = "weaponXenobladePlus",
+                ASTRAL_SWORD = "weaponAstralSword",
+                ASTRAL_ENDSWORD = "weaponAstralEndsword",
+
+                SLIMY_SWORD = "weaponSlimySword",
+                SLIMY_SWORD_PLUS = "weaponSlimySwordPlus",
+                CRYSTALIZED_SLIMEBLADE = "weaponCrystalizedSlimeblade",
+                MAGMATIC_SLIMEBLADE = "weaponMagmaticSlimeblade",
+
+                BLAZING_SWORD = "weaponBlazingSword",
+                BLAZING_TEMPEST = "weaponBlazingTempest",
+                BLAZING_INFERNO = "weaponBlazingInferno",
         
                 ICON_GREAT_JAGGI = "iconGreatJaggi",
                 ICON_GENDROME = "iconGendrome",

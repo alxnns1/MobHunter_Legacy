@@ -59,7 +59,7 @@ public class MHItems
             itemEarthCrystal, itemMachaliteIngot, itemDragoniteIngot, itemLightCrystal, itemIceCrystal, itemGossamiteIngot,
             itemInsectHusk, itemStinkhopper, itemSnakebeeLarva, itemGodbug, itemFlashbug, itemThunderbug, itemGlueglopper,
             itemKillerBeetle, itemHercudrome, itemRareScarab, itemHoney,
-            itemMonsterBoneS, itemMonsterBoneM, itemMysteryBone, itemUnknownSkull, itemBruteBone, itemJumboBone, itemDung,
+            itemMonsterBoneS, itemMonsterBoneM, itemMysteryBone, itemUnknownSkull, itemBruteBone, itemJumboBone, itemDung, itemBoneHusk,
             itemAltarothJaw, itemAltarothStomach,
             itemKelbiHorn, itemWarmPelt,
             itemGargwaFeather, itemSteelEgg,
@@ -75,7 +75,15 @@ public class MHItems
     public static ItemMHSword weaponTest,
             weaponHuntersKnife, weaponSoldiersDagger, weaponCommandersDagger, weaponSerpentBite, weaponSerpentBitePlus,
             weaponDeadlock, weaponViperBite, weaponViperBitePlus, weaponDeathprize, weaponHuntersKnifePlus,
-            weaponHuntersDagger, weaponAssassinsDagger;
+            weaponHuntersDagger, weaponAssassinsDagger,
+            weaponBoneKris, weaponBoneKrisPlus, weaponChiefKris,
+            weaponRottonSword, weaponPlaguedSword, weaponInfestedSword,
+            weaponSkeletalSword, weaponSkeletalSwordPlus, weaponWitheredSword, weaponWitheredSwordPlus, weaponNecrosisBlade,
+            weaponMandiblade, weaponMandibladePlus, weaponStingingMandiblade, weaponPoisonStingblade,
+            weaponFearSword, weaponTerrorSword, weaponDreadSword,
+            weaponXenoblade, weaponXenobladePlus, weaponAstralSword, weaponAstralEndsword,
+            weaponSlimySword, weaponSlimySwordPlus, weaponCrystalizedSlimeblade, weaponMagmaticSlimeblade,
+            weaponBlazingSword, weaponBlazingTempest, weaponBlazingInferno;
 
     public static ItemMHShield shieldTest;
 
@@ -187,6 +195,7 @@ public class MHItems
         regItem(itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE));
         regItem(itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE));
         regItem(itemDung = new ItemMHResource(Names.Items.DUNG));
+        regItem(itemBoneHusk = new ItemMHResource(Names.Items.BONE_HUSK));
 
         regItem(itemAltarothJaw = new ItemMHResource(Names.Items.ALTAROTH_JAW));
         regItem(itemAltarothStomach = new ItemMHResource(Names.Items.ALTAROTH_STOMACH));
@@ -220,21 +229,53 @@ public class MHItems
         regItem(itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_HEAD));
         regItem(itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL));
 
-        regItem(weaponTest = new ItemMHSword("weaponTest", 1f, new int[] {5, 10, 15, 20, 25, 30, 35}));
+        regItem(weaponTest = new ItemMHSword("weaponTest", 1f, 5, 10, 15, 20, 25, 30, 35));
         regItem(shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT));
 
-        regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, new int[] {140, 280, 400}));
-        regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, new int[] {100, 160, 420, 500}));
-        regItem(weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, new int[] {100, 240, 400, 500}));
-        regItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, new int[] {120, 200, 440, 500}));
-        regItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, new int[] {120, 180, 380, 500}));
-        regItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, new int[] {140, 200, 400, 580, 600}));
-        regItem(weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, new int[] {120, 200, 440, 500}));
-        regItem(weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, new int[] {120, 180, 380, 500}));
-        regItem(weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, new int[] {140, 200, 400, 580, 600}));
-        regItem(weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, new int[] {60, 200, 400}));
-        regItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, new int[] {140, 280, 400}));
-        regItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, new int[] {120, 200, 400}));
+        regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
+        regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
+        regItem(weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, 100, 240, 400, 500));
+        regItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, 120, 200, 440, 500));
+        regItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, 120, 180, 380, 500));
+        regItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, 140, 200, 400, 580, 600));
+        regItem(weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, 120, 200, 440, 500));
+        regItem(weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, 120, 180, 380, 500));
+        regItem(weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, 140, 200, 400, 580, 600));
+        regItem(weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, 60, 200, 400));
+        regItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, 140, 280, 400));
+        regItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, 120, 200, 400));
+
+        //TODO: Need to finish adding these sword with sharpness levels
+
+        regItem(weaponBoneKris = new ItemMHSword(Names.Items.BONE_KRIS, 4f));
+        regItem(weaponBoneKrisPlus = new ItemMHSword(Names.Items.BONE_KRIS_PLUS, 7f));
+        regItem(weaponChiefKris = new ItemMHSword(Names.Items.CHIEF_KRIS, 10f));
+        regItem(weaponRottonSword = new ItemMHSword(Names.Items.ROTTEN_SWORD, 6f));
+        regItem(weaponPlaguedSword = new ItemMHSword(Names.Items.PLAGUED_SWORD, 8f));
+        regItem(weaponInfestedSword = new ItemMHSword(Names.Items.INFESTED_SWORD, 10f));
+        regItem(weaponSkeletalSword = new ItemMHSword(Names.Items.SKELETAL_SWORD, 6f));
+        regItem(weaponSkeletalSwordPlus = new ItemMHSword(Names.Items.SKELETAL_SWORD_PLUS, 8f));
+        regItem(weaponWitheredSword = new ItemMHSword(Names.Items.WITHERED_SWORD, 11f));
+        regItem(weaponWitheredSwordPlus = new ItemMHSword(Names.Items.WITHERED_SWORD_PLUS, 14f));
+        regItem(weaponNecrosisBlade = new ItemMHSword(Names.Items.NECROSIS_BLADE, 18f));
+        regItem(weaponMandiblade = new ItemMHSword(Names.Items.MANDIBLADE, 6f));
+        regItem(weaponMandibladePlus = new ItemMHSword(Names.Items.MANDIBLADE_PLUS, 8f));
+        regItem(weaponStingingMandiblade = new ItemMHSword(Names.Items.STINGING_MANDIBLADE, 11f));
+        regItem(weaponPoisonStingblade = new ItemMHSword(Names.Items.POISON_STINGBLADE, 14f));
+        regItem(weaponFearSword = new ItemMHSword(Names.Items.FEAR_SWORD, 6f));
+        regItem(weaponTerrorSword = new ItemMHSword(Names.Items.TERROR_SWORD, 8f));
+        regItem(weaponDreadSword = new ItemMHSword(Names.Items.DREAD_SWORD, 10f));
+        regItem(weaponXenoblade = new ItemMHSword(Names.Items.XENOBLADE, 6f));
+        regItem(weaponXenobladePlus = new ItemMHSword(Names.Items.XENOBLADE_PLUS, 8f));
+        regItem(weaponAstralSword = new ItemMHSword(Names.Items.ASTRAL_SWORD, 11f));
+        regItem(weaponAstralEndsword = new ItemMHSword(Names.Items.ASTRAL_ENDSWORD, 15f));
+        regItem(weaponSlimySword = new ItemMHSword(Names.Items.SLIMY_SWORD, 6f));
+        regItem(weaponSlimySwordPlus = new ItemMHSword(Names.Items.SLIMY_SWORD_PLUS, 8f));
+        regItem(weaponCrystalizedSlimeblade = new ItemMHSword(Names.Items.CRYSTALIZED_SLIMEBLADE, 11f));
+        regItem(weaponMagmaticSlimeblade = new ItemMHSword(Names.Items.MAGMATIC_SLIMEBLADE, 14f));
+        regItem(weaponBlazingSword = new ItemMHSword(Names.Items.BLAZING_SWORD, 6f));
+        regItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f));
+        regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f));
 
         regItem(iconGreatJaggi = new ItemMHResource(Names.Items.ICON_GREAT_JAGGI,false));
         regItem(iconGendrome = new ItemMHResource(Names.Items.ICON_GENDROME,false));
