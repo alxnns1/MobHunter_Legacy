@@ -1,0 +1,6 @@
+{
+  "parent": "mobhunter:item/itemToolDefault",
+  "textures": {
+    "layer0": "mobhunter:items/slimy_sword"
+  }
+}
