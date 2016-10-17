@@ -16,6 +16,7 @@ public class BlockShroom extends BlockNatural
         super(Names.Blocks.SHROOM, new AxisAlignedBB(0.2f, 0.0f, 0.2f, 0.8f, 0.7f, 0.8f));
     }
 
+    /*
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
         if (chance < 0.23469387755102040816326530612244)        drops.add(new ItemStack(MHItems.itemBlueMushroom));
@@ -53,4 +54,5 @@ public class BlockShroom extends BlockNatural
         else                                                    drops.add(new ItemStack(MHItems.itemMopeshroom));
         return drops;
     }
+    */
 }

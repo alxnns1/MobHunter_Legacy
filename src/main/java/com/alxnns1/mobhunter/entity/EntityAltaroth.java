@@ -26,7 +26,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
         setBaseKnockback(0.3);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWitch.class, true));
@@ -38,16 +38,19 @@ public class EntityAltaroth extends EntityMHNeopteron {
         return 0.25F;
     }
 
+    /*
     protected Item getDropItem()
     {
         return MHItems.itemMonsterFluid;
     }
+    */
 
     /**
      * Drop 0-2 items of this living's type
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
+        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
@@ -77,6 +80,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
                 this.dropItem(MHItems.itemAltarothStomach, 1);
             }
         }
+        */
     }
 
     public boolean isFull(){

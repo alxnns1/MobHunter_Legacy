@@ -16,6 +16,7 @@ public class BlockHerb extends BlockNatural
         super(Names.Blocks.HERB, new AxisAlignedBB(0.1f, 0.0f, 0.1f, 0.9f, 0.75f, 0.9f));
     }
 
+    /*
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
         if (chance < 0.24044694515556929348449815838642)        drops.add(new ItemStack(MHItems.itemHerb));
@@ -71,4 +72,5 @@ public class BlockHerb extends BlockNatural
         else                                                    drops.add(new ItemStack(MHItems.itemHotPepper));
         return drops;
     }
+    */
 }

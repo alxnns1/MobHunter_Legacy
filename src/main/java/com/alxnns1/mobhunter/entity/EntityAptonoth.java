@@ -34,6 +34,7 @@ public class EntityAptonoth extends EntityMHHerbivore{
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
+        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
@@ -52,8 +53,8 @@ public class EntityAptonoth extends EntityMHHerbivore{
                     this.dropItem(MHItems.itemMonsterBoneS, 1);
                 }
             }
-
         }
+        */
     }
 
     public EntityAptonoth createChild(EntityAgeable ageable)

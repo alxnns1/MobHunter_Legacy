@@ -14,6 +14,7 @@ public class BlockBug extends BlockNatural
 {
     public BlockBug() { super(Names.Blocks.BUG, new AxisAlignedBB(0.1f, 0.0f, 0.1f, 0.9f, 0.75f, 0.9f)); }
 
+    /*
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
         if (chance<0.023140495867768595041322314049587)     drops.add(new ItemStack(MHItems.itemInsectHusk));
@@ -86,4 +87,5 @@ public class BlockBug extends BlockNatural
         else                                                drops.add(new ItemStack(MHItems.itemKillerBeetle));
         return drops;
     }
+    */
 }

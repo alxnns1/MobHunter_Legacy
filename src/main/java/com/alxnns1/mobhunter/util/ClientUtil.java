@@ -1,11 +1,11 @@
 package com.alxnns1.mobhunter.util;
 
-import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.item.ISubTypes;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.ItemModelMesherForge;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -15,8 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientUtil
 {
-    private static ItemModelMesherForge m = (ItemModelMesherForge) Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-
     /**
      * Registers item models using their unlocalised name.
      * ONLY run this client side!
@@ -33,6 +31,11 @@ public class ClientUtil
 
     public static void regModel(Item item, int meta)
     {
-        m.register(item,meta,new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(item.getUnlocalizedName().indexOf(".")+1),"inventory"));
+        String itemPath = item.getRegistryName().toString();
+        if(item.getHasSubtypes() && item instanceof ISubTypes)
+            itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
+        ModelResourceLocation loc = new ModelResourceLocation(itemPath, "inventory");
+        ModelBakery.registerItemVariants(item, loc);
+        ModelLoader.setCustomModelResourceLocation(item, meta, loc);
     }
 }

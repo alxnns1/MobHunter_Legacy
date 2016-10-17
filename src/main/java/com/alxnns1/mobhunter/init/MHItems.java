@@ -9,6 +9,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -47,12 +48,14 @@ public class MHItems
 
     public static ItemMHPickaxe itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
 
-    public static ItemMHConsumable itemRareSteak, itemDoneSteak, itemBurntMeat,
+    public static ItemMHConsumable itemRareSteak, itemDoneSteak, itemBurntMeat;/*,
             itemHerb, itemAntidoteHerb, itemFireHerb,
             itemNitroshroom, itemParashroom, itemToadstool, itemExciteshroom, itemMopeshroom,
             itemMightSeed, itemAdamantSeed, itemNulberry, itemNeedleberry, itemBomberry,
             itemBitterbug;
+            */
 
+    /*
     public static ItemMHResource itemIvy, itemSleepHerb, itemSapPlant, itemFelvine, itemGloamgrassRoot, itemHotPepper,
             itemBlueMushroom, itemDragonToadstool,
             itemHuskberry, itemPaintberry, itemDragonfellBerry, itemScatternut, itemLatchberry,
@@ -71,6 +74,7 @@ public class MHItems
             itemGenpreyHide, itemGenpreyScale, itemGenpreyFang,
             itemGreatJaggiHide, itemGreatJaggiClaw, itemGreatJaggiHead, itemKingsFrill,
             iconGreatJaggi, iconGendrome, iconIodrome, iconVelocidrome, iconKirin;
+    */
 
     public static ItemMHSword weaponTest,
             weaponHuntersKnife, weaponSoldiersDagger, weaponCommandersDagger, weaponSerpentBite, weaponSerpentBitePlus,
@@ -86,6 +90,13 @@ public class MHItems
             weaponBlazingSword, weaponBlazingTempest, weaponBlazingInferno;
 
     public static ItemMHShield shieldTest;
+
+    /*
+        These are the new meta items, and are just down here while testing.
+     */
+
+    public static ItemMHResource itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon;
+    public static ItemMHConsumable itemConsumable;
 
     /**
      * Registers the items
@@ -139,6 +150,7 @@ public class MHItems
         regItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
         regItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
 
+        /*
         regItem(itemHerb = new ItemMHConsumable(Names.Items.HERB, true, ItemMHConsumable.EAT_DURATION_SHORT));
         regItem(itemAntidoteHerb = new ItemMHConsumable(Names.Items.ANTIDOTE_HERB, true, ItemMHConsumable.EAT_DURATION_SHORT));
         regItem(itemFireHerb = new ItemMHConsumable(Names.Items.FIRE_HERB, true, ItemMHConsumable.EAT_DURATION_SHORT));
@@ -228,6 +240,7 @@ public class MHItems
         regItem(itemGreatJaggiClaw = new ItemMHResource(Names.Items.GREAT_JAGGI_CLAW));
         regItem(itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_HEAD));
         regItem(itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL));
+        */
 
         regItem(weaponTest = new ItemMHSword("weaponTest", 1f, 5, 10, 15, 20, 25, 30, 35));
         regItem(shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT));
@@ -277,6 +290,7 @@ public class MHItems
         regItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f));
         regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f));
 
+        /*
         regItem(iconGreatJaggi = new ItemMHResource(Names.Items.ICON_GREAT_JAGGI,false));
         regItem(iconGendrome = new ItemMHResource(Names.Items.ICON_GENDROME,false));
         regItem(iconIodrome = new ItemMHResource(Names.Items.ICON_IODROME,false));
@@ -289,7 +303,52 @@ public class MHItems
         OreDictionary.registerOre("gemLightCrystal", itemLightCrystal);
         OreDictionary.registerOre("gemIceCrystal", itemIceCrystal);
         OreDictionary.registerOre("ingotGossamite", itemGossamiteIngot);
+        */
 
+        /*
+            These new registrations are down here atm for testing
+         */
+        //itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemConsumable
+
+        regItem(itemPlant = new ItemMHResource("plant",
+                "ivy", "sleepHerb", "sapPlant", "felvine", "gloamgrassRoot", "hotPepper"));
+        regItem(itemMushroom = new ItemMHResource("mushroom",
+                "blueMushroom", "dragonToadstool"));
+        regItem(itemBerry = new ItemMHResource("berry",
+                "huskberry", "paintberry", "dragonfellBerry", "scatternut", "latchberry"));
+        regItem(itemBug = new ItemMHResource("bug",
+                "insectHusk", "stinkHopper", "snakebeeLarva", "godbug", "flashbug", "thunderbug", "glueglopper",
+                "killerBeetle", "hercudrome", "rareScarab", "honey"));
+        regItem(itemMonsterDrop = new ItemMHResource("monsterDrop",
+                "monsterBoneS", "monsterBoneM", "mysteryBone", "unknownSkull", "bruteBone", "jumboBone", "dung",
+                "boneHusk",
+                "altarothJaw", "altarothStomach",
+                "kelbiHorn", "warmPelt",
+                "gargwaFeather", "steelEgg",
+                "monsterFluid",
+                "birdWyvernFang",
+                "screamerSac",
+                "jaggiHide", "jaggiScale", "jaggiFang",
+                "velocipreyHide", "velocipreyScale", "velocipreyFang",
+                "genpreyHide", "genpreyScale", "genpreyFang",
+                "greatJaggiHide", "greatJaggiClaw", "greatJaggiHead", "kingsFrill"));
+        regItem(itemOre = new ItemMHResource("ore",
+                "earthCrystal", "machaliteIngot", "dragoniteIngot", "gossamiteIngot", "lightCrystal", "iceCrystal"));
+        regItem(itemIcon = new ItemMHResource("icon", false,
+                "greatJaggi", "gendrome", "iodrome", "velocidrome", "kirin"));
+
+        regItem(itemConsumable = new ItemMHConsumable("consumable",
+                "herb", "antidoteHerb", "fireHerb",
+                "nitroshroom", "parashroom", "toadstool", "exciteshroom", "mopeshroom",
+                "mightSeed", "adamantSeed", "nullberry", "needleberry", "bomberry",
+                "bitterbug"));
+
+        OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));
+        OreDictionary.registerOre("ingotMachalite", new ItemStack(itemOre, 1, 1));
+        OreDictionary.registerOre("ingotDragonite", new ItemStack(itemOre, 1, 2));
+        OreDictionary.registerOre("ingotGossamite", new ItemStack(itemOre, 1, 3));
+        OreDictionary.registerOre("gemLightCrystal", new ItemStack(itemOre, 1, 4));
+        OreDictionary.registerOre("gemIceCrystal", new ItemStack(itemOre, 1, 5));
     }
 
     /**
@@ -299,6 +358,12 @@ public class MHItems
     public static void regModels()
     {
         for(Item item : ITEMS)
-            ClientUtil.regModel(item);
+        {
+            if(item instanceof ISubTypes && item.getHasSubtypes())
+                for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
+                    ClientUtil.regModel(item, meta);
+            else
+                ClientUtil.regModel(item);
+        }
     }
 }

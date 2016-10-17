@@ -14,6 +14,7 @@ public class MHRecipes
 {
     public static void init()
     {
+        /*
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemCatalyst), MHItems.itemHoney, MHItems.itemBitterbug);
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemWhetstone), MHItems.itemMonsterBoneS, Items.IRON_INGOT);
 
@@ -132,7 +133,6 @@ public class MHRecipes
         wum.addRecipe(MHItems.weaponBlazingSword, MHItems.weaponBoneKris, new ItemStack(Items.BLAZE_ROD, 2), new ItemStack(Items.BLAZE_POWDER, 3));
         wum.addRecipe(MHItems.weaponBlazingTempest, MHItems.weaponBlazingSword, new ItemStack(Items.BLAZE_ROD, 6), new ItemStack(Items.BLAZE_POWDER, 3));
         wum.addRecipe(MHItems.weaponBlazingInferno, MHItems.weaponBlazingTempest, new ItemStack(Items.BLAZE_ROD, 3), new ItemStack(Items.BLAZE_POWDER, 3), new ItemStack(Items.FIRE_CHARGE, 2));
-
-
+        */
     }
 }

@@ -17,6 +17,7 @@ public class BlockBerry extends BlockNatural
         super(Names.Blocks.BERRY, new AxisAlignedBB(0.1f, 0.0f, 0.1f, 0.9f, 0.75f, 0.9f));
     }
 
+    /*
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
         if (chance < 0.13657056145675265553869499241275)        drops.add(new ItemStack(MHItems.itemHuskberry));
@@ -75,4 +76,5 @@ public class BlockBerry extends BlockNatural
         else                                                    drops.add(new ItemStack(MHItems.itemBomberry));
         return drops;
     }
+    */
 }

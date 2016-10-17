@@ -32,12 +32,12 @@ public class EntityMHNeopteron extends EntityMob
 
     public EntityMHNeopteron(World world)
     {
-        this(world, Config.scaleMin, Config.scaleMax, MHItems.itemBlueMushroom);
+        this(world, Config.scaleMin, Config.scaleMax, null); //MHItems.itemBlueMushroom);
     }
 
     public EntityMHNeopteron(World world, float minScale, float maxScale)
     {
-        this(world, minScale, maxScale, MHItems.itemBlueMushroom);
+        this(world, minScale, maxScale, null); //MHItems.itemBlueMushroom);
     }
 
     public EntityMHNeopteron(World world, float minScale, float maxScale, Item temptFood)

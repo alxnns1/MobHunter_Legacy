@@ -25,7 +25,7 @@ public class EntityJaggi extends EntityMHBirdWyvern
         this.setSize(1.0F, 1.0F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityAnimal.class, true));
@@ -49,6 +49,7 @@ public class EntityJaggi extends EntityMHBirdWyvern
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
+        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
@@ -71,8 +72,8 @@ public class EntityJaggi extends EntityMHBirdWyvern
                     this.dropItem(MHItems.itemMonsterBoneS, 1);
                 }
             }
-
         }
+        */
     }
 
     /**

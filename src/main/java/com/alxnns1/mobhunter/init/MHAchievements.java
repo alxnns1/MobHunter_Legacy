@@ -16,10 +16,12 @@ public class MHAchievements
     public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", -2, 1, MHItems.weaponHuntersKnife, null);
     public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", 0, 0, Items.IRON_HELMET, null);
     public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 0, 1, Items.GOLDEN_HELMET, null);
+    /*
     public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", 2, 0, MHItems.iconGreatJaggi, null);
     public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", 2, 1, MHItems.iconVelocidrome, null);
     public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 2, 2, MHItems.iconGendrome, null);
     public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 2, 3, MHItems.iconIodrome, null);
+    */
 
     public static void init()
     {
@@ -29,7 +31,7 @@ public class MHAchievements
         firstSword.registerStat();
         smallCrown.registerStat();
         largeCrown.registerStat();
-        greatJaggi.registerStat();
+        //greatJaggi.registerStat();
         /*
         velocidrome.registerStat();
         gendrome.registerStat();
@@ -37,6 +39,6 @@ public class MHAchievements
         */
 
         AchievementPage.registerAchievementPage(new AchievementPage(Reference.MOD_ID,
-                cookMeat, firstSword, smallCrown, largeCrown, greatJaggi/*, velocidrome, gendrome, iodrome*/));
+                cookMeat, firstSword, smallCrown, largeCrown/*, greatJaggi/*, velocidrome, gendrome, iodrome*/));
     }
 }

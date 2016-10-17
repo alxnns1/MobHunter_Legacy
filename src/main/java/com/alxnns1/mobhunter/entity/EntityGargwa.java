@@ -12,7 +12,7 @@ import net.minecraft.world.World;
  */
 public class EntityGargwa extends EntityMHHerbivore {
     public EntityGargwa(World worldIn){
-        super(worldIn, 0.79f, 1.24f, MHItems.itemThunderbug);
+        super(worldIn, 0.79f, 1.24f, null); //MHItems.itemThunderbug);
         this.setSize(1.0F, 1.25F);
         setBaseHealth(7);
         setBaseSpeed(0.3);
@@ -32,6 +32,7 @@ public class EntityGargwa extends EntityMHHerbivore {
 
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
+        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
@@ -61,6 +62,7 @@ public class EntityGargwa extends EntityMHHerbivore {
                 this.dropItem(MHItems.itemInsectHusk, 1);
             }
         }
+        */
     }
 
     public EntityGargwa createChild(EntityAgeable ageable)

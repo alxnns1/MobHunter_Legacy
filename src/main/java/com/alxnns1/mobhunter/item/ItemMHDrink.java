@@ -23,7 +23,7 @@ public class ItemMHDrink extends ItemMHConsumable
 {
     public ItemMHDrink(String itemName)
     {
-        super(itemName);
+        super(0, 0, false, itemName);
         setMaxStackSize(1);
     }
 
@@ -87,6 +87,6 @@ public class ItemMHDrink extends ItemMHConsumable
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         playerIn.setActiveHand(hand);
-        return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }
 }

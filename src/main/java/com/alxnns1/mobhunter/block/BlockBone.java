@@ -16,6 +16,7 @@ public class BlockBone extends BlockNatural
         super(Names.Blocks.BONE, new AxisAlignedBB(0.1f, 0.0f, 0.1f, 0.9f, 0.75f, 0.9f));
     }
 
+    /*
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
         if (chance < 0.11303959131545338441890166028097)        drops.add(new ItemStack(MHItems.itemMonsterBoneS));
@@ -61,4 +62,5 @@ public class BlockBone extends BlockNatural
         else                                                        drops.add(new ItemStack(MHItems.itemDung));
         return drops;
     }
+    */
 }

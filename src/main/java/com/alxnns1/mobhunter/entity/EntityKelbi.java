@@ -36,6 +36,7 @@ public class EntityKelbi extends EntityMHHerbivore
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
+        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
@@ -58,8 +59,8 @@ public class EntityKelbi extends EntityMHHerbivore
                     this.dropItem(MHItems.itemRawMeat, 1);
                 }
             }
-
         }
+        */
     }
 
     public EntityKelbi createChild(EntityAgeable ageable)

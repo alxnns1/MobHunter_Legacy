@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.util.CommonUtil;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -24,30 +25,33 @@ import java.util.List;
 /**
  * Created by Alex on 26/04/2016.
  */
-public class ItemMHConsumable extends ItemFood
+public class ItemMHConsumable extends ItemFood implements ISubTypes
 {
     protected final int effectDuration = 100;
     private int eatDuration = this.itemUseDuration;
     public static int EAT_DURATION_SHORT = 8;
+    protected String[] subNames;
 
-    public ItemMHConsumable(String itemName)
+    public ItemMHConsumable(String itemName, String... subNames)
     {
-        this(0, 0, false, itemName);
+        this(true, EAT_DURATION_SHORT, itemName, subNames);
     }
 
-    public ItemMHConsumable(String itemName, boolean alwaysEdible, int eatingDuration)
+    public ItemMHConsumable(boolean alwaysEdible, int eatingDuration, String itemName, String... subNames)
     {
-        this(0, 0, false, itemName);
+        this(0, 0, false, itemName, subNames);
         if(alwaysEdible) setAlwaysEdible();
         eatDuration = eatingDuration;
     }
 
-    public ItemMHConsumable(int amount, float saturation, boolean isWolfFood, String itemName)
+    public ItemMHConsumable(int amount, float saturation, boolean isWolfFood, String itemName, String... subNames)
     {
         super(amount, saturation, isWolfFood);
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
+        setHasSubtypes(subNames != null && subNames.length > 0);
+        this.subNames = hasSubtypes ? subNames : null;
     }
 
     /**
@@ -68,7 +72,7 @@ public class ItemMHConsumable extends ItemFood
      */
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        if(itemStackIn.getItem().equals(MHItems.itemHerb))
+        if(itemStackIn.isItemEqual(new ItemStack(MHItems.itemConsumable, 1, 0)))
         {
             if(playerIn.shouldHeal())
                 super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
@@ -76,7 +80,7 @@ public class ItemMHConsumable extends ItemFood
         else
             super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 
-        return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
@@ -84,11 +88,13 @@ public class ItemMHConsumable extends ItemFood
         //Only want to run on the server
         if(worldIn.isRemote) return;
 
-        Item item = stack.getItem();
-        if(item.equals(MHItems.itemHerb))
+        int meta = stack.getMetadata();
+        if(meta == 0)
+            //Herb
             player.heal(2f);
-        else if(item.equals(MHItems.itemNulberry) && player.getActivePotionEffects().size() > 0)
+        else if(meta == 10 && player.getActivePotionEffects().size() > 0)
         {
+            //Nullberry
             Collection<PotionEffect> effects = player.getActivePotionEffects();
             int rand = itemRand.nextInt(effects.size());
             int i = 0;
@@ -104,35 +110,51 @@ public class ItemMHConsumable extends ItemFood
         }
         else if(itemRand.nextFloat() < 0.5f)
         {
-            if(item.equals(MHItems.itemAntidoteHerb) && player.isPotionActive(MobEffects.POISON))
-                player.removePotionEffect(MobEffects.POISON);
-            else if(item.equals(MHItems.itemToadstool))
-                player.addPotionEffect(new PotionEffect(MobEffects.POISON, effectDuration));
-            else if(item.equals(MHItems.itemParashroom))
-                player.addPotionEffect(new PotionEffectParalyse(effectDuration));
-            else if(item.equals(MHItems.itemExciteshroom))
-                player.getFoodStats().addStats(2,0);
-            else if(item.equals(MHItems.itemMopeshroom))
-                player.getFoodStats().addStats(-2,0);
-            else if(item.equals(MHItems.itemMightSeed))
-                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, effectDuration));
-            else if(item.equals(MHItems.itemAdamantSeed))
-                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, effectDuration));
-            else if(item.equals(MHItems.itemFireHerb))
-                player.setFire(effectDuration / 20);
-            else if(item.equals(MHItems.itemBomberry))
+            switch(meta)
             {
-                double rotation = Math.toRadians(player.getRotationYawHead());
-                double xLook = -Math.sin(rotation);
-                double zLook = Math.cos(rotation);
-                worldIn.createExplosion(null, player.posX + xLook, player.posY, player.posZ + zLook, 0.5f, true);
+                case 1: //Antidote herb
+                    if(player.isPotionActive(MobEffects.POISON))
+                        player.removePotionEffect(MobEffects.POISON);
+                    break;
+                case 2: //Fire herb
+                    player.setFire(effectDuration / 20);
+                    break;
+                case 3: //Nitroshroom
+                    player.addPotionEffect(new PotionEffect(MobEffects.SPEED, effectDuration));
+                    break;
+                case 4: //Parashroom
+                    player.addPotionEffect(new PotionEffectParalyse(effectDuration));
+                    break;
+                case 5: //Toadstool
+                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, effectDuration));
+                    break;
+                case 6: //Exciteshroom
+                    player.getFoodStats().addStats(2,0);
+                    break;
+                case 7: //Mopeshroom
+                    player.getFoodStats().addStats(-2,0);
+                    break;
+                case 8: //Might seed
+                    player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, effectDuration));
+                    break;
+                case 9: //Adamant seed
+                    player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, effectDuration));
+                    break;
+                case 11: //Needleberry
+                    player.attackEntityFrom(DamageSource.generic, 2);
+                    break;
+                case 12: //Bomberry
+                    double rotation = Math.toRadians(player.getRotationYawHead());
+                    double xLook = -Math.sin(rotation);
+                    double zLook = Math.cos(rotation);
+                    worldIn.createExplosion(null, player.posX + xLook, player.posY, player.posZ + zLook, 0.5f, true);
+                    break;
+                case 13: //Bitterbug
+                    player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) Math.round(effectDuration * 1.5)));
+                    break;
+                default:
+                    break;
             }
-            else if(item.equals(MHItems.itemNeedleberry))
-                player.attackEntityFrom(DamageSource.generic, 2);
-            else if(item.equals(MHItems.itemBitterbug))
-                player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) Math.round(effectDuration * 1.5)));
-            else if(item.equals(MHItems.itemNitroshroom))
-                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, effectDuration));
         }
     }
 
@@ -143,6 +165,36 @@ public class ItemMHConsumable extends ItemFood
             ((EntityLivingBase)entity).addPotionEffect(new PotionEffectParalyse(200));
         return super.onLeftClickEntity(stack, player, entity);
     }*/
+
+    @Override
+    public String[] getSubNames()
+    {
+        return subNames;
+    }
+
+    /**
+     * Returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
+     */
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    {
+        if(hasSubtypes)
+            for(int i = 0; i < getSubNames().length; i++)
+                subItems.add(new ItemStack(itemIn, 1, i));
+        else
+            subItems.add(new ItemStack(itemIn));
+    }
+
+    /**
+     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
+     * different names based on their damage or NBT.
+     */
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        if(hasSubtypes)
+            return super.getUnlocalizedName(stack) + "." + getSubNames()[stack.getMetadata()];
+        return super.getUnlocalizedName(stack);
+    }
 
     /**
      * Allows items to add custom lines of information to the mouseover description
