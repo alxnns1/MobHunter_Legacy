@@ -19,8 +19,7 @@ public class WeaponUpgradeRecipe extends ShapelessOreRecipe
     public WeaponUpgradeRecipe(ItemStack result, ItemStack key, Object ... recipe)
     {
         super(result, recipe);
-        if(key == null) throw new RuntimeException("Invalid Weapon Upgrade Recipe! Key item is null:\n" + this.toString());
-        inputKey = key.copy();
+        inputKey = key == null ? null : key.copy();
     }
 
     public ItemStack getKeyInput()
@@ -34,7 +33,10 @@ public class WeaponUpgradeRecipe extends ShapelessOreRecipe
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn)
     {
-        return inv.getStackInSlot(0) != null && inv.getStackInSlot(0).isItemEqual(inputKey);
+        ItemStack item = inv.getStackInSlot(0);
+        if(item == null)
+            return inputKey == null;
+        return item.isItemEqual(inputKey);
     }
 
     @Override

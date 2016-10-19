@@ -245,8 +245,8 @@ public class MHItems
         regItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, 140, 280, 400));
         regItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, 120, 200, 400));
 
-        regItem(weaponBoneKrisPlus = new ItemMHSword(Names.Items.BONE_KRIS, 4f, 300, 340, 400));
-        regItem(weaponBoneKris = new ItemMHSword(Names.Items.BONE_KRIS_PLUS, 7f, 180, 320, 400));
+        regItem(weaponBoneKris = new ItemMHSword(Names.Items.BONE_KRIS, 4f, 300, 340, 400));
+        regItem(weaponBoneKrisPlus = new ItemMHSword(Names.Items.BONE_KRIS_PLUS, 7f, 180, 320, 400));
         regItem(weaponChiefKris = new ItemMHSword(Names.Items.CHIEF_KRIS, 10f, 200, 280, 400));
         regItem(weaponRottonSword = new ItemMHSword(Names.Items.ROTTEN_SWORD, 6f, 300, 400));
         regItem(weaponPlaguedSword = new ItemMHSword(Names.Items.PLAGUED_SWORD, 8f, 200, 300, 400));

@@ -95,7 +95,7 @@ public class MHRecipes
         GameRegistry.addSmelting(MHBlocks.blockOreGossamite, new ItemStack(MHItems.itemGossamiteIngot), 0.2f);
 
         WeaponUpgradeManager wum = WeaponUpgradeManager.getInstance();
-        wum.addRecipe(MHItems.weaponHuntersKnife, Items.IRON_INGOT, new ItemStack(Items.IRON_INGOT, 2));
+        wum.addRecipeNullKey(MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 3));
         wum.addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 5));
         wum.addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, MHItems.itemGreatJaggiHide, new ItemStack(MHItems.itemJaggiHide, 3), new ItemStack(MHItems.itemJaggiScale, 3), new ItemStack(MHItems.itemEarthCrystal, 5));
         wum.addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new ItemStack(MHItems.itemGreatJaggiClaw, 2), new ItemStack(MHItems.itemGreatJaggiHide, 3), new ItemStack(MHItems.itemMachaliteIngot, 5));
@@ -103,7 +103,7 @@ public class MHRecipes
         wum.addRecipe(MHItems.weaponAssassinsDagger, MHItems.weaponHuntersDagger, new ItemStack(MHItems.itemEarthCrystal, 4), new ItemStack(MHItems.itemDragoniteIngot, 2), MHItems.itemGlueglopper);
         wum.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemGenpreyHide, 5), new ItemStack(MHItems.itemGenpreyFang, 4), new ItemStack(MHItems.itemMonsterBoneS, 3));
 
-        wum.addRecipe(MHItems.weaponBoneKris, MHItems.itemMysteryBone, new ItemStack(MHItems.itemMonsterBoneS, 2));
+        wum.addRecipeNullKey(MHItems.weaponBoneKris, MHItems.itemMysteryBone, new ItemStack(MHItems.itemMonsterBoneS, 2));
         wum.addRecipe(MHItems.weaponBoneKrisPlus, MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterBoneS, 3), new ItemStack(MHItems.itemBirdWyvernFang, 3));
         wum.addRecipe(MHItems.weaponChiefKris, MHItems.weaponBoneKrisPlus, new ItemStack(MHItems.itemMonsterBoneM), new ItemStack(MHItems.itemMonsterBoneS, 2), new ItemStack(MHItems.itemBoneHusk, 5), new ItemStack(Items.IRON_INGOT, 3));
         wum.addRecipe(MHItems.weaponRottonSword, MHItems.weaponBoneKris, new ItemStack(Items.ROTTEN_FLESH, 7), new ItemStack(Items.SKULL, 1, 2));
@@ -132,7 +132,5 @@ public class MHRecipes
         wum.addRecipe(MHItems.weaponBlazingSword, MHItems.weaponBoneKris, new ItemStack(Items.BLAZE_ROD, 2), new ItemStack(Items.BLAZE_POWDER, 3));
         wum.addRecipe(MHItems.weaponBlazingTempest, MHItems.weaponBlazingSword, new ItemStack(Items.BLAZE_ROD, 6), new ItemStack(Items.BLAZE_POWDER, 3));
         wum.addRecipe(MHItems.weaponBlazingInferno, MHItems.weaponBlazingTempest, new ItemStack(Items.BLAZE_ROD, 3), new ItemStack(Items.BLAZE_POWDER, 3), new ItemStack(Items.FIRE_CHARGE, 2));
-
-
     }
 }

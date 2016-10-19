@@ -235,4 +235,52 @@ public class ContainerWeaponUpgrade extends MHContainer
         ItemStack stack = inventory.removeStackFromSlot(0);
         if(stack != null) playerIn.dropItem(stack, false);
     }
+
+    /**
+     * What happens when you shift-click a slot.
+     */
+    /*
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot)
+    {
+        ItemStack stack = null;
+        Slot slotObject = this.inventorySlots.get(slot);
+
+        if (slotObject != null && slotObject.getHasStack())
+        {
+            ItemStack stackInSlot = slotObject.getStack();
+            stack = stackInSlot.copy();
+
+            //If slot 0 (input)
+            if (slot == 0)
+            {
+                if (!this.mergeItemStack(stackInSlot, slotInvStart, slotInvStart+36, true))
+                    return null;
+
+                slotObject.onSlotChange(stackInSlot, stack);
+            }
+            //If slot Inventory
+            else if (slot >= slotInvStart && slot <= slotInvStart+36)
+            {
+                //TODO: Why does this leave a stack of 0 when you move a stack which had a size of 1?
+                if(inventorySlots.get(0).getHasStack())
+                    return null;
+                if (!this.mergeItemStack(stackInSlot.splitStack(1), 0, 1, false))
+                    return null;
+            }
+
+            if (stackInSlot.stackSize == 0)
+                slotObject.putStack(null);
+            else
+                slotObject.onSlotChanged();
+
+            if (stackInSlot.stackSize == stack.stackSize)
+                return null;
+
+            slotObject.onPickupFromSlot(player, stackInSlot);
+        }
+
+        return stack;
+    }
+    */
 }

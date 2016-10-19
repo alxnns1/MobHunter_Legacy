@@ -42,6 +42,16 @@ public class WeaponUpgradeManager
         stacks.add(stack);
     }
 
+    public void addRecipeNullKey(Item result, Object ... recipeObj)
+    {
+        addRecipeNullKey(new ItemStack(result), recipeObj);
+    }
+
+    public void addRecipeNullKey(ItemStack result, Object ... recipeObj)
+    {
+        addRecipe(result, (ItemStack) null, recipeObj);
+    }
+
     public void addRecipe(Item result, Item keyItem, Object ... recipeObj)
     {
         addRecipe(new ItemStack(result), new ItemStack(keyItem), recipeObj);
