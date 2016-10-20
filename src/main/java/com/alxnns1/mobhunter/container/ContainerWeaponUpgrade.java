@@ -26,6 +26,9 @@ public class ContainerWeaponUpgrade extends MHContainer
     /** Used to store the currently viewable recipes for the buttons */
     public List<WeaponUpgradeRecipe> recipes;
     public List<Boolean> recipesValid;
+    /** This will be used to scroll through recipes */
+    //TODO: Scroll through recipes
+    public int recipeStart = 0;
 
     public ContainerWeaponUpgrade(InventoryPlayer invPlayer, World worldIn)
     {
@@ -128,9 +131,17 @@ public class ContainerWeaponUpgrade extends MHContainer
     private void reloadRecipes()
     {
         recipes = WeaponUpgradeManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
-        recipesValid = new ArrayList<Boolean>(5);
-        for(WeaponUpgradeRecipe r : recipes)
-            recipesValid.add(checkHasAllItems(inventoryPlayer, r.getInput()));
+        recipesValid.clear();
+        for(int i = 0; i < 5; i++)
+        {
+            if(recipes.size() < i + 1)
+                recipesValid.add(false);
+            else
+            {
+                WeaponUpgradeRecipe r = recipes.get(i);
+                recipesValid.add(r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
+            }
+        }
     }
 
     /**
@@ -207,8 +218,7 @@ public class ContainerWeaponUpgrade extends MHContainer
         {
             IContainerListener listener = this.listeners.get(i);
             for(int j = 0; j < recipesValid.size(); j++)
-                if(recipesValid.get(j) != null)
-                    listener.sendProgressBarUpdate(this, j, recipesValid.get(j) ? 1 : 0);
+                listener.sendProgressBarUpdate(this, j, recipesValid.get(j) ? 1 : 0);
         }
     }
 
@@ -234,5 +244,52 @@ public class ContainerWeaponUpgrade extends MHContainer
         if(world.isRemote) return;
         ItemStack stack = inventory.removeStackFromSlot(0);
         if(stack != null) playerIn.dropItem(stack, false);
+    }
+
+    /**
+     * What happens when you shift-click a slot.
+     */
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot)
+    {
+        ItemStack stack = null;
+        Slot slotObject = this.inventorySlots.get(slot);
+
+        if (slotObject != null && slotObject.getHasStack())
+        {
+            ItemStack stackInSlot = slotObject.getStack();
+            stack = stackInSlot.copy();
+
+            //If slot 0 (input)
+            if (slot == 0)
+            {
+                if (!this.mergeItemStack(stackInSlot, slotInvStart, slotInvStart+36, true))
+                    return null;
+
+                slotObject.onSlotChange(stackInSlot, stack);
+            }
+            //If slot Inventory
+            else if (slot >= slotInvStart && slot <= slotInvStart+36)
+            {
+                //Only move 1 item
+                Slot guiSlot = inventorySlots.get(0);
+                if(guiSlot.getHasStack())
+                    return null;
+                //Only make the move on the server to fix leaving behind a stack of 0 when there was only 1 in the stack before
+                if(!player.worldObj.isRemote)
+                    guiSlot.putStack(stackInSlot.splitStack(1));
+            }
+
+            if (stackInSlot.stackSize == 0)
+                slotObject.putStack(null);
+            else
+                slotObject.onSlotChanged();
+
+            if (stackInSlot.stackSize == stack.stackSize)
+                return null;
+
+            slotObject.onPickupFromSlot(player, stackInSlot);
+        }
+        return stack;
     }
 }

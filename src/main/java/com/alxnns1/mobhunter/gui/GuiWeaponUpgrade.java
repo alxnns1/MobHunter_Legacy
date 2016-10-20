@@ -63,34 +63,21 @@ public class GuiWeaponUpgrade extends GuiContainer
     {
         for(int i = 0; i < 5; i++)
         {
+            //Update buttons with recipes
             UpgradeButton button = (UpgradeButton) buttonList.get(i);
-            if(container.inventory.getStackInSlot(0) != null)
+            if(i < container.recipes.size() && container.recipes.get(i) != null)
             {
-                //Set button display string
-                if(i < container.recipes.size() && container.recipes.get(i) != null)
-                {
-                    WeaponUpgradeRecipe recipe = container.recipes.get(i);
-                    button.displayString = recipe.getRecipeOutput().getDisplayName();
-                    button.setItem(recipe.getRecipeOutput());
-                }
-                else
-                {
-                    button.displayString = "";
-                    button.setItem(null);
-                }
-                //Set if button enabled
-                if(i < container.recipesValid.size() && container.recipesValid.get(i) != null)
-                    button.enabled = container.recipesValid.get(i);
-                else
-                    button.enabled = false;
+                WeaponUpgradeRecipe recipe = container.recipes.get(i);
+                button.displayString = recipe.getRecipeOutput().getDisplayName();
+                button.setItem(recipe.getRecipeOutput());
+                button.enabled = container.recipesValid.get(i);
             }
             else
             {
-                button.enabled = false;
                 button.displayString = "";
                 button.setItem(null);
+                button.enabled = false;
             }
-            //buttonList.set(i, button);
         }
     }
 
@@ -112,8 +99,10 @@ public class GuiWeaponUpgrade extends GuiContainer
 
         //Draw button tooltip
         if(container.recipes == null || container.recipes.isEmpty()) return;
-        for(int i = 0; i < container.recipes.size(); i++)
+        for(int i = 0; i < 5; i++)
         {
+            if(container.recipes.size() < i + 1)
+                break;
             Button b = (Button) buttonList.get(i);
             if(b.isMouseOver())
             {
@@ -122,7 +111,7 @@ public class GuiWeaponUpgrade extends GuiContainer
                 if(r == null) continue;
                 List<String> list = new ArrayList<String>();
                 String line1;
-                if(r.getKeyInput().getItem() instanceof ItemMHSword)
+                if(r.getKeyInput() != null && r.getKeyInput().getItem() instanceof ItemMHSword)
                     line1 = I18n.format(TOOLTIP + "button.craft.1.1") + " ";
                 else
                     line1 = I18n.format(TOOLTIP + "button.craft.1.2") + " ";

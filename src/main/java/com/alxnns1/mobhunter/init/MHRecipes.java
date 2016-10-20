@@ -106,7 +106,7 @@ public class MHRecipes
         GameRegistry.addSmelting(MHBlocks.blockOreGossamite, new ItemStack(MHItems.itemOre, 1, 3), 0.2f);
 
         WeaponUpgradeManager wum = WeaponUpgradeManager.getInstance();
-        wum.addRecipe(MHItems.weaponHuntersKnife, Items.IRON_INGOT, new ItemStack(Items.IRON_INGOT, 2));
+        wum.addRecipeNullKey(MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 3));
         wum.addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 5));
         wum.addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, new ItemStack(MHItems.itemMonsterDrop, 1, 26), new ItemStack(MHItems.itemMonsterDrop, 3, 17), new ItemStack(MHItems.itemMonsterDrop, 3, 18), new ItemStack(MHItems.itemOre, 5, 0));
         wum.addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new ItemStack(MHItems.itemMonsterDrop, 2, 27), new ItemStack(MHItems.itemMonsterDrop, 3, 26), new ItemStack(MHItems.itemOre, 5, 1));
@@ -114,7 +114,7 @@ public class MHRecipes
         wum.addRecipe(MHItems.weaponAssassinsDagger, MHItems.weaponHuntersDagger, new ItemStack(MHItems.itemOre, 4, 0), new ItemStack(MHItems.itemOre, 2, 2), new ItemStack(MHItems.itemBug, 6));
         wum.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 23), new ItemStack(MHItems.itemMonsterDrop, 4, 25), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
 
-        wum.addRecipe(MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterDrop, 1, 2), new ItemStack(MHItems.itemMonsterDrop, 2, 0));
+        wum.addRecipeNullKey(MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterDrop, 1, 2), new ItemStack(MHItems.itemMonsterDrop, 2, 0));
         wum.addRecipe(MHItems.weaponBoneKrisPlus, MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterDrop, 3, 0), new ItemStack(MHItems.itemMonsterDrop, 3, 15));
         wum.addRecipe(MHItems.weaponChiefKris, MHItems.weaponBoneKrisPlus, new ItemStack(MHItems.itemMonsterDrop, 1, 1), new ItemStack(MHItems.itemMonsterDrop, 2, 0), new ItemStack(MHItems.itemMonsterDrop, 5, 7), new ItemStack(Items.IRON_INGOT, 3));
         wum.addRecipe(MHItems.weaponRottonSword, MHItems.weaponBoneKris, new ItemStack(Items.ROTTEN_FLESH, 7), new ItemStack(Items.SKULL, 1, 2));
