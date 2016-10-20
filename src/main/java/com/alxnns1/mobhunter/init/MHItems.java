@@ -9,6 +9,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -40,37 +41,11 @@ public class MHItems
             armourBoneHelmet, armourBoneChestplate, armourBoneLeggings, armourBoneBoots,
             armourAlloyHelmet, armourAlloyChestplate, armourAlloyLeggings, armourAlloyBoots;
 
-    public static ItemMHDrink itemPotion, itemMegaPotion, itemNutrients, itemMegaNutrients, itemAntidote, itemImmunizer,
-            itemDashJuice, itemMegaDashJuice, itemDemondrug, itemMegaDemondrug, itemArmourskin, itemMegaArmourskin;
-
-    public static ItemMHResource itemCatalyst, itemWhetstone, itemMiniWhetstone, itemRawMeat;
+    public static ItemMHResource itemRawMeat;
 
     public static ItemMHPickaxe itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
 
-    public static ItemMHConsumable itemRareSteak, itemDoneSteak, itemBurntMeat,
-            itemHerb, itemAntidoteHerb, itemFireHerb,
-            itemNitroshroom, itemParashroom, itemToadstool, itemExciteshroom, itemMopeshroom,
-            itemMightSeed, itemAdamantSeed, itemNulberry, itemNeedleberry, itemBomberry,
-            itemBitterbug;
-
-    public static ItemMHResource itemIvy, itemSleepHerb, itemSapPlant, itemFelvine, itemGloamgrassRoot, itemHotPepper,
-            itemBlueMushroom, itemDragonToadstool,
-            itemHuskberry, itemPaintberry, itemDragonfellBerry, itemScatternut, itemLatchberry,
-            itemEarthCrystal, itemMachaliteIngot, itemDragoniteIngot, itemLightCrystal, itemIceCrystal, itemGossamiteIngot,
-            itemInsectHusk, itemStinkhopper, itemSnakebeeLarva, itemGodbug, itemFlashbug, itemThunderbug, itemGlueglopper,
-            itemKillerBeetle, itemHercudrome, itemRareScarab, itemHoney,
-            itemMonsterBoneS, itemMonsterBoneM, itemMysteryBone, itemUnknownSkull, itemBruteBone, itemJumboBone, itemDung, itemBoneHusk,
-            itemAltarothJaw, itemAltarothStomach,
-            itemKelbiHorn, itemWarmPelt,
-            itemGargwaFeather, itemSteelEgg,
-            itemMonsterFluid,
-            itemBirdWyvernFang,
-            itemScreamerSac,
-            itemJaggiHide, itemJaggiScale, itemJaggiFang,
-            itemVelocipreyHide, itemVelocipreyScale, itemVelocipreyFang,
-            itemGenpreyHide, itemGenpreyScale, itemGenpreyFang,
-            itemGreatJaggiHide, itemGreatJaggiClaw, itemGreatJaggiHead, itemKingsFrill,
-            iconGreatJaggi, iconGendrome, iconIodrome, iconVelocidrome, iconKirin;
+    public static ItemMHConsumable itemRareSteak, itemDoneSteak, itemBurntMeat;
 
     public static ItemMHSword weaponTest,
             weaponHuntersKnife, weaponSoldiersDagger, weaponCommandersDagger, weaponSerpentBite, weaponSerpentBitePlus,
@@ -86,6 +61,14 @@ public class MHItems
             weaponBlazingSword, weaponBlazingTempest, weaponBlazingInferno;
 
     public static ItemMHShield shieldTest;
+
+    /*
+        These are the new meta items, and are just down here while testing.
+     */
+
+    public static ItemMHResource itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemMisc;
+    public static ItemMHConsumable itemConsumable;
+    public static ItemMHDrink itemDrink;
 
     /**
      * Registers the items
@@ -111,24 +94,6 @@ public class MHItems
         regItem(armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.ALLOY_CHESTPLATE));
         regItem(armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.ALLOY_LEGGINGS));
         regItem(armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.ALLOY_BOOTS));
-        
-        regItem(itemPotion = new ItemMHDrink(Names.Items.POTION));
-        regItem(itemMegaPotion = new ItemMHDrink(Names.Items.MEGA_POTION));
-        //regItem(itemNutrients = new ItemMHDrink(Names.Items.NUTRIENTS));
-        //regItem(itemMegaNutrients = new ItemMHDrink(Names.Items.MEGA_NUTRIENTS));
-        regItem(itemAntidote = new ItemMHDrink(Names.Items.ANTIDOTE));
-        regItem(itemImmunizer = new ItemMHDrink(Names.Items.IMMUNIZER));
-        regItem(itemDashJuice = new ItemMHDrink(Names.Items.DASH_JUICE));
-        regItem(itemMegaDashJuice = new ItemMHDrink(Names.Items.MEGA_DASH_JUICE));
-        regItem(itemDemondrug = new ItemMHDrink(Names.Items.DEMONDRUG));
-        regItem(itemMegaDemondrug = new ItemMHDrink(Names.Items.MEGA_DEMONDRUG));
-        regItem(itemArmourskin = new ItemMHDrink(Names.Items.ARMOURSKIN));
-        regItem(itemMegaArmourskin = new ItemMHDrink(Names.Items.MEGA_ARMOURSKIN));
-
-        regItem(itemCatalyst = new ItemMHResource(Names.Items.CATALYST));
-
-        regItem(itemWhetstone = new ItemMHResource(Names.Items.WHETSTONE));
-        regItem(itemMiniWhetstone = new ItemMHResource(Names.Items.MINI_WHETSTONE));
 
         regItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
         regItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));
@@ -138,96 +103,6 @@ public class MHItems
         regItem(itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK));
         regItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
         regItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
-
-        regItem(itemHerb = new ItemMHConsumable(Names.Items.HERB, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemAntidoteHerb = new ItemMHConsumable(Names.Items.ANTIDOTE_HERB, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemFireHerb = new ItemMHConsumable(Names.Items.FIRE_HERB, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemIvy = new ItemMHResource(Names.Items.IVY));
-        regItem(itemSleepHerb = new ItemMHResource(Names.Items.SLEEP_HERB));
-        regItem(itemSapPlant = new ItemMHResource(Names.Items.SAP_PLANT));
-        regItem(itemFelvine = new ItemMHResource(Names.Items.FELVINE));
-        regItem(itemGloamgrassRoot = new ItemMHResource(Names.Items.GLOAMGRASS_ROOT));
-        regItem(itemHotPepper = new ItemMHResource(Names.Items.HOT_PEPPER));
-
-        regItem(itemBlueMushroom = new ItemMHResource(Names.Items.BLUE_MUSHROOM));
-        regItem(itemNitroshroom = new ItemMHConsumable(Names.Items.NITROSHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemParashroom = new ItemMHConsumable(Names.Items.PARASHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemToadstool = new ItemMHConsumable(Names.Items.TOADSTOOL, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemExciteshroom = new ItemMHConsumable(Names.Items.EXCITESHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemMopeshroom = new ItemMHConsumable(Names.Items.MOPESHROOM, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemDragonToadstool = new ItemMHResource(Names.Items.DRAGON_TOADSTOOL));
-
-        regItem(itemHuskberry = new ItemMHResource(Names.Items.HUSKBERRY));
-        regItem(itemPaintberry = new ItemMHResource(Names.Items.PAINTBERRY));
-        regItem(itemMightSeed = new ItemMHConsumable(Names.Items.MIGHT_SEED, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemAdamantSeed = new ItemMHConsumable(Names.Items.ADAMANT_SEED, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemNulberry = new ItemMHConsumable(Names.Items.NULBERRY, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemDragonfellBerry = new ItemMHResource(Names.Items.DRAGONFELL_BERRY));
-        regItem(itemScatternut = new ItemMHResource(Names.Items.SCATTERNUT));
-        regItem(itemNeedleberry = new ItemMHConsumable(Names.Items.NEEDLEBERRY, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemLatchberry = new ItemMHResource(Names.Items.LATCHBERRY));
-        regItem(itemBomberry = new ItemMHConsumable(Names.Items.BOMBERRY, true, ItemMHConsumable.EAT_DURATION_SHORT));
-
-        regItem(itemEarthCrystal = new ItemMHResource(Names.Items.EARTH_CRYSTAL));
-        regItem(itemMachaliteIngot = new ItemMHResource(Names.Items.MACHALITE_INGOT));
-        regItem(itemDragoniteIngot = new ItemMHResource(Names.Items.DRAGONITE_INGOT));
-        regItem(itemLightCrystal = new ItemMHResource(Names.Items.LIGHT_CRYSTAL));
-        regItem(itemIceCrystal = new ItemMHResource(Names.Items.ICE_CRYSTAL));
-        regItem(itemGossamiteIngot = new ItemMHResource(Names.Items.GOSSAMITE_INGOT));
-
-        regItem(itemInsectHusk = new ItemMHResource(Names.Items.INSECT_HUSK));
-        regItem(itemStinkhopper = new ItemMHResource(Names.Items.STINKHOPPER));
-        regItem(itemSnakebeeLarva = new ItemMHResource(Names.Items.SNAKEBEE_LARVA));
-        regItem(itemGodbug = new ItemMHResource(Names.Items.GODBUG));
-        regItem(itemBitterbug = new ItemMHConsumable(Names.Items.BITTERBUG, true, ItemMHConsumable.EAT_DURATION_SHORT));
-        regItem(itemFlashbug = new ItemMHResource(Names.Items.FLASHBUG));
-        regItem(itemThunderbug = new ItemMHResource(Names.Items.THUNDERBUG));
-        regItem(itemGlueglopper = new ItemMHResource(Names.Items.GLUEGLOPPER));
-        regItem(itemKillerBeetle = new ItemMHResource(Names.Items.KILLER_BEETLE));
-        regItem(itemHercudrome = new ItemMHResource(Names.Items.HERCUDROME));
-        regItem(itemRareScarab = new ItemMHResource(Names.Items.RARE_SCARAB));
-        regItem(itemHoney = new ItemMHResource(Names.Items.HONEY));
-
-        regItem(itemMonsterBoneS = new ItemMHResource(Names.Items.MONSTER_BONE_S));
-        regItem(itemMonsterBoneM = new ItemMHResource(Names.Items.MONSTER_BONE_M));
-        regItem(itemMysteryBone = new ItemMHResource(Names.Items.MYSTERY_BONE));
-        regItem(itemUnknownSkull = new ItemMHResource(Names.Items.UNKNOWN_SKULL));
-        regItem(itemBruteBone = new ItemMHResource(Names.Items.BRUTE_BONE));
-        regItem(itemJumboBone = new ItemMHResource(Names.Items.JUMBO_BONE));
-        regItem(itemDung = new ItemMHResource(Names.Items.DUNG));
-        regItem(itemBoneHusk = new ItemMHResource(Names.Items.BONE_HUSK));
-
-        regItem(itemAltarothJaw = new ItemMHResource(Names.Items.ALTAROTH_JAW));
-        regItem(itemAltarothStomach = new ItemMHResource(Names.Items.ALTAROTH_STOMACH));
-
-        regItem(itemKelbiHorn = new ItemMHResource(Names.Items.KELBI_HORN));
-        regItem(itemWarmPelt = new ItemMHResource(Names.Items.WARM_PELT));
-
-        regItem(itemGargwaFeather = new ItemMHResource(Names.Items.GARGWA_FEATHER));
-        regItem(itemSteelEgg = new ItemMHResource(Names.Items.STEEL_EGG));
-
-        regItem(itemMonsterFluid = new ItemMHResource(Names.Items.MONSTER_FLUID));
-
-        regItem(itemBirdWyvernFang = new ItemMHResource(Names.Items.BIRD_WYVERN_FANG));
-
-        regItem(itemScreamerSac = new ItemMHResource(Names.Items.SCREAMER_SAC));
-
-        regItem(itemJaggiHide = new ItemMHResource(Names.Items.JAGGI_HIDE));
-        regItem(itemJaggiScale = new ItemMHResource(Names.Items.JAGGI_SCALE));
-        regItem(itemJaggiFang = new ItemMHResource(Names.Items.JAGGI_FANG));
-
-        regItem(itemVelocipreyHide = new ItemMHResource(Names.Items.VELOCIPREY_HIDE));
-        regItem(itemVelocipreyScale = new ItemMHResource(Names.Items.VELOCIPREY_SCALE));
-        regItem(itemVelocipreyFang = new ItemMHResource(Names.Items.VELOCIPREY_FANG));
-
-        regItem(itemGenpreyHide = new ItemMHResource(Names.Items.GENPREY_HIDE));
-        regItem(itemGenpreyScale = new ItemMHResource(Names.Items.GENPREY_SCALE));
-        regItem(itemGenpreyFang = new ItemMHResource(Names.Items.GENPREY_FANG));
-
-        regItem(itemGreatJaggiHide = new ItemMHResource(Names.Items.GREAT_JAGGI_HIDE));
-        regItem(itemGreatJaggiClaw = new ItemMHResource(Names.Items.GREAT_JAGGI_CLAW));
-        regItem(itemGreatJaggiHead = new ItemMHResource(Names.Items.GREAT_JAGGI_HEAD));
-        regItem(itemKingsFrill = new ItemMHResource(Names.Items.KINGS_FRILL));
 
         regItem(weaponTest = new ItemMHSword("weaponTest", 1f, 5, 10, 15, 20, 25, 30, 35));
         regItem(shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT));
@@ -275,19 +150,55 @@ public class MHItems
         regItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f, 120, 240, 360, 480));
         regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
 
-        regItem(iconGreatJaggi = new ItemMHResource(Names.Items.ICON_GREAT_JAGGI,false));
-        regItem(iconGendrome = new ItemMHResource(Names.Items.ICON_GENDROME,false));
-        regItem(iconIodrome = new ItemMHResource(Names.Items.ICON_IODROME,false));
-        regItem(iconVelocidrome = new ItemMHResource(Names.Items.ICON_VELOCIDROME,false));
-        regItem(iconKirin = new ItemMHResource(Names.Items.ICON_KIRIN,false));
+        /*
+            These new registrations are down here atm for testing
+         */
 
-        OreDictionary.registerOre("gemEarthCrystal", itemEarthCrystal);
-        OreDictionary.registerOre("ingotMachalite", itemMachaliteIngot);
-        OreDictionary.registerOre("ingotDragonite", itemDragoniteIngot);
-        OreDictionary.registerOre("gemLightCrystal", itemLightCrystal);
-        OreDictionary.registerOre("gemIceCrystal", itemIceCrystal);
-        OreDictionary.registerOre("ingotGossamite", itemGossamiteIngot);
+        //TODO: Need to go update ALL references to the items throughout the mod!
 
+        regItem(itemPlant = new ItemMHResource("plant",
+                "ivy", "sleepHerb", "sapPlant", "felvine", "gloamgrassRoot", "hotPepper"));
+        regItem(itemMushroom = new ItemMHResource("mushroom",
+                "blueMushroom", "dragonToadstool"));
+        regItem(itemBerry = new ItemMHResource("berry",
+                "huskberry", "paintberry", "dragonfellBerry", "scatternut", "latchberry"));
+        regItem(itemBug = new ItemMHResource("bug",
+                "insectHusk", "stinkHopper", "snakebeeLarva", "godbug", "flashbug", "thunderbug", "glueglopper",
+                "killerBeetle", "hercudrome", "rareScarab", "honey"));
+        regItem(itemMonsterDrop = new ItemMHResource("monsterDrop",
+                "monsterBoneS", "monsterBoneM", "mysteryBone", "unknownSkull", "bruteBone", "jumboBone", "dung",
+                "boneHusk",
+                "altarothJaw", "altarothStomach",
+                "kelbiHorn", "warmPelt",
+                "gargwaFeather", "steelEgg",
+                "monsterFluid",
+                "birdWyvernFang",
+                "screamerSac",
+                "jaggiHide", "jaggiScale", "jaggiFang",
+                "velocipreyHide", "velocipreyScale", "velocipreyFang",
+                "genpreyHide", "genpreyScale", "genpreyFang",
+                "greatJaggiHide", "greatJaggiClaw", "greatJaggiHead", "kingsFrill"));
+        regItem(itemOre = new ItemMHResource("ore",
+                "earthCrystal", "machaliteIngot", "dragoniteIngot", "gossamiteIngot", "lightCrystal", "iceCrystal"));
+        regItem(itemIcon = new ItemMHResource("icon", false,
+                "greatJaggi", "gendrome", "iodrome", "velocidrome", "kirin"));
+        regItem(itemMisc = new ItemMHResource("misc",
+                "catalyst", "whetstone", "miniWhetstone"));
+        regItem(itemConsumable = new ItemMHConsumable("consumable",
+                "herb", "antidoteHerb", "fireHerb",
+                "nitroshroom", "parashroom", "toadstool", "exciteshroom", "mopeshroom",
+                "mightSeed", "adamantSeed", "nullberry", "needleberry", "bomberry",
+                "bitterbug"));
+        regItem(itemDrink = new ItemMHDrink("drink",
+                "potion", "megaPotion", "antidote", "immunizer", "dashJuice", "megaDashJuice", "demondrug",
+                "megaDemondrug", "armourskin", "megaArmourskin"));
+
+        OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));
+        OreDictionary.registerOre("ingotMachalite", new ItemStack(itemOre, 1, 1));
+        OreDictionary.registerOre("ingotDragonite", new ItemStack(itemOre, 1, 2));
+        OreDictionary.registerOre("ingotGossamite", new ItemStack(itemOre, 1, 3));
+        OreDictionary.registerOre("gemLightCrystal", new ItemStack(itemOre, 1, 4));
+        OreDictionary.registerOre("gemIceCrystal", new ItemStack(itemOre, 1, 5));
     }
 
     /**
@@ -297,6 +208,12 @@ public class MHItems
     public static void regModels()
     {
         for(Item item : ITEMS)
-            ClientUtil.regModel(item);
+        {
+            if(item instanceof ISubTypes && item.getHasSubtypes())
+                for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
+                    ClientUtil.regModel(item, meta);
+            else
+                ClientUtil.regModel(item);
+        }
     }
 }

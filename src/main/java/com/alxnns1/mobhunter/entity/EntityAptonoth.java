@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.entity;
 import com.alxnns1.mobhunter.init.MHItems;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 /**
@@ -37,22 +38,21 @@ public class EntityAptonoth extends EntityMHHerbivore{
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemRawMeat, 1);
+                this.dropSingleItem(MHItems.itemRawMeat, 1);
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropItem(MHItems.itemMonsterBoneS, 1);
+                this.entityDropItem(new ItemStack(MHItems.itemMonsterDrop, 1, 0), 0f); //Monster Bone S
             }
         }else{
             for(int n=0;n<2+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<75){
-                    this.dropItem(MHItems.itemRawMeat, 1);
+                    this.dropSingleItem(MHItems.itemRawMeat, 1);
                 }else if(i<100){
-                    this.dropItem(MHItems.itemMonsterBoneS, 1);
+                    this.entityDropItem(new ItemStack(MHItems.itemMonsterDrop, 1, 0), 0f); //Monster Bone S
                 }
             }
-
         }
     }
 

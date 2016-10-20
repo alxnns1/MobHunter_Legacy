@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.block;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -15,12 +16,17 @@ import java.util.Random;
 public class BlockOre extends BlockResource
 {
     //The item that this block will drop with mined
-    private Item drop;
+    private ItemStack drop;
 
     public BlockOre(String blockName, int harvestLevel, Item itemDrop)
     {
-        this(blockName,harvestLevel);
-        drop = itemDrop;
+        this(blockName, harvestLevel, itemDrop, 0);
+    }
+
+    public BlockOre(String blockName, int harvestLevel, Item itemDrop, int meta)
+    {
+        this(blockName, harvestLevel);
+        drop = new ItemStack(itemDrop, 1, meta);
     }
 
     public BlockOre(String blockName, int harvestLevel)
@@ -34,7 +40,16 @@ public class BlockOre extends BlockResource
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         //Will return the given item to drop, if set. Otherwise, will just drop the ore block.
-        return drop != null ? drop : Item.getItemFromBlock(this);
+        return drop != null ? drop.getItem() : Item.getItemFromBlock(this);
+    }
+
+    /**
+     * Gets the metadata of the item this Block can drop. This method is called when the block gets destroyed. It
+     * returns the metadata of the dropped item based on the old metadata of the block.
+     */
+    public int damageDropped(IBlockState state)
+    {
+        return drop != null ? drop.getMetadata() : 0;
     }
 
     /**
@@ -48,16 +63,11 @@ public class BlockOre extends BlockResource
             int i = random.nextInt(fortune + 2) - 1;
 
             if (i < 0)
-            {
                 i = 0;
-            }
 
             return this.quantityDropped(random) * (i + 1);
         }
-        else
-        {
-            return this.quantityDropped(random);
-        }
+        return this.quantityDropped(random);
     }
 
     @Override

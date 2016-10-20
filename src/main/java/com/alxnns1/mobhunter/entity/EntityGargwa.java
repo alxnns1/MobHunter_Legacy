@@ -2,9 +2,8 @@ package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 /**
@@ -12,7 +11,7 @@ import net.minecraft.world.World;
  */
 public class EntityGargwa extends EntityMHHerbivore {
     public EntityGargwa(World worldIn){
-        super(worldIn, 0.79f, 1.24f, MHItems.itemThunderbug);
+        super(worldIn, 0.79f, 1.24f, null); //MHItems.itemThunderbug);
         this.setSize(1.0F, 1.25F);
         setBaseHealth(7);
         setBaseSpeed(0.3);
@@ -35,30 +34,30 @@ public class EntityGargwa extends EntityMHHerbivore {
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemMonsterBoneS, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 0); //Monster Bone S
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropItem(MHItems.itemRawMeat, 1);
+                dropSingleItem(MHItems.itemRawMeat);
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<70){
-                    this.dropItem(MHItems.itemRawMeat, 1);
+                    dropSingleItem(MHItems.itemRawMeat);
                 }else if(i<85){
-                    this.dropItem(MHItems.itemMonsterBoneS, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 0); //Monster Bone S
                 }else if(i<100){
-                    this.dropItem(MHItems.itemGargwaFeather, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 12); //Gargwa Feather
                 }
             }
             int i = this.rand.nextInt(99);
             if(i<60){
-                this.dropItem(MHItems.itemSteelEgg, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 13); //Steel Egg
             }else if(i<90){
-                this.dropItem(MHItems.itemHerb, 1);
+                dropSingleItem(MHItems.itemConsumable, 0); //Herb
             }else if(i<100){
-                this.dropItem(MHItems.itemInsectHusk, 1);
+                dropSingleItem(MHItems.itemBug, 0); //Insect Husk
             }
         }
     }

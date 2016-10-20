@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.entity;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -130,5 +131,21 @@ public abstract class EntityMHHerbivore extends EntityAnimal
     protected void setBaseKnockback(double knockback)
     {
         baseKnockback = knockback;
+    }
+
+    /**
+     * Drops a single item
+     */
+    public EntityItem dropSingleItem(Item item)
+    {
+        return dropSingleItem(item, 0);
+    }
+
+    /**
+     * Drops a single item
+     */
+    public EntityItem dropSingleItem(Item item, int meta)
+    {
+        return entityDropItem(new ItemStack(item, 1, meta), 0);
     }
 }

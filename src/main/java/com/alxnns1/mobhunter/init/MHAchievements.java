@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 
@@ -16,10 +17,10 @@ public class MHAchievements
     public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", -2, 1, MHItems.weaponHuntersKnife, null);
     public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", 0, 0, Items.IRON_HELMET, null);
     public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 0, 1, Items.GOLDEN_HELMET, null);
-    public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", 2, 0, MHItems.iconGreatJaggi, null);
-    public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", 2, 1, MHItems.iconVelocidrome, null);
-    public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 2, 2, MHItems.iconGendrome, null);
-    public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 2, 3, MHItems.iconIodrome, null);
+    public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", 2, 0, new ItemStack(MHItems.itemIcon, 1, 0), null);
+    public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", 2, 1, new ItemStack(MHItems.itemIcon, 1, 3), null);
+    public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 2, 2, new ItemStack(MHItems.itemIcon, 1, 1), null);
+    public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 2, 3, new ItemStack(MHItems.itemIcon, 1, 2), null);
 
     public static void init()
     {

@@ -31,11 +31,10 @@ public class ItemMHSword extends ItemSword
     private final EnumSharpness maxSharpness;
     private final int[] damageLevels;
     private final String damageLevelsString;
-    private int nextSharpen = 200;
 
     public ItemMHSword(String itemName, float damage)
     {
-        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, 1, 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemWhetstone)));
+        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, 1, 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
@@ -47,7 +46,7 @@ public class ItemMHSword extends ItemSword
 
     public ItemMHSword(String itemName, float damage, int... sharpnessDamageLevels)
     {
-        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemWhetstone)));
+        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
@@ -157,9 +156,8 @@ public class ItemMHSword extends ItemSword
     {
         if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0)
         {
-            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetstone)))
+            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)))
             {
-                nextSharpen = 200;
                 playerIn.setActiveHand(hand);
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
             }
@@ -175,12 +173,16 @@ public class ItemMHSword extends ItemSword
     {
         if (entityLiving instanceof EntityPlayer)
         {
-            repairSharpness(stack, nextSharpen);
-            if (nextSharpen == 200)
-                ((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemWhetstone, -1, 1, null);
-            else if (nextSharpen == 100) {
-                ((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMiniWhetstone, -1, 1, null);
-            }
+            int sharpen = 0;
+            if(((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 1, 1, null) > 0)
+                //Whetstone
+                sharpen = 200;
+            else if (((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 2, 1, null) > 0)
+                //Mini Whetstone
+                sharpen = 100;
+
+            if(sharpen > 0)
+                repairSharpness(stack, sharpen);
         }
         return stack;
     }

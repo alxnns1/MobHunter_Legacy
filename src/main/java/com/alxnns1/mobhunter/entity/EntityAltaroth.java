@@ -26,7 +26,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
         setBaseKnockback(0.3);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWitch.class, true));
@@ -40,7 +40,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
 
     protected Item getDropItem()
     {
-        return MHItems.itemMonsterFluid;
+        return MHItems.itemMonsterDrop;
     }
 
     /**
@@ -51,30 +51,30 @@ public class EntityAltaroth extends EntityMHNeopteron {
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemAltarothStomach, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 9); //Altaroth Stomach
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<50){
-                    this.dropItem(MHItems.itemAltarothStomach, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 9); //Altaroth Stomach
                 }else if(i<75){
-                    this.dropItem(MHItems.itemMonsterFluid, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 14); //Monster Fluid
                 }else if(i<100){
-                    this.dropItem(MHItems.itemAltarothJaw, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 8); //Altaroth Jaw
                 }
             }
             int i = this.rand.nextInt(99);
             if(i<20){
-                this.dropItem(MHItems.itemMonsterFluid, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 14); //Monster Fluid
             }else if(i<40){
-                this.dropItem(MHItems.itemHoney, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 10); //Honey
             }else if(i<60){
-                this.dropItem(MHItems.itemNulberry, 1);
+                dropSingleItem(MHItems.itemConsumable, 10); //Nullberry
             }else if(i<80){
-                this.dropItem(MHItems.itemInsectHusk, 1);
+                dropSingleItem(MHItems.itemBug, 0); //Insect Husk
             }else if(i<100){
-                this.dropItem(MHItems.itemAltarothStomach, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 9); //Altaroth Stomach
             }
         }
     }

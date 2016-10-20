@@ -18,52 +18,52 @@ public class BlockBone extends BlockNatural
 
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
-        if (chance < 0.11303959131545338441890166028097)        drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-        else if (chance < 0.36528735632183908045977011494252)   drops.add(new ItemStack(MHItems.itemMysteryBone));
-        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemUnknownSkull));
-        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemBoneHusk));
-        else                                                    drops.add(new ItemStack(MHItems.itemDung));
+        if (chance < 0.11303959131545338441890166028097)        drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 0)); //Monster Bone S
+        else if (chance < 0.36528735632183908045977011494252)   drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 2)); //Mystery Bone
+        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 3)); //UnknownSkull
+        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 7)); //Bone Husk
+        else                                                    drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 6)); //Dung
         return drops;
     }
 
     public ArrayList<ItemStack> getDropsNether(ArrayList<ItemStack> drops, double chance)
     {
-        if (chance < 0.13666666666666666666666666666667)        drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-        else if (chance < 0.44)                                 drops.add(new ItemStack(MHItems.itemMysteryBone));
-        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemUnknownSkull));
-        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemBoneHusk));
-        else                                                    drops.add(new ItemStack(MHItems.itemDung));
+        if (chance < 0.13666666666666666666666666666667)        drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 0)); //Monster Bone S
+        else if (chance < 0.44)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 2)); //Mystery Bone
+        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 3)); //UnknownSkull
+        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 7)); //Bone Husk
+        else                                                    drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 6)); //Dung
         return drops;
     }
 
     public ArrayList<ItemStack> getDropsCold(ArrayList<ItemStack> drops, double chance)
     {
-        if (chance < 0.17652173913043478260869565217392)        drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-        else if (chance < 0.45086956521739130434782608695652)   drops.add(new ItemStack(MHItems.itemMysteryBone));
-        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemUnknownSkull));
-        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemBoneHusk));
-        else                                                    drops.add(new ItemStack(MHItems.itemDung));
+        if (chance < 0.17652173913043478260869565217392)        drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 0)); //Monster Bone S
+        else if (chance < 0.45086956521739130434782608695652)   drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 2)); //Mystery Bone
+        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 3)); //UnknownSkull
+        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 7)); //Bone Husk
+        else                                                    drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 6)); //Dung
         return drops;
     }
 
     public ArrayList<ItemStack> getDropsRock(ArrayList<ItemStack> drops, double chance)
     {
-        if (chance < 0.14319848293299620733249051833123)            drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-        else if (chance < 0.26490518331226295828065739570165)       drops.add(new ItemStack(MHItems.itemMonsterBoneM));
-        else if (chance < 0.65968394437420986093552465233883)       drops.add(new ItemStack(MHItems.itemMysteryBone));
-        else if (chance < 0.83)                                     drops.add(new ItemStack(MHItems.itemUnknownSkull));
-        else if (chance < 0.88)                                     drops.add(new ItemStack(MHItems.itemBoneHusk));
-        else                                                        drops.add(new ItemStack(MHItems.itemDung));
+        if (chance < 0.14319848293299620733249051833123)            drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 0)); //Monster Bone S
+        else if (chance < 0.26490518331226295828065739570165)       drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 1)); //Monster Bone M
+        else if (chance < 0.65968394437420986093552465233883)       drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 2)); //Mystery Bone
+        else if (chance < 0.83)                                     drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 3)); //UnknownSkull
+        else if (chance < 0.88)                                     drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 7)); //Bone Husk
+        else                                                        drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 6)); //Dung
         return drops;
     }
 
     public ArrayList<ItemStack> getDropsOther(ArrayList<ItemStack> drops, double chance)
     {
-        if (chance < 0.25305084745762711864406779661017)            drops.add(new ItemStack(MHItems.itemMonsterBoneS));
-        else if (chance < 0.65525423728813559322033898305083)       drops.add(new ItemStack(MHItems.itemMysteryBone));
-        else if (chance < 0.81)                                 drops.add(new ItemStack(MHItems.itemUnknownSkull));
-        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemBoneHusk));
-        else                                                        drops.add(new ItemStack(MHItems.itemDung));
+        if (chance < 0.25305084745762711864406779661017)            drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 0)); //Monster Bone S
+        else if (chance < 0.65525423728813559322033898305083)       drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 2)); //Mystery Bone
+        else if (chance < 0.81)                                     drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 3)); //UnknownSkull
+        else if (chance < 0.91)                                 drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 7)); //Bone Husk
+        else                                                        drops.add(new ItemStack(MHItems.itemMonsterDrop, 1, 6)); //Dung
         return drops;
     }
 }
