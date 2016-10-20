@@ -239,7 +239,6 @@ public class ContainerWeaponUpgrade extends MHContainer
     /**
      * What happens when you shift-click a slot.
      */
-    /*
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slot)
     {
@@ -279,8 +278,6 @@ public class ContainerWeaponUpgrade extends MHContainer
 
             slotObject.onPickupFromSlot(player, stackInSlot);
         }
-
         return stack;
     }
-    */
 }
