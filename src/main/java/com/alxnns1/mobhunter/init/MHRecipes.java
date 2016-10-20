@@ -74,12 +74,6 @@ public class MHRecipes
         //4 Machalite Ingot + 2 Earth Crystal + 2 Iron Ore
         GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyBoots), "   ", "y y", "z z", 'y', Items.IRON_INGOT, 'z', new ItemStack(MHItems.itemOre, 1, 1));
 
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponSerpentBite), "yyx", "yzx", "ywx", 'w', MHItems.weaponAssassinsDagger, 'x', new ItemStack(MHItems.itemMonsterDrop, 1, 20), 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 22), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponSerpentBitePlus), "yyx", "yzz", "yxz", 'x', MHItems.weaponSerpentBite, 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 22), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponDeadlock), "yyx", "yzz", "yxz", 'x', MHItems.weaponSerpentBitePlus, 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 22), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 1));
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponViperBitePlus), "yyx", "yzz", "yxz", 'x', MHItems.weaponViperBite, 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 25), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.weaponDeathprize), "yyx", "yzz", "yxz", 'x', MHItems.weaponViperBitePlus, 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 25), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 1));
-
         GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemOre, 1, 1), 'y', new ItemStack(Items.STICK));
         GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemOre, 1, 2), 'y', new ItemStack(Items.STICK));
         GameRegistry.addRecipe(new ItemStack(MHItems.itemGossamitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemOre, 1, 3), 'y', new ItemStack(Items.STICK));
@@ -107,12 +101,18 @@ public class MHRecipes
 
         WeaponUpgradeManager wum = WeaponUpgradeManager.getInstance();
         wum.addRecipeNullKey(MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 3));
-        wum.addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 5));
         wum.addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, new ItemStack(MHItems.itemMonsterDrop, 1, 26), new ItemStack(MHItems.itemMonsterDrop, 3, 17), new ItemStack(MHItems.itemMonsterDrop, 3, 18), new ItemStack(MHItems.itemOre, 5, 0));
         wum.addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new ItemStack(MHItems.itemMonsterDrop, 2, 27), new ItemStack(MHItems.itemMonsterDrop, 3, 26), new ItemStack(MHItems.itemOre, 5, 1));
+        wum.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 23), new ItemStack(MHItems.itemMonsterDrop, 4, 25), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
+        //wum.addRecipe(MHItems.weaponViperBitePlus, MHItems.weaponViperBite, new ItemStack(MHItems.itemMonsterDrop, 6, 25), new ItemStack(MHItems.itemMonsterDrop, 6, 0));
+        //wum.addRecipe(MHItems.weaponDeathprize, MHItems.weaponViperBite, new ItemStack(MHItems.itemMonsterDrop, 9, 25), new ItemStack(MHItems.itemMonsterDrop, 9, 1));
+        wum.addRecipe(MHItems.weaponSerpentBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 20), new ItemStack(MHItems.itemMonsterDrop, 4, 22), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
+        wum.addRecipe(MHItems.weaponSerpentBitePlus, MHItems.weaponSerpentBite, new ItemStack(MHItems.itemMonsterDrop, 6, 22), new ItemStack(MHItems.itemMonsterDrop, 6, 0));
+        wum.addRecipe(MHItems.weaponDeadlock, MHItems.weaponSerpentBitePlus, new ItemStack(MHItems.itemMonsterDrop, 9, 22), new ItemStack(MHItems.itemMonsterDrop, 9, 1));
+        wum.addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 5));
         wum.addRecipe(MHItems.weaponHuntersDagger, MHItems.weaponHuntersKnifePlus, new ItemStack(MHItems.itemOre, 4, 0), new ItemStack(MHItems.itemOre, 2, 1), new ItemStack(MHItems.itemBug, 6));
         wum.addRecipe(MHItems.weaponAssassinsDagger, MHItems.weaponHuntersDagger, new ItemStack(MHItems.itemOre, 4, 0), new ItemStack(MHItems.itemOre, 2, 2), new ItemStack(MHItems.itemBug, 6));
-        wum.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 23), new ItemStack(MHItems.itemMonsterDrop, 4, 25), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
+
 
         wum.addRecipeNullKey(MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterDrop, 1, 2), new ItemStack(MHItems.itemMonsterDrop, 2, 0));
         wum.addRecipe(MHItems.weaponBoneKrisPlus, MHItems.weaponBoneKris, new ItemStack(MHItems.itemMonsterDrop, 3, 0), new ItemStack(MHItems.itemMonsterDrop, 3, 15));
