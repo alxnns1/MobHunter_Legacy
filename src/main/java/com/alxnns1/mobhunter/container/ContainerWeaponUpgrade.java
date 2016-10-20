@@ -26,6 +26,9 @@ public class ContainerWeaponUpgrade extends MHContainer
     /** Used to store the currently viewable recipes for the buttons */
     public List<WeaponUpgradeRecipe> recipes;
     public List<Boolean> recipesValid;
+    /** This will be used to scroll through recipes */
+    //TODO: Scroll through recipes
+    public int recipeStart = 0;
 
     public ContainerWeaponUpgrade(InventoryPlayer invPlayer, World worldIn)
     {
@@ -128,9 +131,17 @@ public class ContainerWeaponUpgrade extends MHContainer
     private void reloadRecipes()
     {
         recipes = WeaponUpgradeManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
-        recipesValid = new ArrayList<Boolean>(5);
-        for(WeaponUpgradeRecipe r : recipes)
-            recipesValid.add(checkHasAllItems(inventoryPlayer, r.getInput()));
+        recipesValid.clear();
+        for(int i = 0; i < 5; i++)
+        {
+            if(recipes.size() < i + 1)
+                recipesValid.add(false);
+            else
+            {
+                WeaponUpgradeRecipe r = recipes.get(i);
+                recipesValid.add(r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
+            }
+        }
     }
 
     /**
@@ -207,8 +218,7 @@ public class ContainerWeaponUpgrade extends MHContainer
         {
             IContainerListener listener = this.listeners.get(i);
             for(int j = 0; j < recipesValid.size(); j++)
-                if(recipesValid.get(j) != null)
-                    listener.sendProgressBarUpdate(this, j, recipesValid.get(j) ? 1 : 0);
+                listener.sendProgressBarUpdate(this, j, recipesValid.get(j) ? 1 : 0);
         }
     }
 
@@ -261,11 +271,13 @@ public class ContainerWeaponUpgrade extends MHContainer
             //If slot Inventory
             else if (slot >= slotInvStart && slot <= slotInvStart+36)
             {
-                //TODO: Why does this leave a stack of 0 when you move a stack which had a size of 1?
-                if(inventorySlots.get(0).getHasStack())
+                //Only move 1 item
+                Slot guiSlot = inventorySlots.get(0);
+                if(guiSlot.getHasStack())
                     return null;
-                if (!this.mergeItemStack(stackInSlot.splitStack(1), 0, 1, false))
-                    return null;
+                //Only make the move on the server to fix leaving behind a stack of 0 when there was only 1 in the stack before
+                if(!player.worldObj.isRemote)
+                    guiSlot.putStack(stackInSlot.splitStack(1));
             }
 
             if (stackInSlot.stackSize == 0)
