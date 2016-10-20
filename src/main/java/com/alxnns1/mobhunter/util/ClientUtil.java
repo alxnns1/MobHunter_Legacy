@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.util;
 
 import com.alxnns1.mobhunter.item.ISubTypes;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -35,7 +34,6 @@ public class ClientUtil
         if(item.getHasSubtypes() && item instanceof ISubTypes)
             itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
         ModelResourceLocation loc = new ModelResourceLocation(itemPath, "inventory");
-        ModelBakery.registerItemVariants(item, loc);
         ModelLoader.setCustomModelResourceLocation(item, meta, loc);
     }
 }

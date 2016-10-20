@@ -36,31 +36,29 @@ public class EntityPopo extends EntityMHHerbivore
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
-        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemMysteryBone, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 2); //Mystery Bone
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropItem(MHItems.itemRawMeat, 1);
+                dropSingleItem(MHItems.itemRawMeat);
             }
         }else{
             for(int n=0;n<2+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<45){
-                    this.dropItem(MHItems.itemMysteryBone, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 2); //Mystery Bone
                 }else if(i<75){
-                    this.dropItem(MHItems.itemRawMeat, 1);
+                    dropSingleItem(MHItems.itemRawMeat);
                 }else if(i<95){
-                    this.dropItem(MHItems.itemBruteBone, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 4); //Brute Bone
                 }else if(i<100){
-                    this.dropItem(MHItems.itemJumboBone, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 5); //Jumbo Bone
                 }
             }
         }
-        */
     }
 
     public EntityPopo createChild(EntityAgeable ageable)

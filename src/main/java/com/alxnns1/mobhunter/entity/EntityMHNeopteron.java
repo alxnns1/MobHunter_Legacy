@@ -5,9 +5,11 @@ import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -32,12 +34,12 @@ public class EntityMHNeopteron extends EntityMob
 
     public EntityMHNeopteron(World world)
     {
-        this(world, Config.scaleMin, Config.scaleMax, null); //MHItems.itemBlueMushroom);
+        this(world, Config.scaleMin, Config.scaleMax, MHItems.itemMushroom);
     }
 
     public EntityMHNeopteron(World world, float minScale, float maxScale)
     {
-        this(world, minScale, maxScale, null); //MHItems.itemBlueMushroom);
+        this(world, minScale, maxScale, MHItems.itemMushroom);
     }
 
     public EntityMHNeopteron(World world, float minScale, float maxScale, Item temptFood)
@@ -136,5 +138,21 @@ public class EntityMHNeopteron extends EntityMob
 
     protected void setBaseAttack(double attack){
         baseAttack = attack;
+    }
+
+    /**
+     * Drops a single item
+     */
+    public EntityItem dropSingleItem(Item item)
+    {
+        return dropSingleItem(item, 0);
+    }
+
+    /**
+     * Drops a single item
+     */
+    public EntityItem dropSingleItem(Item item, int meta)
+    {
+        return entityDropItem(new ItemStack(item, 1, meta), 0);
     }
 }

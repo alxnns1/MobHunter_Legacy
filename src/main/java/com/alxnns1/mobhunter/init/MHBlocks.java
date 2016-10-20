@@ -59,11 +59,11 @@ public class MHBlocks
 
     public static void regBlocks()
     {
-        //regBlock(blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemEarthCrystal), "oreEarthCrystal");
+        regBlock(blockOreEarthCrystal = new BlockOre(Names.Blocks.ORE_EARTH_CRYSTAL, 1, MHItems.itemOre, 0), "oreEarthCrystal");
         regBlock(blockOreMachalite = new BlockOre(Names.Blocks.ORE_MACHALITE, 1), "oreMachalite");
         regBlock(blockOreDragonite = new BlockOre(Names.Blocks.ORE_DRAGONITE, 2), "oreDragonite");
-        //regBlock(blockOreLightCrystal = (BlockOre) new BlockOre(Names.Blocks.ORE_LIGHT_CRYSTAL, 2, MHItems.itemLightCrystal).setLightLevel(1.0f), "oreLightCrystal");
-        //regBlock(blockOreIceCrystal = new BlockOre(Names.Blocks.ORE_ICE_CRYSTAL, 1, MHItems.itemIceCrystal), "oreIceCrystal");
+        regBlock(blockOreLightCrystal = (BlockOre) new BlockOre(Names.Blocks.ORE_LIGHT_CRYSTAL, 2, MHItems.itemOre, 4).setLightLevel(1.0f), "oreLightCrystal");
+        regBlock(blockOreIceCrystal = new BlockOre(Names.Blocks.ORE_ICE_CRYSTAL, 1, MHItems.itemOre, 5), "oreIceCrystal");
         regBlock(blockOreGossamite = new BlockOre(Names.Blocks.ORE_GOSSAMITE, 2), "oreGossamite");
 
         regBlock(blockEarthCrystal = new BlockResource(Names.Blocks.EARTH_CRYSTAL, 1), "blockEarthCrystal");

@@ -51,34 +51,32 @@ public class EntityGreatJaggi extends EntityMHBirdWyvern {
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
-        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemScreamerSac, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 16); //Screamer Sac
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropItem(MHItems.itemGreatJaggiHide, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, 26); //Great Jaggi Hide
             }
         }else{
             for(int n=0;n<3+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<20){
-                    this.dropItem(MHItems.itemGreatJaggiHide, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 26); //Great Jaggi Hide
                 }else if(i<41){
-                    this.dropItem(MHItems.itemGreatJaggiClaw, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 27); //Great Jaggi Claw
                 }else if(i<71){
-                    this.dropItem(MHItems.itemScreamerSac, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 16); //Screamer Sac
                 }else if(i<74){
-                    this.dropItem(MHItems.itemJaggiScale, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 18); //Jaggi Scale
                 }else if(i<79){
-                    this.dropItem(MHItems.itemGreatJaggiHead, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 28); //Great Jaggi Head
                 }else{
-                    this.dropItem(MHItems.itemKingsFrill, 1);
+                    dropSingleItem(MHItems.itemMonsterDrop, 29); //Kings Frill
                 }
             }
         }
-        */
     }
 }

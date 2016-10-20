@@ -24,8 +24,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 
 @Mod(modid= Reference.MOD_ID, name= Reference.MOD_NAME, version= Reference.VERSION)
-public class MobHunter {
-
+public class MobHunter
+{
     @Mod.Instance(Reference.MOD_ID)
     public static MobHunter instance;
 
@@ -35,7 +35,6 @@ public class MobHunter {
         public Item getTabIconItem()
         {
             return MHItems.itemMonsterDrop;
-            //return MHItems.itemMonsterBoneS;
         }
 
         @SideOnly(Side.CLIENT)
@@ -53,7 +52,8 @@ public class MobHunter {
     };
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event){
+    public void preInit(FMLPreInitializationEvent event)
+    {
         //Initializing and registering items, blocks and configs
 
         //Passes suggested configuration file into the regBlocks method
@@ -78,7 +78,8 @@ public class MobHunter {
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event){
+    public void init(FMLInitializationEvent event)
+    {
         //Initializing and registering GUIs, tile entities, recipes and event handlers
 
         if(event.getSide() == Side.CLIENT)
@@ -86,14 +87,15 @@ public class MobHunter {
 
         MHRecipes.init();
         MHAchievements.init();
-        //GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
+        GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event){
+    public void postInit(FMLPostInitializationEvent event)
+    {
         //I wonder if I'll use this
     }
 }

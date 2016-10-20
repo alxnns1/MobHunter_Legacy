@@ -55,21 +55,21 @@ public class EntityGenprey extends EntityMHBirdWyvern {
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropItem(MHItems.itemMonsterBoneS, 1);
+                this.dropSingleItem(MHItems.itemMonsterBoneS, 1);
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropItem(MHItems.itemBirdWyvernFang, 1);
+                this.dropSingleItem(MHItems.itemBirdWyvernFang, 1);
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<42){
-                    this.dropItem(MHItems.itemGenpreyFang, 1);
+                    this.dropSingleItem(MHItems.itemGenpreyFang, 1);
                 }else if(i<75){
-                    this.dropItem(MHItems.itemGenpreyScale, 1);
+                    this.dropSingleItem(MHItems.itemGenpreyScale, 1);
                 }else if(i<100){
-                    this.dropItem(MHItems.itemGenpreyHide, 1);
+                    this.dropSingleItem(MHItems.itemGenpreyHide, 1);
                 }
             }
         }
