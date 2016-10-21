@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by Alex on 20/04/2016.
  */
-public class ItemMHResource extends Item implements ISubTypes
+public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
 {
     protected String[] subNames;
     private boolean addInfo;
@@ -39,6 +40,13 @@ public class ItemMHResource extends Item implements ISubTypes
     public String[] getSubNames()
     {
         return subNames;
+    }
+
+    @Override
+    public ItemMHResource addToMetaRef(MetaRef.EnumItemType itemType)
+    {
+        MetaRef.addMetaTo(itemType, subNames);
+        return this;
     }
 
     /**

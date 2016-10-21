@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.item;
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
+import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * Created by Alex on 26/04/2016.
  */
-public class ItemMHConsumable extends ItemFood implements ISubTypes
+public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsumable>
 {
     protected final int effectDuration = 100;
     private int eatDuration = this.itemUseDuration;
@@ -170,6 +171,13 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes
     public String[] getSubNames()
     {
         return subNames;
+    }
+
+    @Override
+    public ItemMHConsumable addToMetaRef(MetaRef.EnumItemType itemType)
+    {
+        MetaRef.addMetaTo(itemType, subNames);
+        return this;
     }
 
     /**

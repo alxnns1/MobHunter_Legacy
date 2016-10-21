@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.item;
 
+import com.alxnns1.mobhunter.reference.MetaRef;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -94,5 +95,11 @@ public class ItemMHDrink extends ItemMHConsumable
     {
         playerIn.setActiveHand(hand);
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+    }
+
+    @Override
+    public ItemMHDrink addToMetaRef(MetaRef.EnumItemType itemType)
+    {
+        return (ItemMHDrink) super.addToMetaRef(itemType);
     }
 }

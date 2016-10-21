@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.item.*;
+import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.ClientUtil;
@@ -154,17 +155,19 @@ public class MHItems
             These new registrations are down here atm for testing
          */
 
-        //TODO: Need to go update ALL references to the items throughout the mod!
-
         regItem(itemPlant = new ItemMHResource("plant",
-                "ivy", "sleepHerb", "sapPlant", "felvine", "gloamgrassRoot", "hotPepper"));
+                "ivy", "sleepHerb", "sapPlant", "felvine", "gloamgrassRoot", "hotPepper")
+                .addToMetaRef(MetaRef.EnumItemType.PLANT));
         regItem(itemMushroom = new ItemMHResource("mushroom",
-                "blueMushroom", "dragonToadstool"));
+                "blueMushroom", "dragonToadstool")
+                .addToMetaRef(MetaRef.EnumItemType.MUSHROOM));
         regItem(itemBerry = new ItemMHResource("berry",
-                "huskberry", "paintberry", "dragonfellBerry", "scatternut", "latchberry"));
+                "huskberry", "paintberry", "dragonfellBerry", "scatternut", "latchberry")
+                .addToMetaRef(MetaRef.EnumItemType.BERRY));
         regItem(itemBug = new ItemMHResource("bug",
                 "insectHusk", "stinkHopper", "snakebeeLarva", "godbug", "flashbug", "thunderbug", "glueglopper",
-                "killerBeetle", "hercudrome", "rareScarab", "honey"));
+                "killerBeetle", "hercudrome", "rareScarab", "honey")
+                .addToMetaRef(MetaRef.EnumItemType.BERRY));
         regItem(itemMonsterDrop = new ItemMHResource("monsterDrop",
                 "monsterBoneS", "monsterBoneM", "mysteryBone", "unknownSkull", "bruteBone", "jumboBone", "dung",
                 "boneHusk",
@@ -177,21 +180,27 @@ public class MHItems
                 "jaggiHide", "jaggiScale", "jaggiFang",
                 "velocipreyHide", "velocipreyScale", "velocipreyFang",
                 "genpreyHide", "genpreyScale", "genpreyFang",
-                "greatJaggiHide", "greatJaggiClaw", "greatJaggiHead", "kingsFrill"));
+                "greatJaggiHide", "greatJaggiClaw", "greatJaggiHead", "kingsFrill")
+                .addToMetaRef(MetaRef.EnumItemType.MONSTER_DROP));
         regItem(itemOre = new ItemMHResource("ore",
-                "earthCrystal", "machaliteIngot", "dragoniteIngot", "gossamiteIngot", "lightCrystal", "iceCrystal"));
+                "earthCrystal", "machaliteIngot", "dragoniteIngot", "gossamiteIngot", "lightCrystal", "iceCrystal")
+                .addToMetaRef(MetaRef.EnumItemType.ORE));
         regItem(itemIcon = new ItemMHResource("icon", false,
-                "greatJaggi", "gendrome", "iodrome", "velocidrome", "kirin"));
+                "greatJaggi", "gendrome", "iodrome", "velocidrome", "kirin")
+                .addToMetaRef(MetaRef.EnumItemType.ICON));
         regItem(itemMisc = new ItemMHResource("misc",
-                "catalyst", "whetstone", "miniWhetstone"));
+                "catalyst", "whetstone", "miniWhetstone")
+                .addToMetaRef(MetaRef.EnumItemType.MISC));
         regItem(itemConsumable = new ItemMHConsumable("consumable",
                 "herb", "antidoteHerb", "fireHerb",
                 "nitroshroom", "parashroom", "toadstool", "exciteshroom", "mopeshroom",
                 "mightSeed", "adamantSeed", "nullberry", "needleberry", "bomberry",
-                "bitterbug"));
+                "bitterbug")
+                .addToMetaRef(MetaRef.EnumItemType.CONSUMABLE));
         regItem(itemDrink = new ItemMHDrink("drink",
                 "potion", "megaPotion", "antidote", "immunizer", "dashJuice", "megaDashJuice", "demondrug",
-                "megaDemondrug", "armourskin", "megaArmourskin"));
+                "megaDemondrug", "armourskin", "megaArmourskin")
+                .addToMetaRef(MetaRef.EnumItemType.DRINK));
 
         OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));
         OreDictionary.registerOre("ingotMachalite", new ItemStack(itemOre, 1, 1));
