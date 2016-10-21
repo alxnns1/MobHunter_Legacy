@@ -17,12 +17,12 @@ import javax.annotation.Nullable;
 /**
  * Created by Mark on 10/05/2016.
  */
-public class BlockWeaponCraft extends BlockCraft
+public class BlockArmourCraft extends BlockCraft
 {
-    public BlockWeaponCraft()
+    public BlockArmourCraft()
     {
         super();
-        setUnlocalizedName(Names.Blocks.WEAPON_CRAFT);
-        setRegistryName(Names.Blocks.WEAPON_CRAFT);
+        setUnlocalizedName(Names.Blocks.ARMOUR_CRAFT);
+        setRegistryName(Names.Blocks.ARMOUR_CRAFT);
     }
 }

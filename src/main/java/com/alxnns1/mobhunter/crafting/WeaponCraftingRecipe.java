@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * Created by Mark on 07/07/2016.
  */
-public class WeaponUpgradeRecipe extends ShapelessOreRecipe
+public class WeaponCraftingRecipe extends ShapelessOreRecipe
 {
     private ItemStack inputKey = null;
 
-    public WeaponUpgradeRecipe(ItemStack result, ItemStack key, Object ... recipe)
+    public WeaponCraftingRecipe(ItemStack result, ItemStack key, Object ... recipe)
     {
         super(result, recipe);
         inputKey = key == null ? null : key.copy();

@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.gui;
 import com.alxnns1.mobhunter.container.ContainerWeaponTable;
 import com.alxnns1.mobhunter.crafting.WeaponCraftingRecipe;
 import com.alxnns1.mobhunter.init.MHBlocks;
+import com.alxnns1.mobhunter.item.ItemMHArmour;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.reference.Reference;
 import io.netty.buffer.Unpooled;
@@ -31,14 +32,14 @@ import java.util.List;
 /**
  * Created by Mark on 10/05/2016.
  */
-public class GuiWeaponUpgrade extends GuiContainer
+public class GuiArmourUpgrade extends GuiContainer
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraft.png");
-    private static final String TOOLTIP = "gui.blockWeaponUpgrade.";
+    private static final String TOOLTIP = "gui.blockArmourUpgrade.";
 
     private ContainerWeaponTable container;
 
-    public GuiWeaponUpgrade(InventoryPlayer invPlayer, World world)
+    public GuiArmourUpgrade(InventoryPlayer invPlayer, World world)
     {
         super(new ContainerWeaponTable(invPlayer, world));
         container = (ContainerWeaponTable) inventorySlots;
@@ -94,7 +95,7 @@ public class GuiWeaponUpgrade extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         //Draw text
-        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponCraft.getUnlocalizedName() + ".name").getUnformattedText(), 8, 4, 4210752);
+        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockArmourCraft.getUnlocalizedName() + ".name").getUnformattedText(), 8, 4, 4210752);
         this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 92, 4210752);
 
         //Draw button tooltip
@@ -111,7 +112,7 @@ public class GuiWeaponUpgrade extends GuiContainer
                 if(r == null) continue;
                 List<String> list = new ArrayList<String>();
                 String line1;
-                if(r.getKeyInput() != null && r.getKeyInput().getItem() instanceof ItemMHSword)
+                if(r.getKeyInput() != null && r.getKeyInput().getItem() instanceof ItemMHArmour)
                     line1 = I18n.format(TOOLTIP + "button.craft.1.1") + " ";
                 else
                     line1 = I18n.format(TOOLTIP + "button.craft.1.2") + " ";
@@ -263,7 +264,7 @@ public class GuiWeaponUpgrade extends GuiContainer
         public void drawButtonForegroundLayer(int mouseX, int mouseY)
         {
             if(!tooltipLines.isEmpty())
-                GuiWeaponUpgrade.this.drawHoveringText(tooltipLines, mouseX, mouseY);
+                GuiArmourUpgrade.this.drawHoveringText(tooltipLines, mouseX, mouseY);
         }
     }
 }

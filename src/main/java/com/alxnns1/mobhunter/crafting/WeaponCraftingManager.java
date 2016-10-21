@@ -16,17 +16,17 @@ import java.util.List;
 /**
  * Created by Mark on 06/07/2016.
  */
-public class WeaponUpgradeManager
+public class WeaponCraftingManager
 {
-    private static final WeaponUpgradeManager instance = new WeaponUpgradeManager();
-    private List<WeaponUpgradeRecipe> recipes = Lists.newArrayList();
+    private static final WeaponCraftingManager instance = new WeaponCraftingManager();
+    private List<WeaponCraftingRecipe> recipes = Lists.newArrayList();
 
-    public static WeaponUpgradeManager getInstance()
+    public static WeaponCraftingManager getInstance()
     {
         return instance;
     }
 
-    private WeaponUpgradeManager() {}
+    private WeaponCraftingManager() {}
 
     private void addStack(ArrayList<ItemStack> stacks, ItemStack stack)
     {
@@ -85,15 +85,15 @@ public class WeaponUpgradeManager
                 r = ArrayUtils.add(r, o);
         }
         r = ArrayUtils.addAll(r, stacks.toArray());
-        recipes.add(new WeaponUpgradeRecipe(result, keyItem, r));
+        recipes.add(new WeaponCraftingRecipe(result, keyItem, r));
     }
 
-    public List<WeaponUpgradeRecipe> findMatchingRecipes(InventoryCrafting inv, InventoryPlayer invPlayer, World world)
+    public List<WeaponCraftingRecipe> findMatchingRecipes(InventoryCrafting inv, InventoryPlayer invPlayer, World world)
     {
-        List<WeaponUpgradeRecipe> r = new ArrayList<WeaponUpgradeRecipe>();
+        List<WeaponCraftingRecipe> r = new ArrayList<WeaponCraftingRecipe>();
         for(int j = 0; j < recipes.size(); ++j)
         {
-            WeaponUpgradeRecipe WURecipe = recipes.get(j);
+            WeaponCraftingRecipe WURecipe = recipes.get(j);
             if(WURecipe.matches(inv, world))
                 r.add(WURecipe);
         }
@@ -103,7 +103,7 @@ public class WeaponUpgradeManager
     /**
      * Returns the List<> of all recipes
      */
-    public List<WeaponUpgradeRecipe> getRecipeList()
+    public List<WeaponCraftingRecipe> getRecipeList()
     {
         return this.recipes;
     }

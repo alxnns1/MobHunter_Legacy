@@ -42,6 +42,7 @@ public class MHBlocks
 
     public static BlockBbq blockBbq;
     public static BlockWeaponCraft blockWeaponCraft;
+    public static BlockArmourCraft blockArmourCraft;
 
     private static void regBlock(Block block, String oreDicName)
     {
@@ -81,6 +82,7 @@ public class MHBlocks
 
         regBlock(blockBbq = new BlockBbq());
         regBlock(blockWeaponCraft = new BlockWeaponCraft());
+        regBlock(blockArmourCraft = new BlockArmourCraft());
     }
 
     public static void regTileEntities()

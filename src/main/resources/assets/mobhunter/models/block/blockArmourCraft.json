@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "particle": "mobhunter:blocks/armour_table_side",
+        "down": "blocks/stone",
+        "up": "mobhunter:blocks/armour_table_top",
+        "north": "mobhunter:blocks/armour_table_side",
+        "east": "mobhunter:blocks/armour_table_side",
+        "south": "mobhunter:blocks/armour_table_side",
+        "west": "mobhunter:blocks/armour_table_side"
+    }
+}

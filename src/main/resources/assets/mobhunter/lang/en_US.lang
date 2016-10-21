@@ -445,6 +445,13 @@ gui.blockWeaponUpgrade.button.craft.ore=1 x Ore:
 gui.blockWeaponUpgrade.button.up=Up
 gui.blockWeaponUpgrade.button.down=Down
 
+gui.blockArmourUpgrade.button.craft.1.1=Upgrade Armour To:
+gui.blockArmourUpgrade.button.craft.1.2=Craft Armour:
+gui.blockArmourUpgrade.button.craft.2=Required Materials:
+gui.blockArmourUpgrade.button.craft.ore=1 x Ore:
+gui.blockArmourUpgrade.button.up=Up
+gui.blockArmourUpgrade.button.down=Down
+
 //ENTITIES
 
 //Lynians
