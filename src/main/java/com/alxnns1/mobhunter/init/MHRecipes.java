@@ -67,7 +67,7 @@ public class MHRecipes
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq), "w w", "wxw", "yzy", 'w', Items.IRON_INGOT, 'x', Items.FLINT_AND_STEEL, 'y', new ItemStack(Blocks.STONE), 'z', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockWeaponCraft), "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,14), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF));
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockArmourCraft), "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,11), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF));
+        //GameRegistry.addRecipe(new ItemStack(MHBlocks.blockArmourCraft), "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,11), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF));
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite, new ItemStack(MHItems.itemOre, 1, 1), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreDragonite, new ItemStack(MHItems.itemOre, 1, 2), 0.2f);
