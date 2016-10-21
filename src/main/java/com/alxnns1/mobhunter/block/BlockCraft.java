@@ -19,12 +19,14 @@ import javax.annotation.Nullable;
  */
 public class BlockCraft extends Block
 {
-    public BlockCraft()
+    public BlockCraft(String name)
     {
         super(Material.ROCK);
         setCreativeTab(MobHunter.MH_TAB);
         setHardness(2f);
         setResistance(10f);
+        setUnlocalizedName(name);
+        setRegistryName(name);
     }
 
     //Used to open the block's GUI

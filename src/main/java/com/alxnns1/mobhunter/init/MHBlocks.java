@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
-import com.alxnns1.mobhunter.block.BlockWeaponCraft;
 import com.alxnns1.mobhunter.item.ItemBlockBasic;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
@@ -41,8 +40,8 @@ public class MHBlocks
     public static BlockNatural blockHerb, blockShroom, blockBerry, blockBug, blockBone;
 
     public static BlockBbq blockBbq;
-    public static BlockWeaponCraft blockWeaponCraft;
-    public static BlockArmourCraft blockArmourCraft;
+    public static BlockCraft blockWeaponCraft;
+    public static BlockCraft blockArmourCraft;
 
     private static void regBlock(Block block, String oreDicName)
     {
@@ -81,8 +80,8 @@ public class MHBlocks
         regBlock(blockBone = new BlockBone());
 
         regBlock(blockBbq = new BlockBbq());
-        regBlock(blockWeaponCraft = new BlockWeaponCraft());
-        regBlock(blockArmourCraft = new BlockArmourCraft());
+        regBlock(blockWeaponCraft = new BlockCraft(Names.Blocks.WEAPON_CRAFT));
+        regBlock(blockArmourCraft = new BlockCraft(Names.Blocks.ARMOUR_CRAFT));
     }
 
     public static void regTileEntities()
