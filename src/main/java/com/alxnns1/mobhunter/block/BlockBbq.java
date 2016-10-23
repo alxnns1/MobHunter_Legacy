@@ -43,36 +43,38 @@ public class BlockBbq extends BlockContainer
         //setLightOpacity(0);
     }
 
+    @Override
     public TileEntity createNewTileEntity(World worldIn, int meta)
     {
         return new TileBbq();
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
 
-    /*
+    @Override
     public boolean isFullCube(IBlockState state)
     {
         return false;
     }
-    */
 
+    @Override
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
         return EnumBlockRenderType.MODEL;
     }
 
+    @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
     {
         TileBbq te = (TileBbq) world.getTileEntity(pos);
         return te == null || !te.isCooking() ? 0 : 14;
     }
 
+    @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         TileBbq te = (TileBbq) world.getTileEntity(pos);
@@ -116,10 +118,11 @@ public class BlockBbq extends BlockContainer
             type = EnumParticleTypes.FLAME;
         else
             type = EnumParticleTypes.SMOKE_NORMAL;
-        world.spawnParticle(type, x, y, z, 0, 0, 0, new int[0]);
+        world.spawnParticle(type, x, y, z, 0, 0, 0);
     }
 
     @SideOnly(Side.CLIENT)
+    @Override
     public void randomDisplayTick(IBlockState state, World worldIn, BlockPos pos, Random rand)
     {
         worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
