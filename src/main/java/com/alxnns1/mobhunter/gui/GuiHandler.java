@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.gui;
 
-import com.alxnns1.mobhunter.container.ContainerWeaponTable;
+import com.alxnns1.mobhunter.container.ContainerArmourCraft;
+import com.alxnns1.mobhunter.container.ContainerWeaponCraft;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +21,9 @@ public class GuiHandler implements IGuiHandler
 
         //Server side - returns instance of the container
         if(block == MHBlocks.blockWeaponCraft)
-            return new ContainerWeaponTable(player.inventory, world);
+            return new ContainerWeaponCraft(player.inventory, world);
+        else if(block == MHBlocks.blockArmourCraft)
+            return new ContainerArmourCraft(player.inventory, world);
 
         return null;
     }
@@ -32,9 +35,9 @@ public class GuiHandler implements IGuiHandler
 
         //Client side - returns instance of the gui
         if(block == MHBlocks.blockWeaponCraft)
-            return new GuiWeaponUpgrade(player.inventory, world);
+            return new GuiWeaponCraft(player.inventory, world);
         else if(block == MHBlocks.blockArmourCraft)
-            return new GuiArmourUpgrade(player.inventory, world);
+            return new GuiArmourCraft(player.inventory, world);
 
         return null;
     }

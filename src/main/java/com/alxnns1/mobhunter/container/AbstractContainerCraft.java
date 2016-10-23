@@ -1,7 +1,6 @@
 package com.alxnns1.mobhunter.container;
 
-import com.alxnns1.mobhunter.crafting.WeaponCraftingManager;
-import com.alxnns1.mobhunter.crafting.WeaponCraftingRecipe;
+import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -21,19 +20,19 @@ import java.util.List;
 /**
  * Created by Mark on 10/05/2016.
  */
-public class ContainerWeaponTable extends MHContainer
+public abstract class AbstractContainerCraft extends MHContainer
 {
     /** Used to store the currently viewable recipes for the buttons */
-    public List<WeaponCraftingRecipe> recipes;
+    public List<MHCraftingRecipe> recipes;
     public List<Boolean> recipesValid;
     /** This will be used to scroll through recipes */
     //TODO: Scroll through recipes
     public int recipeStart = 0;
 
-    public ContainerWeaponTable(InventoryPlayer invPlayer, World worldIn)
+    public AbstractContainerCraft(InventoryPlayer invPlayer, World worldIn)
     {
         super(invPlayer, null, worldIn);
-        recipes = new ArrayList<WeaponCraftingRecipe>(5);
+        recipes = new ArrayList<MHCraftingRecipe>(5);
         recipesValid = new ArrayList<Boolean>(5);
     }
 
@@ -128,9 +127,11 @@ public class ContainerWeaponTable extends MHContainer
         return required;
     }
 
-    private void reloadRecipes()
+    protected abstract List<MHCraftingRecipe> getRecipes();
+
+    protected void reloadRecipes()
     {
-        recipes = WeaponCraftingManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
+        recipes = getRecipes();
         recipesValid.clear();
         for(int i = 0; i < 5; i++)
         {
@@ -138,7 +139,7 @@ public class ContainerWeaponTable extends MHContainer
                 recipesValid.add(false);
             else
             {
-                WeaponCraftingRecipe r = recipes.get(i);
+                MHCraftingRecipe r = recipes.get(i);
                 recipesValid.add(r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
             }
         }
@@ -169,7 +170,7 @@ public class ContainerWeaponTable extends MHContainer
         {
             if(!world.isRemote)
             {
-                WeaponCraftingRecipe recipe = recipes.get(id);
+                MHCraftingRecipe recipe = recipes.get(id);
 
                 if(!playerIn.capabilities.isCreativeMode)
                 {

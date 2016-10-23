@@ -66,13 +66,16 @@ public class ItemMHSword extends ItemSword
     /**
      * Gets the current sharpness level from the ItemStack's metadata
      */
-    public EnumSharpness getSharpness(ItemStack stack)
+    public static EnumSharpness getSharpness(ItemStack stack)
     {
-        if(damageLevels != null) {
-            for (int i = 0; i < damageLevels.length; i++)
-                if ((stack.getMaxDamage() - stack.getItemDamage()) < damageLevels[i])
+        if(!(stack.getItem() instanceof ItemMHSword))
+            return null;
+        ItemMHSword sword = (ItemMHSword) stack.getItem();
+        if(sword.damageLevels != null) {
+            for (int i = 0; i < sword.damageLevels.length; i++)
+                if ((stack.getMaxDamage() - stack.getItemDamage()) < sword.damageLevels[i])
                     return EnumSharpness.getById(i);
-            return maxSharpness;
+            return sword.maxSharpness;
         }
         return EnumSharpness.RED;
     }
@@ -80,13 +83,17 @@ public class ItemMHSword extends ItemSword
     /**
      * Calculates the actual damage of this weapon using the sharpness
      */
-    public float getActualAttackDamage(ItemStack stack)
+    public static float getActualAttackDamage(ItemStack stack)
     {
+        if(!(stack.getItem() instanceof ItemMHSword))
+            return 0f;
+        ItemMHSword sword = (ItemMHSword) stack.getItem();
         EnumSharpness currentSharpness = getSharpness(stack);
-        return getDamageVsEntity() * currentSharpness.getDamageMult();
+        return currentSharpness == null ? sword.getDamageVsEntity() : sword.getDamageVsEntity() * currentSharpness.getDamageMult();
     }
 
-    public void repairSharpness(ItemStack stack, int amount){
+    public void repairSharpness(ItemStack stack, int amount)
+    {
         if(stack.getItemDamage()<amount)
             stack.setItemDamage(0);
         else

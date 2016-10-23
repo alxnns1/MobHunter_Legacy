@@ -5,19 +5,19 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 /**
- * Created by Mark on 06/07/2016.
+ * Created by Mark on 23/10/2016.
  */
-public class WeaponCraftingManager extends AbstractCraftngManager
+public class ArmourCraftingManager extends AbstractCraftngManager
 {
-    private static final WeaponCraftingManager instance = new WeaponCraftingManager();
+    private static final ArmourCraftingManager instance = new ArmourCraftingManager();
     private List<MHCraftingRecipe> recipes = Lists.newArrayList();
 
-    public static WeaponCraftingManager getInstance()
+    public static ArmourCraftingManager getInstance()
     {
         return instance;
     }
 
-    private WeaponCraftingManager() {}
+    private ArmourCraftingManager() {}
 
     @Override
     public List<MHCraftingRecipe> getRecipeList()

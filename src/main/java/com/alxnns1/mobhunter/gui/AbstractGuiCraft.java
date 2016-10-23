@@ -1,9 +1,8 @@
 package com.alxnns1.mobhunter.gui;
 
-import com.alxnns1.mobhunter.container.ContainerWeaponTable;
-import com.alxnns1.mobhunter.crafting.WeaponCraftingRecipe;
+import com.alxnns1.mobhunter.container.AbstractContainerCraft;
+import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.init.MHBlocks;
-import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.reference.Reference;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
@@ -11,39 +10,32 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Mark on 10/05/2016.
+ * Created by Mark on 23/10/2016.
  */
-public class GuiWeaponUpgrade extends GuiContainer
+public abstract class AbstractGuiCraft extends GuiContainer
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraft.png");
-    private static final String TOOLTIP = "gui.blockWeaponUpgrade.";
+    protected AbstractContainerCraft container;
 
-    private ContainerWeaponTable container;
-
-    public GuiWeaponUpgrade(InventoryPlayer invPlayer, World world)
+    public AbstractGuiCraft(AbstractContainerCraft container)
     {
-        super(new ContainerWeaponTable(invPlayer, world));
-        container = (ContainerWeaponTable) inventorySlots;
-        this.xSize = 256;
-        this.ySize = 203;
+        super(container);
+        this.container = container;
+        xSize = 256;
+        ySize = 203;
     }
 
     public void initGui()
@@ -56,6 +48,8 @@ public class GuiWeaponUpgrade extends GuiContainer
         buttonList.add(new ArrowButton(6, 44, 72, false));
     }
 
+    protected abstract List<String> getButtonTooltip(MHCraftingRecipe recipe);
+
     /**
      * Called from the main game loop to update the screen.
      */
@@ -67,7 +61,7 @@ public class GuiWeaponUpgrade extends GuiContainer
             UpgradeButton button = (UpgradeButton) buttonList.get(i);
             if(i < container.recipes.size() && container.recipes.get(i) != null)
             {
-                WeaponCraftingRecipe recipe = container.recipes.get(i);
+                MHCraftingRecipe recipe = container.recipes.get(i);
                 button.displayString = recipe.getRecipeOutput().getDisplayName();
                 button.setItem(recipe.getRecipeOutput());
                 button.enabled = container.recipesValid.get(i);
@@ -107,44 +101,9 @@ public class GuiWeaponUpgrade extends GuiContainer
             if(b.isMouseOver())
             {
                 //Get the recipe for the button
-                WeaponCraftingRecipe r = container.recipes.get(i);
+                MHCraftingRecipe r = container.recipes.get(i);
                 if(r == null) continue;
-                List<String> list = new ArrayList<String>();
-                String line1;
-                if(r.getKeyInput() != null && r.getKeyInput().getItem() instanceof ItemMHSword)
-                    line1 = I18n.format(TOOLTIP + "button.craft.1.1") + " ";
-                else
-                    line1 = I18n.format(TOOLTIP + "button.craft.1.2") + " ";
-                list.add(line1 + TextFormatting.AQUA + r.getRecipeOutput().getDisplayName());
-                list.add(I18n.format(TOOLTIP + "button.craft.2"));
-                //Get the materials which are not present in player inventory
-                ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, r.getInput());
-                //Add the materials to the tooltip, coloured yellow if player has enough and red if not
-                for(Object o : r.getInput())
-                {
-                    TextFormatting colour = TextFormatting.YELLOW;
-                    if(o instanceof ItemStack)
-                    {
-                        ItemStack stackO = (ItemStack) o;
-                        //Check if enough of the item exists in the inventory (If not, then item in tooltip is coloured red)
-                        for(Object remainingO : remainingItems)
-                        {
-                            if(     (remainingO instanceof ItemStack && stackO.isItemEqual((ItemStack) remainingO)) ||
-                                    (remainingO instanceof List && OreDictionary.containsMatch(false, (List<ItemStack>) remainingO, stackO)))
-                            {
-                                colour = TextFormatting.RED;
-                                break;
-                            }
-                        }
-                        list.add(((ItemStack) o).stackSize + " x " + colour + ((ItemStack) o).getDisplayName());
-                    }
-                    else if(o instanceof List)
-                    {
-                        //This basically gets the first ore dictionary string for the item.
-                        list.add(I18n.format(TOOLTIP + "button.craft.ore") + colour + OreDictionary.getOreName(OreDictionary.getOreIDs(((List<ItemStack>) o).get(0))[0]));
-                    }
-                }
-                b.setTooltip(list);
+                b.setTooltip(getButtonTooltip(r));
                 b.drawButtonForegroundLayer(mouseX - guiLeft, mouseY - guiTop);
             }
         }
@@ -159,7 +118,7 @@ public class GuiWeaponUpgrade extends GuiContainer
         {
             container.enchantItem(this.mc.thePlayer, button.id);
             //if(container.enchantItem(this.mc.thePlayer, button.id))
-                //button.enabled = false;
+            //button.enabled = false;
             mc.playerController.sendEnchantPacket(container.windowId, button.id);
         }
         else if(button instanceof ArrowButton) //Arrow button
@@ -244,11 +203,11 @@ public class GuiWeaponUpgrade extends GuiContainer
             FontRenderer fontrenderer = mc.fontRendererObj;
             mc.getTextureManager().bindTexture(guiImage);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            this.hovered = mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
             //Select appropriate button icon for button state
             int y = iconY;
             int textColour = 14737632;
-            if(!this.enabled)
+            if(!enabled)
             {
                 y += height; //Changes to "off" icon
                 textColour = 10526880; //Changes to darker text
@@ -263,7 +222,7 @@ public class GuiWeaponUpgrade extends GuiContainer
         public void drawButtonForegroundLayer(int mouseX, int mouseY)
         {
             if(!tooltipLines.isEmpty())
-                GuiWeaponUpgrade.this.drawHoveringText(tooltipLines, mouseX, mouseY);
+                drawHoveringText(tooltipLines, mouseX, mouseY);
         }
     }
 }

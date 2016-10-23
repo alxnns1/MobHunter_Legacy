@@ -440,7 +440,9 @@ tile.blockArmourCraft.name=Armour Crafting Table
 
 gui.blockWeaponUpgrade.button.craft.1.1=Upgrade Weapon To:
 gui.blockWeaponUpgrade.button.craft.1.2=Craft Weapon:
-gui.blockWeaponUpgrade.button.craft.2=Required Materials:
+gui.blockWeaponUpgrade.button.craft.2.1=Max Attack Damage:
+gui.blockWeaponUpgrade.button.craft.2.2=Max Sharpness:
+gui.blockWeaponUpgrade.button.craft.3=Required Materials:
 gui.blockWeaponUpgrade.button.craft.ore=1 x Ore:
 gui.blockWeaponUpgrade.button.up=Up
 gui.blockWeaponUpgrade.button.down=Down
