@@ -70,8 +70,8 @@ public class BlockBbq extends BlockContainer
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
     {
-        TileBbq te = (TileBbq) world.getTileEntity(pos);
-        return te == null || !te.isCooking() ? 0 : 14;
+        TileEntity te = world.getTileEntity(pos);
+        return te == null || !(te instanceof TileBbq) || !((TileBbq)te).isCooking() ? 0 : 14;
     }
 
     @Override
