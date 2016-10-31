@@ -132,8 +132,8 @@ item.consumable.mightSeed.name=Might Seed
 item.consumable.mightSeed.tooltip=Temporarily raises your Attack when ingested by improving energy flow.
 item.consumable.adamantSeed.name=Adamant Seed
 item.consumable.adamantSeed.tooltip=Temporarily raises your Defense when ingested by hardening tissue.
-item.consumable.nulberry.name=Nulberry
-item.consumable.nulberry.tooltip=A mysterious berry that cures various Blights and also protects from unknown viruses.
+item.consumable.nullberry.name=Nulberry
+item.consumable.nullberry.tooltip=A mysterious berry that cures various Blights and also protects from unknown viruses.
 item.berry.dragonfellBerry.name=Dragonfell Berry
 item.berry.dragonfellBerry.tooltip=A mysterious berry, rumored since ancient times to be loathed by dragons.
 item.berry.scatternut.name=Scatternut
@@ -248,6 +248,8 @@ item.monsterDrop.velocipreyHide.name=Velociprey Hide
 item.monsterDrop.velocipreyHide.tooltip=A hide stripped of it's scales. Used to join the plates in a suit of armour.
 item.monsterDrop.velocipreyScale.name=Velociprey Scale
 item.monsterDrop.velocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
+item.monsterDrop.velocipreyFang.name=Velociprey Fang
+item.monsterDrop.velocipreyFang.tooltip=The razor sharp fang of a velociprey.
 
 //Genprey
 item.monsterDrop.genpreyHide.name=Genprey Hide
@@ -256,6 +258,14 @@ item.monsterDrop.genpreyScale.name=Genprey Scale
 item.monsterDrop.genpreyScale.tooltip=Scale from a Genprey. Acts as camouflage in desert areas.
 item.monsterDrop.genpreyFang.name=Genprey Fang
 item.monsterDrop.genpreyFang.tooltip=The poisonous fang of a Genprey. The paralysing toxin works even on wyverns.
+
+//Ioprey
+item.monsterDrop.iopreyHide.name=Ioprey Hide
+item.monsterDrop.iopreyHide.tooltip=Descaled hide, often made into belts. Red belts are used in decorations.
+item.monsterDrop.iopreyScale.name=Ioprey Scale
+item.monsterDrop.iopreyScale.tooltip=Scale from an Ioprey. The poison irritates the skin so has been removed.
+item.monsterDrop.iopreyFang.name=Ioprey Fang
+item.monsterDrop.iopreyFang.tooltip=A fang filled with deadly poison. Handle with care!
 
 //Great Jaggi
 item.monsterDrop.greatJaggiHide.name=Great Jaggi Hide
@@ -292,6 +302,12 @@ item.weaponSerpentBitePlus.name=Serpent Bite+
 item.weaponSerpentBitePlus.tooltip=Serpent blade made from Velociprey parts.
 item.weaponDeadlock.name=Deadlock
 item.weaponDeadlock.tooltip=Serpent blade made from Velociprey parts.
+item.weaponHydraBite.name=Hydra Bite
+item.weaponHydraBite.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
+item.weaponHydraBitePlus.name=Hydra Bite+
+item.weaponHydraBitePlus.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
+item.weaponDeadlyPoison.name=Deadly Poison
+item.weaponDeadlyPoison.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
 
 item.weaponBoneKris.name=Bone Kris
 item.weaponBoneKris.tooltip=A simple and dependable bone dagger.

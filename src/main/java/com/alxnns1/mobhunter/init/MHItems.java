@@ -37,39 +37,81 @@ public class MHItems
     public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
     public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 6, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
 
-    public static ItemArmor armourDerringHelmet, armourDerringChestplate, armourDerringLeggings, armourDerringBoots,
+    public static ItemArmor
+            armourDerringHelmet, armourDerringChestplate, armourDerringLeggings, armourDerringBoots,
             armourHunterHelmet, armourHunterChestplate, armourHunterLeggings, armourHunterBoots,
             armourBoneHelmet, armourBoneChestplate, armourBoneLeggings, armourBoneBoots,
             armourAlloyHelmet, armourAlloyChestplate, armourAlloyLeggings, armourAlloyBoots;
 
-    public static ItemMHResource itemRawMeat;
+    public static ItemMHResource
+            itemRawMeat;
 
-    public static ItemMHPickaxe itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
+    public static ItemMHPickaxe
+            itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
 
-    public static ItemMHConsumable itemRareSteak, itemDoneSteak, itemBurntMeat;
+    public static ItemMHConsumable
+            itemRareSteak, itemDoneSteak, itemBurntMeat;
 
-    public static ItemMHSword weaponTest,
-            weaponHuntersKnife, weaponSoldiersDagger, weaponCommandersDagger, weaponSerpentBite, weaponSerpentBitePlus,
-            weaponDeadlock, weaponViperBite, weaponViperBitePlus, weaponDeathprize, weaponHuntersKnifePlus,
-            weaponHuntersDagger, weaponAssassinsDagger,
-            weaponBoneKris, weaponBoneKrisPlus, weaponChiefKris,
-            weaponRottonSword, weaponPlaguedSword, weaponInfestedSword,
-            weaponSkeletalSword, weaponSkeletalSwordPlus, weaponWitheredSword, weaponWitheredSwordPlus, weaponNecrosisBlade,
-            weaponMandiblade, weaponMandibladePlus, weaponStingingMandiblade, weaponPoisonStingblade,
-            weaponFearSword, weaponTerrorSword, weaponDreadSword,
-            weaponXenoblade, weaponXenobladePlus, weaponAstralSword, weaponAstralEndsword,
-            weaponSlimySword, weaponSlimySwordPlus, weaponCrystalizedSlimeblade, weaponMagmaticSlimeblade,
-            weaponBlazingSword, weaponBlazingTempest, weaponBlazingInferno;
+    public static ItemMHSword
+            weaponTest,
+            weaponHuntersKnife,
+            weaponSoldiersDagger,
+            weaponCommandersDagger,
+            weaponSerpentBite,
+            weaponSerpentBitePlus,
+            weaponDeadlock,
+            weaponHydraBite,
+            weaponHydraBitePlus,
+            weaponDeadlyPoison,
+            weaponViperBite,
+            weaponViperBitePlus,
+            weaponDeathprize,
+            weaponHuntersKnifePlus,
+            weaponHuntersDagger,
+            weaponAssassinsDagger,
+            weaponBoneKris,
+            weaponBoneKrisPlus,
+            weaponChiefKris,
+            weaponRottonSword,
+            weaponPlaguedSword,
+            weaponInfestedSword,
+            weaponSkeletalSword,
+            weaponSkeletalSwordPlus,
+            weaponWitheredSword,
+            weaponWitheredSwordPlus,
+            weaponNecrosisBlade,
+            weaponMandiblade,
+            weaponMandibladePlus,
+            weaponStingingMandiblade,
+            weaponPoisonStingblade,
+            weaponFearSword,
+            weaponTerrorSword,
+            weaponDreadSword,
+            weaponXenoblade,
+            weaponXenobladePlus,
+            weaponAstralSword,
+            weaponAstralEndsword,
+            weaponSlimySword,
+            weaponSlimySwordPlus,
+            weaponCrystalizedSlimeblade,
+            weaponMagmaticSlimeblade,
+            weaponBlazingSword,
+            weaponBlazingTempest,
+            weaponBlazingInferno;
 
-    public static ItemMHShield shieldTest;
+    public static ItemMHShield
+            shieldTest;
 
     /*
         These are the new meta items, and are just down here while testing.
      */
 
-    public static ItemMHResource itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemMisc;
-    public static ItemMHConsumable itemConsumable;
-    public static ItemMHDrink itemDrink;
+    public static ItemMHResource
+            itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemMisc;
+    public static ItemMHConsumable
+            itemConsumable;
+    public static ItemMHDrink
+            itemDrink;
 
     /**
      * Registers the items
@@ -114,6 +156,9 @@ public class MHItems
         regItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, 140, 200, 400, 580, 600));
+        regItem(weaponHydraBite = new ItemMHSword(Names.Items.HYDRA_BITE, 10f, 120, 200, 440, 500));
+        regItem(weaponHydraBitePlus = new ItemMHSword(Names.Items.HYDRA_BITE_PLUS, 15f, 120, 180, 380, 500));
+        regItem(weaponDeadlyPoison = new ItemMHSword(Names.Items.DEADLY_POISON, 20f, 140, 200, 400, 580, 600));
         regItem(weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, 140, 200, 400, 580, 600));

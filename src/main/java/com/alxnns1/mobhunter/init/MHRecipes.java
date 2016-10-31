@@ -60,12 +60,17 @@ public class MHRecipes
         wcm.addRecipeNullKey(MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 3));
         wcm.addRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus, new ItemStack(MHItems.itemMonsterDrop, 1, 26), new ItemStack(MHItems.itemMonsterDrop, 3, 17), new ItemStack(MHItems.itemMonsterDrop, 3, 18), new ItemStack(MHItems.itemOre, 5, 0));
         wcm.addRecipe(MHItems.weaponCommandersDagger, MHItems.weaponSoldiersDagger, new ItemStack(MHItems.itemMonsterDrop, 2, 27), new ItemStack(MHItems.itemMonsterDrop, 3, 26), new ItemStack(MHItems.itemOre, 5, 1));
-        wcm.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 23), new ItemStack(MHItems.itemMonsterDrop, 4, 25), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
-        //wcm.addRecipe(MHItems.weaponViperBitePlus, MHItems.weaponViperBite, new ItemStack(MHItems.itemMonsterDrop, 6, 25), new ItemStack(MHItems.itemMonsterDrop, 6, 0));
-        //wcm.addRecipe(MHItems.weaponDeathprize, MHItems.weaponViperBite, new ItemStack(MHItems.itemMonsterDrop, 9, 25), new ItemStack(MHItems.itemMonsterDrop, 9, 1));
         wcm.addRecipe(MHItems.weaponSerpentBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 20), new ItemStack(MHItems.itemMonsterDrop, 4, 22), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
         wcm.addRecipe(MHItems.weaponSerpentBitePlus, MHItems.weaponSerpentBite, new ItemStack(MHItems.itemMonsterDrop, 6, 22), new ItemStack(MHItems.itemMonsterDrop, 6, 0));
         wcm.addRecipe(MHItems.weaponDeadlock, MHItems.weaponSerpentBitePlus, new ItemStack(MHItems.itemMonsterDrop, 9, 22), new ItemStack(MHItems.itemMonsterDrop, 9, 1));
+        wcm.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife, new ItemStack(MHItems.itemMonsterDrop, 5, 23), new ItemStack(MHItems.itemMonsterDrop, 4, 25), new ItemStack(MHItems.itemMonsterDrop, 3, 0));
+        //TODO Add Stun Sac item for rest of Genprey swords
+        //wcm.addRecipe(MHItems.weaponViperBitePlus, MHItems.weaponViperBite, new ItemStack(MHItems.itemMonsterDrop, 6, 25), new ItemStack(MHItems.itemMonsterDrop, 6, 0));
+        //wcm.addRecipe(MHItems.weaponDeathprize, MHItems.weaponViperBitePlus, new ItemStack(MHItems.itemMonsterDrop, 9, 25), new ItemStack(MHItems.itemMonsterDrop, 9, 1));
+        wcm.addRecipe(MHItems.weaponHydraBite, MHItems.weaponHuntersKnife, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_HIDE, 5), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_FANG, 4), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 3));
+        //TODO Add Poison Sac item for rest of Ioprey swords
+        //wcm.addRecipe(MHItems.weaponHydraBitePlus, MHItems.weaponHydraBite, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_FANG, 6), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 6), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.POISON_SAC, 2));
+        //wcm.addRecipe(MHItems.weaponDeadlyPoison, MHItems.weaponHydraBitePlus, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_FANG, 9), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M, 9), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.POISON_SAC, 4));
         wcm.addRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 5));
         wcm.addRecipe(MHItems.weaponHuntersDagger, MHItems.weaponHuntersKnifePlus, new ItemStack(MHItems.itemOre, 4, 0), new ItemStack(MHItems.itemOre, 2, 1), new ItemStack(MHItems.itemBug, 6));
         wcm.addRecipe(MHItems.weaponAssassinsDagger, MHItems.weaponHuntersDagger, new ItemStack(MHItems.itemOre, 4, 0), new ItemStack(MHItems.itemOre, 2, 2), new ItemStack(MHItems.itemBug, 6));

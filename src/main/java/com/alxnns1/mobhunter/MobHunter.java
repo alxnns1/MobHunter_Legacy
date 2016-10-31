@@ -34,7 +34,7 @@ public class MobHunter
         @Override
         public Item getTabIconItem()
         {
-            return MHItems.itemMonsterDrop;
+            return MHItems.itemIcon;
         }
 
         @SideOnly(Side.CLIENT)
