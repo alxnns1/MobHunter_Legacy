@@ -1,6 +1,8 @@
 package com.alxnns1.mobhunter.init;
 
+import com.alxnns1.mobhunter.crafting.ArmourCraftingManager;
 import com.alxnns1.mobhunter.crafting.WeaponCraftingManager;
+import com.alxnns1.mobhunter.reference.MetaRef;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -26,11 +28,6 @@ public class MHRecipes
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 4), new ItemStack(MHItems.itemMisc, 1, 0), MHItems.itemRareSteak);
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 6), new ItemStack(MHItems.itemMisc, 1, 0), new ItemStack(MHItems.itemConsumable, 1, 8));
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 8), new ItemStack(MHItems.itemMisc, 1, 0), new ItemStack(MHItems.itemConsumable, 1, 9));
-
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringHelmet), "yzy", "y y", "   ", 'y', Items.STRING, 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringChestplate), "x x", "xyx", "zzz", 'x', new ItemStack(MHItems.itemMonsterDrop, 1, 0), 'y', Items.IRON_INGOT, 'z', Items.STRING);
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringLeggings), "yzy", "   ", "   ", 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 0), 'z', Items.IRON_INGOT);
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourDerringBoots), "   ", "y y", "z z", 'y', Items.STRING, 'z', new ItemStack(MHItems.itemMonsterDrop, 0));
 
         GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterHelmet), "xyx", "z z", "   ", 'x', Items.IRON_INGOT, 'y', new ItemStack(MHItems.itemOre, 1, 1), 'z', new ItemStack(MHItems.itemBug, 6));
         GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterChestplate), "w w", "xyx", "zxz", 'w', Items.IRON_INGOT, 'x', new ItemStack(MHItems.itemMonsterDrop, 18), 'y', new ItemStack(MHItems.itemOre, 1, 0), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
@@ -116,5 +113,11 @@ public class MHRecipes
         wcm.addRecipe(MHItems.weaponBlazingSword, MHItems.weaponBoneKris, new ItemStack(Items.BLAZE_ROD, 2), new ItemStack(Items.BLAZE_POWDER, 3));
         wcm.addRecipe(MHItems.weaponBlazingTempest, MHItems.weaponBlazingSword, new ItemStack(Items.BLAZE_ROD, 6), new ItemStack(Items.BLAZE_POWDER, 3));
         wcm.addRecipe(MHItems.weaponBlazingInferno, MHItems.weaponBlazingTempest, new ItemStack(Items.BLAZE_ROD, 3), new ItemStack(Items.BLAZE_POWDER, 3), new ItemStack(Items.FIRE_CHARGE, 2));
+
+        ArmourCraftingManager acm = ArmourCraftingManager.getInstance();
+        acm.addRecipeNullKey(MHItems.armourDerringHelmet, new ItemStack(Items.STRING, 4), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS"));
+        acm.addRecipeNullKey(MHItems.armourDerringChestplate, new ItemStack(Items.STRING, 3), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS", 4), Items.IRON_INGOT);
+        acm.addRecipeNullKey(MHItems.armourDerringLeggings, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS", 2), Items.IRON_INGOT);
+        acm.addRecipeNullKey(MHItems.armourDerringBoots, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS", 2), new ItemStack(Items.STRING, 2));
     }
 }

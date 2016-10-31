@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.container;
 
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -34,6 +35,7 @@ public abstract class AbstractContainerCraft extends MHContainer
         super(invPlayer, null, worldIn);
         recipes = new ArrayList<MHCraftingRecipe>(5);
         recipesValid = new ArrayList<Boolean>(5);
+        reloadRecipes();
     }
 
     @Override
@@ -151,6 +153,7 @@ public abstract class AbstractContainerCraft extends MHContainer
     @Override
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
+        LogHelper.info("Craft Matrix Changed");
         reloadRecipes();
         detectAndSendChanges();
     }
@@ -165,8 +168,8 @@ public abstract class AbstractContainerCraft extends MHContainer
     {
         ItemStack stack = inventory.getStackInSlot(0);
 
-        if(stack == null || recipes.isEmpty() || recipes.get(id) == null) return false;
-        if(playerIn.capabilities.isCreativeMode || checkHasAllItems(inventoryPlayer, recipes.get(id).getInput()))
+        if(recipes.isEmpty() || recipes.get(id) == null) return false;
+        if(checkHasAllItems(inventoryPlayer, recipes.get(id).getInput()))
         {
             if(!world.isRemote)
             {
@@ -194,7 +197,7 @@ public abstract class AbstractContainerCraft extends MHContainer
 
                 //Change key item to recipe output
                 ItemStack newItem = recipe.getRecipeOutput();
-                if(stack.isItemEnchanted())
+                if(stack != null && stack.isItemEnchanted())
                     //Copy over enchantments
                     EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
                 inventory.setInventorySlotContents(0, newItem);

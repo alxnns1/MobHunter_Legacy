@@ -1,7 +1,10 @@
 package com.alxnns1.mobhunter.reference;
 
+import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.util.LogHelper;
 import com.google.common.collect.Lists;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +69,36 @@ public class MetaRef
         }
     }
 
+    private static Item getItem(EnumItemType itemType)
+    {
+        switch(itemType)
+        {
+            case PLANT:
+                return MHItems.itemPlant;
+            case MUSHROOM:
+                return MHItems.itemMushroom;
+            case BERRY:
+                return MHItems.itemBerry;
+            case BUG:
+                return MHItems.itemBug;
+            case MONSTER_DROP:
+                return MHItems.itemMonsterDrop;
+            case ORE:
+                return MHItems.itemOre;
+            case ICON:
+                return MHItems.itemIcon;
+            case MISC:
+                return MHItems.itemMisc;
+            case CONSUMABLE:
+                return MHItems.itemConsumable;
+            case DRINK:
+                return MHItems.itemDrink;
+            default:
+                LogHelper.error("Who added an item that I didn't know about? Come on, own up!");
+                return null;
+        }
+    }
+
     public static void addMetaTo(EnumItemType itemType, String... subNames)
     {
         List<String> list = getList(itemType);
@@ -77,5 +110,17 @@ public class MetaRef
     {
         List<String> list = getList(itemType);
         return list != null ? list.indexOf(subName) : -1;
+    }
+
+    public static ItemStack getStack(EnumItemType itemType, String subName)
+    {
+        return getStack(itemType, subName, 1);
+    }
+
+    public static ItemStack getStack(EnumItemType itemType, String subName, int amount)
+    {
+        Item item = getItem(itemType);
+        int meta = getMeta(itemType, subName);
+        return item == null || meta == -1 ? null : new ItemStack(item, amount, meta);
     }
 }
