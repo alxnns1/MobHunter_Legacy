@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.container;
 
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -153,7 +154,6 @@ public abstract class AbstractContainerCraft extends MHContainer
     @Override
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-        LogHelper.info("Craft Matrix Changed");
         reloadRecipes();
         detectAndSendChanges();
     }
@@ -166,6 +166,8 @@ public abstract class AbstractContainerCraft extends MHContainer
     @SuppressWarnings("all")
     public boolean enchantItem(EntityPlayer playerIn, int id)
     {
+        LogHelper.info("Craft Item!");
+
         ItemStack stack = inventory.getStackInSlot(0);
 
         if(recipes.isEmpty() || recipes.get(id) == null) return false;
@@ -200,7 +202,11 @@ public abstract class AbstractContainerCraft extends MHContainer
                 if(stack != null && stack.isItemEnchanted())
                     //Copy over enchantments
                     EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
-                inventory.setInventorySlotContents(0, newItem);
+                boolean putInGuiSlot = !CommonUtil.isShiftKeyDown();
+                if(putInGuiSlot)
+                    inventory.setInventorySlotContents(0, newItem);
+                else
+                    mergeItemStack(newItem, slotInvStart, slotInvStart+36, true);
                 inventory.markDirty();
                 reloadRecipes();
             }

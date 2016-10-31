@@ -117,8 +117,6 @@ public abstract class AbstractGuiCraft extends GuiContainer
         if(button instanceof UpgradeButton)
         {
             container.enchantItem(this.mc.thePlayer, button.id);
-            //if(container.enchantItem(this.mc.thePlayer, button.id))
-            //button.enabled = false;
             mc.playerController.sendEnchantPacket(container.windowId, button.id);
         }
         else if(button instanceof ArrowButton) //Arrow button
