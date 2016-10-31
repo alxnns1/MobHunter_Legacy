@@ -186,7 +186,7 @@ public class MHItems
                 Names.Items.HERCUDROME,
                 Names.Items.RARE_SCARAB,
                 Names.Items.HONEY)
-                .addToMetaRef(MetaRef.EnumItemType.BERRY));
+                .addToMetaRef(MetaRef.EnumItemType.BUG));
         regItem(itemMonsterDrop = new ItemMHResource("monsterDrop",
                 Names.Items.MONSTER_BONE_S,
                 Names.Items.MONSTER_BONE_M,

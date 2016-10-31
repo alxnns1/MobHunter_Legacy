@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.init;
 import com.alxnns1.mobhunter.crafting.ArmourCraftingManager;
 import com.alxnns1.mobhunter.crafting.WeaponCraftingManager;
 import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,21 +30,6 @@ public class MHRecipes
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 6), new ItemStack(MHItems.itemMisc, 1, 0), new ItemStack(MHItems.itemConsumable, 1, 8));
         GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 8), new ItemStack(MHItems.itemMisc, 1, 0), new ItemStack(MHItems.itemConsumable, 1, 9));
 
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterHelmet), "xyx", "z z", "   ", 'x', Items.IRON_INGOT, 'y', new ItemStack(MHItems.itemOre, 1, 1), 'z', new ItemStack(MHItems.itemBug, 6));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterChestplate), "w w", "xyx", "zxz", 'w', Items.IRON_INGOT, 'x', new ItemStack(MHItems.itemMonsterDrop, 18), 'y', new ItemStack(MHItems.itemOre, 1, 0), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterLeggings), "xyx", "z z", "   ", 'x', new ItemStack(MHItems.itemOre, 1, 1), 'y', new ItemStack(MHItems.itemBug, 6), 'z', Items.IRON_INGOT);
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourHunterBoots), "   ", "y y", "z z", 'y', Items.IRON_INGOT, 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneHelmet), "xyx", "z z", "   ", 'x', new ItemStack(MHItems.itemMonsterDrop, 1, 2), 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 3), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 8));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneChestplate), "w w", "xyx", "xzx", 'w', new ItemStack(MHItems.itemMonsterDrop, 1, 0), 'x', new ItemStack(MHItems.itemMonsterDrop, 1, 2), 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 5), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 9));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneLeggings), "wxw", "y y", "z z", 'w', new ItemStack(MHItems.itemMonsterDrop, 1, 15), 'x', Items.STRING, 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 2), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourBoneBoots), "   ", "y y", "z z", 'y', new ItemStack(MHItems.itemMonsterDrop, 1, 2), 'z', new ItemStack(MHItems.itemMonsterDrop, 1, 1));
-
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyHelmet), "xyx", "z z", "   ", 'x', new ItemStack(MHItems.itemOre, 1, 1), 'y', new ItemStack(MHItems.itemOre, 1, 0), 'z', Items.IRON_INGOT);
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyChestplate), "x x", "yxy", "yzy", 'x', new ItemStack(MHItems.itemOre, 1, 1), 'y', Items.IRON_INGOT, 'z', new ItemStack(MHItems.itemOre, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyLeggings), "xyx", "z z", "y y", 'x', new ItemStack(MHItems.itemOre, 1, 1), 'y', Items.IRON_INGOT, 'z', new ItemStack(MHItems.itemMonsterDrop, 0));
-        GameRegistry.addRecipe(new ItemStack(MHItems.armourAlloyBoots), "   ", "y y", "z z", 'y', Items.IRON_INGOT, 'z', new ItemStack(MHItems.itemOre, 1, 1));
-
         GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemOre, 1, 1), 'y', new ItemStack(Items.STICK));
         GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemOre, 1, 2), 'y', new ItemStack(Items.STICK));
         GameRegistry.addRecipe(new ItemStack(MHItems.itemGossamitePickaxe), "xxx", " y ", " y ", 'x', new ItemStack(MHItems.itemOre, 1, 3), 'y', new ItemStack(Items.STICK));
@@ -64,7 +50,7 @@ public class MHRecipes
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq), "w w", "wxw", "yzy", 'w', Items.IRON_INGOT, 'x', Items.FLINT_AND_STEEL, 'y', new ItemStack(Blocks.STONE), 'z', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat, new ItemStack(MHItems.itemRareSteak), 0.2f);
         GameRegistry.addRecipe(new ItemStack(MHBlocks.blockWeaponCraft), "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,14), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF));
-        //GameRegistry.addRecipe(new ItemStack(MHBlocks.blockArmourCraft), "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,11), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF));
+        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockArmourCraft), "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,11), 'x', new ItemStack(Blocks.STONE), 'y', new ItemStack(Blocks.CHEST), 'z', new ItemStack(Blocks.BOOKSHELF));
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite, new ItemStack(MHItems.itemOre, 1, 1), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreDragonite, new ItemStack(MHItems.itemOre, 1, 2), 0.2f);
@@ -115,9 +101,26 @@ public class MHRecipes
         wcm.addRecipe(MHItems.weaponBlazingInferno, MHItems.weaponBlazingTempest, new ItemStack(Items.BLAZE_ROD, 3), new ItemStack(Items.BLAZE_POWDER, 3), new ItemStack(Items.FIRE_CHARGE, 2));
 
         ArmourCraftingManager acm = ArmourCraftingManager.getInstance();
-        acm.addRecipeNullKey(MHItems.armourDerringHelmet, new ItemStack(Items.STRING, 4), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS"));
-        acm.addRecipeNullKey(MHItems.armourDerringChestplate, new ItemStack(Items.STRING, 3), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS", 4), Items.IRON_INGOT);
-        acm.addRecipeNullKey(MHItems.armourDerringLeggings, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS", 2), Items.IRON_INGOT);
-        acm.addRecipeNullKey(MHItems.armourDerringBoots, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, "monsterBoneS", 2), new ItemStack(Items.STRING, 2));
+        acm.addRecipeNullKey(MHItems.armourDerringHelmet, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
+        acm.addRecipeNullKey(MHItems.armourDerringChestplate, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), Items.IRON_INGOT);
+        acm.addRecipeNullKey(MHItems.armourDerringLeggings, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S), Items.IRON_INGOT);
+        acm.addRecipeNullKey(MHItems.armourDerringBoots, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
+
+        acm.addRecipeNullKey(MHItems.armourHunterHelmet, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT), Items.IRON_INGOT, MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.GLUEGLOPPER, 2));
+        acm.addRecipeNullKey(MHItems.armourHunterChestplate, new ItemStack(Items.IRON_INGOT, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE, 3), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL), MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.IVY));
+        acm.addRecipeNullKey(MHItems.armourHunterLeggings, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 2), Items.IRON_INGOT, MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.GLUEGLOPPER));
+        acm.addRecipeNullKey(MHItems.armourHunterBoots, Items.IRON_INGOT, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2));
+
+        acm.addRecipeNullKey(MHItems.armourBoneHelmet, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.UNKNOWN_SKULL), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.ALTAROTH_JAW));
+        acm.addRecipeNullKey(MHItems.armourBoneChestplate, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 4), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JUMBO_BONE), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.ALTAROTH_STOMACH, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_FLUID));
+        //TODO Add Sharp Bone Item for the rest of the bone armour
+        //acm.addRecipeNullKey(MHItems.armourBoneLeggings, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG, 2));
+        //acm.addRecipeNullKey(MHItems.armourBoneBoots, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG));
+
+        acm.addRecipeNullKey(MHItems.armourAlloyHelmet, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 3), MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2), new ItemStack(Items.IRON_INGOT, 3));
+        acm.addRecipeNullKey(MHItems.armourAlloyChestplate, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 5), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), new ItemStack(Items.IRON_INGOT, 6), MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2));
+        acm.addRecipeNullKey(MHItems.armourAlloyLeggings, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), new ItemStack(Items.IRON_INGOT, 3));
+        acm.addRecipeNullKey(MHItems.armourAlloyBoots, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 4), MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2), new ItemStack(Items.IRON_INGOT, 2));
+
     }
 }
