@@ -156,50 +156,119 @@ public class MHItems
          */
 
         regItem(itemPlant = new ItemMHResource("plant",
-                "ivy", "sleepHerb", "sapPlant", "felvine", "gloamgrassRoot", "hotPepper")
+                Names.Items.IVY,
+                Names.Items.SLEEP_HERB,
+                Names.Items.SAP_PLANT,
+                Names.Items.FELVINE,
+                Names.Items.GLOAMGRASS_ROOT,
+                Names.Items.HOT_PEPPER)
                 .addToMetaRef(MetaRef.EnumItemType.PLANT));
         regItem(itemMushroom = new ItemMHResource("mushroom",
-                "blueMushroom", "dragonToadstool")
+                Names.Items.BLUE_MUSHROOM,
+                Names.Items.DRAGON_TOADSTOOL)
                 .addToMetaRef(MetaRef.EnumItemType.MUSHROOM));
         regItem(itemBerry = new ItemMHResource("berry",
-                "huskberry", "paintberry", "dragonfellBerry", "scatternut", "latchberry")
+                Names.Items.HUSKBERRY,
+                Names.Items.PAINTBERRY,
+                Names.Items.DRAGONFELL_BERRY,
+                Names.Items.SCATTERNUT,
+                Names.Items.LATCHBERRY)
                 .addToMetaRef(MetaRef.EnumItemType.BERRY));
         regItem(itemBug = new ItemMHResource("bug",
-                "insectHusk", "stinkHopper", "snakebeeLarva", "godbug", "flashbug", "thunderbug", "glueglopper",
-                "killerBeetle", "hercudrome", "rareScarab", "honey")
+                Names.Items.INSECT_HUSK,
+                Names.Items.STINKHOPPER,
+                Names.Items.SNAKEBEE_LARVA,
+                Names.Items.GODBUG,
+                Names.Items.FLASHBUG,
+                Names.Items.THUNDERBUG,
+                Names.Items.GLUEGLOPPER,
+                Names.Items.KILLER_BEETLE,
+                Names.Items.HERCUDROME,
+                Names.Items.RARE_SCARAB,
+                Names.Items.HONEY)
                 .addToMetaRef(MetaRef.EnumItemType.BERRY));
         regItem(itemMonsterDrop = new ItemMHResource("monsterDrop",
-                "monsterBoneS", "monsterBoneM", "mysteryBone", "unknownSkull", "bruteBone", "jumboBone", "dung",
-                "boneHusk",
-                "altarothJaw", "altarothStomach",
-                "kelbiHorn", "warmPelt",
-                "gargwaFeather", "steelEgg",
-                "monsterFluid",
-                "birdWyvernFang",
-                "screamerSac",
-                "jaggiHide", "jaggiScale", "jaggiFang",
-                "velocipreyHide", "velocipreyScale", "velocipreyFang",
-                "genpreyHide", "genpreyScale", "genpreyFang",
-                "greatJaggiHide", "greatJaggiClaw", "greatJaggiHead", "kingsFrill")
+                Names.Items.MONSTER_BONE_S,
+                Names.Items.MONSTER_BONE_M,
+                Names.Items.MYSTERY_BONE,
+                Names.Items.UNKNOWN_SKULL,
+                Names.Items.BRUTE_BONE,
+                Names.Items.JUMBO_BONE,
+                Names.Items.DUNG,
+                Names.Items.BONE_HUSK,
+                Names.Items.ALTAROTH_JAW,
+                Names.Items.ALTAROTH_STOMACH,
+                Names.Items.KELBI_HORN,
+                Names.Items.WARM_PELT,
+                Names.Items.GARGWA_FEATHER,
+                Names.Items.STEEL_EGG,
+                Names.Items.MONSTER_FLUID,
+                Names.Items.BIRD_WYVERN_FANG,
+                Names.Items.SCREAMER_SAC,
+                Names.Items.JAGGI_HIDE,
+                Names.Items.JAGGI_SCALE,
+                Names.Items.JAGGI_FANG,
+                Names.Items.VELOCIPREY_HIDE,
+                Names.Items.VELOCIPREY_SCALE,
+                Names.Items.VELOCIPREY_FANG,
+                Names.Items.GENPREY_HIDE,
+                Names.Items.GENPREY_SCALE,
+                Names.Items.GENPREY_FANG,
+                Names.Items.IOPREY_HIDE,
+                Names.Items.IOPREY_SCALE,
+                Names.Items.IOPREY_FANG,
+                Names.Items.GREAT_JAGGI_HIDE,
+                Names.Items.GREAT_JAGGI_CLAW,
+                Names.Items.GREAT_JAGGI_HEAD,
+                Names.Items.KINGS_FRILL)
                 .addToMetaRef(MetaRef.EnumItemType.MONSTER_DROP));
         regItem(itemOre = new ItemMHResource("ore",
-                "earthCrystal", "machaliteIngot", "dragoniteIngot", "gossamiteIngot", "lightCrystal", "iceCrystal")
+                Names.Items.EARTH_CRYSTAL,
+                Names.Items.MACHALITE_INGOT,
+                Names.Items.DRAGONITE_INGOT,
+                Names.Items.GOSSAMITE_INGOT,
+                Names.Items.LIGHT_CRYSTAL,
+                Names.Items.ICE_CRYSTAL)
                 .addToMetaRef(MetaRef.EnumItemType.ORE));
         regItem(itemIcon = new ItemMHResource("icon", false,
-                "greatJaggi", "gendrome", "iodrome", "velocidrome", "kirin")
+                Names.Items.ICON_GREAT_JAGGI,
+                Names.Items.ICON_GENDROME,
+                Names.Items.ICON_IODROME,
+                Names.Items.ICON_VELOCIDROME,
+                Names.Items.ICON_KIRIN)
                 .addToMetaRef(MetaRef.EnumItemType.ICON));
         regItem(itemMisc = new ItemMHResource("misc",
-                "catalyst", "whetstone", "miniWhetstone")
+                Names.Items.CATALYST,
+                Names.Items.WHETSTONE,
+                Names.Items.MINI_WHETSTONE)
                 .addToMetaRef(MetaRef.EnumItemType.MISC));
         regItem(itemConsumable = new ItemMHConsumable("consumable",
-                "herb", "antidoteHerb", "fireHerb",
-                "nitroshroom", "parashroom", "toadstool", "exciteshroom", "mopeshroom",
-                "mightSeed", "adamantSeed", "nullberry", "needleberry", "bomberry",
-                "bitterbug")
+                Names.Items.HERB,
+                Names.Items.ANTIDOTE_HERB,
+                Names.Items.FIRE_HERB,
+                Names.Items.NITROSHROOM,
+                Names.Items.PARASHROOM,
+                Names.Items.TOADSTOOL,
+                Names.Items.EXCITESHROOM,
+                Names.Items.MOPESHROOM,
+                Names.Items.MIGHT_SEED,
+                Names.Items.ADAMANT_SEED,
+                Names.Items.NULBERRY,
+                Names.Items.NEEDLEBERRY,
+                Names.Items.BOMBERRY,
+                Names.Items.BITTERBUG)
                 .addToMetaRef(MetaRef.EnumItemType.CONSUMABLE));
         regItem(itemDrink = new ItemMHDrink("drink",
-                "potion", "megaPotion", "antidote", "immunizer", "dashJuice", "megaDashJuice", "demondrug",
-                "megaDemondrug", "armourskin", "megaArmourskin")
+                Names.Items.POTION,
+                Names.Items.MEGA_POTION,
+                Names.Items.ANTIDOTE,
+                Names.Items.IMMUNIZER,
+                Names.Items.DASH_JUICE,
+                Names.Items.MEGA_DASH_JUICE,
+                Names.Items.DEMONDRUG,
+                Names.Items.MEGA_DEMONDRUG,
+                Names.Items.ARMOURSKIN,
+                Names.Items.MEGA_ARMOURSKIN)
                 .addToMetaRef(MetaRef.EnumItemType.DRINK));
 
         OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));

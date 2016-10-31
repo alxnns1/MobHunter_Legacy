@@ -106,6 +106,14 @@ public class MHEntities
                 BiomeDictionary.Type.SWAMP,
                 BiomeDictionary.Type.SANDY,
                 BiomeDictionary.Type.WASTELAND});
+        registerMobWithEgg(EntityIoprey.class, "Ioprey", 0xdf2020, 0x0a0a0a);
+        addSpawn(EntityIoprey.class, Config.iopreySpawnChance, 3, 7, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.MOUNTAIN,});
 
         registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
         /*
@@ -125,6 +133,7 @@ public class MHEntities
             RenderingRegistry.registerEntityRenderingHandler(EntityJaggia.class, RenderJaggia.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityVelociprey.class, RenderVelociprey.FACTORY);
             RenderingRegistry.registerEntityRenderingHandler(EntityGenprey.class, RenderGenprey.FACTORY);
+            RenderingRegistry.registerEntityRenderingHandler(EntityIoprey.class, RenderIoprey.FACTORY);
 
             RenderingRegistry.registerEntityRenderingHandler(EntityGreatJaggi.class, RenderGreatJaggi.FACTORY);
             /*

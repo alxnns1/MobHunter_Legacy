@@ -1,30 +1,32 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
-import com.alxnns1.mobhunter.reference.Config;
+import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.passive.*;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 /**
- * Created by Alex on 27/04/2016.
+ * Created by Alex on 10/06/2016.
  */
-public class EntityJaggi extends EntityMHBirdWyvern
-{
-    public EntityJaggi(World worldIn)
+public class EntityIoprey extends EntityMHBirdWyvern {
+    public EntityIoprey(World worldIn)
     {
         super(worldIn);
-        this.setSize(1.0F, 1.0F);
+        this.setSize(1.5F, 1.8125F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
@@ -38,7 +40,7 @@ public class EntityJaggi extends EntityMHBirdWyvern
     @Override
     public float getEyeHeight()
     {
-        return 1.375F;
+        return 2.5625F;
     }
 
     protected Item getDropItem()
@@ -63,14 +65,12 @@ public class EntityJaggi extends EntityMHBirdWyvern
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
-                if(i<40){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_FANG));
-                }else if(i<69){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_HIDE));
-                }else if(i<92){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE));
+                if(i<42){
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_FANG));
+                }else if(i<75){
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_SCALE));
                 }else if(i<100){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_HIDE));
                 }
             }
         }
@@ -82,24 +82,20 @@ public class EntityJaggi extends EntityMHBirdWyvern
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
-        setBaseHealth(9);
+        setBaseHealth(15);
         setBaseAttack(3);
         setBaseSpeed(0.3);
         setBaseKnockback(0.1);
-        double rand = this.rand.nextDouble();
-        if(rand< Config.greatJaggiChance){
-            EntityGreatJaggi great = new EntityGreatJaggi(worldObj);
-            great.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
-            great.onInitialSpawn(difficulty,livingdata);
-            worldObj.spawnEntityInWorld(great);
-            this.setDead();
-        }else if(rand<Config.jaggiaChance){
-            EntityJaggia jaggia = new EntityJaggia(worldObj);
-            jaggia.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
-            jaggia.onInitialSpawn(difficulty,livingdata);
-            worldObj.spawnEntityInWorld(jaggia);
+        /*
+        double rand = Math.random();
+        if(rand<0.1){
+            EntityIodrome drome = new EntityIodrome(worldObj);
+            worldObj.spawnEntityInWorld(drome);
+            drome.setPosition(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ());
             this.setDead();
         }
+        */
         return super.onInitialSpawn(difficulty, livingdata);
     }
+
 }

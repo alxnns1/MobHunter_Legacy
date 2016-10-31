@@ -41,6 +41,7 @@ public class ConfigHandler
         Config.jaggiSpawnChance = config.getInt("jaggiSpawnChance", MOBS, Config.jaggiSpawnChance, 0, 1000, "Natural spawn chance for Jaggi");
         Config.velocipreySpawnChance = config.getInt("velocipreySpawnChance", MOBS, Config.velocipreySpawnChance, 0, 1000, "Natural spawn chance for Velociprey");
         Config.genpreySpawnChance = config.getInt("genpreySpawnChance", MOBS, Config.genpreySpawnChance, 0, 1000, "Natural spawn chance for Genprey");
+        Config.iopreySpawnChance = config.getInt("iopreySpawnChance", MOBS, Config.iopreySpawnChance, 0, 1000, "Natural spawn chance for Ioprey");
 
         Config.jaggiaChance = config.getFloat("jaggiaChance", MOBS, (float) Config.jaggiaChance, 0f, 1f, "The chance for a Jaggi to turn into a Jaggia on spawn (if it doesn't turn into a Great Jaggi)");
         Config.greatJaggiChance = config.getFloat("greatJaggiChance", MOBS, (float) Config.greatJaggiChance, 0f, 1f, "The chance for a Jaggi to turn into a Great Jaggi on spawn");
