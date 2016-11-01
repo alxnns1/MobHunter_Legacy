@@ -58,10 +58,11 @@ public abstract class AbstractGuiCraft extends GuiContainer
         for(int i = 0; i < 5; i++)
         {
             //Update buttons with recipes
+            int recipeActualI = container.recipeStart + i;
             UpgradeButton button = (UpgradeButton) buttonList.get(i);
-            if(i < container.recipes.size() && container.recipes.get(i) != null)
+            if(recipeActualI < container.recipes.size() && container.recipes.get(recipeActualI) != null)
             {
-                MHCraftingRecipe recipe = container.recipes.get(i);
+                MHCraftingRecipe recipe = container.recipes.get(recipeActualI);
                 button.displayString = recipe.getRecipeOutput().getDisplayName();
                 button.setItem(recipe.getRecipeOutput());
                 button.enabled = container.recipesValid.get(i);
@@ -73,6 +74,10 @@ public abstract class AbstractGuiCraft extends GuiContainer
                 button.enabled = false;
             }
         }
+
+        //Update arrow buttons
+        ((ArrowButton) buttonList.get(5)).enabled = container.recipeStart > 0;
+        ((ArrowButton) buttonList.get(6)).enabled = container.recipes.size() > container.recipeStart + 5;
     }
 
     @Override
@@ -95,13 +100,14 @@ public abstract class AbstractGuiCraft extends GuiContainer
         if(container.recipes == null || container.recipes.isEmpty()) return;
         for(int i = 0; i < 5; i++)
         {
-            if(container.recipes.size() < i + 1)
+            int recipeActualI = container.recipeStart + i;
+            if(container.recipes.size() < recipeActualI + 1)
                 break;
             Button b = (Button) buttonList.get(i);
             if(b.isMouseOver())
             {
                 //Get the recipe for the button
-                MHCraftingRecipe r = container.recipes.get(i);
+                MHCraftingRecipe r = container.recipes.get(recipeActualI);
                 if(r == null) continue;
                 b.setTooltip(getButtonTooltip(r));
                 b.drawButtonForegroundLayer(mouseX - guiLeft, mouseY - guiTop);
@@ -119,11 +125,17 @@ public abstract class AbstractGuiCraft extends GuiContainer
             container.enchantItem(this.mc.thePlayer, button.id);
             mc.playerController.sendEnchantPacket(container.windowId, button.id);
         }
-        else if(button instanceof ArrowButton) //Arrow button
+        else if(button instanceof ArrowButton)
         {
+            //Use the same enchant method for arrow buttons but ids -1 for up and -2 for down.
+            int id = ((ArrowButton) button).isUpArrow() ? -1 : -2;
+            container.enchantItem(this.mc.thePlayer, id);
+            mc.playerController.sendEnchantPacket(container.windowId, id);
+            /*
             PacketBuffer buf = new PacketBuffer(Unpooled.buffer());
             buf.writeBoolean(((ArrowButton)button).isUpArrow());
             mc.getConnection().sendPacket(new CPacketCustomPayload("MH|WUPage", buf));
+            */
         }
     }
 

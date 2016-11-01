@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -52,10 +53,6 @@ public abstract class AbstractContainerCraft extends MHContainer
     {
         addSlotToContainer(new Slot(inventory, 0, 14, 53)
         {
-            /**
-             * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in the case
-             * of armor slots)
-             */
             public int getSlotStackLimit()
             {
                 return 1;
@@ -132,18 +129,43 @@ public abstract class AbstractContainerCraft extends MHContainer
 
     protected abstract List<MHCraftingRecipe> getRecipes();
 
+    /**
+     * Gets the recipes for the given key item in the slot
+     */
     protected void reloadRecipes()
     {
         recipes = getRecipes();
-        recipesValid.clear();
-        for(int i = 0; i < 5; i++)
+        recipesValid = new ArrayList<Boolean>(Arrays.asList(false, false, false, false, false));
+        recipeStart = 0;
+
+        //Crafting buttons
+        for(int i = recipeStart; i < recipeStart + 5; i++)
         {
             if(recipes.size() < i + 1)
-                recipesValid.add(false);
+                recipesValid.set(i, false);
             else
             {
                 MHCraftingRecipe r = recipes.get(i);
-                recipesValid.add(r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
+                recipesValid.set(i, r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
+            }
+        }
+    }
+
+    /**
+     * Refreshes the view of recipes in the GUI (normally done after an arrow has been clicked)
+     */
+    protected void refreshRecipes()
+    {
+        LogHelper.info("Refreshing recipes - start: " + recipeStart);
+        for(int i = 0; i < 5; i++)
+        {
+            int recipeActualI = recipeStart + i;
+            if(recipes.size() < recipeActualI + 1)
+                recipesValid.set(i, false);
+            else
+            {
+                MHCraftingRecipe r = recipes.get(recipeActualI);
+                recipesValid.set(i, r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
             }
         }
     }
@@ -166,54 +188,68 @@ public abstract class AbstractContainerCraft extends MHContainer
     @SuppressWarnings("all")
     public boolean enchantItem(EntityPlayer playerIn, int id)
     {
-        LogHelper.info("Craft Item!");
-
-        ItemStack stack = inventory.getStackInSlot(0);
-
-        if(recipes.isEmpty() || recipes.get(id) == null) return false;
-        if(checkHasAllItems(inventoryPlayer, recipes.get(id).getInput()))
+        switch(id)
         {
-            if(!world.isRemote)
-            {
-                MHCraftingRecipe recipe = recipes.get(id);
+            case -1: //Up Arrow
+                int oldStart = recipeStart;
+                decRecipeStart();
+                LogHelper.info("Old Start: " + oldStart + "    New Start: " + recipeStart);
+                refreshRecipes();
+                return true;
+            case -2: //Down Arrow
+                int oldStart2 = recipeStart;
+                incRecipeStart();
+                LogHelper.info("Old Start: " + oldStart2 + "    New Start: " + recipeStart);
+                refreshRecipes();
+                return true;
+            default: //Craft Button
+                ItemStack stack = inventory.getStackInSlot(0);
+                int actualRecipeI = id + recipeStart;
 
-                if(!playerIn.capabilities.isCreativeMode)
+                if(recipes.isEmpty() || recipes.get(actualRecipeI) == null) return false;
+                if(checkHasAllItems(inventoryPlayer, recipes.get(actualRecipeI).getInput()))
                 {
-                    //Remove ingredients from player inventory
-                    for(Object item : recipe.getInput())
+                    if(!world.isRemote)
                     {
-                        if(item instanceof ItemStack)
-                        {
-                            ItemStack toRemove = (ItemStack) item;
-                            playerIn.inventory.clearMatchingItems(toRemove.getItem(), toRemove.getMetadata(), toRemove.stackSize, null);
-                        }
-                        else if(item instanceof List)
-                        {
-                            List<ItemStack> toRemove = (List<ItemStack>) item;
-                            for(ItemStack s : toRemove)
-                                if(playerIn.inventory.clearMatchingItems(s.getItem(), s.getMetadata(), 1, null) > 0)
-                                    break;
-                        }
-                    }
-                }
+                        MHCraftingRecipe recipe = recipes.get(actualRecipeI);
 
-                //Change key item to recipe output
-                ItemStack newItem = recipe.getRecipeOutput();
-                if(stack != null && stack.isItemEnchanted())
-                    //Copy over enchantments
-                    EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
-                boolean putInGuiSlot = !CommonUtil.isShiftKeyDown();
-                if(putInGuiSlot)
-                    inventory.setInventorySlotContents(0, newItem);
-                else
-                    mergeItemStack(newItem, slotInvStart, slotInvStart+36, true);
-                inventory.markDirty();
-                reloadRecipes();
-            }
-            return true;
+                        if(!playerIn.capabilities.isCreativeMode)
+                        {
+                            //Remove ingredients from player inventory
+                            for(Object item : recipe.getInput())
+                            {
+                                if(item instanceof ItemStack)
+                                {
+                                    ItemStack toRemove = (ItemStack) item;
+                                    playerIn.inventory.clearMatchingItems(toRemove.getItem(), toRemove.getMetadata(), toRemove.stackSize, null);
+                                }
+                                else if(item instanceof List)
+                                {
+                                    List<ItemStack> toRemove = (List<ItemStack>) item;
+                                    for(ItemStack s : toRemove)
+                                        if(playerIn.inventory.clearMatchingItems(s.getItem(), s.getMetadata(), 1, null) > 0)
+                                            break;
+                                }
+                            }
+                        }
+
+                        //Change key item to recipe output
+                        ItemStack newItem = recipe.getRecipeOutput();
+                        if(stack != null && stack.isItemEnchanted())
+                            //Copy over enchantments
+                            EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
+                        boolean putInGuiSlot = !CommonUtil.isShiftKeyDown();
+                        if(putInGuiSlot)
+                            inventory.setInventorySlotContents(0, newItem);
+                        else
+                            mergeItemStack(newItem, slotInvStart, slotInvStart + 36, true);
+                        inventory.markDirty();
+                        reloadRecipes();
+                    }
+                    return true;
+                }
+                else return false;
         }
-        else
-            return false;
     }
 
     /**
@@ -301,5 +337,20 @@ public abstract class AbstractContainerCraft extends MHContainer
             slotObject.onPickupFromSlot(player, stackInSlot);
         }
         return stack;
+    }
+
+    public void incRecipeStart()
+    {
+        recipeStart++;
+        //int maxStart = recipes.size() - 6;
+        //if(recipeStart > maxStart)
+        //    recipeStart = maxStart;
+    }
+
+    public void decRecipeStart()
+    {
+        recipeStart--;
+        //if(recipeStart < 0)
+        //    recipeStart = 0;
     }
 }
