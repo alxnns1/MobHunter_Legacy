@@ -234,11 +234,11 @@ public class Names
                 JAWBLADE = "weaponJawblade",
                 GIANT_JAWBLADE = "weaponGiantJawblade",
 
-                ICON_GREAT_JAGGI = "iconGreatJaggi",
-                ICON_GENDROME = "iconGendrome",
-                ICON_IODROME = "iconIodrome",
-                ICON_VELOCIDROME = "iconVelocidrome",
-                ICON_KIRIN = "iconKirin";
+                ICON_GREAT_JAGGI = "greatJaggi",
+                ICON_GENDROME = "gendrome",
+                ICON_IODROME = "iodrome",
+                ICON_VELOCIDROME = "velocidrome",
+                ICON_KIRIN = "kirin";
     }
 
     public static class Blocks
