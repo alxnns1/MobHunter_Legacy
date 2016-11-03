@@ -97,7 +97,13 @@ public class Names
                 JUMBO_BONE = "jumboBone",
                 DUNG = "dung",
                 BONE_HUSK = "boneHusk",
-        
+
+                SCREAMER_SAC = "screamerSac",
+                FLAME_SAC = "flameSac",
+                FROST_SAC = "frostSac",
+                PARALYSIS_SAC = "paralysisSac",
+                POISON_SAC = "poisonSac",
+
                 ALTAROTH_JAW = "altarothJaw",
                 ALTAROTH_STOMACH = "altarothStomach",
         
@@ -130,8 +136,6 @@ public class Names
                 IOPREY_HIDE = "iopreyHide",
                 IOPREY_SCALE = "iopreyScale",
                 IOPREY_FANG = "iopreyFang",
-        
-                SCREAMER_SAC = "screamerSac",
         
                 GREAT_JAGGI_HIDE = "greatJaggiHide",
                 GREAT_JAGGI_CLAW = "greatJaggiClaw",

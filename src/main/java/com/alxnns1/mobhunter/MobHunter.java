@@ -4,6 +4,8 @@ import com.alxnns1.mobhunter.gui.GuiHandler;
 import com.alxnns1.mobhunter.handler.ConfigHandler;
 import com.alxnns1.mobhunter.handler.EntityEventHandler;
 import com.alxnns1.mobhunter.init.*;
+import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
@@ -40,7 +42,7 @@ public class MobHunter
         @SideOnly(Side.CLIENT)
         public int getIconItemDamage()
         {
-            return 0;
+            return MetaRef.getMeta(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_JAGGI);
         }
 
         @Override

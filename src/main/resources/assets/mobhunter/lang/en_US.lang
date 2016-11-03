@@ -236,6 +236,14 @@ item.monsterDrop.birdWyvernFang.tooltip=A sharp, durable fang from a bird wyvern
 //Wyvern
 item.monsterDrop.screamerSac.name=Screamer Sac
 item.monsterDrop.screamerSac.tooltip=A monster organ that emits an earsplitting sonic blast when ruptured.
+item.monsterDrop.flameSac.name=Flame Sac
+item.monsterDrop.flameSac.tooltip=A monster organ filled with flammable powder. Handle with extreme care.
+item.monsterDrop.frostSac.name=Frost Sac
+item.monsterDrop.frostSac.tooltip=A monster organ that contains a sub-zero liquid. Handle with extreme care.
+item.monsterDrop.paralysisSac.name=Paralysis Sac
+item.monsterDrop.paralysisSac.tooltip=A monster organ that contains paralyzing neurotoxins.
+item.monsterDrop.poisonSac.name=Poison Sac
+item.monsterDrop.poisonSac.tooltip=A monster organ that contains a lethal toxin. Handle with extreme care.
 
 //Jaggi
 item.monsterDrop.jaggiHide.name=Jaggi Hide
