@@ -26,76 +26,118 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S),
                 Items.IRON_INGOT);
 
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 0),
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.POTION),
                 Items.GLASS_BOTTLE,
-                new ItemStack(MHItems.itemConsumable, 1, 0),
-                new ItemStack(MHItems.itemMushroom, 1, 0));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 1),
-                new ItemStack(MHItems.itemDrink, 1, 0),
-                new ItemStack(MHItems.itemBug, 1, 10));
-        //GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 10), new ItemStack(MHItems.itemMushroom, 1, 0), new ItemStack(MHItems.itemBug, 1, 3));
-        //GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 11), new ItemStack(MHItems.itemDrink, 1, 10), new ItemStack(MHItems.itemBug, 1, 10));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 2),
-                new ItemStack(MHItems.itemMushroom, 1, 0),
-                new ItemStack(MHItems.itemConsumable, 1, 1));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 3),
-                new ItemStack(MHItems.itemMisc, 1, 0),
-                new ItemStack(MHItems.itemMushroom, 1, 1));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 4),
-                new ItemStack(MHItems.itemMisc, 1, 0),
+                MetaRef.getStack(MetaRef.EnumItemType.CONSUMABLE, Names.Items.HERB),
+                MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.BLUE_MUSHROOM));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_POTION),
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.POTION),
+                MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.HONEY));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ANTIDOTE),
+                Items.GLASS_BOTTLE,
+                MetaRef.getStack(MetaRef.EnumItemType.CONSUMABLE, Names.Items.ANTIDOTE_HERB),
+                MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.BLUE_MUSHROOM));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.IMMUNIZER),
+                Items.GLASS_BOTTLE,
+                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
+                MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.DRAGON_TOADSTOOL));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DASH_JUICE),
+                Items.GLASS_BOTTLE,
+                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
                 MHItems.itemRareSteak);
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 6),
-                new ItemStack(MHItems.itemMisc, 1, 0),
-                new ItemStack(MHItems.itemConsumable, 1, 8));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemDrink, 1, 8),
-                new ItemStack(MHItems.itemMisc, 1, 0),
-                new ItemStack(MHItems.itemConsumable, 1, 9));
+        //TODO Add Dash Extract
+        //GameRegistry.addShapelessRecipe(
+        //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_DASH_JUICE),
+        //      Items.GLASS_BOTTLE,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.DASH_EXTRACT),
+        //      MHItems.itemDoneSteak);
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DEMONDRUG),
+                Items.GLASS_BOTTLE,
+                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
+                MetaRef.getStack(MetaRef.EnumItemType.CONSUMABLE, Names.Items.MIGHT_SEED));
+        //TODO Add Pale Extract
+        //GameRegistry.addShapelessRecipe(
+        //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_DEMONDRUG),
+        //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DEMONDRUG),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.PALE_EXTRACT);
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
+                Items.GLASS_BOTTLE,
+                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
+                MetaRef.getStack(MetaRef.EnumItemType.CONSUMABLE, Names.Items.ADAMANT_SEED));
+        //TODO Add Pale Extract
+        //GameRegistry.addShapelessRecipe(
+        //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_ARMOURSKIN),
+        //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.PALE_EXTRACT);
 
-        GameRegistry.addRecipe(new ItemStack(MHItems.itemMachalitePickaxe),
+        GameRegistry.addRecipe(
+                new ItemStack(MHItems.itemMachalitePickaxe),
                 "xxx", " y ", " y ",
-                'x', new ItemStack(MHItems.itemOre, 1, 1),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
                 'y', new ItemStack(Items.STICK));
-        GameRegistry.addRecipe(new ItemStack(MHItems.itemDragonitePickaxe),
+        GameRegistry.addRecipe(
+                new ItemStack(MHItems.itemDragonitePickaxe),
                 "xxx", " y ", " y ",
-                'x', new ItemStack(MHItems.itemOre, 1, 2),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT),
                 'y', new ItemStack(Items.STICK));
-        GameRegistry.addRecipe(new ItemStack(MHItems.itemGossamitePickaxe),
+        GameRegistry.addRecipe(
+                new ItemStack(MHItems.itemGossamitePickaxe),
                 "xxx", " y ", " y ",
-                'x', new ItemStack(MHItems.itemOre, 1, 3),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT),
                 'y', new ItemStack(Items.STICK));
 
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockEarthCrystal),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockEarthCrystal),
                 "xxx", "xxx", "xxx",
-                'x', new ItemStack(MHItems.itemOre, 1, 0));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemOre, 9, 0),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 9),
                 MHBlocks.blockEarthCrystal);
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockMachalite),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockMachalite),
                 "xxx", "xxx", "xxx",
-                'x', new ItemStack(MHItems.itemOre, 1, 1));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemOre, 9, 1),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 9),
                 MHBlocks.blockMachalite);
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockDragonite),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockDragonite),
                 "xxx", "xxx", "xxx",
-                'x', new ItemStack(MHItems.itemOre, 1, 2));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemOre, 9, 2),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT, 9),
                 MHBlocks.blockDragonite);
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockLightCrystal),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockLightCrystal),
                 "xxx", "xxx", "xxx",
-                'x', new ItemStack(MHItems.itemOre, 1, 4));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemOre, 9, 4),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.LIGHT_CRYSTAL));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.LIGHT_CRYSTAL, 9),
                 MHBlocks.blockLightCrystal);
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockIceCrystal),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockIceCrystal),
                 "xxx", "xxx", "xxx",
-                'x', new ItemStack(MHItems.itemOre, 1, 5));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemOre, 9, 5),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL, 9),
                 MHBlocks.blockIceCrystal);
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockGossamite),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockGossamite),
                 "xxx", "xxx", "xxx",
-                'x', new ItemStack(MHItems.itemOre, 1, 3));
-        GameRegistry.addShapelessRecipe(new ItemStack(MHItems.itemOre, 9, 3),
+                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT));
+        GameRegistry.addShapelessRecipe(
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT, 9),
                 MHBlocks.blockGossamite);
 
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockBbq),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockBbq),
                 "w w", "wxw", "yzy",
                 'w', Items.IRON_INGOT,
                 'x', Items.FLINT_AND_STEEL,
@@ -103,23 +145,25 @@ public class MHRecipes
                 'z', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat,
                 new ItemStack(MHItems.itemRareSteak), 0.2f);
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockWeaponCraft),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockWeaponCraft),
                 "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,14),
                 'x', new ItemStack(Blocks.STONE),
                 'y', new ItemStack(Blocks.CHEST),
                 'z', new ItemStack(Blocks.BOOKSHELF));
-        GameRegistry.addRecipe(new ItemStack(MHBlocks.blockArmourCraft),
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockArmourCraft),
                 "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,11),
                 'x', new ItemStack(Blocks.STONE),
                 'y', new ItemStack(Blocks.CHEST),
                 'z', new ItemStack(Blocks.BOOKSHELF));
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite,
-                new ItemStack(MHItems.itemOre, 1, 1), 0.2f);
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreDragonite,
-                new ItemStack(MHItems.itemOre, 1, 2), 0.2f);
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreGossamite,
-                new ItemStack(MHItems.itemOre, 1, 3), 0.2f);
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT), 0.2f);
 
         WeaponCraftingManager wcm = WeaponCraftingManager.getInstance();
         wcm.addRecipeNullKey(MHItems.weaponHuntersKnife,
@@ -152,10 +196,27 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 3),
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M, 6));
         //TODO Add Monster Bone L and Monster Bone+
-        //wcm.addRecipe(MHItems.weaponVelocidromeFang, MHItems.weaponVelocidromeBitePlus, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 6), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 4), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L, 4));
-        //wcm.addRecipe(MHItems.weaponVelocidromeFangPlus, MHItems.weaponVelocidromeFang, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 9), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 6), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L, 6));
-        //wcm.addRecipe(MHItems.weaponDromeRushDagger, MHItems.weaponVelocidromeFangPlus, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 9), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 6), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_PLUS, 6));
-        //wcm.addRecipe(MHItems.weaponGreatStabberdag, MHItems.weaponDromeRushDagger, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 12), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 8), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 4), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_PLUS, 8));
+        //wcm.addRecipe(MHItems.weaponVelocidromeFang, MHItems.weaponVelocidromeBitePlus,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 6),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 4),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L, 4));
+        //wcm.addRecipe(MHItems.weaponVelocidromeFangPlus, MHItems.weaponVelocidromeFang,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 9),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 6),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L, 6));
+        //wcm.addRecipe(MHItems.weaponDromeRushDagger, MHItems.weaponVelocidromeFangPlus,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 9),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 6),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 2),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_PLUS, 6));
+        //wcm.addRecipe(MHItems.weaponGreatStabberdag, MHItems.weaponDromeRushDagger,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 12),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 8),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 4),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_PLUS, 8));
         wcm.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife,
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_HIDE, 5),
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_FANG, 4),
@@ -334,8 +395,14 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2),
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_FLUID));
         //TODO Add Sharp Bone Item for the rest of the bone armour
-        //acm.addRecipeNullKey(MHItems.armourBoneLeggings, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG, 2));
-        //acm.addRecipeNullKey(MHItems.armourBoneBoots, MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M), MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG));
+        //acm.addRecipeNullKey(MHItems.armourBoneLeggings,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 2),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG, 2));
+        //acm.addRecipeNullKey(MHItems.armourBoneBoots,
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE, 2),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M),
+        //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG));
 
         acm.addRecipeNullKey(MHItems.armourAlloyHelmet,
                 MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 3),
