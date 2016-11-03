@@ -60,6 +60,12 @@ public class MHItems
             weaponSerpentBite,
             weaponSerpentBitePlus,
             weaponDeadlock,
+            weaponVelocidromeBite,
+            weaponVelocidromeBitePlus,
+            weaponVelocidromeFang,
+            weaponVelocidromeFangPlus,
+            weaponDromeRushDagger,
+            weaponGreatStabberdag,
             weaponHydraBite,
             weaponHydraBitePlus,
             weaponDeadlyPoison,
@@ -156,6 +162,12 @@ public class MHItems
         regItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, 140, 200, 400, 580, 600));
+        regItem(weaponVelocidromeBite = new ItemMHSword(Names.Items.VELOCIDROME_BITE, 11f, 220, 400, 500));
+        regItem(weaponVelocidromeBitePlus = new ItemMHSword(Names.Items.VELOCIDROME_BITE_PLUS, 13f, 220, 320, 500));
+        regItem(weaponVelocidromeFang = new ItemMHSword(Names.Items.VELOCIDROME_FANG, 15f, 150, 250, 550, 620));
+        regItem(weaponVelocidromeFangPlus = new ItemMHSword(Names.Items.VELOCIDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
+        regItem(weaponDromeRushDagger = new ItemMHSword(Names.Items.DROME_RUSH_DAGGER, 19f, 500, 650, 670, 720, 750));
+        regItem(weaponGreatStabberdag = new ItemMHSword(Names.Items.GREAT_STABBERDAG, 21f, 500, 650, 670, 720, 850, 870));
         regItem(weaponHydraBite = new ItemMHSword(Names.Items.HYDRA_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponHydraBitePlus = new ItemMHSword(Names.Items.HYDRA_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeadlyPoison = new ItemMHSword(Names.Items.DEADLY_POISON, 20f, 140, 200, 400, 580, 600));
@@ -269,7 +281,10 @@ public class MHItems
                 Names.Items.GREAT_JAGGI_HIDE,
                 Names.Items.GREAT_JAGGI_CLAW,
                 Names.Items.GREAT_JAGGI_HEAD,
-                Names.Items.KINGS_FRILL)
+                Names.Items.KINGS_FRILL,
+                Names.Items.VELOCIDROME_CLAW,
+                Names.Items.VELOCIDROME_HIDE,
+                Names.Items.VELOCIDROME_HEAD)
                 .addToMetaRef(MetaRef.EnumItemType.MONSTER_DROP));
         regItem(itemOre = new ItemMHResource("ore",
                 Names.Items.EARTH_CRYSTAL,

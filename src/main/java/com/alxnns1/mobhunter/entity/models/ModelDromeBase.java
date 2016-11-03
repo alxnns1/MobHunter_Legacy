@@ -34,6 +34,8 @@ public class ModelDromeBase extends ModelBase
     ModelRenderer arm2;
     ModelRenderer hand1;
     ModelRenderer hand2;
+    ModelRenderer talon1;
+    ModelRenderer talon2;
 
     public ModelDromeBase()
     {
@@ -163,6 +165,18 @@ public class ModelDromeBase extends ModelBase
         this.hand2.addBox(-3.0f,0.0f,0.0f,6,6,4);
         this.hand2.setRotationPoint(0.0f,12.0f,-3.0f);
         this.hand2.rotateAngleX = (float)Math.PI/6;
+
+        this.talon1 = new ModelRenderer(this,0,0);
+        this.hand1.addChild(talon1);
+        this.talon1.addBox(0.0f,0.0f,0.0f,2,6,2);
+        this.talon1.setRotationPoint(-1.0f,6.0f,0.0f);
+        this.talon1.rotateAngleX = (float)Math.PI/6;
+
+        this.talon2 = new ModelRenderer(this,0,0);
+        this.hand2.addChild(talon2);
+        this.talon2.addBox(0.0f,0.0f,0.0f,2,6,2);
+        this.talon2.setRotationPoint(-1.0f,6.0f,0.0f);
+        this.talon2.rotateAngleX = (float)Math.PI/6;
     }
 
     public void render(Entity entityIn, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float scale)

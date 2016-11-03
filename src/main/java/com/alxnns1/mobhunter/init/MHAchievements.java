@@ -20,9 +20,9 @@ public class MHAchievements
     public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", 0, 0, Items.IRON_HELMET, null);
     public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 0, 1, Items.GOLDEN_HELMET, null);
     public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", 2, 0, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_JAGGI), null);
-    public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", 2, 1, new ItemStack(MHItems.itemIcon, 1, 3), null);
-    public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 2, 2, new ItemStack(MHItems.itemIcon, 1, 1), null);
-    public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 2, 3, new ItemStack(MHItems.itemIcon, 1, 2), null);
+    public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", 2, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_VELOCIDROME), null);
+    public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 2, 2, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GENDROME), null);
+    public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 2, 3, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_IODROME), null);
 
     public static void init()
     {
@@ -33,13 +33,11 @@ public class MHAchievements
         smallCrown.registerStat();
         largeCrown.registerStat();
         greatJaggi.registerStat();
-        /*
         velocidrome.registerStat();
         gendrome.registerStat();
         iodrome.registerStat();
-        */
 
         AchievementPage.registerAchievementPage(new AchievementPage(Reference.MOD_ID,
-                cookMeat, firstSword, smallCrown, largeCrown, greatJaggi/*, velocidrome, gendrome, iodrome*/));
+                cookMeat, firstSword, smallCrown, largeCrown, greatJaggi, velocidrome, gendrome, iodrome));
     }
 }

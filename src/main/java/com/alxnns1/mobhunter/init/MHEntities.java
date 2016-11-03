@@ -116,8 +116,8 @@ public class MHEntities
                 BiomeDictionary.Type.MOUNTAIN,});
 
         registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
-        /*
         registerMobWithEgg(EntityVelocidrome.class, "Velocidrome", 0x0080ff, 0x402000);
+        /*
         registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
         */
 
@@ -136,8 +136,8 @@ public class MHEntities
             RenderingRegistry.registerEntityRenderingHandler(EntityIoprey.class, RenderIoprey.FACTORY);
 
             RenderingRegistry.registerEntityRenderingHandler(EntityGreatJaggi.class, RenderGreatJaggi.FACTORY);
-            /*
             RenderingRegistry.registerEntityRenderingHandler(EntityVelocidrome.class, RenderVelocidrome.FACTORY);
+            /*
             RenderingRegistry.registerEntityRenderingHandler(EntityGendrome.class, RenderGendrome.FACTORY);
             */
         }

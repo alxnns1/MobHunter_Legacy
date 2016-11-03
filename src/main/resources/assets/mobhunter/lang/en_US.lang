@@ -285,6 +285,14 @@ item.monsterDrop.greatJaggiHead.tooltip=The frills would be truly stunning...if 
 item.monsterDrop.kingsFrill.name=King's Frill
 item.monsterDrop.kingsFrill.tooltip=Proof of who's top Jaggi. Bigger and bolder frills mean a tougher monster.
 
+//Velocidrome
+item.monsterDrop.velocidromeClaw.name=Velocidrome Claw
+item.monsterDrop.velocidromeClaw.tooltip=The claw of an alpha Velocidrome. Sharp and blade-like.
+item.monsterDrop.velocidromeHide.name=Velocidrome Hide
+item.monsterDrop.velocidromeHide.tooltip=The hide of a Velociprey leader. It bears the scars of a leadership role.
+item.monsterDrop.velocidromeHead.name=Velocidrome Head
+item.monsterDrop.velocidromeHead.tooltip=A large head with a crest. You'd look pretty fierce if you put it on.
+
 //Swords
 item.weaponHuntersKnife.name=Hunter's Knife
 item.weaponHuntersKnife.tooltip=A one-handed, easy-to-wield Sword. Not too powerful.
@@ -316,6 +324,18 @@ item.weaponHydraBitePlus.name=Hydra Bite+
 item.weaponHydraBitePlus.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
 item.weaponDeadlyPoison.name=Deadly Poison
 item.weaponDeadlyPoison.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
+item.weaponVelocidromeBite.name=Velocidrome Bite
+item.weaponVelocidromeBite.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
+item.weaponVelocidromeBitePlus.name=Velocidrome Bite+
+item.weaponVelocidromeBitePlus.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
+item.weaponVelocidromeFang.name=Velocidrome Fang
+item.weaponVelocidromeFang.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
+item.weaponVelocidromeFangPlus.name=Velocidrome Fang+
+item.weaponVelocidromeFangPlus.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
+item.weaponDromeRushDagger.name=Drome Rush Dagger
+item.weaponDromeRushDagger.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
+item.weaponGreatStabberdag.name=Great Stabberdag
+item.weaponGreatStabberdag.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
 
 item.weaponBoneKris.name=Bone Kris
 item.weaponBoneKris.tooltip=A simple and dependable bone dagger.

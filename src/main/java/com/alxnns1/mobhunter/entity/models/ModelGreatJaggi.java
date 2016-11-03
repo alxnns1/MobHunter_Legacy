@@ -22,8 +22,6 @@ public class ModelGreatJaggi extends ModelDromeBase
     ModelRenderer ridge4;
     ModelRenderer frill1;
     ModelRenderer frill2;
-    ModelRenderer talon1;
-    ModelRenderer talon2;
 
     public ModelGreatJaggi()
     {
@@ -88,17 +86,5 @@ public class ModelGreatJaggi extends ModelDromeBase
         this.frill2.addBox(0.0f,-15.0f,0.0f,0,36,20);
         this.frill2.setRotationPoint(10.0f,0.0f,-6.0f);
         this.frill2.rotateAngleY = (float)Math.PI/12;
-
-        this.talon1 = new ModelRenderer(this,0,0);
-        this.hand1.addChild(talon1);
-        this.talon1.addBox(0.0f,0.0f,0.0f,2,6,2);
-        this.talon1.setRotationPoint(-1.0f,6.0f,0.0f);
-        this.talon1.rotateAngleX = (float)Math.PI/6;
-
-        this.talon2 = new ModelRenderer(this,0,0);
-        this.hand2.addChild(talon2);
-        this.talon2.addBox(0.0f,0.0f,0.0f,2,6,2);
-        this.talon2.setRotationPoint(-1.0f,6.0f,0.0f);
-        this.talon2.rotateAngleX = (float)Math.PI/6;
     }
 }
