@@ -193,13 +193,11 @@ public abstract class AbstractContainerCraft extends MHContainer
             case -1: //Up Arrow
                 int oldStart = recipeStart;
                 decRecipeStart();
-                LogHelper.info("Old Start: " + oldStart + "    New Start: " + recipeStart);
                 refreshRecipes();
                 return true;
             case -2: //Down Arrow
                 int oldStart2 = recipeStart;
                 incRecipeStart();
-                LogHelper.info("Old Start: " + oldStart2 + "    New Start: " + recipeStart);
                 refreshRecipes();
                 return true;
             default: //Craft Button

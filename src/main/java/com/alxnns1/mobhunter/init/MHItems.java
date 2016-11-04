@@ -16,7 +16,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Contains all of the mod's items and registering code
@@ -25,11 +27,19 @@ import java.util.List;
 public class MHItems
 {
     public static List<Item> ITEMS = new ArrayList<Item>();
-    
+    //This list will automatically get added to the fishable fish loot table
+    public static Map<Item, Integer> FISHABLE = new HashMap<Item, Integer>();
+
     public static void regItem(Item item)
     {
         GameRegistry.register(item);
         ITEMS.add(item);
+    }
+
+    public static void regFish(Item item, int fishingChance)
+    {
+        regItem(item);
+        FISHABLE.put(item, fishingChance);
     }
     
     public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 6, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);

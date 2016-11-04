@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter;
 import com.alxnns1.mobhunter.gui.GuiHandler;
 import com.alxnns1.mobhunter.handler.ConfigHandler;
 import com.alxnns1.mobhunter.handler.EntityEventHandler;
+import com.alxnns1.mobhunter.handler.LootHandler;
 import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
@@ -91,6 +92,7 @@ public class MobHunter
         MHAchievements.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
+        MinecraftForge.EVENT_BUS.register(new LootHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
