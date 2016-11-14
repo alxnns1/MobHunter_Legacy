@@ -36,7 +36,7 @@ public class BlockBbq extends BlockContainer
     {
         super(Material.ROCK);
         setUnlocalizedName(Names.Blocks.BBQ);
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHBLOCK_TAB);
         setHardness(2f);
         setResistance(10f);
         setRegistryName(Names.Blocks.BBQ);

@@ -217,6 +217,18 @@ public class MHRecipes
         //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HEAD, 1),
         //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 4),
         //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_PLUS, 8));
+        wcm.addRecipe(MHItems.weaponSnakeBite, MHItems.weaponHuntersKnife,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GIAPREY_HIDE, 5),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GIAPREY_FANG, 4),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 3));
+        wcm.addRecipe(MHItems.weaponSnakeBitePlus, MHItems.weaponSnakeBite,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GIAPREY_FANG, 6),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 6),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.FROST_SAC, 2));
+        wcm.addRecipe(MHItems.weaponDeathlyCold, MHItems.weaponSnakeBitePlus,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GIAPREY_FANG, 9),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M, 9),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.FROST_SAC, 4));
         wcm.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife,
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_HIDE, 5),
                 MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_FANG, 4),

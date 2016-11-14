@@ -20,7 +20,7 @@ public class ItemMHArmour extends ItemArmor
     {
         super(material, renderIndex, equipSlot);
         setUnlocalizedName(itemName);
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHARMOUR_TAB);
         setRegistryName(itemName);
     }
 

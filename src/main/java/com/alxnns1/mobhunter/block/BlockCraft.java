@@ -22,7 +22,7 @@ public class BlockCraft extends Block
     public BlockCraft(String name)
     {
         super(Material.ROCK);
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHBLOCK_TAB);
         setHardness(2f);
         setResistance(10f);
         setUnlocalizedName(name);

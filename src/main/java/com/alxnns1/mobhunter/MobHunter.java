@@ -32,24 +32,72 @@ public class MobHunter
     @Mod.Instance(Reference.MOD_ID)
     public static MobHunter instance;
 
-    public static final CreativeTabs MH_TAB = new CreativeTabs(Reference.MOD_ID)
+    public static final CreativeTabs MH_TAB = new CreativeTabs(Reference.MOD_ID + "Items")
     {
         @Override
         public Item getTabIconItem()
         {
-            return MHItems.itemIcon;
+            return MHItems.itemMonsterDrop;
         }
 
         @SideOnly(Side.CLIENT)
         public int getIconItemDamage()
         {
-            return MetaRef.getMeta(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_JAGGI);
+            return MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S);
         }
 
         @Override
         public String getTranslatedTabLabel()
         {
-            return Reference.MOD_NAME;
+            return Reference.MOD_NAME + " Items";
+        }
+
+    };
+
+    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(Reference.MOD_ID + "Armours")
+    {
+        @Override
+        public Item getTabIconItem()
+        {
+            return MHItems.armourBoneHelmet;
+        }
+
+        @Override
+        public String getTranslatedTabLabel()
+        {
+            return Reference.MOD_NAME + " Armours";
+        }
+
+    };
+
+    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(Reference.MOD_ID + "Weapons")
+    {
+        @Override
+        public Item getTabIconItem()
+        {
+            return MHItems.weaponHuntersKnife;
+        }
+
+        @Override
+        public String getTranslatedTabLabel()
+        {
+            return Reference.MOD_NAME + " Weapons";
+        }
+
+    };
+
+    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(Reference.MOD_ID + "Blocks")
+    {
+        @Override
+        public Item getTabIconItem()
+        {
+            return Item.getItemFromBlock(MHBlocks.blockWeaponCraft);
+        }
+
+        @Override
+        public String getTranslatedTabLabel()
+        {
+            return Reference.MOD_NAME + " Blocks";
         }
 
     };

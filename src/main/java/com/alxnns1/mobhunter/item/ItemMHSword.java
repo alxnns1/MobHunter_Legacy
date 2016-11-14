@@ -35,7 +35,7 @@ public class ItemMHSword extends ItemSword
     public ItemMHSword(String itemName, float damage)
     {
         super(EnumHelper.addToolMaterial(itemName + "Mat", 0, 1, 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHWEAPON_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
         LogHelper.warn("Sword " + getUnlocalizedName() + " has not been set any sharpness levels!");
@@ -47,7 +47,7 @@ public class ItemMHSword extends ItemSword
     public ItemMHSword(String itemName, float damage, int... sharpnessDamageLevels)
     {
         super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHWEAPON_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
         maxSharpness = EnumSharpness.getById(sharpnessDamageLevels.length - 1);

@@ -25,7 +25,7 @@ public class BlockNatural extends BlockBush
     public BlockNatural(String name, AxisAlignedBB blockBounds)
     {
         super(Material.VINE);
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHBLOCK_TAB);
         setUnlocalizedName(name);
         setRegistryName(name);
         BLOCK_BOUNDS = blockBounds;

@@ -19,7 +19,7 @@ public class BlockResource extends Block
     {
         super(Material.ROCK);
         setUnlocalizedName(blockName);
-        setCreativeTab(MobHunter.MH_TAB);
+        setCreativeTab(MobHunter.MHBLOCK_TAB);
         setHardness(3.0F);
         setResistance(5.0F);
         setHarvestLevel("pickaxe",harvestLevel);

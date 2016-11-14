@@ -63,7 +63,6 @@ public class MHItems
             itemRareSteak, itemDoneSteak, itemBurntMeat;
 
     public static ItemMHSword
-            weaponTest,
             weaponHuntersKnife,
             weaponSoldiersDagger,
             weaponCommandersDagger,
@@ -76,6 +75,9 @@ public class MHItems
             weaponVelocidromeFangPlus,
             weaponDromeRushDagger,
             weaponGreatStabberdag,
+            weaponSnakeBite,
+            weaponSnakeBitePlus,
+            weaponDeathlyCold,
             weaponHydraBite,
             weaponHydraBitePlus,
             weaponDeadlyPoison,
@@ -114,9 +116,6 @@ public class MHItems
             weaponBlazingSword,
             weaponBlazingTempest,
             weaponBlazingInferno;
-
-    public static ItemMHShield
-            shieldTest;
 
     /*
         These are the new meta items, and are just down here while testing.
@@ -163,9 +162,6 @@ public class MHItems
         regItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
         regItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
 
-        regItem(weaponTest = new ItemMHSword("weaponTest", 1f, 5, 10, 15, 20, 25, 30, 35));
-        regItem(shieldTest = new ItemMHShield("shieldTest", 100, Items.IRON_INGOT));
-
         regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
         regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
         regItem(weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, 100, 240, 400, 500));
@@ -178,6 +174,9 @@ public class MHItems
         regItem(weaponVelocidromeFangPlus = new ItemMHSword(Names.Items.VELOCIDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
         regItem(weaponDromeRushDagger = new ItemMHSword(Names.Items.DROME_RUSH_DAGGER, 19f, 500, 650, 670, 720, 750));
         regItem(weaponGreatStabberdag = new ItemMHSword(Names.Items.GREAT_STABBERDAG, 21f, 500, 650, 670, 720, 850, 870));
+        regItem(weaponSnakeBite = new ItemMHSword(Names.Items.SNAKE_BITE, 10f, 120, 200, 440, 500));
+        regItem(weaponSnakeBitePlus = new ItemMHSword(Names.Items.SNAKE_BITE_PLUS, 15f, 120, 180, 380, 500));
+        regItem(weaponDeathlyCold = new ItemMHSword(Names.Items.DEATHLY_COLD, 20f, 140, 200, 400, 580, 600));
         regItem(weaponHydraBite = new ItemMHSword(Names.Items.HYDRA_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponHydraBitePlus = new ItemMHSword(Names.Items.HYDRA_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeadlyPoison = new ItemMHSword(Names.Items.DEADLY_POISON, 20f, 140, 200, 400, 580, 600));
@@ -282,6 +281,9 @@ public class MHItems
                 Names.Items.VELOCIPREY_HIDE,
                 Names.Items.VELOCIPREY_SCALE,
                 Names.Items.VELOCIPREY_FANG,
+                Names.Items.GIAPREY_HIDE,
+                Names.Items.GIAPREY_SCALE,
+                Names.Items.GIAPREY_FANG,
                 Names.Items.GENPREY_HIDE,
                 Names.Items.GENPREY_SCALE,
                 Names.Items.GENPREY_FANG,
