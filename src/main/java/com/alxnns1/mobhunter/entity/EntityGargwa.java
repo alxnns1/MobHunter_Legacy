@@ -1,6 +1,8 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,7 +13,7 @@ import net.minecraft.world.World;
  */
 public class EntityGargwa extends EntityMHHerbivore {
     public EntityGargwa(World worldIn){
-        super(worldIn, 0.79f, 1.24f, null); //MHItems.itemThunderbug);
+        super(worldIn, 0.79f, 1.24f, MHItems.itemBug);
         this.setSize(1.0F, 1.25F);
         setBaseHealth(7);
         setBaseSpeed(0.3);
@@ -34,7 +36,7 @@ public class EntityGargwa extends EntityMHHerbivore {
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                dropSingleItem(MHItems.itemMonsterDrop, 0); //Monster Bone S
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
@@ -46,18 +48,18 @@ public class EntityGargwa extends EntityMHHerbivore {
                 if(i<70){
                     dropSingleItem(MHItems.itemRawMeat);
                 }else if(i<85){
-                    dropSingleItem(MHItems.itemMonsterDrop, 0); //Monster Bone S
-                }else if(i<100){
-                    dropSingleItem(MHItems.itemMonsterDrop, 12); //Gargwa Feather
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
+                }else{
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GARGWA_FEATHER));
                 }
             }
             int i = this.rand.nextInt(99);
             if(i<60){
-                dropSingleItem(MHItems.itemMonsterDrop, 13); //Steel Egg
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.STEEL_EGG));
             }else if(i<90){
-                dropSingleItem(MHItems.itemConsumable, 0); //Herb
-            }else if(i<100){
-                dropSingleItem(MHItems.itemBug, 0); //Insect Husk
+                dropSingleItem(MHItems.itemConsumable, MetaRef.getMeta(MetaRef.EnumItemType.CONSUMABLE, Names.Items.HERB));
+            }else{
+                dropSingleItem(MHItems.itemBug, MetaRef.getMeta(MetaRef.EnumItemType.BUG, Names.Items.INSECT_HUSK));
             }
         }
     }

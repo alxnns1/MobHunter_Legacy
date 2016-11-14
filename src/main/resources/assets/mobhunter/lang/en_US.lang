@@ -257,7 +257,15 @@ item.monsterDrop.velocipreyHide.tooltip=A hide stripped of it's scales. Used to 
 item.monsterDrop.velocipreyScale.name=Velociprey Scale
 item.monsterDrop.velocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
 item.monsterDrop.velocipreyFang.name=Velociprey Fang
-item.monsterDrop.velocipreyFang.tooltip=The razor sharp fang of a velociprey.
+item.monsterDrop.velocipreyFang.tooltip=The razor sharp fang of a Velociprey.
+
+//Giaprey
+item.monsterDrop.giapreyHide.name=Giaprey Hide
+item.monsterDrop.giapreyHide.tooltip=Hide stripped of all it's scales. Used to make clothing for villagers.
+item.monsterDrop.giapreyScale.name=Giaprey Scale
+item.monsterDrop.giapreyScale.tooltip=A scale carved from a Giaprey. The colour allows you to stalk prey in the snow undetected.
+item.monsterDrop.giapreyFang.name=Giaprey Fang
+item.monsterDrop.giapreyFang.tooltip=The razor sharp fang of a Giaprey.
 
 //Genprey
 item.monsterDrop.genpreyHide.name=Genprey Hide
@@ -526,6 +534,7 @@ entity.MobHunter.Gargwa.name=Gargwa
 entity.MobHunter.Jaggi.name=Jaggi
 entity.MobHunter.Jaggia.name=Jaggia
 entity.MobHunter.Velociprey.name=Velociprey
+entity.MobHunter.Giaprey.name=Giaprey
 entity.MobHunter.Genprey.name=Genprey
 entity.MobHunter.Ioprey.name=Ioprey
 

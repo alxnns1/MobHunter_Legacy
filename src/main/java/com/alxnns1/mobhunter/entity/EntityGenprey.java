@@ -2,6 +2,8 @@ package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
+import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
@@ -51,29 +53,29 @@ public class EntityGenprey extends EntityMHBirdWyvern {
      */
     protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
     {
-        /*
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                this.dropSingleItem(MHItems.itemMonsterBoneS, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropSingleItem(MHItems.itemBirdWyvernFang, 1);
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.BIRD_WYVERN_FANG));
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
-                if(i<42){
-                    this.dropSingleItem(MHItems.itemGenpreyFang, 1);
-                }else if(i<75){
-                    this.dropSingleItem(MHItems.itemGenpreyScale, 1);
-                }else if(i<100){
-                    this.dropSingleItem(MHItems.itemGenpreyHide, 1);
+                if(i<40){
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_FANG));
+                }else if(i<69){
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_SCALE));
+                }else if(i<92){
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GENPREY_HIDE));
+                }else{
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
                 }
             }
         }
-        */
     }
 
     public boolean attackEntityAsMob(Entity entityIn)

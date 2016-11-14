@@ -69,7 +69,7 @@ public class EntityJaggi extends EntityMHBirdWyvern
                     dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_HIDE));
                 }else if(i<92){
                     dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE));
-                }else if(i<100){
+                }else{
                     dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
                 }
             }

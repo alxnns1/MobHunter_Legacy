@@ -1,6 +1,8 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -39,7 +41,7 @@ public class EntityPopo extends EntityMHHerbivore
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                dropSingleItem(MHItems.itemMonsterDrop, 2); //Mystery Bone
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE));
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
@@ -49,13 +51,13 @@ public class EntityPopo extends EntityMHHerbivore
             for(int n=0;n<2+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<45){
-                    dropSingleItem(MHItems.itemMonsterDrop, 2); //Mystery Bone
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE));
                 }else if(i<75){
                     dropSingleItem(MHItems.itemRawMeat);
                 }else if(i<95){
-                    dropSingleItem(MHItems.itemMonsterDrop, 4); //Brute Bone
-                }else if(i<100){
-                    dropSingleItem(MHItems.itemMonsterDrop, 5); //Jumbo Bone
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.BRUTE_BONE));
+                }else{
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JUMBO_BONE));
                 }
             }
         }

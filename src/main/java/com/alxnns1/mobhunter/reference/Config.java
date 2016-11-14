@@ -15,9 +15,11 @@ public class Config
     public static int gargwaSpawnChance = 10;
     public static int jaggiSpawnChance = 10;
     public static int velocipreySpawnChance = 10;
+    public static int giapreySpawnChance = 10;
     public static int genpreySpawnChance = 10;
     public static int iopreySpawnChance = 10;
 
     public static double jaggiaChance = 0.35d;
     public static double greatJaggiChance = 0.1d;
+    public static double velocidromeChance = 0.1d;
 }

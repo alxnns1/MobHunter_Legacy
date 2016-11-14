@@ -65,12 +65,14 @@ public class EntityIoprey extends EntityMHBirdWyvern {
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
-                if(i<42){
+                if(i<40){
                     dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_FANG));
-                }else if(i<75){
+                }else if(i<69){
                     dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_SCALE));
-                }else if(i<100){
+                }else if(i<92){
                     dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.IOPREY_HIDE));
+                }else{
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
                 }
             }
         }

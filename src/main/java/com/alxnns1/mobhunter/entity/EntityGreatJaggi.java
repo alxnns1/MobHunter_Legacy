@@ -2,6 +2,8 @@ package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Config;
+import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -54,27 +56,27 @@ public class EntityGreatJaggi extends EntityMHBirdWyvern {
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                dropSingleItem(MHItems.itemMonsterDrop, 16); //Screamer Sac
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC));
             }
             i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                dropSingleItem(MHItems.itemMonsterDrop, 26); //Great Jaggi Hide
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_HIDE));
             }
         }else{
             for(int n=0;n<3+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<20){
-                    dropSingleItem(MHItems.itemMonsterDrop, 26); //Great Jaggi Hide
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_HIDE));
                 }else if(i<41){
-                    dropSingleItem(MHItems.itemMonsterDrop, 27); //Great Jaggi Claw
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_CLAW));
                 }else if(i<71){
-                    dropSingleItem(MHItems.itemMonsterDrop, 16); //Screamer Sac
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC));
                 }else if(i<74){
-                    dropSingleItem(MHItems.itemMonsterDrop, 18); //Jaggi Scale
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE));
                 }else if(i<79){
-                    dropSingleItem(MHItems.itemMonsterDrop, 28); //Great Jaggi Head
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_HEAD));
                 }else{
-                    dropSingleItem(MHItems.itemMonsterDrop, 29); //Kings Frill
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.KINGS_FRILL));
                 }
             }
         }

@@ -1,6 +1,8 @@
 package com.alxnns1.mobhunter.entity;
 
 import com.alxnns1.mobhunter.init.MHItems;
+import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -39,22 +41,22 @@ public class EntityKelbi extends EntityMHHerbivore
         if(!hitByPlayer) {
             int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                dropSingleItem(MHItems.itemMonsterDrop, 2); //Mystery Bone
+                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE));
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                this.dropSingleItem(MHItems.itemRawMeat, 1);
+                dropSingleItem(MHItems.itemRawMeat);
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<45){
-                    dropSingleItem(MHItems.itemMonsterDrop, 10); //Kelbi Horn
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.KELBI_HORN));
                 }else if(i<75){
-                    dropSingleItem(MHItems.itemMonsterDrop, 11); //Warm Pelt
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.WARM_PELT));
                 }else if(i<90){
-                    dropSingleItem(MHItems.itemMonsterDrop, 2); //Mystery Bone
-                }else if(i<100){
+                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE));
+                }else{
                     dropSingleItem(MHItems.itemRawMeat);
                 }
             }
