@@ -468,6 +468,24 @@ item.armourAlloyLeggings.tooltip=Waist armor made with quality Machalite Ore. It
 item.armourAlloyBoots.name=Alloy Greaves
 item.armourAlloyBoots.tooltip=Leg armor made with quality Machalite Ore. Its design is extremely practical.
 
+item.armourJaggiHelmet.name=Jaggi Helm
+item.armourJaggiHelmet.tooltip=Head armor made from Jaggi parts. Inexpensive, but robust and reliable.
+item.armourJaggiChestplate.name=Jaggi Mail
+item.armourJaggiChestplate.tooltip=Chest armor made from Jaggi parts. The supple skin makes for good protection.
+item.armourJaggiLeggings.name=Jaggi Faulds
+item.armourJaggiLeggings.tooltip=Waist armor made from Jaggi parts. A flamboyant use of the Jaggi's beautiful skin.
+item.armourJaggiBoots.name=Jaggi Greaves
+item.armourJaggiBoots.tooltip=Leg armor made from Jaggi parts. Crafted for high maneuverability.
+
+item.armourVelocipreyHelmet.name=Velociprey Helm
+item.armourVelocipreyHelmet.tooltip=Helm crafted from Velociprey materials. Truly superior functionality.
+item.armourVelocipreyChestplate.name=Velociprey Mail
+item.armourVelocipreyChestplate.tooltip=Chest armor made from Velociprey parts. Extremely durable and well-balanced.
+item.armourVelocipreyLeggings.name=Velociprey Tassets
+item.armourVelocipreyLeggings.tooltip=Armor made from Velociprey parts. Masterfully balanced for close quarters combat.
+item.armourVelocipreyBoots.name=Velociprey Greaves
+item.armourVelocipreyBoots.tooltip=Leg armor made of Velociprey parts. Protects the entire leg, not just the shin.
+
 //BLOCKS
 
 //Materials

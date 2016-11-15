@@ -434,5 +434,53 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2),
                 new ItemStack(Items.IRON_INGOT, 2));
 
+        acm.addRecipeNullKey(MHItems.armourJaggiHelmet,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_CLAW),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE, 2),
+                new ItemStack(Items.IRON_INGOT, 3));
+        acm.addRecipeNullKey(MHItems.armourJaggiChestplate,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.KINGS_FRILL),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_CLAW, 4),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2),
+                new ItemStack(Items.IRON_INGOT, 3));
+        acm.addRecipeNullKey(MHItems.armourJaggiLeggings,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.GREAT_JAGGI_HIDE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.KINGS_FRILL),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
+        acm.addRecipeNullKey(MHItems.armourJaggiBoots,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_HIDE, 4),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JAGGI_SCALE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 4),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 2));
+
+        acm.addRecipeNullKey(MHItems.armourVelocipreyHelmet,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIPREY_SCALE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.GLUEGLOPPER, 2));
+        acm.addRecipeNullKey(MHItems.armourVelocipreyChestplate,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_CLAW, 4),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIPREY_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIPREY_SCALE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.GLUEGLOPPER, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 3));
+        acm.addRecipeNullKey(MHItems.armourVelocipreyLeggings,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIDROME_HIDE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SCREAMER_SAC, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIPREY_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2));
+        acm.addRecipeNullKey(MHItems.armourVelocipreyBoots,
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIPREY_HIDE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.VELOCIPREY_SCALE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S, 4),
+                new ItemStack(Items.IRON_INGOT, 4));
+
     }
 }

@@ -42,16 +42,20 @@ public class MHItems
         FISHABLE.put(item, fishingChance);
     }
     
-    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 6, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
-    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
-    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
-    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 6, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial jaggiArmourMaterial = EnumHelper.addArmorMaterial("Jaggi", Reference.MOD_ID + ":jaggi", 21, new int[]{3, 6, 5, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial velocipreyArmourMaterial = EnumHelper.addArmorMaterial("Velociprey", Reference.MOD_ID + ":velociprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
 
     public static ItemArmor
             armourDerringHelmet, armourDerringChestplate, armourDerringLeggings, armourDerringBoots,
             armourHunterHelmet, armourHunterChestplate, armourHunterLeggings, armourHunterBoots,
             armourBoneHelmet, armourBoneChestplate, armourBoneLeggings, armourBoneBoots,
-            armourAlloyHelmet, armourAlloyChestplate, armourAlloyLeggings, armourAlloyBoots;
+            armourAlloyHelmet, armourAlloyChestplate, armourAlloyLeggings, armourAlloyBoots,
+            armourJaggiHelmet, armourJaggiChestplate, armourJaggiLeggings, armourJaggiBoots,
+            armourVelocipreyHelmet, armourVelocipreyChestplate, armourVelocipreyLeggings, armourVelocipreyBoots;
 
     public static ItemMHResource
             itemRawMeat;
@@ -152,6 +156,16 @@ public class MHItems
         regItem(armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.ALLOY_CHESTPLATE));
         regItem(armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.ALLOY_LEGGINGS));
         regItem(armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.ALLOY_BOOTS));
+
+        regItem(armourJaggiHelmet = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.JAGGI_HELMET));
+        regItem(armourJaggiChestplate = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.JAGGI_CHESTPLATE));
+        regItem(armourJaggiLeggings = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.JAGGI_LEGGINGS));
+        regItem(armourJaggiBoots = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.JAGGI_BOOTS));
+
+        regItem(armourVelocipreyHelmet = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.VELOCIPREY_HELMET));
+        regItem(armourVelocipreyChestplate = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.VELOCIPREY_CHESTPLATE));
+        regItem(armourVelocipreyLeggings = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.VELOCIPREY_LEGGINGS));
+        regItem(armourVelocipreyBoots = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.VELOCIPREY_BOOTS));
 
         regItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
         regItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));

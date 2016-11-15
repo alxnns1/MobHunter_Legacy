@@ -177,7 +177,17 @@ public class Names
                 ALLOY_CHESTPLATE = "armourAlloyChestplate",
                 ALLOY_LEGGINGS = "armourAlloyLeggings",
                 ALLOY_BOOTS = "armourAlloyBoots",
-        
+
+                JAGGI_HELMET = "armourJaggiHelmet",
+                JAGGI_CHESTPLATE = "armourJaggiChestplate",
+                JAGGI_LEGGINGS = "armourJaggiLeggings",
+                JAGGI_BOOTS = "armourJaggiBoots",
+
+                VELOCIPREY_HELMET = "armourVelocipreyHelmet",
+                VELOCIPREY_CHESTPLATE = "armourVelocipreyChestplate",
+                VELOCIPREY_LEGGINGS = "armourVelocipreyLeggings",
+                VELOCIPREY_BOOTS = "armourVelocipreyBoots",
+
                 HUNTERS_KNIFE = "weaponHuntersKnife",
                 SOLDIERS_DAGGER = "weaponSoldiersDagger",
                 COMMANDERS_DAGGER = "weaponCommandersDagger",
