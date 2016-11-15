@@ -4,15 +4,13 @@ import com.alxnns1.mobhunter.container.AbstractContainerCraft;
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.reference.Reference;
-import io.netty.buffer.Unpooled;
+import com.alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,6 +27,9 @@ public abstract class AbstractGuiCraft extends GuiContainer
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraft.png");
     protected AbstractContainerCraft container;
+
+    public static final int BUTTON_ID_ARROW_UP = Integer.MAX_VALUE;
+    public static final int BUTTON_ID_ARROW_DOWN = Integer.MAX_VALUE - 1;
 
     public AbstractGuiCraft(AbstractContainerCraft container)
     {
@@ -122,20 +123,19 @@ public abstract class AbstractGuiCraft extends GuiContainer
     {
         if(button instanceof UpgradeButton)
         {
-            container.enchantItem(this.mc.thePlayer, button.id);
-            mc.playerController.sendEnchantPacket(container.windowId, button.id);
+            //Add 1 to the id so that ids start from 1 rather than 0 (because there's no -0!)
+            int id = button.id + 1;
+            //If shift key is held, make the id negative
+            id = ClientUtil.isShiftKeyDown() ? id * -1 : id;
+            container.enchantItem(this.mc.thePlayer, id);
+            mc.playerController.sendEnchantPacket(container.windowId, id);
         }
         else if(button instanceof ArrowButton)
         {
-            //Use the same enchant method for arrow buttons but ids -1 for up and -2 for down.
-            int id = ((ArrowButton) button).isUpArrow() ? -1 : -2;
+            //Use the same enchant method for arrow buttons but ids Int Max for up and Int Max - 1 for down.
+            int id = ((ArrowButton) button).isUpArrow() ? BUTTON_ID_ARROW_UP : BUTTON_ID_ARROW_DOWN;
             container.enchantItem(this.mc.thePlayer, id);
             mc.playerController.sendEnchantPacket(container.windowId, id);
-            /*
-            PacketBuffer buf = new PacketBuffer(Unpooled.buffer());
-            buf.writeBoolean(((ArrowButton)button).isUpArrow());
-            mc.getConnection().sendPacket(new CPacketCustomPayload("MH|WUPage", buf));
-            */
         }
     }
 

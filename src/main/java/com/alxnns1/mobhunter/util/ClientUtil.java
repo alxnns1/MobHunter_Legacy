@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
 /**
  * Created by Mark on 14/10/2016.
@@ -35,5 +36,10 @@ public class ClientUtil
             itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
         ModelResourceLocation loc = new ModelResourceLocation(itemPath, "inventory");
         ModelLoader.setCustomModelResourceLocation(item, meta, loc);
+    }
+
+    public static boolean isShiftKeyDown()
+    {
+        return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
     }
 }

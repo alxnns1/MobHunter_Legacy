@@ -1,7 +1,7 @@
 package com.alxnns1.mobhunter.container;
 
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
-import com.alxnns1.mobhunter.util.CommonUtil;
+import com.alxnns1.mobhunter.gui.AbstractGuiCraft;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -190,17 +190,19 @@ public abstract class AbstractContainerCraft extends MHContainer
     {
         switch(id)
         {
-            case -1: //Up Arrow
+            case AbstractGuiCraft.BUTTON_ID_ARROW_UP: //Up Arrow
                 int oldStart = recipeStart;
                 decRecipeStart();
                 refreshRecipes();
                 return true;
-            case -2: //Down Arrow
+            case AbstractGuiCraft.BUTTON_ID_ARROW_DOWN: //Down Arrow
                 int oldStart2 = recipeStart;
                 incRecipeStart();
                 refreshRecipes();
                 return true;
             default: //Craft Button
+                boolean putInGuiSlot = id > 0;
+                id = Math.abs(id) - 1;
                 ItemStack stack = inventory.getStackInSlot(0);
                 int actualRecipeI = id + recipeStart;
 
@@ -236,7 +238,6 @@ public abstract class AbstractContainerCraft extends MHContainer
                         if(stack != null && stack.isItemEnchanted())
                             //Copy over enchantments
                             EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
-                        boolean putInGuiSlot = !CommonUtil.isShiftKeyDown();
                         if(putInGuiSlot)
                             inventory.setInventorySlotContents(0, newItem);
                         else
