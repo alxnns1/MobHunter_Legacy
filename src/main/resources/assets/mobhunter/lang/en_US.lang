@@ -159,6 +159,16 @@ item.ore.iceCrystal.tooltip=Ice that will not melt at room temperature.
 item.ore.gossamiteIngot.name=Gossamite Ingot
 item.ore.gossamiteIngot.tooltip=An ore that yields a strong but shockingly light metal. Still a scientific mystery.
 
+//Fish
+item.itemWhetfish.name=Whetfish
+item.itemWhetfish.tooltip=A fish with a dorsal fin hard enough to be used to sharpen weapons.
+item.itemSushifish.name=Sushifish
+item.itemSushifish.tooltip=A fatty, delicious fish that restores a small amount of hunger when consumed.
+item.itemGluttonTuna.name=Glutton Tuna
+item.itemGluttonTuna.tooltip=A fish that eats anything -- allowing you to sometimes get items from its stomach.
+item.itemGastronomeTuna.name=Gastronome Tuna
+item.itemGastronomeTuna.tooltip=An enormous Glutton Tuna. Will eat anything, no matter the size.
+
 //Bugs
 item.bug.insectHusk.name=Insect Husk
 item.bug.insectHusk.tooltip=The remains of a dead insect.

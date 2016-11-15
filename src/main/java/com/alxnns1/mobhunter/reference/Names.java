@@ -74,7 +74,12 @@ public class Names
                 LIGHT_CRYSTAL = "lightCrystal",
                 ICE_CRYSTAL = "iceCrystal",
                 GOSSAMITE_INGOT = "gossamiteIngot",
-        
+
+                WHETFISH = "itemWhetfish",
+                SUSHIFISH = "itemSushifish",
+                GLUTTON_TUNA = "itemGluttonTuna",
+                GASTRONOME_TUNA = "itemGastronomeTuna",
+
                 INSECT_HUSK = "insectHusk",
                 STINKHOPPER = "stinkhopper",
                 SNAKEBEE_LARVA = "snakebeeLarva",

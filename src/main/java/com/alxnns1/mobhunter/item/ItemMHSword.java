@@ -163,7 +163,7 @@ public class ItemMHSword extends ItemSword
     {
         if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0)
         {
-            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)))
+            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetfish, 1, 0)))
             {
                 playerIn.setActiveHand(hand);
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
@@ -187,6 +187,8 @@ public class ItemMHSword extends ItemSword
             else if (((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 2, 1, null) > 0)
                 //Mini Whetstone
                 sharpen = 100;
+            else if (((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemWhetfish, 0, 1, null) > 0)
+                sharpen = 200;
 
             if(sharpen > 0)
                 repairSharpness(stack, sharpen);

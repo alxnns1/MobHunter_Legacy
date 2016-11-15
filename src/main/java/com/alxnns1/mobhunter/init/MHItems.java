@@ -58,13 +58,19 @@ public class MHItems
             armourVelocipreyHelmet, armourVelocipreyChestplate, armourVelocipreyLeggings, armourVelocipreyBoots;
 
     public static ItemMHResource
-            itemRawMeat;
+            itemRawMeat,
+            itemWhetfish;
 
     public static ItemMHPickaxe
             itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
 
     public static ItemMHConsumable
-            itemRareSteak, itemDoneSteak, itemBurntMeat;
+            itemRareSteak,
+            itemDoneSteak,
+            itemBurntMeat,
+            itemSushifish,
+            itemGluttonTuna,
+            itemGastronomeTuna;
 
     public static ItemMHSword
             weaponHuntersKnife,
@@ -175,6 +181,11 @@ public class MHItems
         regItem(itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK));
         regItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
         regItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
+
+        regFish(itemWhetfish = new ItemMHResource(Names.Items.WHETFISH),53);
+        regFish(itemSushifish = new ItemMHConsumable(5, 0.4F, false, Names.Items.SUSHIFISH),46);
+        regFish(itemGluttonTuna = new ItemMHConsumable(5, 0.4F, false, Names.Items.GLUTTON_TUNA),56);
+        regFish(itemGastronomeTuna = new ItemMHConsumable(10, 1.0F, false, Names.Items.GASTRONOME_TUNA),25);
 
         regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
         regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
