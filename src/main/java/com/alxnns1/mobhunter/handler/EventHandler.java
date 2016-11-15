@@ -32,7 +32,7 @@ import java.util.Random;
 /**
  * Created by Mark on 21/04/2016.
  */
-public class EntityEventHandler
+public class EventHandler
 {
     /** Any registered mob which extends EntityLiving */
     public static final String ALL_WILDCARD = "/*";

@@ -57,6 +57,12 @@ public abstract class AbstractContainerCraft extends MHContainer
             {
                 return 1;
             }
+
+            public void onPickupFromSlot(EntityPlayer playerIn, ItemStack stack)
+            {
+                net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, stack, inventory);
+                super.onPickupFromSlot(playerIn, stack);
+            }
         });
     }
 
