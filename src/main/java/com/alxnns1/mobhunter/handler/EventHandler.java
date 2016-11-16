@@ -5,7 +5,6 @@ import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
 import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
 import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
 import com.alxnns1.mobhunter.init.MHAchievements;
-import com.alxnns1.mobhunter.item.ItemMHShield;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.EntityList;
@@ -22,7 +21,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -229,38 +227,4 @@ public class EventHandler
         }
     }
     */
-
-    @SubscribeEvent
-    public void entityHurt(LivingHurtEvent event)
-    {
-        //This is used to damage our shields in a similar way to the way vanilla damages theirs.
-
-        EntityLivingBase entity = event.getEntityLiving();
-        ItemStack activeStack = entity.getActiveItemStack();
-        if(entity instanceof EntityPlayer &&
-                activeStack != null &&
-                activeStack.getItem() instanceof ItemMHShield &&
-                CommonUtil.canBlockDamageSource(entity, event.getSource()) &&
-                event.getAmount() >= 0F)
-        {
-            //Damage shield
-            EntityPlayer player = (EntityPlayer) entity;
-            int i = 1 + MathHelper.floor_float(event.getAmount());
-            activeStack.damageItem(i, player);
-
-            if(activeStack.stackSize <= 0)
-            {
-                EnumHand enumhand = player.getActiveHand();
-                net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(player, activeStack, enumhand);
-
-                if(enumhand == EnumHand.MAIN_HAND)
-                    player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, null);
-                else
-                    player.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, null);
-
-                player.resetActiveHand();
-                player.playSound(SoundEvents.ITEM_SHIELD_BREAK, 0.8F, 0.8F + player.worldObj.rand.nextFloat() * 0.4F);
-            }
-        }
-    }
 }

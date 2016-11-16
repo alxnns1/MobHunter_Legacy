@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsumable>
 {
-    protected final int effectDuration = 100;
+    protected final int effectDuration = 200;
     private int eatDuration = this.itemUseDuration;
     public static int EAT_DURATION_SHORT = 8;
     protected String[] subNames;

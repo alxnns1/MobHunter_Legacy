@@ -47,7 +47,7 @@ public class ItemMHDrink extends ItemMHConsumable
                         if(player.isPotionActive(MobEffects.POISON)) player.removePotionEffect(MobEffects.POISON);
                         break;
                     case 3: //Immunizer
-                        player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200));
+                        player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600));
                         break;
                     case 4: //Dash Juice
                         player.getFoodStats().setFoodSaturationLevel(Math.min(player.getFoodStats().getSaturationLevel() + 10f, 40f));
@@ -56,16 +56,16 @@ public class ItemMHDrink extends ItemMHConsumable
                         player.getFoodStats().setFoodSaturationLevel(Math.min(player.getFoodStats().getSaturationLevel() + 20f, 40f));
                         break;
                     case 6: //Demondrug
-                        player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 200, 1));
+                        player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 600, 1));
                         break;
                     case 7: //Mega Demondrug
-                        player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 400, 1));
+                        player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 1));
                         break;
                     case 8: //Armourskin
-                        player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, 1));
+                        player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 600, 1));
                         break;
                     case 9: //Mega Armourskin
-                        player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 400, 1));
+                        player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 1200, 1));
                         break;
                 }
             }
