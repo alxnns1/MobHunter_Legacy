@@ -29,6 +29,7 @@ public class Names
         
                 WHETSTONE = "whetstone",
                 MINI_WHETSTONE = "miniWhetstone",
+                FIELD_POUCH = "itemFieldPouch",
                 
                 MACHALITE_PICKAXE = "Machalite",
                 DRAGONITE_PICKAXE = "Dragonite",

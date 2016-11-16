@@ -78,6 +78,12 @@ public class MHRecipes
         //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.PALE_EXTRACT);
 
         GameRegistry.addRecipe(
+                new ItemStack(MHItems.itemFieldPouch),
+                "yzy", "y y", "yyy",
+                'y', new ItemStack(Blocks.CARPET,1,0),
+                'z', Items.STRING);
+
+        GameRegistry.addRecipe(
                 new ItemStack(MHItems.itemMachalitePickaxe),
                 "xxx", " y ", " y ",
                 'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
@@ -147,13 +153,15 @@ public class MHRecipes
                 new ItemStack(MHItems.itemRareSteak), 0.2f);
         GameRegistry.addRecipe(
                 new ItemStack(MHBlocks.blockWeaponCraft),
-                "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,14),
+                "www", "xyx", "xzx",
+                'w', new ItemStack(Blocks.CARPET,1,14),
                 'x', new ItemStack(Blocks.STONE),
                 'y', new ItemStack(Blocks.CHEST),
                 'z', new ItemStack(Blocks.BOOKSHELF));
         GameRegistry.addRecipe(
                 new ItemStack(MHBlocks.blockArmourCraft),
-                "www", "xyx", "xzx", 'w', new ItemStack(Blocks.CARPET,1,11),
+                "www", "xyx", "xzx",
+                'w', new ItemStack(Blocks.CARPET,1,11),
                 'x', new ItemStack(Blocks.STONE),
                 'y', new ItemStack(Blocks.CHEST),
                 'z', new ItemStack(Blocks.BOOKSHELF));
