@@ -100,7 +100,7 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityGiaprey.class, "Giaprey", 0x9fbfdf, 0x476078);
-        addSpawn(EntityVelociprey.class, Config.giapreySpawnChance, 3, 7, new BiomeDictionary.Type[]{
+        addSpawn(EntityGiaprey.class, Config.giapreySpawnChance, 3, 7, new BiomeDictionary.Type[]{
                 BiomeDictionary.Type.MOUNTAIN,
                 BiomeDictionary.Type.SNOWY});
         registerMobWithEgg(EntityGenprey.class, "Genprey", 0x408040, 0x806040);
