@@ -71,7 +71,9 @@ public class MHItems
             itemRareSteak,
             itemDoneSteak,
             itemBurntMeat,
-            itemSushifish,
+            itemSushifish;
+
+    public static ItemMHGlutton
             itemGluttonTuna,
             itemGastronomeTuna;
 
@@ -189,8 +191,8 @@ public class MHItems
 
         regFish(itemWhetfish = new ItemMHResource(Names.Items.WHETFISH),53);
         regFish(itemSushifish = new ItemMHConsumable(5, 0.4F, false, Names.Items.SUSHIFISH),46);
-        regFish(itemGluttonTuna = new ItemMHConsumable(5, 0.4F, false, Names.Items.GLUTTON_TUNA),56);
-        regFish(itemGastronomeTuna = new ItemMHConsumable(10, 1.0F, false, Names.Items.GASTRONOME_TUNA),25);
+        regFish(itemGluttonTuna = new ItemMHGlutton(5, 0.4F, false, Names.Items.GLUTTON_TUNA),56);
+        regFish(itemGastronomeTuna = new ItemMHGlutton(10, 1.0F, false, Names.Items.GASTRONOME_TUNA),25);
 
         regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
         regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
