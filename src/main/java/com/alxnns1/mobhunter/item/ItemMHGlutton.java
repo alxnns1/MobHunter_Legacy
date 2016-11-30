@@ -32,9 +32,8 @@ public class ItemMHGlutton extends ItemMHConsumable {
         drops.add(new ItemStack(Items.COAL));
         drops.add(new ItemStack(Items.COMPASS));
         drops.add(new ItemStack(Items.DIAMOND));
-        for(int i=0;i<16;i++) {
+        for(int i=0;i<16;i++)
             drops.add(new ItemStack(Items.DYE, 1, i));
-        }
         drops.add(new ItemStack(Items.EMERALD));
         drops.add(new ItemStack(Items.ENDER_EYE));
         drops.add(new ItemStack(Items.ENDER_PEARL));
@@ -99,12 +98,14 @@ public class ItemMHGlutton extends ItemMHConsumable {
         if(worldIn.isRemote) return;
 
         if(stack.getItem() == MHItems.itemGluttonTuna) {
-            ItemStack drop = drops.get(drops.size()-1);//drops.get(worldIn.rand.nextInt(drops.size()));
-            player.entityDropItem(drop, 0f);
+            ItemStack drop = drops.get(worldIn.rand.nextInt(drops.size()));
+            if(!player.inventory.addItemStackToInventory(drop))
+                player.entityDropItem(drop, 0f);
         }else if(stack.getItem() == MHItems.itemGastronomeTuna) {
             for(int i=0;i<2;i++) {
                 ItemStack drop = drops.get(worldIn.rand.nextInt(drops.size()));
-                player.entityDropItem(drop, 0f);
+                if(!player.inventory.addItemStackToInventory(drop))
+                    player.entityDropItem(drop, 0f);
             }
         }
     }
