@@ -3,7 +3,6 @@ package com.alxnns1.mobhunter.item;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -76,7 +75,7 @@ public class ItemMHGlutton extends ItemMHConsumable {
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.MINI_WHETSTONE));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M));
-        drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L));
+        //drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.UNKNOWN_SKULL));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.BRUTE_BONE));
