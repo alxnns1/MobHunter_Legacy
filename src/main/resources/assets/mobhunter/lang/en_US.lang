@@ -73,7 +73,7 @@ item.misc.whetstone.name=Whetstone
 item.misc.whetstone.tooltip=A standard-sized Whetstone. Use it to restore a weapon's Sharpness.
 item.misc.miniWhetstone.name=Mini Whetstone
 item.misc.miniWhetstone.tooltip=A portable Whetstone for restoring Sharpness to weapons.
-item.itemFieldPouch.name=Field Puch(WIP)
+item.itemFieldPouch.name=Field Pouch (WIP)
 item.itemFieldPouch.tooltip=Work In Progress.
 item.itemMachalitePickaxe.name=Machalite Pickaxe
 item.itemDragonitePickaxe.name=Dragonite Pickaxe
@@ -216,6 +216,8 @@ item.monsterDrop.bruteBone.name=Brute Bone
 item.monsterDrop.bruteBone.tooltip=The stout bone of a brutish monster. An easy-to-work material.
 item.monsterDrop.jumboBone.name=Jumbo Bone
 item.monsterDrop.jumboBone.tooltip=A large, thick bone. Often cut apart in workshops for use in crafting.
+item.monsterDrop.sharpFang.name=Sharp Fang
+item.monsterDrop.sharpFang.tooltip=Fangs come in many shapes and sizes -- the right fang for the right job.
 item.monsterDrop.dung.name=Dung
 item.monsterDrop.dung.tooltip=That's right: monster poop. The odor reveals (too) much about the monster's diet.
 
@@ -262,6 +264,8 @@ item.monsterDrop.jaggiHide.name=Jaggi Hide
 item.monsterDrop.jaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and easy to work with, it has numerous uses.
 item.monsterDrop.jaggiScale.name=Jaggi Scale
 item.monsterDrop.jaggiScale.tooltip=A scale carved from a Jaggi. Popular among hunters for its beauty and crafting versatility.
+item.monsterDrop.jaggiScale.name=Jaggi Fang
+item.monsterDrop.jaggiScale.tooltip=The small fang of a Jaggi.
 
 //Velociprey
 item.monsterDrop.velocipreyHide.name=Velociprey Hide

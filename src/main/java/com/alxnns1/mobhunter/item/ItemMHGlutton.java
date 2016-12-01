@@ -53,7 +53,6 @@ public class ItemMHGlutton extends ItemMHConsumable {
         drops.add(new ItemStack(Items.LEATHER));
         drops.add(new ItemStack(Items.MAGMA_CREAM));
         drops.add(new ItemStack(Items.NAME_TAG));
-        drops.add(new ItemStack(Items.NETHER_STAR));
         drops.add(new ItemStack(Items.NETHERBRICK));
         drops.add(new ItemStack(Items.PAPER));
         drops.add(new ItemStack(Items.PRISMARINE_CRYSTALS));
@@ -75,11 +74,13 @@ public class ItemMHGlutton extends ItemMHConsumable {
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.MINI_WHETSTONE));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_M));
-        //drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L));
+        drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_L));
+        drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_PLUS));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MYSTERY_BONE));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.UNKNOWN_SKULL));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.BRUTE_BONE));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.JUMBO_BONE));
+        drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.SHARP_FANG));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.BONE_HUSK));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
         drops.add(MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT));

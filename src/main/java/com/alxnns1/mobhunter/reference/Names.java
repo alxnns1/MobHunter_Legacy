@@ -97,10 +97,12 @@ public class Names
                 MONSTER_BONE_S = "monsterBoneS",
                 MONSTER_BONE_M = "monsterBoneM",
                 MONSTER_BONE_L = "monsterBoneL",
+                MONSTER_BONE_PLUS = "monsterBonePlus",
                 MYSTERY_BONE = "mysteryBone",
                 UNKNOWN_SKULL = "unknownSkull",
                 BRUTE_BONE = "bruteBone",
                 JUMBO_BONE = "jumboBone",
+                SHARP_FANG = "sharpFang",
                 DUNG = "dung",
                 BONE_HUSK = "boneHusk",
 
