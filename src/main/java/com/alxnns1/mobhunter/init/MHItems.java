@@ -5,7 +5,6 @@ import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.ClientUtil;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -57,7 +56,7 @@ public class MHItems
             armourJaggiHelmet, armourJaggiChestplate, armourJaggiLeggings, armourJaggiBoots,
             armourVelocipreyHelmet, armourVelocipreyChestplate, armourVelocipreyLeggings, armourVelocipreyBoots;
 
-    public static ItemMHContainer
+    public static ItemMHPouch
             itemFieldPouch;
 
     public static ItemMHResource
@@ -304,7 +303,7 @@ public class MHItems
         regItem(armourVelocipreyLeggings = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.VELOCIPREY_LEGGINGS));
         regItem(armourVelocipreyBoots = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.VELOCIPREY_BOOTS));
 
-        regItem(itemFieldPouch = new ItemMHContainer(Names.Items.FIELD_POUCH));
+        regItem(itemFieldPouch = new ItemMHPouch(Names.Items.FIELD_POUCH));
 
         regItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
         regItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));

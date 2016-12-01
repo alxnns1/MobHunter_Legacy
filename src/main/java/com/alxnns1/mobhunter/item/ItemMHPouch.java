@@ -1,21 +1,18 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.block.BlockBbq;
-import com.alxnns1.mobhunter.block.BlockNatural;
-import com.alxnns1.mobhunter.block.BlockOre;
-import com.alxnns1.mobhunter.block.BlockResource;
+import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.util.CommonUtil;
-import com.google.common.collect.Lists;
-import com.sun.istack.internal.Nullable;
+import com.alxnns1.mobhunter.util.NBTHelper;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.IInventoryChangedListener;
-import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -26,15 +23,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
  * Created by Alex on 16/11/2016.
  */
-public class ItemMHContainer extends Item {
-    PouchInventory inventory = new PouchInventory("Field Pouch", true, 27);
-
-    public ItemMHContainer(String itemName) {
+public class ItemMHPouch extends Item
+{
+    public ItemMHPouch(String itemName)
+    {
         setCreativeTab(MobHunter.MH_TAB);
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
@@ -42,60 +40,43 @@ public class ItemMHContainer extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    {
         if(!worldIn.isRemote && !playerIn.isSneaking())
-            playerIn.displayGUIChest(inventory);
-        return new ActionResult(EnumActionResult.PASS, itemStackIn);
+            playerIn.displayGUIChest(new PouchInventory(itemStackIn, "Field Pouch", true, 27));
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
     }
 
     /**
      * Allows items to add custom lines of information to the mouseover description
      */
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    {
         CommonUtil.addTooltip(stack, tooltip);
     }
 
-    public class PouchInventory implements IInventory {
+    public class PouchInventory implements IInventory
+    {
         private String inventoryTitle;
         private final int slotsCount;
         private final ItemStack[] inventoryContents;
-        private List<IInventoryChangedListener> changeListeners;
         private boolean hasCustomName;
+        private ItemStack pouch;
 
-        public PouchInventory(String title, boolean customName, int slotCount)
+        public PouchInventory(ItemStack pouch, String title, boolean customName, int slotCount)
         {
             this.inventoryTitle = title;
             this.hasCustomName = customName;
             this.slotsCount = slotCount;
             this.inventoryContents = new ItemStack[slotCount];
-        }
-
-        /**
-         * Add a listener that will be notified when any item in this inventory is modified.
-         */
-        public void addInventoryChangeListener(IInventoryChangedListener listener)
-        {
-            if (this.changeListeners == null)
-            {
-                this.changeListeners = Lists.<IInventoryChangedListener>newArrayList();
-            }
-
-            this.changeListeners.add(listener);
-        }
-
-        /**
-         * removes the specified IInvBasic from receiving further change notices
-         */
-        public void removeInventoryChangeListener(IInventoryChangedListener listener)
-        {
-            this.changeListeners.remove(listener);
+            this.pouch = pouch;
         }
 
         /**
          * Returns the stack in the given slot.
          */
-        @javax.annotation.Nullable
+        @Override
         public ItemStack getStackInSlot(int index)
         {
             return index >= 0 && index < this.inventoryContents.length ? this.inventoryContents[index] : null;
@@ -104,58 +85,53 @@ public class ItemMHContainer extends Item {
         /**
          * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
          */
-        @javax.annotation.Nullable
+        @Override
         public ItemStack decrStackSize(int index, int count)
         {
-            ItemStack itemstack = ItemStackHelper.getAndSplit(this.inventoryContents, index, count);
+            ItemStack itemstack = ItemStackHelper.getAndSplit(inventoryContents, index, count);
 
-            if (itemstack != null)
-            {
-                this.markDirty();
-            }
+            if(itemstack != null)
+                markDirty();
 
             return itemstack;
         }
 
-        @javax.annotation.Nullable
         public ItemStack addItem(ItemStack stack)
         {
             ItemStack itemstack = stack.copy();
 
-            for (int i = 0; i < this.slotsCount; ++i)
+            for(int i = 0; i < slotsCount; ++i)
             {
-                ItemStack itemstack1 = this.getStackInSlot(i);
+                ItemStack itemstack1 = getStackInSlot(i);
 
-                if (itemstack1 == null && isItemValidForSlot(i, itemstack))
+                if(itemstack1 == null && isItemValidForSlot(i, itemstack))
                 {
-                    this.setInventorySlotContents(i, itemstack);
-                    this.markDirty();
+                    setInventorySlotContents(i, itemstack);
+                    markDirty();
                     return null;
                 }
 
-                if (ItemStack.areItemsEqual(itemstack1, itemstack))
+                if(ItemStack.areItemsEqual(itemstack1, itemstack))
                 {
-                    int j = Math.min(this.getInventoryStackLimit(), itemstack1.getMaxStackSize());
+                    int j = Math.min(getInventoryStackLimit(), itemstack1.getMaxStackSize());
                     int k = Math.min(itemstack.stackSize, j - itemstack1.stackSize);
 
-                    if (k > 0)
+                    if(k > 0)
                     {
                         itemstack1.stackSize += k;
                         itemstack.stackSize -= k;
 
-                        if (itemstack.stackSize <= 0)
+                        if(itemstack.stackSize <= 0)
                         {
-                            this.markDirty();
+                            markDirty();
                             return null;
                         }
                     }
                 }
             }
 
-            if (itemstack.stackSize != stack.stackSize)
-            {
-                this.markDirty();
-            }
+            if(itemstack.stackSize != stack.stackSize)
+                markDirty();
 
             return itemstack;
         }
@@ -163,58 +139,58 @@ public class ItemMHContainer extends Item {
         /**
          * Removes a stack from the given slot and returns it.
          */
-        @javax.annotation.Nullable
+        @Override
         public ItemStack removeStackFromSlot(int index)
         {
-            if (this.inventoryContents[index] != null)
+            if (inventoryContents[index] != null)
             {
-                ItemStack itemstack = this.inventoryContents[index];
-                this.inventoryContents[index] = null;
+                ItemStack itemstack = inventoryContents[index];
+                inventoryContents[index] = null;
                 return itemstack;
             }
             else
-            {
                 return null;
-            }
         }
 
         /**
          * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
          */
-        public void setInventorySlotContents(int index, @javax.annotation.Nullable ItemStack stack) {
-            if(isItemValidForSlot(index, stack)) {
-                this.inventoryContents[index] = stack;
+        @Override
+        public void setInventorySlotContents(int index, @Nullable ItemStack stack)
+        {
+            inventoryContents[index] = stack;
 
-                if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
-                    stack.stackSize = this.getInventoryStackLimit();
-                }
+            if (stack != null && stack.stackSize > getInventoryStackLimit())
+                stack.stackSize = getInventoryStackLimit();
 
-                this.markDirty();
-            }
+            markDirty();
         }
 
         /**
          * Returns the number of slots in the inventory.
          */
+        @Override
         public int getSizeInventory()
         {
-            return this.slotsCount;
+            return slotsCount;
         }
 
         /**
          * Get the name of this object. For players this returns their username
          */
+        @Override
         public String getName()
         {
-            return this.inventoryTitle;
+            return inventoryTitle;
         }
 
         /**
          * Returns true if this thing is named
          */
+        @Override
         public boolean hasCustomName()
         {
-            return this.hasCustomName;
+            return hasCustomName;
         }
 
         /**
@@ -222,21 +198,23 @@ public class ItemMHContainer extends Item {
          */
         public void setCustomName(String inventoryTitleIn)
         {
-            this.hasCustomName = true;
-            this.inventoryTitle = inventoryTitleIn;
+            hasCustomName = true;
+            inventoryTitle = inventoryTitleIn;
         }
 
         /**
          * Get the formatted ChatComponent that will be used for the sender's username in chat
          */
+        @Override
         public ITextComponent getDisplayName()
         {
-            return (ITextComponent)(this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName(), new Object[0]));
+            return hasCustomName() ? new TextComponentString(getName()) : new TextComponentTranslation(getName());
         }
 
         /**
          * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended.
          */
+        @Override
         public int getInventoryStackLimit()
         {
             return 64;
@@ -246,64 +224,88 @@ public class ItemMHContainer extends Item {
          * For tile entities, ensures the chunk containing the tile entity is saved to disk later - the game won't think it
          * hasn't changed and skip it.
          */
+        @Override
         public void markDirty() {}
 
         /**
          * Do not make give this method the name canInteractWith because it clashes with Container
          */
+        @Override
         public boolean isUseableByPlayer(EntityPlayer player)
         {
             return true;
         }
 
+        @Override
         public void openInventory(EntityPlayer player)
         {
+            //Read stacks from pouch
+
+            NBTTagList stackList = NBTHelper.getList(pouch, "inventory");
+            for(int i = 0; i < stackList.tagCount(); i++)
+            {
+                NBTTagCompound tag = stackList.getCompoundTagAt(i);
+                inventoryContents[tag.getByte("slot")] = ItemStack.loadItemStackFromNBT(tag);
+            }
         }
 
+        @Override
         public void closeInventory(EntityPlayer player)
         {
+            //Write stacks to pouch
+
+            NBTTagList stackList = new NBTTagList();
+            for(int i = 0; i < slotsCount; i++)
+            {
+                if(inventoryContents[i] == null) continue;
+                NBTTagCompound tag = new NBTTagCompound();
+                tag.setByte("slot", (byte) i);
+                inventoryContents[i].writeToNBT(tag);
+                stackList.appendTag(tag);
+            }
+            NBTHelper.setList(pouch, "inventory", stackList);
         }
 
         /**
          * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot.
          */
-        public boolean isItemValidForSlot(int index, ItemStack stack) {
-            if(stack.getItem() instanceof ItemMHConsumable ||
-                    stack.getItem() instanceof ItemMHDrink ||
-                    stack.getItem() instanceof ItemMHGlutton ||
-                    stack.getItem() instanceof ItemMHResource) {
+        @Override
+        public boolean isItemValidForSlot(int index, @Nullable ItemStack stack)
+        {
+            if(stack == null)
                 return true;
-            }else if(stack.getItem() instanceof ItemBlock) {
-                if(((ItemBlock) stack.getItem()).getBlock() instanceof BlockBbq ||
-                        ((ItemBlock) stack.getItem()).getBlock() instanceof BlockNatural ||
-                        ((ItemBlock) stack.getItem()).getBlock() instanceof BlockOre ||
-                        ((ItemBlock) stack.getItem()).getBlock() instanceof BlockResource) {
+            Item item = stack.getItem();
+            if(item instanceof ItemMHConsumable || item instanceof ItemMHResource)
+                return true;
+            else if(item instanceof ItemBlock)
+            {
+                Block block = ((ItemBlock) item).getBlock();
+                if(block instanceof BlockBbq || block instanceof BlockNatural || block instanceof BlockResource || block instanceof BlockCraft)
                     return true;
-                }
             }
             return false;
         }
 
+        @Override
         public int getField(int id)
         {
             return 0;
         }
 
-        public void setField(int id, int value)
-        {
-        }
+        @Override
+        public void setField(int id, int value) {}
 
+        @Override
         public int getFieldCount()
         {
             return 0;
         }
 
+        @Override
         public void clear()
         {
-            for (int i = 0; i < this.inventoryContents.length; ++i)
-            {
-                this.inventoryContents[i] = null;
-            }
+            for(int i = 0; i < inventoryContents.length; ++i)
+                inventoryContents[i] = null;
         }
     }
 }
