@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 /**
  * Contains the recipes to be added
@@ -83,21 +84,21 @@ public class MHRecipes
                 'y', new ItemStack(Blocks.CARPET,1,0),
                 'z', Items.STRING);
 
-        GameRegistry.addRecipe(
+        GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHItems.itemMachalitePickaxe),
                 "xxx", " y ", " y ",
                 'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
-                'y', new ItemStack(Items.STICK));
-        GameRegistry.addRecipe(
+                'y', "stickWood"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHItems.itemDragonitePickaxe),
                 "xxx", " y ", " y ",
                 'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT),
-                'y', new ItemStack(Items.STICK));
-        GameRegistry.addRecipe(
+                'y', "stickWood"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHItems.itemGossamitePickaxe),
                 "xxx", " y ", " y ",
                 'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT),
-                'y', new ItemStack(Items.STICK));
+                'y', "stickWood"));
 
         GameRegistry.addRecipe(
                 new ItemStack(MHBlocks.blockEarthCrystal),
@@ -151,20 +152,20 @@ public class MHRecipes
                 'z', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat,
                 new ItemStack(MHItems.itemRareSteak), 0.2f);
-        GameRegistry.addRecipe(
+        GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHBlocks.blockWeaponCraft),
                 "www", "xyx", "xzx",
                 'w', new ItemStack(Blocks.CARPET,1,14),
-                'x', new ItemStack(Blocks.STONE),
+                'x', "stone",
                 'y', new ItemStack(Blocks.CHEST),
-                'z', new ItemStack(Blocks.BOOKSHELF));
-        GameRegistry.addRecipe(
+                'z', "bookshelf"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHBlocks.blockArmourCraft),
                 "www", "xyx", "xzx",
                 'w', new ItemStack(Blocks.CARPET,1,11),
-                'x', new ItemStack(Blocks.STONE),
+                'x', "stone",
                 'y', new ItemStack(Blocks.CHEST),
-                'z', new ItemStack(Blocks.BOOKSHELF));
+                'z', "bookshelf"));
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite,
                 MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT), 0.2f);

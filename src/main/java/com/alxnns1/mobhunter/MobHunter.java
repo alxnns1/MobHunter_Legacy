@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter;
 
-import com.alxnns1.mobhunter.gui.GuiHandler;
+import com.alxnns1.mobhunter.handler.GuiHandler;
 import com.alxnns1.mobhunter.handler.ConfigHandler;
 import com.alxnns1.mobhunter.handler.EventHandler;
 import com.alxnns1.mobhunter.handler.LootHandler;

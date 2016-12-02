@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.container;
 
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -11,15 +12,15 @@ import net.minecraft.world.World;
  */
 public class MHContainer extends Container
 {
-    public InventoryCrafting inventory;
+    public IInventory inventory;
     public InventoryPlayer inventoryPlayer;
     protected World world;
 
-    protected int slotInvStart = 1;
+    protected int slotI = 0;
     protected int invStartX = 8;
-    protected int invStartY = 84;
+    protected int invStartY = 86;
 
-    public MHContainer(InventoryPlayer invPlayer, InventoryCrafting inv, World worldIn)
+    public MHContainer(InventoryPlayer invPlayer, IInventory inv, World worldIn)
     {
         world = worldIn;
         inventory = inv;
@@ -44,20 +45,12 @@ public class MHContainer extends Container
      */
     protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
     {
-        slotInvStart = inventorySlots.size();
-
         for (int i = 0; i < 3; i++)
-        {
             for (int j = 0; j < 9; j++)
-            {
                 addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, invStartX + j * 18, invStartY + i * 18));
-            }
-        }
 
         for (int i = 0; i < 9; i++)
-        {
             addSlotToContainer(new Slot(inventoryPlayer, i, invStartX + i * 18, invStartY + 18 * 3 + 4));
-        }
     }
 
     @Override
@@ -68,7 +61,6 @@ public class MHContainer extends Container
 
     /**
      * What happens when you shift-click a slot.
-     * This implementation will work with a container with 1 slot with id 0.
      */
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slot)
@@ -81,18 +73,30 @@ public class MHContainer extends Container
             ItemStack stackInSlot = slotObject.getStack();
             stack = stackInSlot.copy();
 
-            //If slot 0 (input)
-            if (slot == 0)
+            //If GUI slot
+            if (slot < slotI)
             {
-                if (!this.mergeItemStack(stackInSlot, slotInvStart, slotInvStart+36, true))
+                if (!mergeItemStack(stackInSlot, slotI, slotI + 36, true))
                     return null;
 
                 slotObject.onSlotChange(stackInSlot, stack);
             }
             //If slot Inventory
-            else if (slot >= slotInvStart && slot <= slotInvStart+36)
+            else if (slot >= slotI && slot <= slotI + 36)
             {
-                if (!this.mergeItemStack(stackInSlot, 0, 1, false))
+                boolean success = false;
+                for(int i = 0; i < slotI; i++)
+                {
+                    if(inventorySlots.get(i).isItemValid(stackInSlot))
+                    {
+                        if(mergeItemStack(stackInSlot, i, i + 1, false))
+                        {
+                            success = true;
+                            break;
+                        }
+                    }
+                }
+                if(!success)
                     return null;
             }
 

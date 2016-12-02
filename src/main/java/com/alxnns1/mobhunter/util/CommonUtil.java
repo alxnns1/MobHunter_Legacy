@@ -1,11 +1,16 @@
 package com.alxnns1.mobhunter.util;
 
+import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.handler.EnumGuiID;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
@@ -72,5 +77,30 @@ public class CommonUtil
         }
 
         return false;
+    }
+
+    /**
+     * Open a GUI for a block (Uses a guiID of -1).
+     */
+    public static void openGui(EntityPlayer player, World world, BlockPos pos)
+    {
+        player.openGui(MobHunter.instance, -1, world, pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    /**
+     * Open a GUI for an item (Uses the position of the player).
+     */
+    public static void openGui(EntityPlayer player, World world, EnumGuiID guiID)
+    {
+        openGui(player, world, guiID.ordinal());
+    }
+
+    /**
+     * Open a GUI for an item (Uses the position of the player).
+     */
+    public static void openGui(EntityPlayer player, World world, int guiID)
+    {
+        BlockPos pos = player.getPosition();
+        player.openGui(MobHunter.instance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
     }
 }

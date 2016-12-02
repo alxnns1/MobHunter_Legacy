@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.container;
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.crafting.WeaponCraftingManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -20,6 +21,6 @@ public class ContainerWeaponCraft extends AbstractContainerCraft
     @Override
     protected List<MHCraftingRecipe> getRecipes()
     {
-        return WeaponCraftingManager.getInstance().findMatchingRecipes(inventory, inventoryPlayer, world);
+        return WeaponCraftingManager.getInstance().findMatchingRecipes((InventoryCrafting) inventory, inventoryPlayer, world);
     }
 }

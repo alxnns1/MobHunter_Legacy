@@ -1,7 +1,7 @@
 package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.reference.Names;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -35,7 +35,8 @@ public class BlockCraft extends Block
     {
         //Open crafting gui
         if(!world.isRemote && !player.isSneaking())
-            player.openGui(MobHunter.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+            CommonUtil.openGui(player, world, pos);
+            //player.openGui(MobHunter.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
         return true;
     }
 }

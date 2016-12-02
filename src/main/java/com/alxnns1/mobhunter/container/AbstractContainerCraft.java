@@ -247,7 +247,7 @@ public abstract class AbstractContainerCraft extends MHContainer
                         if(putInGuiSlot)
                             inventory.setInventorySlotContents(0, newItem);
                         else
-                            mergeItemStack(newItem, slotInvStart, slotInvStart + 36, true);
+                            mergeItemStack(newItem, slotI, slotI + 36, true);
                         inventory.markDirty();
                         reloadRecipes();
                     }
@@ -314,13 +314,13 @@ public abstract class AbstractContainerCraft extends MHContainer
             //If slot 0 (input)
             if (slot == 0)
             {
-                if (!this.mergeItemStack(stackInSlot, slotInvStart, slotInvStart+36, true))
+                if (!this.mergeItemStack(stackInSlot, slotI, slotI+36, true))
                     return null;
 
                 slotObject.onSlotChange(stackInSlot, stack);
             }
             //If slot Inventory
-            else if (slot >= slotInvStart && slot <= slotInvStart+36)
+            else if (slot >= slotI && slot <= slotI+36)
             {
                 //Only move 1 item
                 Slot guiSlot = inventorySlots.get(0);

@@ -1,9 +1,6 @@
 package com.alxnns1.mobhunter.handler;
 
-import com.alxnns1.mobhunter.entity.EntityGreatJaggi;
-import com.alxnns1.mobhunter.entity.EntityMHBirdWyvern;
-import com.alxnns1.mobhunter.entity.EntityMHHerbivore;
-import com.alxnns1.mobhunter.entity.EntityMHNeopteron;
+import com.alxnns1.mobhunter.entity.*;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.util.CommonUtil;
@@ -195,8 +192,8 @@ public class EventHandler
 
             //Boss Monster Achievements
             if(entity instanceof EntityGreatJaggi) player.addStat(MHAchievements.greatJaggi);
-            /*
             if(entity instanceof EntityVelocidrome) player.addStat(MHAchievements.velocidrome);
+            /*
             if(entity instanceof EntityGendrome) player.addStat(MHAchievements.gendrome);
             if(entity instanceof EntityIodrome) player.addStat(MHAchievements.iodrome);
             */
