@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class EntityVelocidrome extends EntityMHBirdWyvern {
     public EntityVelocidrome(World worldIn)
     {
-        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f, MHItems.itemRawMeat);
+        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f);
         this.setSize(2.25F, 2.5F);
         setBaseHealth(300);
         setBaseAttack(3*1.5);

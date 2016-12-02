@@ -11,6 +11,7 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -20,7 +21,7 @@ import net.minecraft.world.World;
 public class EntityJaggia extends EntityMHBirdWyvern {
     public EntityJaggia(World worldIn)
     {
-        super(worldIn);
+        super(worldIn, 1, 1, Items.FISH);
         this.setSize(1.5F, 1.8125F);
         setBaseHealth(12);
         setBaseAttack(3);

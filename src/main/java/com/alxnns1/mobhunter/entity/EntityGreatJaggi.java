@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class EntityGreatJaggi extends EntityMHBirdWyvern {
     public EntityGreatJaggi(World worldIn)
     {
-        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f, MHItems.itemRawMeat);
+        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f);
         this.setSize(2.25F, 2.5F);
         setBaseHealth(390);
         setBaseAttack(3*1.5);

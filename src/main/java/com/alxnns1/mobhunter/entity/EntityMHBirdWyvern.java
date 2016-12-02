@@ -37,6 +37,11 @@ public abstract class EntityMHBirdWyvern extends EntityMob
         this(world, Config.scaleMin, Config.scaleMax, MHItems.itemRawMeat);
     }
 
+    public EntityMHBirdWyvern(World world, float minScale, float maxScale)
+    {
+        this(world, minScale, maxScale, MHItems.itemRawMeat);
+    }
+
     public EntityMHBirdWyvern(World world, float minScale, float maxScale, Item temptFood)
     {
         super(world);

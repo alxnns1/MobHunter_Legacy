@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.entity;
 
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -32,12 +33,17 @@ public abstract class EntityMHHerbivore extends EntityAnimal
 
     public EntityMHHerbivore(World world)
     {
-        this(world, 1f, 1f, Items.WHEAT);
+        this(world, Config.scaleMin, Config.scaleMax, Items.WHEAT);
     }
 
     public EntityMHHerbivore(World world, float minScale, float maxScale)
     {
         this(world, minScale, maxScale, Items.WHEAT);
+    }
+
+    public EntityMHHerbivore(World world, Item temptFood)
+    {
+        this(world, Config.scaleMin, Config.scaleMax, temptFood);
     }
 
     public EntityMHHerbivore(World world, float minScale, float maxScale, Item temptFood)

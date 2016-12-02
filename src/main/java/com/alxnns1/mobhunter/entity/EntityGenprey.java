@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 public class EntityGenprey extends EntityMHBirdWyvern {
     public EntityGenprey(World worldIn)
     {
-        super(worldIn);
+        super(worldIn, 1, 1);
         this.setSize(1.5F, 1.8125F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));

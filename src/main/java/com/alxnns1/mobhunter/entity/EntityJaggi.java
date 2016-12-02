@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
@@ -23,7 +24,7 @@ public class EntityJaggi extends EntityMHBirdWyvern
 {
     public EntityJaggi(World worldIn)
     {
-        super(worldIn);
+        super(worldIn, 1, 1, Items.FISH);
         this.setSize(1.0F, 1.0F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
