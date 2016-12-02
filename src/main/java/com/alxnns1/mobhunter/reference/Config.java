@@ -19,7 +19,7 @@ public class Config
     public static int genpreySpawnChance = 8;
     public static int iopreySpawnChance = 8;
 
-    public static double jaggiaChance = 0.35d;
-    public static double greatJaggiChance = 0.1d;
-    public static double velocidromeChance = 0.1d;
+    public static double jaggiaChance = 0.4d;
+    public static int greatJaggiSpawnChance = 1;
+    public static int velocidromeSpawnChance = 1;
 }

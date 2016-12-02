@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Config;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -13,6 +14,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 /**
@@ -23,10 +25,6 @@ public class EntityGreatJaggi extends EntityMHBirdWyvern {
     {
         super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f);
         this.setSize(2.25F, 2.5F);
-        setBaseHealth(390);
-        setBaseAttack(3*1.5);
-        setBaseSpeed(0.3*1.5);
-        setBaseKnockback(0.5*1.5);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
@@ -80,5 +78,25 @@ public class EntityGreatJaggi extends EntityMHBirdWyvern {
                 }
             }
         }
+    }
+
+    /**
+     * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
+     * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
+     */
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
+    {
+        setBaseHealth(390);
+        setBaseAttack(3*1.5);
+        setBaseSpeed(0.3*1.5);
+        setBaseKnockback(0.5*1.5);
+        double rand = this.rand.nextInt(8) + 6;
+        for(int i=0;i<rand;i++) {
+            EntityJaggi jaggi = new EntityJaggi(worldObj);
+            jaggi.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
+            jaggi.onInitialSpawn(difficulty,livingdata);
+            worldObj.spawnEntityInWorld(jaggi);
+        }
+        return super.onInitialSpawn(difficulty, livingdata);
     }
 }

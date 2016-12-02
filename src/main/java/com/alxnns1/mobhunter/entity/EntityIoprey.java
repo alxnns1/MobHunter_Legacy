@@ -77,27 +77,4 @@ public class EntityIoprey extends EntityMHBirdWyvern {
             }
         }
     }
-
-    /**
-     * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
-     * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
-     */
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
-        setBaseHealth(15);
-        setBaseAttack(3);
-        setBaseSpeed(0.3);
-        setBaseKnockback(0.1);
-        /*
-        double rand = Math.random();
-        if(rand<0.1){
-            EntityIodrome drome = new EntityIodrome(worldObj);
-            worldObj.spawnEntityInWorld(drome);
-            drome.setPosition(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ());
-            this.setDead();
-        }
-        */
-        return super.onInitialSpawn(difficulty, livingdata);
-    }
-
 }
