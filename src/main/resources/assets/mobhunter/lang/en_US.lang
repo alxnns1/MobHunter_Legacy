@@ -264,8 +264,8 @@ item.monsterDrop.jaggiHide.name=Jaggi Hide
 item.monsterDrop.jaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and easy to work with, it has numerous uses.
 item.monsterDrop.jaggiScale.name=Jaggi Scale
 item.monsterDrop.jaggiScale.tooltip=A scale carved from a Jaggi. Popular among hunters for its beauty and crafting versatility.
-item.monsterDrop.jaggiScale.name=Jaggi Fang
-item.monsterDrop.jaggiScale.tooltip=The small fang of a Jaggi.
+item.monsterDrop.jaggiFang.name=Jaggi Fang
+item.monsterDrop.jaggiFang.tooltip=The small fang of a Jaggi.
 
 //Velociprey
 item.monsterDrop.velocipreyHide.name=Velociprey Hide
