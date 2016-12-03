@@ -78,11 +78,14 @@ public class MHRecipes
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
         //      MetaRef.getStack(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.PALE_EXTRACT);
 
+        //TODO Add Field Pouch recipe once it's working properly
+        /*
         GameRegistry.addRecipe(
                 new ItemStack(MHItems.itemFieldPouch),
                 "yzy", "y y", "yyy",
                 'y', new ItemStack(Blocks.CARPET,1,0),
                 'z', Items.STRING);
+        */
 
         GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHItems.itemMachalitePickaxe),
