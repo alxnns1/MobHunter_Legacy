@@ -29,7 +29,6 @@ public abstract class AbstractContainerCraft extends MHContainer
     public List<MHCraftingRecipe> recipes;
     public List<Boolean> recipesValid;
     /** This will be used to scroll through recipes */
-    //TODO: Scroll through recipes
     public int recipeStart = 0;
 
     public AbstractContainerCraft(InventoryPlayer invPlayer, World worldIn)
@@ -162,7 +161,7 @@ public abstract class AbstractContainerCraft extends MHContainer
      */
     protected void refreshRecipes()
     {
-        LogHelper.info("Refreshing recipes - start: " + recipeStart);
+        //LogHelper.info("Refreshing recipes - start: " + recipeStart);
         for(int i = 0; i < 5; i++)
         {
             int recipeActualI = recipeStart + i;
@@ -197,12 +196,10 @@ public abstract class AbstractContainerCraft extends MHContainer
         switch(id)
         {
             case AbstractGuiCraft.BUTTON_ID_ARROW_UP: //Up Arrow
-                int oldStart = recipeStart;
                 decRecipeStart();
                 refreshRecipes();
                 return true;
             case AbstractGuiCraft.BUTTON_ID_ARROW_DOWN: //Down Arrow
-                int oldStart2 = recipeStart;
                 incRecipeStart();
                 refreshRecipes();
                 return true;

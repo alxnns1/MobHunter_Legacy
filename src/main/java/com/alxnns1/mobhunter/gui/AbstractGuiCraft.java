@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.gui;
 
 import com.alxnns1.mobhunter.container.AbstractContainerCraft;
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
-import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.client.Minecraft;
@@ -29,8 +28,8 @@ public abstract class AbstractGuiCraft extends GuiContainer
     protected AbstractContainerCraft container;
     protected String invName;
 
-    public static final int BUTTON_ID_ARROW_UP = Integer.MAX_VALUE;
-    public static final int BUTTON_ID_ARROW_DOWN = Integer.MAX_VALUE - 1;
+    public static final byte BUTTON_ID_ARROW_UP = Byte.MAX_VALUE;
+    public static final byte BUTTON_ID_ARROW_DOWN = Byte.MAX_VALUE - 1;
 
     public AbstractGuiCraft(AbstractContainerCraft container, String invName)
     {
