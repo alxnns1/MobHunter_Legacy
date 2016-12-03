@@ -20,9 +20,9 @@ public class GuiArmourCraft extends AbstractGuiCraft
 {
     private static final String TOOLTIP = "gui.blockArmourUpgrade.";
 
-    public GuiArmourCraft(InventoryPlayer invPlayer, World world)
+    public GuiArmourCraft(InventoryPlayer invPlayer, World world, String blockDisplayName)
     {
-        super(new ContainerArmourCraft(invPlayer, world));
+        super(new ContainerArmourCraft(invPlayer, world), blockDisplayName);
     }
 
     @Override

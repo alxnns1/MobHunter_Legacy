@@ -66,9 +66,9 @@ public class GuiHandler implements IGuiHandler
 
             //Client side - returns instance of the gui
             if(block == MHBlocks.blockWeaponCraft)
-                return new GuiWeaponCraft(player.inventory, world);
+                return new GuiWeaponCraft(player.inventory, world, block.getLocalizedName());
             else if(block == MHBlocks.blockArmourCraft)
-                return new GuiArmourCraft(player.inventory, world);
+                return new GuiArmourCraft(player.inventory, world, block.getLocalizedName());
         }
         return null;
     }

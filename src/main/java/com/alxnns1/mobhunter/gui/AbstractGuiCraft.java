@@ -27,14 +27,16 @@ public abstract class AbstractGuiCraft extends GuiContainer
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraft.png");
     protected AbstractContainerCraft container;
+    protected String invName;
 
     public static final int BUTTON_ID_ARROW_UP = Integer.MAX_VALUE;
     public static final int BUTTON_ID_ARROW_DOWN = Integer.MAX_VALUE - 1;
 
-    public AbstractGuiCraft(AbstractContainerCraft container)
+    public AbstractGuiCraft(AbstractContainerCraft container, String invName)
     {
         super(container);
         this.container = container;
+        this.invName = invName;
         xSize = 256;
         ySize = 203;
     }
@@ -94,7 +96,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         //Draw text
-        this.fontRendererObj.drawString(new TextComponentTranslation(MHBlocks.blockWeaponCraft.getUnlocalizedName() + ".name").getUnformattedText(), 8, 4, 4210752);
+        this.fontRendererObj.drawString(invName, 8, 4, 4210752);
         this.fontRendererObj.drawString(new TextComponentTranslation("container.inventory").getUnformattedText(), 8, this.ySize - 92, 4210752);
 
         //Draw button tooltip

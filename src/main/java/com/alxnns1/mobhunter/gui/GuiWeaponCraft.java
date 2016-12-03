@@ -22,9 +22,9 @@ public class GuiWeaponCraft extends AbstractGuiCraft
 {
     private static final String TOOLTIP = "gui.blockWeaponUpgrade.";
 
-    public GuiWeaponCraft(InventoryPlayer invPlayer, World world)
+    public GuiWeaponCraft(InventoryPlayer invPlayer, World world, String blockDisplayName)
     {
-        super(new ContainerWeaponCraft(invPlayer, world));
+        super(new ContainerWeaponCraft(invPlayer, world), blockDisplayName);
     }
 
     @Override
