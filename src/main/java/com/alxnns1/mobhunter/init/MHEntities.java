@@ -120,7 +120,26 @@ public class MHEntities
                 BiomeDictionary.Type.MOUNTAIN,});
 
         registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
+        addSpawn(EntityGreatJaggi.class, Config.greatJaggiSpawnChance, 1, 1, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SWAMP,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.SNOWY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityVelocidrome.class, "Velocidrome", 0x0080ff, 0x402000);
+        addSpawn(EntityVelocidrome.class, Config.velocidromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.FOREST,
+                BiomeDictionary.Type.PLAINS,
+                BiomeDictionary.Type.HILLS,
+                BiomeDictionary.Type.SANDY,
+                BiomeDictionary.Type.WASTELAND,
+                BiomeDictionary.Type.BEACH});
         /*
         registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
         */

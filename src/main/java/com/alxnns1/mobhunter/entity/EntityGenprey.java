@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 public class EntityGenprey extends EntityMHBirdWyvern {
     public EntityGenprey(World worldIn)
     {
-        super(worldIn);
+        super(worldIn, 1, 1);
         this.setSize(1.5F, 1.8125F);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
@@ -92,27 +92,4 @@ public class EntityGenprey extends EntityMHBirdWyvern {
             return false;
         }
     }
-
-    /**
-     * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
-     * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
-     */
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
-        setBaseHealth(12);
-        setBaseAttack(3);
-        setBaseSpeed(0.3);
-        setBaseKnockback(0.1);
-        /*
-        double rand = Math.random();
-        if(rand<0.1){
-            EntityGendrome drome = new EntityGendrome(worldObj);
-            worldObj.spawnEntityInWorld(drome);
-            drome.setPosition(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ());
-            this.setDead();
-        }
-        */
-        return super.onInitialSpawn(difficulty, livingdata);
-    }
-
 }

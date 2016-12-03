@@ -13,7 +13,7 @@ import net.minecraft.world.World;
  */
 public class EntityGargwa extends EntityMHHerbivore {
     public EntityGargwa(World worldIn){
-        super(worldIn, 0.79f, 1.24f, MHItems.itemBug);
+        super(worldIn, MHItems.itemBug);
         this.setSize(1.0F, 1.25F);
         setBaseHealth(7);
         setBaseSpeed(0.3);

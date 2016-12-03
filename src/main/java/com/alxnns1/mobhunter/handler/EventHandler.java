@@ -182,7 +182,7 @@ public class EventHandler
         {
             //Small and Large Crown Achievements
             EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
-            if(scale != -1f)
+            if(scale != -1f && entity instanceof EntityMHBirdWyvern)
             {
                 if(scale < 0.84f)
                     player.addStat(MHAchievements.smallCrown);
