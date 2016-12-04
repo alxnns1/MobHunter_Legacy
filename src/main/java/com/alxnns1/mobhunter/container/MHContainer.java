@@ -24,7 +24,8 @@ public class MHContainer extends Container
         world = worldIn;
         inventory = inv;
         inventoryPlayer = player.inventory;
-        inventory.openInventory(player);
+        if(inventory != null)
+            inventory.openInventory(player);
         init();
         addSlots();
         bindPlayerInventory(inventoryPlayer);
@@ -128,6 +129,7 @@ public class MHContainer extends Container
     public void onContainerClosed(EntityPlayer playerIn)
     {
         super.onContainerClosed(playerIn);
-        inventory.closeInventory(playerIn);
+        if(inventory != null)
+            inventory.closeInventory(playerIn);
     }
 }

@@ -236,9 +236,14 @@ public abstract class AbstractContainerCraft extends MHContainer
 
                         //Change key item to recipe output
                         ItemStack newItem = recipe.getRecipeOutput();
-                        if(stack != null && stack.isItemEnchanted())
-                            //Copy over enchantments
-                            EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
+                        if(stack != null)
+                        {
+                            //Set new item to have taken the same amount of damage
+                            newItem.setItemDamage(stack.getItemDamage());
+                            if(stack.isItemEnchanted())
+                                //Copy over enchantments
+                                EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
+                        }
                         if(putInGuiSlot)
                             inventory.setInventorySlotContents(0, newItem);
                         else

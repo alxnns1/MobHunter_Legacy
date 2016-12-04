@@ -36,7 +36,7 @@ public class MHCraftingRecipe extends ShapelessOreRecipe
         ItemStack item = inv.getStackInSlot(0);
         if(item == null)
             return inputKey == null;
-        return item.isItemEqual(inputKey);
+        return item.isItemEqualIgnoreDurability(inputKey);
     }
 
     @Override
