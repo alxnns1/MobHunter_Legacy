@@ -23,7 +23,7 @@ public class EntityAltaroth extends EntityMHNeopteron {
         super(worldIn);
         this.setSize(0.9f,0.5f);
         setBaseHealth(5);
-        setBaseAttack(2);
+        setBaseAttack(1);
         setBaseSpeed(0.2);
         setBaseKnockback(0.3);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));

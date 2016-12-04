@@ -27,6 +27,10 @@ public class EntityGenprey extends EntityMHBirdWyvern {
     {
         super(worldIn, 1, 1);
         this.setSize(1.5F, 1.8125F);
+        setBaseHealth(12);
+        setBaseAttack(2);
+        setBaseSpeed(0.3);
+        setBaseKnockback(0.1);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));

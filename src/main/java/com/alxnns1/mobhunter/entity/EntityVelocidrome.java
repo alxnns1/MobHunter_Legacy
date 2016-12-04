@@ -25,6 +25,10 @@ public class EntityVelocidrome extends EntityMHBirdWyvern {
     {
         super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f);
         this.setSize(2.25F, 2.5F);
+        setBaseHealth(300);
+        setBaseAttack(2*1.5);
+        setBaseSpeed(0.3*1.5);
+        setBaseKnockback(0.5*1.5);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));

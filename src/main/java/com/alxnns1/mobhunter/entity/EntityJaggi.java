@@ -26,6 +26,10 @@ public class EntityJaggi extends EntityMHBirdWyvern
     {
         super(worldIn, 1, 1, Items.FISH);
         this.setSize(1.0F, 1.0F);
+        setBaseHealth(9);
+        setBaseAttack(2);
+        setBaseSpeed(0.3);
+        setBaseKnockback(0.1);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
         this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
