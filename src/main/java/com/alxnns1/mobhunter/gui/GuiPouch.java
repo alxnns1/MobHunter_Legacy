@@ -12,5 +12,6 @@ public class GuiPouch extends MHGui
     public GuiPouch(EntityPlayer player, World world)
     {
         super(new ContainerPouch(player, world), "pouch");
+        textPlayerInvY = 74;
     }
 }

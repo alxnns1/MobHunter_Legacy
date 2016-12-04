@@ -19,6 +19,7 @@ public class MHGui extends GuiContainer
     private static ResourceLocation guiImage;
     private IInventory inventory;
     protected int textColour = 4210752;
+    protected int textPlayerInvY = 82;
 
     public MHGui(MHContainer container, String guiImageName)
     {
@@ -54,7 +55,7 @@ public class MHGui extends GuiContainer
     protected void drawText()
     {
         fontRendererObj.drawString(inventory.getDisplayName().getFormattedText(), 8, 6, textColour);
-        fontRendererObj.drawString(I18n.format("container.inventory"), 8, 82, textColour);
+        fontRendererObj.drawString(I18n.format("container.inventory"), 8, textPlayerInvY, textColour);
     }
 
     protected void drawTooltips(List<String> tooltip, int mouseX, int mouseY) {}

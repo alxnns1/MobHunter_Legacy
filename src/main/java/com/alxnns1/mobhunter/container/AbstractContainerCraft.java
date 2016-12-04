@@ -2,10 +2,8 @@ package com.alxnns1.mobhunter.container;
 
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.gui.AbstractGuiCraft;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
@@ -31,9 +29,9 @@ public abstract class AbstractContainerCraft extends MHContainer
     /** This will be used to scroll through recipes */
     public int recipeStart = 0;
 
-    public AbstractContainerCraft(InventoryPlayer invPlayer, World worldIn)
+    public AbstractContainerCraft(EntityPlayer player, World worldIn)
     {
-        super(invPlayer, null, worldIn);
+        super(player, null, worldIn);
         recipes = new ArrayList<MHCraftingRecipe>(5);
         recipesValid = new ArrayList<Boolean>(5);
         reloadRecipes();

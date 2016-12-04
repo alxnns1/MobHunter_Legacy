@@ -37,9 +37,9 @@ public class GuiHandler implements IGuiHandler
 
             //Server side - returns instance of the container
             if(block == MHBlocks.blockWeaponCraft)
-                return new ContainerWeaponCraft(player.inventory, world);
+                return new ContainerWeaponCraft(player, world);
             else if(block == MHBlocks.blockArmourCraft)
-                return new ContainerArmourCraft(player.inventory, world);
+                return new ContainerArmourCraft(player, world);
         }
         return null;
     }
@@ -63,9 +63,9 @@ public class GuiHandler implements IGuiHandler
 
             //Client side - returns instance of the gui
             if(block == MHBlocks.blockWeaponCraft)
-                return new GuiWeaponCraft(player.inventory, world, block.getLocalizedName());
+                return new GuiWeaponCraft(player, world, block.getLocalizedName());
             else if(block == MHBlocks.blockArmourCraft)
-                return new GuiArmourCraft(player.inventory, world, block.getLocalizedName());
+                return new GuiArmourCraft(player, world, block.getLocalizedName());
         }
         return null;
     }

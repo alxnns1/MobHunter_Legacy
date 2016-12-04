@@ -19,14 +19,15 @@ public class MHContainer extends Container
     protected int invStartX = 8;
     protected int invStartY = 86;
 
-    public MHContainer(InventoryPlayer invPlayer, IInventory inv, World worldIn)
+    public MHContainer(EntityPlayer player, IInventory inv, World worldIn)
     {
         world = worldIn;
         inventory = inv;
-        inventoryPlayer = invPlayer;
+        inventoryPlayer = player.inventory;
+        inventory.openInventory(player);
         init();
         addSlots();
-        bindPlayerInventory(invPlayer);
+        bindPlayerInventory(inventoryPlayer);
     }
 
     /**
@@ -118,5 +119,15 @@ public class MHContainer extends Container
     {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, inventory);
+    }
+
+    /**
+     * Called when the container is closed.
+     */
+    @Override
+    public void onContainerClosed(EntityPlayer playerIn)
+    {
+        super.onContainerClosed(playerIn);
+        inventory.closeInventory(playerIn);
     }
 }

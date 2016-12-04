@@ -4,7 +4,6 @@ import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.handler.EnumGuiID;
 import com.alxnns1.mobhunter.inventory.InventoryPouch;
 import com.alxnns1.mobhunter.util.CommonUtil;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

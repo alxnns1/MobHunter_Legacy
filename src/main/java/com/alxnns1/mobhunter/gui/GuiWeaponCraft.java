@@ -6,7 +6,7 @@ import com.alxnns1.mobhunter.item.EnumSharpness;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -22,9 +22,9 @@ public class GuiWeaponCraft extends AbstractGuiCraft
 {
     private static final String TOOLTIP = "gui.blockWeaponUpgrade.";
 
-    public GuiWeaponCraft(InventoryPlayer invPlayer, World world, String blockDisplayName)
+    public GuiWeaponCraft(EntityPlayer player, World world, String blockDisplayName)
     {
-        super(new ContainerWeaponCraft(invPlayer, world), blockDisplayName);
+        super(new ContainerWeaponCraft(player, world), blockDisplayName);
     }
 
     @Override

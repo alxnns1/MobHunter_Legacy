@@ -3,7 +3,6 @@ package com.alxnns1.mobhunter.container;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.item.ItemMHPouch;
 import com.alxnns1.mobhunter.reference.Reference;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -18,7 +17,7 @@ public class ContainerPouch extends MHContainer
 {
     public ContainerPouch(EntityPlayer player, World world)
     {
-        super(player.inventory, ItemMHPouch.getInventory(player.getHeldItemMainhand()), world);
+        super(player, ItemMHPouch.getInventory(player.getHeldItemMainhand()), world);
     }
 
     @Override

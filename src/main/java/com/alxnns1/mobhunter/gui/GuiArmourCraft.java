@@ -4,7 +4,7 @@ import com.alxnns1.mobhunter.container.ContainerArmourCraft;
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.item.ItemMHArmour;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -20,9 +20,9 @@ public class GuiArmourCraft extends AbstractGuiCraft
 {
     private static final String TOOLTIP = "gui.blockArmourUpgrade.";
 
-    public GuiArmourCraft(InventoryPlayer invPlayer, World world, String blockDisplayName)
+    public GuiArmourCraft(EntityPlayer player, World world, String blockDisplayName)
     {
-        super(new ContainerArmourCraft(invPlayer, world), blockDisplayName);
+        super(new ContainerArmourCraft(player, world), blockDisplayName);
     }
 
     @Override

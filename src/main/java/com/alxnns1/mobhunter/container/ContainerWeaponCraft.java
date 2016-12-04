@@ -2,7 +2,7 @@ package com.alxnns1.mobhunter.container;
 
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.crafting.WeaponCraftingManager;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.world.World;
 
@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class ContainerWeaponCraft extends AbstractContainerCraft
 {
-    public ContainerWeaponCraft(InventoryPlayer invPlayer, World worldIn)
+    public ContainerWeaponCraft(EntityPlayer player, World worldIn)
     {
-        super(invPlayer, worldIn);
+        super(player, worldIn);
     }
 
     @Override
