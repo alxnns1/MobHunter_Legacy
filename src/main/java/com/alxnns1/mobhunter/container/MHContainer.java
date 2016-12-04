@@ -1,6 +1,5 @@
 package com.alxnns1.mobhunter.container;
 
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;

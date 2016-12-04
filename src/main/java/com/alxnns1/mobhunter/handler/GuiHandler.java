@@ -7,11 +7,8 @@ import com.alxnns1.mobhunter.gui.GuiArmourCraft;
 import com.alxnns1.mobhunter.gui.GuiPouch;
 import com.alxnns1.mobhunter.gui.GuiWeaponCraft;
 import com.alxnns1.mobhunter.init.MHBlocks;
-import com.alxnns1.mobhunter.item.ItemMHPouch;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -50,7 +47,7 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(ID > 0 && ID < EnumGuiID.values().length)
+        if(ID >= 0 && ID < EnumGuiID.values().length)
         {
             //Item GUI
             switch(EnumGuiID.values()[ID])
