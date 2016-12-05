@@ -32,18 +32,6 @@ public class ItemMHSword extends ItemSword
     private final int[] damageLevels;
     private final String damageLevelsString;
 
-    public ItemMHSword(String itemName, float damage)
-    {
-        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, 1, 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
-        setCreativeTab(MobHunter.MHWEAPON_TAB);
-        setUnlocalizedName(itemName);
-        setRegistryName(itemName);
-        LogHelper.warn("Sword " + getUnlocalizedName() + " has not been set any sharpness levels!");
-        maxSharpness = EnumSharpness.RED;
-        damageLevels = new int[] {1};
-        damageLevelsString = "No sharpness levels set for this weapon!";
-    }
-
     public ItemMHSword(String itemName, float damage, int... sharpnessDamageLevels)
     {
         super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));

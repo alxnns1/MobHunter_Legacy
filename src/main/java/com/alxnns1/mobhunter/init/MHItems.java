@@ -40,6 +40,13 @@ public class MHItems
         regItem(item);
         FISHABLE.put(item, fishingChance);
     }
+
+    public static ItemMHResource
+            itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemMisc;
+    public static ItemMHConsumable
+            itemConsumable;
+    public static ItemMHDrink
+            itemDrink;
     
     public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
     public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
@@ -131,16 +138,8 @@ public class MHItems
             weaponBlazingTempest,
             weaponBlazingInferno;
 
-    /*
-        These are the new meta items, and are just down here while testing.
-     */
-
-    public static ItemMHResource
-            itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemMisc;
-    public static ItemMHConsumable
-            itemConsumable;
-    public static ItemMHDrink
-            itemDrink;
+    public static ItemMHBow
+            weaponTestBow;
 
     /**
      * Registers the items
@@ -376,6 +375,8 @@ public class MHItems
         regItem(weaponBlazingSword = new ItemMHSword(Names.Items.BLAZING_SWORD, 6f, 200, 300, 400));
         regItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f, 120, 240, 360, 480));
         regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
+
+        regItem(weaponTestBow = new ItemMHBow("weaponTestBow", EnumBowCharge.PIERCE, 1));
 
         OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));
         OreDictionary.registerOre("ingotMachalite", new ItemStack(itemOre, 1, 1));

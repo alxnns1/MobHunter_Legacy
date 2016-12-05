@@ -32,7 +32,7 @@ public class ItemMHBow extends Item
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
         this.chargeType = chargeType;
-        this.chargeLevel = (byte) chargeLevel;
+        this.chargeLevel = chargeLevel > 4 ? 4 : chargeLevel < 1 ? 1 : (byte) chargeLevel;
         //These property overrides are atm the same as vanilla and are used to change the item texture
         //Look at ItemBow.java and minecraft/models/item/bow.json
         addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter()

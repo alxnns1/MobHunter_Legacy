@@ -2,7 +2,6 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
-import com.alxnns1.mobhunter.item.ItemBlockBasic;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.ClientUtil;
@@ -52,7 +51,7 @@ public class MHBlocks
     private static void regBlock(Block block)
     {
         GameRegistry.register(block);
-        ItemBlock itemBlock = new ItemBlockBasic(block);
+        ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
         GameRegistry.register(itemBlock);
         BLOCKS.add(block);
     }

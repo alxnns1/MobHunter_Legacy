@@ -1,9 +1,13 @@
 package com.alxnns1.mobhunter.util;
 
 import com.alxnns1.mobhunter.item.ISubTypes;
+import com.alxnns1.mobhunter.item.ItemMHArmour;
+import com.alxnns1.mobhunter.item.ItemMHBow;
+import com.alxnns1.mobhunter.item.ItemMHSword;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,10 +35,18 @@ public class ClientUtil
 
     public static void regModel(Item item, int meta)
     {
-        String itemPath = item.getRegistryName().toString();
+        String itemPath = item.getRegistryName().getResourcePath();
+        if(item instanceof ItemBlock)
+            itemPath = "block/" + itemPath;
+        else if(item instanceof ItemMHArmour)
+            itemPath = "armour/" + itemPath;
+        else if(item instanceof ItemMHSword)
+            itemPath = "weapon/sword/" + itemPath;
+        else if(item instanceof ItemMHBow)
+            itemPath = "weapon/bow/" + itemPath;
         if(item.getHasSubtypes() && item instanceof ISubTypes)
             itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
-        ModelResourceLocation loc = new ModelResourceLocation(itemPath, "inventory");
+        ModelResourceLocation loc = new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + itemPath, "inventory");
         ModelLoader.setCustomModelResourceLocation(item, meta, loc);
     }
 
