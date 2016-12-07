@@ -1,20 +1,15 @@
 package com.alxnns1.mobhunter.handler;
 
-import com.alxnns1.mobhunter.entity.*;
+import com.alxnns1.mobhunter.entity.monsters.*;
 import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.item.ItemMHSword;
-import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;

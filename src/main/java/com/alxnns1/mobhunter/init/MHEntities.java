@@ -1,8 +1,8 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.entity.*;
-import com.alxnns1.mobhunter.entity.render.*;
+import com.alxnns1.mobhunter.entity.monsters.*;
+import com.alxnns1.mobhunter.entity.monsters.render.*;
 import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
