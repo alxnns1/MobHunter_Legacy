@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -89,13 +90,13 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         //Only want to run on the server
         if(worldIn.isRemote) return;
 
-        int meta = stack.getMetadata();
-        if(meta == 0)
-            //Herb
+        String[] itemNameSplit = stack.getItem().getRegistryName().getResourcePath().split(".");
+        String itemName = itemNameSplit[itemNameSplit.length-1];
+
+        if(itemName.equals(Names.Items.HERB))
             player.heal(2f);
-        else if(meta == 10 && player.getActivePotionEffects().size() > 0)
+        else if(itemName.equals(Names.Items.NULBERRY) && player.getActivePotionEffects().size() > 0)
         {
-            //Nullberry
             Collection<PotionEffect> effects = player.getActivePotionEffects();
             int rand = itemRand.nextInt(effects.size());
             int i = 0;
@@ -111,61 +112,40 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         }
         else if(itemRand.nextFloat() < 0.5f)
         {
-            switch(meta)
+            if(itemName.equals(Names.Items.ANTIDOTE_HERB))
             {
-                case 1: //Antidote herb
-                    if(player.isPotionActive(MobEffects.POISON))
-                        player.removePotionEffect(MobEffects.POISON);
-                    break;
-                case 2: //Fire herb
-                    player.setFire(effectDuration / 20);
-                    break;
-                case 3: //Nitroshroom
-                    player.addPotionEffect(new PotionEffect(MobEffects.SPEED, effectDuration));
-                    break;
-                case 4: //Parashroom
-                    player.addPotionEffect(new PotionEffectParalyse(effectDuration));
-                    break;
-                case 5: //Toadstool
-                    player.addPotionEffect(new PotionEffect(MobEffects.POISON, effectDuration));
-                    break;
-                case 6: //Exciteshroom
-                    player.getFoodStats().addStats(2,0);
-                    break;
-                case 7: //Mopeshroom
-                    player.getFoodStats().addStats(-2,0);
-                    break;
-                case 8: //Might seed
-                    player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, effectDuration));
-                    break;
-                case 9: //Adamant seed
-                    player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, effectDuration));
-                    break;
-                case 11: //Needleberry
-                    player.attackEntityFrom(DamageSource.generic, 2);
-                    break;
-                case 12: //Bomberry
-                    double rotation = Math.toRadians(player.getRotationYawHead());
-                    double xLook = -Math.sin(rotation);
-                    double zLook = Math.cos(rotation);
-                    worldIn.createExplosion(null, player.posX + xLook, player.posY, player.posZ + zLook, 0.5f, true);
-                    break;
-                case 13: //Bitterbug
-                    player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) Math.round(effectDuration * 1.5)));
-                    break;
-                default:
-                    break;
+                if(player.isPotionActive(MobEffects.POISON))
+                    player.removePotionEffect(MobEffects.POISON);
             }
+            else if(itemName.equals(Names.Items.FIRE_HERB))
+                player.setFire(effectDuration / 20);
+            else if(itemName.equals(Names.Items.NITROSHROOM))
+                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, effectDuration));
+            else if(itemName.equals(Names.Items.PARASHROOM))
+                player.addPotionEffect(new PotionEffectParalyse(effectDuration));
+            else if(itemName.equals(Names.Items.TOADSTOOL))
+                player.addPotionEffect(new PotionEffect(MobEffects.POISON, effectDuration));
+            else if(itemName.equals(Names.Items.EXCITESHROOM))
+                player.getFoodStats().addStats(2,0);
+            else if(itemName.equals(Names.Items.MOPESHROOM))
+                player.getFoodStats().addStats(-2,0);
+            else if(itemName.equals(Names.Items.MIGHT_SEED))
+                player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, effectDuration));
+            else if(itemName.equals(Names.Items.ADAMANT_SEED))
+                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, effectDuration));
+            else if(itemName.equals(Names.Items.NEEDLEBERRY))
+                player.attackEntityFrom(DamageSource.generic, 2);
+            else if(itemName.equals(Names.Items.BOMBERRY))
+            {
+                double rotation = Math.toRadians(player.getRotationYawHead());
+                double xLook = -Math.sin(rotation);
+                double zLook = Math.cos(rotation);
+                worldIn.createExplosion(null, player.posX + xLook, player.posY, player.posZ + zLook, 0.5f, true);
+            }
+            else if(itemName.equals(Names.Items.BITTERBUG))
+                player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) Math.round(effectDuration * 1.5)));
         }
     }
-
-    /*
-    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
-    {
-        if(entity instanceof EntityLivingBase)
-            ((EntityLivingBase)entity).addPotionEffect(new PotionEffectParalyse(200));
-        return super.onLeftClickEntity(stack, player, entity);
-    }*/
 
     @Override
     public String[] getSubNames()

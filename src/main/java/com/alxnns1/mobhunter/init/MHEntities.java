@@ -1,6 +1,8 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.entity.EntitySpit;
+import com.alxnns1.mobhunter.entity.RenderSpit;
 import com.alxnns1.mobhunter.entity.monsters.*;
 import com.alxnns1.mobhunter.entity.monsters.render.*;
 import com.alxnns1.mobhunter.reference.Config;
@@ -8,8 +10,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Mark on 04/05/2016.
@@ -17,6 +22,11 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 public class MHEntities
 {
     private static int modEntityID = 0;
+
+    private static void registerEntity(Class<? extends Entity> entityClass, String name)
+    {
+        EntityRegistry.registerModEntity(entityClass, name, ++modEntityID, MobHunter.instance, 64, 1, false);
+    }
 
     private static void registerMobWithEgg(Class<? extends Entity> entityClass, String name, int eggColour, int eggSpotColour)
     {
@@ -32,6 +42,11 @@ public class MHEntities
     {
         for(BiomeDictionary.Type biome : biomeTypes)
             EntityRegistry.addSpawn(entityClass, rarity, min, max, EnumCreatureType.CREATURE, BiomeDictionary.getBiomesForType(biome));
+    }
+
+    private static <T extends Entity> void registerRender(Class<T> entityClass, IRenderFactory<? super T> renderFactory)
+    {
+        RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
     }
 
     public static void init(boolean isClientSide)
@@ -140,30 +155,33 @@ public class MHEntities
                 BiomeDictionary.Type.SANDY,
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
-        /*
-        registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
-        */
+        //registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
 
+        registerEntity(EntitySpit.class, "Spit");
 
         if(isClientSide)
-        {
-            RenderingRegistry.registerEntityRenderingHandler(EntityAptonoth.class, RenderAptonoth.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityAltaroth.class, RenderAltaroth.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityPopo.class, RenderPopo.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityKelbi.class, RenderKelbi.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityGargwa.class, RenderGargwa.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityJaggi.class, RenderJaggi.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityJaggia.class, RenderJaggia.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityVelociprey.class, RenderVelociprey.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityGiaprey.class, RenderGiaprey.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityGenprey.class, RenderGenprey.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityIoprey.class, RenderIoprey.FACTORY);
+            regClientStuff();
+    }
 
-            RenderingRegistry.registerEntityRenderingHandler(EntityGreatJaggi.class, RenderGreatJaggi.FACTORY);
-            RenderingRegistry.registerEntityRenderingHandler(EntityVelocidrome.class, RenderVelocidrome.FACTORY);
-            /*
-            RenderingRegistry.registerEntityRenderingHandler(EntityGendrome.class, RenderGendrome.FACTORY);
-            */
-        }
+    @SideOnly(Side.CLIENT)
+    private static void regClientStuff()
+    {
+        registerRender(EntityAptonoth.class, RenderAptonoth.FACTORY);
+        registerRender(EntityAltaroth.class, RenderAltaroth.FACTORY);
+        registerRender(EntityPopo.class, RenderPopo.FACTORY);
+        registerRender(EntityKelbi.class, RenderKelbi.FACTORY);
+        registerRender(EntityGargwa.class, RenderGargwa.FACTORY);
+        registerRender(EntityJaggi.class, RenderJaggi.FACTORY);
+        registerRender(EntityJaggia.class, RenderJaggia.FACTORY);
+        registerRender(EntityVelociprey.class, RenderVelociprey.FACTORY);
+        registerRender(EntityGiaprey.class, RenderGiaprey.FACTORY);
+        registerRender(EntityGenprey.class, RenderGenprey.FACTORY);
+        registerRender(EntityIoprey.class, RenderIoprey.FACTORY);
+
+        registerRender(EntityGreatJaggi.class, RenderGreatJaggi.FACTORY);
+        registerRender(EntityVelocidrome.class, RenderVelocidrome.FACTORY);
+        //registerRender(EntityGendrome.class, RenderGendrome.FACTORY);
+
+        registerRender(EntitySpit.class, RenderSpit.FACTORY);
     }
 }

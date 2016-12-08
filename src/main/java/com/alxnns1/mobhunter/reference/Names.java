@@ -8,7 +8,9 @@ public class Names
 {
     public static class Items
     {
-        public static final String 
+        public static final String
+                DEBUG = "itemDebug",
+
                 POTION = "potion",
                 MEGA_POTION = "megaPotion",
                 NUTRIENTS = "nutrients",

@@ -141,6 +141,8 @@ public class MHItems
     public static ItemMHBow
             weaponTestBow;
 
+    public static ItemMHDebug itemDebug;
+
     /**
      * Registers the items
      */
@@ -377,6 +379,8 @@ public class MHItems
         regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
 
         regItem(weaponTestBow = new ItemMHBow("weaponTestBow", EnumBowCharge.PIERCE, 1));
+
+        regItem(itemDebug = new ItemMHDebug());
 
         OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));
         OreDictionary.registerOre("ingotMachalite", new ItemStack(itemOre, 1, 1));

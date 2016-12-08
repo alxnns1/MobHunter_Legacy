@@ -7,6 +7,9 @@ import com.alxnns1.mobhunter.reference.MetaRef;
  */
 public interface ISubTypes<O extends Object>
 {
+    /**
+     * Returns the sub names for this item.
+     */
     String[] getSubNames();
 
     /**

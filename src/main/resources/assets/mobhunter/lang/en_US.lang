@@ -32,6 +32,9 @@ achievement.iodrome.desc=Kill your first Iodrome.
 //Potion Effects
 effect.paralyse.name=Paralysed
 
+//Misc Items
+item.debug.name=Super Secret Rod Of Testing New Things
+
 //Potions
 item.drink.potion.name=Potion
 item.drink.potion.tooltip=Restores a small amount of health.
