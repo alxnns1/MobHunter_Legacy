@@ -231,12 +231,12 @@ public class EntitySpit extends Entity implements IProjectile
             else
             {
                 flag = false;
-                AxisAlignedBB aabb = e.getEntityBoundingBox().expandXyz(3d);
+                AxisAlignedBB aabb = e.getEntityBoundingBox().expandXyz(0.30000001192092896D);
                 RayTraceResult rayTrace = aabb.calculateIntercept(pos, nextPos);
                 if(rayTrace != null)
                 {
                     double distance = pos.squareDistanceTo(rayTrace.hitVec);
-                    if(distance < closestDistance || distance == 0d)
+                    if(distance < closestDistance || closestDistance == 0d)
                     {
                         closestEntity = e;
                         closestDistance = distance;
