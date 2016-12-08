@@ -64,6 +64,6 @@ public class EntityKelbi extends EntityMHHerbivore
 
     public EntityKelbi createChild(EntityAgeable ageable)
     {
-        return new EntityKelbi(this.worldObj);
+        return new EntityKelbi(this.world);
     }
 }

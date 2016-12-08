@@ -64,6 +64,6 @@ public class EntityPopo extends EntityMHHerbivore
 
     public EntityPopo createChild(EntityAgeable ageable)
     {
-        return new EntityPopo(this.worldObj);
+        return new EntityPopo(this.world);
     }
 }

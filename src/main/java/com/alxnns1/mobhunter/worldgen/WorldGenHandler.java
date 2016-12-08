@@ -171,7 +171,7 @@ public class WorldGenHandler implements IWorldGenerator
             BlockPos pos = getRandXZInChunk(random, chunkX, random.nextInt(maxHeight - minHeight) + minHeight, chunkZ);
             //Generates vein
             for(BiomeDictionary.Type biome : biomes) {
-                if(BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(pos),biome))
+                if(BiomeDictionary.isBiomeOfType(world.getBiome(pos),biome))
                     generator.generate(world, random, pos);
             }
         }

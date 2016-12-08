@@ -59,6 +59,6 @@ public class EntityAptonoth extends EntityMHHerbivore{
 
     public EntityAptonoth createChild(EntityAgeable ageable)
     {
-        return new EntityAptonoth(this.worldObj);
+        return new EntityAptonoth(this.world);
     }
 }

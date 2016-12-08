@@ -42,10 +42,10 @@ public class EntitySpit extends Entity implements IProjectile
 
     public EntitySpit(World world)
     {
-        this(world, null, 0f);
+        this(world, null, 0f, 1f);
     }
 
-    public EntitySpit(World world, EntityLivingBase sourceEntity, float attackDamage, PotionEffect... potionEffects)
+    public EntitySpit(World world, EntityLivingBase sourceEntity, float attackDamage, float velocity, PotionEffect... potionEffects)
     {
         super(world);
         sourceUUID = sourceEntity == null ? null : sourceEntity.getUniqueID();
@@ -54,8 +54,8 @@ public class EntitySpit extends Entity implements IProjectile
         particleColour = new Color(PotionUtils.getPotionColorFromEffectList(Lists.newArrayList(potionEffects)));
         if(sourceEntity != null)
         {
-            setHeadingFromThrower(sourceEntity, 1f);
-            setPosition(sourceEntity.posX, sourceEntity.posY, sourceEntity.posZ);
+            setHeadingFromThrower(sourceEntity, velocity);
+            setPosition(sourceEntity.posX, sourceEntity.posY + sourceEntity.getEyeHeight(), sourceEntity.posZ);
         }
         setItemToRender(new ItemStack(Items.SLIME_BALL));
     }
@@ -82,9 +82,9 @@ public class EntitySpit extends Entity implements IProjectile
 
     public EntityLivingBase getSourceEntity()
     {
-        if(sourceEntity == null && sourceUUID != null && worldObj instanceof WorldServer)
+        if(sourceEntity == null && sourceUUID != null && world instanceof WorldServer)
         {
-            Entity entity = ((WorldServer) worldObj).getEntityFromUuid(sourceUUID);
+            Entity entity = ((WorldServer) world).getEntityFromUuid(sourceUUID);
             if(entity instanceof EntityLivingBase)
                 sourceEntity = (EntityLivingBase) entity;
         }
@@ -130,7 +130,7 @@ public class EntitySpit extends Entity implements IProjectile
     @Override
     public void setThrowableHeading(double x, double y, double z, float velocity, float inaccuracy)
     {
-        float f = MathHelper.sqrt_double(x * x + y * y + z * z);
+        float f = MathHelper.sqrt(x * x + y * y + z * z);
         x = x / (double)f;
         y = y / (double)f;
         z = z / (double)f;
@@ -143,7 +143,7 @@ public class EntitySpit extends Entity implements IProjectile
         motionX = x;
         motionY = y;
         motionZ = z;
-        float f1 = MathHelper.sqrt_double(x * x + z * z);
+        float f1 = MathHelper.sqrt(x * x + z * z);
         rotationYaw = (float)(MathHelper.atan2(x, z) * (180D / Math.PI));
         rotationPitch = (float)(MathHelper.atan2(y, (double)f1) * (180D / Math.PI));
         prevRotationYaw = rotationYaw;
@@ -156,12 +156,7 @@ public class EntitySpit extends Entity implements IProjectile
      */
     public void setHeadingFromThrower(Entity entityThrower, float velocity)
     {
-        float rotationPitch = entityThrower.rotationPitch;
-        float rotationYaw = entityThrower.rotationYaw;
-        float f = -MathHelper.sin(rotationYaw * 0.017453292F) * MathHelper.cos(rotationPitch * 0.017453292F);
-        float f1 = -MathHelper.sin(rotationPitch * 0.017453292F);
-        float f2 = MathHelper.cos(rotationYaw * 0.017453292F) * MathHelper.cos(rotationPitch * 0.017453292F);
-        setThrowableHeading((double)f, (double)f1, (double)f2, velocity, 1f);
+        setThrowableHeading(entityThrower.getLookVec().xCoord, entityThrower.getLookVec().yCoord, entityThrower.getLookVec().zCoord, velocity, 1f);
         motionX += entityThrower.motionX;
         motionZ += entityThrower.motionZ;
 
@@ -187,14 +182,14 @@ public class EntitySpit extends Entity implements IProjectile
                 for(PotionEffect p : potionEffects)
                     livingHit.addPotionEffect(p);
             }
-            playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));
         }
+        playSound(SoundEvents.ENTITY_GENERIC_SPLASH, 1f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));
 
         for(int i = 0; i < 8; ++i)
             //The Spell Mob particle uses the speed parameters for colour
-            worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, posX, posY, posZ, particleColour.getRed(), particleColour.getGreen(), particleColour.getBlue());
+            world.spawnParticle(EnumParticleTypes.SPELL_MOB, posX, posY, posZ, particleColour.getRed(), particleColour.getGreen(), particleColour.getBlue());
 
-        if(!worldObj.isRemote)
+        if(!world.isRemote)
             setDead();
     }
 
@@ -208,13 +203,13 @@ public class EntitySpit extends Entity implements IProjectile
 
         Vec3d pos = getPositionVector();
         Vec3d nextPos = pos.addVector(motionX, motionY, motionZ);
-        RayTraceResult ray = worldObj.rayTraceBlocks(pos, nextPos);
+        RayTraceResult ray = world.rayTraceBlocks(pos, nextPos);
         pos = getPositionVector();
         nextPos = pos.addVector(motionX, motionY, motionZ);
         if(ray != null)
             nextPos = ray.hitVec;
 
-        List<Entity> entities = worldObj.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().addCoord(motionX, motionY, motionZ).expandXyz(1d));
+        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().addCoord(motionX, motionY, motionZ).expandXyz(1d));
         Entity closestEntity = null;
         double closestDistance = 0d;
         boolean flag = false;
@@ -262,7 +257,7 @@ public class EntitySpit extends Entity implements IProjectile
         posX += motionX;
         posY += motionY;
         posZ += motionZ;
-        double magnitude = (double) MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+        double magnitude = (double) MathHelper.sqrt(motionX * motionX + motionZ * motionZ);
         rotationYaw = (float) (MathHelper.atan2(motionX, motionZ) * (180d / Math.PI));
 
         /*
@@ -292,7 +287,7 @@ public class EntitySpit extends Entity implements IProjectile
         if(isInWater())
         {
             for(int j = 0; j < 4; ++ j)
-                worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * 0.25d, posY - motionY * 0.25d, posZ - motionZ * 0.25d, motionX, motionY, motionZ);
+                world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * 0.25d, posY - motionY * 0.25d, posZ - motionZ * 0.25d, motionX, motionY, motionZ);
             deceleration = 0.8d;
         }
 
@@ -301,7 +296,7 @@ public class EntitySpit extends Entity implements IProjectile
         motionZ *= deceleration;
 
         //Method gets if entity is not affected by gravity
-        if(!func_189652_ae())
+        if(!hasNoGravity())
             motionY -= 0.03d;
 
         setPosition(posX, posY, posZ);

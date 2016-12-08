@@ -32,10 +32,10 @@ public class ItemMHDebug extends Item
     {
         if(!worldIn.isRemote)
         {
-            EntitySpit entity = new EntitySpit(worldIn, playerIn, 2f, new PotionEffect(MobEffects.GLOWING, 40));
+            EntitySpit entity = new EntitySpit(worldIn, playerIn, 2f, 1f, new PotionEffect(MobEffects.GLOWING, 40));
             entity.setPosition(playerIn.posX, playerIn.posY + 1.5d, playerIn.posZ);
             //entity.setItemToRender(new ItemStack(Items.DYE, 5));
-            worldIn.spawnEntityInWorld(entity);
+            worldIn.spawnEntity(entity);
         }
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }

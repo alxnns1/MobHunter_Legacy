@@ -96,10 +96,10 @@ public class EntityGreatJaggi extends EntityMHBirdWyvern {
         setBaseKnockback(0.5*1.5);
         double rand = this.rand.nextInt(8) + 6;
         for(int i=0;i<rand;i++) {
-            EntityJaggi jaggi = new EntityJaggi(worldObj);
+            EntityJaggi jaggi = new EntityJaggi(world);
             jaggi.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
             jaggi.onInitialSpawn(difficulty,livingdata);
-            worldObj.spawnEntityInWorld(jaggi);
+            world.spawnEntity(jaggi);
         }
         return super.onInitialSpawn(difficulty, livingdata);
     }

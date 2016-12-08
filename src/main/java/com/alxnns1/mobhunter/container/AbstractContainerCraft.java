@@ -327,7 +327,7 @@ public abstract class AbstractContainerCraft extends MHContainer
                 if(guiSlot.getHasStack())
                     return null;
                 //Only make the move on the server to fix leaving behind a stack of 0 when there was only 1 in the stack before
-                if(!player.worldObj.isRemote)
+                if(!player.world.isRemote)
                     guiSlot.putStack(stackInSlot.splitStack(1));
             }
 

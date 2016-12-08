@@ -45,13 +45,13 @@ public class MessageHunterRank implements IMessage
         @Override
         public IMessage onMessage(final MessageHunterRank message, MessageContext ctx)
         {
-            IThreadListener mainThread = ctx.side.isClient() ? Minecraft.getMinecraft() : (WorldServer) ctx.getServerHandler().playerEntity.worldObj;
+            IThreadListener mainThread = ctx.side.isClient() ? Minecraft.getMinecraft() : (WorldServer) ctx.getServerHandler().playerEntity.world;
             mainThread.addScheduledTask(new Runnable()
             {
                 @Override
                 public void run()
                 {
-                    HunterRankProvider.get(Minecraft.getMinecraft().thePlayer).loadNBT(message.hunterRankTag);
+                    HunterRankProvider.get(Minecraft.getMinecraft().player).loadNBT(message.hunterRankTag);
                 }
             });
 

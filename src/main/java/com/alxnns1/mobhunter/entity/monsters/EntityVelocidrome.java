@@ -94,10 +94,10 @@ public class EntityVelocidrome extends EntityMHBirdWyvern {
         setBaseKnockback(0.5*1.5);
         double rand = this.rand.nextInt(8) + 6;
         for(int i=0;i<rand;i++) {
-            EntityVelociprey velociprey = new EntityVelociprey(worldObj);
+            EntityVelociprey velociprey = new EntityVelociprey(world);
             velociprey.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
             velociprey.onInitialSpawn(difficulty,livingdata);
-            worldObj.spawnEntityInWorld(velociprey);
+            world.spawnEntity(velociprey);
         }
         return super.onInitialSpawn(difficulty, livingdata);
     }

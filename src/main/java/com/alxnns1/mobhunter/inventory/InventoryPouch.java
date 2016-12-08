@@ -200,7 +200,7 @@ public class InventoryPouch implements IInventory
      * Do not make give this method the name canInteractWith because it clashes with Container
      */
     @Override
-    public boolean isUseableByPlayer(EntityPlayer player)
+    public boolean isUsableByPlayer(EntityPlayer player)
     {
         return true;
     }

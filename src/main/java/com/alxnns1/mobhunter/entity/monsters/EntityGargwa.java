@@ -65,6 +65,6 @@ public class EntityGargwa extends EntityMHHerbivore {
 
     public EntityGargwa createChild(EntityAgeable ageable)
     {
-        return new EntityGargwa(this.worldObj);
+        return new EntityGargwa(this.world);
     }
 }

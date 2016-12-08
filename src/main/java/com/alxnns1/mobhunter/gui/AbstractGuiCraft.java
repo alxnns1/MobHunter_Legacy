@@ -128,14 +128,14 @@ public abstract class AbstractGuiCraft extends GuiContainer
             int id = button.id + 1;
             //If shift key is held, make the id negative
             id = ClientUtil.isShiftKeyDown() ? id * -1 : id;
-            container.enchantItem(this.mc.thePlayer, id);
+            container.enchantItem(this.mc.player, id);
             mc.playerController.sendEnchantPacket(container.windowId, id);
         }
         else if(button instanceof ArrowButton)
         {
             //Use the same enchant method for arrow buttons but ids Int Max for up and Int Max - 1 for down.
             int id = ((ArrowButton) button).isUpArrow() ? BUTTON_ID_ARROW_UP : BUTTON_ID_ARROW_DOWN;
-            container.enchantItem(this.mc.thePlayer, id);
+            container.enchantItem(this.mc.player, id);
             mc.playerController.sendEnchantPacket(container.windowId, id);
         }
     }

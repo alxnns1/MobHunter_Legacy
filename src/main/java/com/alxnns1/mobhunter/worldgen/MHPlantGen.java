@@ -49,7 +49,7 @@ public class MHPlantGen extends WorldGenerator
         {
             BlockPos pos = position.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-            if(world.isAirBlock(pos) && (!world.provider.getHasNoSky() || pos.getY() < 255) && block.canBlockStay(world, pos, block.getDefaultState()))
+            if(world.isAirBlock(pos) && (!world.provider.hasNoSky() || pos.getY() < 255) && block.canBlockStay(world, pos, block.getDefaultState()))
                 world.setBlockState(pos, block.getDefaultState(), 2);
             else if(isNether)
             {

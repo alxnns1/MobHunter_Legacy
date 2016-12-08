@@ -75,7 +75,7 @@ public class BlockOre extends BlockResource
     {
         Random rand = world instanceof World ? ((World)world).rand : new Random();
         if (drop != null)
-            return MathHelper.getRandomIntegerInRange(rand, 2, 5); //Same as xp drop from lapis and quartz ores
+            return MathHelper.getInt(rand, 2, 5); //Same as xp drop from lapis and quartz ores
         return 0;
     }
 /*

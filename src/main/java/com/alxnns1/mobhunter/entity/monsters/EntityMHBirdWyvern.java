@@ -84,7 +84,7 @@ public abstract class EntityMHBirdWyvern extends EntityMob
     @Override
     public boolean getCanSpawnHere()
     {
-        return this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL;
+        return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
     }
 
     private void setEntityScale(float scale)

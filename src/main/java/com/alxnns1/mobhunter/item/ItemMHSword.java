@@ -93,8 +93,8 @@ public class ItemMHSword extends ItemSword
         Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
         if (slot == EntityEquipmentSlot.MAINHAND)
         {
-            multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName());
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getAttributeUnlocalizedName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) getActualAttackDamage(stack), 0));
+            multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getName());
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) getActualAttackDamage(stack), 0));
         }
         return multimap;
     }
