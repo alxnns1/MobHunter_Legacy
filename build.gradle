@@ -33,11 +33,26 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20160518"
+    //mappings = "snapshot_20160518"
+    mappings = "stable_29"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+
+    useDepAts = true
+}
+
+repositories {
+    maven {
+        // location of the maven that hosts JEI files
+        url "http://dvs1.progwml6.com/files/maven"
+    }
 }
 
 dependencies {
+    // compile against the JEI API
+    deobfProvided "mezz.jei:jei_1.10.2:3.13.6.387:api"
+    // at runtime, use the full JEI jar
+    runtime "mezz.jei:jei_1.10.2:3.13.6.387"
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
