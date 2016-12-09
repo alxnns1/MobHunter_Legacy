@@ -39,7 +39,7 @@ public class MetaRef
     private static List<String> CONSUMABLE = new ArrayList<String>();
     private static List<String> DRINK = new ArrayList<String>();
 
-    private static List<String> getList(EnumItemType itemType)
+    public static List<String> getList(EnumItemType itemType)
     {
         switch(itemType)
         {
@@ -65,7 +65,7 @@ public class MetaRef
                 return DRINK;
             default:
                 LogHelper.error("Who added an item that I didn't know about? Come on, own up!");
-                return null;
+                return Lists.newArrayList();
         }
     }
 

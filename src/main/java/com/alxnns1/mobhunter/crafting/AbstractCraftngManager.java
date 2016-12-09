@@ -15,12 +15,14 @@ import java.util.List;
 /**
  * Created by Mark on 23/10/2016.
  */
-public abstract class AbstractCraftngManager
+public abstract class AbstractCraftngManager<T extends MHCraftingRecipe>
 {
     /**
      * Returns the List<> of all recipes
      */
-    public abstract List<MHCraftingRecipe> getRecipeList();
+    public abstract List<T> getRecipeList();
+
+    public abstract T newRecipe(ItemStack result, ItemStack key, Object ... recipe);
 
     private void addStack(ArrayList<ItemStack> stacks, ItemStack stack)
     {
@@ -79,7 +81,7 @@ public abstract class AbstractCraftngManager
                 r = ArrayUtils.add(r, o);
         }
         r = ArrayUtils.addAll(r, stacks.toArray());
-        getRecipeList().add(new MHCraftingRecipe(result, keyItem, r));
+        getRecipeList().add(newRecipe(result, keyItem, r));
     }
 
     public List<MHCraftingRecipe> findMatchingRecipes(InventoryCrafting inv, InventoryPlayer invPlayer, World world)

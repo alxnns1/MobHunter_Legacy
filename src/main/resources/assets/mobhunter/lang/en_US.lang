@@ -7,6 +7,9 @@ sharpness.blue.name=Blue
 sharpness.white.name=White
 sharpness.purple.name=Purple
 
+jei.recipe.weaponCrafting=Weapon Crafting
+jei.recipe.armourCrafting=Armour Crafting
+
 //Tooltips
 item.sharpness=Sharpness:
 item.maxSharpness=Max Sharpness:
