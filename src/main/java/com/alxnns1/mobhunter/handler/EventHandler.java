@@ -188,8 +188,8 @@ public class EventHandler
             //Boss Monster Achievements
             if(entity instanceof EntityGreatJaggi) player.addStat(MHAchievements.greatJaggi);
             if(entity instanceof EntityVelocidrome) player.addStat(MHAchievements.velocidrome);
-            /*
             if(entity instanceof EntityGendrome) player.addStat(MHAchievements.gendrome);
+            /*
             if(entity instanceof EntityIodrome) player.addStat(MHAchievements.iodrome);
             */
 

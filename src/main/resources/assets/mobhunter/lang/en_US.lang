@@ -323,6 +323,14 @@ item.monsterDrop.velocidromeHide.tooltip=The hide of a Velociprey leader. It bea
 item.monsterDrop.velocidromeHead.name=Velocidrome Head
 item.monsterDrop.velocidromeHead.tooltip=A large head with a crest. You'd look pretty fierce if you put it on.
 
+//Gendrome
+item.monsterDrop.gendromeClaw.name=Gendrome Claw
+item.monsterDrop.gendromeClaw.tooltip=The claw of an alpha Gendrome. Sharp and blade-like.
+item.monsterDrop.gendromeHide.name=Gendrome Hide
+item.monsterDrop.gendromeHide.tooltip=Sturdy green hide from a Gendrome. Perfect for making strong armor.
+item.monsterDrop.gendromeHead.name=Gendrome Head
+item.monsterDrop.gendromeHead.tooltip=The head of a Gendrome. Noted for its two crests.
+
 //Swords
 item.weaponHuntersKnife.name=Hunter's Knife
 item.weaponHuntersKnife.tooltip=A one-handed, easy-to-wield Sword. Not too powerful.
@@ -579,6 +587,9 @@ entity.MobHunter.Gargwa.name=Gargwa
 //Bird Wyvern Minions
 entity.MobHunter.Jaggi.name=Jaggi
 entity.MobHunter.Jaggia.name=Jaggia
+entity.MobHunter.Baggi.name=Baggi
+entity.MobHunter.Wroggi.name=Wroggi
+entity.MobHunter.Maccao.name=Maccao
 entity.MobHunter.Velociprey.name=Velociprey
 entity.MobHunter.Giaprey.name=Giaprey
 entity.MobHunter.Genprey.name=Genprey
@@ -606,7 +617,11 @@ entity.MobHunter.Cephadrome.name=Cephadrome
 
 //Bird Wyverns
 entity.MobHunter.GreatJaggi.name=Great Jaggi
+entity.MobHunter.GreatBaggi.name=Great Baggi
+entity.MobHunter.GreatWroggi.name=Great Wroggi
+entity.MobHunter.GreatMaccao.name=Great Maccao
 entity.MobHunter.Velocidrome.name=Velocidrome
+entity.MobHunter.Giadrome.name=Giadrome
 entity.MobHunter.Gendrome.name=Gendrome
 entity.MobHunter.Iodrome.name=Iodrome
 entity.MobHunter.YianKutKu.name=Yian Kut-Ku

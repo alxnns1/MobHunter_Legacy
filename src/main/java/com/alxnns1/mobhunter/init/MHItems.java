@@ -226,7 +226,10 @@ public class MHItems
                 Names.Items.KINGS_FRILL,
                 Names.Items.VELOCIDROME_CLAW,
                 Names.Items.VELOCIDROME_HIDE,
-                Names.Items.VELOCIDROME_HEAD)
+                Names.Items.VELOCIDROME_HEAD,
+                Names.Items.GENDROME_CLAW,
+                Names.Items.GENDROME_HIDE,
+                Names.Items.GENDROME_HEAD)
                 .addToMetaRef(MetaRef.EnumItemType.MONSTER_DROP));
         regItem(itemOre = new ItemMHResource("ore",
                 Names.Items.EARTH_CRYSTAL,
