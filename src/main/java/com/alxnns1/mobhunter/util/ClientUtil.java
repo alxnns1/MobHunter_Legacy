@@ -49,9 +49,4 @@ public class ClientUtil
         ModelResourceLocation loc = new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + itemPath, "inventory");
         ModelLoader.setCustomModelResourceLocation(item, meta, loc);
     }
-
-    public static boolean isShiftKeyDown()
-    {
-        return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
-    }
 }

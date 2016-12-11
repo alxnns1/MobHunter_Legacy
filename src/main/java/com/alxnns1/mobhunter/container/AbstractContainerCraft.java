@@ -288,6 +288,7 @@ public abstract class AbstractContainerCraft extends MHContainer
     /**
      * Called when the container is closed.
      */
+    @Override
     public void onContainerClosed(EntityPlayer playerIn)
     {
         super.onContainerClosed(playerIn);

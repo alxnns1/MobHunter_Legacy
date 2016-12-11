@@ -3,7 +3,6 @@ package com.alxnns1.mobhunter.gui;
 import com.alxnns1.mobhunter.container.AbstractContainerCraft;
 import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.reference.Reference;
-import com.alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -55,6 +54,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
     /**
      * Called from the main game loop to update the screen.
      */
+    @Override
     public void updateScreen()
     {
         for(int i = 0; i < 5; i++)
@@ -120,6 +120,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
+    @Override
     protected void actionPerformed(GuiButton button) throws IOException
     {
         if(button instanceof UpgradeButton)
@@ -127,7 +128,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
             //Add 1 to the id so that ids start from 1 rather than 0 (because there's no -0!)
             int id = button.id + 1;
             //If shift key is held, make the id negative
-            id = ClientUtil.isShiftKeyDown() ? id * -1 : id;
+            id = isShiftKeyDown() ? id * -1 : id;
             container.enchantItem(this.mc.player, id);
             mc.playerController.sendEnchantPacket(container.windowId, id);
         }
