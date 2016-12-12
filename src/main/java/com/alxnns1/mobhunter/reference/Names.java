@@ -278,8 +278,7 @@ public class Names
                 IODROME_HIDE = "iodromeHide",
                 IODROME_HEAD = "iodromeHead",
 
-
-        //CARAPACEON DROPS
+                //CARAPACEON DROPS
 
                 //FANGED BEAST DROPS
                 SHARP_FANG = "sharpFang",
@@ -301,11 +300,6 @@ public class Names
                 //LEVIATHON DROPS
 
                 //ELDER DRAGON DROPS
-
-
-
-
-
 
                 //ARMOURS
                 DERRING_HELMET = "armourDerringHelmet",
@@ -338,6 +332,10 @@ public class Names
                 VELOCIPREY_LEGGINGS = "armourVelocipreyLeggings",
                 VELOCIPREY_BOOTS = "armourVelocipreyBoots",
 
+                GENPREY_HELMET = "armourGenpreyHelmet",
+                GENPREY_CHESTPLATE = "armourGenpreyChestplate",
+                GENPREY_LEGGINGS = "armourGenpreyLeggings",
+                GENPREY_BOOTS = "armourGenpreyBoots",
 
                 //GREAT SWORDS
                 IRON_SWORD_PLUS = "weaponIronSwordPlus",
@@ -417,6 +415,9 @@ public class Names
 
                 //ICONS
                 ICON_GREAT_JAGGI = "greatJaggi",
+                ICON_GREAT_BAGGI = "greatBaggi",
+                ICON_GREAT_WROGGI = "greatWroggi",
+                ICON_GREAT_MACCAO = "greatMaccao",
                 ICON_GENDROME = "gendrome",
                 ICON_IODROME = "iodrome",
                 ICON_VELOCIDROME = "velocidrome",

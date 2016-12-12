@@ -1,0 +1,6 @@
+{
+  "parent": "mobhunter:item/itemDefault",
+  "textures": {
+    "layer0": "mobhunter:items/armourGenpreyChestplate"
+  }
+}

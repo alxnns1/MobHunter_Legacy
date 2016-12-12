@@ -17,12 +17,15 @@ public class MHAchievements
 
     public static Achievement cookMeat = new Achievement("achievment.cookMeat", "cookMeat", -2, -2, MHItems.itemDoneSteak, null);
     public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", -2, -1, MHItems.weaponHuntersKnife, null);
-    public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", 1, -2, Items.IRON_HELMET, null);
-    public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 1, -1, Items.GOLDEN_HELMET, null);
-    public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", -2, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_JAGGI), null);
-    public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", -1, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_VELOCIDROME), null);
-    public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 0, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GENDROME), null);
-    public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 1, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_IODROME), null);
+    public static Achievement smallCrown = new Achievement("achievment.smallCrown", "smallCrown", 2, -2, Items.IRON_HELMET, null);
+    public static Achievement largeCrown = new Achievement("achievment.largeCrown", "largeCrown", 2, -1, Items.GOLDEN_HELMET, null);
+    public static Achievement greatJaggi = new Achievement("achievment.greatJaggi", "greatJaggi", -3, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_JAGGI), null);
+    public static Achievement greatBaggi = new Achievement("achievment.greatBaggi", "greatBaggi", -2, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_BAGGI), null);
+    public static Achievement greatWroggi = new Achievement("achievment.greatWroggi", "greatWroggi", -1, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_WROGGI), null);
+    public static Achievement greatMaccao = new Achievement("achievment.greatMaccao", "greatMaccao", 0, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GREAT_MACCAO), null);
+    public static Achievement velocidrome = new Achievement("achievment.velocidrome", "velocidrome", 1, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_VELOCIDROME), null);
+    public static Achievement gendrome = new Achievement("achievment.gendrome", "gendrome", 2, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_GENDROME), null);
+    public static Achievement iodrome = new Achievement("achievment.iodrome", "iodrome", 3, 1, MetaRef.getStack(MetaRef.EnumItemType.ICON, Names.Items.ICON_IODROME), null);
 
     public static void init()
     {
@@ -33,11 +36,24 @@ public class MHAchievements
         smallCrown.registerStat();
         largeCrown.registerStat();
         greatJaggi.registerStat();
+        //greatBaggi.registerStat();
+        //greatWroggi.registerStat();
+        //greatMaccao.registerStat();
         velocidrome.registerStat();
         gendrome.registerStat();
-        iodrome.registerStat();
+        //iodrome.registerStat();
 
         AchievementPage.registerAchievementPage(new AchievementPage(Reference.MOD_ID,
-                cookMeat, firstSword, smallCrown, largeCrown, greatJaggi, velocidrome, gendrome, iodrome));
+                cookMeat,
+                firstSword,
+                smallCrown,
+                largeCrown,
+                greatJaggi/*,
+                greatBaggi*//*,
+                greatWroggi*//*,
+                greatMaccao*/,
+                velocidrome,
+                gendrome/*,
+                iodrome*/));
     }
 }

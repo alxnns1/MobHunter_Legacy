@@ -25,6 +25,12 @@ achievement.largeCrown=Large Crown
 achievement.largeCrown.desc=Kill a very large monster.
 achievement.greatJaggi=Great Jaggi Esoterica
 achievement.greatJaggi.desc=Kill your first Great Jaggi.
+achievement.greatBaggi=Great Baggi Esoterica
+achievement.greatBaggi.desc=Kill your first Great Baggi.
+achievement.greatWroggi=Great Wroggi Esoterica
+achievement.greatWroggi.desc=Kill your first Great Wroggi.
+achievement.greatMaccao=Great Maccao Esoterica
+achievement.greatMaccao.desc=Kill your first Great Maccao.
 achievement.velocidrome=Velocidrome Esoterica
 achievement.velocidrome.desc=Kill your first Velocidrome.
 achievement.gendrome=Gendrome Esoterica
@@ -528,6 +534,15 @@ item.armourVelocipreyLeggings.name=Velociprey Tassets
 item.armourVelocipreyLeggings.tooltip=Armor made from Velociprey parts. Masterfully balanced for close quarters combat.
 item.armourVelocipreyBoots.name=Velociprey Greaves
 item.armourVelocipreyBoots.tooltip=Leg armor made of Velociprey parts. Protects the entire leg, not just the shin.
+
+item.armourGenpreyHelmet.name=Genprey Helm
+item.armourGenpreyHelmet.tooltip=Helm crafted from Genprey materials. Truly superior functionality.
+item.armourGenpreyChestplate.name=Genprey Mail
+item.armourGenpreyChestplate.tooltip=Chest armor made from Genprey parts. Extremely durable and well-balanced.
+item.armourGenpreyLeggings.name=Genprey Tassets
+item.armourGenpreyLeggings.tooltip=Armor made from Genprey parts. Masterfully balanced for close quarters combat.
+item.armourGenpreyBoots.name=Genprey Greaves
+item.armourGenpreyBoots.tooltip=Leg armor made of Genprey parts. Protects the entire leg, not just the shin.
 
 //BLOCKS
 

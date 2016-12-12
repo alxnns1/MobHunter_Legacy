@@ -77,6 +77,7 @@ public class MHItems
     public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
     public static ItemArmor.ArmorMaterial jaggiArmourMaterial = EnumHelper.addArmorMaterial("Jaggi", Reference.MOD_ID + ":jaggi", 21, new int[]{3, 6, 5, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
     public static ItemArmor.ArmorMaterial velocipreyArmourMaterial = EnumHelper.addArmorMaterial("Velociprey", Reference.MOD_ID + ":velociprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial genpreyArmourMaterial = EnumHelper.addArmorMaterial("Genprey", Reference.MOD_ID + ":genprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
 
     public static ItemArmor
             armourDerringHelmet, armourDerringChestplate, armourDerringLeggings, armourDerringBoots,
@@ -84,7 +85,8 @@ public class MHItems
             armourBoneHelmet, armourBoneChestplate, armourBoneLeggings, armourBoneBoots,
             armourAlloyHelmet, armourAlloyChestplate, armourAlloyLeggings, armourAlloyBoots,
             armourJaggiHelmet, armourJaggiChestplate, armourJaggiLeggings, armourJaggiBoots,
-            armourVelocipreyHelmet, armourVelocipreyChestplate, armourVelocipreyLeggings, armourVelocipreyBoots;
+            armourVelocipreyHelmet, armourVelocipreyChestplate, armourVelocipreyLeggings, armourVelocipreyBoots,
+            armourGenpreyHelmet, armourGenpreyChestplate, armourGenpreyLeggings, armourGenpreyBoots;
 
     public static ItemMHPouch
             itemFieldPouch;
@@ -126,9 +128,6 @@ public class MHItems
             weaponSnakeBite,
             weaponSnakeBitePlus,
             weaponDeathlyCold,
-            weaponHydraBite,
-            weaponHydraBitePlus,
-            weaponDeadlyPoison,
             weaponViperBite,
             weaponViperBitePlus,
             weaponDeathprize,
@@ -138,6 +137,9 @@ public class MHItems
             weaponGendromeFangPlus,
             weaponDromeToxinDagger,
             weaponGreatParadag,
+            weaponHydraBite,
+            weaponHydraBitePlus,
+            weaponDeadlyPoison,
             weaponHuntersKnifePlus,
             weaponHuntersDagger,
             weaponAssassinsDagger,
@@ -420,6 +422,9 @@ public class MHItems
                 .addToMetaRef(MetaRef.EnumItemType.BEAST_DROP));
         regItem(itemIcon = new ItemMHResource("icon", false,
                 Names.Items.ICON_GREAT_JAGGI,
+                Names.Items.ICON_GREAT_BAGGI,
+                Names.Items.ICON_GREAT_WROGGI,
+                Names.Items.ICON_GREAT_MACCAO,
                 Names.Items.ICON_GENDROME,
                 Names.Items.ICON_IODROME,
                 Names.Items.ICON_VELOCIDROME,
@@ -455,6 +460,11 @@ public class MHItems
         regItem(armourVelocipreyChestplate = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.VELOCIPREY_CHESTPLATE));
         regItem(armourVelocipreyLeggings = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.VELOCIPREY_LEGGINGS));
         regItem(armourVelocipreyBoots = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.VELOCIPREY_BOOTS));
+
+        regItem(armourGenpreyHelmet = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.GENPREY_HELMET));
+        regItem(armourGenpreyChestplate = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.GENPREY_CHESTPLATE));
+        regItem(armourGenpreyLeggings = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.GENPREY_LEGGINGS));
+        regItem(armourGenpreyBoots = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.GENPREY_BOOTS));
 
         regItem(itemFieldPouch = new ItemMHPouch(Names.Items.FIELD_POUCH));
 

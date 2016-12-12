@@ -273,7 +273,6 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GIAPREY_FANG, 20),
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.AVIAN_STOUTBONE, 5),
                 MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.FROST_SAC, 3));
-        //TODO Giadrome weapons
         wcm.addRecipe(MHItems.weaponViperBite, MHItems.weaponHuntersKnife,
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_HIDE, 5),
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_FANG, 10),
@@ -557,6 +556,30 @@ public class MHRecipes
         acm.addRecipeNullKey(MHItems.armourVelocipreyBoots,
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.VELOCIPREY_HIDE, 2),
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.VELOCIPREY_SCALE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S, 4),
+                new ItemStack(Items.IRON_INGOT, 4));
+
+        acm.addRecipeNullKey(MHItems.armourGenpreyHelmet,
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_SCALE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.GLUEGLOPPER, 2));
+        acm.addRecipeNullKey(MHItems.armourGenpreyChestplate,
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW, 4),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_SCALE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.GLUEGLOPPER, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 3));
+        acm.addRecipeNullKey(MHItems.armourGenpreyLeggings,
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_HIDE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_HIDE, 3),
+                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 2));
+        acm.addRecipeNullKey(MHItems.armourGenpreyBoots,
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_HIDE, 2),
+                MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_SCALE, 3),
                 MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S, 4),
                 new ItemStack(Items.IRON_INGOT, 4));
 
