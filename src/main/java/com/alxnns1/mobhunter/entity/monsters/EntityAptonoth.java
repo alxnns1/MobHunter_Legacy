@@ -4,7 +4,6 @@ import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 /**
@@ -26,11 +25,6 @@ public class EntityAptonoth extends EntityMHHerbivore{
         return 3.75F;
     }
 
-    protected Item getDropItem()
-    {
-        return MHItems.itemRawMeat;
-    }
-
     /**
      * Drop 0-2 items of this living's type
      */
@@ -43,7 +37,7 @@ public class EntityAptonoth extends EntityMHHerbivore{
             }
             i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
             for (int k = 0; k < i; ++k) {
-                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
+                dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
             }
         }else{
             for(int n=0;n<2+lootingLevel;n++) {
@@ -51,7 +45,7 @@ public class EntityAptonoth extends EntityMHHerbivore{
                 if(i<75){
                     dropSingleItem(MHItems.itemRawMeat);
                 }else{
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S));
+                    dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
                 }
             }
         }

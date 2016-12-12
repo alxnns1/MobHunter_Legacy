@@ -41,12 +41,35 @@ public class MHItems
         FISHABLE.put(item, fishingChance);
     }
 
-    public static ItemMHResource
-            itemPlant, itemMushroom, itemBerry, itemBug, itemMonsterDrop, itemOre, itemIcon, itemMisc;
-    public static ItemMHConsumable
-            itemConsumable;
     public static ItemMHDrink
             itemDrink;
+    public static ItemMHConsumable
+            itemPlant,
+            itemMushroom,
+            itemBerry;
+    public static ItemMHResource
+            itemBug,
+            itemMisc,
+            itemTool,
+            itemMiscDrop,
+            itemHerbivoreDrop,
+            itemLynianDrop,
+            itemNeopteranDrop,
+            itemPiscineWyvernDrop,
+            itemBirdWyvernDrop,
+            itemCarapaceonDrop,
+            itemFangedBeastDrop,
+            itemAmphibianDrop,
+            itemSnakeWyvernDrop,
+            itemBruteWyvernDrop,
+            itemTrueWyvernDrop,
+            itemPseudoWyvernDrop,
+            itemFangedWyvernDrop,
+            itemZenithWyvernDrop,
+            itemLeviathonDrop,
+            itemElderDragonDrop,
+            itemOre,
+            itemIcon;
     
     public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
     public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
@@ -71,7 +94,9 @@ public class MHItems
             itemWhetfish;
 
     public static ItemMHPickaxe
-            itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
+            itemMachalitePickaxe,
+            itemDragonitePickaxe,
+            itemGossamitePickaxe;
 
     public static ItemMHConsumable
             itemRareSteak,
@@ -87,6 +112,8 @@ public class MHItems
             weaponHuntersKnife,
             weaponSoldiersDagger,
             weaponCommandersDagger,
+            weaponDeadlyKnife,
+            weaponDeadlyKnifePlus,
             weaponSerpentBite,
             weaponSerpentBitePlus,
             weaponDeadlock,
@@ -105,6 +132,12 @@ public class MHItems
             weaponViperBite,
             weaponViperBitePlus,
             weaponDeathprize,
+            weaponGendromeBite,
+            weaponGendromeBitePlus,
+            weaponGendromeFang,
+            weaponGendromeFangPlus,
+            weaponDromeToxinDagger,
+            weaponGreatParadag,
             weaponHuntersKnifePlus,
             weaponHuntersDagger,
             weaponAssassinsDagger,
@@ -141,104 +174,250 @@ public class MHItems
     public static ItemMHBow
             weaponTestBow;
 
-    public static ItemMHDebug itemDebug;
+    public static ItemMHDebug
+            itemDebug;
 
     /**
      * Registers the items
      */
     public static void regItems()
     {
-        regItem(itemPlant = new ItemMHResource("plant",
+        regItem(itemDrink = new ItemMHDrink("drink",
+                Names.Items.POTION,
+                Names.Items.MEGA_POTION,
+                Names.Items.NUTRIENTS,
+                Names.Items.MEGA_NUTRIENTS,
+                Names.Items.ANTIDOTE,
+                Names.Items.IMMUNIZER,
+                Names.Items.DASH_JUICE,
+                Names.Items.MEGA_DASH_JUICE,
+                Names.Items.DEMONDRUG,
+                Names.Items.MEGA_DEMONDRUG,
+                Names.Items.MIGHT_PILL,
+                Names.Items.ARMOURSKIN,
+                Names.Items.MEGA_ARMOURSKIN)
+                .addToMetaRef(MetaRef.EnumItemType.DRINK));
+        regItem(itemMisc = new ItemMHResource("misc",
+                Names.Items.CATALYST,
+                Names.Items.TRANQUILIZER,
+                Names.Items.BOMB_CASING,
+                Names.Items.DUNG,
+                Names.Items.TERRITORIAL_DUNG,
+                Names.Items.TERRITORIAL_DUNG_PLUS,
+                Names.Items.NET,
+                Names.Items.TRAP_TOOL,
+                Names.Items.STEEL_EGG)
+                .addToMetaRef(MetaRef.EnumItemType.MISC));
+        regItem(itemTool = new ItemMHResource("tool",
+                Names.Items.CLEANSER,
+                Names.Items.DEODORANT,
+                Names.Items.DISPOSABLE_EARPLUGS,
+                Names.Items.POWERCHARM,
+                Names.Items.POWERTALON,
+                Names.Items.ARMOURCHARM,
+                Names.Items.ARMOURTALON,
+                Names.Items.BOOMERANG,
+                Names.Items.THROWING_KNIFE,
+                Names.Items.POISON_KNIFE,
+                Names.Items.SLEEP_KNIFE,
+                Names.Items.PARALYSIS_KNIFE,
+                Names.Items.TRANQUILIZER_KNIFE,
+                Names.Items.PAINTBALL,
+                Names.Items.FLASH_BOMB,
+                Names.Items.SONIC_BOMB,
+                Names.Items.DUNG_BOMB,
+                Names.Items.SMOKE_BOMB,
+                Names.Items.POISON_SMOKE_BOMB,
+                Names.Items.FARCASTER,
+                Names.Items.PORTABLE_STEAM_BOMB,
+                Names.Items.TRANQUILIZER_BOMB,
+                Names.Items.WHETSTONE,
+                Names.Items.MINI_WHETSTONE)
+                .addToMetaRef(MetaRef.EnumItemType.TOOL));
+        regItem(itemPlant = new ItemMHConsumable("plant",
+                Names.Items.HONEY,
+                Names.Items.HERB,
+                Names.Items.ANTIDOTE_HERB,
+                Names.Items.FIRE_HERB,
                 Names.Items.IVY,
                 Names.Items.SLEEP_HERB,
                 Names.Items.SAP_PLANT,
                 Names.Items.FELVINE,
                 Names.Items.GLOAMGRASS_ROOT,
+                Names.Items.GLOAMGRASS_BUD,
                 Names.Items.HOT_PEPPER)
                 .addToMetaRef(MetaRef.EnumItemType.PLANT));
-        regItem(itemMushroom = new ItemMHResource("mushroom",
+        regItem(itemMushroom = new ItemMHConsumable("mushroom",
                 Names.Items.BLUE_MUSHROOM,
+                Names.Items.NITROSHROOM,
+                Names.Items.PARASHROOM,
+                Names.Items.TOADSTOOL,
+                Names.Items.EXCITESHROOM,
+                Names.Items.MOPESHROOM,
                 Names.Items.DRAGON_TOADSTOOL)
                 .addToMetaRef(MetaRef.EnumItemType.MUSHROOM));
-        regItem(itemBerry = new ItemMHResource("berry",
+        regItem(itemBerry = new ItemMHConsumable("berry",
                 Names.Items.HUSKBERRY,
                 Names.Items.PAINTBERRY,
+                Names.Items.MIGHT_SEED,
+                Names.Items.ADAMANT_SEED,
+                Names.Items.NULBERRY,
                 Names.Items.DRAGONFELL_BERRY,
                 Names.Items.SCATTERNUT,
-                Names.Items.LATCHBERRY)
+                Names.Items.NEEDLEBERRY,
+                Names.Items.LATCHBERRY,
+                Names.Items.BOMBERRY)
                 .addToMetaRef(MetaRef.EnumItemType.BERRY));
         regItem(itemBug = new ItemMHResource("bug",
                 Names.Items.INSECT_HUSK,
                 Names.Items.STINKHOPPER,
                 Names.Items.SNAKEBEE_LARVA,
                 Names.Items.GODBUG,
+                Names.Items.BITTERBUG,
                 Names.Items.FLASHBUG,
                 Names.Items.THUNDERBUG,
                 Names.Items.GLUEGLOPPER,
                 Names.Items.KILLER_BEETLE,
                 Names.Items.HERCUDROME,
-                Names.Items.RARE_SCARAB,
-                Names.Items.HONEY)
+                Names.Items.FULGURBUG,
+                Names.Items.RARE_SCARAB)
                 .addToMetaRef(MetaRef.EnumItemType.BUG));
-        regItem(itemMonsterDrop = new ItemMHResource("monsterDrop",
-                Names.Items.MONSTER_BONE_S,
-                Names.Items.MONSTER_BONE_M,
-                Names.Items.MONSTER_BONE_L,
-                Names.Items.MONSTER_BONE_PLUS,
-                Names.Items.MYSTERY_BONE,
-                Names.Items.UNKNOWN_SKULL,
-                Names.Items.BRUTE_BONE,
-                Names.Items.JUMBO_BONE,
-                Names.Items.SHARP_FANG,
-                Names.Items.DUNG,
-                Names.Items.BONE_HUSK,
-                Names.Items.ALTAROTH_JAW,
-                Names.Items.ALTAROTH_STOMACH,
-                Names.Items.KELBI_HORN,
-                Names.Items.WARM_PELT,
-                Names.Items.GARGWA_FEATHER,
-                Names.Items.STEEL_EGG,
-                Names.Items.MONSTER_FLUID,
-                Names.Items.BIRD_WYVERN_FANG,
-                Names.Items.SCREAMER_SAC,
-                Names.Items.FLAME_SAC,
-                Names.Items.FROST_SAC,
-                Names.Items.PARALYSIS_SAC,
-                Names.Items.POISON_SAC,
-                Names.Items.JAGGI_HIDE,
-                Names.Items.JAGGI_SCALE,
-                Names.Items.JAGGI_FANG,
-                Names.Items.VELOCIPREY_HIDE,
-                Names.Items.VELOCIPREY_SCALE,
-                Names.Items.VELOCIPREY_FANG,
-                Names.Items.GIAPREY_HIDE,
-                Names.Items.GIAPREY_SCALE,
-                Names.Items.GIAPREY_FANG,
-                Names.Items.GENPREY_HIDE,
-                Names.Items.GENPREY_SCALE,
-                Names.Items.GENPREY_FANG,
-                Names.Items.IOPREY_HIDE,
-                Names.Items.IOPREY_SCALE,
-                Names.Items.IOPREY_FANG,
-                Names.Items.GREAT_JAGGI_HIDE,
-                Names.Items.GREAT_JAGGI_CLAW,
-                Names.Items.GREAT_JAGGI_HEAD,
-                Names.Items.KINGS_FRILL,
-                Names.Items.VELOCIDROME_CLAW,
-                Names.Items.VELOCIDROME_HIDE,
-                Names.Items.VELOCIDROME_HEAD,
-                Names.Items.GENDROME_CLAW,
-                Names.Items.GENDROME_HIDE,
-                Names.Items.GENDROME_HEAD)
-                .addToMetaRef(MetaRef.EnumItemType.MONSTER_DROP));
         regItem(itemOre = new ItemMHResource("ore",
                 Names.Items.EARTH_CRYSTAL,
                 Names.Items.MACHALITE_INGOT,
                 Names.Items.DRAGONITE_INGOT,
-                Names.Items.GOSSAMITE_INGOT,
                 Names.Items.LIGHT_CRYSTAL,
-                Names.Items.ICE_CRYSTAL)
+                Names.Items.ICE_CRYSTAL,
+                Names.Items.FIRESTONE,
+                Names.Items.GOSSAMITE_INGOT,
+                Names.Items.HEAVENLY_CRYSTAL,
+                Names.Items.METEOR_CRYSTAL,
+                Names.Items.CARBALITE_INGOT,
+                Names.Items.NOVACRYSTAL,
+                Names.Items.FUCIUM_INGOT,
+                Names.Items.ELTALITE_INGOT,
+                Names.Items.MELDSPAR_INGOT)
                 .addToMetaRef(MetaRef.EnumItemType.ORE));
+        regItem(itemMiscDrop = new ItemMHResource("miscDrop",
+                Names.Items.BONE_HUSK,
+                Names.Items.MONSTER_BONE_S,
+                Names.Items.MONSTER_BONE_M,
+                Names.Items.MONSTER_BONE_L,
+                Names.Items.MYSTERY_BONE,
+                Names.Items.UNKNOWN_SKULL,
+                Names.Items.MONSTER_BONE_PLUS,
+                Names.Items.MONSTER_KEENBONE,
+                Names.Items.MONSTER_HARDBONE,
+                Names.Items.MONSTER_SLOGBONE,
+                Names.Items.BRUTE_BONE,
+                Names.Items.JUMBO_BONE,
+                Names.Items.STOUTBONE,
+                Names.Items.MASSIVE_BONE,
+                Names.Items.WYVERN_FANG,
+                Names.Items.WYVERN_CLAW,
+                Names.Items.WYVERN_GEM,
+                Names.Items.LARGE_WYVERN_GEM,
+                Names.Items.SCREAMER_SAC,
+                Names.Items.POISON_SAC,
+                Names.Items.TOXIN_SAC,
+                Names.Items.DEADLY_POISON_SAC,
+                Names.Items.PARALYSIS_SAC,
+                Names.Items.OMNIPLEGIA_SAC,
+                Names.Items.SLEEP_SAC,
+                Names.Items.COMA_SAC,
+                Names.Items.FLAME_SAC,
+                Names.Items.INFERNO_SAC,
+                Names.Items.CONFLAGRANT_SAC,
+                Names.Items.ELECTRO_SAC,
+                Names.Items.THUNDER_SAC,
+                Names.Items.LIGHTNING_SAC,
+                Names.Items.FROST_SAC,
+                Names.Items.FREEZER_SAC,
+                Names.Items.CRYO_SAC,
+                Names.Items.AQUA_SAC,
+                Names.Items.TORRENT_SAC,
+                Names.Items.FLOOD_SAC,
+                Names.Items.DASH_EXTRACT,
+                Names.Items.PALE_EXTRACT,
+                Names.Items.WYVERN_EGG,
+                Names.Items.WYVERN_TEAR,
+                Names.Items.LARGE_WYVERN_TEAR,
+                Names.Items.WYVERN_SCALP,
+                Names.Items.MONSTER_FLUID)
+                .addToMetaRef(MetaRef.EnumItemType.MISC_DROP));
+        regItem(itemHerbivoreDrop = new ItemMHResource("herbivoreDrop",
+                Names.Items.GARGWA_FEATHER,
+                Names.Items.GARGWA_EGG,
+                Names.Items.GOLD_GARGWA_EGG,
+                Names.Items.GARGWA_GUANO,
+                Names.Items.KELBI_HORN,
+                Names.Items.BLUE_KELBI_HORN,
+                Names.Items.WARM_PELT)
+                .addToMetaRef(MetaRef.EnumItemType.HERBIVORE_DROP));
+        regItem(itemNeopteranDrop = new ItemMHResource("neopteranDrop",
+                Names.Items.BNAHABRA_SHELL,
+                Names.Items.BNAHABRA_CARAPACE,
+                Names.Items.BNAHABRA_WING,
+                Names.Items.BNAHABRA_RAZORWING,
+                Names.Items.ALTAROTH_JAW,
+                Names.Items.ALTAROTH_STOMACH)
+                .addToMetaRef(MetaRef.EnumItemType.NEOPTERAN_DROP));
+        regItem(itemBirdWyvernDrop = new ItemMHResource("birdWyvernDrop",
+                Names.Items.BIRD_WYVERN_FANG,
+                Names.Items.TOUGH_BIRD_WYVERN_HIDE,
+                Names.Items.AVIAN_FINEBONE,
+                Names.Items.AVIAN_STOUTBONE,
+                Names.Items.BIRD_WYVERN_GEM,
+                Names.Items.FEY_WYVERN_GEM,
+                Names.Items.JAGGI_SCALE,
+                Names.Items.JAGGI_SCALE_PLUS,
+                Names.Items.JAGGI_HIDE,
+                Names.Items.JAGGI_FANG,
+                Names.Items.GREAT_JAGGI_HIDE,
+                Names.Items.GREAT_JAGGI_HIDE_PLUS,
+                Names.Items.GREAT_JAGGI_CLAW,
+                Names.Items.GREAT_JAGGI_CLAW_PLUS,
+                Names.Items.KINGS_FRILL,
+                Names.Items.GREAT_JAGGI_HEAD,
+                Names.Items.VELOCIPREY_SCALE,
+                Names.Items.VELOCIPREY_SCALE_PLUS,
+                Names.Items.VELOCIPREY_HIDE,
+                Names.Items.VELOCIPREY_HIDE_PLUS,
+                Names.Items.VELOCIPREY_FANG,
+                Names.Items.VELOCIDROME_HIDE,
+                Names.Items.VELOCIDROME_CLAW,
+                Names.Items.VELOCIDROME_CLAW_PLUS,
+                Names.Items.VELOCIDROME_HARDCLAW,
+                Names.Items.VELOCIDROME_HEAD,
+                Names.Items.GIAPREY_SCALE,
+                Names.Items.GIAPREY_SCALE_PLUS,
+                Names.Items.GIAPREY_HIDE,
+                Names.Items.GIAPREY_HIDE_PLUS,
+                Names.Items.GIAPREY_FANG,
+                Names.Items.GIADROME_HIDE,
+                Names.Items.GIADROME_CLAW,
+                Names.Items.GIADROME_CLAW_PLUS,
+                Names.Items.GIADROME_HARDCLAW,
+                Names.Items.GIADROME_HEAD,
+                Names.Items.GENPREY_SCALE,
+                Names.Items.GENPREY_SCALE_PLUS,
+                Names.Items.GENPREY_HIDE,
+                Names.Items.GENPREY_HIDE_PLUS,
+                Names.Items.GENPREY_FANG,
+                Names.Items.GENDROME_HIDE,
+                Names.Items.GENDROME_CLAW,
+                Names.Items.GENDROME_CLAW_PLUS,
+                Names.Items.GENDROME_HARDCLAW,
+                Names.Items.GENDROME_HEAD,
+                Names.Items.IOPREY_SCALE,
+                Names.Items.IOPREY_SCALE_PLUS,
+                Names.Items.IOPREY_HIDE,
+                Names.Items.IOPREY_HIDE_PLUS,
+                Names.Items.IOPREY_FANG)
+                .addToMetaRef(MetaRef.EnumItemType.BIRD_DROP));
+        regItem(itemFangedBeastDrop = new ItemMHResource("fangedBeastDrop",
+                Names.Items.SHARP_FANG)
+                .addToMetaRef(MetaRef.EnumItemType.BEAST_DROP));
         regItem(itemIcon = new ItemMHResource("icon", false,
                 Names.Items.ICON_GREAT_JAGGI,
                 Names.Items.ICON_GENDROME,
@@ -246,39 +425,6 @@ public class MHItems
                 Names.Items.ICON_VELOCIDROME,
                 Names.Items.ICON_KIRIN)
                 .addToMetaRef(MetaRef.EnumItemType.ICON));
-        regItem(itemMisc = new ItemMHResource("misc",
-                Names.Items.CATALYST,
-                Names.Items.WHETSTONE,
-                Names.Items.MINI_WHETSTONE)
-                .addToMetaRef(MetaRef.EnumItemType.MISC));
-        regItem(itemConsumable = new ItemMHConsumable("consumable",
-                Names.Items.HERB,
-                Names.Items.ANTIDOTE_HERB,
-                Names.Items.FIRE_HERB,
-                Names.Items.NITROSHROOM,
-                Names.Items.PARASHROOM,
-                Names.Items.TOADSTOOL,
-                Names.Items.EXCITESHROOM,
-                Names.Items.MOPESHROOM,
-                Names.Items.MIGHT_SEED,
-                Names.Items.ADAMANT_SEED,
-                Names.Items.NULBERRY,
-                Names.Items.NEEDLEBERRY,
-                Names.Items.BOMBERRY,
-                Names.Items.BITTERBUG)
-                .addToMetaRef(MetaRef.EnumItemType.CONSUMABLE));
-        regItem(itemDrink = new ItemMHDrink("drink",
-                Names.Items.POTION,
-                Names.Items.MEGA_POTION,
-                Names.Items.ANTIDOTE,
-                Names.Items.IMMUNIZER,
-                Names.Items.DASH_JUICE,
-                Names.Items.MEGA_DASH_JUICE,
-                Names.Items.DEMONDRUG,
-                Names.Items.MEGA_DEMONDRUG,
-                Names.Items.ARMOURSKIN,
-                Names.Items.MEGA_ARMOURSKIN)
-                .addToMetaRef(MetaRef.EnumItemType.DRINK));
 
         regItem(armourDerringHelmet = new ItemMHArmour(derringArmourMaterial, EntityEquipmentSlot.HEAD,Names.Items.DERRING_HELMET));
         regItem(armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.DERRING_CHESTPLATE));
@@ -329,6 +475,8 @@ public class MHItems
         regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
         regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
         regItem(weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, 100, 240, 400, 500));
+        regItem(weaponDeadlyKnife = new ItemMHSword(Names.Items.DEADLY_KNIFE, 12f, 150, 250, 370, 620));
+        regItem(weaponDeadlyKnifePlus = new ItemMHSword(Names.Items.DEADLY_KNIFE_PLUS, 14f, 170, 270, 400, 750));
         regItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, 140, 200, 400, 580, 600));
@@ -347,6 +495,12 @@ public class MHItems
         regItem(weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, 120, 200, 440, 500));
         regItem(weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, 120, 180, 380, 500));
         regItem(weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, 140, 200, 400, 580, 600));
+        regItem(weaponGendromeBite = new ItemMHSword(Names.Items.GENDROME_BITE, 11f, 220, 400, 500));
+        regItem(weaponGendromeBitePlus = new ItemMHSword(Names.Items.GENDROME_BITE_PLUS, 13f, 220, 320, 500));
+        regItem(weaponGendromeFang = new ItemMHSword(Names.Items.GENDROME_FANG, 15f, 150, 250, 550, 620));
+        regItem(weaponGendromeFangPlus = new ItemMHSword(Names.Items.GENDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
+        regItem(weaponDromeToxinDagger = new ItemMHSword(Names.Items.DROME_TOXIN_DAGGER, 19f, 500, 650, 670, 720, 750));
+        regItem(weaponGreatParadag = new ItemMHSword(Names.Items.GREAT_PARADAG, 21f, 500, 650, 670, 720, 850, 870));
         regItem(weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, 60, 200, 400));
         regItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, 140, 280, 400));
         regItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, 120, 200, 400));

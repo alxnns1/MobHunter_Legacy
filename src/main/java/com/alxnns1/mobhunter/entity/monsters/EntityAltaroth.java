@@ -10,7 +10,6 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 /**
@@ -40,11 +39,6 @@ public class EntityAltaroth extends EntityMHNeopteron {
         return 0.25F;
     }
 
-    protected Item getDropItem()
-    {
-        return MHItems.itemMonsterDrop;
-    }
-
     /**
      * Drop 0-2 items of this living's type
      */
@@ -53,30 +47,30 @@ public class EntityAltaroth extends EntityMHNeopteron {
         if(!hitByPlayer) {
             int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
             for (int j = 0; j < i; ++j) {
-                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.ALTAROTH_STOMACH));
+                dropSingleItem(MHItems.itemNeopteranDrop, MetaRef.getMeta(MetaRef.EnumItemType.NEOPTERAN_DROP, Names.Items.ALTAROTH_STOMACH));
             }
         }else{
             for(int n=0;n<1+lootingLevel;n++) {
                 int i = this.rand.nextInt(99);
                 if(i<50){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.ALTAROTH_STOMACH));
+                    dropSingleItem(MHItems.itemNeopteranDrop, MetaRef.getMeta(MetaRef.EnumItemType.NEOPTERAN_DROP, Names.Items.ALTAROTH_STOMACH));
                 }else if(i<75){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_FLUID));
+                    dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_FLUID));
                 }else if(i<100){
-                    dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.ALTAROTH_JAW));
+                    dropSingleItem(MHItems.itemNeopteranDrop, MetaRef.getMeta(MetaRef.EnumItemType.NEOPTERAN_DROP, Names.Items.ALTAROTH_JAW));
                 }
             }
             int i = this.rand.nextInt(99);
             if(i<20){
-                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_FLUID));
+                dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_FLUID));
             }else if(i<40){
-                dropSingleItem(MHItems.itemBug, MetaRef.getMeta(MetaRef.EnumItemType.BUG, Names.Items.HONEY));
+                dropSingleItem(MHItems.itemPlant, MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.HONEY));
             }else if(i<60){
-                dropSingleItem(MHItems.itemConsumable, MetaRef.getMeta(MetaRef.EnumItemType.CONSUMABLE, Names.Items.NULBERRY));
+                dropSingleItem(MHItems.itemBerry, MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.NULBERRY));
             }else if(i<80){
                 dropSingleItem(MHItems.itemBug, MetaRef.getMeta(MetaRef.EnumItemType.BUG, Names.Items.INSECT_HUSK));
             }else{
-                dropSingleItem(MHItems.itemMonsterDrop, MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.ALTAROTH_STOMACH));
+                dropSingleItem(MHItems.itemNeopteranDrop, MetaRef.getMeta(MetaRef.EnumItemType.NEOPTERAN_DROP, Names.Items.ALTAROTH_STOMACH));
             }
         }
     }

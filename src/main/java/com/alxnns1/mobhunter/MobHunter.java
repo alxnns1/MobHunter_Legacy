@@ -36,13 +36,13 @@ public class MobHunter
         @Override
         public Item getTabIconItem()
         {
-            return MHItems.itemMonsterDrop;
+            return MHItems.itemMiscDrop;
         }
 
         @SideOnly(Side.CLIENT)
         public int getIconItemDamage()
         {
-            return MetaRef.getMeta(MetaRef.EnumItemType.MONSTER_DROP, Names.Items.MONSTER_BONE_S);
+            return MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
         }
 
         @Override

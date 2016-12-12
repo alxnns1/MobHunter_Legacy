@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -43,28 +44,32 @@ public class ItemMHDrink extends ItemMHConsumable
                     case 1: //Mega Potion
                         player.heal(10f);
                         break;
-                    case 2: //Antidote
+                    case 2: //Nutrients
+                        break;
+                    case 3: //Mega Nutrients
+                        break;
+                    case 4: //Antidote
                         if(player.isPotionActive(MobEffects.POISON)) player.removePotionEffect(MobEffects.POISON);
                         break;
-                    case 3: //Immunizer
+                    case 5: //Immunizer
                         player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600));
                         break;
-                    case 4: //Dash Juice
+                    case 6: //Dash Juice
                         player.getFoodStats().setFoodSaturationLevel(Math.min(player.getFoodStats().getSaturationLevel() + 10f, 40f));
                         break;
-                    case 5: //Mega Dash Juice
+                    case 7: //Mega Dash Juice
                         player.getFoodStats().setFoodSaturationLevel(Math.min(player.getFoodStats().getSaturationLevel() + 20f, 40f));
                         break;
-                    case 6: //Demondrug
+                    case 8: //Demondrug
                         player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 600, 1));
                         break;
-                    case 7: //Mega Demondrug
+                    case 9: //Mega Demondrug
                         player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 1));
                         break;
-                    case 8: //Armourskin
+                    case 10: //Armourskin
                         player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 600, 1));
                         break;
-                    case 9: //Mega Armourskin
+                    case 11: //Mega Armourskin
                         player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 1200, 1));
                         break;
                 }

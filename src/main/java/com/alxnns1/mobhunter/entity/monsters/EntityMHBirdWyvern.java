@@ -70,6 +70,10 @@ public abstract class EntityMHBirdWyvern extends EntityMob
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
     }
 
+    protected Item getDropItem() {
+        return MHItems.itemBirdWyvernDrop;
+    }
+
     /**
      * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
      * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory

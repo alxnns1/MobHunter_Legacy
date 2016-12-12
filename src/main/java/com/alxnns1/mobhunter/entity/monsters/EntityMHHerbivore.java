@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.entity.monsters;
 
+import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -76,6 +77,11 @@ public abstract class EntityMHHerbivore extends EntityAnimal
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+    }
+
+    protected Item getDropItem()
+    {
+        return MHItems.itemHerbivoreDrop;
     }
 
     /**

@@ -35,7 +35,7 @@ achievement.iodrome.desc=Kill your first Iodrome.
 //Potion Effects
 effect.paralyse.name=Paralysed
 
-//Misc Items
+//Debug
 item.debug.name=Super Secret Rod Of Testing New Things
 
 //Potions
@@ -70,20 +70,24 @@ item.drink.adamantPill.tooltip=Temporarily makes your skin as hard as adamant. P
 item.drink.energyDrink.name=Energy Drink
 item.drink.energyDrink.tooltip=A Guild-approved beverage that boosts your Stamina. Helps shake off sleep, too!
 
-//Craft
-item.misc.catalyst.name=Catalyst
-item.misc.catalyst.tooltip=Works with other materials to enhance their effects. Cannot be used by itself.
-
 //Tools
-item.misc.whetstone.name=Whetstone
-item.misc.whetstone.tooltip=A standard-sized Whetstone. Use it to restore a weapon's Sharpness.
-item.misc.miniWhetstone.name=Mini Whetstone
-item.misc.miniWhetstone.tooltip=A portable Whetstone for restoring Sharpness to weapons.
+item.tool.whetstone.name=Whetstone
+item.tool.whetstone.tooltip=A standard-sized Whetstone. Use it to restore a weapon's Sharpness.
+item.tool.miniWhetstone.name=Mini Whetstone
+item.tool.miniWhetstone.tooltip=A portable Whetstone for restoring Sharpness to weapons.
 item.itemFieldPouch.name=Field Pouch
 item.itemFieldPouch.tooltip=A small pouch for hunters to carry their extra resources while hunting.
 item.itemMachalitePickaxe.name=Machalite Pickaxe
 item.itemDragonitePickaxe.name=Dragonite Pickaxe
 item.itemGossamitePickaxe.name=Gossamite Pickaxe
+
+//Misc
+item.misc.catalyst.name=Catalyst
+item.misc.catalyst.tooltip=Works with other materials to enhance their effects. Cannot be used by itself.
+item.misc.dung.name=Dung
+item.misc.dung.tooltip=That's right: monster poop. The odor reveals (too) much about the monster's diet.
+item.misc.steelEgg.name=Steel Egg
+item.misc.steelEgg.tooltip=An egg of glittering steel. Very valuable and rare, but of no use to a hunter.
 
 //Meats
 item.itemRawMeat.name=Raw Meat
@@ -95,13 +99,15 @@ item.itemDoneSteak.tooltip=Provides a moderate boost to your Stamina. Meat done 
 item.itemBurntMeat.name=Burnt Meat
 item.itemBurntMeat.tooltip=Meat that has been burnt to a crisp. It might boost your Stamina, or it might drain it...
 
-//Herbs
-item.consumable.herb.name=Herb
-item.consumable.herb.tooltip=Restores a very small amount of Health. Not very flavorful.
-item.consumable.antidoteHerb.name=Antidote Herb
-item.consumable.antidoteHerb.tooltip=A plant used in antidotes. It sometimes cures poison when eaten by itself.
-item.consumable.fireHerb.name=Fire Herb
-item.consumable.fireHerb.tooltip=A wondrous, flammable plant.
+//Plants
+item.plant.honey.name=Honey
+item.plant.honey.tooltip=Sweet, golden honey. High in nutritional value.
+item.plant.herb.name=Herb
+item.plant.herb.tooltip=Restores a very small amount of Health. Not very flavorful.
+item.plant.antidoteHerb.name=Antidote Herb
+item.plant.antidoteHerb.tooltip=A plant used in antidotes. It sometimes cures poison when eaten by itself.
+item.plant.fireHerb.name=Fire Herb
+item.plant.fireHerb.tooltip=A wondrous, flammable plant.
 item.plant.ivy.name=Ivy
 item.plant.ivy.tooltip=A lightweight and extremely strong plant.
 item.plant.sleepHerb.name=Sleep Herb
@@ -118,16 +124,16 @@ item.plant.hotPepper.tooltip=Blazingly spicy. Sure, it'll warm you up, but it's 
 //Shrooms
 item.mushroom.blueMushroom.name=Blue Mushroom
 item.mushroom.blueMushroom.tooltip=Rare mushroom with a power-enhancing effect.
-item.consumable.nitroshroom.name=Nitroshroom
-item.consumable.nitroshroom.tooltip=A hard-to-find mushroom with the power to generate blazing heat.
-item.consumable.parashroom.name=Parashroom
-item.consumable.parashroom.tooltip=A mushroom that induces paralysis.
-item.consumable.toadstool.name=Toadstool
-item.consumable.toadstool.tooltip=Logic says not to eat this poisonous fungus, but don't write it off completely.
-item.consumable.exciteshroom.name=Exciteshroom
-item.consumable.exciteshroom.tooltip=This one has a very strange aroma... But is it edible? Only one way to find out.
-item.consumable.mopeshroom.name=Mopeshroom
-item.consumable.mopeshroom.tooltip=A mushroom that contains a Stamina-stealing constituent.
+item.mushroom.nitroshroom.name=Nitroshroom
+item.mushroom.nitroshroom.tooltip=A hard-to-find mushroom with the power to generate blazing heat.
+item.mushroom.parashroom.name=Parashroom
+item.mushroom.parashroom.tooltip=A mushroom that induces paralysis.
+item.mushroom.toadstool.name=Toadstool
+item.mushroom.toadstool.tooltip=Logic says not to eat this poisonous fungus, but don't write it off completely.
+item.mushroom.exciteshroom.name=Exciteshroom
+item.mushroom.exciteshroom.tooltip=This one has a very strange aroma... But is it edible? Only one way to find out.
+item.mushroom.mopeshroom.name=Mopeshroom
+item.mushroom.mopeshroom.tooltip=A mushroom that contains a Stamina-stealing constituent.
 item.mushroom.dragonToadstool.name=Dragon Toadstool
 item.mushroom.dragonToadstool.tooltip=A dangerous fungus said to draw the life out of people. Beware.
 
@@ -136,22 +142,22 @@ item.berry.huskberry.name=Huskberry
 item.berry.huskberry.tooltip=A berry that is hollow on the inside. Tough enough to grow just about anywhere.
 item.berry.paintberry.name=Paintberry
 item.berry.paintberry.tooltip=A berry with a shocking hue and an overwhelming scent. Look out: It WILL stain!
-item.consumable.mightSeed.name=Might Seed
-item.consumable.mightSeed.tooltip=Temporarily raises your Attack when ingested by improving energy flow.
-item.consumable.adamantSeed.name=Adamant Seed
-item.consumable.adamantSeed.tooltip=Temporarily raises your Defense when ingested by hardening tissue.
-item.consumable.nullberry.name=Nulberry
-item.consumable.nullberry.tooltip=A mysterious berry that cures various Blights and also protects from unknown viruses.
+item.berry.mightSeed.name=Might Seed
+item.berry.mightSeed.tooltip=Temporarily raises your Attack when ingested by improving energy flow.
+item.berry.adamantSeed.name=Adamant Seed
+item.berry.adamantSeed.tooltip=Temporarily raises your Defense when ingested by hardening tissue.
+item.berry.nullberry.name=Nulberry
+item.berry.nullberry.tooltip=A mysterious berry that cures various Blights and also protects from unknown viruses.
 item.berry.dragonfellBerry.name=Dragonfell Berry
 item.berry.dragonfellBerry.tooltip=A mysterious berry, rumored since ancient times to be loathed by dragons.
 item.berry.scatternut.name=Scatternut
 item.berry.scatternut.tooltip=A nut that violently ejects its contents when struck.
-item.consumable.needleberry.name=Needleberry
-item.consumable.needleberry.tooltip=A berry covered with needle- like thorns. Used as a material for ammo.
+item.berry.needleberry.name=Needleberry
+item.berry.needleberry.tooltip=A berry covered with needle- like thorns. Used as a material for ammo.
 item.berry.latchberry.name=Latchberry
 item.berry.latchberry.tooltip=A berry with spiral grooves. It spins when it falls to firmly embed itself in soil.
-item.consumable.bomberry.name=Bomberry
-item.consumable.bomberry.tooltip=A berry that explodes when struck.
+item.berry.bomberry.name=Bomberry
+item.berry.bomberry.tooltip=A berry that explodes when struck.
 
 //Minerals
 item.ore.earthCrystal.name=Earth Crystal
@@ -186,8 +192,8 @@ item.bug.snakebeeLarva.name=Snakebee Larva
 item.bug.snakebeeLarva.tooltip=An unusual larva.
 item.bug.godbug.name=Godbug
 item.bug.godbug.tooltip=An insect said to live for a thousand years.
-item.consumable.bitterbug.name=Bitterbug
-item.consumable.bitterbug.tooltip=A sharp-tasting bug with innate healing abilities.
+item.bug.bitterbug.name=Bitterbug
+item.bug.bitterbug.tooltip=A sharp-tasting bug with innate healing abilities.
 item.bug.flashbug.name=Flashbug
 item.bug.flashbug.tooltip=An insect that emits a powerful flash when it dies.
 item.bug.thunderbug.name=Thunderbug
@@ -200,174 +206,141 @@ item.bug.hercudrome.name=Hercudrome
 item.bug.hercudrome.tooltip=Said to be the world's strongest bug. Used in forging and other things.
 item.bug.rareScarab.name=Rare Scarab
 item.bug.rareScarab.tooltip=A rare and valuable insect that greatly assists in the bonding of metals.
-item.bug.honey.name=Honey
-item.bug.honey.tooltip=Sweet, golden honey. High in nutritional value.
 
-//Bones
-item.monsterDrop.boneHusk.name=Bone Husk
-item.monsterDrop.boneHusk.tooltip=Used as a bone ammo casing. Produces sturdier results than a Huskberry.
-item.monsterDrop.monsterBoneS.name=Monster Bone S
-item.monsterDrop.monsterBoneS.tooltip=A very useful material; indispensable for both hunting and daily life.
-item.monsterDrop.monsterBoneM.name=Monster Bone M
-item.monsterDrop.monsterBoneM.tooltip=A nicely-sized bone. Strong yet flexible, it's as reliable as steel and wood.
-item.monsterDrop.monsterBoneL.name=Monster Bone L
-item.monsterDrop.monsterBoneL.tooltip=Wyvern bone needed to craft larger items. The right item will fuse this to a shell.
-item.monsterDrop.monsterBonePlus.name=Monster Bone+
-item.monsterDrop.monsterBonePlus.tooltip=A high-quality monster bone. Hard to obtain, but vital for crafting powerful equipment.
-item.monsterDrop.mysteryBone.name=Mystery Bone
-item.monsterDrop.mysteryBone.tooltip=A weathered bone. Not sturdy enough to use for crafting.
-item.monsterDrop.unknownSkull.name=Unknown Skull
-item.monsterDrop.unknownSkull.tooltip=Animal skull. So worn and weathered, it's unidentifiable.
-item.monsterDrop.bruteBone.name=Brute Bone
-item.monsterDrop.bruteBone.tooltip=The stout bone of a brutish monster. An easy-to-work material.
-item.monsterDrop.jumboBone.name=Jumbo Bone
-item.monsterDrop.jumboBone.tooltip=A large, thick bone. Often cut apart in workshops for use in crafting.
-item.monsterDrop.sharpFang.name=Sharp Fang
-item.monsterDrop.sharpFang.tooltip=Fangs come in many shapes and sizes -- the right fang for the right job.
-item.monsterDrop.dung.name=Dung
-item.monsterDrop.dung.tooltip=That's right: monster poop. The odor reveals (too) much about the monster's diet.
+//Misc Drops
+item.miscDrop.boneHusk.name=Bone Husk
+item.miscDrop.boneHusk.tooltip=Used as a bone ammo casing. Produces sturdier results than a Huskberry.
+item.miscDrop.monsterBoneS.name=Monster Bone S
+item.miscDrop.monsterBoneS.tooltip=A very useful material; indispensable for both hunting and daily life.
+item.miscDrop.monsterBoneM.name=Monster Bone M
+item.miscDrop.monsterBoneM.tooltip=A nicely-sized bone. Strong yet flexible, it's as reliable as steel and wood.
+item.miscDrop.monsterBoneL.name=Monster Bone L
+item.miscDrop.monsterBoneL.tooltip=Wyvern bone needed to craft larger items. The right item will fuse this to a shell.
+item.miscDrop.monsterBonePlus.name=Monster Bone+
+item.miscDrop.monsterBonePlus.tooltip=A high-quality monster bone. Hard to obtain, but vital for crafting powerful equipment.
+item.miscDrop.mysteryBone.name=Mystery Bone
+item.miscDrop.mysteryBone.tooltip=A weathered bone. Not sturdy enough to use for crafting.
+item.miscDrop.unknownSkull.name=Unknown Skull
+item.miscDrop.unknownSkull.tooltip=Animal skull. So worn and weathered, it's unidentifiable.
+item.miscDrop.bruteBone.name=Brute Bone
+item.miscDrop.bruteBone.tooltip=The stout bone of a brutish monster. An easy-to-work material.
+item.miscDrop.jumboBone.name=Jumbo Bone
+item.miscDrop.jumboBone.tooltip=A large, thick bone. Often cut apart in workshops for use in crafting.
+item.miscDrop.monsterFluid.name=Monster Fluid
+item.miscDrop.monsterFluid.tooltip=A liquid bugs suck from monsters. Mixes with insect gastric fluids to form adhesive.
+item.miscDrop.screamerSac.name=Screamer Sac
+item.miscDrop.screamerSac.tooltip=A monster organ that emits an earsplitting sonic blast when ruptured.
+item.miscDrop.flameSac.name=Flame Sac
+item.miscDrop.flameSac.tooltip=A monster organ filled with flammable powder. Handle with extreme care.
+item.miscDrop.frostSac.name=Frost Sac
+item.miscDrop.frostSac.tooltip=A monster organ that contains a sub-zero liquid. Handle with extreme care.
+item.miscDrop.paralysisSac.name=Paralysis Sac
+item.miscDrop.paralysisSac.tooltip=A monster organ that contains paralyzing neurotoxins.
+item.miscDrop.poisonSac.name=Poison Sac
+item.miscDrop.poisonSac.tooltip=A monster organ that contains a lethal toxin. Handle with extreme care.
 
-//Altaroth
-item.monsterDrop.altarothJaw.name=Altaroth Jaw
-item.monsterDrop.altarothJaw.tooltip=These durable mouthparts are surprisingly difficult to carve loose.
-item.monsterDrop.altarothStomach.name=Altaroth Stomach
-item.monsterDrop.altarothStomach.tooltip=A transparent sac cut from an Altaroth's abdomen, used to store who knows what.
-
-//Kelbi
-item.monsterDrop.kelbiHorn.name=Kelbi Horn
-item.monsterDrop.kelbiHorn.tooltip=An infusion of powdered Kelbi Horn that works wonders on stomachaches.
-item.monsterDrop.warmPelt.name=Warm Pelt
-item.monsterDrop.warmPelt.tooltip=A pelt from a small animal. Used for many things, but mostly just regular clothes.
-
-//Gargwa
-item.monsterDrop.gargwaFeather.name=Gargwa Feather
-item.monsterDrop.gargwaFeather.tooltip=A big, beautiful feather plucked from a Gargwa. Often used as a fashion accessory.
-item.monsterDrop.steelEgg.name=Steel Egg
-item.monsterDrop.steelEgg.tooltip=An egg of glittering steel. Very valuable and rare, but of no use to a hunter.
+//Herbivores
+item.herbivoreDrop.kelbiHorn.name=Kelbi Horn
+item.herbivoreDrop.kelbiHorn.tooltip=An infusion of powdered Kelbi Horn that works wonders on stomachaches.
+item.herbivoreDrop.warmPelt.name=Warm Pelt
+item.herbivoreDrop.warmPelt.tooltip=A pelt from a small animal. Used for many things, but mostly just regular clothes.
+item.herbivoreDrop.gargwaFeather.name=Gargwa Feather
+item.herbivoreDrop.gargwaFeather.tooltip=A big, beautiful feather plucked from a Gargwa. Often used as a fashion accessory.
 
 //Neopteron
-item.monsterDrop.monsterFluid.name=Monster Fluid
-item.monsterDrop.monsterFluid.tooltip=A liquid bugs suck from monsters. Mixes with insect gastric fluids to form adhesive.
+item.neopteranDrop.altarothJaw.name=Altaroth Jaw
+item.neopteranDrop.altarothJaw.tooltip=These durable mouthparts are surprisingly difficult to carve loose.
+item.neopteranDrop.altarothStomach.name=Altaroth Stomach
+item.neopteranDrop.altarothStomach.tooltip=A transparent sac cut from an Altaroth's abdomen, used to store who knows what.
 
 //Bird Wyvern
-item.monsterDrop.birdWyvernFang.name=Bird Wyvern Fang
-item.monsterDrop.birdWyvernFang.tooltip=A sharp, durable fang from a bird wyvern.
+item.birdWyvernDrop.birdWyvernFang.name=Bird Wyvern Fang
+item.birdWyvernDrop.birdWyvernFang.tooltip=A sharp, durable fang from a bird wyvern.
 
-//Wyvern
-item.monsterDrop.screamerSac.name=Screamer Sac
-item.monsterDrop.screamerSac.tooltip=A monster organ that emits an earsplitting sonic blast when ruptured.
-item.monsterDrop.flameSac.name=Flame Sac
-item.monsterDrop.flameSac.tooltip=A monster organ filled with flammable powder. Handle with extreme care.
-item.monsterDrop.frostSac.name=Frost Sac
-item.monsterDrop.frostSac.tooltip=A monster organ that contains a sub-zero liquid. Handle with extreme care.
-item.monsterDrop.paralysisSac.name=Paralysis Sac
-item.monsterDrop.paralysisSac.tooltip=A monster organ that contains paralyzing neurotoxins.
-item.monsterDrop.poisonSac.name=Poison Sac
-item.monsterDrop.poisonSac.tooltip=A monster organ that contains a lethal toxin. Handle with extreme care.
+item.birdWyvernDrop.jaggiHide.name=Jaggi Hide
+item.birdWyvernDrop.jaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and easy to work with, it has numerous uses.
+item.birdWyvernDrop.jaggiScale.name=Jaggi Scale
+item.birdWyvernDrop.jaggiScale.tooltip=A scale carved from a Jaggi. Popular among hunters for its beauty and crafting versatility.
+item.birdWyvernDrop.jaggiFang.name=Jaggi Fang
+item.birdWyvernDrop.jaggiFang.tooltip=The small fang of a Jaggi.
+item.birdWyvernDrop.greatJaggiHide.name=Great Jaggi Hide
+item.birdWyvernDrop.greatJaggiHide.tooltip=Durable, elegantly patterned hide from a Great Jaggi. Befits its position as pack leader.
+item.birdWyvernDrop.greatJaggiClaw.name=Great Jaggi Claw
+item.birdWyvernDrop.greatJaggiClaw.tooltip=A hook-shaped claw cut from a Great Jaggi. Just like a Jaggi claw, only much, much larger.
+item.birdWyvernDrop.greatJaggiHead.name=Great Jaggi Head
+item.birdWyvernDrop.greatJaggiHead.tooltip=The frills would be truly stunning...if they weren't attached to a severed head.
+item.birdWyvernDrop.kingsFrill.name=King's Frill
+item.birdWyvernDrop.kingsFrill.tooltip=Proof of who's top Jaggi. Bigger and bolder frills mean a tougher monster.
 
-//Jaggi
-item.monsterDrop.jaggiHide.name=Jaggi Hide
-item.monsterDrop.jaggiHide.tooltip=Soft hide from beneath a Jaggi's scales. Cheap and easy to work with, it has numerous uses.
-item.monsterDrop.jaggiScale.name=Jaggi Scale
-item.monsterDrop.jaggiScale.tooltip=A scale carved from a Jaggi. Popular among hunters for its beauty and crafting versatility.
-item.monsterDrop.jaggiFang.name=Jaggi Fang
-item.monsterDrop.jaggiFang.tooltip=The small fang of a Jaggi.
+item.birdWyvernDrop.velocipreyHide.name=Velociprey Hide
+item.birdWyvernDrop.velocipreyHide.tooltip=A hide stripped of it's scales. Used to join the plates in a suit of armour.
+item.birdWyvernDrop.velocipreyScale.name=Velociprey Scale
+item.birdWyvernDrop.velocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
+item.birdWyvernDrop.velocipreyFang.name=Velociprey Fang
+item.birdWyvernDrop.velocipreyFang.tooltip=The razor sharp fang of a Velociprey.
+item.birdWyvernDrop.velocidromeClaw.name=Velocidrome Claw
+item.birdWyvernDrop.velocidromeClaw.tooltip=The claw of an alpha Velocidrome. Sharp and blade-like.
+item.birdWyvernDrop.velocidromeHide.name=Velocidrome Hide
+item.birdWyvernDrop.velocidromeHide.tooltip=The hide of a Velociprey leader. It bears the scars of a leadership role.
+item.birdWyvernDrop.velocidromeHead.name=Velocidrome Head
+item.birdWyvernDrop.velocidromeHead.tooltip=A large head with a crest. You'd look pretty fierce if you put it on.
 
-//Velociprey
-item.monsterDrop.velocipreyHide.name=Velociprey Hide
-item.monsterDrop.velocipreyHide.tooltip=A hide stripped of it's scales. Used to join the plates in a suit of armour.
-item.monsterDrop.velocipreyScale.name=Velociprey Scale
-item.monsterDrop.velocipreyScale.tooltip=A scale obtained by carving up a Velociprey. Blue and black in colour.
-item.monsterDrop.velocipreyFang.name=Velociprey Fang
-item.monsterDrop.velocipreyFang.tooltip=The razor sharp fang of a Velociprey.
+item.birdWyvernDrop.giapreyHide.name=Giaprey Hide
+item.birdWyvernDrop.giapreyHide.tooltip=Hide stripped of all it's scales. Used to make clothing for villagers.
+item.birdWyvernDrop.giapreyScale.name=Giaprey Scale
+item.birdWyvernDrop.giapreyScale.tooltip=A scale carved from a Giaprey. The colour allows you to stalk prey in the snow undetected.
+item.birdWyvernDrop.giapreyFang.name=Giaprey Fang
+item.birdWyvernDrop.giapreyFang.tooltip=The razor sharp fang of a Giaprey.
 
-//Giaprey
-item.monsterDrop.giapreyHide.name=Giaprey Hide
-item.monsterDrop.giapreyHide.tooltip=Hide stripped of all it's scales. Used to make clothing for villagers.
-item.monsterDrop.giapreyScale.name=Giaprey Scale
-item.monsterDrop.giapreyScale.tooltip=A scale carved from a Giaprey. The colour allows you to stalk prey in the snow undetected.
-item.monsterDrop.giapreyFang.name=Giaprey Fang
-item.monsterDrop.giapreyFang.tooltip=The razor sharp fang of a Giaprey.
+item.birdWyvernDrop.genpreyHide.name=Genprey Hide
+item.birdWyvernDrop.genpreyHide.tooltip=A hide with all the scales removed. Can be tanned and turned into leather.
+item.birdWyvernDrop.genpreyScale.name=Genprey Scale
+item.birdWyvernDrop.genpreyScale.tooltip=Scale from a Genprey. Acts as camouflage in desert areas.
+item.birdWyvernDrop.genpreyFang.name=Genprey Fang
+item.birdWyvernDrop.genpreyFang.tooltip=The poisonous fang of a Genprey. The paralysing toxin works even on wyverns.
+item.birdWyvernDrop.gendromeClaw.name=Gendrome Claw
+item.birdWyvernDrop.gendromeClaw.tooltip=The claw of an alpha Gendrome. Sharp and blade-like.
+item.birdWyvernDrop.gendromeHide.name=Gendrome Hide
+item.birdWyvernDrop.gendromeHide.tooltip=Sturdy green hide from a Gendrome. Perfect for making strong armor.
+item.birdWyvernDrop.gendromeHead.name=Gendrome Head
+item.birdWyvernDrop.gendromeHead.tooltip=The head of a Gendrome. Noted for its two crests.
 
-//Genprey
-item.monsterDrop.genpreyHide.name=Genprey Hide
-item.monsterDrop.genpreyHide.tooltip=A hide with all the scales removed. Can be tanned and turned into leather.
-item.monsterDrop.genpreyScale.name=Genprey Scale
-item.monsterDrop.genpreyScale.tooltip=Scale from a Genprey. Acts as camouflage in desert areas.
-item.monsterDrop.genpreyFang.name=Genprey Fang
-item.monsterDrop.genpreyFang.tooltip=The poisonous fang of a Genprey. The paralysing toxin works even on wyverns.
+item.birdWyvernDrop.iopreyHide.name=Ioprey Hide
+item.birdWyvernDrop.iopreyHide.tooltip=Descaled hide, often made into belts. Red belts are used in decorations.
+item.birdWyvernDrop.iopreyScale.name=Ioprey Scale
+item.birdWyvernDrop.iopreyScale.tooltip=Scale from an Ioprey. The poison irritates the skin so has been removed.
+item.birdWyvernDrop.iopreyFang.name=Ioprey Fang
+item.birdWyvernDrop.iopreyFang.tooltip=A fang filled with deadly poison. Handle with care!
 
-//Ioprey
-item.monsterDrop.iopreyHide.name=Ioprey Hide
-item.monsterDrop.iopreyHide.tooltip=Descaled hide, often made into belts. Red belts are used in decorations.
-item.monsterDrop.iopreyScale.name=Ioprey Scale
-item.monsterDrop.iopreyScale.tooltip=Scale from an Ioprey. The poison irritates the skin so has been removed.
-item.monsterDrop.iopreyFang.name=Ioprey Fang
-item.monsterDrop.iopreyFang.tooltip=A fang filled with deadly poison. Handle with care!
-
-//Great Jaggi
-item.monsterDrop.greatJaggiHide.name=Great Jaggi Hide
-item.monsterDrop.greatJaggiHide.tooltip=Durable, elegantly patterned hide from a Great Jaggi. Befits its position as pack leader.
-item.monsterDrop.greatJaggiClaw.name=Great Jaggi Claw
-item.monsterDrop.greatJaggiClaw.tooltip=A hook-shaped claw cut from a Great Jaggi. Just like a Jaggi claw, only much, much larger.
-item.monsterDrop.greatJaggiHead.name=Great Jaggi Head
-item.monsterDrop.greatJaggiHead.tooltip=The frills would be truly stunning...if they weren't attached to a severed head.
-item.monsterDrop.kingsFrill.name=King's Frill
-item.monsterDrop.kingsFrill.tooltip=Proof of who's top Jaggi. Bigger and bolder frills mean a tougher monster.
-
-//Velocidrome
-item.monsterDrop.velocidromeClaw.name=Velocidrome Claw
-item.monsterDrop.velocidromeClaw.tooltip=The claw of an alpha Velocidrome. Sharp and blade-like.
-item.monsterDrop.velocidromeHide.name=Velocidrome Hide
-item.monsterDrop.velocidromeHide.tooltip=The hide of a Velociprey leader. It bears the scars of a leadership role.
-item.monsterDrop.velocidromeHead.name=Velocidrome Head
-item.monsterDrop.velocidromeHead.tooltip=A large head with a crest. You'd look pretty fierce if you put it on.
-
-//Gendrome
-item.monsterDrop.gendromeClaw.name=Gendrome Claw
-item.monsterDrop.gendromeClaw.tooltip=The claw of an alpha Gendrome. Sharp and blade-like.
-item.monsterDrop.gendromeHide.name=Gendrome Hide
-item.monsterDrop.gendromeHide.tooltip=Sturdy green hide from a Gendrome. Perfect for making strong armor.
-item.monsterDrop.gendromeHead.name=Gendrome Head
-item.monsterDrop.gendromeHead.tooltip=The head of a Gendrome. Noted for its two crests.
+//Fanged Beast Drops
+item.fangedBeastDrop.sharpFang.name=Sharp Fang
+item.fangedBeastDrop.sharpFang.tooltip=Fangs come in many shapes and sizes -- the right fang for the right job.
 
 //Swords
 item.weaponHuntersKnife.name=Hunter's Knife
 item.weaponHuntersKnife.tooltip=A one-handed, easy-to-wield Sword. Not too powerful.
 item.weaponHuntersKnifePlus.name=Hunter's Knife+
 item.weaponHuntersKnifePlus.tooltip=A one-handed, easy-to-wield Sword. Not too powerful.
-item.weaponSoldiersDagger.name=Soldier's Dagger
-item.weaponSoldiersDagger.tooltip=A light Sword crafted from Jaggi materials. Easy to use and widely available.
-item.weaponCommandersDagger.name=Commander's Dagger
-item.weaponCommandersDagger.tooltip=A light Sword crafted from Jaggi materials. Easy to use and widely available.
 item.weaponHuntersDagger.name=Hunter's Dagger
 item.weaponHuntersDagger.tooltip=A Sword crafted of high-purity ore that boosts its strength. Known for its curved blade.
 item.weaponAssassinsDagger.name=Assassin's Dagger
 item.weaponAssassinsDagger.tooltip=A Sword crafted of high-purity ore that boosts its strength. Known for its curved blade.
-item.weaponViperBite.name=Viper Bite
-item.weaponViperBite.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
-item.weaponViperBitePlus.name=Viper Bite+
-item.weaponViperBitePlus.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
-item.weaponDeathprize.name=Deathprize
-item.weaponDeathprize.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
+
+item.weaponSoldiersDagger.name=Soldier's Dagger
+item.weaponSoldiersDagger.tooltip=A light Sword crafted from Jaggi materials. Easy to use and widely available.
+item.weaponCommandersDagger.name=Commander's Dagger
+item.weaponCommandersDagger.tooltip=A light Sword crafted from Jaggi materials. Easy to use and widely available.
+item.weaponDeadlyKnife.name=Deadly Knife
+item.weaponDeadlyKnife.tooltip=A very easy-to-use Sword made from Great Jaggi skin. It really grows on you.
+item.weaponDeadlyKnifePlus.name=Deadly Knife+
+item.weaponDeadlyKnifePlus.tooltip=A very easy-to-use Sword made from Great Jaggi skin. It really grows on you.
+
 item.weaponSerpentBite.name=Serpent Bite
 item.weaponSerpentBite.tooltip=Serpent blade made from Velociprey parts.
 item.weaponSerpentBitePlus.name=Serpent Bite+
 item.weaponSerpentBitePlus.tooltip=Serpent blade made from Velociprey parts.
 item.weaponDeadlock.name=Deadlock
 item.weaponDeadlock.tooltip=Serpent blade made from Velociprey parts.
-item.weaponSnakeBite.name=Snake Bite
-item.weaponSnakeBite.tooltip=Serpent blade made from Giaprey parts. Contains freezing Giaprey Fang.
-item.weaponSnakeBitePlus.name=Snake Bite+
-item.weaponSnakeBitePlus.tooltip=Serpent blade made from Giaprey parts. Contains freezing Giaprey Fang.
-item.weaponDeathlyCold.name=Deathly Cold
-item.weaponDeathlyCold.tooltip=Serpent blade made from Giaprey parts. Contains freezing Giaprey Fang.
-item.weaponHydraBite.name=Hydra Bite
-item.weaponHydraBite.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
-item.weaponHydraBitePlus.name=Hydra Bite+
-item.weaponHydraBitePlus.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
-item.weaponDeadlyPoison.name=Deadly Poison
-item.weaponDeadlyPoison.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
 item.weaponVelocidromeBite.name=Velocidrome Bite
 item.weaponVelocidromeBite.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
 item.weaponVelocidromeBitePlus.name=Velocidrome Bite+
@@ -381,18 +354,53 @@ item.weaponDromeRushDagger.tooltip=A weapon based on how monsters' claws are use
 item.weaponGreatStabberdag.name=Great Stabberdag
 item.weaponGreatStabberdag.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
 
+item.weaponSnakeBite.name=Snake Bite
+item.weaponSnakeBite.tooltip=Serpent blade made from Giaprey parts. Contains freezing Giaprey Fang.
+item.weaponSnakeBitePlus.name=Snake Bite+
+item.weaponSnakeBitePlus.tooltip=Serpent blade made from Giaprey parts. Contains freezing Giaprey Fang.
+item.weaponDeathlyCold.name=Deathly Cold
+item.weaponDeathlyCold.tooltip=Serpent blade made from Giaprey parts. Contains freezing Giaprey Fang.
+
+item.weaponViperBite.name=Viper Bite
+item.weaponViperBite.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
+item.weaponViperBitePlus.name=Viper Bite+
+item.weaponViperBitePlus.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
+item.weaponDeathprize.name=Deathprize
+item.weaponDeathprize.tooltip=Upgraded serpent blade made from Genprey parts. Contains paralyzing Genprey Fang.
+item.weaponGendromeBite.name=Gendrome Bite
+item.weaponGendromeBite.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
+item.weaponGendromeBitePlus.name=Gendrome Bite+
+item.weaponGendromeBitePlus.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
+item.weaponGendromeFang.name=Gendrome Fang
+item.weaponGendromeFang.tooltip=A powerful one-handed Sword crafted from newly developed techniques and materials.
+item.weaponGendromeFangPlus.name=Gendrome Fang+
+item.weaponGendromeFangPlus.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
+item.weaponDromeToxinDagger.name=Drome Toxin Dagger
+item.weaponDromeToxinDagger.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
+item.weaponGreatParadag.name=Great Paradag
+item.weaponGreatParadag.tooltip=A weapon based on how monsters' claws are used for both attack and defense.
+
+item.weaponHydraBite.name=Hydra Bite
+item.weaponHydraBite.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
+item.weaponHydraBitePlus.name=Hydra Bite+
+item.weaponHydraBitePlus.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
+item.weaponDeadlyPoison.name=Deadly Poison
+item.weaponDeadlyPoison.tooltip=Serpent blade made from Ioprey parts. Contains poisonous Ioprey glands.
+
 item.weaponBoneKris.name=Bone Kris
 item.weaponBoneKris.tooltip=A simple and dependable bone dagger.
 item.weaponBoneKrisPlus.name=Bone Kris+
 item.weaponBoneKrisPlus.tooltip=A simple and dependable bone dagger.
 item.weaponChiefKris.name=Chief Kris
 item.weaponChiefKris.tooltip=Improved Bone Sword. Very durable, and its materials are easily found.
+
 item.weaponRottenSword.name=Rotten Sword
 item.weaponRottenSword.tooltip=A sword made from the rotting flesh of the undead. Contagious.
 item.weaponPlaguedSword.name=Plagued Sword
 item.weaponPlaguedSword.tooltip=A sword made from the plagued flesh of the undead. Very Contagious.
 item.weaponInfestedSword.name=Infested Sword
 item.weaponInfestedSword.tooltip=A sword made from the infested flesh of the undead. Extremely Contagious.
+
 item.weaponSkeletalSword.name=Skeletal Sword
 item.weaponSkeletalSword.tooltip=A sword made from living bones. You can still hear them clatter.
 item.weaponSkeletalSwordPlus.name=Skeletal Sword+
@@ -403,6 +411,7 @@ item.weaponWitheredSwordPlus.name=Withered Sword+
 item.weaponWitheredSwordPlus.tooltip=A sword made from the bones of hell. You can still hear them clatter.
 item.weaponNecrosisBlade.name=Necrosis Blade
 item.weaponNecrosisBlade.tooltip=A sword made from the heart of the Wither. It drains life.
+
 item.weaponMandiblade.name=Mandiblade
 item.weaponMandiblade.tooltip=A sword made from the pincers of large spiders.
 item.weaponMandibladePlus.name=Mandiblade+
@@ -411,12 +420,14 @@ item.weaponStingingMandiblade.name=Stinging Mandiblade
 item.weaponStingingMandiblade.tooltip=A sword made from the poisous pincers of cave spiders.
 item.weaponPoisonStingblade.name=Poison Stingblade
 item.weaponPoisonStingblade.tooltip=A sword made from the poisous pincers of cave spiders.
+
 item.weaponFearSword.name=Fear Sword
 item.weaponFearSword.tooltip=An explosive sword made from the terrifying Creeper.
 item.weaponTerrorSword.name=Terror Sword
 item.weaponTerrorSword.tooltip=An explosive sword made from the terrifying Creeper.
 item.weaponDreadSword.name=Dread Sword
 item.weaponDreadSword.tooltip=An explosive sword made from the terrifying Creeper.
+
 item.weaponXenoblade.name=Xenoblade
 item.weaponXenoblade.tooltip=An alien sword made from the elusive Enderman.
 item.weaponXenobladePlus.name=Xenoblade+
@@ -425,6 +436,7 @@ item.weaponAstralSword.name=Astral Sword
 item.weaponAstralSword.tooltip=An alien sword forged from otherworldy materials.
 item.weaponAstralEndsword.name=Astral Endsword
 item.weaponAstralEndsword.tooltip=An alien sword forged in the fires of dragons.
+
 item.weaponSlimySword.name=Slimy Sword
 item.weaponSlimySword.tooltip=A sword covered in sticky slime...ew.
 item.weaponSlimySwordPlus.name=Slimy Sword+
@@ -433,6 +445,7 @@ item.weaponCrystalizedSlimeblade.name=Crystalized Slimeblade
 item.weaponCrystalizedSlimeblade.tooltip=A sword covered in blazing hot slime.
 item.weaponMagmaticSlimeblade.name=Magmatic Slimeblade
 item.weaponMagmaticSlimeblade.tooltip=A sword covered in slimy magma.
+
 item.weaponBlazingSword.name=Blazing Sword
 item.weaponBlazingSword.tooltip=A sword made of solid fire.
 item.weaponBlazingTempest.name=Blazing Tempest

@@ -20,6 +20,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.tools.cmd.Meta;
 
 import java.util.Collection;
 import java.util.List;
@@ -74,7 +75,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
      */
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        if(itemStackIn.isItemEqual(new ItemStack(MHItems.itemConsumable, 1, 0)))
+        if(itemStackIn.isItemEqual(MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HERB)))
         {
             if(playerIn.shouldHeal())
                 super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
