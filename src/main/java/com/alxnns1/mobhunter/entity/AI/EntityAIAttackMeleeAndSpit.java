@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.entity.AI;
 
 import com.alxnns1.mobhunter.entity.ISpitAttackMob;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -158,14 +159,10 @@ public class EntityAIAttackMeleeAndSpit extends EntityAIBase
         }
 
         if (MathHelper.sqrt(distSqr) <= this.maxSpitDistance) {
-            if (--this.spitAttackTime == 0) {
+            if (--this.spitAttackTime <= 0) {
                 float f = MathHelper.sqrt(distSqr) / this.maxSpitDistance;
-                float spitVelocity = MathHelper.clamp(f, 0.1F, 1.0F);
-                this.spitAttacker.attackEntityWithSpitAttack(target, spitVelocity);
+                this.spitAttacker.attackEntityWithSpitAttack(target);
                 this.spitAttackTime = MathHelper.floor(f * (float) (this.maxSpitAttackTime - this.spitIntervalMin) + (float) this.spitIntervalMin);
-            } else if (this.spitAttackTime < 0) {
-                float f2 = MathHelper.sqrt(distSqr) / this.maxSpitDistance;
-                this.spitAttackTime = MathHelper.floor(f2 * (float) (this.maxSpitAttackTime - this.spitIntervalMin) + (float) this.spitIntervalMin);
             }
         }
 

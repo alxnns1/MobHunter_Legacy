@@ -12,8 +12,10 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -31,8 +33,7 @@ public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob {
         setBaseSpeed(0.3);
         setBaseKnockback(0.1);
         this.tasks.addTask(1, new EntityAILeapAtTarget(this,0.5f));
-        this.tasks.addTask( 4, new EntityAIAttackMeleeAndSpit(this, 1.0D, 600, 16.0f,4.0f, true));
-        //this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, false));
+        this.tasks.addTask( 4, new EntityAIAttackMeleeAndSpit(this, 1.0D, 200, 16.0f,4.0f, true));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
@@ -78,15 +79,16 @@ public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob {
     }
 
     @Override
-    public void attackEntityWithSpitAttack(EntityLivingBase target, float velocity)
+    public void attackEntityWithSpitAttack(EntityLivingBase target)
     {
-        EntitySpit spit = new EntitySpit(this.world, this, 2f, velocity, new PotionEffect(MobEffects.POISON, 200));
+        EntitySpit spit = new EntitySpit(this.world, this, "iopreySpit", 2f, 1f, new PotionEffect(MobEffects.POISON, 200));
         double d0 = target.posY + (double)target.getEyeHeight() - 1.100000023841858D;
         double d1 = target.posX - this.posX;
         double d2 = d0 - spit.posY;
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         spit.setPosition(this.posX, this.posY + 1.5d, this.posZ);
+        spit.setItemToRender(new ItemStack(Items.CHORUS_FRUIT_POPPED));
         this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(spit);
     }

@@ -9,5 +9,5 @@ public interface ISpitAttackMob {
     /**
      * Attack the specified entity using a ranged attack.
      */
-    void attackEntityWithSpitAttack(EntityLivingBase target, float velocity);
+    void attackEntityWithSpitAttack(EntityLivingBase target);
 }

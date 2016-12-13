@@ -7,6 +7,13 @@ sharpness.blue.name=Blue
 sharpness.white.name=White
 sharpness.purple.name=Purple
 
+//Death Messages
+death.attack.giapreySpit=%1$s was killed by Giaprey's Spit
+death.attack.giadromeSpit=%1$s was killed by Giadrome's Spit
+death.attack.iopreySpit=%1$s was killed by Ioprey's Spit
+death.attack.iodromeSpit=%1$s was killed by Iodrome's Spit
+
+//JEI
 jei.recipe.weaponCrafting=Weapon Crafting
 jei.recipe.armourCrafting=Armour Crafting
 

@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -36,19 +37,21 @@ public class EntitySpit extends Entity implements IProjectile
     private PotionEffect[] potionEffects;
     public Color particleColour;
     private ItemStack itemToRender;
+    private String damageType;
 
     private Entity ignoreEntity;
     private int ignoreTime;
 
     public EntitySpit(World world)
     {
-        this(world, null, 0f, 1f);
+        this(world, null, "Spit", 0f, 1f);
     }
 
-    public EntitySpit(World world, EntityLivingBase sourceEntity, float attackDamage, float velocity, PotionEffect... potionEffects)
+    public EntitySpit(World world, EntityLivingBase sourceEntity, String damageTypeIn, float attackDamage, float velocity, PotionEffect... potionEffects)
     {
         super(world);
         sourceUUID = sourceEntity == null ? null : sourceEntity.getUniqueID();
+        this.damageType = damageTypeIn;
         this.attackDamage = attackDamage;
         this.potionEffects = potionEffects;
         particleColour = new Color(PotionUtils.getPotionColorFromEffectList(Lists.newArrayList(potionEffects)));
@@ -57,7 +60,7 @@ public class EntitySpit extends Entity implements IProjectile
             setHeadingFromThrower(sourceEntity, velocity);
             setPosition(sourceEntity.posX, sourceEntity.posY + sourceEntity.getEyeHeight(), sourceEntity.posZ);
         }
-        setItemToRender(new ItemStack(Items.SLIME_BALL));
+        setItemToRender(new ItemStack(Items.DYE, 1, 15));
     }
 
     public void setItemToRender(ItemStack item)
@@ -174,7 +177,7 @@ public class EntitySpit extends Entity implements IProjectile
         {
             //Hit entity
             if(attackDamage > 0)
-                entityHit.attackEntityFrom(new EntityDamageSourceIndirect("spit", this, sourceEntity), attackDamage);
+                entityHit.attackEntityFrom(new EntityDamageSourceIndirect(damageType, this, sourceEntity), attackDamage);
             //Apply potion effects
             if(entityHit instanceof EntityLivingBase && potionEffects != null && potionEffects.length > 0)
             {

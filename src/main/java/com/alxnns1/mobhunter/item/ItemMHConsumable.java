@@ -6,6 +6,7 @@ import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.CommonUtil;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -24,6 +25,7 @@ import scala.tools.cmd.Meta;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by Alex on 26/04/2016.
@@ -91,7 +93,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         //Only want to run on the server
         if(worldIn.isRemote) return;
 
-        String[] itemNameSplit = stack.getItem().getRegistryName().getResourcePath().split(".");
+        String[] itemNameSplit = stack.getUnlocalizedName().split("\\W");
         String itemName = itemNameSplit[itemNameSplit.length-1];
 
         if(itemName.equals(Names.Items.HERB))
