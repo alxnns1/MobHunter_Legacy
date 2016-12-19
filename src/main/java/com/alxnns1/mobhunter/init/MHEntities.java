@@ -1,14 +1,18 @@
 package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.entity.EntitySpit;
-import com.alxnns1.mobhunter.entity.RenderSpit;
+import com.alxnns1.mobhunter.entity.spits.EntitySpit;
+import com.alxnns1.mobhunter.entity.spits.EntitySpitIce;
+import com.alxnns1.mobhunter.entity.spits.EntitySpitPoison;
+import com.alxnns1.mobhunter.entity.spits.RenderSpit;
 import com.alxnns1.mobhunter.entity.monsters.*;
 import com.alxnns1.mobhunter.entity.monsters.render.*;
 import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -182,6 +186,7 @@ public class MHEntities
         registerRender(EntityGendrome.class, RenderGendrome.FACTORY);
         //registerRender(EntityIodrome.class, RenderIodrome.FACTORY);
 
-        registerRender(EntitySpit.class, RenderSpit.FACTORY);
+        registerRender(EntitySpitPoison.class, RenderSpit.FACTORY_POISON);
+        registerRender(EntitySpitIce.class, RenderSpit.FACTORY_ICE);
     }
 }

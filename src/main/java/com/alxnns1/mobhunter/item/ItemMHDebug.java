@@ -1,10 +1,9 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.entity.EntitySpit;
+import com.alxnns1.mobhunter.entity.spits.EntitySpitPoison;
 import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,9 +32,8 @@ public class ItemMHDebug extends Item
     {
         if(!worldIn.isRemote)
         {
-            EntitySpit entity = new EntitySpit(worldIn, playerIn, "debugSpit", 2f, 1f, new PotionEffect(MobEffects.GLOWING, 40));
+            EntitySpitPoison entity = new EntitySpitPoison(worldIn, playerIn, "debugSpit", 2f, 1f, new PotionEffect(MobEffects.GLOWING, 40));
             entity.setPosition(playerIn.posX, playerIn.posY + 1.5d, playerIn.posZ);
-            entity.setItemToRender(new ItemStack(Items.ENDER_EYE));
             worldIn.spawnEntity(entity);
         }
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);

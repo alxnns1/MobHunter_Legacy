@@ -1,13 +1,12 @@
 package com.alxnns1.mobhunter.entity.monsters;
 
 import com.alxnns1.mobhunter.entity.AI.EntityAIAttackMeleeAndSpit;
-import com.alxnns1.mobhunter.entity.EntitySpit;
 import com.alxnns1.mobhunter.entity.ISpitAttackMob;
+import com.alxnns1.mobhunter.entity.spits.EntitySpitIce;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -15,11 +14,8 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -85,14 +81,13 @@ public class EntityGiaprey extends EntityMHBirdWyvern implements ISpitAttackMob 
     @Override
     public void attackEntityWithSpitAttack(EntityLivingBase target)
     {
-        EntitySpit spit = new EntitySpit(this.world, this, "giapreySpit", 2f, 1f, new PotionEffect(MobEffects.SLOWNESS, 200, 3));
+        EntitySpitIce spit = new EntitySpitIce(this.world, this, "giapreySpit", 2f, 1f, new PotionEffect(MobEffects.SLOWNESS, 200, 3));
         double d0 = target.posY + (double)target.getEyeHeight() - 1.100000023841858D;
         double d1 = target.posX - this.posX;
         double d2 = d0 - spit.posY;
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         spit.setPosition(this.posX, this.posY + 1.5d, this.posZ);
-        spit.setItemToRender(new ItemStack(Items.SNOWBALL));
         this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(spit);
     }

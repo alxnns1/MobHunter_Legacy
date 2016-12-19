@@ -1,13 +1,10 @@
-package com.alxnns1.mobhunter.entity;
+package com.alxnns1.mobhunter.entity.spits;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.PotionEffect;
@@ -36,7 +33,6 @@ public class EntitySpit extends Entity implements IProjectile
     private float attackDamage;
     private PotionEffect[] potionEffects;
     public Color particleColour;
-    private ItemStack itemToRender;
     private String damageType;
 
     private Entity ignoreEntity;
@@ -60,17 +56,6 @@ public class EntitySpit extends Entity implements IProjectile
             setHeadingFromThrower(sourceEntity, velocity);
             setPosition(sourceEntity.posX, sourceEntity.posY + sourceEntity.getEyeHeight(), sourceEntity.posZ);
         }
-        setItemToRender(new ItemStack(Items.DYE, 1, 15));
-    }
-
-    public void setItemToRender(ItemStack item)
-    {
-        itemToRender = item.copy();
-    }
-
-    public ItemStack getItemToRender()
-    {
-        return itemToRender;
     }
 
     public void setParticleColour(int colour)
