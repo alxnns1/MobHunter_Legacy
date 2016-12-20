@@ -3,7 +3,6 @@ package com.alxnns1.mobhunter.block.render;
 import com.alxnns1.mobhunter.block.models.ModelBbqMeat;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -32,7 +31,7 @@ public class RenderBbq extends TileEntitySpecialRenderer<TileBbq>
 
             //Set the model position and rotation
             GlStateManager.translate(x, y + 0.84375f, z + 0.5f);
-            model.rotateX((float) Math.toRadians(te.getMeatRotation()));
+            model.rotateX((float) Math.toRadians(te.getCookRotation()));
 
             //Set the texture to use for the meat model
             ResourceLocation texture;

@@ -1,16 +1,12 @@
 package com.alxnns1.mobhunter.tileentity;
 
-import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.util.LogHelper;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import net.minecraft.world.EnumSkyBlock;
 
 /**
  * Created by Mark on 26/04/2016.
@@ -19,31 +15,39 @@ public class TileBbq extends TileEntity implements ITickable
 {
     private int cookTime = 0;
     private int rotationAngles = 64;
-    private int RARE_TIME = 120; //6 secs
-    private int DONE_TIME = 180; //9 secs
-    private int BURN_TIME = 200; //10 secs
-    private boolean isCooking = false;
+    private final ItemStack[] cookResults;
+    private final int[] cookTimes;
 
     //These are just used as keys for the NBT saving/reading
     private String KEY_TIME = "cookTime";
-    private String KEY_COOKING = "cooking";
 
-    public TileBbq() {}
+    public TileBbq(ItemStack[] cookResults, int[] cookTimes)
+    {
+        if(cookResults == null || cookResults.length <= 0 || cookTimes == null || cookTimes.length <= 0 || cookResults.length - 1 != cookTimes.length)
+            throw new IllegalArgumentException("Input arrays must not be empty and cookResults' length should be 1 greater than the cookTimes' length.");
+        this.cookResults = cookResults;
+        this.cookTimes = cookTimes;
+    }
+
+    public boolean isValidInput(ItemStack input)
+    {
+        return input.isItemEqual(cookResults[0]);
+    }
 
     public boolean isCooking()
     {
-        return isCooking;
+        return cookTime > 0;
     }
 
     /**
-     * If not already cooking, will start the cooking of a piece of raw meat.
+     * If not already cooking, will start the cooking of the input item.
      * @return If a new cooking process has started.
      */
-    public boolean putRawMeat()
+    public boolean putInputItem()
     {
-        if(!isCooking)
+        if(!isCooking())
         {
-            isCooking = true;
+            cookTime++;
             return true;
         }
         else
@@ -52,23 +56,13 @@ public class TileBbq extends TileEntity implements ITickable
 
     /**
      * Gets the meat at the current cooking time.
-     * This is ONLY used to see the item. Use retrieveItem() to take the item out.
+     * This is ONLY used to see the item. Use retrieveResult() to take the item out.
      * @return
      */
-    public Item getMeat()
+    public ItemStack getResult()
     {
         //If not cooking, then return null
-        if(!isCooking)
-            return null;
-        //If cooking, then return relevant item
-        if(cookTime < RARE_TIME)
-            return MHItems.itemRawMeat;
-        else if(cookTime < DONE_TIME)
-            return MHItems.itemRareSteak;
-        else if(cookTime < BURN_TIME)
-            return MHItems.itemDoneSteak;
-        else
-            return MHItems.itemBurntMeat;
+        return isCooking() ? cookResults[getCookingStage()].copy() : null;
     }
 
     /**
@@ -77,24 +71,17 @@ public class TileBbq extends TileEntity implements ITickable
      */
     public int getCookingStage()
     {
-        Item item = getMeat();
-        if(item == null || item.equals(MHItems.itemRawMeat))
-            return 0;
-        else if(item.equals(MHItems.itemRareSteak))
-            return 1;
-        else if(item.equals(MHItems.itemDoneSteak))
-            return 2;
-        else if(item.equals(MHItems.itemBurntMeat))
-            return 3;
-        else
-            return 0;
+        for(int i = 0; i < cookTimes.length; i++)
+            if(cookTime < cookTimes[i])
+                return i;
+        return cookTimes.length;
     }
 
     /**
      * Gets the rotation for the meat render in radians.
      * @return Angle in radians
      */
-    public float getMeatRotation()
+    public float getCookRotation()
     {
         return (((float)cookTime % (float)rotationAngles) / (float)rotationAngles) * 360f;
     }
@@ -103,10 +90,9 @@ public class TileBbq extends TileEntity implements ITickable
      * Gets the meat from the bbq at whatever stage of cooking it's at.
      * @return
      */
-    public Item retrieveItem()
+    public ItemStack retrieveResult()
     {
-        Item product = getMeat();
-        isCooking = false;
+        ItemStack product = getResult();
         cookTime = 0;
         return product;
     }
@@ -114,15 +100,15 @@ public class TileBbq extends TileEntity implements ITickable
     public void readFromNBT(NBTTagCompound tag)
     {
         super.readFromNBT(tag);
-        isCooking = tag.getBoolean(KEY_COOKING);
         cookTime = tag.getInteger(KEY_TIME);
+        //TODO: Read cook times and results
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound tag)
     {
         super.writeToNBT(tag);
-        tag.setBoolean(KEY_COOKING, isCooking);
         tag.setInteger(KEY_TIME, cookTime);
+        //TODO: Save cook times and results
         return tag;
     }
 
@@ -147,8 +133,8 @@ public class TileBbq extends TileEntity implements ITickable
     @Override
     public void update()
     {
-        if(isCooking)
-            //Increase time meat has been cooking for
+        if(isCooking())
+            //Increase time item has been cooking for
             cookTime++;
     }
 }

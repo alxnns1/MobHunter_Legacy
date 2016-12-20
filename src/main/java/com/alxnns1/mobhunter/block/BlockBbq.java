@@ -5,12 +5,12 @@ import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -46,7 +46,13 @@ public class BlockBbq extends BlockContainer
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta)
     {
-        return new TileBbq();
+        return new TileBbq(
+                new ItemStack[] {
+                        new ItemStack(MHItems.itemRawMeat),
+                        new ItemStack(MHItems.itemRareSteak),
+                        new ItemStack(MHItems.itemDoneSteak),
+                        new ItemStack(MHItems.itemBurntMeat)},
+                new int[] {120, 180, 200}); //6, 9, 10 secs
     }
 
     @Override
@@ -78,29 +84,27 @@ public class BlockBbq extends BlockContainer
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         TileBbq te = (TileBbq) world.getTileEntity(pos);
+        if(te == null) return false;
 
-        if(heldItem != null && heldItem.getItem().equals(MHItems.itemRawMeat) && !te.isCooking())
+        if(heldItem != null && te.isValidInput(heldItem) && te.putInputItem())
         {
-            //Try put the raw meat into the bbq spit
-            if(te.putRawMeat())
-            {
-                heldItem.stackSize--;
-                return true;
-            }
-            return false;
+            //Start cooking held item
+            heldItem.stackSize--;
+            return true;
         }
         else if(te.isCooking())
         {
             //Try to get the item from the bbq spit
-            Item product = te.retrieveItem();
+            ItemStack product = te.retrieveResult();
+            LogHelper.info("Cook result: " + (product == null ? "NULL" : product.toString()));
             if(product != null && !world.isRemote)
             {
                 //Drop item on the ground
                 BlockPos pPos = player.getPosition();
-                EntityItem itemDrop = new EntityItem(world, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, new ItemStack(product));
+                EntityItem itemDrop = new EntityItem(world, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, product);
                 itemDrop.setNoPickupDelay();
                 world.spawnEntity(itemDrop);
-                if(product.equals(MHItems.itemDoneSteak))
+                if(product.getItem().equals(MHItems.itemDoneSteak))
                     player.addStat(MHAchievements.cookMeat);
                 return true;
             }
