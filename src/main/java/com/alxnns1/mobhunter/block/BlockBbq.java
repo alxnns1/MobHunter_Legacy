@@ -5,7 +5,6 @@ import com.alxnns1.mobhunter.init.MHAchievements;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -32,15 +31,20 @@ import java.util.Random;
  */
 public class BlockBbq extends BlockContainer
 {
-    public BlockBbq()
+    public BlockBbq(String name)
     {
         super(Material.ROCK);
-        setUnlocalizedName(Names.Blocks.BBQ);
+        setUnlocalizedName(name);
+        setRegistryName(name);
         setCreativeTab(MobHunter.MHBLOCK_TAB);
         setHardness(2f);
         setResistance(10f);
-        setRegistryName(Names.Blocks.BBQ);
         //setLightOpacity(0);
+    }
+
+    public BlockBbq()
+    {
+        this(Names.Blocks.BBQ);
     }
 
     @Override
@@ -131,19 +135,17 @@ public class BlockBbq extends BlockContainer
         worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
         worldIn.checkLightFor(EnumSkyBlock.BLOCK, pos);
         //This is where the particles are spawned when cooking
-        boolean cooking = ((TileBbq) worldIn.getTileEntity(pos)).isCooking();
+        TileEntity te = worldIn.getTileEntity(pos);
+        if(te == null) return;
+        boolean cooking = ((TileBbq) te).isCooking();
         if(cooking)
         {
-            //Spawns between 1 and 5 fire particles
-            for(int i = 0; i < rand.nextInt(4); i++)
-            {
+            //Spawns between 2 and 5 fire particles
+            for(int i = 0; i < rand.nextInt(3) + 1; i++)
                 spawnParticle(worldIn, pos, rand, true);
-            }
             //Spawns between 0 and 3 smoke particles
             for(int i = 1; i < rand.nextInt(4); i++)
-            {
                 spawnParticle(worldIn, pos, rand, false);
-            }
         }
     }
 }

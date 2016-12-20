@@ -38,7 +38,7 @@ public class MHBlocks
     public static BlockResource blockEarthCrystal, blockMachalite, blockDragonite, blockLightCrystal, blockGossamite, blockIceCrystal;
     public static BlockNatural blockHerb, blockShroom, blockBerry, blockBug, blockBone;
 
-    public static BlockBbq blockBbq;
+    public static BlockBbq blockBbq, blockBbqGourmet;
     public static BlockCraft blockWeaponCraft;
     public static BlockCraft blockArmourCraft;
 
@@ -79,6 +79,7 @@ public class MHBlocks
         regBlock(blockBone = new BlockBone());
 
         regBlock(blockBbq = new BlockBbq());
+        regBlock(blockBbqGourmet = new BlockBbqGourmet());
         regBlock(blockWeaponCraft = new BlockCraft(Names.Blocks.WEAPON_CRAFT));
         regBlock(blockArmourCraft = new BlockCraft(Names.Blocks.ARMOUR_CRAFT));
     }

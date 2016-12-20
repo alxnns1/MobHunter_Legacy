@@ -71,6 +71,7 @@ public class Names
                 RAW_MEAT = "itemRawMeat",
                 RARE_STEAK = "itemRareSteak",
                 DONE_STEAK = "itemDoneSteak",
+                GOURMET_STEAK = "itemGourmetSteak",
                 BURNT_MEAT = "itemBurntMeat",
 
                 //AMMO
@@ -448,6 +449,7 @@ public class Names
                 BONE = "blockBone",
 
                 BBQ = "blockBbq",
+                BBQ_GOURMET = "blockBbqGourmet",
                 WEAPON_CRAFT = "blockWeaponCraft",
                 ARMOUR_CRAFT = "blockArmourCraft";
     }

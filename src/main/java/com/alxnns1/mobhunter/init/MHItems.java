@@ -103,6 +103,7 @@ public class MHItems
     public static ItemMHConsumable
             itemRareSteak,
             itemDoneSteak,
+            itemGourmetSteak,
             itemBurntMeat,
             itemSushifish;
 
@@ -475,6 +476,7 @@ public class MHItems
         regItem(itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT));
         regItem(itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK));
         regItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
+        regItem(itemGourmetSteak = new ItemMHConsumable(16, 1.5F, true, Names.Items.GOURMET_STEAK)); //TODO: Need Alex to look over these values
         regItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
 
         regFish(itemWhetfish = new ItemMHResource(Names.Items.WHETFISH),53);

@@ -109,6 +109,8 @@ item.itemRareSteak.name=Rare Steak
 item.itemRareSteak.tooltip=Provides a small boost to your Stamina. This one's still red in the middle.
 item.itemDoneSteak.name=Well-done Steak
 item.itemDoneSteak.tooltip=Provides a moderate boost to your Stamina. Meat done right!
+item.itemGourmetSteak.name=Gourmet Steak
+item.itemGourmetSteak.tooltip=Provides a great boost to your Stamina. It doesn't get better than this!
 item.itemBurntMeat.name=Burnt Meat
 item.itemBurntMeat.tooltip=Meat that has been burnt to a crisp. It might boost your Stamina, or it might drain it...
 
@@ -574,6 +576,7 @@ tile.blockBug.name=Bug Nest
 tile.blockBone.name=Bone Pile
 
 tile.blockBbq.name=BBQ Spit
+tile.blockBbqGourmet.name=Gourmet BBQ Spit
 tile.blockWeaponCraft.name=Weapon Crafting Table
 tile.blockArmourCraft.name=Armour Crafting Table
 
