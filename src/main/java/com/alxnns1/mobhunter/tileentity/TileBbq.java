@@ -1,12 +1,13 @@
 package com.alxnns1.mobhunter.tileentity;
 
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.util.Constants;
 
 /**
  * Created by Mark on 26/04/2016.
@@ -19,7 +20,9 @@ public class TileBbq extends TileEntity implements ITickable
     private final int[] cookTimes;
 
     //These are just used as keys for the NBT saving/reading
-    private String KEY_TIME = "cookTime";
+    private static final String KEY_TIME = "cookTime";
+    private static final String KEY_COOK_LIST = "cookList";
+    private static final String KEY_COOK_LIST_TIME = "cookListTime";
 
     public TileBbq(ItemStack[] cookResults, int[] cookTimes)
     {
@@ -101,14 +104,31 @@ public class TileBbq extends TileEntity implements ITickable
     {
         super.readFromNBT(tag);
         cookTime = tag.getInteger(KEY_TIME);
-        //TODO: Read cook times and results
+        //Read cook times and results
+        NBTTagList cookList = tag.getTagList(KEY_COOK_LIST, Constants.NBT.TAG_COMPOUND);
+        for(int i = 0; i < cookList.tagCount(); i++)
+        {
+            NBTTagCompound item = cookList.getCompoundTagAt(i);
+            cookResults[i] = ItemStack.loadItemStackFromNBT(item);
+            if(i > 0)
+                cookTimes[i-1] = item.getInteger(KEY_COOK_LIST_TIME);
+        }
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound tag)
     {
         super.writeToNBT(tag);
         tag.setInteger(KEY_TIME, cookTime);
-        //TODO: Save cook times and results
+        //Save cook times and results
+        NBTTagList cookList = new NBTTagList();
+        for(int i = 0; i < cookResults.length; i++)
+        {
+            NBTTagCompound item = new NBTTagCompound();
+            cookResults[i].writeToNBT(item);
+            if(i > 0)
+                item.setInteger(KEY_COOK_LIST_TIME, cookTimes[i-1]);
+        }
+        tag.setTag(KEY_COOK_LIST, cookList);
         return tag;
     }
 

@@ -96,7 +96,6 @@ public class BlockBbq extends BlockContainer
         {
             //Try to get the item from the bbq spit
             ItemStack product = te.retrieveResult();
-            LogHelper.info("Cook result: " + (product == null ? "NULL" : product.toString()));
             if(product != null && !world.isRemote)
             {
                 //Drop item on the ground
