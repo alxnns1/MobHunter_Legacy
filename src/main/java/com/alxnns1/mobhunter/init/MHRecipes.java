@@ -23,7 +23,7 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HONEY),
                 MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.BITTERBUG));
         GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.WHETSTONE),
+                MetaRef.getStack(MetaRef.EnumItemType.TOOL, Names.Items.WHETSTONE),
                 MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S),
                 Items.IRON_INGOT);
 
@@ -149,6 +149,13 @@ public class MHRecipes
                 "w w", "wxw", "yzy",
                 'w', Items.IRON_INGOT,
                 'x', Items.FLINT_AND_STEEL,
+                'y', new ItemStack(Blocks.STONE),
+                'z', new ItemStack(Blocks.LOG));
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockBbqGourmet),
+                "w w", "wxw", "yzy",
+                'w', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
+                'x', Items.BLAZE_POWDER,
                 'y', new ItemStack(Blocks.STONE),
                 'z', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat,

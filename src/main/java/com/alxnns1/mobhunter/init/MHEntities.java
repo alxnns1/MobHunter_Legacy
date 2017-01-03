@@ -92,37 +92,18 @@ public class MHEntities
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
                 BiomeDictionary.Type.HILLS});
-        registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
-        registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
-        addSpawn(EntityJaggi.class, Config.jaggiSpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.WASTELAND,
-                BiomeDictionary.Type.BEACH});
-        registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
-        addSpawn(EntityVelociprey.class, Config.velocipreySpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.WASTELAND});
         registerMobWithEgg(EntityGiaprey.class, "Giaprey", 0x9fbfdf, 0x476078);
         addSpawn(EntityGiaprey.class, Config.giapreySpawnChance, new BiomeDictionary.Type[]{
                 BiomeDictionary.Type.MOUNTAIN,
                 BiomeDictionary.Type.SNOWY});
-        registerMobWithEgg(EntityGenprey.class, "Genprey", 0x408040, 0x806040);
-        addSpawn(EntityGenprey.class, Config.genpreySpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.SANDY,
-                BiomeDictionary.Type.WASTELAND});
         registerMobWithEgg(EntityIoprey.class, "Ioprey", 0xdf2020, 0x0a0a0a);
         addSpawn(EntityIoprey.class, Config.iopreySpawnChance, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.SWAMP});
 
         registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
+        registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
+        registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
         addSpawn(EntityGreatJaggi.class, Config.greatJaggiSpawnChance, 1, 1, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
@@ -131,6 +112,7 @@ public class MHEntities
                 BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityVelocidrome.class, "Velocidrome", 0x0080ff, 0x402000);
+        registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
         addSpawn(EntityVelocidrome.class, Config.velocidromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
@@ -144,6 +126,7 @@ public class MHEntities
                 BiomeDictionary.Type.SNOWY});
         */
         registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
+        registerMobWithEgg(EntityGenprey.class, "Genprey", 0x408040, 0x806040);
         addSpawn(EntityGendrome.class, Config.gendromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
                 BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.SANDY,
