@@ -49,7 +49,7 @@ achievement.iodrome.desc=Kill your first Iodrome.
 effect.paralyse.name=Paralysed
 
 //Debug
-item.itemDebug.name=Super Secret Rod Of Testing New Things
+item.debug.name=Super Secret Rod Of Testing New Things
 
 //Potions
 item.drink.potion.name=Potion

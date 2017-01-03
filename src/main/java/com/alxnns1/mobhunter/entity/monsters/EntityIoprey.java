@@ -1,8 +1,8 @@
 package com.alxnns1.mobhunter.entity.monsters;
 
 import com.alxnns1.mobhunter.entity.AI.EntityAIAttackMeleeAndSpit;
+import com.alxnns1.mobhunter.entity.EntitySpit;
 import com.alxnns1.mobhunter.entity.ISpitAttackMob;
-import com.alxnns1.mobhunter.entity.spits.EntitySpitPoison;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
@@ -12,8 +12,10 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -79,13 +81,14 @@ public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob {
     @Override
     public void attackEntityWithSpitAttack(EntityLivingBase target)
     {
-        EntitySpitPoison spit = new EntitySpitPoison(this.world, this, "iopreySpit", 2f, 1f, new PotionEffect(MobEffects.POISON, 200));
+        EntitySpit spit = new EntitySpit(this.world, this, "iopreySpit", 2f, 1f, new PotionEffect(MobEffects.POISON, 200));
         double d0 = target.posY + (double)target.getEyeHeight() - 1.100000023841858D;
         double d1 = target.posX - this.posX;
         double d2 = d0 - spit.posY;
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         spit.setPosition(this.posX, this.posY + 1.5d, this.posZ);
+        spit.setItemToRender(new ItemStack(Items.CHORUS_FRUIT_POPPED));
         this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(spit);
     }

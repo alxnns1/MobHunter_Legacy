@@ -23,7 +23,7 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HONEY),
                 MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.BITTERBUG));
         GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.TOOL, Names.Items.WHETSTONE),
+                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.WHETSTONE),
                 MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S),
                 Items.IRON_INGOT);
 
