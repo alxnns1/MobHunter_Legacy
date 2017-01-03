@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.entity;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.init.Blocks;
@@ -184,6 +185,15 @@ public class EntitySpit extends Entity implements IProjectile
                 EntityLivingBase livingHit = (EntityLivingBase) entityHit;
                 for(PotionEffect p : potionEffects)
                     livingHit.addPotionEffect(p);
+            }
+        }else{
+            AxisAlignedBB radius = new AxisAlignedBB(this.posX - 1, this.posY - 1, this.posZ - 1, this.posX + 1, this.posY + 1, this.posZ + 1);
+            for(Entity e : world.getEntitiesWithinAABBExcludingEntity(this, radius)) {
+                for(PotionEffect p : potionEffects) {
+                    if(e instanceof EntityLivingBase) {
+                        ((EntityLivingBase) e).addPotionEffect(p);
+                    }
+                }
             }
         }
         playSound(SoundEvents.ENTITY_GENERIC_SPLASH, 1f, 1.2f / (rand.nextFloat() * 0.2f + 0.9f));

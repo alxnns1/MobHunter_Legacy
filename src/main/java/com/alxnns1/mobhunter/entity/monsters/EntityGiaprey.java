@@ -20,6 +20,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -83,9 +84,17 @@ public class EntityGiaprey extends EntityMHBirdWyvern implements ISpitAttackMob 
     }
 
     @Override
+    public boolean isPotionApplicable(PotionEffect potioneffectIn)
+    {
+        Potion potion = potioneffectIn.getPotion();
+        if (potion == MobEffects.SLOWNESS) return false;
+        return true;
+    }
+
+    @Override
     public void attackEntityWithSpitAttack(EntityLivingBase target)
     {
-        EntitySpit spit = new EntitySpit(this.world, this, "giapreySpit", 2f, 1f, new PotionEffect(MobEffects.SLOWNESS, 200, 3));
+        EntitySpit spit = new EntitySpit(this.world, this, "giapreySpit", 0f, 1f, new PotionEffect(MobEffects.SLOWNESS, 200, 3));
         double d0 = target.posY + (double)target.getEyeHeight() - 1.100000023841858D;
         double d1 = target.posX - this.posX;
         double d2 = d0 - spit.posY;
