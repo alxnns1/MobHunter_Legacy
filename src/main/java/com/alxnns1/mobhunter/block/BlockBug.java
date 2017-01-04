@@ -17,7 +17,7 @@ public class BlockBug extends BlockNatural
     public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
     {
         if (chance<0.023140495867768595041322314049587)     drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "insectHusk"));
-        else if (chance<0.082644628099173553719008264462811)drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkHopper"));
+        else if (chance<0.082644628099173553719008264462811)drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkhopper"));
         else if (chance<0.12198347107438016528925619834711) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "snakebeeLarva"));
         else if (chance<0.16198347107438016528925619834711) drops.add(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "honey"));
         else if (chance<0.25619834710743801652892561983471) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "godbug"));
@@ -45,7 +45,7 @@ public class BlockBug extends BlockNatural
     public ArrayList<ItemStack> getDropsCold(ArrayList<ItemStack> drops, double chance)
     {
         if (chance<0.041787790697674418604651162790699)     drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "insectHusk"));
-        else if (chance<0.17623546511627906976744186046512) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkHopper"));
+        else if (chance<0.17623546511627906976744186046512) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkhopper"));
         else if (chance<0.20074127906976744186046511627907) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "snakebeeLarva"));
         else if (chance<0.23074127906976744186046511627907) drops.add(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "honey"));
         else if (chance<0.29069767441860465116279069767442) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "godbug"));
@@ -60,7 +60,7 @@ public class BlockBug extends BlockNatural
     public ArrayList<ItemStack> getDropsRock(ArrayList<ItemStack> drops, double chance)
     {
         if (chance<0.042395129659592417479334420387939)     drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "insectHusk"));
-        else if (chance<0.14816260490181882283318328622064) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkHopper"));
+        else if (chance<0.14816260490181882283318328622064) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkhopper"));
         else if (chance<0.19982775011174837413985230327564) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "snakebeeLarva"));
         else if (chance<0.23982775011174837413985230327564) drops.add(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "honey"));
         else if (chance<0.3403068515918634592260087258167)  drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "godbug"));
@@ -75,7 +75,7 @@ public class BlockBug extends BlockNatural
     public ArrayList<ItemStack> getDropsOther(ArrayList<ItemStack> drops, double chance)
     {
         if (chance<0.043741908727645670924100362601089)     drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "insectHusk"));
-        else if (chance<0.16849461702711942297669153127505) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkHopper"));
+        else if (chance<0.16849461702711942297669153127505) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "stinkhopper"));
         else if (chance<0.20193394719586623550576406830576) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "snakebeeLarva"));
         else if (chance<0.24193394719586623550576406830576) drops.add(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "honey"));
         else if (chance<0.38154937707711017580828658375974) drops.add(MetaRef.getStack(MetaRef.EnumItemType.BUG, "godbug"));
