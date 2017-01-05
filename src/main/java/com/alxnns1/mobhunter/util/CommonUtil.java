@@ -28,9 +28,13 @@ public class CommonUtil
 
     public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
     {
-        String unlocName = stack.getUnlocalizedName();
-        String tooltipText = I18n.format(unlocName + ".tooltip");
+        String unlocName = stack.getUnlocalizedName() + ".tooltip";
+        String tooltipText = I18n.format(unlocName);
+        if(!tooltipText.equals(unlocName))
+            tooltip.add(tooltipText);
+
         //Convert string to array to we can wrap by word
+        /*
         String[] tooltipArray = tooltipText.split(" ");
         int l = 0;
         String line = "";
@@ -48,6 +52,7 @@ public class CommonUtil
         }
         if(l > 0)
             tooltip.add(line);
+        */
 
         return tooltip;
     }
