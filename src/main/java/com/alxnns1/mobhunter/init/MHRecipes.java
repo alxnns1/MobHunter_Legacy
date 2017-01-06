@@ -165,14 +165,14 @@ public class MHRecipes
                 "www", "xyx", "xzx",
                 'w', new ItemStack(Blocks.CARPET,1,14),
                 'x', "stone",
-                'y', new ItemStack(Blocks.CHEST),
+                'y', "chestWood",
                 'z', "bookshelf"));
         GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHBlocks.blockArmourCraft),
                 "www", "xyx", "xzx",
                 'w', new ItemStack(Blocks.CARPET,1,11),
                 'x', "stone",
-                'y', new ItemStack(Blocks.CHEST),
+                'y', "chestWood",
                 'z', "bookshelf"));
 
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite,
