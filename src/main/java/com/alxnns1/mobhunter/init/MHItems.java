@@ -46,9 +46,9 @@ public class MHItems
     public static ItemMHConsumable
             itemPlant,
             itemMushroom,
-            itemBerry;
+            itemBerry,
+            itemBug;
     public static ItemMHResource
-            itemBug,
             itemMisc,
             itemTool,
             itemMiscDrop,
@@ -271,7 +271,7 @@ public class MHItems
                 Names.Items.LATCHBERRY,
                 Names.Items.BOMBERRY)
                 .addToMetaRef(MetaRef.EnumItemType.BERRY));
-        regItem(itemBug = new ItemMHResource("bug",
+        regItem(itemBug = new ItemMHConsumable("bug",
                 Names.Items.INSECT_HUSK,
                 Names.Items.STINKHOPPER,
                 Names.Items.SNAKEBEE_LARVA,
