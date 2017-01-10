@@ -158,6 +158,13 @@ public class MHRecipes
                 'x', Items.BLAZE_POWDER,
                 'y', new ItemStack(Blocks.STONE),
                 'z', new ItemStack(Blocks.NETHERRACK));
+        GameRegistry.addRecipe(
+                new ItemStack(MHBlocks.blockBbqGourmet),
+                " p ", "mbm", " n ",
+                'p', Items.BLAZE_POWDER,
+                'm', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
+                'b', MHBlocks.blockBbq,
+                'n', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat,
                 new ItemStack(MHItems.itemRareSteak), 0.2f);
         GameRegistry.addRecipe(new ShapedOreRecipe(
