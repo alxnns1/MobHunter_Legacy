@@ -107,7 +107,7 @@ public class BlockBbq extends BlockContainer
                 EntityItem itemDrop = new EntityItem(world, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, product);
                 itemDrop.setNoPickupDelay();
                 world.spawnEntity(itemDrop);
-                if(product.getItem().equals(MHItems.itemDoneSteak))
+                if(product.getItem().equals(MHItems.itemDoneSteak) || product.getItem().equals(MHItems.itemGourmetSteak))
                     player.addStat(MHAchievements.cookMeat);
                 return true;
             }
