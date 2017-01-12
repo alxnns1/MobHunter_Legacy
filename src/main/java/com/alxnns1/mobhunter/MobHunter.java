@@ -7,7 +7,7 @@ import com.alxnns1.mobhunter.handler.LootHandler;
 import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.quest.QuestHandler;
 import com.alxnns1.mobhunter.quest.capability.CapabilityQuest;
-import com.alxnns1.mobhunter.quest.capability.IQuests;
+import com.alxnns1.mobhunter.quest.capability.IQuest;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
@@ -39,8 +39,8 @@ public class MobHunter
     @Mod.Instance(Reference.MOD_ID)
     public static MobHunter instance;
 
-    @CapabilityInject(IQuests.class)
-    public static Capability<IQuests> CAPABILITY_QUESTS = null;
+    @CapabilityInject(IQuest.class)
+    public static Capability<IQuest> CAPABILITY_QUESTS = null;
 
     public static final CreativeTabs MH_TAB = new CreativeTabs(Reference.MOD_ID + "Items")
     {
@@ -137,10 +137,10 @@ public class MobHunter
         //TODO: Uncomment Hunter Rank
         //CapabilityManager.INSTANCE.register(IHunterRank.class, HunterRankDefault.HunterRankStorage.hunterRankStorage, HunterRankDefault.class);
 
-        CapabilityManager.INSTANCE.register(IQuests.class, CapabilityQuest.Storage.INSTANCE, new Callable<IQuests>()
+        CapabilityManager.INSTANCE.register(IQuest.class, CapabilityQuest.Storage.INSTANCE, new Callable<IQuest>()
         {
             @Override
-            public IQuests call() throws Exception
+            public IQuest call() throws Exception
             {
                 return new CapabilityQuest();
             }

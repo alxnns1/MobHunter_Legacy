@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
  */
 public class CapabilityQuestProvider implements ICapabilitySerializable<NBTTagCompound>
 {
-    private IQuests quests;
+    private IQuest quests;
 
     public CapabilityQuestProvider()
     {

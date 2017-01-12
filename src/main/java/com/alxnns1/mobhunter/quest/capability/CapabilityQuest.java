@@ -1,109 +1,92 @@
 package com.alxnns1.mobhunter.quest.capability;
 
 import com.alxnns1.mobhunter.init.MHQuests;
+import com.alxnns1.mobhunter.message.MessageQuest;
 import com.alxnns1.mobhunter.quest.MHQuest;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Mark on 12/01/2017.
  */
-public class CapabilityQuest implements IQuests
+public class CapabilityQuest implements IQuest
 {
-    private List<MHQuest> quests;
+    private MHQuest currentQuest = null;
 
-    public CapabilityQuest()
+    public CapabilityQuest() {}
+
+    @Override
+    public MHQuest getCurrentQuest()
     {
-        quests = new ArrayList<MHQuest>();
+        return currentQuest;
     }
 
     @Override
-    public List<MHQuest> getCurrentQuests()
+    public boolean addQuest(EntityPlayer player, MHQuest quest)
     {
-        return quests;
+        boolean canAdd = currentQuest == null;
+        if(canAdd)
+            currentQuest = quest;
+        return canAdd;
     }
 
     @Override
-    public boolean addNewQuest(EntityPlayer player, MHQuest quest)
+    public boolean removeQuest(EntityPlayer player)
     {
-        for(MHQuest q : quests)
-            if(q.isEqual(quest))
-                return false;
-        quests.add(quest);
-        return true;
-    }
-
-    @Override
-    public boolean removeQuest(EntityPlayer player, String questUnlocName)
-    {
-        for(int i = 0; i < quests.size(); i++)
-            if(quests.get(i).getUnlocName().equals(questUnlocName))
-            {
-                quests.remove(i);
-                return true;
-            }
-        return false;
+        boolean canRemove = currentQuest != null;
+        if(canRemove)
+            currentQuest = null;
+        return canRemove;
     }
 
     @Override
     public void dataChanged(EntityPlayer player)
     {
-        //TODO: Send packet to update client of data change
-        //if(player != null && player instanceof EntityPlayerMP)
+        if(player != null && player instanceof EntityPlayerMP)
+            CommonUtil.network.sendTo(new MessageQuest(serializeNBT()), (EntityPlayerMP) player);
     }
 
     @Override
     public NBTTagCompound serializeNBT()
     {
         NBTTagCompound questTag = new NBTTagCompound();
-        NBTTagList tagList = new NBTTagList();
-        for(MHQuest quest : quests)
+        if(currentQuest != null)
         {
-            NBTTagCompound tag = new NBTTagCompound();
-            tag.setString("questId", quest.getUnlocName());
-            tag.setLong("questStart", quest.getStartTime());
-            tagList.appendTag(tag);
+            questTag.setString("questId", currentQuest.getUnlocName());
+            questTag.setLong("questStart", currentQuest.getStartTime());
         }
-        questTag.setTag("questList", tagList);
         return questTag;
     }
 
     @Override
     public void deserializeNBT(NBTTagCompound nbt)
     {
-        quests.clear();
-        NBTTagList tagList = nbt.getTagList("questList", Constants.NBT.TAG_COMPOUND);
-        for(int i = 0; i <= tagList.tagCount(); i++)
+        if(nbt.hasKey("questId"))
         {
-            NBTTagCompound tag = tagList.getCompoundTagAt(i);
-            MHQuest quest = MHQuests.getQuest(tag.getString("questId"));
-            if(quest == null) continue;
-            quest.setStartTime(tag.getLong("questStart"));
-            quests.add(quest);
+            MHQuest quest = MHQuests.getQuest(nbt.getString("questId"));
+            if(quest != null)
+                quest.setStartTime(nbt.getLong("questStart"));
+            currentQuest = quest;
         }
     }
 
-    public static class Storage implements Capability.IStorage<IQuests>
+    public static class Storage implements Capability.IStorage<IQuest>
     {
         public static final Storage INSTANCE = new Storage();
 
         @Override
-        public NBTBase writeNBT(Capability<IQuests> capability, IQuests instance, EnumFacing side)
+        public NBTBase writeNBT(Capability<IQuest> capability, IQuest instance, EnumFacing side)
         {
             return instance.serializeNBT();
         }
 
         @Override
-        public void readNBT(Capability<IQuests> capability, IQuests instance, EnumFacing side, NBTBase nbt)
+        public void readNBT(Capability<IQuest> capability, IQuest instance, EnumFacing side, NBTBase nbt)
         {
             instance.deserializeNBT((NBTTagCompound) nbt);
         }
