@@ -1,9 +1,13 @@
 package com.alxnns1.mobhunter.quest;
 
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Mark on 12/01/2017.
@@ -11,12 +15,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MHQuest
 {
     private final EnumQuestType questType;
+    /** Unlocalised name for the quest */
     private final String name;
     private final int points, reqHR, time;
+    /** Whether the quest is repeatable */
     private boolean repeatable;
+    /** Cooldown to being able to accept the quest again once it's been completed */
     private int repeatCooldown;
+    /** The world time at which the quest was started */
     private long startTime = 0;
     private ItemStack[] rewards;
+
+    private Map<Object, Integer> progress;
 
     public MHQuest(EnumQuestType questType, String name, int pointsRewarded, int requiredHR, int timeLimit)
     {
@@ -26,14 +36,38 @@ public class MHQuest
         reqHR = requiredHR;
         time = timeLimit;
         repeatable = false;
+        progress = new HashMap<Object, Integer>();
     }
 
     /**
-     * Check of this quest is the same as the given one
+     * Check if this quest is the same as the given one
      */
     public boolean isEqual(MHQuest quest)
     {
         return quest != null && name.equals(quest.name);
+    }
+
+    public MHQuest setItemObjectives(ItemStack... objectives)
+    {
+        setObjectives(objectives);
+        return this;
+    }
+
+    public MHQuest setEntityObjectives(Entity... objectives)
+    {
+        setObjectives(objectives);
+        return this;
+    }
+
+    private void setObjectives(Object[] objectives)
+    {
+        for(Object o : objectives)
+        {
+            if(o instanceof ItemStack)
+                progress.put(((ItemStack) o).copy(), 0);
+            else if(o instanceof Entity)
+                progress.put(((Entity) o).getName(), 0);
+        }
     }
 
     public MHQuest setRepeatable(int cooldown)
@@ -183,5 +217,13 @@ public class MHQuest
     public boolean hasQuestExpired(long worldTime)
     {
         return getStartTime() > 0 && getStartTime() + (long) getTimeLimit() > worldTime;
+    }
+
+    /**
+     * Calculates the time remaining for the quest
+     */
+    public int getMinsLeft(long worldTime)
+    {
+        return (int) ((worldTime - getStartTime()) / 1200L);
     }
 }
