@@ -6,6 +6,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 /**
@@ -16,12 +17,13 @@ public class GuiQuest extends GuiScreen
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "quest.png");
     protected final int xSize = 128;
     protected final int ySize = 128;
-    private MHQuest quest;
+    private EntityPlayer player;
+    private MHQuestObject quest;
 
-    public GuiQuest(MHQuest quest)
+    public GuiQuest(EntityPlayer player)
     {
-        super();
-        this.quest = quest;
+        this.player = player;
+        this.quest = QuestHandler.getQuestCapability(player).getCurrentQuest();
     }
 
     /**
@@ -50,8 +52,12 @@ public class GuiQuest extends GuiScreen
         int y = (height - ySize) / 2;
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
-        //TODO: Draw text
+        //Draw icon
+        int iconX = 128 + quest.getQuest().getQuestType().ordinal() * 32;
+        drawTexturedModalRect(12, 12, iconX, 16, 32, 32);
 
+        //TODO: Draw text
+        //TODO: Create text wrapping method in ClientUtils
     }
 
     private class QuestButton extends GuiButton

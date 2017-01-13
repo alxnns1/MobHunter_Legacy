@@ -7,6 +7,7 @@ import com.alxnns1.mobhunter.gui.GuiArmourCraft;
 import com.alxnns1.mobhunter.gui.GuiPouch;
 import com.alxnns1.mobhunter.gui.GuiWeaponCraft;
 import com.alxnns1.mobhunter.init.MHBlocks;
+import com.alxnns1.mobhunter.quest.GuiQuest;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -54,6 +55,8 @@ public class GuiHandler implements IGuiHandler
             {
                 case POUCH:
                     return new GuiPouch(player, world);
+                case QUEST:
+                    return new GuiQuest(player);
             }
         }
         else

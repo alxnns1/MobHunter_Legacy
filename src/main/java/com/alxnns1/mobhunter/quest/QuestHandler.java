@@ -5,6 +5,7 @@ import com.alxnns1.mobhunter.quest.capability.CapabilityQuestProvider;
 import com.alxnns1.mobhunter.quest.capability.IQuest;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
@@ -15,6 +16,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.util.Iterator;
+
 /**
  * Created by Mark on 12/01/2017.
  */
@@ -22,6 +25,9 @@ public class QuestHandler
 {
     private static final ResourceLocation questRL = new ResourceLocation(Reference.MOD_ID, "_Quests");
 
+    /**
+     * Get the Quest Capability from the player
+     */
     public static IQuest getQuestCapability(EntityPlayer player)
     {
         return player.getCapability(MobHunter.CAPABILITY_QUESTS, null);
@@ -50,27 +56,36 @@ public class QuestHandler
     @SubscribeEvent
     public void onCrafted(PlayerEvent.ItemCraftedEvent event)
     {
+        //Add quest progress for Crafting quests
+        if(!event.player.isServerWorld())
+            return;
         IQuest quest = getQuestCapability(event.player);
-        if(quest.getCurrentQuest().getQuestType() == EnumQuestType.CRAFTING)
-            ;//TODO: Progress crafting quest
+        if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.CRAFTING)
+            quest.progressQuest(event.player, event.crafting);
     }
 
     @SubscribeEvent
     public void onPickup(PlayerEvent.ItemPickupEvent event)
     {
+        //Add quest progress for Gathering quests
+        if(!event.player.isServerWorld())
+            return;
         IQuest quest = getQuestCapability(event.player);
-        if(quest.getCurrentQuest().getQuestType() == EnumQuestType.GATHERING)
-            ;//TODO: Progress gathering quest
+        if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.GATHERING)
+            quest.progressQuest(event.player, event.pickedUp.getEntityItem());
     }
 
     @SubscribeEvent
     public void entityKilled(LivingDeathEvent event)
     {
+        //Add quest progress for Hunting quests
+        if(!event.getEntityLiving().isServerWorld())
+            return;
         if(!(event.getSource().getSourceOfDamage() instanceof EntityPlayer)) return;
         EntityPlayer player = (EntityPlayer) event.getSource().getSourceOfDamage();
         IQuest quest = getQuestCapability(player);
-        if(quest.getCurrentQuest().getQuestType() == EnumQuestType.HUNTING)
-            ;//TODO: Progress hunting quest
+        if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.HUNTING)
+            quest.progressQuest(player, EntityList.getEntityString(event.getEntityLiving()));
     }
 
     @SubscribeEvent
@@ -79,19 +94,25 @@ public class QuestHandler
         long worldTime = event.player.world.getWorldTime();
         EntityPlayer player = event.player;
         //Only check once every minute
-        if(event.phase == TickEvent.Phase.END && worldTime%1200 == 0)
+        if(event.player.isServerWorld() && event.phase == TickEvent.Phase.END && worldTime%1200 == 0)
         {
             //Check player quests and remove them if they've gone over the time limit
             IQuest playerQuest = getQuestCapability(player);
-            MHQuest quest = playerQuest.getCurrentQuest();
+            MHQuestObject quest = playerQuest.getCurrentQuest();
             if(quest != null && quest.hasQuestExpired(worldTime))
             {
                 //Remove quest and notify player
-                player.sendMessage(new TextComponentString(TextFormatting.RED + "You have run out of time to complete the quest '" + quest.getLocalName() + "'!"));
-                if(quest.getPointsPenalty() > 0)
-                    player.sendMessage(new TextComponentString(TextFormatting.RED + "" + quest.getPointsPenalty() + " HR points have been deducted as a penalty."));
-                playerQuest.removeQuest(player);
+                player.sendMessage(new TextComponentString(TextFormatting.RED + "You have run out of time to complete the quest '" + quest.getQuest().getLocalName() + "'!"));
+                if(quest.getQuest().getPointsPenalty() > 0)
+                    player.sendMessage(new TextComponentString(TextFormatting.RED + "" + quest.getQuest().getPointsPenalty() + " HR points have been deducted as a penalty."));
+                playerQuest.removeQuest();
             }
+
+            //Check player's quests on cooldown and remove them from the array if passed their cooldown
+            Iterator<MHQuestCooldown> questIterator = playerQuest.getCooldownQuests().iterator();
+            while(questIterator.hasNext())
+                if(questIterator.next().isCoolEnough(worldTime))
+                    questIterator.remove();
         }
     }
 }

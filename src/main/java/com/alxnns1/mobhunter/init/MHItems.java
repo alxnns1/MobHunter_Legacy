@@ -177,6 +177,9 @@ public class MHItems
     public static ItemMHBow
             weaponTestBow;
 
+    public static ItemMHQuest
+            itemQuest;
+
     public static ItemMHDebug
             itemDebug;
 
@@ -467,7 +470,7 @@ public class MHItems
         regItem(armourGenpreyLeggings = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.GENPREY_LEGGINGS));
         regItem(armourGenpreyBoots = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.GENPREY_BOOTS));
 
-        regItem(itemFieldPouch = new ItemMHPouch(Names.Items.FIELD_POUCH));
+        regItem(itemFieldPouch = new ItemMHPouch());
 
         regItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
         regItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));
@@ -548,6 +551,8 @@ public class MHItems
         regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
 
         regItem(weaponTestBow = new ItemMHBow("weaponTestBow", EnumBowCharge.PIERCE, 1));
+
+        regItem(itemQuest = new ItemMHQuest());
 
         regItem(itemDebug = new ItemMHDebug());
 

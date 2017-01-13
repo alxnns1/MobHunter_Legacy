@@ -1,12 +1,10 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
-import com.alxnns1.mobhunter.util.CommonUtil;
-import com.alxnns1.mobhunter.util.LogHelper;
+import com.alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,11 +21,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.tools.cmd.Meta;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by Alex on 26/04/2016.
@@ -265,6 +261,6 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        CommonUtil.addTooltip(stack, tooltip);
+        ClientUtil.addTooltip(stack, tooltip);
     }
 }

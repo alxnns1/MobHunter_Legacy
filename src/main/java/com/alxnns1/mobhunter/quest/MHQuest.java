@@ -1,13 +1,9 @@
 package com.alxnns1.mobhunter.quest;
 
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Mark on 12/01/2017.
@@ -22,11 +18,8 @@ public class MHQuest
     private boolean repeatable;
     /** Cooldown to being able to accept the quest again once it's been completed */
     private int repeatCooldown;
-    /** The world time at which the quest was started */
-    private long startTime = 0;
+    private Object[] objectives;
     private ItemStack[] rewards;
-
-    private Map<Object, Integer> progress;
 
     public MHQuest(EnumQuestType questType, String name, int pointsRewarded, int requiredHR, int timeLimit)
     {
@@ -36,7 +29,6 @@ public class MHQuest
         reqHR = requiredHR;
         time = timeLimit;
         repeatable = false;
-        progress = new HashMap<Object, Integer>();
     }
 
     /**
@@ -47,27 +39,17 @@ public class MHQuest
         return quest != null && name.equals(quest.name);
     }
 
-    public MHQuest setItemObjectives(ItemStack... objectives)
+    public MHQuest setObjectives(Object... objectives)
     {
-        setObjectives(objectives);
+        if(!questType.storageType.isInstance(objectives.getClass()))
+            throw new IllegalArgumentException("Objectives are not an array of the required class: " + questType.storageType.toString());
+        this.objectives = objectives;
         return this;
     }
 
-    public MHQuest setEntityObjectives(Entity... objectives)
+    public Object[] getObjectives()
     {
-        setObjectives(objectives);
-        return this;
-    }
-
-    private void setObjectives(Object[] objectives)
-    {
-        for(Object o : objectives)
-        {
-            if(o instanceof ItemStack)
-                progress.put(((ItemStack) o).copy(), 0);
-            else if(o instanceof Entity)
-                progress.put(((Entity) o).getName(), 0);
-        }
+        return objectives != null ? objectives.clone() : null;
     }
 
     public MHQuest setRepeatable(int cooldown)
@@ -88,10 +70,9 @@ public class MHQuest
     /**
      * Sets the item rewards for this quest
      */
-    public MHQuest setRewardItems(ItemStack... stacks)
+    public MHQuest setRewardItems(ItemStack... rewards)
     {
-        if(stacks != null)
-            rewards = stacks.clone();
+        this.rewards = rewards;
         return this;
     }
 
@@ -101,6 +82,19 @@ public class MHQuest
     public ItemStack[] getRewardItems()
     {
         return rewards.clone();
+    }
+
+    public String getRewardText()
+    {
+        String text = "";
+        for(int i = 0; i < rewards.length; i++)
+        {
+            ItemStack stack = rewards[i];
+            if(i > 0)
+                text += ", ";
+            text += stack.stackSize + "x " + stack.getDisplayName();
+        }
+        return text;
     }
 
     /**
@@ -117,9 +111,14 @@ public class MHQuest
         return questType;
     }
 
+    private String getQuestLang()
+    {
+        return "quest." + name;
+    }
+
     public String getUnlocName()
     {
-        return name;
+        return getQuestLang() + ".name";
     }
 
     /**
@@ -137,7 +136,7 @@ public class MHQuest
     @SideOnly(Side.CLIENT)
     public String getLocalDesc()
     {
-        return I18n.format(getUnlocName() + ".desc");
+        return I18n.format(getQuestLang() + ".desc");
     }
 
     /**
@@ -146,7 +145,8 @@ public class MHQuest
     @SideOnly(Side.CLIENT)
     public String getLocalObj()
     {
-        return I18n.format(getUnlocName() + ".obj");
+        //TODO: Generate description from quest type and objectives?
+        return I18n.format(getQuestLang() + ".obj");
     }
 
     /**
@@ -155,7 +155,8 @@ public class MHQuest
     @SideOnly(Side.CLIENT)
     public String getLocalRew()
     {
-        return I18n.format(getUnlocName() + ".rew");
+        //TODO: Generate description from rewards?
+        return I18n.format(getQuestLang() + ".rew");
     }
 
     /**
@@ -184,7 +185,7 @@ public class MHQuest
     }
 
     /**
-     * Gets the time limit to complete this quest
+     * Gets the time limit to complete this quest in minutes
      */
     public int getTimeLimit()
     {
@@ -192,38 +193,10 @@ public class MHQuest
     }
 
     /**
-     * Sets the world time at which the quest was started
-     * Used for calculating when a quest expires
-     * Can only be set once!
+     * Gets the time limit to complete this quest in ticks
      */
-    public void setStartTime(long time)
+    public long getTimeLimitTicks()
     {
-        if(startTime <= 0)
-            startTime = time;
-    }
-
-    /**
-     * Gets the world time at which the quest was started
-     */
-    public long getStartTime()
-    {
-        return startTime;
-    }
-
-    /**
-     * Calculates if the quest has expired
-     * Will return false if a start time has not been set
-     */
-    public boolean hasQuestExpired(long worldTime)
-    {
-        return getStartTime() > 0 && getStartTime() + (long) getTimeLimit() > worldTime;
-    }
-
-    /**
-     * Calculates the time remaining for the quest
-     */
-    public int getMinsLeft(long worldTime)
-    {
-        return (int) ((worldTime - getStartTime()) / 1200L);
+        return (long) getTimeLimit() * 1200;
     }
 }

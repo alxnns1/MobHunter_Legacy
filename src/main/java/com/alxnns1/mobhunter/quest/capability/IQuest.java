@@ -1,6 +1,9 @@
 package com.alxnns1.mobhunter.quest.capability;
 
+import com.alxnns1.mobhunter.quest.EnumQuestStatus;
 import com.alxnns1.mobhunter.quest.MHQuest;
+import com.alxnns1.mobhunter.quest.MHQuestCooldown;
+import com.alxnns1.mobhunter.quest.MHQuestObject;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -15,19 +18,41 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
     /**
      * Returns the currently active quest for the player
      */
-    MHQuest getCurrentQuest();
+    MHQuestObject getCurrentQuest();
 
     /**
-     * Adds a new quest for the player
+     * Returns the quests currently on cooldown for the player
+     */
+    List<MHQuestCooldown> getCooldownQuests();
+
+    /**
+     * Returns the quests completed by the player
+     */
+    List<String> getCompletedQuests();
+
+    /**
+     * Adds the quest as the current accepted quest for the player
      * @return Success - Will return false if player has already accepted a quest
      */
-    boolean addQuest(EntityPlayer player, MHQuest quest);
+    boolean addQuest(MHQuestObject quest);
 
     /**
-     * Removes the quest from the player
+     * Removes the current accepted quest from the player
      * @return Success - Will return false if the player has not accepted a quest
      */
-    boolean removeQuest(EntityPlayer player);
+    boolean removeQuest();
+
+    /**
+     * Tries to add progress to the current quest
+     * @param object The object trying to progress. Crafting and Gathering quests will need this to be an ItemStack,
+     *               and Hunting quests will need this to be an EntityStack.
+     */
+    void progressQuest(EntityPlayer player, Object object);
+
+    /**
+     * Gets the status of the quest for the player - i.e. whether the quest has been completed or not
+     */
+    EnumQuestStatus getQuestStatus(MHQuest quest);
 
     void dataChanged(EntityPlayer player);
 }

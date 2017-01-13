@@ -2,7 +2,7 @@ package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.init.MHItems;
-import com.alxnns1.mobhunter.util.CommonUtil;
+import com.alxnns1.mobhunter.util.ClientUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -125,7 +125,7 @@ public class ItemMHSword extends ItemSword
                 tooltip.add(damageLevelsString);
         }
 
-        CommonUtil.addTooltip(stack, tooltip);
+        ClientUtil.addTooltip(stack, tooltip);
     }
 
     /**

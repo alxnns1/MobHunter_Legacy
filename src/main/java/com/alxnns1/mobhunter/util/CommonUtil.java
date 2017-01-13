@@ -24,39 +24,6 @@ public class CommonUtil
 {
     public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
 
-    private static int maxLength = 30;
-
-    public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
-    {
-        String unlocName = stack.getUnlocalizedName() + ".tooltip";
-        String tooltipText = I18n.format(unlocName);
-        if(!tooltipText.equals(unlocName))
-            tooltip.add(tooltipText);
-
-        //Convert string to array to we can wrap by word
-        /*
-        String[] tooltipArray = tooltipText.split(" ");
-        int l = 0;
-        String line = "";
-        for(String s : tooltipArray)
-        {
-            l += s.length(); //Get word length
-            line += s + " "; //Add word to the line
-            if(l > maxLength)
-            {
-                //If current line is long enough, go to next line
-                tooltip.add(line);
-                line = "";
-                l = 0;
-            }
-        }
-        if(l > 0)
-            tooltip.add(line);
-        */
-
-        return tooltip;
-    }
-
     /**
      * Copied from EntityLivingBase due to it being private.
      * Determines whether the entity can block the damage source based on the damage source's location, whether the

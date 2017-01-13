@@ -1,11 +1,11 @@
 package com.alxnns1.mobhunter.item;
 
-import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.handler.EnumGuiID;
 import com.alxnns1.mobhunter.inventory.InventoryPouch;
+import com.alxnns1.mobhunter.reference.Names;
+import com.alxnns1.mobhunter.util.ClientUtil;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -19,13 +19,11 @@ import java.util.List;
 /**
  * Created by Alex on 16/11/2016.
  */
-public class ItemMHPouch extends Item
+public class ItemMHPouch extends ItemMHBasic
 {
-    public ItemMHPouch(String itemName)
+    public ItemMHPouch()
     {
-        setCreativeTab(MobHunter.MH_TAB);
-        setUnlocalizedName(itemName);
-        setRegistryName(itemName);
+        super(Names.Items.FIELD_POUCH);
         setMaxStackSize(1);
     }
 
@@ -52,6 +50,6 @@ public class ItemMHPouch extends Item
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        CommonUtil.addTooltip(stack, tooltip);
+        ClientUtil.addTooltip(stack, tooltip);
     }
 }
