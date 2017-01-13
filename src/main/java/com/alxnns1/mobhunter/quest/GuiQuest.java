@@ -56,8 +56,41 @@ public class GuiQuest extends GuiScreen
         int iconX = 128 + quest.getQuest().getQuestType().ordinal() * 32;
         drawTexturedModalRect(12, 12, iconX, 16, 32, 32);
 
-        //TODO: Draw text
-        //TODO: Create text wrapping method in ClientUtils
+        //Draw text
+        wrapText(quest.getQuest().getLocalName(), 45, 12, 48);
+        fontRendererObj.drawString("HR: " + quest.getQuest().getRequiredHR(), 101, 33, 0);
+        wrapText(quest.getQuest().getLocalDesc(), 15, 45, 104);
+        wrapText("Rewards: " + quest.getQuest().getPointsReward() + " HR Points, " + quest.getQuest().getRewardText(),
+                13, 85, 106);
+    }
+
+    /**
+     * Draws text which wraps by word to the next lines below if there's not enough space between xLeft and xRight
+     */
+    private void wrapText(String text, int x, int y, int width)
+    {
+        String[] textArray = text.split(" ");
+        String line = null;
+        int lineNum = 0;
+        for(String s : textArray)
+        {
+            //Add text to line
+            if(line == null)
+                line = s;
+            else
+            {
+                if(fontRendererObj.getStringWidth(line + s) <= width)
+                    line += " " + s;
+                else
+                {
+                    //Draw string then go to next line
+                    fontRendererObj.drawString(line, x, y * lineNum++, 0);
+                    line = s;
+                }
+            }
+        }
+        if(line != null)
+            fontRendererObj.drawString(line, x, y * lineNum, 0);
     }
 
     private class QuestButton extends GuiButton
