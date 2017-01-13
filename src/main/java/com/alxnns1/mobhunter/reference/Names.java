@@ -448,6 +448,8 @@ public class Names
                 BUG = "blockBug",
                 BONE = "blockBone",
 
+                CROP = "blockCrop",
+
                 BBQ = "blockBbq",
                 BBQ_GOURMET = "blockBbqGourmet",
                 WEAPON_CRAFT = "blockWeaponCraft",

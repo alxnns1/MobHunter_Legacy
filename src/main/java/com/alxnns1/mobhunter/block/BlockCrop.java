@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.reference.Names;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -19,10 +20,13 @@ import java.util.Random;
  * Created by Alex on 13/01/2017.
  */
 public class BlockCrop extends BlockCrops {
+    //TODO Fix properties overflowing MetaData
     public static final PropertyEnum<EnumMHCrop> TYPE = PropertyEnum.<EnumMHCrop>create("type", EnumMHCrop.class);
 
     public BlockCrop() {
         super();
+        setUnlocalizedName(Names.Blocks.CROP);
+        setRegistryName(Names.Blocks.CROP);
     }
 
     protected Item getSeed(IBlockState state) {
@@ -133,7 +137,7 @@ public class BlockCrop extends BlockCrops {
         BOMBERRY;
 
         public String getName(){
-            return toString();
+            return toString().toLowerCase();
         }
     }
 }
