@@ -64,7 +64,7 @@ public class HunterRankDefault implements IHunterRank
     public void dataChanged(EntityPlayer player)
     {
         if(player != null && player instanceof EntityPlayerMP)
-            CommonUtil.network.sendTo(new MessageHunterRank(saveNBT()), (EntityPlayerMP) player);
+            CommonUtil.NETWORK.sendTo(new MessageHunterRank(saveNBT()), (EntityPlayerMP) player);
     }
 
     public static class HunterRankStorage implements Capability.IStorage<IHunterRank>

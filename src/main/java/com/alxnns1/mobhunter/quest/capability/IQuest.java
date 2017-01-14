@@ -32,6 +32,7 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
 
     /**
      * Adds the quest as the current accepted quest for the player
+     * Will ONLY remove the quest from the player
      * @return Success - Will return false if player has already accepted a quest
      */
     boolean addQuest(MHQuestObject quest);
@@ -40,7 +41,14 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
      * Removes the current accepted quest from the player
      * @return Success - Will return false if the player has not accepted a quest
      */
-    boolean removeQuest();
+    boolean clearQuest();
+
+    /**
+     * Cancels the current accepted quest from the player
+     * Will deduct the penalty HR points from the player
+     * @return Success - Will return false if the player has not accepted a quest
+     */
+    boolean cancelQuest(EntityPlayer player);
 
     /**
      * Tries to add progress to the current quest

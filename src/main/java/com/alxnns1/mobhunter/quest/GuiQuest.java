@@ -1,6 +1,9 @@
 package com.alxnns1.mobhunter.quest;
 
+import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.CommonUtil;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -9,20 +12,21 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
+import java.io.IOException;
+
 /**
  * Created by Mark on 12/01/2017.
  */
 public class GuiQuest extends GuiScreen
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "quest.png");
-    protected final int xSize = 128;
-    protected final int ySize = 128;
-    private EntityPlayer player;
+    protected final int xSize = 127;
+    protected final int ySize = 127;
+    protected int guiLeft, guiTop;
     private MHQuestObject quest;
 
     public GuiQuest(EntityPlayer player)
     {
-        this.player = player;
         this.quest = QuestHandler.getQuestCapability(player).getCurrentQuest();
     }
 
@@ -32,9 +36,18 @@ public class GuiQuest extends GuiScreen
      */
     public void initGui()
     {
+        guiLeft = (width - xSize) / 2;
+        guiTop = (height - ySize) / 2;
+
         addButton(new QuestButton(12, 100, "Close"));
         addButton(new QuestButton(48, 100, "Share"));
         addButton(new QuestButton(84, 100, "Cancel"));
+
+        //Debug Buttons
+        addButton(new QuestButton(12, 129, "Craft"));
+        addButton(new QuestButton(12, 145, "Gather"));
+        addButton(new QuestButton(12, 161, "Hunt"));
+        addButton(new QuestButton(48, 129, "Clear Q"));
     }
 
     /**
@@ -43,25 +56,26 @@ public class GuiQuest extends GuiScreen
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+
         drawDefaultBackground();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
         //Draw GUI background
         mc.getTextureManager().bindTexture(guiImage);
-        int x = (width - xSize) / 2;
-        int y = (height - ySize) / 2;
-        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+
+        if(quest == null) return; //Temp while testing quests
 
         //Draw icon
         int iconX = 128 + quest.getQuest().getQuestType().ordinal() * 32;
-        drawTexturedModalRect(12, 12, iconX, 16, 32, 32);
+        drawTexturedModalRect(guiLeft + 12, guiTop + 12, iconX, 16, 32, 32);
 
         //Draw text
-        wrapText(quest.getQuest().getLocalName(), 45, 12, 48);
-        fontRendererObj.drawString("HR: " + quest.getQuest().getRequiredHR(), 101, 33, 0);
-        wrapText(quest.getQuest().getLocalDesc(), 15, 45, 104);
-        wrapText("Rewards: " + quest.getQuest().getPointsReward() + " HR Points, " + quest.getQuest().getRewardText(),
-                13, 85, 106);
+        wrapText(quest.getQuest().getLocalName(), 45, 3, 48);
+        wrapText(quest.getQuest().getLocalDesc(), 15, 35, 100);
+        wrapText(quest.getQuest().getLocalObj(), 15, 60, 100);
+        //TODO: Draw penalty text
     }
 
     /**
@@ -69,12 +83,21 @@ public class GuiQuest extends GuiScreen
      */
     private void wrapText(String text, int x, int y, int width)
     {
+        x += guiLeft;
+        y += guiTop;
         String[] textArray = text.split(" ");
         String line = null;
-        int lineNum = 0;
+        int lineNum = 1;
+        int lineHeight = fontRendererObj.FONT_HEIGHT;
         for(String s : textArray)
         {
             //Add text to line
+            if(s.equals("\n"))
+            {
+                lineNum++;
+                line = null;
+                continue;
+            }
             if(line == null)
                 line = s;
             else
@@ -84,20 +107,35 @@ public class GuiQuest extends GuiScreen
                 else
                 {
                     //Draw string then go to next line
-                    fontRendererObj.drawString(line, x, y * lineNum++, 0);
+                    fontRendererObj.drawString(line, x, y + (lineNum++ * lineHeight), 0);
                     line = s;
                 }
             }
         }
         if(line != null)
-            fontRendererObj.drawString(line, x, y * lineNum, 0);
+            fontRendererObj.drawString(line, x, y + (lineNum * lineHeight), 0);
+    }
+
+    /**
+     * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
+     */
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException
+    {
+        LogHelper.info("Button Clicked -> " + button.id + " (" + button.displayString + ")");
+        if(button.id == 0)
+            //Close button
+            mc.player.closeScreen();
+        else
+            //Process button click on server
+            CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(button.id, mc.player.getUniqueID()));
     }
 
     private class QuestButton extends GuiButton
     {
         public QuestButton(int x, int y, String buttonText)
         {
-            super(buttonList.size(), x, y, 34, 16, buttonText);
+            super(buttonList.size(), guiLeft + x, guiTop + y, 34, 16, buttonText);
         }
 
         public void drawButton(Minecraft mc, int mouseX, int mouseY)

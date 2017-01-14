@@ -32,10 +32,10 @@ public class ItemMHQuest extends ItemMHBasic
     {
         if(worldIn.isRemote)
         {
-            if(QuestHandler.getQuestCapability(playerIn).getCurrentQuest() != null)
+            //if(QuestHandler.getQuestCapability(playerIn).getCurrentQuest() != null)
                 CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST);
-            else
-                playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
+            //else
+            //    playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
         }
         return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
     }

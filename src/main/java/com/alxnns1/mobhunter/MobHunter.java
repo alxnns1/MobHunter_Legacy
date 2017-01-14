@@ -11,6 +11,7 @@ import com.alxnns1.mobhunter.quest.capability.IQuest;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -120,6 +121,8 @@ public class MobHunter
         //Passes suggested configuration file into the regBlocks method
         ConfigHandler.init(event.getSuggestedConfigurationFile());
         MinecraftForge.EVENT_BUS.register(new ConfigHandler());
+
+        CommonUtil.initNetwork();
 
         MHItems.regItems();
         MHBlocks.regBlocks();

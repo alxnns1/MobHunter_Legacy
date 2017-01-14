@@ -14,6 +14,8 @@ public class MHQuests
 {
     private static List<MHQuest> QUESTS = new ArrayList<MHQuest>();
 
+    public static MHQuest testCraft, testGather, testHunt;
+
     public static MHQuest getQuest(String name)
     {
         for(MHQuest q : QUESTS)
@@ -33,9 +35,8 @@ public class MHQuests
     public static void init()
     {
         //Register quests
-
-        regQuest(new MHQuest(EnumQuestType.CRAFTING, "testCraft", 1, 0, 140).setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "megaPotion")));
-        regQuest(new MHQuest(EnumQuestType.GATHERING, "testGather", 10, 0, 140).setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5)));
-        regQuest(new MHQuest(EnumQuestType.HUNTING, "testHunt", 100, 0, 140).setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.MISC, "steelEgg")));
+        regQuest(testCraft = new MHQuest(EnumQuestType.CRAFTING, "testCraft", 1, 0, 140).setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "megaPotion")));
+        regQuest(testGather =  new MHQuest(EnumQuestType.GATHERING, "testGather", 10, 0, 140).setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5)));
+        regQuest(testHunt = new MHQuest(EnumQuestType.HUNTING, "testHunt", 100, 0, 140).setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.MISC, "steelEgg")));
     }
 }

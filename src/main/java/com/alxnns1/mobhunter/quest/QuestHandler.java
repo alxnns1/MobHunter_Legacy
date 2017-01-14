@@ -105,7 +105,7 @@ public class QuestHandler
                 player.sendMessage(new TextComponentString(TextFormatting.RED + "You have run out of time to complete the quest '" + quest.getQuest().getLocalName() + "'!"));
                 if(quest.getQuest().getPointsPenalty() > 0)
                     player.sendMessage(new TextComponentString(TextFormatting.RED + "" + quest.getQuest().getPointsPenalty() + " HR points have been deducted as a penalty."));
-                playerQuest.removeQuest();
+                playerQuest.clearQuest();
             }
 
             //Check player's quests on cooldown and remove them from the array if passed their cooldown

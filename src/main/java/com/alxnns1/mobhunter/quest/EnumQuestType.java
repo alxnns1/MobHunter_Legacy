@@ -7,14 +7,16 @@ import net.minecraft.item.ItemStack;
  */
 public enum EnumQuestType
 {
-    CRAFTING(ItemStack.class),
-    GATHERING(ItemStack.class),
-    HUNTING(EntityStack.class);
+    CRAFTING(ItemStack.class, "Craft the following items:"),
+    GATHERING(ItemStack.class, "Gather the following items:"),
+    HUNTING(EntityStack.class, "Hunt the following monsters:");
 
     public final Class storageType;
+    public final String questDesc;
 
-    EnumQuestType(Class storageType)
+    EnumQuestType(Class storageType, String questDesc)
     {
         this.storageType = storageType;
+        this.questDesc = questDesc;
     }
 }

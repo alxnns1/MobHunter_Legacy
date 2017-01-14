@@ -51,6 +51,9 @@ effect.paralyse.name=Paralysed
 //Debug
 item.itemDebug.name=Super Secret Rod Of Testing New Things
 
+//Quest
+item.quest.name=Quest Viewer
+
 //Potions
 item.drink.potion.name=Potion
 item.drink.potion.tooltip=Restores a small amount of health.
@@ -710,3 +713,13 @@ entity.MobHunter.KushalaDaora.name=Kushala Daora
 entity.MobHunter.Teostra.name=Teostra
 entity.MobHunter.Chameleos.name=Chameleos
 entity.MobHunter.Fatalis.name=Fatalis
+
+//QUESTS
+
+//Test Quests
+quest.testCraft.name=Test Crafting
+quest.testCraft.desc=This is a crafting test quest.
+quest.testGather.name=Test Gathering
+quest.testGather.desc=This is a gathering test quest.
+quest.testHunt.name=Test Hunting
+quest.testHunt.desc=This is a hunting test quest.

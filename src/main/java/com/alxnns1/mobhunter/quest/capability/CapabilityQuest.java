@@ -7,6 +7,7 @@ import com.alxnns1.mobhunter.quest.MHQuest;
 import com.alxnns1.mobhunter.quest.MHQuestCooldown;
 import com.alxnns1.mobhunter.quest.MHQuestObject;
 import com.alxnns1.mobhunter.util.CommonUtil;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -51,6 +52,7 @@ public class CapabilityQuest implements IQuest
     @Override
     public boolean addQuest(MHQuestObject quest)
     {
+        LogHelper.info("Adding Quest: " + (quest.getQuest() == null ? "NULL" : quest.getQuest()));
         boolean canAdd = currentQuest == null;
         if(canAdd)
             currentQuest = quest;
@@ -58,11 +60,27 @@ public class CapabilityQuest implements IQuest
     }
 
     @Override
-    public boolean removeQuest()
+    public boolean clearQuest()
     {
         boolean canRemove = currentQuest != null;
         if(canRemove)
             currentQuest = null;
+        return canRemove;
+    }
+
+    @Override
+    public boolean cancelQuest(EntityPlayer player)
+    {
+        boolean canRemove = currentQuest != null;
+        if(canRemove)
+        {
+            //TODO: Remove HR points from player!
+            MHQuest quest = currentQuest.getQuest();
+            int penalty = quest.getPointsPenalty();
+            player.sendMessage(new TextComponentString("You've cancelled the quest '" + quest.getLocalName() + "'\n" +
+                    penalty + " HR points have been deducted from you as a penalty."));
+            currentQuest = null;
+        }
         return canRemove;
     }
 
@@ -106,7 +124,7 @@ public class CapabilityQuest implements IQuest
     public void dataChanged(EntityPlayer player)
     {
         if(player != null && player instanceof EntityPlayerMP)
-            CommonUtil.network.sendTo(new MessageQuest(serializeNBT()), (EntityPlayerMP) player);
+            CommonUtil.NETWORK.sendTo(new MessageQuest(serializeNBT()), (EntityPlayerMP) player);
     }
 
     @Override

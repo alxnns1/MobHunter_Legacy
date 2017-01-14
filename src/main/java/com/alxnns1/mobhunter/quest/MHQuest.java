@@ -84,17 +84,38 @@ public class MHQuest
         return rewards.clone();
     }
 
-    public String getRewardText()
+    private String getListText(Object[] objList)
     {
+        if(objList == null || objList.length == 0)
+            return "Null List";
         String text = "";
-        for(int i = 0; i < rewards.length; i++)
+        for(int i = 0; i < objList.length; i++)
         {
-            ItemStack stack = rewards[i];
+            Object object = objList[i];
             if(i > 0)
                 text += ", ";
-            text += stack.stackSize + "x " + stack.getDisplayName();
+            if(object instanceof ItemStack)
+            {
+                ItemStack stack = (ItemStack) object;
+                text += stack.stackSize + "x " + stack.getDisplayName();
+            }
+            else if(object instanceof EntityStack)
+            {
+                EntityStack stack = (EntityStack) object;
+                text += stack.getAmount() + "x " + stack.getEntityName();
+            }
         }
         return text;
+    }
+
+    public String getObjectiveText()
+    {
+        return getListText(objectives);
+    }
+
+    public String getRewardText()
+    {
+        return getListText(rewards);
     }
 
     /**
@@ -109,6 +130,11 @@ public class MHQuest
     public EnumQuestType getQuestType()
     {
         return questType;
+    }
+
+    public String getQuestId()
+    {
+        return name;
     }
 
     private String getQuestLang()
@@ -145,8 +171,7 @@ public class MHQuest
     @SideOnly(Side.CLIENT)
     public String getLocalObj()
     {
-        //TODO: Generate description from quest type and objectives?
-        return I18n.format(getQuestLang() + ".obj");
+        return questType.questDesc + "\n" + getObjectiveText();
     }
 
     /**
