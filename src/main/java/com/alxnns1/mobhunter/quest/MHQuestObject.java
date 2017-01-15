@@ -19,7 +19,11 @@ public class MHQuestObject
     public MHQuestObject(MHQuest quest)
     {
         this.quest = quest;
-        progress = new HashMap<Integer, Integer>();
+        //Init progress map
+        int objSize = quest.getObjectives().length;
+        progress = new HashMap<Integer, Integer>(objSize);
+        for(int i = 0; i < objSize; i++)
+            progress.put(i, 0);
     }
 
     public MHQuest getQuest()
@@ -32,10 +36,11 @@ public class MHQuestObject
      * Used for calculating when a quest expires
      * Can only be set once!
      */
-    public void setStartTime(long time)
+    public MHQuestObject setStartTime(long time)
     {
         if(startTime <= 0)
             startTime = time;
+        return this;
     }
 
     /**
@@ -52,7 +57,7 @@ public class MHQuestObject
      */
     public boolean hasQuestExpired(long worldTime)
     {
-        return getStartTime() > 0 && getStartTime() + quest.getTimeLimitTicks() > worldTime;
+        return getStartTime() > 0 && worldTime > getStartTime() + quest.getTimeLimitTicks();
     }
 
     /**
@@ -111,17 +116,28 @@ public class MHQuestObject
         //Check the objectToProgress is of the correct instance
         Class storageClass = quest.getQuestType().storageType;
         if(!storageClass.isInstance(objectToProgress))
+        {
             LogHelper.error("Tried to add progress to quest with storage class '" + quest.getQuestType().storageType.toString() +
                     "'!\nObject trying to be progressed:\n" + objectToProgress.toString());
+            return false;
+        }
 
-        //Increase the progress if not already at max
+        //Increase the progress
         int i = getObjIndex(objectToProgress);
-        if(i < 0) return false;
+        if(i < 0)
+            return false;
         int currProg = progress.get(i);
         int maxProg = getObjMax(i);
+        if(currProg >= maxProg)
+            return false;
+        int toProgress = 0;
+        if(objectToProgress instanceof ItemStack)
+            toProgress = ((ItemStack) objectToProgress).stackSize;
+        else if(objectToProgress instanceof EntityStack)
+            toProgress = ((EntityStack) objectToProgress).getAmount();
         if(currProg < maxProg)
         {
-            progress.put(i, ++ currProg);
+            progress.put(i, Math.min(currProg + toProgress, maxProg));
             return true;
         }
         return false;

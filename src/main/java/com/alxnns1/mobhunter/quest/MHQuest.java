@@ -3,6 +3,9 @@ package com.alxnns1.mobhunter.quest;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -33,11 +36,19 @@ public class MHQuest
     }
 
     /**
-     * Check if this quest is the same as the given one
+     * Checks if this quest is the same as the given one
      */
     public boolean isEqual(MHQuest quest)
     {
-        return quest != null && name.equals(quest.name);
+        return quest != null && isEqual(quest.name);
+    }
+
+    /**
+     * Checks if this quest has the same quest ID as given
+     */
+    public boolean isEqual(String questId)
+    {
+        return name.equals(questId);
     }
 
     public MHQuest setObjectives(Object... objectives)
@@ -86,6 +97,10 @@ public class MHQuest
         return rewards.clone();
     }
 
+    /**
+     * Returns a String listing the items or entities in the given list (CLIENT SIDE ONLY)
+     */
+    @SideOnly(Side.CLIENT)
     private String getListText(Object[] objList)
     {
         if(objList == null || objList.length == 0)
@@ -104,20 +119,61 @@ public class MHQuest
             else if(object instanceof EntityStack)
             {
                 EntityStack stack = (EntityStack) object;
-                text += stack.getAmount() + "x " + stack.getEntityName();
+                text += stack.getAmount() + "x " + stack.getEntityLocName();
             }
         }
         return text;
     }
 
+    /**
+     * Returns an ITextComponent listing the items or entities in the given list
+     */
+    private ITextComponent getListTextComponent(Object[] objList)
+    {
+        if(objList == null || objList.length == 0)
+            return new TextComponentString("Null List");
+        TextComponentString text = new TextComponentString("");
+        for(int i = 0; i < objList.length; i++)
+        {
+            Object object = objList[i];
+            if(i > 0)
+                text.appendText(", ");
+            if(object instanceof ItemStack)
+            {
+                ItemStack stack = (ItemStack) object;
+                text.appendText(stack.stackSize + "x ");
+                text.appendSibling(new TextComponentTranslation(stack.getUnlocalizedName() + ".name"));
+            }
+            else if(object instanceof EntityStack)
+            {
+                EntityStack stack = (EntityStack) object;
+                text.appendText(stack.getAmount() + "x ");
+                text.appendSibling(new TextComponentTranslation(stack.getEntityUnlocName()));
+            }
+        }
+        return text;
+    }
+
+    @SideOnly(Side.CLIENT)
     public String getObjectiveText()
     {
         return getListText(objectives);
     }
 
+    public ITextComponent getObjectiveTextComponent()
+    {
+        return getListTextComponent(objectives);
+    }
+
+    @SideOnly(Side.CLIENT)
     public String getRewardText()
     {
         return getListText(rewards);
+    }
+
+    public ITextComponent getRewardTextComponent()
+    {
+        return getListTextComponent(rewards);
     }
 
     /**
@@ -199,6 +255,11 @@ public class MHQuest
         return points;
     }
 
+    public String getPointsRewardText()
+    {
+        return points + " HR Point" + (points == 1 ? "" : "s");
+    }
+
     /**
      * Gets the amount of Hunter Rank points deducted from the player for failing the quest
      * By default, this is a quarter of the reward points
@@ -206,6 +267,12 @@ public class MHQuest
     public int getPointsPenalty()
     {
         return (int) Math.ceil((float) points / 4f);
+    }
+
+    public String getPointsPenaltyText()
+    {
+        int penalty = getPointsPenalty();
+        return penalty + " HR Point" + (penalty == 1 ? "" : "s");
     }
 
     /**

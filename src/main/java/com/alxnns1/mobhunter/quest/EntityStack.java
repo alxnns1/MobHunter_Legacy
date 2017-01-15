@@ -1,5 +1,9 @@
 package com.alxnns1.mobhunter.quest;
 
+import net.minecraft.client.resources.I18n;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
 /**
  * Created by Mark on 12/01/2017.
  */
@@ -14,9 +18,15 @@ public class EntityStack
         this.amount = amount;
     }
 
-    public String getEntityName()
+    public String getEntityUnlocName()
     {
-        return entityName;
+        return "entity." + entityName + ".name";
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getEntityLocName()
+    {
+        return I18n.format(getEntityUnlocName());
     }
 
     public int getAmount()
@@ -27,5 +37,11 @@ public class EntityStack
     public boolean isEqualTo(EntityStack other)
     {
         return other != null && entityName.equals(other.entityName);
+    }
+
+    @Override
+    public String toString()
+    {
+        return amount + "x" + entityName;
     }
 }

@@ -20,8 +20,8 @@ import java.io.IOException;
 public class GuiQuest extends GuiScreen
 {
     private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "quest.png");
-    protected final int xSize = 127;
-    protected final int ySize = 127;
+    protected final int xSize = 192;
+    protected final int ySize = 244; //191;
     protected int guiLeft, guiTop;
     private MHQuestObject quest;
 
@@ -39,15 +39,16 @@ public class GuiQuest extends GuiScreen
         guiLeft = (width - xSize) / 2;
         guiTop = (height - ySize) / 2;
 
-        addButton(new QuestButton(12, 100, "Close"));
-        addButton(new QuestButton(48, 100, "Share"));
-        addButton(new QuestButton(84, 100, "Cancel"));
+        addButton(new QuestButton(18, 150, "Close"));
+        addButton(new QuestButton(72, 150, "Share"));
+        addButton(new QuestButton(126, 150, "Cancel"));
 
+        //TODO: Remove debug buttons
         //Debug Buttons
-        addButton(new QuestButton(12, 129, "Craft"));
-        addButton(new QuestButton(12, 145, "Gather"));
-        addButton(new QuestButton(12, 161, "Hunt"));
-        addButton(new QuestButton(48, 129, "Clear Q"));
+        addButton(new QuestButton(18, 194, "Craft"));
+        addButton(new QuestButton(72, 194, "Gather"));
+        addButton(new QuestButton(126, 194, "Hunt"));
+        addButton(new QuestButton(72, 220, "Clear Q"));
     }
 
     /**
@@ -56,27 +57,28 @@ public class GuiQuest extends GuiScreen
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        super.drawScreen(mouseX, mouseY, partialTicks);
-
         drawDefaultBackground();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
         //Draw GUI background
-        //TODO: Swap over background image to new, bigger one
         mc.getTextureManager().bindTexture(guiImage);
-        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, 192);
 
-        if(quest == null) return; //Temp while testing quests
+        super.drawScreen(mouseX, mouseY, partialTicks);
 
+        if(quest == null) return;
+
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        mc.getTextureManager().bindTexture(guiImage);
         //Draw icon
-        int iconX = 127 + quest.getQuest().getQuestType().ordinal() * 32;
-        drawTexturedModalRect(guiLeft + 12, guiTop + 12, iconX, 16, 32, 32);
+        int iconY = quest.getQuest().getQuestType().ordinal() * 32;
+        drawTexturedModalRect(guiLeft + 18, guiTop + 18, 224, iconY, 32, 32);
 
         //Draw text
-        wrapText(quest.getQuest().getLocalName(), 45, 3, 48);
-        wrapText(quest.getQuest().getLocalDesc(), 15, 35, 100);
-        wrapText(quest.getQuest().getLocalObj(), 15, 60, 100);
-        //TODO: Draw penalty text
+        wrapText(quest.getQuest().getLocalName(), 52, 10, 85);
+        wrapText(quest.getQuest().getLocalDesc(), 17, 45, 160);
+        //TODO: Draw quest progress (instead of objectives)
+        wrapText(quest.getQuest().getLocalObj(), 22, 110, 155);
     }
 
     /**
@@ -93,9 +95,9 @@ public class GuiQuest extends GuiScreen
         for(String s : textArray)
         {
             //Add text to line
-            if(s.equals("\n")) //TODO: This isn't working for new lines
+            if(s.equals("\n"))
             {
-                fontRendererObj.drawString(line, x, y + (lineNum++ * lineHeight), 0);
+                fontRendererObj.drawString(line == null ? "" : line, x, y + (lineNum++ * lineHeight), 0);
                 line = null;
                 continue;
             }
@@ -123,20 +125,33 @@ public class GuiQuest extends GuiScreen
     @Override
     protected void actionPerformed(GuiButton button) throws IOException
     {
-        LogHelper.info("Button Clicked -> " + button.id + " (" + button.displayString + ")");
-        if(button.id == 0)
-            //Close button
-            mc.player.closeScreen();
-        else
-            //Process button click on server
-            CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(button.id, mc.player.getUniqueID()));
+        switch(button.id)
+        {
+            case 1:
+            case 2:
+                CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(button.id, mc.player.getUniqueID()));
+            case 0: //Close button
+                mc.player.closeScreen();
+                break;
+            //Debug buttons
+            default:
+                //Process button click on server
+                CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(button.id, mc.player.getUniqueID()));
+        }
     }
 
     private class QuestButton extends GuiButton
     {
         public QuestButton(int x, int y, String buttonText)
         {
-            super(buttonList.size(), guiLeft + x, guiTop + y, 34, 16, buttonText);
+            super(buttonList.size(), guiLeft + x, guiTop + y, 51, 24, buttonText);
+        }
+
+        //Overriding this to remove the shadow
+        @Override
+        public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color)
+        {
+            fontRendererIn.drawString(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, color, false);
         }
 
         public void drawButton(Minecraft mc, int mouseX, int mouseY)
@@ -147,9 +162,7 @@ public class GuiQuest extends GuiScreen
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
             //Draw button
-            int iconX = !enabled ? 162 : hovered ? 128 : 0;
-            if(iconX > 0)
-                drawTexturedModalRect(xPosition, yPosition, iconX, 0, width, height);
+            drawTexturedModalRect(xPosition, yPosition, enabled ? 0 : 51, 232, width, height);
             //Draw text
             if(!displayString.equals(""))
                 drawCenteredString(fontrenderer, displayString, xPosition + width / 2, yPosition + (height - 8) / 2, 0);

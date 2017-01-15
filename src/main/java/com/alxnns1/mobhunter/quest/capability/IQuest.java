@@ -1,10 +1,7 @@
 package com.alxnns1.mobhunter.quest.capability;
 
-import com.alxnns1.mobhunter.quest.EnumQuestStatus;
-import com.alxnns1.mobhunter.quest.MHQuest;
-import com.alxnns1.mobhunter.quest.MHQuestCooldown;
-import com.alxnns1.mobhunter.quest.MHQuestObject;
-import net.minecraft.entity.player.EntityPlayer;
+import com.alxnns1.mobhunter.quest.*;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
 
@@ -48,19 +45,19 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
      * Will deduct the penalty HR points from the player
      * @return Success - Will return false if the player has not accepted a quest
      */
-    boolean cancelQuest(EntityPlayer player);
+    boolean cancelQuest(EntityPlayerMP player);
 
     /**
      * Tries to add progress to the current quest
      * @param object The object trying to progress. Crafting and Gathering quests will need this to be an ItemStack,
      *               and Hunting quests will need this to be an EntityStack.
      */
-    void progressQuest(EntityPlayer player, Object object);
+    void progressQuest(EntityPlayerMP player, Object object);
 
     /**
      * Gets the status of the quest for the player - i.e. whether the quest has been completed or not
      */
     EnumQuestStatus getQuestStatus(MHQuest quest);
 
-    void dataChanged(EntityPlayer player);
+    void dataChanged(EntityPlayerMP player, EnumQuestDataChange changeType);
 }

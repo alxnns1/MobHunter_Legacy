@@ -1,12 +1,15 @@
 package com.alxnns1.mobhunter.message;
 
 import com.alxnns1.mobhunter.init.MHQuests;
+import com.alxnns1.mobhunter.quest.EnumQuestDataChange;
 import com.alxnns1.mobhunter.quest.MHQuest;
 import com.alxnns1.mobhunter.quest.MHQuestObject;
 import com.alxnns1.mobhunter.quest.QuestHandler;
 import com.alxnns1.mobhunter.quest.capability.IQuest;
+import com.alxnns1.mobhunter.util.LogHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.util.text.TextComponentString;
@@ -65,7 +68,7 @@ public class MessageGuiQuest implements IMessage
                 public void run()
                 {
                     WorldServer world = (WorldServer) ctx.getServerHandler().playerEntity.world;
-                    EntityPlayer player = world.getPlayerEntityByUUID(message.playerUuid);
+                    EntityPlayerMP player = (EntityPlayerMP) world.getPlayerEntityByUUID(message.playerUuid);
                     IQuest questCapability = QuestHandler.getQuestCapability(player);
                     switch(message.buttonId)
                     {
@@ -89,38 +92,40 @@ public class MessageGuiQuest implements IMessage
                                 questName.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                                         new TextComponentString("Description:\n")
                                                 .appendSibling(new TextComponentTranslation(quest.getUnlocDesc())
-                                                .appendText("\nObjectives:\n" + quest.getObjectiveText() +
-                                                        "\nPenalty:\n" + quest.getPointsPenalty() + " HR points" +
-                                                        "\nRewards:\n" + quest.getRewardText()))));
+                                                .appendText("\nObjectives:\n")
+                                                .appendSibling(quest.getObjectiveTextComponent())
+                                                .appendText("\nPenalty:\n" + quest.getPointsPenaltyText() +
+                                                        "\nRewards:\n" + quest.getPointsRewardText() + ", ")
+                                                .appendSibling(quest.getRewardTextComponent()))));
                                 server.getPlayerList().sendChatMsg(msg1.appendSibling(questName).appendText("]"));
                             }
                             break;
                         case 2:
                             //Cancel
                             questCapability.cancelQuest(player);
-                            questCapability.dataChanged(player);
+                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
 
                         //Debug Buttons
                         case 3:
                             //Add Test Crafting Quest
-                            questCapability.addQuest(new MHQuestObject(MHQuests.testCraft));
-                            questCapability.dataChanged(player);
+                            questCapability.addQuest(new MHQuestObject(MHQuests.testCraft).setStartTime(world.getTotalWorldTime()));
+                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                         case 4:
                             //Add Test Gathering Quest
-                            questCapability.addQuest(new MHQuestObject(MHQuests.testGather));
-                            questCapability.dataChanged(player);
+                            questCapability.addQuest(new MHQuestObject(MHQuests.testGather).setStartTime(world.getTotalWorldTime()));
+                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                         case 5:
                             //Add Test Hunting Quest
-                            questCapability.addQuest(new MHQuestObject(MHQuests.testHunt));
-                            questCapability.dataChanged(player);
+                            questCapability.addQuest(new MHQuestObject(MHQuests.testHunt).setStartTime(world.getTotalWorldTime()));
+                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                         case 6:
                             //Clear Current Quest
                             questCapability.clearQuest();
-                            questCapability.dataChanged(player);
+                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                     }
                 }

@@ -7,6 +7,7 @@ import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -33,23 +34,40 @@ public class QuestHandler
         return player.getCapability(MobHunter.CAPABILITY_QUESTS, null);
     }
 
+    /**
+     * Checks if the player has the Quest Capability
+     */
+    public static boolean hasQuestCapability(EntityPlayer player)
+    {
+        return player.hasCapability(MobHunter.CAPABILITY_QUESTS, null);
+    }
+
     @SubscribeEvent
     public void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
+        //Attach our capability to all players
         Entity entity = event.getObject();
-        if(entity instanceof EntityPlayer && !entity.hasCapability(MobHunter.CAPABILITY_QUESTS, null))
+        if(entity instanceof EntityPlayer && !hasQuestCapability((EntityPlayer) entity))
             event.addCapability(questRL, new CapabilityQuestProvider());
+    }
+
+    @SubscribeEvent
+    public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
+    {
+        //Send the client capability details
+        if(event.player instanceof EntityPlayerMP && hasQuestCapability(event.player))
+            getQuestCapability(event.player).dataChanged((EntityPlayerMP) event.player, EnumQuestDataChange.ALL);
     }
 
     @SubscribeEvent
     public void onClonePlayer(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
     {
         //Copy capability on player death to new player
-        if(event.isWasDeath())
+        if(event.isWasDeath() && (event.getEntityPlayer() instanceof EntityPlayerMP))
         {
-            EntityPlayer player = event.getEntityPlayer();
+            EntityPlayerMP player = (EntityPlayerMP) event.getEntityPlayer();
             getQuestCapability(player).deserializeNBT(getQuestCapability(event.getOriginal()).serializeNBT());
-            getQuestCapability(player).dataChanged(player);
+            getQuestCapability(player).dataChanged(player, EnumQuestDataChange.ALL);
         }
     }
 
@@ -57,45 +75,46 @@ public class QuestHandler
     public void onCrafted(PlayerEvent.ItemCraftedEvent event)
     {
         //Add quest progress for Crafting quests
-        if(!event.player.isServerWorld())
+        if(!(event.player instanceof EntityPlayerMP))
             return;
         IQuest quest = getQuestCapability(event.player);
         if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.CRAFTING)
-            quest.progressQuest(event.player, event.crafting);
+            quest.progressQuest((EntityPlayerMP) event.player, event.crafting);
     }
 
     @SubscribeEvent
     public void onPickup(PlayerEvent.ItemPickupEvent event)
     {
         //Add quest progress for Gathering quests
-        if(!event.player.isServerWorld())
+        if(!(event.player instanceof EntityPlayerMP))
             return;
         IQuest quest = getQuestCapability(event.player);
         if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.GATHERING)
-            quest.progressQuest(event.player, event.pickedUp.getEntityItem());
+            quest.progressQuest((EntityPlayerMP) event.player, event.pickedUp.getEntityItem());
     }
 
     @SubscribeEvent
     public void entityKilled(LivingDeathEvent event)
     {
         //Add quest progress for Hunting quests
-        if(!event.getEntityLiving().isServerWorld())
-            return;
-        if(!(event.getSource().getSourceOfDamage() instanceof EntityPlayer)) return;
-        EntityPlayer player = (EntityPlayer) event.getSource().getSourceOfDamage();
+        if(!(event.getSource().getSourceOfDamage() instanceof EntityPlayerMP)) return;
+        EntityPlayerMP player = (EntityPlayerMP) event.getSource().getSourceOfDamage();
         IQuest quest = getQuestCapability(player);
         if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.HUNTING)
-            quest.progressQuest(player, EntityList.getEntityString(event.getEntityLiving()));
+            quest.progressQuest(player, new EntityStack(EntityList.getEntityString(event.getEntityLiving()), 1));
     }
+
+    private long nextQuestCheck = 0;
 
     @SubscribeEvent
     public void questTick(TickEvent.PlayerTickEvent event)
     {
-        long worldTime = event.player.world.getWorldTime();
-        EntityPlayer player = event.player;
-        //Only check once every minute
-        if(event.player.isServerWorld() && event.phase == TickEvent.Phase.END && worldTime%1200 == 0)
+        long worldTime = event.player.world.getTotalWorldTime();
+        if(event.player instanceof EntityPlayerMP && event.phase == TickEvent.Phase.END && worldTime >= nextQuestCheck)
         {
+            nextQuestCheck = worldTime + 200; //10s
+            EntityPlayerMP player = (EntityPlayerMP) event.player;
+
             //Check player quests and remove them if they've gone over the time limit
             IQuest playerQuest = getQuestCapability(player);
             MHQuestObject quest = playerQuest.getCurrentQuest();
@@ -104,15 +123,24 @@ public class QuestHandler
                 //Remove quest and notify player
                 player.sendMessage(new TextComponentString(TextFormatting.RED + "You have run out of time to complete the quest '" + quest.getQuest().getLocalName() + "'!"));
                 if(quest.getQuest().getPointsPenalty() > 0)
-                    player.sendMessage(new TextComponentString(TextFormatting.RED + "" + quest.getQuest().getPointsPenalty() + " HR points have been deducted as a penalty."));
+                    player.sendMessage(new TextComponentString(TextFormatting.RED + "" + quest.getQuest().getPointsPenaltyText() + " have been deducted as a penalty."));
                 playerQuest.clearQuest();
+                playerQuest.dataChanged(player, EnumQuestDataChange.CURRENT);
             }
 
             //Check player's quests on cooldown and remove them from the array if passed their cooldown
+            boolean flag = false;
             Iterator<MHQuestCooldown> questIterator = playerQuest.getCooldownQuests().iterator();
             while(questIterator.hasNext())
+            {
                 if(questIterator.next().isCoolEnough(worldTime))
+                {
+                    flag = true;
                     questIterator.remove();
+                }
+            }
+            if(flag)
+                playerQuest.dataChanged(player, EnumQuestDataChange.COOLDOWN);
         }
     }
 }

@@ -1,5 +1,8 @@
 package com.alxnns1.mobhunter.quest;
 
+import com.alxnns1.mobhunter.init.MHQuests;
+import net.minecraft.nbt.NBTTagCompound;
+
 /**
  * Created by Mark on 13/01/2017.
  */
@@ -19,7 +22,7 @@ public class MHQuestCooldown
      */
     public boolean isCoolEnough(long worldTime)
     {
-        return cooldownStart + quest.getTimeLimitTicks() >= worldTime;
+        return worldTime >= cooldownStart + quest.getRepeatCooldown();
     }
 
     /**
@@ -27,6 +30,19 @@ public class MHQuestCooldown
      */
     public int getMinsLeft(long worldTime)
     {
-        return (int) ((worldTime - cooldownStart) / 1200L);
+        return (int) ((worldTime - cooldownStart + (long) quest.getRepeatCooldown()) / 1200L);
+    }
+
+    public NBTTagCompound writeToNBT()
+    {
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setString("questId", quest.getQuestId());
+        tag.setLong("cooldownStart", cooldownStart);
+        return tag;
+    }
+
+    public static MHQuestCooldown readFromNBT(NBTTagCompound nbt)
+    {
+        return new MHQuestCooldown(MHQuests.getQuest(nbt.getString("questId")), nbt.getLong("cooldownStart"));
     }
 }
