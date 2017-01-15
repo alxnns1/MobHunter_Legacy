@@ -52,7 +52,6 @@ public class CapabilityQuest implements IQuest
     @Override
     public boolean addQuest(MHQuestObject quest)
     {
-        LogHelper.info("Adding Quest: " + (quest.getQuest() == null ? "NULL" : quest.getQuest()));
         boolean canAdd = currentQuest == null;
         if(canAdd)
             currentQuest = quest;
@@ -151,6 +150,8 @@ public class CapabilityQuest implements IQuest
                 currentQuest.setStartTime(nbt.getLong("questStart"));
             }
         }
+        else
+            currentQuest = null;
     }
 
     public static class Storage implements Capability.IStorage<IQuest>

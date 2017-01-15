@@ -1,15 +1,14 @@
 package com.alxnns1.mobhunter.message;
 
 import com.alxnns1.mobhunter.init.MHQuests;
+import com.alxnns1.mobhunter.quest.MHQuest;
 import com.alxnns1.mobhunter.quest.MHQuestObject;
 import com.alxnns1.mobhunter.quest.QuestHandler;
 import com.alxnns1.mobhunter.quest.capability.IQuest;
-import com.alxnns1.mobhunter.util.LogHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IThreadListener;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -68,13 +67,11 @@ public class MessageGuiQuest implements IMessage
                     WorldServer world = (WorldServer) ctx.getServerHandler().playerEntity.world;
                     EntityPlayer player = world.getPlayerEntityByUUID(message.playerUuid);
                     IQuest questCapability = QuestHandler.getQuestCapability(player);
-                    LogHelper.info("Handling Gui Quest Packet");
                     switch(message.buttonId)
                     {
 
                         case 1:
                             //Share
-                            //TODO: Maybe find a way to handle the chat message on the client side of players? That way I can easily get quest data.
                             //For info on what's going on here, have a look at:
                             // StatBase#getStatName
 
@@ -86,10 +83,15 @@ public class MessageGuiQuest implements IMessage
                                     msg1 = new TextComponentString(player.getDisplayNameString() + " has shared their quest [");
                                 else
                                     msg1 = new TextComponentString("[");
-                                TextComponentTranslation questName = new TextComponentTranslation(questCapability.getCurrentQuest().getQuest().getUnlocName());
+                                MHQuest quest = questCapability.getCurrentQuest().getQuest();
+                                TextComponentTranslation questName = new TextComponentTranslation(quest.getUnlocName());
                                 questName.getStyle().setColor(TextFormatting.GREEN);
-                                //questName.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                                //        new TextComponentTranslation()));
+                                questName.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                        new TextComponentString("Description:\n")
+                                                .appendSibling(new TextComponentTranslation(quest.getUnlocDesc())
+                                                .appendText("\nObjectives:\n" + quest.getObjectiveText() +
+                                                        "\nPenalty:\n" + quest.getPointsPenalty() + " HR points" +
+                                                        "\nRewards:\n" + quest.getRewardText()))));
                                 server.getPlayerList().sendChatMsg(msg1.appendSibling(questName).appendText("]"));
                             }
                             break;

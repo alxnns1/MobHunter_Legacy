@@ -62,13 +62,14 @@ public class GuiQuest extends GuiScreen
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
         //Draw GUI background
+        //TODO: Swap over background image to new, bigger one
         mc.getTextureManager().bindTexture(guiImage);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
         if(quest == null) return; //Temp while testing quests
 
         //Draw icon
-        int iconX = 128 + quest.getQuest().getQuestType().ordinal() * 32;
+        int iconX = 127 + quest.getQuest().getQuestType().ordinal() * 32;
         drawTexturedModalRect(guiLeft + 12, guiTop + 12, iconX, 16, 32, 32);
 
         //Draw text
@@ -92,9 +93,9 @@ public class GuiQuest extends GuiScreen
         for(String s : textArray)
         {
             //Add text to line
-            if(s.equals("\n"))
+            if(s.equals("\n")) //TODO: This isn't working for new lines
             {
-                lineNum++;
+                fontRendererObj.drawString(line, x, y + (lineNum++ * lineHeight), 0);
                 line = null;
                 continue;
             }

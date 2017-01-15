@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.quest;
 
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,7 +42,8 @@ public class MHQuest
 
     public MHQuest setObjectives(Object... objectives)
     {
-        if(!questType.storageType.isInstance(objectives.getClass()))
+        LogHelper.info(objectives[0].getClass().getName());
+        if(!questType.storageType.getName().equals(objectives[0].getClass().getName()))
             throw new IllegalArgumentException("Objectives are not an array of the required class: " + questType.storageType.toString());
         this.objectives = objectives;
         return this;
@@ -162,7 +164,12 @@ public class MHQuest
     @SideOnly(Side.CLIENT)
     public String getLocalDesc()
     {
-        return I18n.format(getQuestLang() + ".desc");
+        return I18n.format(getUnlocDesc());
+    }
+
+    public String getUnlocDesc()
+    {
+        return getQuestLang() + ".desc";
     }
 
     /**
@@ -171,7 +178,7 @@ public class MHQuest
     @SideOnly(Side.CLIENT)
     public String getLocalObj()
     {
-        return questType.questDesc + "\n" + getObjectiveText();
+        return questType.questDesc + " \n " + getObjectiveText();
     }
 
     /**
