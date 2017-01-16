@@ -1,7 +1,14 @@
 package com.alxnns1.mobhunter.quest;
 
 import com.alxnns1.mobhunter.util.LogHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +16,7 @@ import java.util.Map;
 /**
  * Created by Mark on 12/01/2017.
  */
-public class MHQuestObject
+public class MHQuestObject implements INBTSerializable<NBTTagCompound>
 {
     private MHQuest quest;
     /** The world time at which the quest was started */
@@ -66,6 +73,33 @@ public class MHQuestObject
     public int getMinsLeft(long worldTime)
     {
         return (int) ((worldTime - getStartTime()) / 1200L);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getQuestGuiObjProgress()
+    {
+        Object[] objectives = quest.getObjectives();
+        String text = "";
+
+        for(int i = 0; i < objectives.length; i++)
+        {
+            if(i > 0)
+                text += "\n";
+            text += progress.get(i) + "/";
+            Object object = objectives[i];
+            if(object instanceof ItemStack)
+            {
+                ItemStack stack = (ItemStack) object;
+                text += stack.stackSize + " " + I18n.format(stack.getUnlocalizedName() + ".name");
+            }
+            else if(object instanceof EntityStack)
+            {
+                EntityStack stack = (EntityStack) object;
+                text += stack.getAmount() + " " + stack.getEntityLocName();
+            }
+        }
+
+        return text;
     }
 
     /**
@@ -152,5 +186,34 @@ public class MHQuestObject
             if(progress.get(i) < getObjMax(i))
                 return false;
         return true;
+    }
+
+    @Override
+    public NBTTagCompound serializeNBT()
+    {
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setLong("startTime", startTime);
+        NBTTagList progressList = new NBTTagList();
+        for(Map.Entry<Integer, Integer> entry : progress.entrySet())
+        {
+            NBTTagCompound e = new NBTTagCompound();
+            e.setInteger("key", entry.getKey());
+            e.setInteger("value", entry.getValue());
+            progressList.appendTag(e);
+        }
+        tag.setTag("progress", progressList);
+        return tag;
+    }
+
+    @Override
+    public void deserializeNBT(NBTTagCompound nbt)
+    {
+        startTime = nbt.getLong("startTime");
+        NBTTagList progressList = nbt.getTagList("progress", Constants.NBT.TAG_COMPOUND);
+        for(int i = 0; i < progressList.tagCount(); i++)
+        {
+            NBTTagCompound tag = progressList.getCompoundTagAt(i);
+            progress.put(tag.getInteger("key"), tag.getInteger("value"));
+        }
     }
 }

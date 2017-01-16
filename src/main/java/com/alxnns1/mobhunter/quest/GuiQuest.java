@@ -77,8 +77,7 @@ public class GuiQuest extends GuiScreen
         //Draw text
         wrapText(quest.getQuest().getLocalName(), 52, 10, 85);
         wrapText(quest.getQuest().getLocalDesc(), 17, 45, 160);
-        //TODO: Draw quest progress (instead of objectives)
-        wrapText(quest.getQuest().getLocalObj(), 22, 110, 155);
+        wrapText("Objective Progress: \n " + quest.getQuestGuiObjProgress(), 22, 110, 155);
     }
 
     /**

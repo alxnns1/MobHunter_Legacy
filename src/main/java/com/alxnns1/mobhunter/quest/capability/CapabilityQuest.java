@@ -156,7 +156,7 @@ public class CapabilityQuest implements IQuest
         if(currentQuest != null)
         {
             questTag.setString("questId", currentQuest.getQuest().getQuestId());
-            questTag.setLong("questStart", currentQuest.getStartTime());
+            questTag.setTag("questData", currentQuest.serializeNBT());
         }
         else
             questTag.setString("questId", "");
@@ -204,7 +204,7 @@ public class CapabilityQuest implements IQuest
                 if(quest != null)
                 {
                     currentQuest = new MHQuestObject(quest);
-                    currentQuest.setStartTime(tag.getLong("questStart"));
+                    currentQuest.deserializeNBT(tag.getCompoundTag("questData"));
                 }
                 else
                     LogHelper.error("Quest ID '" + questId + "' couldn't be found!");

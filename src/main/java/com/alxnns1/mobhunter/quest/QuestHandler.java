@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.quest.capability.CapabilityQuestProvider;
 import com.alxnns1.mobhunter.quest.capability.IQuest;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +14,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -83,14 +85,14 @@ public class QuestHandler
     }
 
     @SubscribeEvent
-    public void onPickup(PlayerEvent.ItemPickupEvent event)
+    public void onPickup(EntityItemPickupEvent event)
     {
         //Add quest progress for Gathering quests
-        if(!(event.player instanceof EntityPlayerMP))
+        if(!(event.getEntityPlayer() instanceof EntityPlayerMP))
             return;
-        IQuest quest = getQuestCapability(event.player);
+        IQuest quest = getQuestCapability(event.getEntityPlayer());
         if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.GATHERING)
-            quest.progressQuest((EntityPlayerMP) event.player, event.pickedUp.getEntityItem());
+            quest.progressQuest((EntityPlayerMP) event.getEntityPlayer(), event.getItem().getEntityItem());
     }
 
     @SubscribeEvent
