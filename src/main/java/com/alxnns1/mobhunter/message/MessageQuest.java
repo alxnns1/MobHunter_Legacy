@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter.message;
 
-import com.alxnns1.mobhunter.quest.QuestHandler;
+import com.alxnns1.mobhunter.handler.QuestHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;

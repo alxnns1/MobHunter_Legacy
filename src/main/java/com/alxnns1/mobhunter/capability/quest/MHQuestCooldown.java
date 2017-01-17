@@ -1,4 +1,4 @@
-package com.alxnns1.mobhunter.quest;
+package com.alxnns1.mobhunter.capability.quest;
 
 import com.alxnns1.mobhunter.init.MHQuests;
 import net.minecraft.nbt.NBTTagCompound;

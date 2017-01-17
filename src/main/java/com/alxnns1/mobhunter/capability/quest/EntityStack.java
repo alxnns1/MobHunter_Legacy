@@ -1,4 +1,4 @@
-package com.alxnns1.mobhunter.quest;
+package com.alxnns1.mobhunter.capability.quest;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;

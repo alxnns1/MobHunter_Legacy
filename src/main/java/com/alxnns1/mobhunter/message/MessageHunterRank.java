@@ -1,12 +1,11 @@
 package com.alxnns1.mobhunter.message;
 
-import com.alxnns1.mobhunter.capability.HunterRankProvider;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.util.IThreadListener;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -17,11 +16,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
  */
 public class MessageHunterRank implements IMessage
 {
-    private NBTTagFloat hunterRankTag;
+    private NBTTagCompound hunterRankTag;
 
     public MessageHunterRank() {}
 
-    public MessageHunterRank(NBTTagFloat hunterRank)
+    public MessageHunterRank(NBTTagCompound hunterRank)
     {
         hunterRankTag = hunterRank;
     }
@@ -29,15 +28,13 @@ public class MessageHunterRank implements IMessage
     @Override
     public void fromBytes(ByteBuf buf)
     {
-        hunterRankTag = (NBTTagFloat) ByteBufUtils.readTag(buf).getTag("hr");
+        hunterRankTag = ByteBufUtils.readTag(buf);
     }
 
     @Override
     public void toBytes(ByteBuf buf)
     {
-        NBTTagCompound compound = new NBTTagCompound();
-        compound.setTag("hr", hunterRankTag);
-        ByteBufUtils.writeTag(buf, compound);
+        ByteBufUtils.writeTag(buf, hunterRankTag);
     }
 
     public static class MessageHandler implements IMessageHandler<MessageHunterRank, IMessage>
@@ -45,17 +42,17 @@ public class MessageHunterRank implements IMessage
         @Override
         public IMessage onMessage(final MessageHunterRank message, MessageContext ctx)
         {
-            IThreadListener mainThread = ctx.side.isClient() ? Minecraft.getMinecraft() : (WorldServer) ctx.getServerHandler().playerEntity.world;
+            IThreadListener mainThread = Minecraft.getMinecraft();
             mainThread.addScheduledTask(new Runnable()
             {
                 @Override
                 public void run()
                 {
-                    HunterRankProvider.get(Minecraft.getMinecraft().player).loadNBT(message.hunterRankTag);
+                    EntityPlayer player = Minecraft.getMinecraft().player;
+                    player.getCapability(MHCapabilities.HUNTER_RANK, null).deserializeNBT(message.hunterRankTag);
                 }
             });
-
-            return null; //No response
+            return null;
         }
     }
 }

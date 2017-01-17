@@ -1,9 +1,10 @@
-package com.alxnns1.mobhunter.quest;
+package com.alxnns1.mobhunter.gui;
 
+import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
+import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.CommonUtil;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;

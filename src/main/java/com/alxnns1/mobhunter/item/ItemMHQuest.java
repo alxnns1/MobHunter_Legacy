@@ -1,8 +1,8 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.handler.EnumGuiID;
-import com.alxnns1.mobhunter.quest.MHQuestObject;
-import com.alxnns1.mobhunter.quest.QuestHandler;
+import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
+import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

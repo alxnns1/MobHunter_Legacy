@@ -1,14 +1,12 @@
 package com.alxnns1.mobhunter.message;
 
 import com.alxnns1.mobhunter.init.MHQuests;
-import com.alxnns1.mobhunter.quest.EnumQuestDataChange;
-import com.alxnns1.mobhunter.quest.MHQuest;
-import com.alxnns1.mobhunter.quest.MHQuestObject;
-import com.alxnns1.mobhunter.quest.QuestHandler;
-import com.alxnns1.mobhunter.quest.capability.IQuest;
-import com.alxnns1.mobhunter.util.LogHelper;
+import com.alxnns1.mobhunter.capability.quest.EnumQuestDataChange;
+import com.alxnns1.mobhunter.capability.quest.MHQuest;
+import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
+import com.alxnns1.mobhunter.handler.QuestHandler;
+import com.alxnns1.mobhunter.capability.quest.IQuest;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IThreadListener;

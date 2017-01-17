@@ -1,10 +1,8 @@
-package com.alxnns1.mobhunter.quest;
+package com.alxnns1.mobhunter.handler;
 
-import com.alxnns1.mobhunter.MobHunter;
-import com.alxnns1.mobhunter.quest.capability.CapabilityQuestProvider;
-import com.alxnns1.mobhunter.quest.capability.IQuest;
+import com.alxnns1.mobhunter.capability.quest.*;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.reference.Reference;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +31,7 @@ public class QuestHandler
      */
     public static IQuest getQuestCapability(EntityPlayer player)
     {
-        return player.getCapability(MobHunter.CAPABILITY_QUESTS, null);
+        return player.getCapability(MHCapabilities.QUESTS, null);
     }
 
     /**
@@ -41,7 +39,7 @@ public class QuestHandler
      */
     public static boolean hasQuestCapability(EntityPlayer player)
     {
-        return player.hasCapability(MobHunter.CAPABILITY_QUESTS, null);
+        return player.hasCapability(MHCapabilities.QUESTS, null);
     }
 
     @SubscribeEvent

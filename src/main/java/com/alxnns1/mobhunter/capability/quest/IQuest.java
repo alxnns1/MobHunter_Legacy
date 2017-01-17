@@ -1,6 +1,5 @@
-package com.alxnns1.mobhunter.quest.capability;
+package com.alxnns1.mobhunter.capability.quest;
 
-import com.alxnns1.mobhunter.quest.*;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;

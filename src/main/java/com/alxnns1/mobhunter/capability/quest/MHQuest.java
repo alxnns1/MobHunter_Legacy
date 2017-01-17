@@ -1,4 +1,4 @@
-package com.alxnns1.mobhunter.quest;
+package com.alxnns1.mobhunter.capability.quest;
 
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.resources.I18n;

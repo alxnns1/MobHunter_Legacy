@@ -1,6 +1,6 @@
-package com.alxnns1.mobhunter.quest.capability;
+package com.alxnns1.mobhunter.capability.hunterRank;
 
-import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -9,39 +9,39 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nullable;
 
 /**
- * Created by Mark on 12/01/2017.
+ * Created by Mark on 28/06/2016.
  */
-public class CapabilityQuestProvider implements ICapabilitySerializable<NBTTagCompound>
+public class CapabilityHunterRankProvider implements ICapabilitySerializable<NBTTagCompound>
 {
-    private IQuest quests;
+    private IHunterRank hunterRank;
 
-    public CapabilityQuestProvider()
+    public CapabilityHunterRankProvider()
     {
-        quests = new CapabilityQuest();
+        hunterRank = new CapabilityHunterRank();
     }
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
     {
-        return capability == MobHunter.CAPABILITY_QUESTS;
+        return capability == MHCapabilities.HUNTER_RANK;
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
     {
-        return hasCapability(capability, facing) ? (T) quests : null;
+        return hasCapability(capability, facing) ? (T)hunterRank : null;
     }
 
     @Override
     public NBTTagCompound serializeNBT()
     {
-        return quests.serializeNBT();
+        return hunterRank.serializeNBT();
     }
 
     @Override
     public void deserializeNBT(NBTTagCompound nbt)
     {
-        quests.deserializeNBT(nbt);
+        hunterRank.deserializeNBT(nbt);
     }
 }

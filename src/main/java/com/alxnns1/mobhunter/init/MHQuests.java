@@ -1,8 +1,8 @@
 package com.alxnns1.mobhunter.init;
 
-import com.alxnns1.mobhunter.quest.EntityStack;
-import com.alxnns1.mobhunter.quest.EnumQuestType;
-import com.alxnns1.mobhunter.quest.MHQuest;
+import com.alxnns1.mobhunter.capability.quest.EntityStack;
+import com.alxnns1.mobhunter.capability.quest.EnumQuestType;
+import com.alxnns1.mobhunter.capability.quest.MHQuest;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import net.minecraft.item.ItemStack;
 

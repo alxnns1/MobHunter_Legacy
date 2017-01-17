@@ -1,13 +1,10 @@
 package com.alxnns1.mobhunter;
 
-import com.alxnns1.mobhunter.handler.GuiHandler;
-import com.alxnns1.mobhunter.handler.ConfigHandler;
-import com.alxnns1.mobhunter.handler.EventHandler;
-import com.alxnns1.mobhunter.handler.LootHandler;
+import com.alxnns1.mobhunter.capability.hunterRank.IHunterRank;
+import com.alxnns1.mobhunter.handler.*;
 import com.alxnns1.mobhunter.init.*;
-import com.alxnns1.mobhunter.quest.QuestHandler;
-import com.alxnns1.mobhunter.quest.capability.CapabilityQuest;
-import com.alxnns1.mobhunter.quest.capability.IQuest;
+import com.alxnns1.mobhunter.capability.quest.CapabilityQuest;
+import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
@@ -39,9 +36,6 @@ public class MobHunter
 {
     @Mod.Instance(Reference.MOD_ID)
     public static MobHunter instance;
-
-    @CapabilityInject(IQuest.class)
-    public static Capability<IQuest> CAPABILITY_QUESTS = null;
 
     public static final CreativeTabs MH_TAB = new CreativeTabs(Reference.MOD_ID + "Items")
     {
@@ -137,17 +131,7 @@ public class MobHunter
             MHBlocks.regModels();
         }
 
-        //TODO: Uncomment Hunter Rank
-        //CapabilityManager.INSTANCE.register(IHunterRank.class, HunterRankDefault.HunterRankStorage.hunterRankStorage, HunterRankDefault.class);
-
-        CapabilityManager.INSTANCE.register(IQuest.class, CapabilityQuest.Storage.INSTANCE, new Callable<IQuest>()
-        {
-            @Override
-            public IQuest call() throws Exception
-            {
-                return new CapabilityQuest();
-            }
-        });
+        MHCapabilities.init();
     }
 
     @Mod.EventHandler
@@ -165,6 +149,7 @@ public class MobHunter
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new LootHandler());
         MinecraftForge.EVENT_BUS.register(new QuestHandler());
+        MinecraftForge.EVENT_BUS.register(new HunterRankHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }

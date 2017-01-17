@@ -7,7 +7,7 @@ import com.alxnns1.mobhunter.gui.GuiArmourCraft;
 import com.alxnns1.mobhunter.gui.GuiPouch;
 import com.alxnns1.mobhunter.gui.GuiWeaponCraft;
 import com.alxnns1.mobhunter.init.MHBlocks;
-import com.alxnns1.mobhunter.quest.GuiQuest;
+import com.alxnns1.mobhunter.gui.GuiQuest;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
