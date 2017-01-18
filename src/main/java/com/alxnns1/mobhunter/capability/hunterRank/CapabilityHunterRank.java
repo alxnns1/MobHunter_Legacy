@@ -36,7 +36,7 @@ public class CapabilityHunterRank implements IHunterRank
     @Override
     public void setRank(EntityPlayerMP player, int hunterRank)
     {
-        this.hunterRank = Math.min(hunterRank, 0);
+        this.hunterRank = Math.max(hunterRank, 0);
         progressPoints = 0;
         dataChanged(player, EnumHRDataChange.RANK);
     }
@@ -44,7 +44,7 @@ public class CapabilityHunterRank implements IHunterRank
     @Override
     public void setProgressPoints(EntityPlayerMP player, int progressPoints)
     {
-        this.progressPoints = Math.min(progressPoints, 0);
+        this.progressPoints = Math.max(progressPoints, 0);
         dataChanged(player, EnumHRDataChange.PROGRESS);
     }
 

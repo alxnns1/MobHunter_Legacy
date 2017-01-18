@@ -75,7 +75,7 @@ public class CapabilityQuest implements IQuest
             MHQuest quest = currentQuest.getQuest();
             int penalty = quest.getPointsPenalty();
             //Remove HR points from player
-            HunterRankHandler.getHunterRankCapability(player).changeProgressPointsBy(player, penalty);
+            HunterRankHandler.getHunterRankCapability(player).changeProgressPointsBy(player, -penalty);
             player.sendMessage(new TextComponentString("You've cancelled the quest '" + quest.getLocalName() + "'\n" +
                     penalty + " HR points have been deducted from you as a penalty."));
             currentQuest = null;
