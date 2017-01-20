@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.handler;
 
 import com.alxnns1.mobhunter.capability.hunterRank.CapabilityHunterRankProvider;
 import com.alxnns1.mobhunter.capability.hunterRank.EnumHRDataChange;
+import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import com.alxnns1.mobhunter.capability.hunterRank.IHunterRank;
 import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.reference.Reference;
@@ -105,6 +106,7 @@ public class HunterRankHandler
         {
             case TEXT:
                 //Just for testing at least atm
+
                 EntityPlayer player = mc.player;
                 IHunterRank hunterRank = player.getCapability(MHCapabilities.HUNTER_RANK, null);
                 if(hunterRank == null) return;
@@ -114,9 +116,10 @@ public class HunterRankHandler
                 ScaledResolution res = event.getResolution();
                 int xMid = res.getScaledWidth() / 2;
                 int y = res.getScaledHeight() - 80;
+                int HR = hunterRank.getRank();
 
-                drawCenteredOnPos(fontRenderer, "HR: " + hunterRank.getRank(), xMid, y);
-                drawCenteredOnPos(fontRenderer, "Progress Points: " + hunterRank.getProgressPoints(), xMid, y + 10);
+                drawCenteredOnPos(fontRenderer, "HR: " + HR, xMid, y);
+                drawCenteredOnPos(fontRenderer, "Progress Points: " + hunterRank.getProgressPoints() + " / " + HunterRankProgression.getProgressForRank(HR), xMid, y + 10);
                 break;
             //TODO: Sort out something for rendering on the player list
             /*

@@ -31,12 +31,6 @@ public interface IHunterRank extends INBTSerializable<NBTTagCompound>
     void setProgressPoints(EntityPlayerMP player, int progressPoints);
 
     /**
-     * Changes the Hunter Rank by the given amount
-     * Will also set the progress points to 0
-     */
-    void changeHunterRankBy(EntityPlayerMP player, int amount);
-
-    /**
      * Changes the progress points by the given amount
      */
     void changeProgressPointsBy(EntityPlayerMP player, int amount);

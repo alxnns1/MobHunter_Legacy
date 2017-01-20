@@ -1,10 +1,8 @@
 package com.alxnns1.mobhunter;
 
-import com.alxnns1.mobhunter.capability.hunterRank.IHunterRank;
+import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import com.alxnns1.mobhunter.handler.*;
 import com.alxnns1.mobhunter.init.*;
-import com.alxnns1.mobhunter.capability.quest.CapabilityQuest;
-import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
@@ -13,9 +11,6 @@ import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -24,8 +19,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.concurrent.Callable;
 
 /**
  * Created by Alex on 20/04/2016.
@@ -158,5 +151,7 @@ public class MobHunter
     public void postInit(FMLPostInitializationEvent event)
     {
         //I wonder if I'll use this
+        //Mark: looks like we will now! #whyNot
+        HunterRankProgression.init();
     }
 }
