@@ -43,6 +43,21 @@ public class CapabilityQuest implements IQuest
     }
 
     @Override
+    public MHQuestCooldown getQuestCooldown(MHQuest quest)
+    {
+        for(MHQuestCooldown cdQuest : cooldownQuests)
+            if(cdQuest.isQuestEqual(quest))
+                return cdQuest;
+        return null;
+    }
+
+    @Override
+    public boolean isQuestCoolingDown(MHQuest quest)
+    {
+        return getQuestCooldown(quest) != null;
+    }
+
+    @Override
     public List<String> getCompletedQuests()
     {
         return completedQuests;

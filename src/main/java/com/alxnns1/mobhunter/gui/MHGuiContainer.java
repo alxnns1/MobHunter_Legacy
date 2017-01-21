@@ -14,14 +14,14 @@ import java.util.List;
 /**
  * Created by Mark on 02/12/2016.
  */
-public class MHGui extends GuiContainer
+public class MHGuiContainer extends GuiContainer
 {
     private static ResourceLocation guiImage;
     private IInventory inventory;
     protected int textColour = 4210752;
     protected int textPlayerInvY = 82;
 
-    public MHGui(MHContainer container, String guiImageName)
+    public MHGuiContainer(MHContainer container, String guiImageName)
     {
         super(container);
         guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + guiImageName + ".png");

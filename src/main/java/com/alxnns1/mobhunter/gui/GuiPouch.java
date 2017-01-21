@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 /**
  * Created by Mark on 02/12/2016.
  */
-public class GuiPouch extends MHGui
+public class GuiPouch extends MHGuiContainer
 {
     public GuiPouch(EntityPlayer player, World world)
     {

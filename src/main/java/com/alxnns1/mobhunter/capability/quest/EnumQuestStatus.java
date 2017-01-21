@@ -5,7 +5,7 @@ package com.alxnns1.mobhunter.capability.quest;
  */
 public enum EnumQuestStatus
 {
-    UNCOMPLETED,
     ACCEPTED,
-    COMPLETED
+    COMPLETED,
+    UNCOMPLETED
 }

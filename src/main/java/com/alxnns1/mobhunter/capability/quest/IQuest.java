@@ -22,6 +22,17 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
     List<MHQuestCooldown> getCooldownQuests();
 
     /**
+     * Returns this quest's cooldown object if it's on cooldown
+     * Returns null if not on cooldown
+     */
+    MHQuestCooldown getQuestCooldown(MHQuest quest);
+
+    /**
+     * Returns whether the given quest is on cooldown for the player
+     */
+    boolean isQuestCoolingDown(MHQuest quest);
+
+    /**
      * Returns the quests completed by the player
      */
     List<String> getCompletedQuests();

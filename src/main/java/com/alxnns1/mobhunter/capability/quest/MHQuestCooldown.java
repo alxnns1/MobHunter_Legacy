@@ -17,6 +17,11 @@ public class MHQuestCooldown
         cooldownStart = worldTime;
     }
 
+    public boolean isQuestEqual(MHQuest questIn)
+    {
+        return quest.isEqual(questIn);
+    }
+
     /**
      * Gets whether enough time has passed for this quest to has finished it's cooldown
      */
