@@ -37,7 +37,6 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     public static int EAT_DURATION_SHORT = 8;
     protected String[] subNames;
     public String type;
-    public BlockCrop crops;
 
     public ItemMHConsumable(String itemName, String... subNames)
     {
@@ -56,11 +55,70 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         super(amount, saturation, isWolfFood);
         setCreativeTab(MobHunter.MH_TAB);
         this.type = itemName;
-        this.crops = MHBlocks.blockCrop;
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
         setHasSubtypes(subNames != null && subNames.length > 0);
         this.subNames = hasSubtypes ? subNames : null;
+    }
+
+    public BlockCrop getBlockCrop(ItemStack stack){
+
+        String[] itemNameSplit = stack.getUnlocalizedName().split("\\W");
+        String itemName = itemNameSplit[itemNameSplit.length-1];
+
+        if(itemName.equals(Names.Items.HERB)){
+            return MHBlocks.blockCropHerb;
+        }else if(itemName.equals(Names.Items.ANTIDOTE_HERB)){
+            return MHBlocks.blockCropAntidoteHerb;
+        }else if(itemName.equals(Names.Items.FIRE_HERB)){
+            return MHBlocks.blockCropFireHerb;
+        }else if(itemName.equals(Names.Items.IVY)){
+            return MHBlocks.blockCropIvy;
+        }else if(itemName.equals(Names.Items.SLEEP_HERB)){
+            return MHBlocks.blockCropSleepHerb;
+        }else if(itemName.equals(Names.Items.SAP_PLANT)){
+            return MHBlocks.blockCropSapPlant;
+        }else if(itemName.equals(Names.Items.FELVINE)){
+            return MHBlocks.blockCropFelvine;
+        }else if(itemName.equals(Names.Items.GLOAMGRASS_BUD) || itemName.equals(Names.Items.GLOAMGRASS_ROOT)){
+            return MHBlocks.blockCropGloamgrass;
+        }else if(itemName.equals(Names.Items.HOT_PEPPER)){
+            return MHBlocks.blockCropHotPepper;
+        }else if(itemName.equals(Names.Items.BLUE_MUSHROOM)){
+            return MHBlocks.blockCropBlueMushroom;
+        }else if(itemName.equals(Names.Items.NITROSHROOM)){
+            return MHBlocks.blockCropNitroshroom;
+        }else if(itemName.equals(Names.Items.PARASHROOM)){
+            return MHBlocks.blockCropParashroom;
+        }else if(itemName.equals(Names.Items.TOADSTOOL)){
+            return MHBlocks.blockCropToadstool;
+        }else if(itemName.equals(Names.Items.EXCITESHROOM)){
+            return MHBlocks.blockCropExciteshroom;
+        }else if(itemName.equals(Names.Items.MOPESHROOM)){
+            return MHBlocks.blockCropMopeshroom;
+        }else if(itemName.equals(Names.Items.DRAGON_TOADSTOOL)){
+            return MHBlocks.blockCropDragonToadstool;
+        }else if(itemName.equals(Names.Items.PAINTBERRY)){
+            return MHBlocks.blockCropPaintberry;
+        }else if(itemName.equals(Names.Items.MIGHT_SEED)){
+            return MHBlocks.blockCropMightSeed;
+        }else if(itemName.equals(Names.Items.ADAMANT_SEED)){
+            return MHBlocks.blockCropAdamantSeed;
+        }else if(itemName.equals(Names.Items.NULBERRY)){
+            return MHBlocks.blockCropNulberry;
+        }else if(itemName.equals(Names.Items.DRAGONFELL_BERRY)){
+            return MHBlocks.blockCropDragonfellBerry;
+        }else if(itemName.equals(Names.Items.SCATTERNUT)){
+            return MHBlocks.blockCropScatternut;
+        }else if(itemName.equals(Names.Items.NEEDLEBERRY)){
+            return MHBlocks.blockCropNeedleberry;
+        }else if(itemName.equals(Names.Items.LATCHBERRY)){
+            return MHBlocks.blockCropLatchberry;
+        }else if(itemName.equals(Names.Items.BOMBERRY)){
+            return MHBlocks.blockCropBomberry;
+        }else {
+            return null;
+        }
     }
 
     /**
@@ -227,11 +285,11 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         net.minecraft.block.state.IBlockState state = worldIn.getBlockState(pos);
         if (facing == EnumFacing.UP && playerIn.canPlayerEdit(pos.offset(facing), facing, stack) && worldIn.isAirBlock(pos.up())) {
             if (state.getBlock()==Blocks.FARMLAND && (((ItemMHConsumable) stack.getItem()).type=="plant" || ((ItemMHConsumable) stack.getItem()).type=="berry")) {
-                worldIn.setBlockState(pos.up(), this.crops.getStateFromMeta(getCropMetaFromItemStack(stack)));
+                worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
                 --stack.stackSize;
                 return EnumActionResult.SUCCESS;
             }else if ((state.getBlock()==Blocks.MYCELIUM || state.getBlock()==Blocks.LOG || state.getBlock()==Blocks.LOG2) && ((ItemMHConsumable) stack.getItem()).type=="mushroom") {
-                worldIn.setBlockState(pos.up(), this.crops.getStateFromMeta(getCropMetaFromItemStack(stack)));
+                worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
                 --stack.stackSize;
                 return EnumActionResult.SUCCESS;
             } else {
@@ -250,66 +308,6 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     @Override
     public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
         return null;
-    }
-
-    public int getCropMetaFromItemStack(ItemStack stack){
-        int itemMeta = stack.getMetadata();
-        if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.HERB))
-            return BlockCrop.EnumMHCrop.HERB.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.ANTIDOTE_HERB))
-            return BlockCrop.EnumMHCrop.ANTIDOTE_HERB.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.FIRE_HERB))
-            return BlockCrop.EnumMHCrop.FIRE_HERB.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.IVY))
-            return BlockCrop.EnumMHCrop.IVY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.SLEEP_HERB))
-            return BlockCrop.EnumMHCrop.SLEEP_HERB.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.SAP_PLANT))
-            return BlockCrop.EnumMHCrop.SAP_PLANT.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.FELVINE))
-            return BlockCrop.EnumMHCrop.FELVINE.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.GLOAMGRASS_ROOT))
-            return BlockCrop.EnumMHCrop.GLOAMGRASS_ROOT.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.GLOAMGRASS_BUD))
-            return BlockCrop.EnumMHCrop.GLOAMGRASS_BUD.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.HOT_PEPPER))
-            return BlockCrop.EnumMHCrop.HOT_PEPPER.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.BLUE_MUSHROOM))
-            return BlockCrop.EnumMHCrop.BLUE_MUSHROOM.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.NITROSHROOM))
-            return BlockCrop.EnumMHCrop.NITROSHROOM.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.PARASHROOM))
-            return BlockCrop.EnumMHCrop.PARASHROOM.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.TOADSTOOL))
-            return BlockCrop.EnumMHCrop.TOADSTOOL.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.EXCITESHROOM))
-            return BlockCrop.EnumMHCrop.EXCITESHROOM.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.MOPESHROOM))
-            return BlockCrop.EnumMHCrop.MOPESHROOM.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.MUSHROOM, Names.Items.DRAGON_TOADSTOOL))
-            return BlockCrop.EnumMHCrop.DRAGON_TOADSTOOL.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.HUSKBERRY))
-            return BlockCrop.EnumMHCrop.HUSKBERRY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.PAINTBERRY))
-            return BlockCrop.EnumMHCrop.PAINTBERRY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.MIGHT_SEED))
-            return BlockCrop.EnumMHCrop.MIGHT_SEED.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.ADAMANT_SEED))
-            return BlockCrop.EnumMHCrop.ADAMANT_SEED.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.NULBERRY))
-            return BlockCrop.EnumMHCrop.NULBERRY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.DRAGONFELL_BERRY))
-            return BlockCrop.EnumMHCrop.DRAGONFELL_BERRY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.SCATTERNUT))
-            return BlockCrop.EnumMHCrop.SCATTERNUT.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.NEEDLEBERRY))
-            return BlockCrop.EnumMHCrop.NEEDLEBERRY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.LATCHBERRY))
-            return BlockCrop.EnumMHCrop.LATCHBERRY.ordinal()*8;
-        else if (itemMeta==MetaRef.getMeta(MetaRef.EnumItemType.BERRY, Names.Items.BOMBERRY))
-            return BlockCrop.EnumMHCrop.BOMBERRY.ordinal()*8;
-        else
-            return 0;
     }
 
     /**
