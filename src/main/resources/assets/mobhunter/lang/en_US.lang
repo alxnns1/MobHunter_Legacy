@@ -133,6 +133,8 @@ item.plant.felvine.name=Felvine
 item.plant.felvine.tooltip=Melynxes' favorite food -- they just have to steal it.
 item.plant.gloamgrassRoot.name=Gloamgrass Root
 item.plant.gloamgrassRoot.tooltip=Possesses antidotal agents, but it will not work by itself.
+item.plant.gloamgrassBud.name=Gloamgrass Bud
+item.plant.gloamgrassBud.tooltip=A flower that dislikes light and blooms in darkness. May possess healing agents.
 item.plant.hotPepper.name=Hot Pepper
 item.plant.hotPepper.tooltip=Blazingly spicy. Sure, it'll warm you up, but it's too hot to handle on its own.
 

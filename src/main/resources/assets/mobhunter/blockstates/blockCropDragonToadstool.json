@@ -1,7 +1,10 @@
 {
 	"forge_marker": 1,
 	"defaults": {
-		"model": "cross"
+		"model": "cross",
+		"textures": {
+			"cross": "mobhunter:blocks/cropDragonToadstool_stage_7"
+		}
 	},
 	"variants": {
 		"age": {
