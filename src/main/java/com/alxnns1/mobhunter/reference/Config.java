@@ -9,6 +9,7 @@ public class Config
     public static float scaleMin = 0.79f;
 
     public static int aptonothSpawnChance = 8;
+    public static int apcerosSpawnChance = 8;
     public static int altarothSpawnChance = 8;
     public static int popoSpawnChance = 8;
     public static int kelbiSpawnChance = 8;

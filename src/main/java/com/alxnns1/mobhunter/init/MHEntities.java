@@ -53,72 +53,48 @@ public class MHEntities
     {
         registerMobWithEgg(EntityAptonoth.class, "Aptonoth", 0x7f6d59, 0x382c1e);
         addSpawn(EntityAptonoth.class, Config.aptonothSpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.SWAMP,
-                BiomeDictionary.Type.SANDY,
-                BiomeDictionary.Type.BEACH});
+                BiomeDictionary.Type.PLAINS});
+        registerMobWithEgg(EntityApceros.class, "Apceros", 0x664019, 0xccb399);
+        addSpawn(EntityApceros.class, Config.apcerosSpawnChance, new BiomeDictionary.Type[] {
+                BiomeDictionary.Type.SAVANNA,
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.SANDY});
         registerMobWithEgg(EntityAltaroth.class, "Altaroth", 0x8fbf60, 0xbfbf60);
         addSpawn(EntityAltaroth.class, Config.altarothSpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
+                BiomeDictionary.Type.SAVANNA,
+                BiomeDictionary.Type.JUNGLE,
                 BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.MOUNTAIN,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.SWAMP,
-                BiomeDictionary.Type.SANDY,
-                BiomeDictionary.Type.SNOWY,
-                BiomeDictionary.Type.WASTELAND,
-                BiomeDictionary.Type.BEACH});
+                BiomeDictionary.Type.PLAINS});
         registerMobWithEgg(EntityPopo.class, "Popo", 0x402a00, 0x403400);
         addSpawn(EntityPopo.class, Config.popoSpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.SNOWY,
-                BiomeDictionary.Type.MOUNTAIN});
+                BiomeDictionary.Type.MOUNTAIN,
+                BiomeDictionary.Type.SNOWY});
         registerMobWithEgg(EntityKelbi.class, "Kelbi", 0x20402b, 0xbfbf8f);
         addSpawn(EntityKelbi.class, Config.kelbiSpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.MOUNTAIN,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.SWAMP,
-                BiomeDictionary.Type.SANDY,
-                BiomeDictionary.Type.WASTELAND,
-                BiomeDictionary.Type.BEACH});
+                BiomeDictionary.Type.PLAINS});
         registerMobWithEgg(EntityGargwa.class, "Gargwa", 0x804000, 0x0000ff);
         addSpawn(EntityGargwa.class, Config.gargwaSpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.HILLS});
+                BiomeDictionary.Type.JUNGLE});
         registerMobWithEgg(EntityGiaprey.class, "Giaprey", 0x9fbfdf, 0x476078);
         addSpawn(EntityGiaprey.class, Config.giapreySpawnChance, new BiomeDictionary.Type[]{
                 BiomeDictionary.Type.MOUNTAIN,
                 BiomeDictionary.Type.SNOWY});
         registerMobWithEgg(EntityIoprey.class, "Ioprey", 0xdf2020, 0x0a0a0a);
         addSpawn(EntityIoprey.class, Config.iopreySpawnChance, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.SWAMP});
 
         registerMobWithEgg(EntityGreatJaggi.class, "GreatJaggi", 0xe2aa72, 0x9f40ff);
         registerMobWithEgg(EntityJaggi.class, "Jaggi", 0xd56a00, 0xbf80ff);
         registerMobWithEgg(EntityJaggia.class, "Jaggia", 0xff8000, 0x9f40ff);
         addSpawn(EntityGreatJaggi.class, Config.greatJaggiSpawnChance, 1, 1, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.BEACH});
         registerMobWithEgg(EntityVelocidrome.class, "Velocidrome", 0x0080ff, 0x402000);
         registerMobWithEgg(EntityVelociprey.class, "Velociprey", 0x0080ff, 0x402000);
         addSpawn(EntityVelocidrome.class, Config.velocidromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
                 BiomeDictionary.Type.FOREST,
-                BiomeDictionary.Type.PLAINS,
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.WASTELAND});
+                BiomeDictionary.Type.PLAINS});
         /*
         registerMobWithEgg(EntityGiadrome.class, "Giadrome", 0x9fbfdf, 0x476078);
         addSpawn(EntityGiadrome.class, Config.giadromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
@@ -128,13 +104,11 @@ public class MHEntities
         registerMobWithEgg(EntityGendrome.class, "Gendrome", 0x408040, 0x806040);
         registerMobWithEgg(EntityGenprey.class, "Genprey", 0x408040, 0x806040);
         addSpawn(EntityGendrome.class, Config.gendromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.MESA,
-                BiomeDictionary.Type.SANDY,
-                BiomeDictionary.Type.WASTELAND});
+                BiomeDictionary.Type.SAVANNA,
+                BiomeDictionary.Type.SANDY});
         /*
         registerMobWithEgg(EntityIondrome.class, "Iodrome", 0xdf2020, 0x0a0a0a);
         addSpawn(EntityIodrome.class, Config.iodromeSpawnChance, 1, 1, new BiomeDictionary.Type[] {
-                BiomeDictionary.Type.FOREST,
                 BiomeDictionary.Type.SWAMP});
         */
 
@@ -148,6 +122,7 @@ public class MHEntities
     private static void regClientStuff()
     {
         registerRender(EntityAptonoth.class, RenderAptonoth.FACTORY);
+        registerRender(EntityApceros.class, RenderApceros.FACTORY);
         registerRender(EntityAltaroth.class, RenderAltaroth.FACTORY);
         registerRender(EntityPopo.class, RenderPopo.FACTORY);
         registerRender(EntityKelbi.class, RenderKelbi.FACTORY);
