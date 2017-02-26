@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter.capability.hunterRank;
 
-import com.alxnns1.mobhunter.message.MessageHunterRank;
+import com.alxnns1.mobhunter.message.MessageCapability;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
@@ -95,7 +95,7 @@ public class CapabilityHunterRank implements IHunterRank
                 tag.setInteger("progress", progressPoints);
                 break;
         }
-        CommonUtil.NETWORK.sendTo(new MessageHunterRank(tag), player);
+        CommonUtil.NETWORK.sendTo(new MessageCapability(MessageCapability.EnumCapability.HUNTER_RANK, tag), player);
     }
 
     @Override

@@ -71,6 +71,8 @@ public class QuestHandler
         }
     }
 
+    //Removed these since I'm now using a submit button for quests that require items
+    /*
     @SubscribeEvent
     public void onCrafted(PlayerEvent.ItemCraftedEvent event)
     {
@@ -92,6 +94,7 @@ public class QuestHandler
         if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.GATHERING)
             quest.progressQuest((EntityPlayerMP) event.getEntityPlayer(), event.getItem().getEntityItem());
     }
+    */
 
     @SubscribeEvent
     public void entityKilled(LivingDeathEvent event)

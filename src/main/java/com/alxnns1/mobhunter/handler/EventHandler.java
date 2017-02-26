@@ -192,31 +192,6 @@ public class EventHandler
             /*
             if(entity instanceof EntityIodrome) player.addStat(MHAchievements.iodrome);
             */
-
-            //Hunter Rank Incrementation
-            //TODO: Uncomment Hunter Rank Incrementation (And finish)
-            //HunterRankProvider.get(player).changeHunterRankBy(player, AMOUNT);
         }
     }
-
-    //TODO: Uncomment Hunter Rank Events Handlers
-    /*
-    @SubscribeEvent
-    public void attachCapability(AttachCapabilitiesEvent.Entity event)
-    {
-        if(event.getEntity() instanceof EntityPlayer && !event.getEntity().hasCapability(HunterRankProvider.HUNTER_RANK, null))
-            event.addCapability(new ResourceLocation(Reference.MOD_ID, " Player Hunter Rank"), new HunterRankProvider());
-    }
-
-    @SubscribeEvent
-    public void onClonePlayer(Clone event)
-    {
-        if(event.isWasDeath())
-        {
-            EntityPlayer player = event.getEntityPlayer();
-            HunterRankProvider.get(player).loadNBT(HunterRankProvider.get(event.getOriginal()).saveNBT());
-            HunterRankProvider.get(player).dataChanged(player);
-        }
-    }
-    */
 }

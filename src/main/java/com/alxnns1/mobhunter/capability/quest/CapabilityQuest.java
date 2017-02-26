@@ -2,7 +2,7 @@ package com.alxnns1.mobhunter.capability.quest;
 
 import com.alxnns1.mobhunter.handler.HunterRankHandler;
 import com.alxnns1.mobhunter.init.MHQuests;
-import com.alxnns1.mobhunter.message.MessageQuest;
+import com.alxnns1.mobhunter.message.MessageCapability;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -99,12 +99,19 @@ public class CapabilityQuest implements IQuest
     }
 
     @Override
-    public void progressQuest(EntityPlayerMP player, Object object)
+    public boolean progressQuest(EntityPlayerMP player, Object object)
     {
         if(currentQuest == null)
-            return;
-        if(currentQuest.addProgress(object))
+            return false;
+        int progress = currentQuest.addProgress(object);
+        if(progress > 0)
         {
+            if(object instanceof ItemStack)
+            {
+                ItemStack stack = (ItemStack) object;
+                player.inventory.clearMatchingItems(stack.getItem(), stack.getMetadata(), stack.stackSize, stack.getTagCompound());
+                player.inventory.markDirty();
+            }
             if(currentQuest.isCompleted())
             {
                 //Send chat message to player
@@ -136,7 +143,9 @@ public class CapabilityQuest implements IQuest
                 currentQuest = null;
             }
             dataChanged(player, EnumQuestDataChange.CURRENT);
+            return true;
         }
+        return false;
     }
 
     @Override
@@ -164,7 +173,7 @@ public class CapabilityQuest implements IQuest
                 tag.setTag("completedQuests", serializeCooldownQuestsNBT());
                 break;
         }
-        CommonUtil.NETWORK.sendTo(new MessageQuest(tag), player);
+        CommonUtil.NETWORK.sendTo(new MessageCapability(MessageCapability.EnumCapability.QUEST, tag), player);
     }
 
     private NBTTagCompound serializeCurrentQuestNBT()

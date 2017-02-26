@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.init;
 
+import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import com.alxnns1.mobhunter.capability.quest.EntityStack;
 import com.alxnns1.mobhunter.capability.quest.EnumQuestType;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
@@ -14,7 +15,15 @@ import java.util.List;
  */
 public class MHQuests
 {
-    private static List<MHQuest> QUESTS = new ArrayList<MHQuest>();
+    private static List<MHQuest> ALL_QUESTS = new ArrayList<MHQuest>();
+    private static List<List<MHQuest>> QUESTS_BY_RANK = new ArrayList<List<MHQuest>>();
+
+    static
+    {
+        //Setup QUESTS_BY_RANK list
+        for(int i = 0; i < HunterRankProgression.HR_MAX; i++)
+            QUESTS_BY_RANK.add(new ArrayList<MHQuest>());
+    }
 
     public static MHQuest
             testCraft, testGather, testHunt,
@@ -22,18 +31,29 @@ public class MHQuests
 
     public static MHQuest getQuest(String name)
     {
-        for(MHQuest q : QUESTS)
+        for(MHQuest q : ALL_QUESTS)
             if(q.isEqual(name))
                 return q;
         return null;
     }
 
+    public static List<MHQuest> getQuestsForRank(int hunterRank)
+    {
+        return QUESTS_BY_RANK.get(hunterRank);
+    }
+
+    public static List<List<MHQuest>> getQuestsByRank()
+    {
+        return QUESTS_BY_RANK;
+    }
+
     public static void regQuest(MHQuest quest)
     {
-        for(MHQuest q : QUESTS)
+        for(MHQuest q : ALL_QUESTS)
             if(q.isEqual(quest))
                 throw new RuntimeException("A Quest with the name " + quest.getUnlocName() + " already exists!");
-        QUESTS.add(quest);
+        ALL_QUESTS.add(quest);
+        QUESTS_BY_RANK.get(quest.getRequiredHR()).add(quest);
     }
 
     public static void init()

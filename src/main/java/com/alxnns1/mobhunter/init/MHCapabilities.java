@@ -20,8 +20,6 @@ public class MHCapabilities
     @CapabilityInject(IHunterRank.class)
     public static Capability<IHunterRank> HUNTER_RANK = null;
 
-
-
     public static void init()
     {
         CapabilityManager.INSTANCE.register(IHunterRank.class, CapabilityHunterRank.Storage.INSTANCE, new Callable<IHunterRank>()

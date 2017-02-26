@@ -143,9 +143,9 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
 
     /**
      * Tries to progress the quest using the given Object.
-     * Returns is any progress was made.
+     * Returns amount of progress made.
      */
-    public boolean addProgress(Object objectToProgress)
+    public int addProgress(Object objectToProgress)
     {
         //Check the objectToProgress is of the correct instance
         Class storageClass = quest.getQuestType().storageType;
@@ -153,17 +153,17 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
         {
             LogHelper.error("Tried to add progress to quest with storage class '" + quest.getQuestType().storageType.toString() +
                     "'!\nObject trying to be progressed:\n" + objectToProgress.toString());
-            return false;
+            return 0;
         }
 
         //Increase the progress
         int i = getObjIndex(objectToProgress);
         if(i < 0)
-            return false;
+            return 0;
         int currProg = progress.get(i);
         int maxProg = getObjMax(i);
         if(currProg >= maxProg)
-            return false;
+            return 0;
         int toProgress = 0;
         if(objectToProgress instanceof ItemStack)
             toProgress = ((ItemStack) objectToProgress).stackSize;
@@ -172,9 +172,9 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
         if(currProg < maxProg)
         {
             progress.put(i, Math.min(currProg + toProgress, maxProg));
-            return true;
+            return toProgress;
         }
-        return false;
+        return 0;
     }
 
     /**

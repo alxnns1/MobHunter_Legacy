@@ -8,6 +8,7 @@ import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.util.text.TextComponentString;
@@ -67,14 +68,20 @@ public class MessageGuiQuest implements IMessage
                 {
                     WorldServer world = (WorldServer) ctx.getServerHandler().playerEntity.world;
                     EntityPlayerMP player = (EntityPlayerMP) world.getPlayerEntityByUUID(message.playerUuid);
+                    if(message.buttonId > 1 && player == null)
+                        return;
                     IQuest questCapability = QuestHandler.getQuestCapability(player);
+                    if(questCapability == null)
+                        return;
                     switch(message.buttonId)
                     {
-
                         case 1:
                             //Share
                             //For info on what's going on here, have a look at:
                             // StatBase#getStatName
+
+                            if(questCapability.getCurrentQuest() == null)
+                                return;
 
                             MinecraftServer server = world.getMinecraftServer();
                             if(server != null)
@@ -99,28 +106,46 @@ public class MessageGuiQuest implements IMessage
                             }
                             break;
                         case 2:
+                            //Submit
+                            //Try to submit every item in the player's inventory
+                            for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+                            {
+                                ItemStack stack = player.inventory.getStackInSlot(i);
+                                if(stack == null)
+                                    continue;
+                                questCapability.progressQuest(player, stack);
+                                if(questCapability.getCurrentQuest() == null)
+                                {
+                                    //Quest completed
+                                    player.closeScreen();
+                                    break;
+                                }
+                            }
+                            break;
+                        case 3:
                             //Cancel
                             questCapability.cancelQuest(player);
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
+                            player.closeScreen();
                             break;
 
                         //Debug Buttons
-                        case 3:
+                        case 4:
                             //Add Test Crafting Quest
                             questCapability.addQuest(new MHQuestObject(MHQuests.testCraft).setStartTime(world.getTotalWorldTime()));
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
-                        case 4:
+                        case 5:
                             //Add Test Gathering Quest
                             questCapability.addQuest(new MHQuestObject(MHQuests.testGather).setStartTime(world.getTotalWorldTime()));
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
-                        case 5:
+                        case 6:
                             //Add Test Hunting Quest
                             questCapability.addQuest(new MHQuestObject(MHQuests.testHunt).setStartTime(world.getTotalWorldTime()));
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
-                        case 6:
+                        case 7:
                             //Clear Current Quest
                             questCapability.clearQuest();
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);

@@ -1,13 +1,13 @@
 package com.alxnns1.mobhunter.gui;
 
+import com.alxnns1.mobhunter.capability.quest.EnumQuestType;
+import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
 import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.util.CommonUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.io.IOException;
@@ -22,9 +22,23 @@ public class GuiQuest extends MHGuiScreen
     public GuiQuest(EntityPlayer player)
     {
         super("quest");
-        quest = QuestHandler.getQuestCapability(player).getCurrentQuest();
+        updateQuest(player);
         xSize = 192;
         ySize = 244; //191;
+    }
+
+    /**
+     * Updates the currently shown quest
+     */
+    public void updateQuest(EntityPlayer player)
+    {
+        IQuest questCap = QuestHandler.getQuestCapability(player == null ? mc.player : player);
+        quest = questCap == null ? null : questCap.getCurrentQuest();
+    }
+
+    private boolean isItemSubmitQuest()
+    {
+        return quest != null && quest.getQuest().getQuestType() != EnumQuestType.HUNTING;
     }
 
     /**
@@ -35,9 +49,19 @@ public class GuiQuest extends MHGuiScreen
     {
         super.initGui();
 
-        addButton(new QuestButton(18, 150, "Close"));
-        addButton(new QuestButton(72, 150, "Share"));
-        addButton(new QuestButton(126, 150, "Cancel"));
+        if(isItemSubmitQuest())
+        {
+            addButton(new QuestButton(17, 150, "Close"));
+            addButton(new QuestButton(58, 150, "Share"));
+            addButton(new QuestButton(99, 150, "Submit"));
+            addButton(new QuestButton(140, 150, "Cancel"));
+        }
+        else
+        {
+            addButton(new QuestButton(18, 150, "Close"));
+            addButton(new QuestButton(72, 150, "Share"));
+            addButton(new QuestButton(126, 150, "Cancel"));
+        }
 
         //TODO: Remove debug buttons
         //Debug Buttons
@@ -72,16 +96,14 @@ public class GuiQuest extends MHGuiScreen
     {
         switch(button.id)
         {
-            case 1:
-            case 2:
-                CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(button.id, mc.player.getUniqueID()));
             case 0: //Close button
                 mc.player.closeScreen();
                 break;
-            //Debug buttons
             default:
                 //Process button click on server
-                CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(button.id, mc.player.getUniqueID()));
+                int buttonId = !isItemSubmitQuest() && button.id > 1 ? button.id + 1 : button.id;
+                LogHelper.info("Button ID: " + button.id + "   Changed to: " + buttonId);
+                CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(buttonId, mc.player.getUniqueID()));
         }
     }
 
@@ -89,9 +111,9 @@ public class GuiQuest extends MHGuiScreen
     {
         public QuestButton(int x, int y, String buttonText)
         {
-            super(x, y,51, 24, 0, 208, buttonText);
+            super(x, y, GuiQuest.this.isItemSubmitQuest() ? 38 : 51, 24, GuiQuest.this.isItemSubmitQuest() ? 51 : 0, 208, buttonText);
         }
-
+        /*
         public void drawButton(Minecraft mc, int mouseX, int mouseY)
         {
             if(!visible) return;
@@ -100,10 +122,11 @@ public class GuiQuest extends MHGuiScreen
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
             //Draw button
-            drawTexturedModalRect(xPosition, yPosition, enabled ? 0 : 51, 232, width, height);
+            drawTexturedModalRect(xPosition, yPosition, iconX, enabled ? iconY : iconY + height, width, height);
             //Draw text
             if(!displayString.equals(""))
                 drawCenteredString(fontrenderer, displayString, xPosition + width / 2, yPosition + (height - 8) / 2, 0);
         }
+        */
     }
 }

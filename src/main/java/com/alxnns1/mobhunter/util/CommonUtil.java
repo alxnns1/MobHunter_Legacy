@@ -3,13 +3,10 @@ package com.alxnns1.mobhunter.util;
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.handler.EnumGuiID;
 import com.alxnns1.mobhunter.message.MessageGuiQuest;
-import com.alxnns1.mobhunter.message.MessageHunterRank;
-import com.alxnns1.mobhunter.message.MessageQuest;
+import com.alxnns1.mobhunter.message.MessageCapability;
 import com.alxnns1.mobhunter.reference.Reference;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -17,8 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-
-import java.util.List;
 
 /**
  * This class will contain methods which will get used in multiple places
@@ -31,8 +26,7 @@ public class CommonUtil
     public static void initNetwork()
     {
         NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
-        NETWORK.registerMessage(MessageHunterRank.MessageHandler.class, MessageHunterRank.class, 0, Side.CLIENT);
-        NETWORK.registerMessage(MessageQuest.Handler.class, MessageQuest.class, 1, Side.CLIENT);
+        NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, 1, Side.CLIENT);
         NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, 2, Side.SERVER);
     }
 

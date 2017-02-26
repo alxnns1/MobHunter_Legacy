@@ -62,7 +62,7 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
      * @param object The object trying to progress. Crafting and Gathering quests will need this to be an ItemStack,
      *               and Hunting quests will need this to be an EntityStack.
      */
-    void progressQuest(EntityPlayerMP player, Object object);
+    boolean progressQuest(EntityPlayerMP player, Object object);
 
     /**
      * Gets the status of the quest for the player - i.e. whether the quest has been completed or not

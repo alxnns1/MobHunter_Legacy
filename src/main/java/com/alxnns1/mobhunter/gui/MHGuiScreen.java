@@ -108,7 +108,7 @@ public class MHGuiScreen extends GuiScreen
 
     protected class MHButton extends GuiButton
     {
-        private final int iconX, iconY;
+        protected final int iconX, iconY;
 
         public MHButton(int x, int y, int width, int height, int iconXIn, int iconYIn, String buttonText)
         {
@@ -118,10 +118,15 @@ public class MHGuiScreen extends GuiScreen
         }
 
         //Overriding this to remove the shadow
-        @Override
-        public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color)
+        public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y)
         {
-            fontRendererIn.drawString(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, color, false);
+            drawCenteredString(fontRendererIn, text, x, y, enabled ? 14737632 : 10526880);
+        }
+
+        @Override
+        public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int colour)
+        {
+            fontRendererIn.drawString(text, (float)(x - fontRendererIn.getStringWidth(text) / 2), (float)y, colour, false);
         }
 
         public void drawButton(Minecraft mc, int mouseX, int mouseY)
@@ -134,7 +139,8 @@ public class MHGuiScreen extends GuiScreen
             //Draw button
             drawTexturedModalRect(xPosition, yPosition, iconX, enabled ? iconY : iconY + height, width, height);
             if(!displayString.equals(""))
-                drawCenteredString(fontrenderer, displayString, (xPosition + 16) + (width - 16) / 2, yPosition + (height - 8) / 2, enabled ? 14737632 : 10526880);
+                drawCenteredString(fontrenderer, displayString, xPosition + width / 2, yPosition + (height - 8) / 2);
+                //drawCenteredString(fontrenderer, displayString, (xPosition + 16) + (width - 16) / 2, yPosition + (height - 8) / 2);
         }
     }
 }
