@@ -1,0 +1,53 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cross",
+		"textures": {
+			"cross": "mobhunter:blocks/cropPaintberry_stage_7"
+		}
+	},
+	"variants": {
+		"age": {
+			"0": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropBerry_stage_0"
+				}
+			},
+			"1": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropBerry_stage_1"
+				}
+			},
+			"2": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropBerry_stage_2"
+				}
+			},
+			"3": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropBerry_stage_3"
+				}
+			},
+			"4": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropPaintberry_stage_4"
+				}
+			},
+			"5": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropPaintberry_stage_5"
+				}
+			},
+			"6": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropPaintberry_stage_6"
+				}
+			},
+			"7": {
+				"textures": {
+					"cross": "mobhunter:blocks/cropPaintberry_stage_7"
+				}
+			}
+		}
+	}
+}

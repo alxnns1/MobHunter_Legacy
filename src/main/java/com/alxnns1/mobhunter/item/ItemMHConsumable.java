@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -35,7 +36,6 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     public static int EAT_DURATION_SHORT = 8;
     protected String[] subNames;
     public String type;
-    public Block crops;
 
     public ItemMHConsumable(String itemName, String... subNames)
     {
@@ -58,6 +58,66 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         setRegistryName(itemName);
         setHasSubtypes(subNames != null && subNames.length > 0);
         this.subNames = hasSubtypes ? subNames : null;
+    }
+
+    public BlockCrop getBlockCrop(ItemStack stack){
+
+        String[] itemNameSplit = stack.getUnlocalizedName().split("\\W");
+        String itemName = itemNameSplit[itemNameSplit.length-1];
+
+        if(itemName.equals(Names.Items.HERB)){
+            return MHBlocks.blockCropHerb;
+        }else if(itemName.equals(Names.Items.ANTIDOTE_HERB)){
+            return MHBlocks.blockCropAntidoteHerb;
+        }else if(itemName.equals(Names.Items.FIRE_HERB)){
+            return MHBlocks.blockCropFireHerb;
+        }else if(itemName.equals(Names.Items.IVY)){
+            return MHBlocks.blockCropIvy;
+        }else if(itemName.equals(Names.Items.SLEEP_HERB)){
+            return MHBlocks.blockCropSleepHerb;
+        }else if(itemName.equals(Names.Items.SAP_PLANT)){
+            return MHBlocks.blockCropSapPlant;
+        }else if(itemName.equals(Names.Items.FELVINE)){
+            return MHBlocks.blockCropFelvine;
+        }else if(itemName.equals(Names.Items.GLOAMGRASS_BUD) || itemName.equals(Names.Items.GLOAMGRASS_ROOT)){
+            return MHBlocks.blockCropGloamgrass;
+        }else if(itemName.equals(Names.Items.HOT_PEPPER)){
+            return MHBlocks.blockCropHotPepper;
+        }else if(itemName.equals(Names.Items.BLUE_MUSHROOM)){
+            return MHBlocks.blockCropBlueMushroom;
+        }else if(itemName.equals(Names.Items.NITROSHROOM)){
+            return MHBlocks.blockCropNitroshroom;
+        }else if(itemName.equals(Names.Items.PARASHROOM)){
+            return MHBlocks.blockCropParashroom;
+        }else if(itemName.equals(Names.Items.TOADSTOOL)){
+            return MHBlocks.blockCropToadstool;
+        }else if(itemName.equals(Names.Items.EXCITESHROOM)){
+            return MHBlocks.blockCropExciteshroom;
+        }else if(itemName.equals(Names.Items.MOPESHROOM)){
+            return MHBlocks.blockCropMopeshroom;
+        }else if(itemName.equals(Names.Items.DRAGON_TOADSTOOL)){
+            return MHBlocks.blockCropDragonToadstool;
+        }else if(itemName.equals(Names.Items.PAINTBERRY)){
+            return MHBlocks.blockCropPaintberry;
+        }else if(itemName.equals(Names.Items.MIGHT_SEED)){
+            return MHBlocks.blockCropMightSeed;
+        }else if(itemName.equals(Names.Items.ADAMANT_SEED)){
+            return MHBlocks.blockCropAdamantSeed;
+        }else if(itemName.equals(Names.Items.NULBERRY)){
+            return MHBlocks.blockCropNulberry;
+        }else if(itemName.equals(Names.Items.DRAGONFELL_BERRY)){
+            return MHBlocks.blockCropDragonfellBerry;
+        }else if(itemName.equals(Names.Items.SCATTERNUT)){
+            return MHBlocks.blockCropScatternut;
+        }else if(itemName.equals(Names.Items.NEEDLEBERRY)){
+            return MHBlocks.blockCropNeedleberry;
+        }else if(itemName.equals(Names.Items.LATCHBERRY)){
+            return MHBlocks.blockCropLatchberry;
+        }else if(itemName.equals(Names.Items.BOMBERRY)){
+            return MHBlocks.blockCropBomberry;
+        }else {
+            return null;
+        }
     }
 
     /**
@@ -222,14 +282,19 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         net.minecraft.block.state.IBlockState state = worldIn.getBlockState(pos);
-        if (facing == EnumFacing.UP && playerIn.canPlayerEdit(pos.offset(facing), facing, stack) && state.getBlock().canSustainPlant(state, worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up()))
-        {
-            worldIn.setBlockState(pos.up(), this.crops.getDefaultState());
-            --stack.stackSize;
-            return EnumActionResult.SUCCESS;
-        }
-        else
-        {
+        if (facing == EnumFacing.UP && playerIn.canPlayerEdit(pos.offset(facing), facing, stack) && worldIn.isAirBlock(pos.up())) {
+            if (state.getBlock()==Blocks.FARMLAND && (((ItemMHConsumable) stack.getItem()).type=="plant" || ((ItemMHConsumable) stack.getItem()).type=="berry")) {
+                worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
+                --stack.stackSize;
+                return EnumActionResult.SUCCESS;
+            }else if ((state.getBlock()==Blocks.MYCELIUM || state.getBlock()==Blocks.LOG || state.getBlock()==Blocks.LOG2) && ((ItemMHConsumable) stack.getItem()).type=="mushroom") {
+                worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
+                --stack.stackSize;
+                return EnumActionResult.SUCCESS;
+            } else {
+                return EnumActionResult.FAIL;
+            }
+        } else {
             return EnumActionResult.FAIL;
         }
     }

@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
+import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
 import com.alxnns1.mobhunter.util.ClientUtil;
@@ -37,10 +38,12 @@ public class MHBlocks
     public static BlockOre blockOreEarthCrystal, blockOreMachalite, blockOreDragonite, blockOreLightCrystal, blockOreIceCrystal, blockOreGossamite;
     public static BlockResource blockEarthCrystal, blockMachalite, blockDragonite, blockLightCrystal, blockGossamite, blockIceCrystal;
     public static BlockNatural blockHerb, blockShroom, blockBerry, blockBug, blockBone;
+    public static BlockCrop blockCropHerb, blockCropAntidoteHerb, blockCropFireHerb, blockCropIvy, blockCropSleepHerb, blockCropSapPlant, blockCropFelvine, blockCropGloamgrass, blockCropHotPepper,
+                            blockCropBlueMushroom, blockCropNitroshroom, blockCropParashroom, blockCropToadstool, blockCropExciteshroom, blockCropMopeshroom, blockCropDragonToadstool,
+                            blockCropPaintberry, blockCropMightSeed, blockCropAdamantSeed, blockCropNulberry, blockCropDragonfellBerry, blockCropScatternut, blockCropNeedleberry, blockCropLatchberry, blockCropBomberry;
 
     public static BlockBbq blockBbq, blockBbqGourmet;
-    public static BlockCraft blockWeaponCraft;
-    public static BlockCraft blockArmourCraft;
+    public static BlockCraft blockWeaponCraft, blockArmourCraft;
 
     private static void regBlock(Block block, String oreDicName)
     {
@@ -77,6 +80,32 @@ public class MHBlocks
         regBlock(blockBerry = new BlockBerry());
         regBlock(blockBug = new BlockBug());
         regBlock(blockBone = new BlockBone());
+
+        regBlock(blockCropHerb = new BlockCrop(Names.Blocks.CROP_HERB, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HERB)));
+        regBlock(blockCropAntidoteHerb = new BlockCrop(Names.Blocks.CROP_ANTIDOTE_HERB, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.ANTIDOTE_HERB)));
+        regBlock(blockCropFireHerb = new BlockCrop(Names.Blocks.CROP_FIRE_HERB, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.FIRE_HERB)));
+        regBlock(blockCropIvy = new BlockCrop(Names.Blocks.CROP_IVY, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.IVY)));
+        regBlock(blockCropSleepHerb = new BlockCrop(Names.Blocks.CROP_SLEEP_HERB, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.SLEEP_HERB)));
+        regBlock(blockCropSapPlant = new BlockCrop(Names.Blocks.CROP_SAP_PLANT, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.SAP_PLANT)));
+        regBlock(blockCropFelvine = new BlockCrop(Names.Blocks.CROP_FELVINE, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.FELVINE)));
+        regBlock(blockCropGloamgrass = new BlockCrop(Names.Blocks.CROP_GLOAMGRASS, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.GLOAMGRASS_BUD), MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.GLOAMGRASS_ROOT)));
+        regBlock(blockCropHotPepper = new BlockCrop(Names.Blocks.CROP_HOT_PEPPER, MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HOT_PEPPER)));
+        regBlock(blockCropBlueMushroom = new BlockCrop(Names.Blocks.CROP_BLUE_MUSHROOM, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.BLUE_MUSHROOM)));
+        regBlock(blockCropNitroshroom = new BlockCrop(Names.Blocks.CROP_NITROSHROOM, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.NITROSHROOM)));
+        regBlock(blockCropParashroom = new BlockCrop(Names.Blocks.CROP_PARASHROOM, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.PARASHROOM)));
+        regBlock(blockCropToadstool = new BlockCrop(Names.Blocks.CROP_TOADSTOOL, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.TOADSTOOL)));
+        regBlock(blockCropExciteshroom = new BlockCrop(Names.Blocks.CROP_EXCITESHROOM, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.EXCITESHROOM)));
+        regBlock(blockCropMopeshroom = new BlockCrop(Names.Blocks.CROP_MOPESHROOM, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.MOPESHROOM)));
+        regBlock(blockCropDragonToadstool = new BlockCrop(Names.Blocks.CROP_DRAGON_TOADSTOOL, MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.DRAGON_TOADSTOOL)));
+        regBlock(blockCropPaintberry = new BlockCrop(Names.Blocks.CROP_PAINTBERRY, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.PAINTBERRY)));
+        regBlock(blockCropMightSeed = new BlockCrop(Names.Blocks.CROP_MIGHT_SEED, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.MIGHT_SEED)));
+        regBlock(blockCropAdamantSeed = new BlockCrop(Names.Blocks.CROP_ADAMANT_SEED, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.ADAMANT_SEED)));
+        regBlock(blockCropNulberry = new BlockCrop(Names.Blocks.CROP_NULBERRY, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.NULBERRY)));
+        regBlock(blockCropDragonfellBerry = new BlockCrop(Names.Blocks.CROP_DRAGONFELL_BERRY, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.DRAGONFELL_BERRY)));
+        regBlock(blockCropScatternut = new BlockCrop(Names.Blocks.CROP_SCATTERNUT, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.SCATTERNUT)));
+        regBlock(blockCropNeedleberry = new BlockCrop(Names.Blocks.CROP_NEEDLEBERRY, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.NEEDLEBERRY)));
+        regBlock(blockCropLatchberry = new BlockCrop(Names.Blocks.CROP_LATCHBERRY, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.LATCHBERRY)));
+        regBlock(blockCropBomberry = new BlockCrop(Names.Blocks.CROP_BOMBERRY, MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.BOMBERRY)));
 
         regBlock(blockBbq = new BlockBbq());
         regBlock(blockBbqGourmet = new BlockBbqGourmet());
