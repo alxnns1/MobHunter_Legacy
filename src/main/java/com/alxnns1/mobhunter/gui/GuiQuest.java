@@ -113,20 +113,11 @@ public class GuiQuest extends MHGuiScreen
         {
             super(x, y, GuiQuest.this.isItemSubmitQuest() ? 38 : 51, 24, GuiQuest.this.isItemSubmitQuest() ? 51 : 0, 208, buttonText);
         }
-        /*
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+
+        @Override
+        protected int getTextColour()
         {
-            if(!visible) return;
-            FontRenderer fontrenderer = mc.fontRendererObj;
-            mc.getTextureManager().bindTexture(guiImage);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.hovered = mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
-            //Draw button
-            drawTexturedModalRect(xPosition, yPosition, iconX, enabled ? iconY : iconY + height, width, height);
-            //Draw text
-            if(!displayString.equals(""))
-                drawCenteredString(fontrenderer, displayString, xPosition + width / 2, yPosition + (height - 8) / 2, 0);
+            return 0;
         }
-        */
     }
 }

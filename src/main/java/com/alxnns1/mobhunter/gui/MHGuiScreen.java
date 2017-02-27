@@ -117,10 +117,15 @@ public class MHGuiScreen extends GuiScreen
             iconY = iconYIn;
         }
 
+        protected int getTextColour()
+        {
+            return enabled ? 14737632 : 10526880;
+        }
+
         //Overriding this to remove the shadow
         public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y)
         {
-            drawCenteredString(fontRendererIn, text, x, y, enabled ? 14737632 : 10526880);
+            drawCenteredString(fontRendererIn, text, x, y, getTextColour());
         }
 
         @Override
