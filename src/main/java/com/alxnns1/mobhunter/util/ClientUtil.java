@@ -6,12 +6,16 @@ import com.alxnns1.mobhunter.item.ItemMHBow;
 import com.alxnns1.mobhunter.item.ItemMHSword;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
+
+import java.util.List;
 
 /**
  * Created by Mark on 14/10/2016.
@@ -48,5 +52,16 @@ public class ClientUtil
             itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
         ModelResourceLocation loc = new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + itemPath, "inventory");
         ModelLoader.setCustomModelResourceLocation(item, meta, loc);
+    }
+
+    private static int maxLength = 30;
+
+    public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
+    {
+        String unlocName = stack.getUnlocalizedName() + ".tooltip";
+        String tooltipText = I18n.format(unlocName);
+        if(!tooltipText.equals(unlocName))
+            tooltip.add(tooltipText);
+        return tooltip;
     }
 }

@@ -2,7 +2,7 @@ package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.reference.MetaRef;
-import com.alxnns1.mobhunter.util.CommonUtil;
+import com.alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -80,6 +80,6 @@ public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
         if(addInfo)
-            CommonUtil.addTooltip(stack, tooltip);
+            ClientUtil.addTooltip(stack, tooltip);
     }
 }

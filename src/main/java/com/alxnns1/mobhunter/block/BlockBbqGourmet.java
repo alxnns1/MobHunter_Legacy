@@ -26,6 +26,6 @@ public class BlockBbqGourmet extends BlockBbq
                         new ItemStack(MHItems.itemRareSteak),
                         new ItemStack(MHItems.itemGourmetSteak),
                         new ItemStack(MHItems.itemBurntMeat)},
-                new int[] {120, 180, 200}); //6, 9, 10 secs //TODO: Need Alex to look over these times
+                new int[] {120, 180, 200}); //6, 9, 10 secs
     }
 }

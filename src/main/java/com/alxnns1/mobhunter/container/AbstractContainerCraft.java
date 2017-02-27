@@ -4,10 +4,7 @@ import com.alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import com.alxnns1.mobhunter.gui.AbstractGuiCraft;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,12 +51,6 @@ public abstract class AbstractContainerCraft extends MHContainer
             {
                 return 1;
             }
-
-            public void onPickupFromSlot(EntityPlayer playerIn, ItemStack stack)
-            {
-                net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, stack, inventory);
-                super.onPickupFromSlot(playerIn, stack);
-            }
         });
     }
 
@@ -69,8 +60,8 @@ public abstract class AbstractContainerCraft extends MHContainer
     }
 
     /**
-     * Checks the player's inventory for all of the input items, and returns true if they're all present.
-     * False if at least 1 item is not there.
+     * Checks the player's inventory for all of the input items.
+     * Returns missing items.
      */
     @SuppressWarnings("unchecked")
     public ArrayList<Object> checkPlayerInv(IInventory inv, ArrayList<Object> input)
@@ -185,7 +176,7 @@ public abstract class AbstractContainerCraft extends MHContainer
 
     /**
      * Handles the given Button-click on the server, currently only used by enchanting. Name is for legacy.
-     * I am using this to upgrade the item (i.e. remove old item and create new one)
+     * I am using this to craft the item (i.e. remove old item and create new one)
      */
     @Override
     @SuppressWarnings("all")
@@ -213,6 +204,18 @@ public abstract class AbstractContainerCraft extends MHContainer
                     if(!world.isRemote)
                     {
                         MHCraftingRecipe recipe = recipes.get(actualRecipeI);
+
+                        //Collect the recipe inputs in an inventory for the player crafting event
+                        InventoryBasic inv = new InventoryBasic("MHCraftingRecipe", false, recipe.getRecipeSize() + 1);
+                        inv.addItem(recipe.getKeyInput());
+                        for(Object object : recipe.getInput())
+                        {
+                            if(object instanceof ItemStack)
+                                inv.addItem((ItemStack) object);
+                            else if(object instanceof List)
+                                inv.addItem(((List<ItemStack>) object).get(0));
+                        }
+                        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, recipe.getRecipeOutput(), inv);
 
                         if(!playerIn.capabilities.isCreativeMode)
                         {

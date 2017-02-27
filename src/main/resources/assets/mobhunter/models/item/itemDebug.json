@@ -1,5 +1,5 @@
 {
-  "parent": "mobhunter:item/itemDefault",
+  "parent": "mobhunter:item/itemToolDefault",
   "textures": {
     "layer0": "items/stick"
   }

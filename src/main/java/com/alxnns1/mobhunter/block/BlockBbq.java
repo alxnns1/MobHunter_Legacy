@@ -102,6 +102,8 @@ public class BlockBbq extends BlockContainer
             ItemStack product = te.retrieveResult();
             if(product != null && !world.isRemote)
             {
+                //Trigger crafting event
+                net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(player, product, null);
                 //Drop item on the ground
                 BlockPos pPos = player.getPosition();
                 EntityItem itemDrop = new EntityItem(world, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, product);

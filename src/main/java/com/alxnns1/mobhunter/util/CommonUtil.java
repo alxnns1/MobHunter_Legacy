@@ -2,19 +2,18 @@ package com.alxnns1.mobhunter.util;
 
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.handler.EnumGuiID;
+import com.alxnns1.mobhunter.message.MessageGuiQuest;
+import com.alxnns1.mobhunter.message.MessageCapability;
 import com.alxnns1.mobhunter.reference.Reference;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-
-import java.util.List;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * This class will contain methods which will get used in multiple places
@@ -22,39 +21,13 @@ import java.util.List;
  */
 public class CommonUtil
 {
-    public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+    public static SimpleNetworkWrapper NETWORK;
 
-    private static int maxLength = 30;
-
-    public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
+    public static void initNetwork()
     {
-        String unlocName = stack.getUnlocalizedName() + ".tooltip";
-        String tooltipText = I18n.format(unlocName);
-        if(!tooltipText.equals(unlocName))
-            tooltip.add(tooltipText);
-
-        //Convert string to array to we can wrap by word
-        /*
-        String[] tooltipArray = tooltipText.split(" ");
-        int l = 0;
-        String line = "";
-        for(String s : tooltipArray)
-        {
-            l += s.length(); //Get word length
-            line += s + " "; //Add word to the line
-            if(l > maxLength)
-            {
-                //If current line is long enough, go to next line
-                tooltip.add(line);
-                line = "";
-                l = 0;
-            }
-        }
-        if(l > 0)
-            tooltip.add(line);
-        */
-
-        return tooltip;
+        NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+        NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, 1, Side.CLIENT);
+        NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, 2, Side.SERVER);
     }
 
     /**

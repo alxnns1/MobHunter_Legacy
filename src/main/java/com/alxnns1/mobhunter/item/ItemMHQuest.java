@@ -1,9 +1,9 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.handler.EnumGuiID;
-import com.alxnns1.mobhunter.inventory.InventoryPouch;
+import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
+import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.reference.Names;
-import com.alxnns1.mobhunter.util.ClientUtil;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,39 +17,35 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 /**
- * Created by Alex on 16/11/2016.
+ * Created by Mark on 12/01/2017.
  */
-public class ItemMHPouch extends ItemMHBasic
+public class ItemMHQuest extends ItemMHBasic
 {
-    public ItemMHPouch()
+    public ItemMHQuest()
     {
-        super(Names.Items.FIELD_POUCH);
-        setMaxStackSize(1);
-    }
-
-    /**
-     * Gets the pouch's inventory from the ItemStack.
-     */
-    public static InventoryPouch getInventory(ItemStack stack)
-    {
-        return new InventoryPouch(stack, stack.getDisplayName(), true, 27);
+        super(Names.Items.QUEST);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        if(!worldIn.isRemote && !playerIn.isSneaking() && hand == EnumHand.MAIN_HAND)
-            CommonUtil.openGui(playerIn, worldIn, EnumGuiID.POUCH);
-            //playerIn.displayGUIChest(new PouchInventory(itemStackIn, "Field Pouch", true, 27));
+        if(worldIn.isRemote)
+        {
+            //if(QuestHandler.getQuestCapability(playerIn).getCurrentQuest() != null)
+                CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST);
+            //else
+            //    playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
+        }
         return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
     }
 
-    /**
-     * Allows items to add custom lines of information to the mouseover description
-     */
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        ClientUtil.addTooltip(stack, tooltip);
+        //Show quest name on tooltip
+        MHQuestObject quest = QuestHandler.getQuestCapability(playerIn).getCurrentQuest();
+        String questName = quest == null ? "No quest accepted" : quest.getQuest().getLocalName();
+        tooltip.add("Current quest:");
+        tooltip.add(questName);
     }
 }

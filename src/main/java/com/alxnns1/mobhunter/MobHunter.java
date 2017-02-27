@@ -1,13 +1,12 @@
 package com.alxnns1.mobhunter;
 
-import com.alxnns1.mobhunter.handler.GuiHandler;
-import com.alxnns1.mobhunter.handler.ConfigHandler;
-import com.alxnns1.mobhunter.handler.EventHandler;
-import com.alxnns1.mobhunter.handler.LootHandler;
+import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
+import com.alxnns1.mobhunter.handler.*;
 import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -110,6 +109,8 @@ public class MobHunter
         ConfigHandler.init(event.getSuggestedConfigurationFile());
         MinecraftForge.EVENT_BUS.register(new ConfigHandler());
 
+        CommonUtil.initNetwork();
+
         MHItems.regItems();
         MHBlocks.regBlocks();
         MHBlocks.regTileEntities();
@@ -123,8 +124,7 @@ public class MobHunter
             MHBlocks.regModels();
         }
 
-        //TODO: Uncomment Hunter Rank
-        //CapabilityManager.INSTANCE.register(IHunterRank.class, HunterRankDefault.HunterRankStorage.hunterRankStorage, HunterRankDefault.class);
+        MHCapabilities.init();
     }
 
     @Mod.EventHandler
@@ -137,9 +137,12 @@ public class MobHunter
 
         MHRecipes.init();
         MHAchievements.init();
+        MHQuests.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new LootHandler());
+        MinecraftForge.EVENT_BUS.register(new QuestHandler());
+        MinecraftForge.EVENT_BUS.register(new HunterRankHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
@@ -148,5 +151,7 @@ public class MobHunter
     public void postInit(FMLPostInitializationEvent event)
     {
         //I wonder if I'll use this
+        //Mark: looks like we will now! #whyNot
+        HunterRankProgression.init();
     }
 }
