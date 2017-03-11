@@ -1,11 +1,12 @@
 package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.alxnns1.mobhunter.block.BlockCrop;
+import com.alxnns1.mobhunter.init.MHBlocks;
 import com.alxnns1.mobhunter.potion.PotionEffectParalyse;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.ClientUtil;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

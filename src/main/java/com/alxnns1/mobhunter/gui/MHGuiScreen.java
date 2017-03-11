@@ -47,7 +47,7 @@ public class MHGuiScreen extends GuiScreen
 
         //Draw GUI background
         mc.getTextureManager().bindTexture(guiImage);
-        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, 192);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
 

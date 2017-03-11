@@ -56,6 +56,7 @@ public class Names
                 DRAGONITE_PICKAXE = "Dragonite",
                 GOSSAMITE_PICKAXE = "Gossamite",
                 QUEST = "quest",
+                QUEST_LIST = "questList",
 
                 //MISC
                 CATALYST = "catalyst",

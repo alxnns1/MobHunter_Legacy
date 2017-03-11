@@ -3,11 +3,8 @@ package com.alxnns1.mobhunter.handler;
 import com.alxnns1.mobhunter.container.ContainerArmourCraft;
 import com.alxnns1.mobhunter.container.ContainerPouch;
 import com.alxnns1.mobhunter.container.ContainerWeaponCraft;
-import com.alxnns1.mobhunter.gui.GuiArmourCraft;
-import com.alxnns1.mobhunter.gui.GuiPouch;
-import com.alxnns1.mobhunter.gui.GuiWeaponCraft;
+import com.alxnns1.mobhunter.gui.*;
 import com.alxnns1.mobhunter.init.MHBlocks;
-import com.alxnns1.mobhunter.gui.GuiQuest;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -57,6 +54,8 @@ public class GuiHandler implements IGuiHandler
                     return new GuiPouch(player, world);
                 case QUEST:
                     return new GuiQuest(player);
+                case QUEST_LIST:
+                    return new GuiQuestList(player);
             }
         }
         else

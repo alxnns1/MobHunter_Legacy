@@ -12,9 +12,6 @@ import net.minecraft.entity.player.EntityPlayer;
 
 import java.io.IOException;
 
-/**
- * Created by Mark on 12/01/2017.
- */
 public class GuiQuest extends MHGuiScreen
 {
     private MHQuestObject quest;

@@ -174,14 +174,12 @@ public class MHItems
             weaponBlazingTempest,
             weaponBlazingInferno;
 
-    public static ItemMHBow
-            weaponTestBow;
+    public static ItemMHBow weaponTestBow;
 
-    public static ItemMHQuest
-            itemQuest;
+    public static ItemMHQuest itemQuest;
+    public static ItemMHQuestList itemQuestList;
 
-    public static ItemMHDebug
-            itemDebug;
+    public static ItemMHDebug itemDebug;
 
     /**
      * Registers the items
@@ -553,6 +551,7 @@ public class MHItems
         regItem(weaponTestBow = new ItemMHBow("weaponTestBow", EnumBowCharge.PIERCE, 1));
 
         regItem(itemQuest = new ItemMHQuest());
+        regItem(itemQuestList = new ItemMHQuestList());
 
         regItem(itemDebug = new ItemMHDebug());
 

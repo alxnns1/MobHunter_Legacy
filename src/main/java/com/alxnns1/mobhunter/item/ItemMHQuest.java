@@ -16,9 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-/**
- * Created by Mark on 12/01/2017.
- */
 public class ItemMHQuest extends ItemMHBasic
 {
     public ItemMHQuest()

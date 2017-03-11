@@ -6,5 +6,6 @@ package com.alxnns1.mobhunter.handler;
 public enum EnumGuiID
 {
     POUCH,
-    QUEST
+    QUEST,
+    QUEST_LIST
 }
