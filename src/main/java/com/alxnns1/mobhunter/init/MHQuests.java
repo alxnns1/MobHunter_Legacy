@@ -5,6 +5,7 @@ import com.alxnns1.mobhunter.capability.quest.EntityStack;
 import com.alxnns1.mobhunter.capability.quest.EnumQuestType;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
 import com.alxnns1.mobhunter.reference.MetaRef;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class MHQuests
             testCraft, testGather, testHunt,
             huntBasics1, huntBasics2, huntBasics3, huntBasics4, huntBasics5;
 
+    /**
+     * Gets a quest by it's name (ID)
+     */
     public static MHQuest getQuest(String name)
     {
         for(MHQuest q : ALL_QUESTS)
@@ -37,11 +41,21 @@ public class MHQuests
         return null;
     }
 
+    /**
+     * Gets a copy of the quest list for the given rank
+     */
     public static List<MHQuest> getQuestsForRank(int hunterRank)
     {
-        return QUESTS_BY_RANK.get(hunterRank);
+        List<MHQuest> quests = QUESTS_BY_RANK.get(hunterRank);
+        List<MHQuest> questsCopy = new ArrayList<MHQuest>(quests.size());
+        for(MHQuest q : quests)
+            questsCopy.add(q);
+        return questsCopy;
     }
 
+    /**
+     * Gets all of the quests, grouped by rank
+     */
     public static List<List<MHQuest>> getQuestsByRank()
     {
         return QUESTS_BY_RANK;
@@ -52,6 +66,8 @@ public class MHQuests
         for(MHQuest q : ALL_QUESTS)
             if(q.isEqual(quest))
                 throw new RuntimeException("A Quest with the name " + quest.getUnlocName() + " already exists!");
+        if(quest.getObjectives() == null) LogHelper.warn("The quest '" + quest.getQuestId() + "' has no objectives!");
+        if(quest.getRewardItems() == null) LogHelper.warn("The quest '" + quest.getQuestId() + "' has no rewards!");
         ALL_QUESTS.add(quest);
         QUESTS_BY_RANK.get(quest.getRequiredHR()).add(quest);
     }
@@ -67,7 +83,8 @@ public class MHQuests
                 .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5)));
         regQuest(testHunt = new MHQuest(EnumQuestType.HUNTING, "testHunt", 100, 0, 140)
                 .setObjectives(new EntityStack("MobHunter.Gargwa", 1))
-                .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.MISC, "steelEgg")));
+                .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.MISC, "steelEgg"))
+                .setRepeatable(10));
 
         regQuest(huntBasics1 = new MHQuest(EnumQuestType.GATHERING, "huntBasics1", 1, 0, 140)
                 .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "herb", 5))

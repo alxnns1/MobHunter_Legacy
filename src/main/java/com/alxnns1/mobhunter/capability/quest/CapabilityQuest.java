@@ -37,6 +37,12 @@ public class CapabilityQuest implements IQuest
     }
 
     @Override
+    public boolean isQuestAccepted(MHQuest quest)
+    {
+        return currentQuest != null && currentQuest.getQuest().equals(quest);
+    }
+
+    @Override
     public List<MHQuestCooldown> getCooldownQuests()
     {
         return cooldownQuests;
@@ -61,6 +67,18 @@ public class CapabilityQuest implements IQuest
     public List<String> getCompletedQuests()
     {
         return completedQuests;
+    }
+
+    @Override
+    public boolean isQuestCompleted(MHQuest quest)
+    {
+        return completedQuests.contains(quest.getQuestId());
+    }
+
+    @Override
+    public boolean canAcceptQuest(MHQuest quest)
+    {
+        return !isQuestAccepted(quest) && !isQuestCompleted(quest) && !isQuestCoolingDown(quest);
     }
 
     @Override
@@ -128,7 +146,7 @@ public class CapabilityQuest implements IQuest
                 HunterRankHandler.getHunterRankCapability(player).changeProgressPointsBy(player, quest.getPointsReward());
 
                 //Add completed quest to either completed quests or quests on cooldown
-                if(currentQuest.getQuest().getIsRepeatable())
+                if(currentQuest.getQuest().isRepeatable())
                 {
                     cooldownQuests.add(new MHQuestCooldown(currentQuest.getQuest(), player.world.getTotalWorldTime()));
                     dataChanged(player, EnumQuestDataChange.COOLDOWN);
@@ -151,7 +169,14 @@ public class CapabilityQuest implements IQuest
     @Override
     public EnumQuestStatus getQuestStatus(MHQuest quest)
     {
-        return currentQuest.getQuest().isEqual(quest) ? EnumQuestStatus.ACCEPTED : completedQuests.contains(quest.getQuestId()) ? EnumQuestStatus.COMPLETED : EnumQuestStatus.UNCOMPLETED;
+        if(isQuestAccepted(quest))
+            return EnumQuestStatus.ACCEPTED;
+        else if(isQuestCompleted(quest))
+            return EnumQuestStatus.COMPLETED;
+        else if(isQuestCoolingDown(quest))
+            return EnumQuestStatus.COOLDOWN;
+        else
+            return EnumQuestStatus.UNCOMPLETED;
     }
 
     @Override

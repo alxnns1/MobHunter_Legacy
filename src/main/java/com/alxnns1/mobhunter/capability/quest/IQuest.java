@@ -17,6 +17,11 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
     MHQuestObject getCurrentQuest();
 
     /**
+     * Returns whether the quest is the currently accepted quest
+     */
+    boolean isQuestAccepted(MHQuest quest);
+
+    /**
      * Returns the quests currently on cooldown for the player
      */
     List<MHQuestCooldown> getCooldownQuests();
@@ -36,6 +41,16 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
      * Returns the quests completed by the player
      */
     List<String> getCompletedQuests();
+
+    /**
+     * Returns whether the quest has been completed by the player
+     */
+    boolean isQuestCompleted(MHQuest quest);
+
+    /**
+     * Returns whether the wuest can be accepted
+     */
+    boolean canAcceptQuest(MHQuest quest);
 
     /**
      * Adds the quest as the current accepted quest for the player

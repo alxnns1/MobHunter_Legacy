@@ -9,17 +9,12 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/**
- * Created by Mark on 12/01/2017.
- */
 public class MHQuest
 {
     private final EnumQuestType questType;
     /** Unlocalised name for the quest */
     private final String name;
     private final int points, reqHR, time;
-    /** Whether the quest is repeatable */
-    private boolean repeatable;
     /** Cooldown to being able to accept the quest again once it's been completed */
     private int repeatCooldown;
     private Object[] objectives;
@@ -32,7 +27,7 @@ public class MHQuest
         points = pointsRewarded;
         reqHR = requiredHR;
         time = timeLimit;
-        repeatable = false;
+        repeatCooldown = -1;
     }
 
     /**
@@ -51,6 +46,9 @@ public class MHQuest
         return name.equals(questId);
     }
 
+    /**
+     * Sets the objectives of this quest, which may be EntityStacks or ItemStacks
+     */
     public MHQuest setObjectives(Object... objectives)
     {
         LogHelper.info(objectives[0].getClass().getName());
@@ -60,24 +58,29 @@ public class MHQuest
         return this;
     }
 
+    /**
+     * Gets the objectives for this quest
+     */
     public Object[] getObjectives()
     {
-        return objectives != null ? objectives.clone() : null;
+        return objectives == null ? null : objectives.clone();
     }
 
-    public MHQuest setRepeatable(int cooldown)
+    /**
+     * Sets this quest to be repeatable, and how long of a cooldown it will have (in minutes)
+     */
+    public MHQuest setRepeatable(int cooldownMins)
     {
-        repeatable = true;
-        repeatCooldown = cooldown;
+        repeatCooldown = cooldownMins * 1200;
         return this;
     }
 
     /**
      * Whether this quest can be repeated
      */
-    public boolean getIsRepeatable()
+    public boolean isRepeatable()
     {
-        return repeatable;
+        return repeatCooldown >= 0;
     }
 
     /**
@@ -94,7 +97,7 @@ public class MHQuest
      */
     public ItemStack[] getRewardItems()
     {
-        return rewards.clone();
+        return rewards == null ? null : rewards.clone();
     }
 
     /**
@@ -182,7 +185,15 @@ public class MHQuest
      */
     public int getRepeatCooldown()
     {
-        return repeatable ? repeatCooldown : -1;
+        return repeatCooldown;
+    }
+
+    /**
+     * Returns the repeat cooldown in minutes rather than ticks
+     */
+    public int getRepeatCooldownInMins()
+    {
+        return getRepeatCooldown() / 1200;
     }
 
     public EnumQuestType getQuestType()

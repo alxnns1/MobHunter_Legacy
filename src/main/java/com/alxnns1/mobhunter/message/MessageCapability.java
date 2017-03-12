@@ -1,11 +1,11 @@
 package com.alxnns1.mobhunter.message;
 
 import com.alxnns1.mobhunter.gui.GuiQuest;
+import com.alxnns1.mobhunter.gui.GuiQuestList;
 import com.alxnns1.mobhunter.init.MHCapabilities;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IThreadListener;
 import net.minecraftforge.common.capabilities.Capability;
@@ -61,8 +61,13 @@ public class MessageCapability implements IMessage
                     Object capability = player.getCapability(message.capabilityType.getCapability(), null);
                     if(capability != null && capability instanceof INBTSerializable)
                         ((INBTSerializable) capability).deserializeNBT(message.capabilityNBT);
+
+                    //Refresh GuiQuest if open
                     if(message.capabilityType == EnumCapability.QUEST && mc.currentScreen != null && mc.currentScreen instanceof GuiQuest)
                         ((GuiQuest) mc.currentScreen).updateQuest(null);
+                    //Refresh GuiQuestList if open
+                    if(mc.currentScreen != null && mc.currentScreen instanceof GuiQuestList)
+                        ((GuiQuestList) mc.currentScreen).refreshButtons();
                 }
             });
             return null;

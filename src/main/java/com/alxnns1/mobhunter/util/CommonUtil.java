@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.handler.EnumGuiID;
 import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.message.MessageCapability;
+import com.alxnns1.mobhunter.message.MessageSetQuest;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +16,8 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
+import java.util.regex.Matcher;
+
 /**
  * This class will contain methods which will get used in multiple places
  * Created by Mark on 21/04/2016.
@@ -22,12 +25,14 @@ import net.minecraftforge.fml.relauncher.Side;
 public class CommonUtil
 {
     public static SimpleNetworkWrapper NETWORK;
+    private static int messageID = 1;
 
     public static void initNetwork()
     {
         NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
-        NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, 1, Side.CLIENT);
-        NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, 2, Side.SERVER);
+        NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, messageID++, Side.CLIENT);
+        NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, messageID++, Side.SERVER);
+        NETWORK.registerMessage(MessageSetQuest.Handler.class, MessageSetQuest.class, messageID++, Side.SERVER);
     }
 
     /**
@@ -80,5 +85,14 @@ public class CommonUtil
     {
         BlockPos pos = player.getPosition();
         player.openGui(MobHunter.instance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    /**
+     * This method will replace all commas (',') with new line markers ('\n').
+     * Mainly for converting a text comma separated list to a vertical list where each value is on it's own line.
+     */
+    public static String replaceCommasWithNewlines(String text, boolean addSpaceAroundNewlines)
+    {
+        return text.replaceAll(", ", addSpaceAroundNewlines ? " \n " : "\n");
     }
 }
