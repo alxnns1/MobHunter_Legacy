@@ -27,7 +27,7 @@ public class MHQuestCooldown
      */
     public boolean isCoolEnough(long worldTime)
     {
-        return worldTime >= cooldownStart + quest.getRepeatCooldown();
+        return getMinsLeft(worldTime) <= 0;
     }
 
     /**
@@ -35,7 +35,7 @@ public class MHQuestCooldown
      */
     public int getMinsLeft(long worldTime)
     {
-        return (int) ((worldTime - cooldownStart + (long) quest.getRepeatCooldown()) / 1200L);
+        return (int) ((cooldownStart + (long) quest.getRepeatCooldown() - worldTime) / 1200L);
     }
 
     public NBTTagCompound writeToNBT()

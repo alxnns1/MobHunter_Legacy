@@ -82,11 +82,11 @@ public class CapabilityQuest implements IQuest
     }
 
     @Override
-    public boolean addQuest(MHQuestObject quest)
+    public boolean addQuest(MHQuest quest, long startTime)
     {
         boolean canAdd = currentQuest == null;
         if(canAdd)
-            currentQuest = quest;
+            currentQuest = new MHQuestObject(quest).setStartTime(startTime);
         return canAdd;
     }
 
@@ -195,7 +195,7 @@ public class CapabilityQuest implements IQuest
                 tag.setTag("completedQuests", serializeCompletedQuestsNBT());
                 break;
             case COOLDOWN:
-                tag.setTag("completedQuests", serializeCooldownQuestsNBT());
+                tag.setTag("cooldownQuests", serializeCooldownQuestsNBT());
                 break;
         }
         CommonUtil.NETWORK.sendTo(new MessageCapability(MessageCapability.EnumCapability.QUEST, tag), player);
@@ -264,12 +264,14 @@ public class CapabilityQuest implements IQuest
         if(nbt.hasKey("completedQuests"))
         {
             NBTTagList tagList = nbt.getTagList("completedQuests", Constants.NBT.TAG_STRING);
+            completedQuests.clear();
             for(int i = 0; i < tagList.tagCount(); i++)
                 completedQuests.add(tagList.getStringTagAt(i));
         }
         if(nbt.hasKey("cooldownQuests"))
         {
             NBTTagList tagList = nbt.getTagList("cooldownQuests", Constants.NBT.TAG_COMPOUND);
+            cooldownQuests.clear();
             for(int i = 0; i < tagList.tagCount(); i++)
                 cooldownQuests.add(MHQuestCooldown.readFromNBT(tagList.getCompoundTagAt(i)));
         }

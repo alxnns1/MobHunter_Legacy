@@ -132,17 +132,17 @@ public class MessageGuiQuest implements IMessage
                         //Debug Buttons
                         case 4:
                             //Add Test Crafting Quest
-                            questCapability.addQuest(new MHQuestObject(MHQuests.testCraft).setStartTime(world.getTotalWorldTime()));
+                            questCapability.addQuest(MHQuests.testCraft, world.getTotalWorldTime());
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                         case 5:
                             //Add Test Gathering Quest
-                            questCapability.addQuest(new MHQuestObject(MHQuests.testGather).setStartTime(world.getTotalWorldTime()));
+                            questCapability.addQuest(MHQuests.testGather, world.getTotalWorldTime());
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                         case 6:
                             //Add Test Hunting Quest
-                            questCapability.addQuest(new MHQuestObject(MHQuests.testHunt).setStartTime(world.getTotalWorldTime()));
+                            questCapability.addQuest(MHQuests.testHunt, world.getTotalWorldTime());
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                         case 7:

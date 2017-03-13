@@ -74,7 +74,7 @@ public class MessageSetQuest implements IMessage
                         //Try to add the quest
                         MHQuest quest = MHQuests.getQuest(message.questName);
                         if(quest == null) LogHelper.error("Couldn't find quest '" + message.questName + "'!");
-                        questCapability.addQuest(new MHQuestObject(quest));
+                        questCapability.addQuest(quest, world.getTotalWorldTime());
                     }
                     questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                 }

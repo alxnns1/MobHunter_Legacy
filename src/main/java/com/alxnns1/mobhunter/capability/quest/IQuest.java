@@ -57,7 +57,7 @@ public interface IQuest extends INBTSerializable<NBTTagCompound>
      * Will ONLY remove the quest from the player
      * @return Success - Will return false if player has already accepted a quest
      */
-    boolean addQuest(MHQuestObject quest);
+    boolean addQuest(MHQuest quest, long startTime);
 
     /**
      * Removes the current accepted quest from the player

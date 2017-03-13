@@ -2,10 +2,10 @@ package com.alxnns1.mobhunter.capability.quest;
 
 public enum EnumQuestStatus
 {
-    ACCEPTED(0xE52B2B),
-    COMPLETED(0x18AF27),
-    COOLDOWN(0x1B7FC6),
-    UNCOMPLETED(0xEAC81C);
+    ACCEPTED(0xE52B2B), //Red
+    COMPLETED(0x18AF27), //Green
+    COOLDOWN(0x3591CE), //Blue
+    UNCOMPLETED(0xEAC81C); //Orange
 
     private final int colour;
 

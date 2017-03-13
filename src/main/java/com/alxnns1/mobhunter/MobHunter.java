@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter;
 
 import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
+import com.alxnns1.mobhunter.command.CommandQuest;
 import com.alxnns1.mobhunter.handler.*;
 import com.alxnns1.mobhunter.init.*;
 import com.alxnns1.mobhunter.reference.MetaRef;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -153,5 +155,12 @@ public class MobHunter
         //I wonder if I'll use this
         //Mark: looks like we will now! #whyNot
         HunterRankProgression.init();
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event)
+    {
+        //Register commands
+        event.registerServerCommand(new CommandQuest());
     }
 }

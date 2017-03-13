@@ -18,6 +18,7 @@ public class MHQuests
 {
     private static List<MHQuest> ALL_QUESTS = new ArrayList<MHQuest>();
     private static List<List<MHQuest>> QUESTS_BY_RANK = new ArrayList<List<MHQuest>>();
+    private static List<String> QUEST_IDS = new ArrayList<String>();
 
     static
     {
@@ -29,6 +30,17 @@ public class MHQuests
     public static MHQuest
             testCraft, testGather, testHunt,
             huntBasics1, huntBasics2, huntBasics3, huntBasics4, huntBasics5;
+
+    /**
+     * Gets a list of all the quest IDs
+     */
+    public static List<String> getQuestIds()
+    {
+        List<String> idsCopy = new ArrayList<String>(QUEST_IDS.size());
+        for(String s : QUEST_IDS)
+            idsCopy.add(s);
+        return idsCopy;
+    }
 
     /**
      * Gets a quest by it's name (ID)
@@ -70,6 +82,7 @@ public class MHQuests
         if(quest.getRewardItems() == null) LogHelper.warn("The quest '" + quest.getQuestId() + "' has no rewards!");
         ALL_QUESTS.add(quest);
         QUESTS_BY_RANK.get(quest.getRequiredHR()).add(quest);
+        QUEST_IDS.add(quest.getQuestId());
     }
 
     public static void init()

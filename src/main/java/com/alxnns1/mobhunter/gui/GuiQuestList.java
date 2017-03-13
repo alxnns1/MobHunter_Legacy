@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.gui;
 import com.alxnns1.mobhunter.capability.quest.EnumQuestStatus;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
+import com.alxnns1.mobhunter.capability.quest.MHQuestCooldown;
 import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.message.MessageSetQuest;
@@ -19,10 +20,6 @@ import java.util.List;
 
 public class GuiQuestList extends MHGuiScreen
 {
-    //TODO: Render selected quest in GUI
-    //TODO: Add back button (already made textures)
-    //TODO: Make sure accept button works?
-
     private static final List<Integer> hunterRankList;
     private static int numButtons = 7;
 
@@ -200,10 +197,14 @@ public class GuiQuestList extends MHGuiScreen
             //Repeat Cooldown
             if(selectedQuest.isRepeatable())
             {
-                String text = "Cooldown: " + selectedQuest.getRepeatCooldownInMins() + "mins";
+                MHQuestCooldown cooldownQuest = questCapability.getQuestCooldown(selectedQuest);
+                String text = cooldownQuest == null ?
+                        "Cooldown: " + selectedQuest.getRepeatCooldownInMins() + "mins" :
+                        "Cooldown: " + cooldownQuest.getMinsLeft(mc.world.getTotalWorldTime()) + "mins";
+                int textColour = cooldownQuest == null ? white : EnumQuestStatus.COOLDOWN.getColour();
                 int textWidth = fontRendererObj.getStringWidth(text);
                 int cooldownX = 185 + guiLeft - textWidth;
-                drawStringWithShadow(text, cooldownX, y + textHeight * 7, white);
+                drawStringWithShadow(text, cooldownX, y + textHeight * 7, textColour);
             }
         }
         else
