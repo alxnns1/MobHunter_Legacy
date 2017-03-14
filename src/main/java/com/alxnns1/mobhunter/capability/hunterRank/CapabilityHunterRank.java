@@ -45,25 +45,52 @@ public class CapabilityHunterRank implements IHunterRank
     public void setRank(EntityPlayerMP player, int hunterRank)
     {
         setRankInternal(hunterRank);
-        dataChanged(player, EnumHRDataChange.RANK);
+        boolean pointsChanged = false;
+        if(progressPoints != 0)
+        {
+            setProgressPointsInternal(0);
+            pointsChanged = true;
+        }
+
+        dataChanged(player, pointsChanged ? EnumHRDataChange.ALL : EnumHRDataChange.RANK);
+    }
+
+    @Override
+    public void changeRankBy(EntityPlayerMP player, int amount)
+    {
+        setRank(player, hunterRank + amount);
+    }
+
+    /**
+     * Sets the progress points without calling dataChanged
+     */
+    private void setProgressPointsInternal(int progressPoints)
+    {
+        this.progressPoints = Math.min(Math.max(progressPoints, 0), HunterRankProgression.getProgressForRank(hunterRank) - 1);
     }
 
     @Override
     public void setProgressPoints(EntityPlayerMP player, int progressPoints)
     {
-        this.progressPoints = Math.max(progressPoints, 0);
+        setProgressPointsInternal(progressPoints);
         dataChanged(player, EnumHRDataChange.PROGRESS);
     }
 
     @Override
     public void changeProgressPointsBy(EntityPlayerMP player, int amount)
     {
-        setProgressPoints(player, progressPoints + amount);
+        progressPoints += amount;
         int oldRank = hunterRank;
 
         if(progressPoints < 0)
-            //Decrease rank
-            setRankInternal(hunterRank - 1);
+        {
+            while(progressPoints < 0)
+            {
+                //Decrease rank
+                setRankInternal(hunterRank - 1);
+                progressPoints = HunterRankProgression.getProgressForRank(hunterRank) + progressPoints;
+            }
+        }
         else
         {
             int maxProgress = HunterRankProgression.getProgressForRank(hunterRank);

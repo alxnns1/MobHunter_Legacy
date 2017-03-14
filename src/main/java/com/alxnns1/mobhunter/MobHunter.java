@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter;
 
 import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
+import com.alxnns1.mobhunter.command.CommandHunterRank;
 import com.alxnns1.mobhunter.command.CommandQuest;
 import com.alxnns1.mobhunter.handler.*;
 import com.alxnns1.mobhunter.init.*;
@@ -162,5 +163,6 @@ public class MobHunter
     {
         //Register commands
         event.registerServerCommand(new CommandQuest());
+        event.registerServerCommand(new CommandHunterRank());
     }
 }

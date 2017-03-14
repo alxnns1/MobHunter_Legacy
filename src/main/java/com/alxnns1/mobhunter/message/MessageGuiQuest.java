@@ -108,6 +108,7 @@ public class MessageGuiQuest implements IMessage
                         case 2:
                             //Submit
                             //Try to submit every item in the player's inventory
+                            //TODO: Find out why submitting items doesn't work properly
                             for(int i = 0; i < player.inventory.getSizeInventory(); i++)
                             {
                                 ItemStack stack = player.inventory.getStackInSlot(i);

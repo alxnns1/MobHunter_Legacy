@@ -33,7 +33,8 @@ public class CommandQuest extends CommandBase
     @Override
     public String getUsage(ICommandSender sender)
     {
-        return "\nClear all quest progress: quest clearAll [playerName]" +
+        return "Usage:" +
+                "\nClear all quest progress: quest clearAll [playerName]" +
                 "\nClear current quest: quest clearCurrent [playerName]" +
                 "\nComplete a quest: quest complete <questID> [playerName]" +
                 "\nUncomplete a quest: quest uncomplete <questID> [playerName]" +
@@ -139,10 +140,15 @@ public class CommandQuest extends CommandBase
             case 1:
                 return getListOfStringsMatchingLastWord(args, "clearAll", "clearCurrent", "complete", "uncomplete", "accept");
             case 2:
-                return getListOfStringsMatchingLastWord(args, MHQuests.getQuestIds());
+                if(args[1].equals("clearAll") || args[1].equals("clearCurrent"))
+                    return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
+                else
+                    return getListOfStringsMatchingLastWord(args, MHQuests.getQuestIds());
             case 3:
-                return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
+                if(!args[1].equals("clearAll") && !args[1].equals("clearCurrent"))
+                    return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
+            default:
+                return Collections.<String>emptyList();
         }
-        return Collections.<String>emptyList();
     }
 }
