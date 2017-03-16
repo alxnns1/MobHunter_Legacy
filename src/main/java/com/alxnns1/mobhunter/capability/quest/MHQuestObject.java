@@ -171,8 +171,10 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
             toProgress = ((EntityStack) objectToProgress).getAmount();
         if(currProg < maxProg)
         {
-            progress.put(i, Math.min(currProg + toProgress, maxProg));
-            return toProgress;
+            toProgress = Math.min(currProg + toProgress, maxProg);
+            progress.put(i, toProgress);
+            //Return the progress made
+            return toProgress - currProg;
         }
         return 0;
     }

@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,10 +29,10 @@ public class ItemMHQuest extends ItemMHBasic
     {
         if(worldIn.isRemote)
         {
-            //if(QuestHandler.getQuestCapability(playerIn).getCurrentQuest() != null)
+            if(QuestHandler.getQuestCapability(playerIn).getCurrentQuest() != null)
                 CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST);
-            //else
-            //    playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
+            else
+                playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
         }
         return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
     }

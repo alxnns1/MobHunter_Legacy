@@ -98,7 +98,7 @@ public class CommandHunterRank extends CommandBase
         switch(args.length)
         {
             case 1:
-                return getListOfStringsMatchingLastWord(args, "clearAll", "clearCurrent", "complete", "uncomplete", "accept");
+                return getListOfStringsMatchingLastWord(args, "addPoints", "setPoints", "addRank", "setRank");
             case 3:
                 return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
             default:

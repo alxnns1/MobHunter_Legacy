@@ -21,7 +21,7 @@ public class GuiQuest extends MHGuiScreen
         super("quest");
         updateQuest(player);
         xSize = 192;
-        ySize = 244; //191;
+        ySize = 191;
     }
 
     /**
@@ -59,13 +59,6 @@ public class GuiQuest extends MHGuiScreen
             addButton(new QuestButton(72, 150, "Share"));
             addButton(new QuestButton(126, 150, "Cancel"));
         }
-
-        //TODO: Remove debug buttons
-        //Debug Buttons
-        addButton(new QuestButton(18, 194, "Craft"));
-        addButton(new QuestButton(72, 194, "Gather"));
-        addButton(new QuestButton(126, 194, "Hunt"));
-        addButton(new QuestButton(72, 220, "Clear Q"));
     }
 
     protected void drawExtraBg()

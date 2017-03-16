@@ -1,9 +1,7 @@
 package com.alxnns1.mobhunter.message;
 
-import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.capability.quest.EnumQuestDataChange;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
-import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
 import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import io.netty.buffer.ByteBuf;
@@ -108,7 +106,6 @@ public class MessageGuiQuest implements IMessage
                         case 2:
                             //Submit
                             //Try to submit every item in the player's inventory
-                            //TODO: Find out why submitting items doesn't work properly
                             for(int i = 0; i < player.inventory.getSizeInventory(); i++)
                             {
                                 ItemStack stack = player.inventory.getStackInSlot(i);
@@ -128,28 +125,6 @@ public class MessageGuiQuest implements IMessage
                             questCapability.cancelQuest(player);
                             questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             player.closeScreen();
-                            break;
-
-                        //Debug Buttons
-                        case 4:
-                            //Add Test Crafting Quest
-                            questCapability.addQuest(MHQuests.testCraft, world.getTotalWorldTime());
-                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
-                            break;
-                        case 5:
-                            //Add Test Gathering Quest
-                            questCapability.addQuest(MHQuests.testGather, world.getTotalWorldTime());
-                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
-                            break;
-                        case 6:
-                            //Add Test Hunting Quest
-                            questCapability.addQuest(MHQuests.testHunt, world.getTotalWorldTime());
-                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
-                            break;
-                        case 7:
-                            //Clear Current Quest
-                            questCapability.clearQuest();
-                            questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);
                             break;
                     }
                 }

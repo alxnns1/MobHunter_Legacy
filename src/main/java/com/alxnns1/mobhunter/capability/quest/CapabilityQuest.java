@@ -127,7 +127,7 @@ public class CapabilityQuest implements IQuest
             if(object instanceof ItemStack)
             {
                 ItemStack stack = (ItemStack) object;
-                player.inventory.clearMatchingItems(stack.getItem(), stack.getMetadata(), stack.stackSize, stack.getTagCompound());
+                player.inventory.clearMatchingItems(stack.getItem(), stack.getMetadata(), progress, stack.getTagCompound());
                 player.inventory.markDirty();
             }
             if(currentQuest.isCompleted())

@@ -10,15 +10,20 @@ import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameType;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -31,6 +36,7 @@ import java.util.*;
 public class HunterRankHandler
 {
     private static final ResourceLocation hunterRankRL = new ResourceLocation(Reference.MOD_ID, "_HunterRank");
+    private static final ResourceLocation hunterRankBar = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "hr_bar.png");
     private static Minecraft mc = Minecraft.getMinecraft();
 
     /**
@@ -94,42 +100,87 @@ public class HunterRankHandler
     /**
      * Draws the text centered on the given position
      */
-    private static void drawCenteredOnPos(FontRenderer fr, String text, int xPos, int yPos)
+    private static void drawCenteredOnPos(FontRenderer fr, String text, int xPos, int yPos, int colour)
     {
-        fr.drawStringWithShadow(text, xPos - (fr.getStringWidth(text) / 2), yPos, 0xFFFFFF);
+        fr.drawString(text, xPos - (fr.getStringWidth(text) / 2), yPos, colour);
+    }
+
+    private static void drawBorderedString(FontRenderer fr, String text, int xPos, int yPos, int colour)
+    {
+        fr.drawString(text, xPos + 1, yPos, 0);
+        fr.drawString(text, xPos - 1, yPos, 0);
+        fr.drawString(text, xPos, yPos + 1, 0);
+        fr.drawString(text, xPos, yPos - 1, 0);
+        fr.drawString(text, xPos, yPos, colour);
+    }
+
+    /**
+     * Draws a textured rectangle using the texture currently bound to the TextureManager
+     */
+    public void drawTexturedModalRect(float xCoord, float yCoord, int minU, int minV, int maxU, int maxV)
+    {
+        float f = 0.00390625F;
+        float f1 = 0.00390625F;
+        Tessellator tessellator = Tessellator.getInstance();
+        VertexBuffer vertexbuffer = tessellator.getBuffer();
+        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0d).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0d).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0d).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0d).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        tessellator.draw();
     }
 
     @SubscribeEvent
-    public void renderHR(RenderGameOverlayEvent.Post event)
+    public void renderInventoryHR(GuiScreenEvent.DrawScreenEvent.Post event)
     {
-        switch(event.getType())
+        if(event.getGui() instanceof GuiInventory)
         {
-            case TEXT:
-                //Just for testing at least atm
+            EntityPlayer player = mc.player;
+            IHunterRank hunterRank = HunterRankHandler.getHunterRankCapability(player);
+            if(hunterRank == null)
+                return;
 
-                EntityPlayer player = mc.player;
-                IHunterRank hunterRank = player.getCapability(MHCapabilities.HUNTER_RANK, null);
-                if(hunterRank == null) return;
+            FontRenderer fontRenderer = mc.fontRendererObj;
+            int xMid = event.getGui().width / 2;
+            int x = (event.getGui().width - 176) / 2;
+            int y = (event.getGui().height - 166) / 2 - 5;
+            int hr = hunterRank.getRank();
+            int p = hunterRank.getProgressPoints();
+            int pMax = HunterRankProgression.getProgressForRank(hr);
 
-                //Render hunter rank
-                FontRenderer fontRenderer = mc.fontRendererObj;
-                ScaledResolution res = event.getResolution();
-                int xMid = res.getScaledWidth() / 2;
-                int y = res.getScaledHeight() - 80;
-                int HR = hunterRank.getRank();
+            int barWidth = 176;
+            int barHeight = 6;
+            int barX = xMid - barWidth / 2;
+            int barPointsWidth = Math.round(((float) p / (float) pMax) * (float) barWidth);
 
-                drawCenteredOnPos(fontRenderer, "HR: " + HR, xMid, y);
-                drawCenteredOnPos(fontRenderer, "Progress Points: " + hunterRank.getProgressPoints() + " / " + HunterRankProgression.getProgressForRank(HR), xMid, y + 10);
-                break;
-            //TODO: Sort out something for rendering on the player list
-            /*
-            case PLAYER_LIST:
-                //Draw HR on the player list next to the player's names
-                NetHandlerPlayClient nethandlerplayclient = mc.player.connection;
-                List<NetworkPlayerInfo> list = ENTRY_ORDERING.sortedCopy(nethandlerplayclient.getPlayerInfoMap());
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            RenderHelper.disableStandardItemLighting();
+            mc.getTextureManager().bindTexture(hunterRankBar);
 
-                break;
-            */
+            //Render progression bar
+            drawTexturedModalRect(barX, y, 0, 0, barWidth, barHeight);
+            GlStateManager.color(0.8F, 0.8F, 0F, 1F);
+            drawTexturedModalRect(barX, y, 0, barHeight, barPointsWidth, barHeight * 2);
+            GlStateManager.color(1f, 1f, 1f);
+            //Render hunter rank
+            drawBorderedString(fontRenderer, "HR: " + hr, x + 3, y - 4, 0xCECE02); //Bar colour: 0xA9A901
+
+            RenderHelper.enableStandardItemLighting();
         }
     }
+
+    /*
+    @SubscribeEvent
+    public void renderHR(RenderGameOverlayEvent.Post event)
+    {
+        if(event.getType() == RenderGameOverlayEvent.ElementType.PLAYER_LIST)
+        {
+            //TODO: Sort out something for rendering on the player list
+            //Draw HR on the player list next to the player's names
+            NetHandlerPlayClient nethandlerplayclient = mc.player.connection;
+            List<NetworkPlayerInfo> list = ENTRY_ORDERING.sortedCopy(nethandlerplayclient.getPlayerInfoMap());
+        }
+    }
+    */
 }
