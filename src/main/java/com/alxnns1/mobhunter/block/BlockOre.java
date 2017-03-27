@@ -18,15 +18,10 @@ public class BlockOre extends BlockResource
     //The item that this block will drop with mined
     private ItemStack drop;
 
-    public BlockOre(String blockName, int harvestLevel, Item itemDrop)
-    {
-        this(blockName, harvestLevel, itemDrop, 0);
-    }
-
-    public BlockOre(String blockName, int harvestLevel, Item itemDrop, int meta)
+    public BlockOre(String blockName, int harvestLevel, ItemStack itemDrop)
     {
         this(blockName, harvestLevel);
-        drop = new ItemStack(itemDrop, 1, meta);
+        drop = itemDrop;
     }
 
     public BlockOre(String blockName, int harvestLevel)

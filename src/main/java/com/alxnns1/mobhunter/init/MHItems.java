@@ -555,12 +555,12 @@ public class MHItems
 
         regItem(itemDebug = new ItemMHDebug());
 
-        OreDictionary.registerOre("gemEarthCrystal", new ItemStack(itemOre, 1, 0));
-        OreDictionary.registerOre("ingotMachalite", new ItemStack(itemOre, 1, 1));
-        OreDictionary.registerOre("ingotDragonite", new ItemStack(itemOre, 1, 2));
-        OreDictionary.registerOre("ingotGossamite", new ItemStack(itemOre, 1, 3));
-        OreDictionary.registerOre("gemLightCrystal", new ItemStack(itemOre, 1, 4));
-        OreDictionary.registerOre("gemIceCrystal", new ItemStack(itemOre, 1, 5));
+        OreDictionary.registerOre("gemEarthCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
+        OreDictionary.registerOre("ingotMachalite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT));
+        OreDictionary.registerOre("ingotDragonite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT));
+        OreDictionary.registerOre("ingotGossamite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT));
+        OreDictionary.registerOre("gemLightCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.LIGHT_CRYSTAL));
+        OreDictionary.registerOre("gemIceCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL));
     }
 
     /**
