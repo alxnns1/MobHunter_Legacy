@@ -7,11 +7,9 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeCategory;
-import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-
-import java.util.List;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Mark on 08/12/2016.
@@ -26,7 +24,7 @@ public class ItemCraftingRecipeCategory extends BlankRecipeCategory<ItemCrafting
     {
         uid = Reference.MOD_ID + ":" + unlocName;
         title = I18n.format("jei.recipe." + unlocName);
-        background = guiHelper.createBlankDrawable(150, 110);
+        background = guiHelper.createDrawable(new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraftUpgrade_JEI.png"), 0, 0, 166, 56);
     }
 
     @Override
@@ -50,23 +48,18 @@ public class ItemCraftingRecipeCategory extends BlankRecipeCategory<ItemCrafting
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, ItemCraftingRecipeWrapper recipeWrapper, IIngredients ingredients)
     {
-        //TODO: Finish recipe layout in GUI!
-
         IGuiItemStackGroup guiStacks = recipeLayout.getItemStacks();
         int slotId = 0;
 
-        //List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
-        //ItemStack keyInput = inputs.remove(0).get(0);
-
         //Key Input Slot
-        guiStacks.init(slotId++, true, 0, 0);
+        guiStacks.init(slotId++, true, 5, 19);
 
         //Ingredients
         for(int i = 0; i < ingredients.getInputs(ItemStack.class).size() - 1; i++)
-            guiStacks.init(slotId++, true, 20, i * 18);
+            guiStacks.init(slotId++, true, 57 + (i * 17 - (i / 3 * 51)), 2 + i / 3 * 17);
 
         //Output Slot
-        guiStacks.init(slotId, false, 40, 0);
+        guiStacks.init(slotId, false, 143, 19);
 
         //Set Ingredients
         guiStacks.set(ingredients);

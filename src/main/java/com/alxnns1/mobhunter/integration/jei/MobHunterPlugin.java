@@ -41,7 +41,6 @@ public class MobHunterPlugin extends BlankModPlugin
 
         registry.addRecipeCategoryCraftingItem(new ItemStack(MHBlocks.blockWeaponCraft), Reference.MOD_ID + ":" + WEAPON_CRAFTING_ID);
         registry.addRecipeCategoryCraftingItem(new ItemStack(MHBlocks.blockArmourCraft), Reference.MOD_ID + ":" + ARMOUR_CRAFTING_ID);
-        //registry.addRecipeClickArea(AbstractGuiCraft.class, );
 
         //Hide items from JEI
         IItemBlacklist blacklist = jeiHelper.getItemBlacklist();
