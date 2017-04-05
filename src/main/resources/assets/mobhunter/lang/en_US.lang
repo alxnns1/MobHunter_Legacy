@@ -612,6 +612,10 @@ tile.blockBbqGourmet.name=Gourmet BBQ Spit
 tile.blockWeaponCraft.name=Weapon Crafting Table
 tile.blockArmourCraft.name=Armour Crafting Table
 
+tile.blockBarrelBomb.small.name=Small Barrel Bomb
+tile.blockBarrelBomb.large.name=Large Barrel Bomb
+tile.blockBarrelBomb.bouncing.name=Bouncing Barrel Bomb
+
 //GUI
 
 gui.blockWeaponUpgrade.button.craft.1.1=Upgrade Weapon To:

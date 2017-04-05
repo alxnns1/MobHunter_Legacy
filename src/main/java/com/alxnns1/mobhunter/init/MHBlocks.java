@@ -44,6 +44,7 @@ public class MHBlocks
 
     public static BlockBbq blockBbq, blockBbqGourmet;
     public static BlockCraft blockWeaponCraft, blockArmourCraft;
+    public static BlockBarrelBomb blockBarrelBomb;
 
     private static void regBlock(Block block, String oreDicName)
     {
@@ -54,7 +55,25 @@ public class MHBlocks
     private static void regBlock(Block block)
     {
         GameRegistry.register(block);
-        ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
+        ItemBlock itemBlock = new ItemBlock(block);
+        if(block == blockBarrelBomb)
+        {
+            itemBlock = new ItemBlock(block)
+            {
+                @Override
+                public String getUnlocalizedName(ItemStack stack)
+                {
+                    return super.getUnlocalizedName() + "." + EnumBarrel.getName(stack.getMetadata());
+                }
+
+                @Override
+                public int getMetadata(int metadata)
+                {
+                    return metadata;
+                }
+            };
+        }
+        itemBlock = (ItemBlock) itemBlock.setRegistryName(block.getRegistryName());
         GameRegistry.register(itemBlock);
         BLOCKS.add(block);
     }
@@ -111,6 +130,8 @@ public class MHBlocks
         regBlock(blockBbqGourmet = new BlockBbqGourmet());
         regBlock(blockWeaponCraft = new BlockCraft(Names.Blocks.WEAPON_CRAFT));
         regBlock(blockArmourCraft = new BlockCraft(Names.Blocks.ARMOUR_CRAFT));
+
+        regBlock(blockBarrelBomb = new BlockBarrelBomb());
     }
 
     public static void regTileEntities()

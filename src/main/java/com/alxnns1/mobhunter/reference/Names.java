@@ -479,7 +479,9 @@ public class Names
                 BBQ = "blockBbq",
                 BBQ_GOURMET = "blockBbqGourmet",
                 WEAPON_CRAFT = "blockWeaponCraft",
-                ARMOUR_CRAFT = "blockArmourCraft";
+                ARMOUR_CRAFT = "blockArmourCraft",
+
+                BARREL_BOMB = "blockBarrelBomb";
     }
 
     public static class Potions
