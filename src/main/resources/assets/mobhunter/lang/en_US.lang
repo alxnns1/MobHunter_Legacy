@@ -53,6 +53,7 @@ item.itemDebug.name=Super Secret Rod Of Testing New Things
 
 //Quest
 item.quest.name=Quest Viewer
+item.questList.name=Quest Giver
 
 //Potions
 item.drink.potion.name=Potion

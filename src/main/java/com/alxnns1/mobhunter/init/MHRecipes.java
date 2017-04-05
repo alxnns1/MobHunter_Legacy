@@ -84,6 +84,14 @@ public class MHRecipes
                 'y', new ItemStack(Blocks.CARPET,1,0),
                 'z', Items.STRING);
 
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(MHItems.itemQuest),
+                Items.PAPER, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
+
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(MHItems.itemQuestList),
+                Items.BOOK, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
+
 
         GameRegistry.addRecipe(new ShapedOreRecipe(
                 new ItemStack(MHItems.itemMachalitePickaxe),
@@ -596,6 +604,5 @@ public class MHRecipes
                 MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_SCALE, 3),
                 MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S, 4),
                 new ItemStack(Items.IRON_INGOT, 4));
-
     }
 }
