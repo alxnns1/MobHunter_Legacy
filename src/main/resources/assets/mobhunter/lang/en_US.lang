@@ -746,9 +746,13 @@ entity.MobHunter.Fatalis.name=Fatalis
 //QUESTS
 
 //Test Quests
-quest.testCraft.name=Test Crafting
-quest.testCraft.desc=This is a crafting test quest.
-quest.testGather.name=Test Gathering
-quest.testGather.desc=This is a gathering test quest.
-quest.testHunt.name=Test Hunting
-quest.testHunt.desc=This is a hunting test quest.
+quest.huntBasics1.name=Hunter Basics Part 1
+quest.huntBasics1.desc=Show me you know how to find some essentials! Get me some Herbs!
+quest.huntBasics2.name=Hunter Basics Part 2
+quest.huntBasics2.desc=All hunters gotta eat! Go rustle up a Well-done Steak and show me you can cook!
+quest.huntBasics3.name=Hunter Basics Part 3
+quest.huntBasics3.desc=If you can keep yourself alive, you can hunt anything! Make some potions!
+quest.huntBasics4.name=Hunter Basics Part 4
+quest.huntBasics4.desc=You can't hunt anything without a sword! Bring me a Hunter's Knife... I've lost mine...
+quest.huntBasics5.name=Hunter Basics Part 5
+quest.huntBasics5.desc=We'll start nice and small. Kill some pesky Jaggis and report back to me... In one piece!

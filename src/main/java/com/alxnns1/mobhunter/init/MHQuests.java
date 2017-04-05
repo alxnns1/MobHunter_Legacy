@@ -28,7 +28,6 @@ public class MHQuests
     }
 
     public static MHQuest
-            testCraft, testGather, testHunt,
             huntBasics1, huntBasics2, huntBasics3, huntBasics4, huntBasics5;
 
     /**
@@ -88,24 +87,13 @@ public class MHQuests
     public static void init()
     {
         //Register quests
-        regQuest(testCraft = new MHQuest(EnumQuestType.CRAFTING, "testCraft", 1, 0, 140)
-                .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion"))
-                .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "megaPotion")));
-        regQuest(testGather =  new MHQuest(EnumQuestType.GATHERING, "testGather", 10, 0, 140)
-                .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "herb", 5))
-                .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5)));
-        regQuest(testHunt = new MHQuest(EnumQuestType.HUNTING, "testHunt", 100, 0, 140)
-                .setObjectives(new EntityStack("MobHunter.Gargwa", 1))
-                .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.MISC, "steelEgg"))
-                .setRepeatable(10));
-
         regQuest(huntBasics1 = new MHQuest(EnumQuestType.GATHERING, "huntBasics1", 1, 0, 140)
                 .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "herb", 5))
                 .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "herb", 5),
                         MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, "blueMushroom", 5)));
         regQuest(huntBasics2 = new MHQuest(EnumQuestType.CRAFTING, "huntBasics2", 1, 0, 140)
                 .setObjectives(new ItemStack(MHItems.itemDoneSteak))
-                .setRewardItems(new ItemStack(MHItems.itemDoneSteak, 0, 5)));
+                .setRewardItems(new ItemStack(MHItems.itemDoneSteak, 5, 0)));
         regQuest(huntBasics3 = new MHQuest(EnumQuestType.CRAFTING, "huntBasics3", 1, 0, 140)
                 .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5))
                 .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5),
