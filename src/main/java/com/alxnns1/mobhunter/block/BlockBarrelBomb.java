@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.block;
 import com.alxnns1.mobhunter.MobHunter;
 import com.alxnns1.mobhunter.entity.EntityBarrelBomb;
 import com.alxnns1.mobhunter.reference.Names;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -101,23 +102,15 @@ public class BlockBarrelBomb extends Block
     }
 
     /**
-     * Called when a player destroys this Block
+     * Called when the block is destroyed by an explosion.
+     * Useful for allowing the block to take into account tile entities,
+     * state, etc. when exploded, before it is removed.
      */
     @Override
-    public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state)
+    public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
     {
-        super.onBlockDestroyedByPlayer(worldIn, pos, state);
-        //explode(worldIn, pos, state, null);
-    }
-
-    /**
-     * Called when this Block is destroyed by an Explosion
-     */
-    @Override
-    public void onBlockDestroyedByExplosion(World worldIn, BlockPos pos, Explosion explosionIn)
-    {
-        super.onBlockDestroyedByExplosion(worldIn, pos, explosionIn);
-        explode(worldIn, pos, worldIn.getBlockState(pos), null, 20);
+        explode(world, pos, world.getBlockState(pos), null, 20);
+        super.onBlockExploded(world, pos, explosion);
     }
 
     /**
@@ -138,8 +131,7 @@ public class BlockBarrelBomb extends Block
             {
                 //If hit by a fast moving entity, explode
                 EntityLivingBase living = (EntityLivingBase) entityIn;
-                double velocity = Math.sqrt(Math.pow(living.motionX, 2) + Math.pow(living.motionY, 2) + Math.pow(living.motionZ, 2));
-                if(velocity >= 6d) explode(worldIn, pos, state, living, 0);
+                if(CommonUtil.getEntityVelocity(living) >= 6d) explode(worldIn, pos, state, living, 0);
             }
         }
     }

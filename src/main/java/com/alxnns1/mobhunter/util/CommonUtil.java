@@ -6,6 +6,7 @@ import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.message.MessageCapability;
 import com.alxnns1.mobhunter.message.MessageSetQuest;
 import com.alxnns1.mobhunter.reference.Reference;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -94,5 +95,13 @@ public class CommonUtil
     public static String replaceCommasWithNewlines(String text, boolean addSpaceAroundNewlines)
     {
         return text.replaceAll(", ", addSpaceAroundNewlines ? " \n " : "\n");
+    }
+
+    /**
+     * Gets the velocity of the given Entity.
+     */
+    public static double getEntityVelocity(Entity entity)
+    {
+        return Math.sqrt(Math.pow(entity.motionX, 2) + Math.pow(entity.motionY, 2) + Math.pow(entity.motionZ, 2));
     }
 }

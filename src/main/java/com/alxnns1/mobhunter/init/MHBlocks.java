@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.init;
 
 import com.alxnns1.mobhunter.block.*;
 import com.alxnns1.mobhunter.block.render.RenderBbq;
+import com.alxnns1.mobhunter.item.ItemBlockBarrelBomb;
 import com.alxnns1.mobhunter.reference.MetaRef;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.tileentity.TileBbq;
@@ -54,27 +55,13 @@ public class MHBlocks
 
     private static void regBlock(Block block)
     {
-        GameRegistry.register(block);
-        ItemBlock itemBlock = new ItemBlock(block);
-        if(block == blockBarrelBomb)
-        {
-            itemBlock = new ItemBlock(block)
-            {
-                @Override
-                public String getUnlocalizedName(ItemStack stack)
-                {
-                    return super.getUnlocalizedName() + "." + EnumBarrel.getName(stack.getMetadata());
-                }
+        regBlock(block, new ItemBlock(block));
+    }
 
-                @Override
-                public int getMetadata(int metadata)
-                {
-                    return metadata;
-                }
-            };
-        }
-        itemBlock = (ItemBlock) itemBlock.setRegistryName(block.getRegistryName());
-        GameRegistry.register(itemBlock);
+    private static void regBlock(Block block, ItemBlock itemBlock)
+    {
+        GameRegistry.register(block);
+        GameRegistry.register(itemBlock.setRegistryName(block.getRegistryName()));
         BLOCKS.add(block);
     }
 
@@ -131,7 +118,7 @@ public class MHBlocks
         regBlock(blockWeaponCraft = new BlockCraft(Names.Blocks.WEAPON_CRAFT));
         regBlock(blockArmourCraft = new BlockCraft(Names.Blocks.ARMOUR_CRAFT));
 
-        regBlock(blockBarrelBomb = new BlockBarrelBomb());
+        regBlock(blockBarrelBomb = new BlockBarrelBomb(), new ItemBlockBarrelBomb(blockBarrelBomb));
     }
 
     public static void regTileEntities()
