@@ -61,10 +61,4 @@ public class EntityApceros extends EntityMHHerbivore{
     {
         return new EntityApceros(this.world);
     }
-
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-    {
-        LogHelper.info("Apceros spawned with " + this.getHealth() + " health");
-        return super.onInitialSpawn(difficulty, livingdata);
-    }
 }

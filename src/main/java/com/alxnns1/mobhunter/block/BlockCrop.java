@@ -1,6 +1,5 @@
 package com.alxnns1.mobhunter.block;
 
-import com.alxnns1.mobhunter.MobHunter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.properties.IProperty;

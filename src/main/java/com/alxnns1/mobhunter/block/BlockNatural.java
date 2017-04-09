@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.block;
 
 import com.alxnns1.mobhunter.MobHunter;
+import com.google.common.collect.Lists;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -49,31 +50,59 @@ public class BlockNatural extends BlockBush
         return EnumPlantType.Cave;
     }
 
-    public ArrayList<ItemStack> getDropsSand(ArrayList<ItemStack> drops, double chance)
+    /**
+     * Returns a new, empty ArrayList for ItemStacks.
+     */
+    protected ArrayList<ItemStack> createEmptyList()
     {
-        return drops;
+        return new ArrayList<ItemStack>();
     }
 
-    public ArrayList<ItemStack> getDropsNether(ArrayList<ItemStack> drops, double chance)
+    /**
+     * Returns an ArrayList of the given ItemStacks.
+     */
+    protected ArrayList<ItemStack> createList(ItemStack... stacks)
     {
-        return drops;
+        return Lists.newArrayList(stacks);
     }
 
-    public ArrayList<ItemStack> getDropsCold(ArrayList<ItemStack> drops, double chance)
+    /**
+     * One of the drops from this list is always chosen with equal chance.
+     */
+    public ArrayList<ItemStack> getDropsAll()
     {
-        return drops;
+        return createEmptyList();
     }
 
-    public ArrayList<ItemStack> getDropsRock(ArrayList<ItemStack> drops, double chance)
+    public ArrayList<ItemStack> getDropsSand()
     {
-        return drops;
+        return createEmptyList();
+    }
+    public ArrayList<ItemStack> getDropsNether()
+    {
+        return createEmptyList();
+    }
+    public ArrayList<ItemStack> getDropsCold()
+    {
+        return createEmptyList();
+    }
+    public ArrayList<ItemStack> getDropsRock()
+    {
+        return createEmptyList();
+    }
+    public ArrayList<ItemStack> getDropsOther()
+    {
+        return createEmptyList();
     }
 
-    public ArrayList<ItemStack> getDropsOther(ArrayList<ItemStack> drops, double chance)
+    private ItemStack getRandStack(Random rand, ArrayList<ItemStack> list)
     {
-        return drops;
+        return list.get(rand.nextInt(list.size()));
     }
 
+    /**
+     * This returns a complete list of items dropped from this block.
+     */
     @Override
     public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune)
     {
@@ -81,17 +110,26 @@ public class BlockNatural extends BlockBush
             return new ArrayList<ItemStack>();
         WorldServer server = (WorldServer) world;
         Biome biome = server.getBiomeForCoordsBody(pos);
-        ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+        IBlockState stateBelow = server.getBlockState(pos.down());
         Random rand = server.rand;
-        for(int n = 0; n < rand.nextInt(2) + 1 + fortune; n++)
-        {
-            double i = rand.nextDouble();
-            if(blockstate.getMaterial() == Material.SAND)       this.getDropsSand(drops, i);
-            else if(biome.getBiomeName().equals("Hell"))        this.getDropsNether(drops, i);
-            else if(biome.getTemperature() < 0.2f)              this.getDropsCold(drops, i);
-            else if(blockstate.getMaterial() == Material.ROCK)  this.getDropsRock(drops, i);
-            else                                                this.getDropsOther(drops, i);
-        }
+
+        ArrayList<ItemStack> drops = createEmptyList();
+
+        //Get normal drops (1-2 + fortune level)
+        ArrayList<ItemStack> dropsList = getDropsAll();
+        for(int i = 0; i < rand.nextInt(2) + 1 + fortune; i++)
+            drops.add(getRandStack(rand, dropsList));
+
+        //Get special drops (0-1 + fortune level)
+        if(stateBelow.getMaterial() == Material.SAND)       dropsList = getDropsSand();
+        else if(biome.getBiomeName().equals("Hell"))        dropsList = getDropsNether();
+        else if(biome.getTemperature() < 0.2f)              dropsList = getDropsCold();
+        else if(stateBelow.getMaterial() == Material.ROCK)  dropsList = getDropsRock();
+        else                                                dropsList = getDropsOther();
+        if(!dropsList.isEmpty())
+            for(int i = 0; i < rand.nextInt(2) + fortune; i++)
+                drops.add(getRandStack(rand, dropsList));
+
         return drops;
     }
 }
