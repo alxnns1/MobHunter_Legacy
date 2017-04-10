@@ -1,6 +1,6 @@
 package com.alxnns1.mobhunter.capability.quest;
 
-import com.alxnns1.mobhunter.handler.HunterRankHandler;
+import com.alxnns1.mobhunter.handler.HRHandler;
 import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.message.MessageCapability;
 import com.alxnns1.mobhunter.util.CommonUtil;
@@ -108,7 +108,7 @@ public class CapabilityQuest implements IQuest
             MHQuest quest = currentQuest.getQuest();
             int penalty = quest.getPointsPenalty();
             //Remove HR points from player
-            HunterRankHandler.getHunterRankCapability(player).changeProgressPointsBy(player, -penalty);
+            HRHandler.getHunterRankCapability(player).changeProgressPointsBy(player, -penalty);
             player.sendMessage(new TextComponentString("You've cancelled the quest '" + quest.getLocalName() + "'\n" +
                     penalty + " HR points have been deducted from you as a penalty."));
             currentQuest = null;
@@ -143,7 +143,7 @@ public class CapabilityQuest implements IQuest
                         player.entityDropItem(stack.copy(), 0);
 
                 //Give player HR points
-                HunterRankHandler.getHunterRankCapability(player).changeProgressPointsBy(player, quest.getPointsReward());
+                HRHandler.getHunterRankCapability(player).changeProgressPointsBy(player, quest.getPointsReward());
 
                 //Add completed quest to either completed quests or quests on cooldown
                 if(currentQuest.getQuest().isRepeatable())

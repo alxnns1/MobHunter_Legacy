@@ -9,6 +9,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Map;
 /**
  * Created by Mark on 04/11/2016.
  */
+@Mod.EventBusSubscriber
 public class LootHandler
 {
     private void addLoot(LootPool pool, Item item, int weight)

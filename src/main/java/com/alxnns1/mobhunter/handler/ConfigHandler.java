@@ -4,6 +4,7 @@ import com.alxnns1.mobhunter.reference.Config;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.File;
@@ -11,6 +12,7 @@ import java.io.File;
 /**
  * Created by Mark on 15/07/2016.
  */
+@Mod.EventBusSubscriber
 public class ConfigHandler
 {
     public static Configuration config;

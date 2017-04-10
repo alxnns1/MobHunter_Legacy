@@ -12,7 +12,6 @@ import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -110,7 +109,6 @@ public class MobHunter
 
         //Passes suggested configuration file into the regBlocks method
         ConfigHandler.init(event.getSuggestedConfigurationFile());
-        MinecraftForge.EVENT_BUS.register(new ConfigHandler());
 
         CommonUtil.initNetwork();
 
@@ -142,10 +140,6 @@ public class MobHunter
         MHAchievements.init();
         MHQuests.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
-        MinecraftForge.EVENT_BUS.register(new EventHandler());
-        MinecraftForge.EVENT_BUS.register(new LootHandler());
-        MinecraftForge.EVENT_BUS.register(new QuestHandler());
-        MinecraftForge.EVENT_BUS.register(new HunterRankHandler());
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }

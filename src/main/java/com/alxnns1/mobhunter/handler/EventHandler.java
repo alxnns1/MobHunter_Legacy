@@ -13,6 +13,7 @@ import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -22,6 +23,7 @@ import java.util.Random;
 /**
  * Created by Mark on 21/04/2016.
  */
+@Mod.EventBusSubscriber
 public class EventHandler
 {
     /** Any registered mob which extends EntityLiving */
