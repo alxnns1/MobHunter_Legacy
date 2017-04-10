@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants;
 
@@ -109,8 +110,9 @@ public class CapabilityQuest implements IQuest
             int penalty = quest.getPointsPenalty();
             //Remove HR points from player
             HRHandler.getHunterRankCapability(player).changeProgressPointsBy(player, -penalty);
-            player.sendMessage(new TextComponentString("You've cancelled the quest '" + quest.getLocalName() + "'\n" +
-                    penalty + " HR points have been deducted from you as a penalty."));
+            player.sendMessage(new TextComponentString("You've cancelled the quest '")
+                    .appendSibling(new TextComponentTranslation(quest.getUnlocName()))
+                    .appendSibling(new TextComponentString("'\n" + penalty + " HR points have been deducted from you as a penalty.")));
             currentQuest = null;
         }
         return canRemove;
@@ -134,8 +136,10 @@ public class CapabilityQuest implements IQuest
             {
                 //Send chat message to player
                 MHQuest quest = currentQuest.getQuest();
-                player.sendMessage(new TextComponentString("Congrats! You completed the quest '" + quest.getLocalName() + "'!\n" +
-                        "You've received " + quest.getPointsRewardText() + " and the following items:\n" + quest.getRewardText()));
+                player.sendMessage(new TextComponentString("Congrats! You completed the quest '")
+                        .appendSibling(new TextComponentTranslation(quest.getUnlocName()))
+                        .appendSibling(new TextComponentString("'!\n" + "You've received " + quest.getPointsRewardText() + " and the following items:\n"))
+                        .appendSibling(quest.getRewardTextComponent()));
 
                 //Give player reward items
                 for(ItemStack stack : currentQuest.getQuest().getRewardItems())
