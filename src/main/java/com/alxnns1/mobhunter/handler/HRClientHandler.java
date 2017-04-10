@@ -37,7 +37,7 @@ public class HRClientHandler
     private static final ResourceLocation hunterRankBar = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "hr_bar.png");
     private static Minecraft mc = Minecraft.getMinecraft();
 
-    private Map<UUID, IHunterRank> playerRankCache = new HashMap<UUID, IHunterRank>();
+    private static Map<UUID, IHunterRank> playerRankCache = new HashMap<UUID, IHunterRank>();
     //This is copied from GuiPlayerTabOverlay so we can get the same ordered player list
     private static final Ordering<NetworkPlayerInfo> ENTRY_ORDERING = Ordering.from(new Comparator<NetworkPlayerInfo>()
     {
@@ -70,7 +70,7 @@ public class HRClientHandler
     /**
      * Draws a textured rectangle using the texture currently bound to the TextureManager
      */
-    public void drawTexturedModalRect(float xCoord, float yCoord, int minU, int minV, int maxU, int maxV)
+    public static void drawTexturedModalRect(float xCoord, float yCoord, int minU, int minV, int maxU, int maxV)
     {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
@@ -85,7 +85,7 @@ public class HRClientHandler
     }
 
     @SubscribeEvent
-    public void renderInventoryHR(GuiScreenEvent.DrawScreenEvent.Post event)
+    public static void renderInventoryHR(GuiScreenEvent.DrawScreenEvent.Post event)
     {
         if(event.getGui() instanceof GuiInventory)
         {
@@ -125,7 +125,7 @@ public class HRClientHandler
 
     /*
     @SubscribeEvent
-    public void renderHR(RenderGameOverlayEvent.Post event)
+    public static void renderHR(RenderGameOverlayEvent.Post event)
     {
         if(event.getType() == RenderGameOverlayEvent.ElementType.PLAYER_LIST)
         {

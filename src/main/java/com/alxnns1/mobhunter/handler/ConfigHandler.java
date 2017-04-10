@@ -54,7 +54,7 @@ public class ConfigHandler
     }
 
     @SubscribeEvent
-    public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event)
+    public static void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event)
     {
         if(event.getModID().equalsIgnoreCase(Reference.MOD_ID))
             //Resync configs

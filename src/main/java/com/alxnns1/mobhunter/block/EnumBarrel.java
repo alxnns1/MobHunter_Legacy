@@ -18,6 +18,6 @@ public enum EnumBarrel implements IStringSerializable
 
     public static String getName(int metadata)
     {
-        return values()[metadata].getName();
+        return metadata < 0 || metadata >= values().length ? "invalid" : values()[metadata].getName();
     }
 }

@@ -39,7 +39,7 @@ public class HRHandler
     }
 
     @SubscribeEvent
-    public void attachCapability(AttachCapabilitiesEvent<Entity> event)
+    public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
         //Attach our capability to all players
         Entity entity = event.getObject();
@@ -48,7 +48,7 @@ public class HRHandler
     }
 
     @SubscribeEvent
-    public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
     {
         //Send the client capability details
         if(event.player instanceof EntityPlayerMP && hasHunterRankCapability(event.player))
@@ -56,7 +56,7 @@ public class HRHandler
     }
 
     @SubscribeEvent
-    public void onClonePlayer(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
+    public static void onClonePlayer(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
     {
         //Copy capability on player death to new player
         if(event.isWasDeath() && (event.getEntityPlayer() instanceof EntityPlayerMP))

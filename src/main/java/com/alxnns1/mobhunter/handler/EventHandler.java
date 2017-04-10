@@ -100,7 +100,7 @@ public class EventHandler
     }
 
     @SubscribeEvent
-    public void mobDeath(LivingDropsEvent event)
+    public static void mobDeath(LivingDropsEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
 
@@ -136,7 +136,7 @@ public class EventHandler
     }
 
     @SubscribeEvent
-    public void onCrafting(PlayerEvent.ItemCraftedEvent event)
+    public static void onCrafting(PlayerEvent.ItemCraftedEvent event)
     {
         Item item = event.crafting.getItem();
         EntityPlayer player = event.player;
@@ -161,7 +161,7 @@ public class EventHandler
     */
 
     @SubscribeEvent
-    public void entityKilled(LivingDeathEvent event)
+    public static void entityKilled(LivingDeathEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
 

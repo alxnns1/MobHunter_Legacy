@@ -20,13 +20,13 @@ import java.util.Map;
 @Mod.EventBusSubscriber
 public class LootHandler
 {
-    private void addLoot(LootPool pool, Item item, int weight)
+    private static void addLoot(LootPool pool, Item item, int weight)
     {
         pool.addEntry(new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0], Reference.MOD_ID + item.getUnlocalizedName()));
     }
 
     @SubscribeEvent
-    public void addLoot(LootTableLoadEvent event)
+    public static void addLoot(LootTableLoadEvent event)
     {
         if(event.getName().equals(LootTableList.GAMEPLAY_FISHING_FISH))
         {

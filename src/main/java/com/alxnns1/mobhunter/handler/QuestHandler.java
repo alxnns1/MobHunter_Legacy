@@ -44,7 +44,7 @@ public class QuestHandler
     }
 
     @SubscribeEvent
-    public void attachCapability(AttachCapabilitiesEvent<Entity> event)
+    public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
         //Attach our capability to all players
         Entity entity = event.getObject();
@@ -53,7 +53,7 @@ public class QuestHandler
     }
 
     @SubscribeEvent
-    public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
     {
         //Send the client capability details
         if(event.player instanceof EntityPlayerMP && hasQuestCapability(event.player))
@@ -61,7 +61,7 @@ public class QuestHandler
     }
 
     @SubscribeEvent
-    public void onClonePlayer(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
+    public static void onClonePlayer(net.minecraftforge.event.entity.player.PlayerEvent.Clone event)
     {
         //Copy capability on player death to new player
         if(event.isWasDeath() && (event.getEntityPlayer() instanceof EntityPlayerMP))
@@ -72,33 +72,8 @@ public class QuestHandler
         }
     }
 
-    //Removed these since I'm now using a submit button for quests that require items
-    /*
     @SubscribeEvent
-    public void onCrafted(PlayerEvent.ItemCraftedEvent event)
-    {
-        //Add quest progress for Crafting quests
-        if(!(event.player instanceof EntityPlayerMP))
-            return;
-        IQuest quest = getQuestCapability(event.player);
-        if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.CRAFTING)
-            quest.progressQuest((EntityPlayerMP) event.player, event.crafting);
-    }
-
-    @SubscribeEvent
-    public void onPickup(EntityItemPickupEvent event)
-    {
-        //Add quest progress for Gathering quests
-        if(!(event.getEntityPlayer() instanceof EntityPlayerMP))
-            return;
-        IQuest quest = getQuestCapability(event.getEntityPlayer());
-        if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.GATHERING)
-            quest.progressQuest((EntityPlayerMP) event.getEntityPlayer(), event.getItem().getEntityItem());
-    }
-    */
-
-    @SubscribeEvent
-    public void entityKilled(LivingDeathEvent event)
+    public static void entityKilled(LivingDeathEvent event)
     {
         //Add quest progress for Hunting quests
         if(!(event.getSource().getSourceOfDamage() instanceof EntityPlayerMP)) return;
@@ -108,10 +83,10 @@ public class QuestHandler
             quest.progressQuest(player, new EntityStack(EntityList.getEntityString(event.getEntityLiving()), 1));
     }
 
-    private long nextQuestCheck = 0;
+    private static long nextQuestCheck = 0;
 
     @SubscribeEvent
-    public void questTick(TickEvent.PlayerTickEvent event)
+    public static void questTick(TickEvent.PlayerTickEvent event)
     {
         long worldTime = event.player.world.getTotalWorldTime();
         if(event.player instanceof EntityPlayerMP && event.phase == TickEvent.Phase.END && worldTime >= nextQuestCheck)
