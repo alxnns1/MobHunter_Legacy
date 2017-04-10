@@ -3,7 +3,7 @@ package com.alxnns1.mobhunter.gui;
 import com.alxnns1.mobhunter.capability.quest.EnumQuestType;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
-import com.alxnns1.mobhunter.handler.QuestHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
@@ -29,7 +29,8 @@ public class GuiQuest extends MHGuiScreen
      */
     public void updateQuest(EntityPlayer player)
     {
-        IQuest questCap = QuestHandler.getQuestCapability(player == null ? mc.player : player);
+        EntityPlayer p = player == null ? mc.player : player;
+        IQuest questCap = p.getCapability(MHCapabilities.QUESTS, null);
         quest = questCap == null ? null : questCap.getCurrentQuest();
     }
 

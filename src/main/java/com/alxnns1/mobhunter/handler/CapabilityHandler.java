@@ -1,15 +1,16 @@
 package com.alxnns1.mobhunter.handler;
 
+import com.alxnns1.mobhunter.capability.ICapability;
 import com.alxnns1.mobhunter.capability.quest.*;
 import com.alxnns1.mobhunter.init.MHCapabilities;
-import com.alxnns1.mobhunter.reference.Reference;
+import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,44 +21,58 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.Iterator;
 
 /**
- * Created by Mark on 12/01/2017.
+ * Created by Mark on 10/04/2017.
  */
 @Mod.EventBusSubscriber
-public class QuestHandler
+public class CapabilityHandler
 {
-    private static final ResourceLocation questRL = new ResourceLocation(Reference.MOD_ID, "_Quests");
-
-    /**
-     * Get the Quest Capability from the player
-     */
-    public static IQuest getQuestCapability(EntityPlayer player)
+    private static ICapability getDefaultICapability(Capability capability)
     {
-        return player.getCapability(MHCapabilities.QUESTS, null);
+        Object c = capability.getDefaultInstance();
+        if(!(c instanceof ICapability))
+        {
+            LogHelper.error("A capability isn't an instance of ICapability! -> " + capability.getName());
+            return null;
+        }
+        return (ICapability) c;
     }
 
-    /**
-     * Checks if the player has the Quest Capability
-     */
-    public static boolean hasQuestCapability(EntityPlayer player)
+    private static ICapability getICapability(Entity entity, Capability capability)
     {
-        return player.hasCapability(MHCapabilities.QUESTS, null);
+        Object object = entity.getCapability(capability, null);
+        return object == null || !(object instanceof ICapability) ? null : (ICapability) object;
     }
 
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
-        //Attach our capability to all players
+        //Attach our capabilities to all players
         Entity entity = event.getObject();
-        if(entity instanceof EntityPlayer && !hasQuestCapability((EntityPlayer) entity))
-            event.addCapability(questRL, new CapabilityQuestProvider());
+        if(entity instanceof EntityPlayer)
+        {
+            for(Capability cap : MHCapabilities.getCapabilities())
+            {
+                ICapability icap = getDefaultICapability(cap);
+                if(icap == null) continue;
+                if(!entity.hasCapability(cap, null))
+                    event.addCapability(icap.getKey(), icap.getProvider());
+            }
+        }
     }
 
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
     {
         //Send the client capability details
-        if(event.player instanceof EntityPlayerMP && hasQuestCapability(event.player))
-            getQuestCapability(event.player).dataChanged((EntityPlayerMP) event.player, EnumQuestDataChange.ALL);
+        if(event.player instanceof EntityPlayerMP)
+        {
+            EntityPlayerMP player = (EntityPlayerMP) event.player;
+            for(Capability cap : MHCapabilities.getCapabilities())
+            {
+                ICapability icap = getICapability(player, cap);
+                if(icap != null) icap.dataChanged(player);
+            }
+        }
     }
 
     @SubscribeEvent
@@ -67,10 +82,24 @@ public class QuestHandler
         if(event.isWasDeath() && (event.getEntityPlayer() instanceof EntityPlayerMP))
         {
             EntityPlayerMP player = (EntityPlayerMP) event.getEntityPlayer();
-            getQuestCapability(player).deserializeNBT(getQuestCapability(event.getOriginal()).serializeNBT());
-            getQuestCapability(player).dataChanged(player, EnumQuestDataChange.ALL);
+            for(Capability cap : MHCapabilities.getCapabilities())
+            {
+                ICapability oldicap = getICapability(event.getOriginal(), cap);
+                ICapability icap = getICapability(player, cap);
+                if(oldicap == null || icap == null) continue;
+                icap.deserializeNBT(oldicap.serializeNBT());
+                icap.dataChanged(player);
+            }
         }
     }
+
+
+    /*
+        <<<<<<<<<<< QUESTS >>>>>>>>>>
+     */
+
+
+    private static long nextQuestCheck = 0;
 
     @SubscribeEvent
     public static void entityKilled(LivingDeathEvent event)
@@ -78,12 +107,10 @@ public class QuestHandler
         //Add quest progress for Hunting quests
         if(!(event.getSource().getSourceOfDamage() instanceof EntityPlayerMP)) return;
         EntityPlayerMP player = (EntityPlayerMP) event.getSource().getSourceOfDamage();
-        IQuest quest = getQuestCapability(player);
+        IQuest quest = player.getCapability(MHCapabilities.QUESTS, null);
         if(quest.getCurrentQuest() != null && quest.getCurrentQuest().getQuest().getQuestType() == EnumQuestType.HUNTING)
             quest.progressQuest(player, new EntityStack(EntityList.getEntityString(event.getEntityLiving()), 1));
     }
-
-    private static long nextQuestCheck = 0;
 
     @SubscribeEvent
     public static void questTick(TickEvent.PlayerTickEvent event)
@@ -95,7 +122,7 @@ public class QuestHandler
             EntityPlayerMP player = (EntityPlayerMP) event.player;
 
             //Check player quests and remove them if they've gone over the time limit
-            IQuest playerQuest = getQuestCapability(player);
+            IQuest playerQuest = player.getCapability(MHCapabilities.QUESTS, null);
             MHQuestObject quest = playerQuest.getCurrentQuest();
             if(quest != null && quest.hasQuestExpired(worldTime))
             {

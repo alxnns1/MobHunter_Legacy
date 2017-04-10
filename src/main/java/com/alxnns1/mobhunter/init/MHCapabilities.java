@@ -8,6 +8,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 /**
@@ -19,6 +20,18 @@ public class MHCapabilities
     public static Capability<IQuest> QUESTS = null;
     @CapabilityInject(IHunterRank.class)
     public static Capability<IHunterRank> HUNTER_RANK = null;
+
+    private static ArrayList<Capability> CAPABILITIES = new ArrayList<Capability>();
+
+    public static ArrayList<Capability> getCapabilities()
+    {
+        if(CAPABILITIES.isEmpty())
+        {
+            CAPABILITIES.add(QUESTS);
+            CAPABILITIES.add(HUNTER_RANK);
+        }
+        return CAPABILITIES;
+    }
 
     public static void init()
     {

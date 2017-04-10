@@ -16,13 +16,19 @@ public class TileBbq extends TileEntity implements ITickable
 {
     private int cookTime = 0;
     private int rotationAngles = 64;
-    private final ItemStack[] cookResults;
-    private final int[] cookTimes;
+    private ItemStack[] cookResults;
+    private int[] cookTimes;
 
     //These are just used as keys for the NBT saving/reading
     private static final String KEY_TIME = "cookTime";
     private static final String KEY_COOK_LIST = "cookList";
     private static final String KEY_COOK_LIST_TIME = "cookListTime";
+
+    public TileBbq()
+    {
+        cookResults = new ItemStack[0];
+        cookTimes = new int[0];
+    }
 
     public TileBbq(ItemStack[] cookResults, int[] cookTimes)
     {
@@ -106,6 +112,12 @@ public class TileBbq extends TileEntity implements ITickable
         cookTime = tag.getInteger(KEY_TIME);
         //Read cook times and results
         NBTTagList cookList = tag.getTagList(KEY_COOK_LIST, Constants.NBT.TAG_COMPOUND);
+        if(cookResults.length != cookList.tagCount())
+        {
+            int listSize = Math.min(cookList.tagCount(), 0);
+            cookResults = new ItemStack[listSize];
+            cookTimes = new int[Math.min(listSize - 1, 0)];
+        }
         for(int i = 0; i < cookList.tagCount(); i++)
         {
             NBTTagCompound item = cookList.getCompoundTagAt(i);

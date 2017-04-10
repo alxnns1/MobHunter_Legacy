@@ -2,6 +2,7 @@ package com.alxnns1.mobhunter.handler;
 
 import com.alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import com.alxnns1.mobhunter.capability.hunterRank.IHunterRank;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.reference.Reference;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
@@ -90,7 +91,7 @@ public class HRClientHandler
         if(event.getGui() instanceof GuiInventory)
         {
             EntityPlayer player = mc.player;
-            IHunterRank hunterRank = HRHandler.getHunterRankCapability(player);
+            IHunterRank hunterRank = player.getCapability(MHCapabilities.HUNTER_RANK, null);
             if(hunterRank == null)
                 return;
 

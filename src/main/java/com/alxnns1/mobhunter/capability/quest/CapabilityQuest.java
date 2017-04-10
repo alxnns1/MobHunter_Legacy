@@ -1,8 +1,9 @@
 package com.alxnns1.mobhunter.capability.quest;
 
-import com.alxnns1.mobhunter.handler.HRHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.message.MessageCapability;
+import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -12,9 +13,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.ArrayList;
@@ -25,6 +28,8 @@ import java.util.List;
  */
 public class CapabilityQuest implements IQuest
 {
+    private static final ResourceLocation questRL = new ResourceLocation(Reference.MOD_ID, "_Quests");
+
     private List<String> completedQuests = new ArrayList<String>();
     private List<MHQuestCooldown> cooldownQuests = new ArrayList<MHQuestCooldown>();
     private MHQuestObject currentQuest = null;
@@ -109,7 +114,7 @@ public class CapabilityQuest implements IQuest
             MHQuest quest = currentQuest.getQuest();
             int penalty = quest.getPointsPenalty();
             //Remove HR points from player
-            HRHandler.getHunterRankCapability(player).changeProgressPointsBy(player, -penalty);
+            player.getCapability(MHCapabilities.HUNTER_RANK, null).changeProgressPointsBy(player, -penalty);
             player.sendMessage(new TextComponentString("You've cancelled the quest '")
                     .appendSibling(new TextComponentTranslation(quest.getUnlocName()))
                     .appendSibling(new TextComponentString("'\n" + penalty + " HR points have been deducted from you as a penalty.")));
@@ -147,7 +152,7 @@ public class CapabilityQuest implements IQuest
                         player.entityDropItem(stack.copy(), 0);
 
                 //Give player HR points
-                HRHandler.getHunterRankCapability(player).changeProgressPointsBy(player, quest.getPointsReward());
+                player.getCapability(MHCapabilities.HUNTER_RANK, null).changeProgressPointsBy(player, quest.getPointsReward());
 
                 //Add completed quest to either completed quests or quests on cooldown
                 if(currentQuest.getQuest().isRepeatable())
@@ -181,6 +186,24 @@ public class CapabilityQuest implements IQuest
             return EnumQuestStatus.COOLDOWN;
         else
             return EnumQuestStatus.UNCOMPLETED;
+    }
+
+    @Override
+    public ResourceLocation getKey()
+    {
+        return questRL;
+    }
+
+    @Override
+    public ICapabilityProvider getProvider()
+    {
+        return new CapabilityQuestProvider();
+    }
+
+    @Override
+    public void dataChanged(EntityPlayerMP player)
+    {
+        dataChanged(player, EnumQuestDataChange.ALL);
     }
 
     @Override

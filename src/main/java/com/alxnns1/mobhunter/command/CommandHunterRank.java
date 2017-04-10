@@ -1,7 +1,7 @@
 package com.alxnns1.mobhunter.command;
 
 import com.alxnns1.mobhunter.capability.hunterRank.IHunterRank;
-import com.alxnns1.mobhunter.handler.HRHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -54,7 +54,7 @@ public class CommandHunterRank extends CommandBase
         if(target == null)
             throw new CommandException("Couldn't get target player!");
         else
-            hrCap = HRHandler.getHunterRankCapability(target);
+            hrCap = target.getCapability(MHCapabilities.HUNTER_RANK, null);
         if(hrCap == null)
             throw new CommandException("Couldn't get hunter rank data for player " + target.getDisplayNameString() + "!");
 

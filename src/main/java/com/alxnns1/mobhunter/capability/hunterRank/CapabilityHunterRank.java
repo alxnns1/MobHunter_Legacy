@@ -1,18 +1,22 @@
 package com.alxnns1.mobhunter.capability.hunterRank;
 
 import com.alxnns1.mobhunter.message.MessageCapability;
+import com.alxnns1.mobhunter.reference.Reference;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 /**
  * Created by Mark on 28/06/2016.
  */
 public class CapabilityHunterRank implements IHunterRank
 {
+    private static final ResourceLocation hunterRankRL = new ResourceLocation(Reference.MOD_ID, "_HunterRank");
     private int hunterRank, progressPoints;
 
     public CapabilityHunterRank()
@@ -104,6 +108,24 @@ public class CapabilityHunterRank implements IHunterRank
         }
 
         dataChanged(player, hunterRank != oldRank ? EnumHRDataChange.ALL : EnumHRDataChange.PROGRESS);
+    }
+
+    @Override
+    public ResourceLocation getKey()
+    {
+        return hunterRankRL;
+    }
+
+    @Override
+    public ICapabilityProvider getProvider()
+    {
+        return new CapabilityHunterRankProvider();
+    }
+
+    @Override
+    public void dataChanged(EntityPlayerMP player)
+    {
+        dataChanged(player, EnumHRDataChange.ALL);
     }
 
     @Override

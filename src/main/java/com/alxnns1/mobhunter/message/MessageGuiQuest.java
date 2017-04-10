@@ -2,8 +2,8 @@ package com.alxnns1.mobhunter.message;
 
 import com.alxnns1.mobhunter.capability.quest.EnumQuestDataChange;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
-import com.alxnns1.mobhunter.handler.QuestHandler;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -68,7 +68,7 @@ public class MessageGuiQuest implements IMessage
                     EntityPlayerMP player = (EntityPlayerMP) world.getPlayerEntityByUUID(message.playerUuid);
                     if(message.buttonId > 1 && player == null)
                         return;
-                    IQuest questCapability = QuestHandler.getQuestCapability(player);
+                    IQuest questCapability = player.getCapability(MHCapabilities.QUESTS, null);
                     if(questCapability == null)
                         return;
                     switch(message.buttonId)

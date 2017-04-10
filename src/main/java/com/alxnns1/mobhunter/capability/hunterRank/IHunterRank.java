@@ -1,13 +1,12 @@
 package com.alxnns1.mobhunter.capability.hunterRank;
 
+import com.alxnns1.mobhunter.capability.ICapability;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.INBTSerializable;
 
 /**
  * Created by Mark on 28/06/2016.
  */
-public interface IHunterRank extends INBTSerializable<NBTTagCompound>
+public interface IHunterRank extends ICapability
 {
     /**
      * Gets the Hunter Rank

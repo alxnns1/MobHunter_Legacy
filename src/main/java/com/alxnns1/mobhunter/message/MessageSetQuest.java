@@ -3,8 +3,7 @@ package com.alxnns1.mobhunter.message;
 import com.alxnns1.mobhunter.capability.quest.EnumQuestDataChange;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
-import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
-import com.alxnns1.mobhunter.handler.QuestHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.util.LogHelper;
 import io.netty.buffer.ByteBuf;
@@ -64,7 +63,7 @@ public class MessageSetQuest implements IMessage
                 {
                     WorldServer world = (WorldServer) ctx.getServerHandler().playerEntity.world;
                     EntityPlayerMP player = (EntityPlayerMP) world.getPlayerEntityByUUID(message.playerUuid);
-                    IQuest questCapability = QuestHandler.getQuestCapability(player);
+                    IQuest questCapability = player.getCapability(MHCapabilities.QUESTS, null);
 
                     if(message.questName == null || message.questName.equals(""))
                         //If no quest given, try to cancel the current quest

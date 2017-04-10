@@ -4,7 +4,7 @@ import com.alxnns1.mobhunter.capability.quest.EnumQuestStatus;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuestCooldown;
-import com.alxnns1.mobhunter.handler.QuestHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.message.MessageSetQuest;
 import com.alxnns1.mobhunter.util.CommonUtil;
@@ -47,7 +47,7 @@ public class GuiQuestList extends MHGuiScreen
     public GuiQuestList(EntityPlayer player)
     {
         super("questList");
-        questCapability = QuestHandler.getQuestCapability(player);
+        questCapability = player.getCapability(MHCapabilities.QUESTS, null);
         xSize = 256;
         ySize = 204;
     }

@@ -2,7 +2,7 @@ package com.alxnns1.mobhunter.item;
 
 import com.alxnns1.mobhunter.handler.EnumGuiID;
 import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
-import com.alxnns1.mobhunter.handler.QuestHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.reference.Names;
 import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,7 +29,7 @@ public class ItemMHQuest extends ItemMHBasic
     {
         if(worldIn.isRemote)
         {
-            if(QuestHandler.getQuestCapability(playerIn).getCurrentQuest() != null)
+            if(playerIn.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest() != null)
                 CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST);
             else
                 playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
@@ -41,7 +41,7 @@ public class ItemMHQuest extends ItemMHBasic
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
         //Show quest name on tooltip
-        MHQuestObject quest = QuestHandler.getQuestCapability(playerIn).getCurrentQuest();
+        MHQuestObject quest = playerIn.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest();
         String questName = quest == null ? "No quest accepted" : quest.getQuest().getLocalName();
         tooltip.add("Current quest:");
         tooltip.add(questName);

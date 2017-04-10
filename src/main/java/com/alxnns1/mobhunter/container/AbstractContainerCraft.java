@@ -207,7 +207,9 @@ public abstract class AbstractContainerCraft extends MHContainer
 
                         //Collect the recipe inputs in an inventory for the player crafting event
                         InventoryBasic inv = new InventoryBasic("MHCraftingRecipe", false, recipe.getRecipeSize() + 1);
-                        inv.addItem(recipe.getKeyInput());
+                        ItemStack keyItem = recipe.getKeyInput();
+                        if(keyItem != null)
+                            inv.addItem(recipe.getKeyInput());
                         for(Object object : recipe.getInput())
                         {
                             if(object instanceof ItemStack)

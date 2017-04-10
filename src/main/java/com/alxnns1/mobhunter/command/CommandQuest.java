@@ -4,7 +4,7 @@ import com.alxnns1.mobhunter.capability.quest.EnumQuestDataChange;
 import com.alxnns1.mobhunter.capability.quest.IQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuest;
 import com.alxnns1.mobhunter.capability.quest.MHQuestCooldown;
-import com.alxnns1.mobhunter.handler.QuestHandler;
+import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.init.MHQuests;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -66,7 +66,7 @@ public class CommandQuest extends CommandBase
         if(target == null)
             throw new CommandException("Couldn't get target player!");
         else
-            questCap = QuestHandler.getQuestCapability(target);
+            questCap = target.getCapability(MHCapabilities.QUESTS, null);
         if(questCap == null)
             throw new CommandException("Couldn't get quest data for player " + target.getDisplayNameString() + "!");
 

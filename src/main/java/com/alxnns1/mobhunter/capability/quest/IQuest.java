@@ -1,15 +1,14 @@
 package com.alxnns1.mobhunter.capability.quest;
 
+import com.alxnns1.mobhunter.capability.ICapability;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.util.INBTSerializable;
 
 import java.util.List;
 
 /**
  * Created by Mark on 12/01/2017.
  */
-public interface IQuest extends INBTSerializable<NBTTagCompound>
+public interface IQuest extends ICapability
 {
     /**
      * Returns the currently active quest for the player
