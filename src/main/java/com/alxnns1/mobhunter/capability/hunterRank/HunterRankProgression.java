@@ -56,11 +56,11 @@ public class HunterRankProgression
 
     public static int getProgressForRank(int hunterRank)
     {
-        return progressPoints[hunterRank];
+        return progressPoints[Math.min(hunterRank, HR_MAX)];
     }
 
     public static int getTotalProgressForRank(int hunterRank)
     {
-        return cumulativePoints[hunterRank];
+        return cumulativePoints[Math.min(hunterRank, HR_MAX)];
     }
 }

@@ -6,14 +6,15 @@ import com.alxnns1.mobhunter.capability.quest.MHQuestObject;
 import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.message.MessageGuiQuest;
 import com.alxnns1.mobhunter.util.CommonUtil;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.io.IOException;
 
 public class GuiQuest extends MHGuiScreen
 {
+    private static final String LANG = "gui.quest.";
     private MHQuestObject quest;
 
     public GuiQuest(EntityPlayer player)
@@ -49,16 +50,16 @@ public class GuiQuest extends MHGuiScreen
 
         if(isItemSubmitQuest())
         {
-            addButton(new QuestButton(17, 150, "Close"));
-            addButton(new QuestButton(58, 150, "Share"));
-            addButton(new QuestButton(99, 150, "Submit"));
-            addButton(new QuestButton(140, 150, "Cancel"));
+            addButton(new QuestButton(17, 150, I18n.format(LANG + "button.close")));
+            addButton(new QuestButton(58, 150, I18n.format(LANG + "button.share")));
+            addButton(new QuestButton(99, 150, I18n.format(LANG + "button.submit")));
+            addButton(new QuestButton(140, 150, I18n.format(LANG + "button.cancel")));
         }
         else
         {
-            addButton(new QuestButton(18, 150, "Close"));
-            addButton(new QuestButton(72, 150, "Share"));
-            addButton(new QuestButton(126, 150, "Cancel"));
+            addButton(new QuestButton(18, 150, I18n.format(LANG + "button.close")));
+            addButton(new QuestButton(72, 150, I18n.format(LANG + "button.share")));
+            addButton(new QuestButton(126, 150, I18n.format(LANG + "button.cancel")));
         }
     }
 
@@ -76,7 +77,7 @@ public class GuiQuest extends MHGuiScreen
         if(quest == null) return;
         wrapText(quest.getQuest().getLocalName(), 52 + guiLeft, 19 + guiTop, 85, 0, false);
         wrapText(quest.getQuest().getLocalDesc(), 17 + guiLeft, 54 + guiTop, 160, 0, false);
-        wrapText("Objective Progress: \n " + quest.getQuestGuiObjProgress(), 22 + guiLeft, 119 + guiTop, 155, 0, false);
+        wrapText(I18n.format(LANG + "objProgress") + ": \n " + quest.getQuestGuiObjProgress(), 22 + guiLeft, 119 + guiTop, 155, 0, false);
     }
 
     /**
@@ -93,7 +94,7 @@ public class GuiQuest extends MHGuiScreen
             default:
                 //Process button click on server
                 int buttonId = !isItemSubmitQuest() && button.id > 1 ? button.id + 1 : button.id;
-                LogHelper.info("Button ID: " + button.id + "   Changed to: " + buttonId);
+                //LogHelper.info("Button ID: " + button.id + "   Changed to: " + buttonId);
                 CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(buttonId, mc.player.getUniqueID()));
         }
     }

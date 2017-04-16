@@ -115,9 +115,11 @@ public class CapabilityQuest implements IQuest
             int penalty = quest.getPointsPenalty();
             //Remove HR points from player
             player.getCapability(MHCapabilities.HUNTER_RANK, null).changeProgressPointsBy(player, -penalty);
-            player.sendMessage(new TextComponentString("You've cancelled the quest '")
+            player.sendMessage(new TextComponentTranslation("message.quest.cancel")
+                    .appendText(" '")
                     .appendSibling(new TextComponentTranslation(quest.getUnlocName()))
-                    .appendSibling(new TextComponentString("'\n" + penalty + " HR points have been deducted from you as a penalty.")));
+                    .appendText("'\n")
+                    .appendSibling(new TextComponentTranslation("message,quest.penalty", penalty)));
             currentQuest = null;
         }
         return canRemove;
@@ -141,9 +143,12 @@ public class CapabilityQuest implements IQuest
             {
                 //Send chat message to player
                 MHQuest quest = currentQuest.getQuest();
-                player.sendMessage(new TextComponentString("Congrats! You completed the quest '")
+                player.sendMessage(new TextComponentTranslation("message.quest.complete")
+                        .appendText(" '")
                         .appendSibling(new TextComponentTranslation(quest.getUnlocName()))
-                        .appendSibling(new TextComponentString("'!\n" + "You've received " + quest.getPointsRewardText() + " and the following items:\n"))
+                        .appendText("'!\n")
+                        .appendSibling(new TextComponentTranslation("message.quest.reward", quest.getPointsRewardText()))
+                        .appendText(":\n")
                         .appendSibling(quest.getRewardTextComponent()));
 
                 //Give player reward items

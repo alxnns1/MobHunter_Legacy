@@ -8,10 +8,10 @@ sharpness.white.name=White
 sharpness.purple.name=Purple
 
 //Death Messages
-death.attack.giapreySpit=%1$s was killed by Giaprey's Spit
-death.attack.giadromeSpit=%1$s was killed by Giadrome's Spit
-death.attack.iopreySpit=%1$s was killed by Ioprey's Spit
-death.attack.iodromeSpit=%1$s was killed by Iodrome's Spit
+death.attack.giapreySpit=%s was killed by Giaprey's Spit
+death.attack.giadromeSpit=%s was killed by Giadrome's Spit
+death.attack.iopreySpit=%s was killed by Ioprey's Spit
+death.attack.iodromeSpit=%s was killed by Iodrome's Spit
 
 //JEI
 jei.recipe.weaponCrafting=Weapon Crafting
@@ -634,6 +634,29 @@ gui.blockArmourUpgrade.button.craft.ore=1 x Ore:
 gui.blockArmourUpgrade.button.up=Up
 gui.blockArmourUpgrade.button.down=Down
 
+gui.quest.button.close=Close
+gui.quest.button.share=Share
+gui.quest.button.submit=Submit
+gui.quest.button.cancel=Cancel
+gui.quest.button.back=Back
+gui.quest.button.infoPage=Change Quest Info Page
+gui.quest.button.up=Up
+gui.quest.button.down=Down
+gui.quest.tooltip.accept=Accept Quest
+gui.quest.tooltip.cancel=Cancel Quest
+gui.quest.tooltip.alreadyHaveQuest=You have already accepted another quest
+gui.quest.tooltip.onCooldown=This quest is on cooldown
+gui.quest.tooltip.completed=You have completed this quest
+gui.quest.objProgress=Objective Progress
+gui.quest.obj.gather=Gather the following items
+gui.quest.obj.craft=Craft the following items
+gui.quest.obj.hunt=Hunt the following creatures
+gui.quest.obj=Objectives
+gui.quest.time=Time: %d mins
+gui.quest.cooldown=Cooldown: %d mins
+gui.quest.rewards=Rewards
+gui.quest.penalty=Penalty
+
 //ENTITIES
 
 //Lynians
@@ -749,7 +772,6 @@ entity.MobHunter.Fatalis.name=Fatalis
 
 //QUESTS
 
-//Test Quests
 quest.huntBasics1.name=Hunter Basics Part 1
 quest.huntBasics1.desc=Show me you know how to find some essentials! Get me some Herbs!
 quest.huntBasics2.name=Hunter Basics Part 2
@@ -760,3 +782,41 @@ quest.huntBasics4.name=Hunter Basics Part 4
 quest.huntBasics4.desc=You can't hunt anything without a sword! Bring me a Hunter's Knife... I've lost mine...
 quest.huntBasics5.name=Hunter Basics Part 5
 quest.huntBasics5.desc=We'll start nice and small. Kill some pesky Jaggis and report back to me... In one piece!
+
+//CHAT MESSAGES
+
+message.hr.added=Added
+message.hr.removed=Removed
+message.hr.addPoints=%d progress points to the player %s. New amount: %d.
+message.hr.setPoints=Set progress points to %d for player %s.
+message.hr.addRank=&d hunter ranks to the player %s. New rank: %d.
+message.hr.setRank=Set hunter rank to %d for player %s.
+
+message.quest.complete=Congrats! You completed the quest
+message.quest.reward=You've received %s and the following items
+message.quest.cancel=You've cancelled the quest
+message.quest.penalty=%d HR points have been deducted from you as a penalty.
+message.quest.outOfTime.1=You have run out of time to complete the quest '%s'!
+message.quest.outOfTime.2=%s have been deducted as a penalty.
+message.quest.noQuest=Couldn't find quest '%s'!
+message.quest.clearAll=Cleared all quest data for player %s.
+message.quest.clearCurrent=Cleared current quest for player %s.
+message.quest.forceComplete=Force completed quest '%s' for player %s.
+message.quest.forceUncomplete=Force uncompleted quest '%s' for player %s.
+message.quest.setQuest=Set quest '%s' for player %s.
+message.quest.share=%s has shared their quest
+message.quest.share.description=Description
+message.quest.share.objectives=Objectives
+message.quest.share.penalty=Penalty
+message.quest.share.rewards=Rewards
+
+message.monsters.old=Old
+message.monsters.new=New
+message.monsters.noneKilled=No monsters killed!
+message.monsters.newKilled=New monster killed!
+message.monsters.smallKilled=New smallest monster killed!
+message.monsters.largeKilled=New largest monster killed!
+message.monsters.title=Monster Sizes - Page %d / %d
+message.monsters.small=Smallest
+message.monsters.large=Largest
+message.monsters.cantFind=Couldn't find sizes for monster '%s'

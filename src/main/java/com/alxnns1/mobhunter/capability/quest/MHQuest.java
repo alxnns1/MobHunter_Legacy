@@ -15,6 +15,7 @@ public class MHQuest
     /** Unlocalised name for the quest */
     private final String name;
     private final int points, reqHR, time;
+    private int penalty = -1;
     /** Cooldown to being able to accept the quest again once it's been completed */
     private int repeatCooldown;
     private Object[] objectives;
@@ -44,6 +45,17 @@ public class MHQuest
     public boolean isEqual(String questId)
     {
         return name.equals(questId);
+    }
+
+    /**
+     * Sets a specific penalty for this quest.
+     * By default, the penalty will be the points reward divided by 4.
+     * Setting the penalty here will override that calculation, and use this value instead.
+     */
+    public MHQuest setPenalty(int pointsPenalty)
+    {
+        if(pointsPenalty >= 0) penalty = pointsPenalty;
+        return this;
     }
 
     /**
@@ -277,7 +289,7 @@ public class MHQuest
      */
     public int getPointsPenalty()
     {
-        return (int) Math.ceil((float) points / 4f);
+        return penalty >= 0 ? penalty : (int) Math.ceil((float) points / 4f);
     }
 
     public String getPointsPenaltyText()

@@ -90,9 +90,17 @@ public class CapabilityHunterRank implements IHunterRank
         {
             while(progressPoints < 0)
             {
-                //Decrease rank
-                setRankInternal(hunterRank - 1);
-                progressPoints = HunterRankProgression.getProgressForRank(hunterRank) + progressPoints;
+                //Decrease rank, but don't go lower than HR 1
+                if(hunterRank > 1)
+                {
+                    setRankInternal(hunterRank - 1);
+                    progressPoints = HunterRankProgression.getProgressForRank(hunterRank) + progressPoints;
+                }
+                else
+                {
+                    progressPoints = 0;
+                    break;
+                }
             }
         }
         else

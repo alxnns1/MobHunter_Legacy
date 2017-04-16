@@ -134,9 +134,14 @@ public class CapabilityHandler
             if(quest != null && quest.hasQuestExpired(worldTime))
             {
                 //Remove quest and notify player
-                player.sendMessage(new TextComponentString(TextFormatting.RED + "You have run out of time to complete the quest '" + quest.getQuest().getLocalName() + "'!"));
+                TextComponentTranslation text = new TextComponentTranslation("message.quest.outOfTime.1", quest.getQuest().getLocalName());
+                text.getStyle().setColor(TextFormatting.RED);
+                player.sendMessage(text);
                 if(quest.getQuest().getPointsPenalty() > 0)
-                    player.sendMessage(new TextComponentString(TextFormatting.RED + "" + quest.getQuest().getPointsPenaltyText() + " have been deducted as a penalty."));
+                {
+                    text = new TextComponentTranslation("message.quest.outOfTime.2", quest.getQuest().getPointsPenaltyText());
+                    player.sendMessage(text);
+                }
                 playerQuest.clearQuest();
                 playerQuest.dataChanged(player, EnumQuestDataChange.CURRENT);
             }
@@ -188,19 +193,27 @@ public class CapabilityHandler
         switch(eSize)
         {
             case NEW: //New monster entry
-                player.sendMessage(new TextComponentString("New monster killed!\n")
-                    .appendSibling(event.getEntityLiving().getDisplayName())
-                    .appendSibling(new TextComponentString(" -> " + monsterPercent + "%")));
+                player.sendMessage(new TextComponentTranslation("message.monsters.newKilled").appendText("\n")
+                        .appendSibling(event.getEntityLiving().getDisplayName())
+                        .appendText(" -> " + monsterPercent + "%"));
                 break;
             case SMALLEST: //Smaller than current smallest
-                player.sendMessage(new TextComponentString("New smallest monster killed!\n")
-                    .appendSibling(event.getEntityLiving().getDisplayName())
-                    .appendSibling(new TextComponentString(" -> Old: " + CommonUtil.floatAsPercentage(curSizes.smallest) + "% -> New: " + monsterPercent + "%")));
+                player.sendMessage(new TextComponentTranslation("message.monsters.smallKilled").appendText("\n")
+                        .appendSibling(event.getEntityLiving().getDisplayName())
+                        .appendText(" -> ")
+                        .appendSibling(new TextComponentTranslation("message.monsters.old"))
+                        .appendText(": " + CommonUtil.floatAsPercentage(curSizes.smallest) + "% -> ")
+                        .appendSibling(new TextComponentTranslation("message.monsters.new"))
+                        .appendText(": " + monsterPercent + "%"));
                 break;
             case LARGEST: //Larger than current largest
-                player.sendMessage(new TextComponentString("New largest monster killed!\n")
-                    .appendSibling(event.getEntityLiving().getDisplayName())
-                    .appendSibling(new TextComponentString(" -> Old: " + CommonUtil.floatAsPercentage(curSizes.largest) + "% -> New: " + monsterPercent + "%")));
+                player.sendMessage(new TextComponentTranslation("message.monsters.largeKilled").appendText("\n")
+                        .appendSibling(event.getEntityLiving().getDisplayName())
+                        .appendText(" -> ")
+                        .appendSibling(new TextComponentTranslation("message.monsters.old"))
+                        .appendText(": " + CommonUtil.floatAsPercentage(curSizes.largest) + "% -> ")
+                        .appendSibling(new TextComponentTranslation("message.monsters.new"))
+                        .appendText(": " + monsterPercent + "%"));
                 break;
             //Else do nothing
         }

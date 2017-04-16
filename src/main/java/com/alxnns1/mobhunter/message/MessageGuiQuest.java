@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IThreadListener;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -84,21 +85,28 @@ public class MessageGuiQuest implements IMessage
                             MinecraftServer server = world.getMinecraftServer();
                             if(server != null)
                             {
-                                TextComponentString msg1;
+                                ITextComponent msg1;
                                 if(player != null)
-                                    msg1 = new TextComponentString(player.getDisplayNameString() + " has shared their quest [");
+                                    msg1 = new TextComponentTranslation("message.quest.share", player.getDisplayNameString())
+                                            .appendText(" [");
                                 else
                                     msg1 = new TextComponentString("[");
                                 MHQuest quest = questCapability.getCurrentQuest().getQuest();
                                 TextComponentTranslation questName = new TextComponentTranslation(quest.getUnlocName());
                                 questName.getStyle().setColor(TextFormatting.GREEN);
                                 questName.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                                        new TextComponentString("Description:\n")
+                                        new TextComponentTranslation("message.quest.share.description")
+                                                .appendText(":\n")
                                                 .appendSibling(new TextComponentTranslation(quest.getUnlocDesc())
-                                                .appendText("\nObjectives:\n")
+                                                .appendText("\n")
+                                                .appendSibling(new TextComponentTranslation("message.quest.share.objectives"))
+                                                .appendText(":\n")
                                                 .appendSibling(quest.getObjectiveTextComponent())
-                                                .appendText("\nPenalty:\n" + quest.getPointsPenaltyText() +
-                                                        "\nRewards:\n" + quest.getPointsRewardText() + ", ")
+                                                .appendText("\n")
+                                                .appendSibling(new TextComponentTranslation("message.quest.share.penalty"))
+                                                .appendText(":\n" + quest.getPointsPenaltyText() + "\n")
+                                                .appendSibling(new TextComponentTranslation("message.quest.share.rewards"))
+                                                .appendText(":\n" + quest.getPointsRewardText() + ", ")
                                                 .appendSibling(quest.getRewardTextComponent()))));
                                 server.getPlayerList().sendChatMsg(msg1.appendSibling(questName).appendText("]"));
                             }

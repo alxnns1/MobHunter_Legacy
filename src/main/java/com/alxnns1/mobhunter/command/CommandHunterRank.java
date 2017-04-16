@@ -9,7 +9,7 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -71,24 +71,26 @@ public class CommandHunterRank extends CommandBase
         if(args[0].equals("addPoints"))
         {
             hrCap.changeProgressPointsBy(target, amount);
-            String s = amount >= 0 ? "Added " : "Removed ";
-            sender.sendMessage(new TextComponentString(s + amount + " progress points to the player " + target.getDisplayNameString() + ". New amount: " + hrCap.getProgressPoints()));
+            sender.sendMessage(new TextComponentTranslation(amount >= 0 ? "message.hr.added" : "message.hr.removed")
+                    .appendText(" ")
+                    .appendSibling(new TextComponentTranslation("message.hr.addPoints", amount, target.getDisplayNameString(), hrCap.getProgressPoints())));
         }
         else if(args[0].equals("setPoints"))
         {
             hrCap.setProgressPoints(target, amount);
-            sender.sendMessage(new TextComponentString("Set progress points to " + amount + " for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.hr.setPoints", amount, target.getDisplayNameString()));
         }
         else if(args[0].equals("addRank"))
         {
             hrCap.changeRankBy(target, amount);
-            String s = amount >= 0 ? "Added " : "Removed ";
-            sender.sendMessage(new TextComponentString(s + amount + " hunter ranks to the player " + target.getDisplayNameString() + ". New rank: " + hrCap.getRank()));
+            sender.sendMessage(new TextComponentTranslation(amount >= 0 ? "message.hr.added" : "message.hr.removed")
+                    .appendText(" ")
+                    .appendSibling(new TextComponentTranslation("message.hr.addRank", amount, target.getDisplayNameString(), hrCap.getRank())));
         }
         else if(args[0].equals("setRank"))
         {
             hrCap.setRank(target, amount);
-            sender.sendMessage(new TextComponentString("Set hunter rank to " + amount + " for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.hr.setRank", amount, target.getDisplayNameString()));
         }
     }
 

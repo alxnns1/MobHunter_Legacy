@@ -8,10 +8,10 @@ import com.alxnns1.mobhunter.init.MHCapabilities;
 import com.alxnns1.mobhunter.init.MHQuests;
 import com.alxnns1.mobhunter.message.MessageSetQuest;
 import com.alxnns1.mobhunter.util.CommonUtil;
-import com.alxnns1.mobhunter.util.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.io.IOException;
@@ -22,6 +22,7 @@ public class GuiQuestList extends MHGuiScreen
 {
     private static final List<Integer> hunterRankList;
     private static int numButtons = 7;
+    private static final String LANG = "gui.questList.";
 
     private List<MHQuest> questList = new ArrayList<MHQuest>();
     private int listStart = 0;
@@ -86,7 +87,7 @@ public class GuiQuestList extends MHGuiScreen
         {
             questList.clear();
             questList = MHQuests.getQuestsForRank(currentHR);
-            LogHelper.info("Got " + questList.size() + " quests");
+            //LogHelper.info("Got " + questList.size() + " quests");
         }
     }
 
@@ -177,30 +178,28 @@ public class GuiQuestList extends MHGuiScreen
             switch(selectedQuest.getQuestType())
             {
                 case GATHERING:
-                    objText = "Gather the following items:";
+                    objText = I18n.format(LANG + "obj.gather");
                     break;
                 case CRAFTING:
-                    objText = "Craft the following items:";
+                    objText = I18n.format(LANG + "obj.craft");
                     break;
                 case HUNTING:
-                    objText = "Hunt the following creatures:";
+                    objText = I18n.format(LANG + "obj.hunt");
                     break;
                 default:
-                    objText = "Objectives:";
+                    objText = I18n.format(LANG + "obj");
             }
             drawStringWithShadow(objText, x, y + textHeight * (descLines + 2), grey);
             wrapText(CommonUtil.replaceCommasWithNewlines(selectedQuest.getObjectiveText(), true), x, y + textHeight * (descLines + 3), width, grey, true);
 
             //Time Limit
-            drawStringWithShadow("Time: " + selectedQuest.getTimeLimit() + "mins", x, y + textHeight * 7, white);
+            drawStringWithShadow(I18n.format(LANG + "time", selectedQuest.getTimeLimit()), x, y + textHeight * 7, white);
 
             //Repeat Cooldown
             if(selectedQuest.isRepeatable())
             {
                 MHQuestCooldown cooldownQuest = questCapability.getQuestCooldown(selectedQuest);
-                String text = cooldownQuest == null ?
-                        "Cooldown: " + selectedQuest.getRepeatCooldownInMins() + "mins" :
-                        "Cooldown: " + cooldownQuest.getMinsLeft(mc.world.getTotalWorldTime()) + "mins";
+                String text = I18n.format(LANG + "cooldown", cooldownQuest == null ? selectedQuest.getRepeatCooldownInMins() : cooldownQuest.getMinsLeft(mc.world.getTotalWorldTime()));
                 int textColour = cooldownQuest == null ? white : EnumQuestStatus.COOLDOWN.getColour();
                 int textWidth = fontRendererObj.getStringWidth(text);
                 int cooldownX = 185 + guiLeft - textWidth;
@@ -210,11 +209,11 @@ public class GuiQuestList extends MHGuiScreen
         else
         {
             //Rewards
-            drawStringWithShadow("Rewards:", x, y + textHeight, grey);
+            drawStringWithShadow(I18n.format(LANG + "rewards") + ":", x, y + textHeight, grey);
             wrapText(selectedQuest.getPointsRewardText() + " \n " + CommonUtil.replaceCommasWithNewlines(selectedQuest.getRewardText(), true),
                     x, y + textHeight * 2, width, grey, true);
             //Penalty
-            drawStringWithShadow("Penalty:", xMid + 20, y + textHeight * 2, grey);
+            drawStringWithShadow(I18n.format(LANG + "penalty") + ":", xMid + 20, y + textHeight * 2, grey);
             drawStringWithShadow(selectedQuest.getPointsPenaltyText(), xMid + 20, y + textHeight * 3, grey);
         }
     }
@@ -333,7 +332,7 @@ public class GuiQuestList extends MHGuiScreen
         @Override
         public String getTooltipText()
         {
-            return isUp ? "Up" : "Down";
+            return I18n.format(LANG + (isUp ? "up" : "down"));
         }
     }
 
@@ -359,18 +358,21 @@ public class GuiQuestList extends MHGuiScreen
         @Override
         public String getTooltipText()
         {
+            String text = null;
             if(selectedQuest == null)
                 return null;
             else if(enabled && questCapability.canAcceptQuest(selectedQuest))
-                return "Accept Quest";
+                text = "accept";
             else if(questCapability.isQuestAccepted(selectedQuest))
-                return "Cancel Quest";
+                text = "cancel";
             else if(questCapability.getCurrentQuest() != null)
-                return "You have already accepted another quest";
+                text = "alreadyHaveQuest";
             else if(questCapability.isQuestCoolingDown(selectedQuest))
-                return "This quest is on cooldown";
+                text = "onCooldown";
             else if(questCapability.isQuestCompleted(selectedQuest))
-                return "You have completed this quest";
+                text = "completed";
+            if(text != null)
+                return I18n.format(LANG + text);
             return null;
         }
 
@@ -400,7 +402,7 @@ public class GuiQuestList extends MHGuiScreen
         @Override
         public String getTooltipText()
         {
-            return "Back";
+            return I18n.format(LANG + "back");
         }
     }
 
@@ -417,7 +419,7 @@ public class GuiQuestList extends MHGuiScreen
         @Override
         public String getTooltipText()
         {
-            return "Change Quest Info Page";
+            return I18n.format(LANG + "infoPage");
         }
 
         @Override

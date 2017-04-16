@@ -13,7 +13,7 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -76,7 +76,10 @@ public class CommandQuest extends CommandBase
         {
             quest = MHQuests.getQuest(args[1]);
             if(quest == null)
-                throw new CommandException("Couldn't find quest '" + args[1] + "'!");
+            {
+                sender.sendMessage(new TextComponentTranslation("message.quest.noQuest", args[1]));
+                return;
+            }
         }
 
         if(args[0].equals("clearAll"))
@@ -85,13 +88,13 @@ public class CommandQuest extends CommandBase
             questCap.getCompletedQuests().clear();
             questCap.getCooldownQuests().clear();
             questCap.dataChanged(target, EnumQuestDataChange.ALL);
-            sender.sendMessage(new TextComponentString("Cleared all quest data for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.quest.clearAll", target.getDisplayNameString()));
         }
         else if(args[0].equals("clearCurrent"))
         {
             questCap.clearQuest();
             questCap.dataChanged(target, EnumQuestDataChange.CURRENT);
-            sender.sendMessage(new TextComponentString("Cleared current quest for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.quest.clearCurrent", target.getDisplayNameString()));
         }
         else if(args[0].equals("complete"))
         {
@@ -103,7 +106,7 @@ public class CommandQuest extends CommandBase
                 questCap.dataChanged(target, EnumQuestDataChange.COOLDOWN);
             }
             questCap.dataChanged(target, EnumQuestDataChange.COMPLETED);
-            sender.sendMessage(new TextComponentString("Force completed quest '" + quest.getQuestId() + "' for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.quest.forceComplete", quest.getQuestId(), target.getDisplayNameString()));
         }
         else if(args[0].equals("uncomplete"))
         {
@@ -115,7 +118,7 @@ public class CommandQuest extends CommandBase
                 questCap.dataChanged(target, EnumQuestDataChange.COOLDOWN);
             }
             questCap.dataChanged(target, EnumQuestDataChange.COMPLETED);
-            sender.sendMessage(new TextComponentString("Force uncompleted quest '" + quest.getQuestId() + "' for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.quest.forceUncomplete", quest.getQuestId(), target.getDisplayNameString()));
         }
         else if(args[0].equals("accept"))
         {
@@ -128,7 +131,7 @@ public class CommandQuest extends CommandBase
                 questCap.dataChanged(target, EnumQuestDataChange.COOLDOWN);
             }
             questCap.dataChanged(target, EnumQuestDataChange.CURRENT);
-            sender.sendMessage(new TextComponentString("Set quest '" + quest.getQuestId() + "' for player " + target.getDisplayNameString()));
+            sender.sendMessage(new TextComponentTranslation("message.quest.setQuest", quest.getQuestId(), target.getDisplayNameString()));
         }
     }
 

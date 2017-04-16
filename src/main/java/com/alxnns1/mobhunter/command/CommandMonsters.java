@@ -12,6 +12,7 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -77,7 +78,7 @@ public class CommandMonsters extends CommandBase
 
             if(monsters.size() == 0)
             {
-                player.sendMessage(new TextComponentString("No monsters killed!"));
+                player.sendMessage(new TextComponentTranslation("message.monsters.noneKilled"));
                 return;
             }
 
@@ -94,13 +95,21 @@ public class CommandMonsters extends CommandBase
             if(monsters.size() < max) max = monsters.size();
 
             //Create the String to send to the player
-            TextComponentString text = new TextComponentString(TextFormatting.YELLOW + "============= " + TextFormatting.GOLD + "Monster Sizes - Page " + (page + 1) + " / " + (pageMax + 1) + TextFormatting.YELLOW +  " =============");
+            ITextComponent text = new TextComponentString(TextFormatting.YELLOW + "============= ");
+            TextComponentTranslation titleText = new TextComponentTranslation("message.monsters.title", (page + 1), (pageMax + 1));
+            titleText.getStyle().setColor(TextFormatting.GOLD);
+            text.appendSibling(titleText);
+            text.appendText(TextFormatting.YELLOW +  " =============");
             for(int i = min; i < max; i++)
             {
                 MonsterSize ms = monsters.get(i);
                 text.appendSibling(new TextComponentString("\n  "))
                         .appendSibling(new TextComponentTranslation(ms.getEntityUnlocName()))
-                        .appendSibling(new TextComponentString(" -> Smallest: " + CommonUtil.floatAsPercentage(ms.smallest) + "% - Largest: " + CommonUtil.floatAsPercentage(ms.largest) + "%"));
+                        .appendText(" -> ")
+                        .appendSibling(new TextComponentTranslation("message.monsters.small"))
+                        .appendText(": " + CommonUtil.floatAsPercentage(ms.smallest) + "% - ")
+                        .appendSibling(new TextComponentTranslation("message.monsters.large"))
+                        .appendText(": " + CommonUtil.floatAsPercentage(ms.largest) + "%");
             }
             player.sendMessage(text);
         }
@@ -111,13 +120,15 @@ public class CommandMonsters extends CommandBase
             MonsterSize sizes = cap.getMonsterSizes(monster);
             if(sizes == null)
             {
-                player.sendMessage(new TextComponentString("Couldn't find sizes for monster '" + monster + "'"));
+                player.sendMessage(new TextComponentTranslation("message.monsters.cantFind", monster));
                 return;
             }
             player.sendMessage(new TextComponentTranslation(sizes.getEntityUnlocName())
-                    .appendSibling(new TextComponentString(
-                            ":\nSmallest: " + CommonUtil.floatAsPercentage(sizes.smallest) + "%" +
-                            " - Largest: " + CommonUtil.floatAsPercentage(sizes.largest) + "%")));
+                    .appendText(":\n")
+                    .appendSibling(new TextComponentTranslation("message.monsters.small"))
+                    .appendText(": " + CommonUtil.floatAsPercentage(sizes.smallest) + "% - ")
+                    .appendSibling(new TextComponentTranslation("message.monsters.large"))
+                    .appendText(": " + CommonUtil.floatAsPercentage(sizes.largest) + "%"));
         }
         else
             throw new WrongUsageException(getUsage(sender));
