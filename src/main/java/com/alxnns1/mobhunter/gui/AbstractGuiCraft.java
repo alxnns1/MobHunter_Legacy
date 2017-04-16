@@ -39,6 +39,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
         ySize = 203;
     }
 
+    @Override
     public void initGui()
     {
         super.initGui();
@@ -157,6 +158,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
             item = renderItem;
         }
 
+        @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY)
         {
             super.drawButton(mc, mouseX, mouseY);
@@ -209,6 +211,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
                 tooltipLines.add(tooltip);
         }
 
+        @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY)
         {
             if(!visible) return;
@@ -231,6 +234,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
                 drawCenteredString(fontrenderer, displayString, (xPosition + 16) + (width - 16) / 2, yPosition + (height - 8) / 2, textColour);
         }
 
+        @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY)
         {
             if(!tooltipLines.isEmpty())

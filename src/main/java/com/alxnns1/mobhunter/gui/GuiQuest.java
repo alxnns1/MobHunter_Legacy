@@ -44,6 +44,7 @@ public class GuiQuest extends MHGuiScreen
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
      * window resizes, the buttonList is cleared beforehand.
      */
+    @Override
     public void initGui()
     {
         super.initGui();
@@ -63,6 +64,7 @@ public class GuiQuest extends MHGuiScreen
         }
     }
 
+    @Override
     protected void drawExtraBg()
     {
         //Draw icon
@@ -71,6 +73,7 @@ public class GuiQuest extends MHGuiScreen
         drawTexturedModalRect(guiLeft + 18, guiTop + 18, 224, iconY, 32, 32);
     }
 
+    @Override
     protected void drawText()
     {
         //Draw text

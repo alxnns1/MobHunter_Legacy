@@ -53,6 +53,7 @@ public class GuiQuestList extends MHGuiScreen
         ySize = 204;
     }
 
+    @Override
     public void initGui()
     {
         super.initGui();
@@ -218,6 +219,7 @@ public class GuiQuestList extends MHGuiScreen
         }
     }
 
+    @Override
     protected void drawTooltips(List<String> tooltip, int mouseX, int mouseY)
     {
         for(GuiButton button : buttonList)
@@ -291,6 +293,7 @@ public class GuiQuestList extends MHGuiScreen
             super(x, y, 225, 14, 0, 204, "");
         }
 
+        @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY)
         {
             super.drawButton(mc, mouseX, mouseY);
