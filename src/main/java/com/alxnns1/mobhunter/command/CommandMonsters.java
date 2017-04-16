@@ -8,6 +8,7 @@ import com.alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
@@ -119,7 +120,7 @@ public class CommandMonsters extends CommandBase
                             " - Largest: " + CommonUtil.floatAsPercentage(sizes.largest) + "%")));
         }
         else
-            throw new CommandException("Invalid command usage.");
+            throw new WrongUsageException(getUsage(sender));
     }
 
     @Override
