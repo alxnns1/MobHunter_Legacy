@@ -6,6 +6,7 @@ import com.alxnns1.mobhunter.entity.RenderSpit;
 import com.alxnns1.mobhunter.entity.monsters.*;
 import com.alxnns1.mobhunter.entity.monsters.render.*;
 import com.alxnns1.mobhunter.reference.Config;
+import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
@@ -16,21 +17,27 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Mark on 04/05/2016.
  */
 public class MHEntities
 {
     private static int modEntityID = 0;
+    public static List<String> ENTITY_NAMES = new ArrayList<String>();
 
     private static void registerEntity(Class<? extends Entity> entityClass, String name)
     {
         EntityRegistry.registerModEntity(entityClass, name, ++modEntityID, MobHunter.instance, 64, 1, false);
+        ENTITY_NAMES.add(String.format("%s.%s", Reference.MOD_ID, name));
     }
 
     private static void registerMobWithEgg(Class<? extends Entity> entityClass, String name, int eggColour, int eggSpotColour)
     {
         EntityRegistry.registerModEntity(entityClass, name, ++modEntityID, MobHunter.instance, 64, 1, false, eggColour, eggSpotColour);
+        ENTITY_NAMES.add(String.format("%s.%s", Reference.MOD_ID, name));
     }
 
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type[] biomeTypes)

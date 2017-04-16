@@ -77,7 +77,8 @@ public class MessageCapability implements IMessage
     public enum EnumCapability
     {
         HUNTER_RANK(MHCapabilities.HUNTER_RANK),
-        QUEST(MHCapabilities.QUESTS);
+        QUEST(MHCapabilities.QUESTS),
+        MONSTERS(MHCapabilities.MONSTERS);
 
         private Capability capability;
 

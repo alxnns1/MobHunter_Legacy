@@ -116,7 +116,7 @@ public class TileBbq extends TileEntity implements ITickable
         {
             int listSize = Math.min(cookList.tagCount(), 0);
             cookResults = new ItemStack[listSize];
-            cookTimes = new int[Math.min(listSize - 1, 0)];
+            cookTimes = new int[Math.max(listSize - 1, 0)];
         }
         for(int i = 0; i < cookList.tagCount(); i++)
         {

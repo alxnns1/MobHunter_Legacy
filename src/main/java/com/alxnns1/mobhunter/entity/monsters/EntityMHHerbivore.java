@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.entity.monsters;
 
+import com.alxnns1.mobhunter.entity.IScaledMob;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 /**
  * Created by Mark on 28/04/2016.
  */
-public abstract class EntityMHHerbivore extends EntityAnimal
+public abstract class EntityMHHerbivore extends EntityAnimal implements IScaledMob
 {
     private static final String KEY_SCALE = "scale";
     private static final DataParameter<Float> ENTITY_SCALE = EntityDataManager.createKey(EntityMHHerbivore.class, DataSerializers.FLOAT);

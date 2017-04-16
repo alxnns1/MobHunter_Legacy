@@ -1,5 +1,6 @@
 package com.alxnns1.mobhunter.entity.monsters;
 
+import com.alxnns1.mobhunter.entity.IScaledMob;
 import com.alxnns1.mobhunter.init.MHItems;
 import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.entity.IEntityLivingData;
@@ -22,7 +23,8 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 24/02/2017.
  */
-public abstract class EntityMHMarine extends EntityAnimal {
+public abstract class EntityMHMarine extends EntityAnimal implements IScaledMob
+{
     private static final String KEY_SCALE = "scale";
     private static final DataParameter<Float> ENTITY_SCALE = EntityDataManager.createKey(EntityMHMarine.class, DataSerializers.FLOAT);
     private static float scaleMax; //= 1.24f;

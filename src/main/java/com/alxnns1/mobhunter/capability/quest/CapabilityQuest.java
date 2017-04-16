@@ -303,21 +303,4 @@ public class CapabilityQuest implements IQuest
                 cooldownQuests.add(MHQuestCooldown.readFromNBT(tagList.getCompoundTagAt(i)));
         }
     }
-
-    public static class Storage implements Capability.IStorage<IQuest>
-    {
-        public static final Storage INSTANCE = new Storage();
-
-        @Override
-        public NBTBase writeNBT(Capability<IQuest> capability, IQuest instance, EnumFacing side)
-        {
-            return instance.serializeNBT();
-        }
-
-        @Override
-        public void readNBT(Capability<IQuest> capability, IQuest instance, EnumFacing side, NBTBase nbt)
-        {
-            instance.deserializeNBT((NBTTagCompound) nbt);
-        }
-    }
 }

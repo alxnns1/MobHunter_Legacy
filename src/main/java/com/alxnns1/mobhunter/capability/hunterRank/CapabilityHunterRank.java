@@ -164,21 +164,4 @@ public class CapabilityHunterRank implements IHunterRank
         if(nbt.hasKey("progress"))
             progressPoints = nbt.getInteger("progress");
     }
-
-    public static class Storage implements Capability.IStorage<IHunterRank>
-    {
-        public static final Storage INSTANCE = new Storage();
-
-        @Override
-        public NBTBase writeNBT(Capability<IHunterRank> capability, IHunterRank instance, EnumFacing side)
-        {
-            return instance.serializeNBT();
-        }
-
-        @Override
-        public void readNBT(Capability<IHunterRank> capability, IHunterRank instance, EnumFacing side, NBTBase nbt)
-        {
-            instance.deserializeNBT((NBTTagCompound) nbt);
-        }
-    }
 }

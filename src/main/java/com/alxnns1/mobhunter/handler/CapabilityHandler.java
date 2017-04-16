@@ -1,14 +1,21 @@
 package com.alxnns1.mobhunter.handler;
 
 import com.alxnns1.mobhunter.capability.ICapability;
+import com.alxnns1.mobhunter.capability.monsters.EnumSizeResult;
+import com.alxnns1.mobhunter.capability.monsters.IMonsters;
+import com.alxnns1.mobhunter.capability.monsters.MonsterSize;
 import com.alxnns1.mobhunter.capability.quest.*;
+import com.alxnns1.mobhunter.entity.IScaledMob;
 import com.alxnns1.mobhunter.init.MHCapabilities;
+import com.alxnns1.mobhunter.util.CommonUtil;
 import com.alxnns1.mobhunter.util.LogHelper;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -148,5 +155,56 @@ public class CapabilityHandler
             if(flag)
                 playerQuest.dataChanged(player, EnumQuestDataChange.COOLDOWN);
         }
+    }
+
+
+    /*
+        <<<<<<<<<< MONSTERS >>>>>>>>>>
+     */
+
+
+    @SubscribeEvent
+    public static void monsterKilled(LivingDeathEvent event)
+    {
+        //Update the monster size in the player's capability
+        //TODO: Bird wyverns don't scale?
+        if(!(event.getSource().getSourceOfDamage() instanceof EntityPlayerMP) || !(event.getEntityLiving() instanceof IScaledMob)) return;
+        EntityPlayerMP player = (EntityPlayerMP) event.getSource().getSourceOfDamage();
+        String monsterID = EntityList.getEntityString(event.getEntityLiving());
+
+        IMonsters monsters = player.getCapability(MHCapabilities.MONSTERS, null);
+        MonsterSize curSizes = monsters.getMonsterSizes(monsterID);
+        float monsterScale = ((IScaledMob) event.getEntityLiving()).getScale();
+        String monsterPercent = CommonUtil.floatAsPercentage(monsterScale);
+
+        /*
+        if(curSizes != null)
+            LogHelper.info("Cur Sizes: " + curSizes.smallest + "%% - " + curSizes.largest + "%%");
+        LogHelper.info(monsterID + " -> " + monsterPercent + "%%");
+        */
+
+        //Send message to the player
+        EnumSizeResult eSize = monsters.checkMonsterSize(monsterID, monsterScale);
+        switch(eSize)
+        {
+            case NEW: //New monster entry
+                player.sendMessage(new TextComponentString("New monster killed!\n")
+                    .appendSibling(event.getEntityLiving().getDisplayName())
+                    .appendSibling(new TextComponentString(" -> " + monsterPercent + "%")));
+                break;
+            case SMALLEST: //Smaller than current smallest
+                player.sendMessage(new TextComponentString("New smallest monster killed!\n")
+                    .appendSibling(event.getEntityLiving().getDisplayName())
+                    .appendSibling(new TextComponentString(" -> Old: " + CommonUtil.floatAsPercentage(curSizes.smallest) + "% -> New: " + monsterPercent + "%")));
+                break;
+            case LARGEST: //Larger than current largest
+                player.sendMessage(new TextComponentString("New largest monster killed!\n")
+                    .appendSibling(event.getEntityLiving().getDisplayName())
+                    .appendSibling(new TextComponentString(" -> Old: " + CommonUtil.floatAsPercentage(curSizes.largest) + "% -> New: " + monsterPercent + "%")));
+                break;
+            //Else do nothing
+        }
+
+        monsters.updateMonsterSize(monsterID, monsterScale);
     }
 }

@@ -17,8 +17,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.regex.Matcher;
-
 /**
  * This class will contain methods which will get used in multiple places
  * Created by Mark on 21/04/2016.
@@ -103,5 +101,13 @@ public class CommonUtil
     public static double getEntityVelocity(Entity entity)
     {
         return Math.sqrt(Math.pow(entity.motionX, 2) + Math.pow(entity.motionY, 2) + Math.pow(entity.motionZ, 2));
+    }
+
+    /**
+     * Turns the float into a percentage which is rounded to 2 decimal places.
+     */
+    public static String floatAsPercentage(float f)
+    {
+        return String.format("%.2f", f * 100);
     }
 }
