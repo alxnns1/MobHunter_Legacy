@@ -123,27 +123,31 @@ public class CapabilityHandler
     public static void questTick(TickEvent.PlayerTickEvent event)
     {
         long worldTime = event.player.world.getTotalWorldTime();
-        if(event.player instanceof EntityPlayerMP && event.phase == TickEvent.Phase.END && worldTime >= nextQuestCheck)
+        if(event.phase == TickEvent.Phase.END && worldTime >= nextQuestCheck)
         {
             nextQuestCheck = worldTime + 200; //10s
-            EntityPlayerMP player = (EntityPlayerMP) event.player;
+            boolean isServer = event.player instanceof EntityPlayerMP;
 
             //Check player quests and remove them if they've gone over the time limit
-            IQuest playerQuest = player.getCapability(MHCapabilities.QUESTS, null);
+            IQuest playerQuest = event.player.getCapability(MHCapabilities.QUESTS, null);
             MHQuestObject quest = playerQuest.getCurrentQuest();
             if(quest != null && quest.hasQuestExpired(worldTime))
             {
                 //Remove quest and notify player
-                TextComponentTranslation text = new TextComponentTranslation("message.quest.outOfTime.1", quest.getQuest().getLocalName());
-                text.getStyle().setColor(TextFormatting.RED);
-                player.sendMessage(text);
-                if(quest.getQuest().getPointsPenalty() > 0)
+                if(!isServer)
                 {
-                    text = new TextComponentTranslation("message.quest.outOfTime.2", quest.getQuest().getPointsPenaltyText());
-                    player.sendMessage(text);
+                    TextComponentTranslation text = new TextComponentTranslation("message.quest.outOfTime.1", quest.getQuest().getLocalName());
+                    text.getStyle().setColor(TextFormatting.RED);
+                    event.player.sendMessage(text);
+                    if(quest.getQuest().getPointsPenalty() > 0)
+                    {
+                        text = new TextComponentTranslation("message.quest.outOfTime.2", quest.getQuest().getPointsPenaltyText());
+                        event.player.sendMessage(text);
+                    }
                 }
                 playerQuest.clearQuest();
-                playerQuest.dataChanged(player, EnumQuestDataChange.CURRENT);
+                if(isServer)
+                    playerQuest.dataChanged((EntityPlayerMP) event.player, EnumQuestDataChange.CURRENT);
             }
 
             //Check player's quests on cooldown and remove them from the array if passed their cooldown
@@ -157,8 +161,8 @@ public class CapabilityHandler
                     questIterator.remove();
                 }
             }
-            if(flag)
-                playerQuest.dataChanged(player, EnumQuestDataChange.COOLDOWN);
+            if(flag && isServer)
+                playerQuest.dataChanged((EntityPlayerMP) event.player, EnumQuestDataChange.COOLDOWN);
         }
     }
 
