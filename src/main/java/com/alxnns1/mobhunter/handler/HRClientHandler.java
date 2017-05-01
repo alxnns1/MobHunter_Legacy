@@ -86,7 +86,7 @@ public class HRClientHandler
     }
 
     @SubscribeEvent
-    public static void renderInventoryHR(GuiScreenEvent.DrawScreenEvent.Post event)
+    public static void renderInventoryHR(GuiScreenEvent.BackgroundDrawnEvent event)
     {
         if(event.getGui() instanceof GuiInventory)
         {
