@@ -657,6 +657,23 @@ gui.quest.cooldown=Cooldown: %d mins
 gui.quest.rewards=Rewards
 gui.quest.penalty=Penalty
 
+gui.questList.infoPage=Go to next information page
+gui.questList.back=Back to quest list
+gui.questList.accept=Accept quest
+gui.questList.cancel=Cancel quest
+gui.questList.alreadyHaveQuest=Already completed this quest!
+gui.questList.onCooldown=Quest on cooldown
+gui.questList.up=Up
+gui.questList.down=Down
+gui.questList.obj=Objective
+gui.questList.obj.gather=Gather
+gui.questList.obj.gather=Craft
+gui.questList.obj.gather=Hunt
+gui.questList.rewards=Rewards
+gui.questList.penalty=Penalty
+gui.questList.time=Time %dmins
+gui.questList.cooldown=Cooldown %dmins
+
 //ENTITIES
 
 //Lynians

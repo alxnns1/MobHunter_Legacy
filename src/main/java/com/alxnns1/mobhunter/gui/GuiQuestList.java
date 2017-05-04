@@ -190,7 +190,7 @@ public class GuiQuestList extends MHGuiScreen
                 default:
                     objText = I18n.format(LANG + "obj");
             }
-            drawStringWithShadow(objText, x, y + textHeight * (descLines + 2), grey);
+            drawStringWithShadow(objText + ":", x, y + textHeight * (descLines + 2), grey);
             wrapText(CommonUtil.replaceCommasWithNewlines(selectedQuest.getObjectiveText(), true), x, y + textHeight * (descLines + 3), width, grey, true);
 
             //Time Limit
@@ -405,7 +405,7 @@ public class GuiQuestList extends MHGuiScreen
         @Override
         public String getTooltipText()
         {
-            return I18n.format(LANG + "back");
+            return enabled ? I18n.format(LANG + "back") : null;
         }
     }
 

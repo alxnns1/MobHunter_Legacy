@@ -119,8 +119,6 @@ public class HRClientHandler
             GlStateManager.color(1f, 1f, 1f);
             //Render hunter rank
             drawBorderedString(fontRenderer, "HR: " + hr, x + 3, y - 4, 0xCECE02); //Bar colour: 0xA9A901
-
-            RenderHelper.enableStandardItemLighting();
         }
     }
 
