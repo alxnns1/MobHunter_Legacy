@@ -368,12 +368,12 @@ public class GuiQuestList extends MHGuiScreen
                 text = "accept";
             else if(questCapability.isQuestAccepted(selectedQuest))
                 text = "cancel";
+            else if(questCapability.isQuestCompleted(selectedQuest))
+                text = "completed";
             else if(questCapability.getCurrentQuest() != null)
                 text = "alreadyHaveQuest";
             else if(questCapability.isQuestCoolingDown(selectedQuest))
                 text = "onCooldown";
-            else if(questCapability.isQuestCompleted(selectedQuest))
-                text = "completed";
             if(text != null)
                 return I18n.format(LANG + text);
             return null;

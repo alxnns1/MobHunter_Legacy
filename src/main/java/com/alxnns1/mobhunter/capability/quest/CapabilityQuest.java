@@ -45,7 +45,7 @@ public class CapabilityQuest implements IQuest
     @Override
     public boolean isQuestAccepted(MHQuest quest)
     {
-        return currentQuest != null && currentQuest.getQuest().equals(quest);
+        return currentQuest != null && currentQuest.getQuest().isEqual(quest);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class CapabilityQuest implements IQuest
     @Override
     public boolean canAcceptQuest(MHQuest quest)
     {
-        return !isQuestAccepted(quest) && !isQuestCompleted(quest) && !isQuestCoolingDown(quest);
+        return currentQuest == null && !isQuestCompleted(quest) && !isQuestCoolingDown(quest);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class CapabilityQuest implements IQuest
                     .appendText(" '")
                     .appendSibling(new TextComponentTranslation(quest.getUnlocName()))
                     .appendText("'\n")
-                    .appendSibling(new TextComponentTranslation("message,quest.penalty", penalty)));
+                    .appendSibling(new TextComponentTranslation("message.quest.penalty", penalty)));
             currentQuest = null;
         }
         return canRemove;
