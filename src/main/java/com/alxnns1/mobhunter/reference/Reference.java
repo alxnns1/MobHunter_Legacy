@@ -8,7 +8,7 @@ public class Reference
     //TODO: In MC 1.11, change mod id to "mobhunter"
     public static final String MOD_ID = "MobHunter";
     public static final String MOD_NAME = "Mob Hunter";
-    public static final String VERSION = "1.10.2-0.1.11.5";
+    public static final String VERSION = "1.10.2-0.1.11.5.1";
 
     public static final String GUI_TEXTURE_DIR = "textures/gui/";
 }
