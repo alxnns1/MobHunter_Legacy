@@ -1,6 +1,7 @@
 package com.alxnns1.mobhunter.worldgen;
 
 import com.alxnns1.mobhunter.init.MHBlocks;
+import com.alxnns1.mobhunter.reference.Config;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkGenerator;
@@ -34,7 +35,8 @@ public class WorldGenHandler implements IWorldGenerator
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
     {
-        switch(world.provider.getDimension())
+        int dimId = world.provider.getDimension();
+        switch(dimId)
         {
             case -1:
                 //Nether
@@ -45,9 +47,13 @@ public class WorldGenHandler implements IWorldGenerator
                 genEnd(world, random, chunkX,  chunkZ);
                 break;
             default:
-                //Overworld and whatever else
-                genOverworld(world, random, chunkX, chunkZ);
-                break;
+                //Overworld and other dimensions in the config
+                for(int id : Config.plantGenDimIDs)
+                    if(dimId == id)
+                    {
+                        genOverworld(world, random, chunkX, chunkZ);
+                        break;
+                    }
         }
     }
 

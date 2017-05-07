@@ -8,6 +8,8 @@ public class Config
     public static float scaleMax = 1.24f;
     public static float scaleMin = 0.79f;
 
+    public static int[] plantGenDimIDs = new int[] {0};
+
     public static int aptonothSpawnChance = 8;
     public static int apcerosSpawnChance = 8;
     public static int altarothSpawnChance = 8;

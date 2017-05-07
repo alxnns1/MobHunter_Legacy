@@ -3,6 +3,7 @@ package com.alxnns1.mobhunter.handler;
 import com.alxnns1.mobhunter.reference.Config;
 import com.alxnns1.mobhunter.reference.Reference;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -30,10 +31,19 @@ public class ConfigHandler
         }
     }
 
+    private static int[] getIntArray(String name, String category, int[] defaultValue, String comment)
+    {
+        Property prop = config.get(category, name, defaultValue, comment);
+        prop.setLanguageKey(name);
+        return prop.getIntList();
+    }
+
     private static void loadConfiguration()
     {
         Config.scaleMax = config.getFloat("scaleMax", MOBS_GENERAL, Config.scaleMax, 0.1f, 10f, "The maximum mob scale multiplier for all mobs.");
         Config.scaleMin = config.getFloat("scaleMin", MOBS_GENERAL, Config.scaleMin, 0.1f, 10f, "The minimum mob scale multiplier for all mobs.");
+
+        Config.plantGenDimIDs = getIntArray("plantGenDimIDs", GENERAL, Config.plantGenDimIDs, "The dimensions which the Overworld based plants will generate in. 0 is the Overworld.");
 
         Config.aptonothSpawnChance = config.getInt("aptonothSpawnChance", MOBS, Config.aptonothSpawnChance, 0, 1000, "Natural spawn chance for Aptanoths");
         Config.altarothSpawnChance = config.getInt("altarothSpawnChance", MOBS, Config.altarothSpawnChance, 0, 1000, "Natural spawn chance for Altaroths");
