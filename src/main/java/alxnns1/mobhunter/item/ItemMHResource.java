@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -52,8 +53,9 @@ public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
     /**
      * Returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
+    @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
     {
         if(hasSubtypes)
             for(int i = 0; i < getSubNames().length; i++)
@@ -66,6 +68,7 @@ public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
      * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
      * different names based on their damage or NBT.
      */
+    @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         if(hasSubtypes)
@@ -76,6 +79,7 @@ public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
     /**
      * Allows items to add custom lines of information to the mouseover description
      */
+    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {

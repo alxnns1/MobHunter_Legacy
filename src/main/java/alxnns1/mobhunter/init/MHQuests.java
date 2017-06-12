@@ -87,27 +87,27 @@ public class MHQuests
     public static void init()
     {
         //Register quests
-        regQuest(huntBasics1 = new MHQuest(EnumQuestType.GATHERING, "huntBasics1", 1, 0, 140)
+        regQuest(huntBasics1 = new MHQuest(EnumQuestType.GATHERING, "huntbasics1", 1, 0, 140)
                 .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "herb", 5))
                 .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.PLANT, "herb", 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, "blueMushroom", 5))
+                        MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, "bluemushroom", 5))
                 .setPenalty(0));
-        regQuest(huntBasics2 = new MHQuest(EnumQuestType.CRAFTING, "huntBasics2", 1, 0, 140)
+        regQuest(huntBasics2 = new MHQuest(EnumQuestType.CRAFTING, "huntbasics2", 1, 0, 140)
                 .setObjectives(new ItemStack(MHItems.itemDoneSteak))
                 .setRewardItems(new ItemStack(MHItems.itemDoneSteak, 5, 0))
                 .setPenalty(0));
-        regQuest(huntBasics3 = new MHQuest(EnumQuestType.CRAFTING, "huntBasics3", 1, 0, 140)
+        regQuest(huntBasics3 = new MHQuest(EnumQuestType.CRAFTING, "huntbasics3", 1, 0, 140)
                 .setObjectives(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5))
                 .setRewardItems(MetaRef.getStack(MetaRef.EnumItemType.DRINK, "potion", 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.DRINK, "megaPotion", 5))
+                        MetaRef.getStack(MetaRef.EnumItemType.DRINK, "megapotion", 5))
                 .setPenalty(0));
-        regQuest(huntBasics4 = new MHQuest(EnumQuestType.CRAFTING, "huntBasics4", 1, 0, 140)
+        regQuest(huntBasics4 = new MHQuest(EnumQuestType.CRAFTING, "huntbasics4", 1, 0, 140)
                 .setObjectives(new ItemStack(MHItems.weaponHuntersKnife))
                 .setRewardItems(new ItemStack(MHItems.weaponHuntersKnife),
                         new ItemStack(MHItems.weaponBoneKris))
                 .setPenalty(0));
-        regQuest(huntBasics5 = new MHQuest(EnumQuestType.HUNTING, "huntBasics5", 1, 0, 140)
-                .setObjectives(new EntityStack("MobHunter.Jaggi", 3))
+        regQuest(huntBasics5 = new MHQuest(EnumQuestType.HUNTING, "huntbasics5", 1, 0, 140)
+                .setObjectives(new EntityStack(true, "jaggi", 3))
                 .setRewardItems(new ItemStack(MHItems.armourHunterHelmet),
                         new ItemStack(MHItems.armourHunterChestplate),
                         new ItemStack(MHItems.armourHunterLeggings),

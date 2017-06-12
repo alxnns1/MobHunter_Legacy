@@ -48,6 +48,7 @@ public abstract class AbstractContainerCraft extends MHContainer
     {
         addSlotToContainer(new Slot(inventory, 0, 14, 53)
         {
+            @Override
             public int getSlotStackLimit()
             {
                 return 1;

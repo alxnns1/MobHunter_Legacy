@@ -32,6 +32,7 @@ public class ItemMHArmour extends ItemArmor
     /**
      * Allows items to add custom lines of information to the mouseover description
      */
+    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {

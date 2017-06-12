@@ -124,6 +124,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     /**
      * How long it takes to use or consume an item
      */
+    @Override
     public int getMaxItemUseDuration(ItemStack stack)
     {
         return eatDuration;
@@ -137,6 +138,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
+    @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         ItemStack heldItem = playerIn.getHeldItem(hand);
@@ -151,6 +153,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
     }
 
+    @Override
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
         //Only want to run on the server
@@ -268,8 +271,9 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     /**
      * Returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
+    @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
     {
         if(hasSubtypes)
             for(int i = 0; i < getSubNames().length; i++)
@@ -281,15 +285,17 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     /**
      * Called when a Block is right-clicked with this Item
      */
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        net.minecraft.block.state.IBlockState state = worldIn.getBlockState(pos);
+        ItemStack stack = playerIn.getHeldItem(hand);
+        IBlockState state = worldIn.getBlockState(pos);
         if (facing == EnumFacing.UP && playerIn.canPlayerEdit(pos.offset(facing), facing, stack) && worldIn.isAirBlock(pos.up())) {
-            if (state.getBlock()==Blocks.FARMLAND && (((ItemMHConsumable) stack.getItem()).type=="plant" || ((ItemMHConsumable) stack.getItem()).type=="berry")) {
+            if (state.getBlock()==Blocks.FARMLAND && (((ItemMHConsumable) stack.getItem()).type.equals("plant") || ((ItemMHConsumable) stack.getItem()).type.equals("berry"))) {
                 worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
                 stack.shrink(1);
                 return EnumActionResult.SUCCESS;
-            }else if ((state.getBlock()==Blocks.MYCELIUM || state.getBlock()==Blocks.LOG || state.getBlock()==Blocks.LOG2) && ((ItemMHConsumable) stack.getItem()).type=="mushroom") {
+            }else if ((state.getBlock()==Blocks.MYCELIUM || state.getBlock()==Blocks.LOG || state.getBlock()==Blocks.LOG2) && ((ItemMHConsumable) stack.getItem()).type.equals("mushroom")) {
                 worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
                 stack.shrink(1);
                 return EnumActionResult.SUCCESS;
@@ -315,6 +321,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
      * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
      * different names based on their damage or NBT.
      */
+    @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         if(hasSubtypes)
@@ -325,6 +332,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     /**
      * Allows items to add custom lines of information to the mouseover description
      */
+    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {

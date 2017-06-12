@@ -19,7 +19,7 @@ public class MHCraftingRecipe extends ShapelessOreRecipe
     public MHCraftingRecipe(ItemStack result, ItemStack key, Object ... recipe)
     {
         super(result, recipe);
-        inputKey = key == null ? null : key.copy();
+        inputKey = key == null ? ItemStack.EMPTY : key.copy();
     }
 
     public ItemStack getKeyInput()
@@ -34,9 +34,7 @@ public class MHCraftingRecipe extends ShapelessOreRecipe
     public boolean matches(InventoryCrafting inv, World worldIn)
     {
         ItemStack item = inv.getStackInSlot(0);
-        if(item == null)
-            return inputKey == null;
-        return item.isItemEqualIgnoreDurability(inputKey);
+        return (item.isEmpty() && inputKey.isEmpty()) || item.isItemEqualIgnoreDurability(inputKey);
     }
 
     @Override

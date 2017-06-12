@@ -22,7 +22,7 @@ public class GuiQuestList extends MHGuiScreen
 {
     private static final List<Integer> hunterRankList;
     private static int numButtons = 7;
-    private static final String LANG = "gui.questList.";
+    private static final String LANG = "gui.questlist.";
 
     private List<MHQuest> questList = new ArrayList<MHQuest>();
     private int listStart = 0;
@@ -47,7 +47,7 @@ public class GuiQuestList extends MHGuiScreen
 
     public GuiQuestList(EntityPlayer player)
     {
-        super("questList");
+        super("questlist");
         questCapability = player.getCapability(MHCapabilities.QUESTS, null);
         xSize = 256;
         ySize = 204;
@@ -371,9 +371,9 @@ public class GuiQuestList extends MHGuiScreen
             else if(questCapability.isQuestCompleted(selectedQuest))
                 text = "completed";
             else if(questCapability.getCurrentQuest() != null)
-                text = "alreadyHaveQuest";
+                text = "alreadyhavequest";
             else if(questCapability.isQuestCoolingDown(selectedQuest))
-                text = "onCooldown";
+                text = "oncooldown";
             if(text != null)
                 return I18n.format(LANG + text);
             return null;
@@ -422,7 +422,7 @@ public class GuiQuestList extends MHGuiScreen
         @Override
         public String getTooltipText()
         {
-            return I18n.format(LANG + "infoPage");
+            return I18n.format(LANG + "infopage");
         }
 
         @Override

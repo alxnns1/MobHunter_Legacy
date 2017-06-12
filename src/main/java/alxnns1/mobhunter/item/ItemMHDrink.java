@@ -28,6 +28,7 @@ public class ItemMHDrink extends ItemMHConsumable
      * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
      * the Item before the action is complete.
      */
+    @Override
     public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving)
     {
         if (entityLiving instanceof EntityPlayer)
@@ -87,6 +88,7 @@ public class ItemMHDrink extends ItemMHConsumable
     /**
      * Returns the action that specifies what animation to play when the items is being used
      */
+    @Override
     public EnumAction getItemUseAction(ItemStack stack)
     {
         return EnumAction.DRINK;
@@ -95,10 +97,11 @@ public class ItemMHDrink extends ItemMHConsumable
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 
     @Override

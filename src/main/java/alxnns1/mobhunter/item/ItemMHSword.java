@@ -88,6 +88,7 @@ public class ItemMHSword extends ItemSword
             stack.setItemDamage(stack.getItemDamage()-amount);
     }
 
+    @Override
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
     {
         Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
@@ -103,6 +104,7 @@ public class ItemMHSword extends ItemSword
      * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
      * the damage on the stack.
      */
+    @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
     {
         if (!(attacker instanceof EntityPlayer) || !((EntityPlayer)attacker).capabilities.isCreativeMode)
@@ -113,6 +115,7 @@ public class ItemMHSword extends ItemSword
     /**
      * Allows items to add custom lines of information to the mouseover description
      */
+    @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
@@ -131,6 +134,7 @@ public class ItemMHSword extends ItemSword
     /**
      * Returns the action that specifies what animation to play when the items is being used
      */
+    @Override
     public EnumAction getItemUseAction(ItemStack stack)
     {
         return EnumAction.EAT;
@@ -139,6 +143,7 @@ public class ItemMHSword extends ItemSword
     /**
      * How long it takes to use or consume an item
      */
+    @Override
     public int getMaxItemUseDuration(ItemStack stack)
     {
         return 200;
@@ -147,23 +152,26 @@ public class ItemMHSword extends ItemSword
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        if(playerIn.isSneaking() && itemStackIn.getItemDamage()>0)
+        ItemStack stack = playerIn.getHeldItem(hand);
+        if(playerIn.isSneaking() && stack.getItemDamage()>0)
         {
             if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetfish, 1, 0)))
             {
                 playerIn.setActiveHand(hand);
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
             }
         }
-        return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
     }
 
     /**
      * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
      * the Item before the action is complete.
      */
+    @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         if (entityLiving instanceof EntityPlayer)

@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class GuiArmourCraft extends AbstractGuiCraft
 {
-    private static final String TOOLTIP = "gui.blockArmourUpgrade.";
+    private static final String TOOLTIP = "gui.blockarmourupgrade.";
 
     public GuiArmourCraft(EntityPlayer player, World world, String blockDisplayName)
     {

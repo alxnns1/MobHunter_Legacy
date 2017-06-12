@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class GuiWeaponCraft extends AbstractGuiCraft
 {
-    private static final String TOOLTIP = "gui.blockWeaponUpgrade.";
+    private static final String TOOLTIP = "gui.blockweaponupgrade.";
 
     public GuiWeaponCraft(EntityPlayer player, World world, String blockDisplayName)
     {

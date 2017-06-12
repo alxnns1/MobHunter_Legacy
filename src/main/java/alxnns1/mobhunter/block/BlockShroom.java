@@ -43,6 +43,7 @@ public class BlockShroom extends BlockNatural
         );
     }
 
+    @Override
     public ArrayList<ItemStack> getDropsCold()
     {
         return createList(

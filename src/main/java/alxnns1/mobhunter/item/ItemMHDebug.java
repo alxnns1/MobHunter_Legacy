@@ -25,7 +25,8 @@ public class ItemMHDebug extends ItemMHBasic
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(!worldIn.isRemote)
         {
@@ -34,6 +35,6 @@ public class ItemMHDebug extends ItemMHBasic
             entity.setItemToRender(new ItemStack(Items.ENDER_EYE));
             worldIn.spawnEntity(entity);
         }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 }

@@ -1,5 +1,6 @@
 package alxnns1.mobhunter.capability.quest;
 
+import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -11,6 +12,11 @@ public class EntityStack
 {
     private final String entityName;
     private final int amount;
+
+    public EntityStack(boolean prefixModid, String entityName, int amount)
+    {
+        this(Reference.MOD_ID + "." + entityName, amount);
+    }
 
     public EntityStack(String entityName, int amount)
     {

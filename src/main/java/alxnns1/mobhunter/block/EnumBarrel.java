@@ -11,6 +11,7 @@ public enum EnumBarrel implements IStringSerializable
     LARGE,
     BOUNCING;
 
+    @Override
     public String getName()
     {
         return toString().toLowerCase();

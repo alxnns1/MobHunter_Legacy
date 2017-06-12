@@ -24,7 +24,7 @@ public class ItemCraftingRecipeCategory extends BlankRecipeCategory<ItemCrafting
     {
         uid = Reference.MOD_ID + ":" + unlocName;
         title = I18n.format("jei.recipe." + unlocName);
-        background = guiHelper.createDrawable(new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraftUpgrade_JEI.png"), 0, 0, 166, 56);
+        background = guiHelper.createDrawable(new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guicraftupgrade_jei.png"), 0, 0, 166, 56);
     }
 
     @Override

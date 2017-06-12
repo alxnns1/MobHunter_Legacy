@@ -32,6 +32,7 @@ public class BlockOre extends BlockResource
     /**
      * Get the Item that this Block should drop when harvested.
      */
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         //Will return the given item to drop, if set. Otherwise, will just drop the ore block.
@@ -42,6 +43,7 @@ public class BlockOre extends BlockResource
      * Gets the metadata of the item this Block can drop. This method is called when the block gets destroyed. It
      * returns the metadata of the dropped item based on the old metadata of the block.
      */
+    @Override
     public int damageDropped(IBlockState state)
     {
         return drop != null ? drop.getMetadata() : 0;
@@ -50,6 +52,7 @@ public class BlockOre extends BlockResource
     /**
      * Get the quantity dropped based on the given fortune level
      */
+    @Override
     public int quantityDroppedWithBonus(int fortune, Random random)
     {
         //This is basically the same as vanilla code

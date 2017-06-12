@@ -23,7 +23,7 @@ import java.util.List;
  */
 public abstract class AbstractGuiCraft extends GuiContainer
 {
-    private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guiCraft.png");
+    private static final ResourceLocation guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guicraft.png");
     protected AbstractContainerCraft container;
     protected String invName;
 

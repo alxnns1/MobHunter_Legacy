@@ -80,7 +80,7 @@ public class GuiQuest extends MHGuiScreen
         if(quest == null) return;
         wrapText(quest.getQuest().getLocalName(), 52 + guiLeft, 19 + guiTop, 85, 0, false);
         wrapText(quest.getQuest().getLocalDesc(), 17 + guiLeft, 54 + guiTop, 160, 0, false);
-        wrapText(I18n.format(LANG + "objProgress") + ": \n " + quest.getQuestGuiObjProgress(), 22 + guiLeft, 119 + guiTop, 155, 0, false);
+        wrapText(I18n.format(LANG + "objprogress") + ": \n " + quest.getQuestGuiObjProgress(), 22 + guiLeft, 119 + guiTop, 155, 0, false);
     }
 
     /**

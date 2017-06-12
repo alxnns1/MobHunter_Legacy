@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -114,8 +116,8 @@ public class BlockCrop extends BlockCrops {
     }
 
     @Override
-    public java.util.List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        java.util.List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
+    public List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        List<ItemStack> ret = new ArrayList<ItemStack>();
         int age = getAge(state);
         Random rand = world instanceof World ? ((World)world).rand : new Random();
 

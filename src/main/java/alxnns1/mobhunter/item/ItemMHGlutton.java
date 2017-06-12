@@ -94,6 +94,7 @@ public class ItemMHGlutton extends ItemMHConsumable {
         super(amount, saturation, isWolfFood, itemName, subNames);
     }
 
+    @Override
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
         if(worldIn.isRemote) return;
 

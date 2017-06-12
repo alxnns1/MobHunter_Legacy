@@ -134,12 +134,12 @@ public class CapabilityHandler
                 //Remove quest and notify player
                 if(!isServer)
                 {
-                    TextComponentTranslation text = new TextComponentTranslation("message.quest.outOfTime.1", quest.getQuest().getLocalName());
+                    TextComponentTranslation text = new TextComponentTranslation("message.quest.outoftime.1", quest.getQuest().getLocalName());
                     text.getStyle().setColor(TextFormatting.RED);
                     event.player.sendMessage(text);
                     if(quest.getQuest().getPointsPenalty() > 0)
                     {
-                        text = new TextComponentTranslation("message.quest.outOfTime.2", quest.getQuest().getPointsPenaltyText());
+                        text = new TextComponentTranslation("message.quest.outoftime.2", quest.getQuest().getPointsPenaltyText());
                         event.player.sendMessage(text);
                     }
                 }
@@ -195,12 +195,12 @@ public class CapabilityHandler
         switch(eSize)
         {
             case NEW: //New monster entry
-                player.sendMessage(new TextComponentTranslation("message.monsters.newKilled").appendText("\n")
+                player.sendMessage(new TextComponentTranslation("message.monsters.newkilled").appendText("\n")
                         .appendSibling(event.getEntityLiving().getDisplayName())
                         .appendText(" -> " + monsterPercent + "%"));
                 break;
             case SMALLEST: //Smaller than current smallest
-                player.sendMessage(new TextComponentTranslation("message.monsters.smallKilled").appendText("\n")
+                player.sendMessage(new TextComponentTranslation("message.monsters.smallkilled").appendText("\n")
                         .appendSibling(event.getEntityLiving().getDisplayName())
                         .appendText(" -> ")
                         .appendSibling(new TextComponentTranslation("message.monsters.old"))
@@ -209,7 +209,7 @@ public class CapabilityHandler
                         .appendText(": " + monsterPercent + "%"));
                 break;
             case LARGEST: //Larger than current largest
-                player.sendMessage(new TextComponentTranslation("message.monsters.largeKilled").appendText("\n")
+                player.sendMessage(new TextComponentTranslation("message.monsters.largekilled").appendText("\n")
                         .appendSibling(event.getEntityLiving().getDisplayName())
                         .appendText(" -> ")
                         .appendSibling(new TextComponentTranslation("message.monsters.old"))
