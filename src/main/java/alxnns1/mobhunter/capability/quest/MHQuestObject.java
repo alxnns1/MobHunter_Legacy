@@ -90,7 +90,7 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
             if(object instanceof ItemStack)
             {
                 ItemStack stack = (ItemStack) object;
-                text += stack.stackSize + " " + I18n.format(stack.getUnlocalizedName() + ".name");
+                text += stack.getCount() + " " + I18n.format(stack.getUnlocalizedName() + ".name");
             }
             else if(object instanceof EntityStack)
             {
@@ -134,7 +134,7 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
         Class storageClass = quest.getQuestType().storageType;
         Object obj = quest.getObjectives()[index];
         if(storageClass == ItemStack.class)
-            return ((ItemStack) obj).stackSize;
+            return ((ItemStack) obj).getCount();
         else if(storageClass == EntityStack.class)
             return ((EntityStack) obj).getAmount();
         else
@@ -166,7 +166,7 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
             return 0;
         int toProgress = 0;
         if(objectToProgress instanceof ItemStack)
-            toProgress = ((ItemStack) objectToProgress).stackSize;
+            toProgress = ((ItemStack) objectToProgress).getCount();
         else if(objectToProgress instanceof EntityStack)
             toProgress = ((EntityStack) objectToProgress).getAmount();
         if(currProg < maxProg)

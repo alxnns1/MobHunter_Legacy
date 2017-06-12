@@ -75,8 +75,8 @@ public class ItemMHDrink extends ItemMHConsumable
             }
 
             if (!player.capabilities.isCreativeMode) {
-                --stack.stackSize;
-                if (stack.stackSize <= 0)
+                stack.shrink(1);
+                if (stack.getCount() <= 0)
                     return new ItemStack(Items.GLASS_BOTTLE);
                 player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
             }

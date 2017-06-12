@@ -38,7 +38,7 @@ public class MHPlantGen extends WorldGenerator
             if(world.getBlockState(pos.down()).getBlock() == Blocks.SNOW_LAYER)
                 pos = pos.down();
 
-            if((world.isAirBlock(pos) || world.getBlockState(pos).getBlock() == Blocks.SNOW_LAYER) && (!world.provider.hasNoSky() || pos.getY() < 255) && block.canBlockStay(world, pos, block.getDefaultState()))
+            if((world.isAirBlock(pos) || world.getBlockState(pos).getBlock() == Blocks.SNOW_LAYER) && (world.provider.hasSkyLight() || pos.getY() < 255) && block.canBlockStay(world, pos, block.getDefaultState()))
                 world.setBlockState(pos, block.getDefaultState(), 2);
             else if(isNether)
             {

@@ -36,12 +36,12 @@ public class ItemMHPouch extends ItemMHBasic
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(!worldIn.isRemote && !playerIn.isSneaking() && hand == EnumHand.MAIN_HAND)
             CommonUtil.openGui(playerIn, worldIn, EnumGuiID.POUCH);
             //playerIn.displayGUIChest(new PouchInventory(itemStackIn, "Field Pouch", true, 27));
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 
     /**

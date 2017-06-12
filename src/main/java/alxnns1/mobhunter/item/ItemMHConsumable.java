@@ -137,17 +137,18 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        if(itemStackIn.isItemEqual(MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HERB)))
+        ItemStack heldItem = playerIn.getHeldItem(hand);
+        if(heldItem.isItemEqual(MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HERB)))
         {
             if(playerIn.shouldHeal())
-                super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+                super.onItemRightClick(worldIn, playerIn, hand);
         }
         else
-            super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+            super.onItemRightClick(worldIn, playerIn, hand);
 
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
     }
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
@@ -222,9 +223,9 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
             else if(itemName.equals(Names.Items.DRAGONFELL_BERRY))
                 player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, effectDuration));
             else if(itemName.equals(Names.Items.SCATTERNUT))
-                player.attackEntityFrom(DamageSource.generic, 1);
+                player.attackEntityFrom(DamageSource.GENERIC, 1);
             else if(itemName.equals(Names.Items.NEEDLEBERRY))
-                player.attackEntityFrom(DamageSource.generic, 2);
+                player.attackEntityFrom(DamageSource.GENERIC, 2);
             else if(itemName.equals(Names.Items.BOMBERRY)) {
                 double rotation = Math.toRadians(player.getRotationYawHead());
                 double xLook = -Math.sin(rotation);
@@ -286,11 +287,11 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         if (facing == EnumFacing.UP && playerIn.canPlayerEdit(pos.offset(facing), facing, stack) && worldIn.isAirBlock(pos.up())) {
             if (state.getBlock()==Blocks.FARMLAND && (((ItemMHConsumable) stack.getItem()).type=="plant" || ((ItemMHConsumable) stack.getItem()).type=="berry")) {
                 worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
-                --stack.stackSize;
+                stack.shrink(1);
                 return EnumActionResult.SUCCESS;
             }else if ((state.getBlock()==Blocks.MYCELIUM || state.getBlock()==Blocks.LOG || state.getBlock()==Blocks.LOG2) && ((ItemMHConsumable) stack.getItem()).type=="mushroom") {
                 worldIn.setBlockState(pos.up(), this.getBlockCrop(stack).getDefaultState());
-                --stack.stackSize;
+                stack.shrink(1);
                 return EnumActionResult.SUCCESS;
             } else {
                 return EnumActionResult.FAIL;

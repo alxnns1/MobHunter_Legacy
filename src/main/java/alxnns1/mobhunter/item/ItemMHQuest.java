@@ -25,7 +25,7 @@ public class ItemMHQuest extends ItemMHBasic
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(worldIn.isRemote)
         {
@@ -34,7 +34,7 @@ public class ItemMHQuest extends ItemMHBasic
             else
                 playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
         }
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 
     @SideOnly(Side.CLIENT)

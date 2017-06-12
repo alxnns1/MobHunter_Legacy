@@ -87,20 +87,21 @@ public class ItemMHBow extends Item
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         boolean ammoFound = findAmmo(playerIn) != null;
+        ItemStack heldItem = playerIn.getHeldItem(hand);
 
-        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemStackIn, worldIn, playerIn, hand, ammoFound);
+        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(heldItem, worldIn, playerIn, hand, ammoFound);
         if(ret != null)
             return ret;
 
         if(!playerIn.capabilities.isCreativeMode && !ammoFound)
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, heldItem);
         else
         {
             playerIn.setActiveHand(hand);
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
         }
     }
 
@@ -177,9 +178,9 @@ public class ItemMHBow extends Item
 
                     if (!flag1)
                     {
-                        --itemstack.stackSize;
+                        itemstack.shrink(1);
 
-                        if (itemstack.stackSize == 0)
+                        if (itemstack.getCount() == 0)
                         {
                             entityplayer.inventory.deleteStack(itemstack);
                         }

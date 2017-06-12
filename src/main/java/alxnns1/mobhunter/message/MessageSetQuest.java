@@ -55,13 +55,13 @@ public class MessageSetQuest implements IMessage
         @Override
         public IMessage onMessage(final MessageSetQuest message, final MessageContext ctx)
         {
-            IThreadListener mainThread = (WorldServer) ctx.getServerHandler().playerEntity.world;
+            IThreadListener mainThread = (WorldServer) ctx.getServerHandler().player.world;
             mainThread.addScheduledTask(new Runnable()
             {
                 @Override
                 public void run()
                 {
-                    WorldServer world = (WorldServer) ctx.getServerHandler().playerEntity.world;
+                    WorldServer world = (WorldServer) ctx.getServerHandler().player.world;
                     EntityPlayerMP player = (EntityPlayerMP) world.getPlayerEntityByUUID(message.playerUuid);
                     IQuest questCapability = player.getCapability(MHCapabilities.QUESTS, null);
 

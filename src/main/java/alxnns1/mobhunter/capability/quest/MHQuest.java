@@ -129,7 +129,7 @@ public class MHQuest
             if(object instanceof ItemStack)
             {
                 ItemStack stack = (ItemStack) object;
-                text += stack.stackSize + "x " + stack.getDisplayName();
+                text += stack.getCount() + "x " + stack.getDisplayName();
             }
             else if(object instanceof EntityStack)
             {
@@ -156,7 +156,7 @@ public class MHQuest
             if(object instanceof ItemStack)
             {
                 ItemStack stack = (ItemStack) object;
-                text.appendText(stack.stackSize + "x ");
+                text.appendText(stack.getCount() + "x ");
                 text.appendSibling(new TextComponentTranslation(stack.getUnlocalizedName() + ".name"));
             }
             else if(object instanceof EntityStack)

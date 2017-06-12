@@ -18,10 +18,10 @@ public class ItemMHQuestList extends ItemMHBasic
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if(worldIn.isRemote)
             CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST_LIST);
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 }

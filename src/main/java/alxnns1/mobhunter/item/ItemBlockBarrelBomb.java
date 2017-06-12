@@ -73,13 +73,13 @@ public class ItemBlockBarrelBomb extends ItemBlock
         worldIn.playSound(null, bomb.posX, bomb.posY, bomb.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
         player.getCooldownTracker().setCooldown(this, 40);
         if(!player.capabilities.isCreativeMode)
-            stack.stackSize--;
+            stack.shrink(1);
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 }

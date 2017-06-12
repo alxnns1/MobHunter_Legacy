@@ -59,13 +59,13 @@ public class MessageGuiQuest implements IMessage
         @Override
         public IMessage onMessage(final MessageGuiQuest message, final MessageContext ctx)
         {
-            IThreadListener mainThread = (WorldServer) ctx.getServerHandler().playerEntity.world;
+            IThreadListener mainThread = (WorldServer) ctx.getServerHandler().player.world;
             mainThread.addScheduledTask(new Runnable()
             {
                 @Override
                 public void run()
                 {
-                    WorldServer world = (WorldServer) ctx.getServerHandler().playerEntity.world;
+                    WorldServer world = (WorldServer) ctx.getServerHandler().player.world;
                     EntityPlayerMP player = (EntityPlayerMP) world.getPlayerEntityByUUID(message.playerUuid);
                     if(message.buttonId > 1 && player == null)
                         return;
@@ -108,7 +108,7 @@ public class MessageGuiQuest implements IMessage
                                                 .appendSibling(new TextComponentTranslation("message.quest.share.rewards"))
                                                 .appendText(":\n" + quest.getPointsRewardText() + ", ")
                                                 .appendSibling(quest.getRewardTextComponent()))));
-                                server.getPlayerList().sendChatMsg(msg1.appendSibling(questName).appendText("]"));
+                                server.getPlayerList().sendMessage(msg1.appendSibling(questName).appendText("]"));
                             }
                             break;
                         case 2:

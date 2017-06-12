@@ -121,7 +121,7 @@ public class TileBbq extends TileEntity implements ITickable
         for(int i = 0; i < cookList.tagCount(); i++)
         {
             NBTTagCompound item = cookList.getCompoundTagAt(i);
-            cookResults[i] = ItemStack.loadItemStackFromNBT(item);
+            cookResults[i] = new ItemStack(item);
             if(i > 0)
                 cookTimes[i-1] = item.getInteger(KEY_COOK_LIST_TIME);
         }
