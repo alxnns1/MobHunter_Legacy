@@ -3,49 +3,49 @@
 	"defaults": {
 		"model": "cross",
 		"textures": {
-			"cross": "mobhunter:blocks/cropNulberry_stage_7"
+			"cross": "mobhunter:blocks/cropnulberry_stage_7"
 		}
 	},
 	"variants": {
 		"age": {
 			"0": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropBerry_stage_0"
+					"cross": "mobhunter:blocks/cropberry_stage_0"
 				}
 			},
 			"1": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropBerry_stage_1"
+					"cross": "mobhunter:blocks/cropberry_stage_1"
 				}
 			},
 			"2": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropBerry_stage_2"
+					"cross": "mobhunter:blocks/cropberry_stage_2"
 				}
 			},
 			"3": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropBerry_stage_3"
+					"cross": "mobhunter:blocks/cropberry_stage_3"
 				}
 			},
 			"4": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropNulberry_stage_4"
+					"cross": "mobhunter:blocks/cropnulberry_stage_4"
 				}
 			},
 			"5": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropNulberry_stage_5"
+					"cross": "mobhunter:blocks/cropnulberry_stage_5"
 				}
 			},
 			"6": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropNulberry_stage_6"
+					"cross": "mobhunter:blocks/cropnulberry_stage_6"
 				}
 			},
 			"7": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropNulberry_stage_7"
+					"cross": "mobhunter:blocks/cropnulberry_stage_7"
 				}
 			}
 		}

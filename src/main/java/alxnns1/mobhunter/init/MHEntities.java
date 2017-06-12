@@ -50,7 +50,7 @@ public class MHEntities
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, int min, int max, BiomeDictionary.Type[] biomeTypes)
     {
         for(BiomeDictionary.Type biome : biomeTypes)
-            EntityRegistry.addSpawn(entityClass, rarity, min, max, EnumCreatureType.CREATURE, (Biome[]) BiomeDictionary.getBiomes(biome).toArray());
+            EntityRegistry.addSpawn(entityClass, rarity, min, max, EnumCreatureType.CREATURE, BiomeDictionary.getBiomes(biome).toArray(new Biome[] {}));
     }
 
     private static <T extends Entity> void registerRender(Class<T> entityClass, IRenderFactory<? super T> renderFactory)

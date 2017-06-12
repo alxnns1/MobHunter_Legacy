@@ -1,5 +1,5 @@
 {
-	"parent": "mobhunter:item/itemDefault",
+	"parent": "mobhunter:item/itemdefault",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [ -80, 260, -40 ],

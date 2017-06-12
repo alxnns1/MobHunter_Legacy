@@ -3,49 +3,49 @@
 	"defaults": {
 		"model": "cross",
 		"textures": {
-			"cross": "mobhunter:blocks/cropExciteshroom_stage_7"
+			"cross": "mobhunter:blocks/cropexciteshroom_stage_7"
 		}
 	},
 	"variants": {
 		"age": {
 			"0": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_0"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_0"
 				}
 			},
 			"1": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_1"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_1"
 				}
 			},
 			"2": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_2"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_2"
 				}
 			},
 			"3": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_3"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_3"
 				}
 			},
 			"4": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_4"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_4"
 				}
 			},
 			"5": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_5"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_5"
 				}
 			},
 			"6": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_6"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_6"
 				}
 			},
 			"7": {
 				"textures": {
-					"cross": "mobhunter:blocks/cropExciteshroom_stage_7"
+					"cross": "mobhunter:blocks/cropexciteshroom_stage_7"
 				}
 			}
 		}

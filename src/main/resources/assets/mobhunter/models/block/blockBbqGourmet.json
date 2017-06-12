@@ -1,6 +1,6 @@
 {
     "parent": "block/block",
-    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "__comment": "model generated using mrcrayfish's model creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
         "0": "blocks/iron_block",
         "1": "blocks/stone",
@@ -8,7 +8,7 @@
     },
     "elements": [
         {
-            "name": "Stand1W",
+            "name": "stand1w",
             "from": [ 2.0, 5.0, 7.0 ], 
             "to": [ 3.0, 13.0, 9.0 ], 
             "faces": {
@@ -20,7 +20,7 @@
             }
         },
         {
-            "name": "Stand1E",
+            "name": "stand1e",
             "from": [ 13.0, 5.0, 7.0 ], 
             "to": [ 14.0, 13.0, 9.0 ], 
             "faces": {
@@ -32,7 +32,7 @@
             }
         },
         {
-            "name": "Stand2W",
+            "name": "stand2w",
             "from": [ 2.0, 12.0, 6.0 ], 
             "to": [ 3.0, 14.0, 7.0 ], 
             "faces": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "name": "Stand3W",
+            "name": "stand3w",
             "from": [ 2.0, 12.0, 9.0 ], 
             "to": [ 3.0, 14.0, 10.0 ], 
             "faces": {
@@ -58,7 +58,7 @@
             }
         },
         {
-            "name": "Stand2E",
+            "name": "stand2e",
             "from": [ 13.0, 12.0, 6.0 ], 
             "to": [ 14.0, 14.0, 7.0 ], 
             "faces": {
@@ -71,7 +71,7 @@
             }
         },
         {
-            "name": "Stand3E",
+            "name": "stand3e",
             "from": [ 13.0, 12.0, 9.0 ], 
             "to": [ 14.0, 14.0, 10.0 ], 
             "faces": {
@@ -84,7 +84,7 @@
             }
         },
         {
-            "name": "BaseL2N",
+            "name": "basel2n",
             "from": [ 1.0, 2.0, 1.0 ], 
             "to": [ 15.0, 4.0, 5.0 ], 
             "faces": {
@@ -96,7 +96,7 @@
             }
         },
         {
-            "name": "BaseL1",
+            "name": "basel1",
             "from": [ 0.0, 0.0, 0.0 ], 
             "to": [ 16.0, 2.0, 16.0 ], 
             "faces": {
@@ -109,7 +109,7 @@
             }
         },
         {
-            "name": "BaseL2S",
+            "name": "basel2s",
             "from": [ 1.0, 2.0, 11.0 ], 
             "to": [ 15.0, 4.0, 15.0 ], 
             "faces": {
@@ -121,7 +121,7 @@
             }
         },
         {
-            "name": "BaseL2W",
+            "name": "basel2w",
             "from": [ 1.0, 2.0, 5.0 ], 
             "to": [ 5.0, 4.0, 11.0 ], 
             "faces": {
@@ -133,7 +133,7 @@
             }
         },
         {
-            "name": "BaseL2E",
+            "name": "basel2e",
             "from": [ 11.0, 2.0, 5.0 ], 
             "to": [ 15.0, 4.0, 11.0 ], 
             "faces": {
@@ -145,7 +145,7 @@
             }
         },
         {
-            "name": "BaseL3N",
+            "name": "basel3n",
             "from": [ 2.0, 4.0, 2.0 ], 
             "to": [ 14.0, 5.0, 5.0 ], 
             "faces": {
@@ -157,7 +157,7 @@
             }
         },
         {
-            "name": "BaseL3S",
+            "name": "basel3s",
             "from": [ 2.0, 4.0, 11.0 ], 
             "to": [ 14.0, 5.0, 14.0 ], 
             "faces": {
@@ -169,7 +169,7 @@
             }
         },
         {
-            "name": "BaseL3W",
+            "name": "basel3w",
             "from": [ 2.0, 4.0, 5.0 ], 
             "to": [ 5.0, 5.0, 11.0 ], 
             "faces": {
@@ -181,7 +181,7 @@
             }
         },
         {
-            "name": "BaseL3E",
+            "name": "basel3e",
             "from": [ 11.0, 4.0, 5.0 ], 
             "to": [ 14.0, 5.0, 11.0 ], 
             "faces": {
@@ -193,7 +193,7 @@
             }
         },
         {
-            "name": "BaseL4N",
+            "name": "basel4n",
             "from": [ 3.0, 5.0, 3.0 ], 
             "to": [ 13.0, 6.0, 4.0 ], 
             "faces": {
@@ -205,7 +205,7 @@
             }
         },
         {
-            "name": "BaseL4S",
+            "name": "basel4s",
             "from": [ 3.0, 5.0, 12.0 ], 
             "to": [ 13.0, 6.0, 13.0 ], 
             "faces": {
@@ -217,7 +217,7 @@
             }
         },
         {
-            "name": "BaseL4W",
+            "name": "basel4w",
             "from": [ 3.0, 5.0, 4.0 ], 
             "to": [ 4.0, 6.0, 12.0 ], 
             "faces": {
@@ -229,7 +229,7 @@
             }
         },
         {
-            "name": "BaseL4E",
+            "name": "basel4e",
             "from": [ 12.0, 5.0, 4.0 ], 
             "to": [ 13.0, 6.0, 12.0 ], 
             "faces": {

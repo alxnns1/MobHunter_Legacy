@@ -301,7 +301,7 @@ public class MHItems
                 Names.Items.ELTALITE_INGOT,
                 Names.Items.MELDSPAR_INGOT)
                 .addToMetaRef(MetaRef.EnumItemType.ORE));
-        regItem(itemMiscDrop = new ItemMHResource("miscDrop",
+        regItem(itemMiscDrop = new ItemMHResource("miscdrop",
                 Names.Items.BONE_HUSK,
                 Names.Items.MONSTER_BONE_S,
                 Names.Items.MONSTER_BONE_M,
@@ -348,7 +348,7 @@ public class MHItems
                 Names.Items.WYVERN_SCALP,
                 Names.Items.MONSTER_FLUID)
                 .addToMetaRef(MetaRef.EnumItemType.MISC_DROP));
-        regItem(itemHerbivoreDrop = new ItemMHResource("herbivoreDrop",
+        regItem(itemHerbivoreDrop = new ItemMHResource("herbivoredrop",
                 Names.Items.GARGWA_FEATHER,
                 Names.Items.GARGWA_EGG,
                 Names.Items.GOLD_GARGWA_EGG,
@@ -357,7 +357,7 @@ public class MHItems
                 Names.Items.BLUE_KELBI_HORN,
                 Names.Items.WARM_PELT)
                 .addToMetaRef(MetaRef.EnumItemType.HERBIVORE_DROP));
-        regItem(itemNeopteranDrop = new ItemMHResource("neopteranDrop",
+        regItem(itemNeopteranDrop = new ItemMHResource("neopterandrop",
                 Names.Items.BNAHABRA_SHELL,
                 Names.Items.BNAHABRA_CARAPACE,
                 Names.Items.BNAHABRA_WING,
@@ -365,7 +365,7 @@ public class MHItems
                 Names.Items.ALTAROTH_JAW,
                 Names.Items.ALTAROTH_STOMACH)
                 .addToMetaRef(MetaRef.EnumItemType.NEOPTERAN_DROP));
-        regItem(itemBirdWyvernDrop = new ItemMHResource("birdWyvernDrop",
+        regItem(itemBirdWyvernDrop = new ItemMHResource("birdwyverndrop",
                 Names.Items.BIRD_WYVERN_FANG,
                 Names.Items.TOUGH_BIRD_WYVERN_HIDE,
                 Names.Items.AVIAN_FINEBONE,
@@ -418,7 +418,7 @@ public class MHItems
                 Names.Items.IOPREY_HIDE_PLUS,
                 Names.Items.IOPREY_FANG)
                 .addToMetaRef(MetaRef.EnumItemType.BIRD_DROP));
-        regItem(itemFangedBeastDrop = new ItemMHResource("fangedBeastDrop",
+        regItem(itemFangedBeastDrop = new ItemMHResource("fangedbeastdrop",
                 Names.Items.SHARP_FANG)
                 .addToMetaRef(MetaRef.EnumItemType.BEAST_DROP));
         regItem(itemIcon = new ItemMHResource("icon", false,
@@ -547,7 +547,7 @@ public class MHItems
         regItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f, 120, 240, 360, 480));
         regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
 
-        regItem(weaponTestBow = new ItemMHBow("weaponTestBow", EnumBowCharge.PIERCE, 1));
+        regItem(weaponTestBow = new ItemMHBow("weapontestbow", EnumBowCharge.PIERCE, 1));
 
         regItem(itemQuest = new ItemMHQuest());
         regItem(itemQuestList = new ItemMHQuestList());

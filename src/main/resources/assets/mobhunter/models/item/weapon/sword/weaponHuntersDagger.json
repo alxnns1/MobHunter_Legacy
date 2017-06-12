@@ -1,5 +1,5 @@
 {
-  "parent": "mobhunter:item/itemToolDefault",
+  "parent": "mobhunter:item/itemtooldefault",
   "textures": {
     "layer0": "mobhunter:items/hunters_dagger"
   }

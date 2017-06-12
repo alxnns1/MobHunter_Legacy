@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "mobhunter:blockHerb" }
+		"normal": { "model": "mobhunter:blockherb" }
 	}
 }

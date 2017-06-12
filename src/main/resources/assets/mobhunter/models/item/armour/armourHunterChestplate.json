@@ -1,6 +1,6 @@
 {
-  "parent": "mobhunter:item/itemDefault",
+  "parent": "mobhunter:item/itemdefault",
   "textures": {
-    "layer0": "mobhunter:items/armourHunterChestplate"
+    "layer0": "mobhunter:items/armourhunterchestplate"
   }
 }

@@ -13,7 +13,7 @@ public class ItemMHPickaxe extends ItemPickaxe
     {
         super(EnumHelper.addToolMaterial("Pickaxe" + name, harvestLevel, maxUses, efficiency, damage, 15));
         setCreativeTab(MobHunter.MH_TAB);
-        setUnlocalizedName("item" + name + "Pickaxe");
-        setRegistryName("item" + name + "Pickaxe");
+        setUnlocalizedName("item" + name + "pickaxe");
+        setRegistryName("item" + name + "pickaxe");
     }
 }

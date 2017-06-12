@@ -1,5 +1,5 @@
 {
-  "parent": "mobhunter:item/itemDefault",
+  "parent": "mobhunter:item/itemdefault",
   "textures": {
     "layer0": "mobhunter:items/parashroom"
   }
