@@ -106,6 +106,7 @@ public class TileBbq extends TileEntity implements ITickable
         return product;
     }
 
+    @Override
     public void readFromNBT(NBTTagCompound tag)
     {
         super.readFromNBT(tag);
@@ -127,6 +128,7 @@ public class TileBbq extends TileEntity implements ITickable
         }
     }
 
+    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound tag)
     {
         super.writeToNBT(tag);
@@ -147,7 +149,8 @@ public class TileBbq extends TileEntity implements ITickable
     /**
      * Use this to send data about the block. In this case, the NBTTagCompound.
      */
-    public Packet getDescriptionPacket()
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket()
     {
         NBTTagCompound nbt = new NBTTagCompound();
         writeToNBT(nbt);
@@ -157,6 +160,7 @@ public class TileBbq extends TileEntity implements ITickable
     /**
      * Use this to update the block when a packet is received.
      */
+    @Override
     public void onDataPacket(net.minecraft.network.NetworkManager net, net.minecraft.network.play.server.SPacketUpdateTileEntity pkt)
     {
         readFromNBT(pkt.getNbtCompound());
