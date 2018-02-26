@@ -171,7 +171,7 @@ public abstract class EntityMHMarine extends EntityAnimal implements IScaledMob
 
             if (this.getAir() == -20) {
                 this.setAir(0);
-                this.attackEntityFrom(DamageSource.DROWN, 2.0F);
+                this.attackEntityFrom(DamageSource.drown, 2.0F);
             }
         }
         else {

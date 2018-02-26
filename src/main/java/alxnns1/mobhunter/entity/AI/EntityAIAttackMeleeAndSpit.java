@@ -136,7 +136,7 @@ public class EntityAIAttackMeleeAndSpit extends EntityAIBase
                 this.delayCounter += failedPathFindingPenalty;
                 if (this.attacker.getNavigator().getPath() != null) {
                     net.minecraft.pathfinding.PathPoint finalPathPoint = this.attacker.getNavigator().getPath().getFinalPathPoint();
-                    if (finalPathPoint != null && target.getDistanceSq(finalPathPoint.x, finalPathPoint.y, finalPathPoint.z) < 1)
+                    if (finalPathPoint != null && target.getDistanceSq(finalPathPoint.xCoord, finalPathPoint.yCoord, finalPathPoint.zCoord) < 1)
                         failedPathFindingPenalty = 0;
                     else
                         failedPathFindingPenalty += 10;

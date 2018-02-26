@@ -158,7 +158,7 @@ public class EntitySpit extends Entity implements IProjectile
      */
     public void setHeadingFromThrower(Entity entityThrower, float velocity)
     {
-        setThrowableHeading(entityThrower.getLookVec().x, entityThrower.getLookVec().y, entityThrower.getLookVec().z, velocity, 1f);
+        setThrowableHeading(entityThrower.getLookVec().xCoord, entityThrower.getLookVec().yCoord, entityThrower.getLookVec().zCoord, velocity, 1f);
         motionX += entityThrower.motionX;
         motionZ += entityThrower.motionZ;
 
@@ -220,7 +220,7 @@ public class EntitySpit extends Entity implements IProjectile
         if(ray != null)
             nextPos = ray.hitVec;
 
-        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(motionX, motionY, motionZ).grow(1d));
+        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(motionX, motionY, motionZ).expandXyz(1d));
         Entity closestEntity = null;
         double closestDistance = 0d;
         boolean flag = false;
@@ -237,7 +237,7 @@ public class EntitySpit extends Entity implements IProjectile
             else
             {
                 flag = false;
-                AxisAlignedBB aabb = e.getEntityBoundingBox().grow(0.30000001192092896D);
+                AxisAlignedBB aabb = e.getEntityBoundingBox().expandXyz(0.30000001192092896D);
                 RayTraceResult rayTrace = aabb.calculateIntercept(pos, nextPos);
                 if(rayTrace != null)
                 {
