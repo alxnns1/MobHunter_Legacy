@@ -9,7 +9,6 @@ import alxnns1.mobhunter.command.CommandMonsters;
 import alxnns1.mobhunter.command.CommandQuest;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
-import alxnns1.mobhunter.reference.Reference;
 import alxnns1.mobhunter.util.CommonUtil;
 import alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,86 +21,56 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Alex on 20/04/2016.
  */
 
-@Mod(modid= Reference.MOD_ID, name= Reference.MOD_NAME, version= Reference.VERSION)
+@Mod(modid= MobHunter.MOD_ID, name= MobHunter.MOD_NAME, version= MobHunter.VERSION)
 public class MobHunter
 {
-    @Mod.Instance(Reference.MOD_ID)
+    public static final String MOD_ID = "mobhunter";
+    public static final String MOD_NAME = "Mob Hunter";
+    public static final String VERSION = "@VERSION@";
+    public static final String GUI_TEXTURE_DIR = "textures/gui/";
+
+    @Mod.Instance(MOD_ID)
     public static MobHunter instance;
 
-    public static final CreativeTabs MH_TAB = new CreativeTabs(Reference.MOD_ID + "Items")
+    public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "Items")
     {
         @Override
         public ItemStack getTabIconItem()
         {
-            return new ItemStack(MHItems.itemMiscDrop);
+            return MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
         }
-
-        @SideOnly(Side.CLIENT)
-        public int getIconItemDamage()
-        {
-            return MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
-        }
-
-        @Override
-        public String getTranslatedTabLabel()
-        {
-            return Reference.MOD_NAME + " Items";
-        }
-
     };
 
-    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(Reference.MOD_ID + "Armours")
+    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "Armours")
     {
         @Override
         public ItemStack getTabIconItem()
         {
             return new ItemStack(MHItems.armourBoneHelmet);
         }
-
-        @Override
-        public String getTranslatedTabLabel()
-        {
-            return Reference.MOD_NAME + " Armours";
-        }
-
     };
 
-    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(Reference.MOD_ID + "Weapons")
+    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "Weapons")
     {
         @Override
         public ItemStack getTabIconItem()
         {
             return new ItemStack(MHItems.weaponHuntersKnife);
         }
-
-        @Override
-        public String getTranslatedTabLabel()
-        {
-            return Reference.MOD_NAME + " Weapons";
-        }
-
     };
 
-    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(Reference.MOD_ID + "Blocks")
+    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "Blocks")
     {
         @Override
         public ItemStack getTabIconItem()
         {
             return new ItemStack(MHBlocks.blockWeaponCraft);
         }
-
-        @Override
-        public String getTranslatedTabLabel()
-        {
-            return Reference.MOD_NAME + " Blocks";
-        }
-
     };
 
     @Mod.EventHandler
