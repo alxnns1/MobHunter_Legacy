@@ -22,15 +22,11 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 public class ClientUtil
 {
-    /**
-     * Registers item models using their unlocalised name.
-     * ONLY run this client side!
-     * @param item
-     */
     public static void regModel(Item item)
     {
         regModel(item, 0);
     }
+
     public static void regModel(Block block)
     {
         regModel(Item.getItemFromBlock(block), 0);
@@ -52,8 +48,6 @@ public class ClientUtil
         ModelResourceLocation loc = new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + itemPath, "inventory");
         ModelLoader.setCustomModelResourceLocation(item, meta, loc);
     }
-
-    private static int maxLength = 30;
 
     public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
     {

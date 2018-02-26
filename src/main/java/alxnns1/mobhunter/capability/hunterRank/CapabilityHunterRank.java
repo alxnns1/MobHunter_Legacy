@@ -13,7 +13,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
  */
 public class CapabilityHunterRank implements IHunterRank
 {
-    private static final ResourceLocation hunterRankRL = new ResourceLocation(Reference.MOD_ID, "_HunterRank");
+    private static final ResourceLocation hunterRankRL = new ResourceLocation(MobHunter.MOD_ID, "_HunterRank");
     private int hunterRank, progressPoints;
 
     public CapabilityHunterRank()

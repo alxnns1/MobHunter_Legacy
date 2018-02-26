@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class CapabilityQuest implements IQuest
 {
-    private static final ResourceLocation questRL = new ResourceLocation(Reference.MOD_ID, "_Quests");
+    private static final ResourceLocation questRL = new ResourceLocation(MobHunter.MOD_ID, "_Quests");
 
     private List<String> completedQuests = new ArrayList<String>();
     private List<MHQuestCooldown> cooldownQuests = new ArrayList<MHQuestCooldown>();

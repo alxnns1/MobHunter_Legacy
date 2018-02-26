@@ -41,7 +41,7 @@ public class GuiWeaponCraft extends AbstractGuiCraft
         }
         if(!(resultStack.getItem() instanceof ItemMHSword))
         {
-            list.add("Error - recipe output is not a " + Reference.MOD_NAME + " Sword!");
+            list.add("Error - recipe output is not a " + MobHunter.MOD_NAME + " Sword!");
             return list;
         }
         if(recipe.getKeyInput() != null)

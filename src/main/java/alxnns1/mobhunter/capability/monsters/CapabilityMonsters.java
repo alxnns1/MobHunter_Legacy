@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class CapabilityMonsters implements IMonsters
 {
-    private static final ResourceLocation monstersRL = new ResourceLocation(Reference.MOD_ID, "_Monsters");
+    private static final ResourceLocation monstersRL = new ResourceLocation(MobHunter.MOD_ID, "_Monsters");
     private List<MonsterSize> monsterSizes = new ArrayList<MonsterSize>();
 
     public CapabilityMonsters() {}

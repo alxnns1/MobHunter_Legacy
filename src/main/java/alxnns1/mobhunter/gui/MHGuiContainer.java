@@ -24,7 +24,7 @@ public class MHGuiContainer extends GuiContainer
     public MHGuiContainer(MHContainer container, String guiImageName)
     {
         super(container);
-        guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + guiImageName + ".png");
+        guiImage = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + guiImageName + ".png");
         inventory = container.inventory;
         xSize = 176;
         ySize = 168;

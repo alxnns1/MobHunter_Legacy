@@ -2,7 +2,6 @@ package alxnns1.mobhunter.init;
 
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.init.Items;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
@@ -42,7 +41,7 @@ public class MHAchievements
         gendrome.registerStat();
         //iodrome.registerStat();
 
-        AchievementPage.registerAchievementPage(new AchievementPage(Reference.MOD_ID,
+        AchievementPage.registerAchievementPage(new AchievementPage(MobHunter.MOD_ID,
                 cookMeat,
                 firstSword,
                 smallCrown,

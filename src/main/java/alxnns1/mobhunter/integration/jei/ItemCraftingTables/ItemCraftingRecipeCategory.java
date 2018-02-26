@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.integration.jei.ItemCraftingTables;
 
-import alxnns1.mobhunter.reference.Reference;
+import alxnns1.mobhunter.MobHunter;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
@@ -22,9 +22,9 @@ public class ItemCraftingRecipeCategory extends BlankRecipeCategory<ItemCrafting
 
     public ItemCraftingRecipeCategory(IGuiHelper guiHelper, String unlocName)
     {
-        uid = Reference.MOD_ID + ":" + unlocName;
+        uid = MobHunter.MOD_ID + ":" + unlocName;
         title = I18n.format("jei.recipe." + unlocName);
-        background = guiHelper.createDrawable(new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "guicraftupgrade_jei.png"), 0, 0, 166, 56);
+        background = guiHelper.createDrawable(new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "guicraftupgrade_jei.png"), 0, 0, 166, 56);
     }
 
     @Override

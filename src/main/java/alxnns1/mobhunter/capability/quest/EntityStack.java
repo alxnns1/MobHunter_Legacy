@@ -15,7 +15,7 @@ public class EntityStack
 
     public EntityStack(boolean prefixModid, String entityName, int amount)
     {
-        this(Reference.MOD_ID + "." + entityName, amount);
+        this(MobHunter.MOD_ID + "." + entityName, amount);
     }
 
     public EntityStack(String entityName, int amount)

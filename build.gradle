@@ -39,7 +39,7 @@ minecraft {
     useDepAts = true
 
     replace "@VERSION@", project.mod_version
-    replaceIn "reference/Reference.java"
+    replaceIn "MobHunter.java"
 }
 
 repositories {

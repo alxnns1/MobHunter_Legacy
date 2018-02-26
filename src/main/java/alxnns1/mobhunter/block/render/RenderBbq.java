@@ -16,10 +16,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RenderBbq extends TileEntitySpecialRenderer<TileBbq>
 {
     private static final ModelBbqMeat model = new ModelBbqMeat();
-    private static final ResourceLocation tRaw = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatRaw.png");
-    private static final ResourceLocation tRare = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatRare.png");
-    private static final ResourceLocation tDone = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatDone.png");
-    private static final ResourceLocation tBurnt = new ResourceLocation(Reference.MOD_ID + ":textures/models/blocks/meatBurnt.png");
+    private static final ResourceLocation tRaw = new ResourceLocation(MobHunter.MOD_ID + ":textures/models/blocks/meatRaw.png");
+    private static final ResourceLocation tRare = new ResourceLocation(MobHunter.MOD_ID + ":textures/models/blocks/meatRare.png");
+    private static final ResourceLocation tDone = new ResourceLocation(MobHunter.MOD_ID + ":textures/models/blocks/meatDone.png");
+    private static final ResourceLocation tBurnt = new ResourceLocation(MobHunter.MOD_ID + ":textures/models/blocks/meatBurnt.png");
 
     @Override
     public void renderTileEntityAt(TileBbq te, double x, double y, double z, float partialTicks, int destroyStage)

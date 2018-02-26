@@ -9,11 +9,13 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 /**
  * Created by Mark on 10/05/2016.
  */
+@Mod.EventBusSubscriber
 public class GuiHandler implements IGuiHandler
 {
     @Override

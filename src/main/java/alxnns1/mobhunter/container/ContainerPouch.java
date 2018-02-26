@@ -31,7 +31,7 @@ public class ContainerPouch extends MHContainer
                     public boolean isItemValid(@Nullable ItemStack stack)
                     {
                         //TODO: In 1.11, remove the toLowerCase()
-                        return stack == null || (stack.getItem().getRegistryName().getResourceDomain().equals(Reference.MOD_ID.toLowerCase()) && !stack.getItem().equals(MHItems.itemFieldPouch));
+                        return stack == null || (stack.getItem().getRegistryName().getResourceDomain().equals(MobHunter.MOD_ID.toLowerCase()) && !stack.getItem().equals(MHItems.itemFieldPouch));
                     }
                 });
     }

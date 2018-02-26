@@ -22,7 +22,7 @@ public class LootHandler
 {
     private static void addLoot(LootPool pool, Item item, int weight)
     {
-        pool.addEntry(new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0], Reference.MOD_ID + item.getUnlocalizedName()));
+        pool.addEntry(new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0], MobHunter.MOD_ID + item.getUnlocalizedName()));
     }
 
     @SubscribeEvent

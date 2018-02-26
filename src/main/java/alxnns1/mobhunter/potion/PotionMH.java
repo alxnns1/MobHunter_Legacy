@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class PotionMH extends Potion
 {
-    public static ResourceLocation textures = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "effects.png");
+    public static ResourceLocation textures = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "effects.png");
 
     public PotionMH(String name, boolean badEffect, int potionColor)
     {

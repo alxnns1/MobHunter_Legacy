@@ -2,7 +2,6 @@ package alxnns1.mobhunter;
 
 import alxnns1.mobhunter.command.CommandHunterRank;
 import alxnns1.mobhunter.handler.ConfigHandler;
-import alxnns1.mobhunter.handler.GuiHandler;
 import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import alxnns1.mobhunter.command.CommandMonsters;
@@ -18,7 +17,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -37,7 +35,7 @@ public class MobHunter
     @Mod.Instance(MOD_ID)
     public static MobHunter instance;
 
-    public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "Items")
+    public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "_items")
     {
         @Override
         public ItemStack getTabIconItem()
@@ -46,7 +44,7 @@ public class MobHunter
         }
     };
 
-    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "Armours")
+    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "_armours")
     {
         @Override
         public ItemStack getTabIconItem()
@@ -55,7 +53,7 @@ public class MobHunter
         }
     };
 
-    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "Weapons")
+    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "_weapons")
     {
         @Override
         public ItemStack getTabIconItem()
@@ -64,7 +62,7 @@ public class MobHunter
         }
     };
 
-    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "Blocks")
+    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "_blocks")
     {
         @Override
         public ItemStack getTabIconItem()
@@ -83,18 +81,10 @@ public class MobHunter
 
         CommonUtil.initNetwork();
 
-        MHItems.regItems();
         MHBlocks.regBlocks();
         MHBlocks.regTileEntities();
         MHEntities.init(event.getSide() == Side.CLIENT);
         MHPotions.init();
-
-        //Model registering needs to only happen client-side
-        if(event.getSide() == Side.CLIENT)
-        {
-            MHItems.regModels();
-            MHBlocks.regModels();
-        }
 
         MHCapabilities.init();
     }
@@ -111,8 +101,6 @@ public class MobHunter
         MHAchievements.init();
         MHQuests.init();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
-
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @Mod.EventHandler
@@ -121,6 +109,9 @@ public class MobHunter
         //I wonder if I'll use this
         //Mark: looks like we will now! #whyNot
         HunterRankProgression.init();
+
+        MHItems.ITEMS = null;
+        MHItems.FISHABLE = null;
     }
 
     @Mod.EventHandler

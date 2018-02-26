@@ -23,7 +23,7 @@ public class MHGuiScreen extends GuiScreen
 
     public MHGuiScreen(String guiImageName)
     {
-        guiImage = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + guiImageName + ".png");
+        guiImage = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + guiImageName + ".png");
     }
 
     /**

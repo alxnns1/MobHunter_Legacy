@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.handler;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.reference.Config;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -66,7 +66,7 @@ public class ConfigHandler
     @SubscribeEvent
     public static void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event)
     {
-        if(event.getModID().equalsIgnoreCase(Reference.MOD_ID))
+        if(event.getModID().equalsIgnoreCase(MobHunter.MOD_ID))
             //Resync configs
             loadConfiguration();
     }

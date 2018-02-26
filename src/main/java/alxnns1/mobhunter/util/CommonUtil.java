@@ -5,7 +5,6 @@ import alxnns1.mobhunter.handler.EnumGuiID;
 import alxnns1.mobhunter.message.MessageCapability;
 import alxnns1.mobhunter.message.MessageGuiQuest;
 import alxnns1.mobhunter.message.MessageSetQuest;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,11 +23,11 @@ import net.minecraftforge.fml.relauncher.Side;
 public class CommonUtil
 {
     public static SimpleNetworkWrapper NETWORK;
-    private static int messageID = 1;
+    private static int messageID = 0;
 
     public static void initNetwork()
     {
-        NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+        NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MobHunter.MOD_ID);
         NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, messageID++, Side.CLIENT);
         NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, messageID++, Side.SERVER);
         NETWORK.registerMessage(MessageSetQuest.Handler.class, MessageSetQuest.class, messageID++, Side.SERVER);

@@ -35,7 +35,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class HRClientHandler
 {
-    private static final ResourceLocation hunterRankBar = new ResourceLocation(Reference.MOD_ID, Reference.GUI_TEXTURE_DIR + "hr_bar.png");
+    private static final ResourceLocation hunterRankBar = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "hr_bar.png");
     private static Minecraft mc = Minecraft.getMinecraft();
 
     private static Map<UUID, IHunterRank> playerRankCache = new HashMap<UUID, IHunterRank>();

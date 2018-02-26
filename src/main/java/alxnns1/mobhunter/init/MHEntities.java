@@ -32,14 +32,14 @@ public class MHEntities
 
     private static void registerEntity(Class<? extends Entity> entityClass, String name)
     {
-        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID, name), entityClass, Reference.MOD_ID + "." + name, ++modEntityID, MobHunter.instance, 64, 1, false);
-        ENTITY_NAMES.add(String.format("%s.%s", Reference.MOD_ID, name));
+        EntityRegistry.registerModEntity(new ResourceLocation(MobHunter.MOD_ID, name), entityClass, MobHunter.MOD_ID + "." + name, ++modEntityID, MobHunter.instance, 64, 1, false);
+        ENTITY_NAMES.add(String.format("%s.%s", MobHunter.MOD_ID, name));
     }
 
     private static void registerMobWithEgg(Class<? extends Entity> entityClass, String name, int eggColour, int eggSpotColour)
     {
-        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID, name), entityClass, Reference.MOD_ID + "." + name, ++modEntityID, MobHunter.instance, 64, 1, false, eggColour, eggSpotColour);
-        ENTITY_NAMES.add(String.format("%s.%s", Reference.MOD_ID, name));
+        EntityRegistry.registerModEntity(new ResourceLocation(MobHunter.MOD_ID, name), entityClass, MobHunter.MOD_ID + "." + name, ++modEntityID, MobHunter.instance, 64, 1, false, eggColour, eggSpotColour);
+        ENTITY_NAMES.add(String.format("%s.%s", MobHunter.MOD_ID, name));
     }
 
     private static void addSpawn(Class<? extends EntityLiving> entityClass, int rarity, BiomeDictionary.Type[] biomeTypes)

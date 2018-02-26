@@ -1,22 +1,17 @@
 package alxnns1.mobhunter.init;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.item.*;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
-import alxnns1.mobhunter.reference.Reference;
-import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Contains all of the mod's items and registering code
@@ -24,59 +19,37 @@ import java.util.Map;
  */
 public class MHItems
 {
-    public static List<Item> ITEMS = new ArrayList<Item>();
+    public static Set<Item> ITEMS = new HashSet<>();
     //This list will automatically get added to the fishable fish loot table
-    public static Map<Item, Integer> FISHABLE = new HashMap<Item, Integer>();
+    public static Map<Item, Integer> FISHABLE = new HashMap<>();
 
-    public static void regItem(Item item)
+    public static void addItem(Item item)
     {
-        GameRegistry.register(item);
         ITEMS.add(item);
     }
 
-    public static void regFish(Item item, int fishingChance)
+    public static void addFish(Item item, int fishingChance)
     {
-        regItem(item);
+        addItem(item);
         FISHABLE.put(item, fishingChance);
     }
 
-    public static ItemMHDrink
-            itemDrink;
-    public static ItemMHConsumable
-            itemPlant,
-            itemMushroom,
-            itemBerry,
-            itemBug;
-    public static ItemMHResource
-            itemMisc,
-            itemTool,
-            itemMiscDrop,
-            itemHerbivoreDrop,
-            itemLynianDrop,
-            itemNeopteranDrop,
-            itemPiscineWyvernDrop,
-            itemBirdWyvernDrop,
-            itemCarapaceonDrop,
-            itemFangedBeastDrop,
-            itemAmphibianDrop,
-            itemSnakeWyvernDrop,
-            itemBruteWyvernDrop,
-            itemTrueWyvernDrop,
-            itemPseudoWyvernDrop,
-            itemFangedWyvernDrop,
-            itemZenithWyvernDrop,
-            itemLeviathonDrop,
-            itemElderDragonDrop,
-            itemOre,
-            itemIcon;
+    public static ItemMHDrink itemDrink;
+
+    public static ItemMHConsumable itemPlant, itemMushroom, itemBerry, itemBug;
+
+    public static ItemMHResource itemMisc, itemTool, itemMiscDrop, itemHerbivoreDrop, itemLynianDrop, itemNeopteranDrop,
+            itemPiscineWyvernDrop, itemBirdWyvernDrop, itemCarapaceonDrop, itemFangedBeastDrop, itemAmphibianDrop,
+            itemSnakeWyvernDrop, itemBruteWyvernDrop, itemTrueWyvernDrop, itemPseudoWyvernDrop, itemFangedWyvernDrop,
+            itemZenithWyvernDrop, itemLeviathonDrop, itemElderDragonDrop, itemOre, itemIcon;
     
-    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", Reference.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
-    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", Reference.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
-    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", Reference.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
-    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", Reference.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
-    public static ItemArmor.ArmorMaterial jaggiArmourMaterial = EnumHelper.addArmorMaterial("Jaggi", Reference.MOD_ID + ":jaggi", 21, new int[]{3, 6, 5, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
-    public static ItemArmor.ArmorMaterial velocipreyArmourMaterial = EnumHelper.addArmorMaterial("Velociprey", Reference.MOD_ID + ":velociprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
-    public static ItemArmor.ArmorMaterial genpreyArmourMaterial = EnumHelper.addArmorMaterial("Genprey", Reference.MOD_ID + ":genprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial derringArmourMaterial = EnumHelper.addArmorMaterial("Derring", MobHunter.MOD_ID + ":derring", 5, new int[]{1, 3, 2, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial hunterArmourMaterial = EnumHelper.addArmorMaterial("Hunter's", MobHunter.MOD_ID + ":hunter", 15, new int[]{2, 3, 3, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial boneArmourMaterial = EnumHelper.addArmorMaterial("Bone", MobHunter.MOD_ID + ":bone", 17, new int[]{2, 5, 4, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0f);
+    public static ItemArmor.ArmorMaterial alloyArmourMaterial = EnumHelper.addArmorMaterial("Alloy", MobHunter.MOD_ID + ":alloy", 19, new int[]{2, 6, 5, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial jaggiArmourMaterial = EnumHelper.addArmorMaterial("Jaggi", MobHunter.MOD_ID + ":jaggi", 21, new int[]{3, 6, 5, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial velocipreyArmourMaterial = EnumHelper.addArmorMaterial("Velociprey", MobHunter.MOD_ID + ":velociprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
+    public static ItemArmor.ArmorMaterial genpreyArmourMaterial = EnumHelper.addArmorMaterial("Genprey", MobHunter.MOD_ID + ":genprey", 23, new int[]{3, 7, 6, 3}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0f);
 
     public static ItemArmor
             armourDerringHelmet, armourDerringChestplate, armourDerringLeggings, armourDerringBoots,
@@ -87,91 +60,29 @@ public class MHItems
             armourVelocipreyHelmet, armourVelocipreyChestplate, armourVelocipreyLeggings, armourVelocipreyBoots,
             armourGenpreyHelmet, armourGenpreyChestplate, armourGenpreyLeggings, armourGenpreyBoots;
 
-    public static ItemMHPouch
-            itemFieldPouch;
+    public static ItemMHPouch itemFieldPouch;
 
-    public static ItemMHResource
-            itemRawMeat,
-            itemWhetfish;
+    public static ItemMHResource itemRawMeat, itemWhetfish;
 
-    public static ItemMHPickaxe
-            itemMachalitePickaxe,
-            itemDragonitePickaxe,
-            itemGossamitePickaxe;
+    public static ItemMHPickaxe itemMachalitePickaxe, itemDragonitePickaxe, itemGossamitePickaxe;
 
-    public static ItemMHConsumable
-            itemRareSteak,
-            itemDoneSteak,
-            itemGourmetSteak,
-            itemBurntMeat,
-            itemSushifish;
+    public static ItemMHConsumable itemRareSteak, itemDoneSteak, itemGourmetSteak, itemBurntMeat, itemSushifish;
 
-    public static ItemMHGlutton
-            itemGluttonTuna,
-            itemGastronomeTuna;
+    public static ItemMHGlutton itemGluttonTuna, itemGastronomeTuna;
 
-    public static ItemMHSword
-            weaponHuntersKnife,
-            weaponSoldiersDagger,
-            weaponCommandersDagger,
-            weaponDeadlyKnife,
-            weaponDeadlyKnifePlus,
-            weaponSerpentBite,
-            weaponSerpentBitePlus,
-            weaponDeadlock,
-            weaponVelocidromeBite,
-            weaponVelocidromeBitePlus,
-            weaponVelocidromeFang,
-            weaponVelocidromeFangPlus,
-            weaponDromeRushDagger,
-            weaponGreatStabberdag,
-            weaponSnakeBite,
-            weaponSnakeBitePlus,
-            weaponDeathlyCold,
-            weaponViperBite,
-            weaponViperBitePlus,
-            weaponDeathprize,
-            weaponGendromeBite,
-            weaponGendromeBitePlus,
-            weaponGendromeFang,
-            weaponGendromeFangPlus,
-            weaponDromeToxinDagger,
-            weaponGreatParadag,
-            weaponHydraBite,
-            weaponHydraBitePlus,
-            weaponDeadlyPoison,
-            weaponHuntersKnifePlus,
-            weaponHuntersDagger,
-            weaponAssassinsDagger,
-            weaponBoneKris,
-            weaponBoneKrisPlus,
-            weaponChiefKris,
-            weaponRottonSword,
-            weaponPlaguedSword,
-            weaponInfestedSword,
-            weaponSkeletalSword,
-            weaponSkeletalSwordPlus,
-            weaponWitheredSword,
-            weaponWitheredSwordPlus,
-            weaponNecrosisBlade,
-            weaponMandiblade,
-            weaponMandibladePlus,
-            weaponStingingMandiblade,
-            weaponPoisonStingblade,
-            weaponFearSword,
-            weaponTerrorSword,
-            weaponDreadSword,
-            weaponXenoblade,
-            weaponXenobladePlus,
-            weaponAstralSword,
-            weaponAstralEndsword,
-            weaponSlimySword,
-            weaponSlimySwordPlus,
-            weaponCrystalizedSlimeblade,
-            weaponMagmaticSlimeblade,
-            weaponBlazingSword,
-            weaponBlazingTempest,
-            weaponBlazingInferno;
+    public static ItemMHSword weaponHuntersKnife, weaponSoldiersDagger, weaponCommandersDagger, weaponDeadlyKnife,
+            weaponDeadlyKnifePlus, weaponSerpentBite, weaponSerpentBitePlus, weaponDeadlock, weaponVelocidromeBite,
+            weaponVelocidromeBitePlus, weaponVelocidromeFang, weaponVelocidromeFangPlus, weaponDromeRushDagger,
+            weaponGreatStabberdag, weaponSnakeBite, weaponSnakeBitePlus, weaponDeathlyCold, weaponViperBite,
+            weaponViperBitePlus, weaponDeathprize, weaponGendromeBite, weaponGendromeBitePlus, weaponGendromeFang,
+            weaponGendromeFangPlus, weaponDromeToxinDagger, weaponGreatParadag, weaponHydraBite, weaponHydraBitePlus,
+            weaponDeadlyPoison, weaponHuntersKnifePlus, weaponHuntersDagger, weaponAssassinsDagger, weaponBoneKris,
+            weaponBoneKrisPlus, weaponChiefKris, weaponRottonSword, weaponPlaguedSword, weaponInfestedSword,
+            weaponSkeletalSword, weaponSkeletalSwordPlus, weaponWitheredSword, weaponWitheredSwordPlus, weaponNecrosisBlade,
+            weaponMandiblade, weaponMandibladePlus, weaponStingingMandiblade, weaponPoisonStingblade, weaponFearSword,
+            weaponTerrorSword, weaponDreadSword, weaponXenoblade, weaponXenobladePlus, weaponAstralSword, weaponAstralEndsword,
+            weaponSlimySword, weaponSlimySwordPlus, weaponCrystalizedSlimeblade, weaponMagmaticSlimeblade,
+            weaponBlazingSword, weaponBlazingTempest, weaponBlazingInferno;
 
     public static ItemMHBow weaponTestBow;
 
@@ -180,12 +91,9 @@ public class MHItems
 
     public static ItemMHDebug itemDebug;
 
-    /**
-     * Registers the items
-     */
-    public static void regItems()
+    private static void init()
     {
-        regItem(itemDrink = new ItemMHDrink("drink",
+        addItem(itemDrink = new ItemMHDrink("drink",
                 Names.Items.POTION,
                 Names.Items.MEGA_POTION,
                 Names.Items.NUTRIENTS,
@@ -200,7 +108,7 @@ public class MHItems
                 Names.Items.ARMOURSKIN,
                 Names.Items.MEGA_ARMOURSKIN)
                 .addToMetaRef(MetaRef.EnumItemType.DRINK));
-        regItem(itemMisc = new ItemMHResource("misc",
+        addItem(itemMisc = new ItemMHResource("misc",
                 Names.Items.CATALYST,
                 Names.Items.TRANQUILIZER,
                 Names.Items.BOMB_CASING,
@@ -211,7 +119,7 @@ public class MHItems
                 Names.Items.TRAP_TOOL,
                 Names.Items.STEEL_EGG)
                 .addToMetaRef(MetaRef.EnumItemType.MISC));
-        regItem(itemTool = new ItemMHResource("tool",
+        addItem(itemTool = new ItemMHResource("tool",
                 Names.Items.CLEANSER,
                 Names.Items.DEODORANT,
                 Names.Items.DISPOSABLE_EARPLUGS,
@@ -237,7 +145,7 @@ public class MHItems
                 Names.Items.WHETSTONE,
                 Names.Items.MINI_WHETSTONE)
                 .addToMetaRef(MetaRef.EnumItemType.TOOL));
-        regItem(itemPlant = new ItemMHConsumable("plant",
+        addItem(itemPlant = new ItemMHConsumable("plant",
                 Names.Items.HONEY,
                 Names.Items.HERB,
                 Names.Items.ANTIDOTE_HERB,
@@ -250,7 +158,7 @@ public class MHItems
                 Names.Items.GLOAMGRASS_BUD,
                 Names.Items.HOT_PEPPER)
                 .addToMetaRef(MetaRef.EnumItemType.PLANT));
-        regItem(itemMushroom = new ItemMHConsumable("mushroom",
+        addItem(itemMushroom = new ItemMHConsumable("mushroom",
                 Names.Items.BLUE_MUSHROOM,
                 Names.Items.NITROSHROOM,
                 Names.Items.PARASHROOM,
@@ -259,7 +167,7 @@ public class MHItems
                 Names.Items.MOPESHROOM,
                 Names.Items.DRAGON_TOADSTOOL)
                 .addToMetaRef(MetaRef.EnumItemType.MUSHROOM));
-        regItem(itemBerry = new ItemMHConsumable("berry",
+        addItem(itemBerry = new ItemMHConsumable("berry",
                 Names.Items.HUSKBERRY,
                 Names.Items.PAINTBERRY,
                 Names.Items.MIGHT_SEED,
@@ -271,7 +179,7 @@ public class MHItems
                 Names.Items.LATCHBERRY,
                 Names.Items.BOMBERRY)
                 .addToMetaRef(MetaRef.EnumItemType.BERRY));
-        regItem(itemBug = new ItemMHConsumable("bug",
+        addItem(itemBug = new ItemMHConsumable("bug",
                 Names.Items.INSECT_HUSK,
                 Names.Items.STINKHOPPER,
                 Names.Items.SNAKEBEE_LARVA,
@@ -285,7 +193,7 @@ public class MHItems
                 Names.Items.FULGURBUG,
                 Names.Items.RARE_SCARAB)
                 .addToMetaRef(MetaRef.EnumItemType.BUG));
-        regItem(itemOre = new ItemMHResource("ore",
+        addItem(itemOre = new ItemMHResource("ore",
                 Names.Items.EARTH_CRYSTAL,
                 Names.Items.MACHALITE_INGOT,
                 Names.Items.DRAGONITE_INGOT,
@@ -301,7 +209,7 @@ public class MHItems
                 Names.Items.ELTALITE_INGOT,
                 Names.Items.MELDSPAR_INGOT)
                 .addToMetaRef(MetaRef.EnumItemType.ORE));
-        regItem(itemMiscDrop = new ItemMHResource("miscdrop",
+        addItem(itemMiscDrop = new ItemMHResource("miscdrop",
                 Names.Items.BONE_HUSK,
                 Names.Items.MONSTER_BONE_S,
                 Names.Items.MONSTER_BONE_M,
@@ -348,7 +256,7 @@ public class MHItems
                 Names.Items.WYVERN_SCALP,
                 Names.Items.MONSTER_FLUID)
                 .addToMetaRef(MetaRef.EnumItemType.MISC_DROP));
-        regItem(itemHerbivoreDrop = new ItemMHResource("herbivoredrop",
+        addItem(itemHerbivoreDrop = new ItemMHResource("herbivoredrop",
                 Names.Items.GARGWA_FEATHER,
                 Names.Items.GARGWA_EGG,
                 Names.Items.GOLD_GARGWA_EGG,
@@ -357,7 +265,7 @@ public class MHItems
                 Names.Items.BLUE_KELBI_HORN,
                 Names.Items.WARM_PELT)
                 .addToMetaRef(MetaRef.EnumItemType.HERBIVORE_DROP));
-        regItem(itemNeopteranDrop = new ItemMHResource("neopterandrop",
+        addItem(itemNeopteranDrop = new ItemMHResource("neopterandrop",
                 Names.Items.BNAHABRA_SHELL,
                 Names.Items.BNAHABRA_CARAPACE,
                 Names.Items.BNAHABRA_WING,
@@ -365,7 +273,7 @@ public class MHItems
                 Names.Items.ALTAROTH_JAW,
                 Names.Items.ALTAROTH_STOMACH)
                 .addToMetaRef(MetaRef.EnumItemType.NEOPTERAN_DROP));
-        regItem(itemBirdWyvernDrop = new ItemMHResource("birdwyverndrop",
+        addItem(itemBirdWyvernDrop = new ItemMHResource("birdwyverndrop",
                 Names.Items.BIRD_WYVERN_FANG,
                 Names.Items.TOUGH_BIRD_WYVERN_HIDE,
                 Names.Items.AVIAN_FINEBONE,
@@ -418,10 +326,10 @@ public class MHItems
                 Names.Items.IOPREY_HIDE_PLUS,
                 Names.Items.IOPREY_FANG)
                 .addToMetaRef(MetaRef.EnumItemType.BIRD_DROP));
-        regItem(itemFangedBeastDrop = new ItemMHResource("fangedbeastdrop",
+        addItem(itemFangedBeastDrop = new ItemMHResource("fangedbeastdrop",
                 Names.Items.SHARP_FANG)
                 .addToMetaRef(MetaRef.EnumItemType.BEAST_DROP));
-        regItem(itemIcon = new ItemMHResource("icon", false,
+        addItem(itemIcon = new ItemMHResource("icon", false,
                 Names.Items.ICON_GREAT_JAGGI,
                 Names.Items.ICON_GREAT_BAGGI,
                 Names.Items.ICON_GREAT_WROGGI,
@@ -432,127 +340,127 @@ public class MHItems
                 Names.Items.ICON_KIRIN)
                 .addToMetaRef(MetaRef.EnumItemType.ICON));
 
-        regItem(armourDerringHelmet = new ItemMHArmour(derringArmourMaterial, EntityEquipmentSlot.HEAD,Names.Items.DERRING_HELMET));
-        regItem(armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.DERRING_CHESTPLATE));
-        regItem(armourDerringLeggings = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.DERRING_LEGGINGS));
-        regItem(armourDerringBoots = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.DERRING_BOOTS));
+        addItem(armourDerringHelmet = new ItemMHArmour(derringArmourMaterial, EntityEquipmentSlot.HEAD,Names.Items.DERRING_HELMET));
+        addItem(armourDerringChestplate = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.DERRING_CHESTPLATE));
+        addItem(armourDerringLeggings = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.DERRING_LEGGINGS));
+        addItem(armourDerringBoots = new ItemMHArmour(derringArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.DERRING_BOOTS));
 
-        regItem(armourHunterHelmet = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.HUNTER_HELMET));
-        regItem(armourHunterChestplate = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.HUNTER_CHESTPLATE));
-        regItem(armourHunterLeggings = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.HUNTER_LEGGINGS));
-        regItem(armourHunterBoots = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.HUNTER_BOOTS));
+        addItem(armourHunterHelmet = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.HUNTER_HELMET));
+        addItem(armourHunterChestplate = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.HUNTER_CHESTPLATE));
+        addItem(armourHunterLeggings = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.HUNTER_LEGGINGS));
+        addItem(armourHunterBoots = new ItemMHArmour(hunterArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.HUNTER_BOOTS));
 
-        regItem(armourBoneHelmet = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.BONE_HELMET));
-        regItem(armourBoneChestplate = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.BONE_CHESTPLATE));
-        regItem(armourBoneLeggings = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.BONE_LEGGINGS));
-        regItem(armourBoneBoots = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.BONE_BOOTS));
+        addItem(armourBoneHelmet = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.BONE_HELMET));
+        addItem(armourBoneChestplate = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.BONE_CHESTPLATE));
+        addItem(armourBoneLeggings = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.BONE_LEGGINGS));
+        addItem(armourBoneBoots = new ItemMHArmour(boneArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.BONE_BOOTS));
 
-        regItem(armourAlloyHelmet = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.ALLOY_HELMET));
-        regItem(armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.ALLOY_CHESTPLATE));
-        regItem(armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.ALLOY_LEGGINGS));
-        regItem(armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.ALLOY_BOOTS));
+        addItem(armourAlloyHelmet = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.ALLOY_HELMET));
+        addItem(armourAlloyChestplate = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.ALLOY_CHESTPLATE));
+        addItem(armourAlloyLeggings = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.ALLOY_LEGGINGS));
+        addItem(armourAlloyBoots = new ItemMHArmour(alloyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.ALLOY_BOOTS));
 
-        regItem(armourJaggiHelmet = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.JAGGI_HELMET));
-        regItem(armourJaggiChestplate = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.JAGGI_CHESTPLATE));
-        regItem(armourJaggiLeggings = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.JAGGI_LEGGINGS));
-        regItem(armourJaggiBoots = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.JAGGI_BOOTS));
+        addItem(armourJaggiHelmet = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.JAGGI_HELMET));
+        addItem(armourJaggiChestplate = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.JAGGI_CHESTPLATE));
+        addItem(armourJaggiLeggings = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.JAGGI_LEGGINGS));
+        addItem(armourJaggiBoots = new ItemMHArmour(jaggiArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.JAGGI_BOOTS));
 
-        regItem(armourVelocipreyHelmet = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.VELOCIPREY_HELMET));
-        regItem(armourVelocipreyChestplate = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.VELOCIPREY_CHESTPLATE));
-        regItem(armourVelocipreyLeggings = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.VELOCIPREY_LEGGINGS));
-        regItem(armourVelocipreyBoots = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.VELOCIPREY_BOOTS));
+        addItem(armourVelocipreyHelmet = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.VELOCIPREY_HELMET));
+        addItem(armourVelocipreyChestplate = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.VELOCIPREY_CHESTPLATE));
+        addItem(armourVelocipreyLeggings = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.VELOCIPREY_LEGGINGS));
+        addItem(armourVelocipreyBoots = new ItemMHArmour(velocipreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.VELOCIPREY_BOOTS));
 
-        regItem(armourGenpreyHelmet = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.GENPREY_HELMET));
-        regItem(armourGenpreyChestplate = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.GENPREY_CHESTPLATE));
-        regItem(armourGenpreyLeggings = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.GENPREY_LEGGINGS));
-        regItem(armourGenpreyBoots = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.GENPREY_BOOTS));
+        addItem(armourGenpreyHelmet = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.HEAD,Names.Items.GENPREY_HELMET));
+        addItem(armourGenpreyChestplate = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.CHEST,Names.Items.GENPREY_CHESTPLATE));
+        addItem(armourGenpreyLeggings = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.LEGS,Names.Items.GENPREY_LEGGINGS));
+        addItem(armourGenpreyBoots = new ItemMHArmour(genpreyArmourMaterial,EntityEquipmentSlot.FEET,Names.Items.GENPREY_BOOTS));
 
-        regItem(itemFieldPouch = new ItemMHPouch());
+        addItem(itemFieldPouch = new ItemMHPouch());
 
-        regItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
-        regItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));
-        regItem(itemGossamitePickaxe = new ItemMHPickaxe(Names.Items.GOSSAMITE_PICKAXE, 3, 1000, 8.0f, 5f));
+        addItem(itemMachalitePickaxe = new ItemMHPickaxe(Names.Items.MACHALITE_PICKAXE, 2, 500, 7.0f, 3f));
+        addItem(itemDragonitePickaxe = new ItemMHPickaxe(Names.Items.DRAGONITE_PICKAXE, 3, 750, 7.0f, 4f));
+        addItem(itemGossamitePickaxe = new ItemMHPickaxe(Names.Items.GOSSAMITE_PICKAXE, 3, 1000, 8.0f, 5f));
 
-        regItem(itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT));
-        regItem(itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK));
-        regItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
-        regItem(itemGourmetSteak = new ItemMHConsumable(16, 1.5F, true, Names.Items.GOURMET_STEAK));
-        regItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
+        addItem(itemRawMeat = new ItemMHResource(Names.Items.RAW_MEAT));
+        addItem(itemRareSteak = new ItemMHConsumable(5, 0.4F, true, Names.Items.RARE_STEAK));
+        addItem(itemDoneSteak = new ItemMHConsumable(10, 1.0F, true, Names.Items.DONE_STEAK));
+        addItem(itemGourmetSteak = new ItemMHConsumable(16, 1.5F, true, Names.Items.GOURMET_STEAK));
+        addItem(itemBurntMeat = new ItemMHConsumable(5, 0.3F, true, Names.Items.BURNT_MEAT));
 
-        regFish(itemWhetfish = new ItemMHResource(Names.Items.WHETFISH),53);
-        regFish(itemSushifish = new ItemMHConsumable(5, 0.4F, false, Names.Items.SUSHIFISH),46);
-        regFish(itemGluttonTuna = new ItemMHGlutton(5, 0.4F, false, Names.Items.GLUTTON_TUNA),56);
-        regFish(itemGastronomeTuna = new ItemMHGlutton(10, 1.0F, false, Names.Items.GASTRONOME_TUNA),25);
+        addFish(itemWhetfish = new ItemMHResource(Names.Items.WHETFISH),53);
+        addFish(itemSushifish = new ItemMHConsumable(5, 0.4F, false, Names.Items.SUSHIFISH),46);
+        addFish(itemGluttonTuna = new ItemMHGlutton(5, 0.4F, false, Names.Items.GLUTTON_TUNA),56);
+        addFish(itemGastronomeTuna = new ItemMHGlutton(10, 1.0F, false, Names.Items.GASTRONOME_TUNA),25);
 
-        regItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
-        regItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
-        regItem(weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, 100, 240, 400, 500));
-        regItem(weaponDeadlyKnife = new ItemMHSword(Names.Items.DEADLY_KNIFE, 12f, 150, 250, 370, 620));
-        regItem(weaponDeadlyKnifePlus = new ItemMHSword(Names.Items.DEADLY_KNIFE_PLUS, 14f, 170, 270, 400, 750));
-        regItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, 120, 200, 440, 500));
-        regItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, 120, 180, 380, 500));
-        regItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, 140, 200, 400, 580, 600));
-        regItem(weaponVelocidromeBite = new ItemMHSword(Names.Items.VELOCIDROME_BITE, 11f, 220, 400, 500));
-        regItem(weaponVelocidromeBitePlus = new ItemMHSword(Names.Items.VELOCIDROME_BITE_PLUS, 13f, 220, 320, 500));
-        regItem(weaponVelocidromeFang = new ItemMHSword(Names.Items.VELOCIDROME_FANG, 15f, 150, 250, 550, 620));
-        regItem(weaponVelocidromeFangPlus = new ItemMHSword(Names.Items.VELOCIDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
-        regItem(weaponDromeRushDagger = new ItemMHSword(Names.Items.DROME_RUSH_DAGGER, 19f, 500, 650, 670, 720, 750));
-        regItem(weaponGreatStabberdag = new ItemMHSword(Names.Items.GREAT_STABBERDAG, 21f, 500, 650, 670, 720, 850, 870));
-        regItem(weaponSnakeBite = new ItemMHSword(Names.Items.SNAKE_BITE, 10f, 120, 200, 440, 500));
-        regItem(weaponSnakeBitePlus = new ItemMHSword(Names.Items.SNAKE_BITE_PLUS, 15f, 120, 180, 380, 500));
-        regItem(weaponDeathlyCold = new ItemMHSword(Names.Items.DEATHLY_COLD, 20f, 140, 200, 400, 580, 600));
-        regItem(weaponHydraBite = new ItemMHSword(Names.Items.HYDRA_BITE, 10f, 120, 200, 440, 500));
-        regItem(weaponHydraBitePlus = new ItemMHSword(Names.Items.HYDRA_BITE_PLUS, 15f, 120, 180, 380, 500));
-        regItem(weaponDeadlyPoison = new ItemMHSword(Names.Items.DEADLY_POISON, 20f, 140, 200, 400, 580, 600));
-        regItem(weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, 120, 200, 440, 500));
-        regItem(weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, 120, 180, 380, 500));
-        regItem(weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, 140, 200, 400, 580, 600));
-        regItem(weaponGendromeBite = new ItemMHSword(Names.Items.GENDROME_BITE, 11f, 220, 400, 500));
-        regItem(weaponGendromeBitePlus = new ItemMHSword(Names.Items.GENDROME_BITE_PLUS, 13f, 220, 320, 500));
-        regItem(weaponGendromeFang = new ItemMHSword(Names.Items.GENDROME_FANG, 15f, 150, 250, 550, 620));
-        regItem(weaponGendromeFangPlus = new ItemMHSword(Names.Items.GENDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
-        regItem(weaponDromeToxinDagger = new ItemMHSword(Names.Items.DROME_TOXIN_DAGGER, 19f, 500, 650, 670, 720, 750));
-        regItem(weaponGreatParadag = new ItemMHSword(Names.Items.GREAT_PARADAG, 21f, 500, 650, 670, 720, 850, 870));
-        regItem(weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, 60, 200, 400));
-        regItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, 140, 280, 400));
-        regItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, 120, 200, 400));
+        addItem(weaponHuntersKnife = new ItemMHSword(Names.Items.HUNTERS_KNIFE, 6f, 140, 280, 400));
+        addItem(weaponSoldiersDagger = new ItemMHSword(Names.Items.SOLDIERS_DAGGER, 8f, 100, 160, 420, 500));
+        addItem(weaponCommandersDagger = new ItemMHSword(Names.Items.COMMANDERS_DAGGER, 10f, 100, 240, 400, 500));
+        addItem(weaponDeadlyKnife = new ItemMHSword(Names.Items.DEADLY_KNIFE, 12f, 150, 250, 370, 620));
+        addItem(weaponDeadlyKnifePlus = new ItemMHSword(Names.Items.DEADLY_KNIFE_PLUS, 14f, 170, 270, 400, 750));
+        addItem(weaponSerpentBite = new ItemMHSword(Names.Items.SERPENT_BITE, 10f, 120, 200, 440, 500));
+        addItem(weaponSerpentBitePlus = new ItemMHSword(Names.Items.SERPENT_BITE_PLUS, 15f, 120, 180, 380, 500));
+        addItem(weaponDeadlock = new ItemMHSword(Names.Items.DEADLOCK, 20f, 140, 200, 400, 580, 600));
+        addItem(weaponVelocidromeBite = new ItemMHSword(Names.Items.VELOCIDROME_BITE, 11f, 220, 400, 500));
+        addItem(weaponVelocidromeBitePlus = new ItemMHSword(Names.Items.VELOCIDROME_BITE_PLUS, 13f, 220, 320, 500));
+        addItem(weaponVelocidromeFang = new ItemMHSword(Names.Items.VELOCIDROME_FANG, 15f, 150, 250, 550, 620));
+        addItem(weaponVelocidromeFangPlus = new ItemMHSword(Names.Items.VELOCIDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
+        addItem(weaponDromeRushDagger = new ItemMHSword(Names.Items.DROME_RUSH_DAGGER, 19f, 500, 650, 670, 720, 750));
+        addItem(weaponGreatStabberdag = new ItemMHSword(Names.Items.GREAT_STABBERDAG, 21f, 500, 650, 670, 720, 850, 870));
+        addItem(weaponSnakeBite = new ItemMHSword(Names.Items.SNAKE_BITE, 10f, 120, 200, 440, 500));
+        addItem(weaponSnakeBitePlus = new ItemMHSword(Names.Items.SNAKE_BITE_PLUS, 15f, 120, 180, 380, 500));
+        addItem(weaponDeathlyCold = new ItemMHSword(Names.Items.DEATHLY_COLD, 20f, 140, 200, 400, 580, 600));
+        addItem(weaponHydraBite = new ItemMHSword(Names.Items.HYDRA_BITE, 10f, 120, 200, 440, 500));
+        addItem(weaponHydraBitePlus = new ItemMHSword(Names.Items.HYDRA_BITE_PLUS, 15f, 120, 180, 380, 500));
+        addItem(weaponDeadlyPoison = new ItemMHSword(Names.Items.DEADLY_POISON, 20f, 140, 200, 400, 580, 600));
+        addItem(weaponViperBite = new ItemMHSword(Names.Items.VIPER_BITE, 10f, 120, 200, 440, 500));
+        addItem(weaponViperBitePlus = new ItemMHSword(Names.Items.VIPER_BITE_PLUS, 15f, 120, 180, 380, 500));
+        addItem(weaponDeathprize = new ItemMHSword(Names.Items.DEATHPRIZE, 20f, 140, 200, 400, 580, 600));
+        addItem(weaponGendromeBite = new ItemMHSword(Names.Items.GENDROME_BITE, 11f, 220, 400, 500));
+        addItem(weaponGendromeBitePlus = new ItemMHSword(Names.Items.GENDROME_BITE_PLUS, 13f, 220, 320, 500));
+        addItem(weaponGendromeFang = new ItemMHSword(Names.Items.GENDROME_FANG, 15f, 150, 250, 550, 620));
+        addItem(weaponGendromeFangPlus = new ItemMHSword(Names.Items.GENDROME_FANG_PLUS, 17f, 420, 470, 670, 750));
+        addItem(weaponDromeToxinDagger = new ItemMHSword(Names.Items.DROME_TOXIN_DAGGER, 19f, 500, 650, 670, 720, 750));
+        addItem(weaponGreatParadag = new ItemMHSword(Names.Items.GREAT_PARADAG, 21f, 500, 650, 670, 720, 850, 870));
+        addItem(weaponHuntersKnifePlus = new ItemMHSword(Names.Items.HUNTERS_KNIFE_PLUS, 7f, 60, 200, 400));
+        addItem(weaponHuntersDagger = new ItemMHSword(Names.Items.HUNTERS_DAGGER, 8f, 140, 280, 400));
+        addItem(weaponAssassinsDagger = new ItemMHSword(Names.Items.ASSASSINS_DAGGER, 9f, 120, 200, 400));
 
-        regItem(weaponBoneKris = new ItemMHSword(Names.Items.BONE_KRIS, 4f, 300, 340, 400));
-        regItem(weaponBoneKrisPlus = new ItemMHSword(Names.Items.BONE_KRIS_PLUS, 7f, 180, 320, 400));
-        regItem(weaponChiefKris = new ItemMHSword(Names.Items.CHIEF_KRIS, 10f, 200, 280, 400));
-        regItem(weaponRottonSword = new ItemMHSword(Names.Items.ROTTEN_SWORD, 6f, 300, 400));
-        regItem(weaponPlaguedSword = new ItemMHSword(Names.Items.PLAGUED_SWORD, 8f, 200, 300, 400));
-        regItem(weaponInfestedSword = new ItemMHSword(Names.Items.INFESTED_SWORD, 10f, 100, 200, 300, 400));
-        regItem(weaponSkeletalSword = new ItemMHSword(Names.Items.SKELETAL_SWORD, 6f, 50, 100, 150, 200));
-        regItem(weaponSkeletalSwordPlus = new ItemMHSword(Names.Items.SKELETAL_SWORD_PLUS, 8f, 40, 80, 120, 160, 200));
-        regItem(weaponWitheredSword = new ItemMHSword(Names.Items.WITHERED_SWORD, 11f, 30, 60, 120, 240, 480));
-        regItem(weaponWitheredSwordPlus = new ItemMHSword(Names.Items.WITHERED_SWORD_PLUS, 14f, 20, 40, 80, 160, 320, 640));
-        regItem(weaponNecrosisBlade = new ItemMHSword(Names.Items.NECROSIS_BLADE, 18f, 30, 60, 110, 200, 370, 700));
-        regItem(weaponMandiblade = new ItemMHSword(Names.Items.MANDIBLADE, 6f, 80, 180, 300, 400));
-        regItem(weaponMandibladePlus = new ItemMHSword(Names.Items.MANDIBLADE_PLUS, 8f, 80, 200, 340, 500));
-        regItem(weaponStingingMandiblade = new ItemMHSword(Names.Items.STINGING_MANDIBLADE, 11f, 80, 160, 320, 400, 480));
-        regItem(weaponPoisonStingblade = new ItemMHSword(Names.Items.POISON_STINGBLADE, 14f, 80, 185, 290, 395, 500));
-        regItem(weaponFearSword = new ItemMHSword(Names.Items.FEAR_SWORD, 6f, 200, 400));
-        regItem(weaponTerrorSword = new ItemMHSword(Names.Items.TERROR_SWORD, 8f, 200, 400, 600));
-        regItem(weaponDreadSword = new ItemMHSword(Names.Items.DREAD_SWORD, 10f, 200, 400, 600, 800));
-        regItem(weaponXenoblade = new ItemMHSword(Names.Items.XENOBLADE, 6f, 20, 40, 60, 80, 100, 120));
-        regItem(weaponXenobladePlus = new ItemMHSword(Names.Items.XENOBLADE_PLUS, 8f, 30, 60, 90, 120, 150, 180));
-        regItem(weaponAstralSword = new ItemMHSword(Names.Items.ASTRAL_SWORD, 11f, 40, 80, 120, 160, 200, 240));
-        regItem(weaponAstralEndsword = new ItemMHSword(Names.Items.ASTRAL_ENDSWORD, 15f, 50, 100, 150, 200, 250, 300));
-        regItem(weaponSlimySword = new ItemMHSword(Names.Items.SLIMY_SWORD, 6f, 300, 500));
-        regItem(weaponSlimySwordPlus = new ItemMHSword(Names.Items.SLIMY_SWORD_PLUS, 8f, 200, 600));
-        regItem(weaponCrystalizedSlimeblade = new ItemMHSword(Names.Items.CRYSTALIZED_SLIMEBLADE, 11f, 200, 400, 600, 800));
-        regItem(weaponMagmaticSlimeblade = new ItemMHSword(Names.Items.MAGMATIC_SLIMEBLADE, 14f, 200, 400, 600, 800, 1000));
-        regItem(weaponBlazingSword = new ItemMHSword(Names.Items.BLAZING_SWORD, 6f, 200, 300, 400));
-        regItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f, 120, 240, 360, 480));
-        regItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
+        addItem(weaponBoneKris = new ItemMHSword(Names.Items.BONE_KRIS, 4f, 300, 340, 400));
+        addItem(weaponBoneKrisPlus = new ItemMHSword(Names.Items.BONE_KRIS_PLUS, 7f, 180, 320, 400));
+        addItem(weaponChiefKris = new ItemMHSword(Names.Items.CHIEF_KRIS, 10f, 200, 280, 400));
+        addItem(weaponRottonSword = new ItemMHSword(Names.Items.ROTTEN_SWORD, 6f, 300, 400));
+        addItem(weaponPlaguedSword = new ItemMHSword(Names.Items.PLAGUED_SWORD, 8f, 200, 300, 400));
+        addItem(weaponInfestedSword = new ItemMHSword(Names.Items.INFESTED_SWORD, 10f, 100, 200, 300, 400));
+        addItem(weaponSkeletalSword = new ItemMHSword(Names.Items.SKELETAL_SWORD, 6f, 50, 100, 150, 200));
+        addItem(weaponSkeletalSwordPlus = new ItemMHSword(Names.Items.SKELETAL_SWORD_PLUS, 8f, 40, 80, 120, 160, 200));
+        addItem(weaponWitheredSword = new ItemMHSword(Names.Items.WITHERED_SWORD, 11f, 30, 60, 120, 240, 480));
+        addItem(weaponWitheredSwordPlus = new ItemMHSword(Names.Items.WITHERED_SWORD_PLUS, 14f, 20, 40, 80, 160, 320, 640));
+        addItem(weaponNecrosisBlade = new ItemMHSword(Names.Items.NECROSIS_BLADE, 18f, 30, 60, 110, 200, 370, 700));
+        addItem(weaponMandiblade = new ItemMHSword(Names.Items.MANDIBLADE, 6f, 80, 180, 300, 400));
+        addItem(weaponMandibladePlus = new ItemMHSword(Names.Items.MANDIBLADE_PLUS, 8f, 80, 200, 340, 500));
+        addItem(weaponStingingMandiblade = new ItemMHSword(Names.Items.STINGING_MANDIBLADE, 11f, 80, 160, 320, 400, 480));
+        addItem(weaponPoisonStingblade = new ItemMHSword(Names.Items.POISON_STINGBLADE, 14f, 80, 185, 290, 395, 500));
+        addItem(weaponFearSword = new ItemMHSword(Names.Items.FEAR_SWORD, 6f, 200, 400));
+        addItem(weaponTerrorSword = new ItemMHSword(Names.Items.TERROR_SWORD, 8f, 200, 400, 600));
+        addItem(weaponDreadSword = new ItemMHSword(Names.Items.DREAD_SWORD, 10f, 200, 400, 600, 800));
+        addItem(weaponXenoblade = new ItemMHSword(Names.Items.XENOBLADE, 6f, 20, 40, 60, 80, 100, 120));
+        addItem(weaponXenobladePlus = new ItemMHSword(Names.Items.XENOBLADE_PLUS, 8f, 30, 60, 90, 120, 150, 180));
+        addItem(weaponAstralSword = new ItemMHSword(Names.Items.ASTRAL_SWORD, 11f, 40, 80, 120, 160, 200, 240));
+        addItem(weaponAstralEndsword = new ItemMHSword(Names.Items.ASTRAL_ENDSWORD, 15f, 50, 100, 150, 200, 250, 300));
+        addItem(weaponSlimySword = new ItemMHSword(Names.Items.SLIMY_SWORD, 6f, 300, 500));
+        addItem(weaponSlimySwordPlus = new ItemMHSword(Names.Items.SLIMY_SWORD_PLUS, 8f, 200, 600));
+        addItem(weaponCrystalizedSlimeblade = new ItemMHSword(Names.Items.CRYSTALIZED_SLIMEBLADE, 11f, 200, 400, 600, 800));
+        addItem(weaponMagmaticSlimeblade = new ItemMHSword(Names.Items.MAGMATIC_SLIMEBLADE, 14f, 200, 400, 600, 800, 1000));
+        addItem(weaponBlazingSword = new ItemMHSword(Names.Items.BLAZING_SWORD, 6f, 200, 300, 400));
+        addItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f, 120, 240, 360, 480));
+        addItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
 
-        regItem(weaponTestBow = new ItemMHBow("weapontestbow", EnumBowCharge.PIERCE, 1));
+        addItem(weaponTestBow = new ItemMHBow("weapontestbow", EnumBowCharge.PIERCE, 1));
 
-        regItem(itemQuest = new ItemMHQuest());
-        regItem(itemQuestList = new ItemMHQuestList());
+        addItem(itemQuest = new ItemMHQuest());
+        addItem(itemQuestList = new ItemMHQuestList());
 
-        regItem(itemDebug = new ItemMHDebug());
+        addItem(itemDebug = new ItemMHDebug());
 
         OreDictionary.registerOre("gemEarthCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
         OreDictionary.registerOre("ingotMachalite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT));
@@ -562,19 +470,9 @@ public class MHItems
         OreDictionary.registerOre("gemIceCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL));
     }
 
-    /**
-     * Registers the item models for the items
-     * Only run this client-side!
-     */
-    public static void regModels()
+    public static Set<Item> getItems()
     {
-        for(Item item : ITEMS)
-        {
-            if(item instanceof ISubTypes && item.getHasSubtypes())
-                for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
-                    ClientUtil.regModel(item, meta);
-            else
-                ClientUtil.regModel(item);
-        }
+        if(ITEMS.isEmpty()) init();
+        return ITEMS;
     }
 }
