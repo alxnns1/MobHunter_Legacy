@@ -22,14 +22,18 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 public class ClientUtil
 {
-    public static void regModel(Item item)
-    {
-        regModel(item, 0);
-    }
-
     public static void regModel(Block block)
     {
-        regModel(Item.getItemFromBlock(block), 0);
+        regModel(Item.getItemFromBlock(block));
+    }
+
+    public static void regModel(Item item)
+    {
+        if(item instanceof ISubTypes && item.getHasSubtypes())
+            for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
+                regModel(item, meta);
+        else
+            regModel(item, 0);
     }
 
     public static void regModel(Item item, int meta)

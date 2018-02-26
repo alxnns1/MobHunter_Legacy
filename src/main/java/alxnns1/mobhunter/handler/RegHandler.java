@@ -1,8 +1,10 @@
 package alxnns1.mobhunter.handler;
 
 import alxnns1.mobhunter.MobHunter;
+import alxnns1.mobhunter.block.render.RenderBbq;
+import alxnns1.mobhunter.init.MHBlocks;
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.item.ISubTypes;
+import alxnns1.mobhunter.tileentity.TileBbq;
 import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -10,6 +12,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,13 +44,14 @@ public class RegHandler
     {
         IForgeRegistry<Item> registry = event.getRegistry();
         MHItems.getItems().forEach(registry::register);
+        MHBlocks.getItemBlocks().forEach(registry::register);
     }
 
     @SubscribeEvent
     public static void regBlocks(RegistryEvent.Register<Block> event)
     {
         IForgeRegistry<Block> registry = event.getRegistry();
-
+        MHBlocks.getBlocks().forEach(registry::register);
     }
 
     @SubscribeEvent
@@ -68,13 +72,10 @@ public class RegHandler
     @SubscribeEvent
     public static void regModels(ModelRegistryEvent event)
     {
-        MHItems.getItems().forEach(item ->
-        {
-            if(item instanceof ISubTypes && item.getHasSubtypes())
-                for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
-                    ClientUtil.regModel(item, meta);
-            else
-                ClientUtil.regModel(item);
-        });
+        MHItems.getItems().forEach(ClientUtil::regModel);
+
+        MHBlocks.getBlocks().forEach(ClientUtil::regModel);
+        MHBlocks.regColours();
+        ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
     }
 }

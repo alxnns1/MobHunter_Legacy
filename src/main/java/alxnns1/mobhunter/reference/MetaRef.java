@@ -75,58 +75,32 @@ public class MetaRef
     {
         switch(itemType)
         {
-            case DRINK:
-                return DRINK;
-            case TOOL:
-                return TOOL;
-            case MISC:
-                return MISC;
-            case PLANT:
-                return PLANT;
-            case MUSHROOM:
-                return MUSHROOM;
-            case BERRY:
-                return BERRY;
-            case BUG:
-                return BUG;
-            case ORE:
-                return ORE;
-            case MISC_DROP:
-                return MISC_DROP;
-            case HERBIVORE_DROP:
-                return HERBIVORE_DROP;
-            case LYNIAN_DROP:
-                return LYNIAN_DROP;
-            case NEOPTERAN_DROP:
-                return NEOPTERAN_DROP;
-            case PISCINE_DROP:
-                return PISCINE_DROP;
-            case BIRD_DROP:
-                return BIRD_DROP;
-            case CARAPACEON_DROP:
-                return CARAPACEON_DROP;
-            case BEAST_DROP:
-                return BEAST_DROP;
-            case AMPHIBIAN_DROP:
-                return AMPHIBIAN_DROP;
-            case SNAKE_DROP:
-                return SNAKE_DROP;
-            case BRUTE_DROP:
-                return BRUTE_DROP;
-            case WYVERN_DROP:
-                return WYVERN_DROP;
-            case PSEUDO_DROP:
-                return PSEUDO_DROP;
-            case FANGED_DROP:
-                return FANGED_DROP;
-            case ZENITH_DROP:
-                return ZENITH_DROP;
-            case LEVIATHON_DROP:
-                return LEVIATHON_DROP;
-            case ELDER_DROP:
-                return ELDER_DROP;
-            case ICON:
-                return ICON;
+            case DRINK:             return DRINK;
+            case TOOL:              return TOOL;
+            case MISC:              return MISC;
+            case PLANT:             return PLANT;
+            case MUSHROOM:          return MUSHROOM;
+            case BERRY:             return BERRY;
+            case BUG:               return BUG;
+            case ORE:               return ORE;
+            case MISC_DROP:         return MISC_DROP;
+            case HERBIVORE_DROP:    return HERBIVORE_DROP;
+            case LYNIAN_DROP:       return LYNIAN_DROP;
+            case NEOPTERAN_DROP:    return NEOPTERAN_DROP;
+            case PISCINE_DROP:      return PISCINE_DROP;
+            case BIRD_DROP:         return BIRD_DROP;
+            case CARAPACEON_DROP:   return CARAPACEON_DROP;
+            case BEAST_DROP:        return BEAST_DROP;
+            case AMPHIBIAN_DROP:    return AMPHIBIAN_DROP;
+            case SNAKE_DROP:        return SNAKE_DROP;
+            case BRUTE_DROP:        return BRUTE_DROP;
+            case WYVERN_DROP:       return WYVERN_DROP;
+            case PSEUDO_DROP:       return PSEUDO_DROP;
+            case FANGED_DROP:       return FANGED_DROP;
+            case ZENITH_DROP:       return ZENITH_DROP;
+            case LEVIATHON_DROP:    return LEVIATHON_DROP;
+            case ELDER_DROP:        return ELDER_DROP;
+            case ICON:              return ICON;
             default:
                 LogHelper.error("Who added an item that I didn't know about? Come on, own up!");
                 return Lists.newArrayList();
@@ -137,58 +111,32 @@ public class MetaRef
     {
         switch(itemType)
         {
-            case DRINK:
-                return MHItems.itemDrink;
-            case TOOL:
-                return MHItems.itemTool;
-            case MISC:
-                return MHItems.itemMisc;
-            case PLANT:
-                return MHItems.itemPlant;
-            case MUSHROOM:
-                return MHItems.itemMushroom;
-            case BERRY:
-                return MHItems.itemBerry;
-            case BUG:
-                return MHItems.itemBug;
-            case ORE:
-                return MHItems.itemOre;
-            case MISC_DROP:
-                return MHItems.itemMiscDrop;
-            case HERBIVORE_DROP:
-                return MHItems.itemHerbivoreDrop;
-            case LYNIAN_DROP:
-                return MHItems.itemLynianDrop;
-            case NEOPTERAN_DROP:
-                return MHItems.itemNeopteranDrop;
-            case PISCINE_DROP:
-                return MHItems.itemPiscineWyvernDrop;
-            case BIRD_DROP:
-                return MHItems.itemBirdWyvernDrop;
-            case CARAPACEON_DROP:
-                return MHItems.itemCarapaceonDrop;
-            case BEAST_DROP:
-                return MHItems.itemFangedBeastDrop;
-            case AMPHIBIAN_DROP:
-                return MHItems.itemAmphibianDrop;
-            case SNAKE_DROP:
-                return MHItems.itemSnakeWyvernDrop;
-            case BRUTE_DROP:
-                return MHItems.itemBruteWyvernDrop;
-            case WYVERN_DROP:
-                return MHItems.itemTrueWyvernDrop;
-            case PSEUDO_DROP:
-                return MHItems.itemPseudoWyvernDrop;
-            case FANGED_DROP:
-                return MHItems.itemFangedWyvernDrop;
-            case ZENITH_DROP:
-                return MHItems.itemZenithWyvernDrop;
-            case LEVIATHON_DROP:
-                return MHItems.itemLeviathonDrop;
-            case ELDER_DROP:
-                return MHItems.itemElderDragonDrop;
-            case ICON:
-                return MHItems.itemIcon;
+            case DRINK:             return MHItems.itemDrink;
+            case TOOL:              return MHItems.itemTool;
+            case MISC:              return MHItems.itemMisc;
+            case PLANT:             return MHItems.itemPlant;
+            case MUSHROOM:          return MHItems.itemMushroom;
+            case BERRY:             return MHItems.itemBerry;
+            case BUG:               return MHItems.itemBug;
+            case ORE:               return MHItems.itemOre;
+            case MISC_DROP:         return MHItems.itemMiscDrop;
+            case HERBIVORE_DROP:    return MHItems.itemHerbivoreDrop;
+            case LYNIAN_DROP:       return MHItems.itemLynianDrop;
+            case NEOPTERAN_DROP:    return MHItems.itemNeopteranDrop;
+            case PISCINE_DROP:      return MHItems.itemPiscineWyvernDrop;
+            case BIRD_DROP:         return MHItems.itemBirdWyvernDrop;
+            case CARAPACEON_DROP:   return MHItems.itemCarapaceonDrop;
+            case BEAST_DROP:        return MHItems.itemFangedBeastDrop;
+            case AMPHIBIAN_DROP:    return MHItems.itemAmphibianDrop;
+            case SNAKE_DROP:        return MHItems.itemSnakeWyvernDrop;
+            case BRUTE_DROP:        return MHItems.itemBruteWyvernDrop;
+            case WYVERN_DROP:       return MHItems.itemTrueWyvernDrop;
+            case PSEUDO_DROP:       return MHItems.itemPseudoWyvernDrop;
+            case FANGED_DROP:       return MHItems.itemFangedWyvernDrop;
+            case ZENITH_DROP:       return MHItems.itemZenithWyvernDrop;
+            case LEVIATHON_DROP:    return MHItems.itemLeviathonDrop;
+            case ELDER_DROP:        return MHItems.itemElderDragonDrop;
+            case ICON:              return MHItems.itemIcon;
             default:
                 LogHelper.error("Who added an item that I didn't know about? Come on, own up!");
                 return null;

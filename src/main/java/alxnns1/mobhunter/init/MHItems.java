@@ -23,15 +23,20 @@ public class MHItems
     //This list will automatically get added to the fishable fish loot table
     public static Map<Item, Integer> FISHABLE = new HashMap<>();
 
-    public static void addItem(Item item)
+    private static void addItem(Item item)
     {
         ITEMS.add(item);
     }
 
-    public static void addFish(Item item, int fishingChance)
+    private static void addFish(Item item, int fishingChance)
     {
         addItem(item);
         FISHABLE.put(item, fishingChance);
+    }
+    
+    private static void addOreDict(String oreName, String itemName)
+    {
+        OreDictionary.registerOre(oreName, MetaRef.getStack(MetaRef.EnumItemType.ORE, itemName));
     }
 
     public static ItemMHDrink itemDrink;
@@ -462,12 +467,12 @@ public class MHItems
 
         addItem(itemDebug = new ItemMHDebug());
 
-        OreDictionary.registerOre("gemEarthCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
-        OreDictionary.registerOre("ingotMachalite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT));
-        OreDictionary.registerOre("ingotDragonite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT));
-        OreDictionary.registerOre("ingotGossamite", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT));
-        OreDictionary.registerOre("gemLightCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.LIGHT_CRYSTAL));
-        OreDictionary.registerOre("gemIceCrystal", MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL));
+        addOreDict("gemEarthCrystal", Names.Items.EARTH_CRYSTAL);
+        addOreDict("ingotMachalite", Names.Items.MACHALITE_INGOT);
+        addOreDict("ingotDragonite", Names.Items.DRAGONITE_INGOT);
+        addOreDict("ingotGossamite", Names.Items.GOSSAMITE_INGOT);
+        addOreDict("gemLightCrystal", Names.Items.LIGHT_CRYSTAL);
+        addOreDict("gemIceCrystal", Names.Items.ICE_CRYSTAL);
     }
 
     public static Set<Item> getItems()

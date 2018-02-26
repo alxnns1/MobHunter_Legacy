@@ -81,12 +81,12 @@ public class MobHunter
 
         CommonUtil.initNetwork();
 
-        MHBlocks.regBlocks();
-        MHBlocks.regTileEntities();
         MHEntities.init(event.getSide() == Side.CLIENT);
         MHPotions.init();
 
         MHCapabilities.init();
+
+        GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
     }
 
     @Mod.EventHandler
@@ -94,13 +94,9 @@ public class MobHunter
     {
         //Initializing and registering GUIs, tile entities, recipes and event handlers
 
-        if(event.getSide() == Side.CLIENT)
-            MHBlocks.regColours();
-
         MHRecipes.init();
         MHAchievements.init();
         MHQuests.init();
-        GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
     }
 
     @Mod.EventHandler
@@ -112,6 +108,8 @@ public class MobHunter
 
         MHItems.ITEMS = null;
         MHItems.FISHABLE = null;
+        MHBlocks.BLOCKS = null;
+        MHBlocks.ITEM_BLOCKS = null;
     }
 
     @Mod.EventHandler
