@@ -9,7 +9,6 @@ import alxnns1.mobhunter.tileentity.TileBbq;
 import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -60,13 +59,6 @@ public class RegHandler
     {
         IForgeRegistry<EntityEntry> registry = event.getRegistry();
         MHEntities.getEntities().forEach(registry::register);
-    }
-
-    @SubscribeEvent
-    public static void regVanillaRecipes(RegistryEvent.Register<IRecipe> event)
-    {
-        IForgeRegistry<IRecipe> registry = event.getRegistry();
-
     }
 
     @SideOnly(Side.CLIENT)

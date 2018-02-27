@@ -92,7 +92,6 @@ public class MobHunter
     {
         //Initializing and registering GUIs, tile entities, recipes and event handlers
 
-        MHRecipes.init();
         MHAchievements.init();
         MHQuests.init();
     }

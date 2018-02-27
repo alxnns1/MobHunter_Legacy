@@ -19,34 +19,6 @@ public class MHRecipes
     public static void init()
     {
         GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
-                MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HONEY),
-                MetaRef.getStack(MetaRef.EnumItemType.BUG, Names.Items.BITTERBUG));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.TOOL, Names.Items.WHETSTONE),
-                MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S),
-                Items.IRON_INGOT);
-
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.POTION),
-                Items.GLASS_BOTTLE,
-                MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HERB),
-                MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.BLUE_MUSHROOM));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_POTION),
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.POTION),
-                MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.HONEY));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ANTIDOTE),
-                Items.GLASS_BOTTLE,
-                MetaRef.getStack(MetaRef.EnumItemType.PLANT, Names.Items.ANTIDOTE_HERB),
-                MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.BLUE_MUSHROOM));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.IMMUNIZER),
-                Items.GLASS_BOTTLE,
-                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
-                MetaRef.getStack(MetaRef.EnumItemType.MUSHROOM, Names.Items.DRAGON_TOADSTOOL));
-        GameRegistry.addShapelessRecipe(
                 MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DASH_JUICE),
                 Items.GLASS_BOTTLE,
                 MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
@@ -78,12 +50,6 @@ public class MHRecipes
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
         //      MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PALE_EXTRACT);
 
-        GameRegistry.addRecipe(
-                new ItemStack(MHItems.itemFieldPouch),
-                "yzy", "y y", "yyy",
-                'y', new ItemStack(Blocks.CARPET,1,0),
-                'z', Items.STRING);
-
         GameRegistry.addShapelessRecipe(
                 new ItemStack(MHItems.itemQuest),
                 Items.PAPER, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
@@ -92,22 +58,6 @@ public class MHRecipes
                 new ItemStack(MHItems.itemQuestList),
                 Items.BOOK, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
 
-
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(MHItems.itemMachalitePickaxe),
-                "xxx", " y ", " y ",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
-                'y', "stickWood"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(MHItems.itemDragonitePickaxe),
-                "xxx", " y ", " y ",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT),
-                'y', "stickWood"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(MHItems.itemGossamitePickaxe),
-                "xxx", " y ", " y ",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT),
-                'y', "stickWood"));
 
         GameRegistry.addRecipe(
                 new ItemStack(MHBlocks.blockEarthCrystal),

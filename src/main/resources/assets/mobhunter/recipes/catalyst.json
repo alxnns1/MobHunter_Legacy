@@ -1,0 +1,17 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "mobhunter:plant",
+            "data": 0
+        },
+        {
+            "item": "mobhunter:bug",
+            "data": 4
+        }
+    ],
+    "result": {
+        "item": "mobhunter:misc",
+        "data": 0
+    }
+}

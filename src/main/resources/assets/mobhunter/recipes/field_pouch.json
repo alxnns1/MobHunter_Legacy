@@ -1,0 +1,21 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "CSC",
+        "C C",
+        "CCC"
+    ],
+    "key": {
+        "C": {
+            "tag": "minecraft:carpets"
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "string"
+        }
+    },
+    "result": {
+        "item": "mobhunter:itemfieldpouch",
+        "data": 0
+    }
+}

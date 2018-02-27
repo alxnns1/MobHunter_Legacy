@@ -1,0 +1,22 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "MMM",
+        " S ",
+        " S "
+    ],
+    "key": {
+        "M": {
+            "item": "mobhunter:ore",
+            "data": 2
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        }
+    },
+    "result": {
+        "item": "mobhunter:itemdragonitepickaxe",
+        "data": 0
+    }
+}

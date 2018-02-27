@@ -1,0 +1,21 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:glass_bottle",
+            "data": 0
+        },
+        {
+            "item": "mobhunter:plant",
+            "data": 2
+        },
+        {
+            "item": "mobhunter:mushroom",
+            "data": 0
+        }
+    ],
+    "result": {
+        "item": "mobhunter:drink",
+        "data": 4
+    }
+}
