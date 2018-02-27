@@ -3,6 +3,7 @@ package alxnns1.mobhunter.handler;
 import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.block.render.RenderBbq;
 import alxnns1.mobhunter.init.MHBlocks;
+import alxnns1.mobhunter.init.MHEntities;
 import alxnns1.mobhunter.init.MHItems;
 import alxnns1.mobhunter.tileentity.TileBbq;
 import alxnns1.mobhunter.util.ClientUtil;
@@ -58,7 +59,7 @@ public class RegHandler
     public static void regEntities(RegistryEvent.Register<EntityEntry> event)
     {
         IForgeRegistry<EntityEntry> registry = event.getRegistry();
-
+        MHEntities.getEntities().forEach(registry::register);
     }
 
     @SubscribeEvent

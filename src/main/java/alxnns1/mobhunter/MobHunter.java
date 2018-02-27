@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
 
 /**
  * Created by Alex on 20/04/2016.
@@ -81,7 +80,6 @@ public class MobHunter
 
         CommonUtil.initNetwork();
 
-        MHEntities.init(event.getSide() == Side.CLIENT);
         MHPotions.init();
 
         MHCapabilities.init();
@@ -110,6 +108,7 @@ public class MobHunter
         MHItems.FISHABLE = null;
         MHBlocks.BLOCKS = null;
         MHBlocks.ITEM_BLOCKS = null;
+        MHEntities.ENTITIES = null;
     }
 
     @Mod.EventHandler
