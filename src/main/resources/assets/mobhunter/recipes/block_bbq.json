@@ -1,0 +1,27 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "W W",
+        "WXW",
+        "YZY"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:iron_ingot"
+        },
+        "X": {
+            "item": "minecraft:flint_and_steel"
+        },
+        "Y": {
+            "type": "forge:ore_dict",
+            "ore": "stone"
+        },
+        "Z": {
+            "type": "forge:ore_dict",
+            "ore": "logWood"
+        }
+    },
+    "result": {
+        "item": "mobhunter:blockbbq"
+    }
+}

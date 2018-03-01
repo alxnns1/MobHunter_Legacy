@@ -1,0 +1,15 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:paper"
+        },
+        {
+            "item": "mobhunter:ore",
+            "data": 0
+        }
+    ],
+    "result": {
+        "item": "mobhunter:itemquest"
+    }
+}

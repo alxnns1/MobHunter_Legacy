@@ -1,0 +1,28 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "W W",
+        "WXW",
+        "YZY"
+    ],
+    "key": {
+        "W": {
+            "item": "mobhunter:ore",
+            "data": 1
+        },
+        "X": {
+            "item": "minecraft:blaze_powder"
+        },
+        "Y": {
+            "type": "forge:ore_dict",
+            "ore": "stone"
+        },
+        "Z": {
+            "type": "forge:ore_dict",
+            "ore": "netherrack"
+        }
+    },
+    "result": {
+        "item": "mobhunter:blockbbqgourmet"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:blockmachalite"
+        }
+    ],
+    "result": {
+        "item": "mobhunter:ore",
+        "data": 1,
+        "count": 9
+    }
+}

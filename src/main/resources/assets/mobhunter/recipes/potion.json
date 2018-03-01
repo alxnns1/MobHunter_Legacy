@@ -2,8 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "minecraft:glass_bottle",
-            "data": 0
+            "item": "minecraft:glass_bottle"
         },
         {
             "item": "mobhunter:plant",

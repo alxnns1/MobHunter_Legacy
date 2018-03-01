@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "WWW",
+        "XYX",
+        "XZX"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:carpet",
+            "data": 14
+        },
+        "X": {
+            "type": "forge:ore_dict",
+            "ore": "stone"
+        },
+        "Y": {
+            "type": "forge:ore_dict",
+            "ore": "chestWood"
+        },
+        "Z": {
+            "type": "forge:ore_dict",
+            "ore": "bookshelf"
+        }
+    },
+    "result": {
+        "item": "mobhunter:blockweaponcraft"
+    }
+}

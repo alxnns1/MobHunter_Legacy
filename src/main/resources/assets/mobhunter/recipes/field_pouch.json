@@ -15,7 +15,6 @@
         }
     },
     "result": {
-        "item": "mobhunter:itemfieldpouch",
-        "data": 0
+        "item": "mobhunter:itemfieldpouch"
     }
 }

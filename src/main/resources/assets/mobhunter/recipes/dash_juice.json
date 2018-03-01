@@ -9,12 +9,11 @@
             "data": 0
         },
         {
-            "item": "mobhunter:mushroom",
-            "data": 6
+            "item": "mobhunter:itemraresteak"
         }
     ],
     "result": {
         "item": "mobhunter:drink",
-        "data": 0
+        "data": 6
     }
 }

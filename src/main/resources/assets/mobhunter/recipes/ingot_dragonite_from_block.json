@@ -1,0 +1,13 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:blockdragonite"
+        }
+    ],
+    "result": {
+        "item": "mobhunter:ore",
+        "data": 2,
+        "count": 9
+    }
+}

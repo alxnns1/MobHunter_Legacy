@@ -18,128 +18,25 @@ public class MHRecipes
 {
     public static void init()
     {
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DASH_JUICE),
-                Items.GLASS_BOTTLE,
-                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
-                MHItems.itemRareSteak);
         //TODO Add Dash Extract
         //GameRegistry.addShapelessRecipe(
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_DASH_JUICE),
         //      Items.GLASS_BOTTLE,
         //      MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.DASH_EXTRACT),
         //      MHItems.itemDoneSteak);
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DEMONDRUG),
-                Items.GLASS_BOTTLE,
-                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
-                MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.MIGHT_SEED));
         //TODO Add Pale Extract
         //GameRegistry.addShapelessRecipe(
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_DEMONDRUG),
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.DEMONDRUG),
         //      MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PALE_EXTRACT);
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
-                Items.GLASS_BOTTLE,
-                MetaRef.getStack(MetaRef.EnumItemType.MISC, Names.Items.CATALYST),
-                MetaRef.getStack(MetaRef.EnumItemType.BERRY, Names.Items.ADAMANT_SEED));
         //TODO Add Pale Extract
         //GameRegistry.addShapelessRecipe(
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.MEGA_ARMOURSKIN),
         //      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
         //      MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PALE_EXTRACT);
 
-        GameRegistry.addShapelessRecipe(
-                new ItemStack(MHItems.itemQuest),
-                Items.PAPER, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
-
-        GameRegistry.addShapelessRecipe(
-                new ItemStack(MHItems.itemQuestList),
-                Items.BOOK, MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
-
-
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockEarthCrystal),
-                "xxx", "xxx", "xxx",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.EARTH_CRYSTAL, 9),
-                MHBlocks.blockEarthCrystal);
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockMachalite),
-                "xxx", "xxx", "xxx",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 9),
-                MHBlocks.blockMachalite);
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockDragonite),
-                "xxx", "xxx", "xxx",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT, 9),
-                MHBlocks.blockDragonite);
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockLightCrystal),
-                "xxx", "xxx", "xxx",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.LIGHT_CRYSTAL));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.LIGHT_CRYSTAL, 9),
-                MHBlocks.blockLightCrystal);
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockIceCrystal),
-                "xxx", "xxx", "xxx",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ICE_CRYSTAL, 9),
-                MHBlocks.blockIceCrystal);
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockGossamite),
-                "xxx", "xxx", "xxx",
-                'x', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT));
-        GameRegistry.addShapelessRecipe(
-                MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT, 9),
-                MHBlocks.blockGossamite);
-
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockBbq),
-                "w w", "wxw", "yzy",
-                'w', Items.IRON_INGOT,
-                'x', Items.FLINT_AND_STEEL,
-                'y', new ItemStack(Blocks.STONE),
-                'z', new ItemStack(Blocks.LOG));
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockBbqGourmet),
-                "w w", "wxw", "yzy",
-                'w', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
-                'x', Items.BLAZE_POWDER,
-                'y', new ItemStack(Blocks.STONE),
-                'z', new ItemStack(Blocks.NETHERRACK));
-        GameRegistry.addRecipe(
-                new ItemStack(MHBlocks.blockBbqGourmet),
-                " p ", "mbm", " n ",
-                'p', Items.BLAZE_POWDER,
-                'm', MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT),
-                'b', MHBlocks.blockBbq,
-                'n', new ItemStack(Blocks.NETHERRACK));
         GameRegistry.addSmelting(MHItems.itemRawMeat,
                 new ItemStack(MHItems.itemRareSteak), 0.2f);
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(MHBlocks.blockWeaponCraft),
-                "www", "xyx", "xzx",
-                'w', new ItemStack(Blocks.CARPET,1,14),
-                'x', "stone",
-                'y', "chestWood",
-                'z', "bookshelf"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(MHBlocks.blockArmourCraft),
-                "www", "xyx", "xzx",
-                'w', new ItemStack(Blocks.CARPET,1,11),
-                'x', "stone",
-                'y', "chestWood",
-                'z', "bookshelf"));
-
         GameRegistry.addSmelting(MHBlocks.blockOreMachalite,
                 MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT), 0.2f);
         GameRegistry.addSmelting(MHBlocks.blockOreDragonite,

@@ -1,0 +1,13 @@
+{
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:blocklightcrystal"
+        }
+    ],
+    "result": {
+        "item": "mobhunter:ore",
+        "data": 3,
+        "count": 9
+    }
+}
