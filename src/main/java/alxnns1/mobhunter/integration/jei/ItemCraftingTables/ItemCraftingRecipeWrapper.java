@@ -26,9 +26,9 @@ public class ItemCraftingRecipeWrapper extends BlankRecipeWrapper
 
     public ItemCraftingRecipeWrapper(MHCraftingRecipe recipe)
     {
-        inputs = MobHunterPlugin.jeiHelper.getStackHelper().expandRecipeItemStackInputs(recipe.getInput());
+        inputs = MobHunterPlugin.jeiHelper.getStackHelper().expandRecipeItemStackInputs(recipe.getInputs());
         inputs.add(0, Collections.singletonList(recipe.getKeyInput()));
-        output = recipe.getRecipeOutput();
+        output = recipe.getOutput();
     }
 
     @Override

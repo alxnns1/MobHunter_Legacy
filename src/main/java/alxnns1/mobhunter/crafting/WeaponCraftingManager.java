@@ -1,34 +1,29 @@
 package alxnns1.mobhunter.crafting;
 
-import com.google.common.collect.Lists;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Mark on 06/07/2016.
  */
-public class WeaponCraftingManager extends AbstractCraftngManager<WeaponCraftingRecipe>
+public class WeaponCraftingManager
 {
-    private static final WeaponCraftingManager instance = new WeaponCraftingManager();
-    private List<WeaponCraftingRecipe> recipes = Lists.newArrayList();
+    public static IForgeRegistry<WeaponCraftingRecipe> REGISTRY;
 
-    public static WeaponCraftingManager getInstance()
+    public static Collection<WeaponCraftingRecipe> getRecipes()
     {
-        return instance;
+        return REGISTRY.getValuesCollection();
     }
 
-    private WeaponCraftingManager() {}
-
-    @Override
-    public List<WeaponCraftingRecipe> getRecipeList()
+    public static Collection<WeaponCraftingRecipe> findMatchingRecipes(InventoryCrafting inv)
     {
-        return recipes;
-    }
-
-    @Override
-    public WeaponCraftingRecipe newRecipe(ItemStack result, ItemStack key, Object... recipe)
-    {
-        return new WeaponCraftingRecipe(result, key, recipe);
+        Collection<WeaponCraftingRecipe> r = new ArrayList<>();
+        for(WeaponCraftingRecipe recipe : getRecipes())
+            if(recipe.matches(inv))
+                r.add(recipe);
+        return r;
     }
 }

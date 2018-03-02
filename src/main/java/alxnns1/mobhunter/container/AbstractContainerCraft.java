@@ -30,8 +30,8 @@ public abstract class AbstractContainerCraft extends MHContainer
     public AbstractContainerCraft(EntityPlayer player, World worldIn)
     {
         super(player, null, worldIn);
-        recipes = new ArrayList<MHCraftingRecipe>(5);
-        recipesValid = new ArrayList<Boolean>(5);
+        recipes = new ArrayList<>(5);
+        recipesValid = new ArrayList<>(5);
         reloadRecipes();
     }
 
@@ -68,7 +68,7 @@ public abstract class AbstractContainerCraft extends MHContainer
     @SuppressWarnings("unchecked")
     public ArrayList<Object> checkPlayerInv(IInventory inv, NonNullList<Object> input)
     {
-        ArrayList<Object> required = new ArrayList<Object>(input.size());
+        ArrayList<Object> required = new ArrayList<>(input.size());
         //Go through all of the ingredients
         for(int r = 0; r < input.size(); r++)
         {
@@ -131,7 +131,7 @@ public abstract class AbstractContainerCraft extends MHContainer
     protected void reloadRecipes()
     {
         recipes = getRecipes();
-        recipesValid = new ArrayList<Boolean>(Arrays.asList(false, false, false, false, false));
+        recipesValid = new ArrayList<>(Arrays.asList(false, false, false, false, false));
         recipeStart = 0;
 
         //Crafting buttons
@@ -219,7 +219,7 @@ public abstract class AbstractContainerCraft extends MHContainer
                             else if(object instanceof List)
                                 inv.addItem(((List<ItemStack>) object).get(0));
                         }
-                        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, recipe.getRecipeOutput(), inv);
+                        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, recipe.getOutput(), inv);
 
                         if(!playerIn.capabilities.isCreativeMode)
                         {
@@ -242,7 +242,7 @@ public abstract class AbstractContainerCraft extends MHContainer
                         }
 
                         //Change key item to recipe output
-                        ItemStack newItem = recipe.getRecipeOutput();
+                        ItemStack newItem = recipe.getOutput();
                         if(stack != null)
                         {
                             //Set new item to have taken the same amount of damage
@@ -287,7 +287,7 @@ public abstract class AbstractContainerCraft extends MHContainer
         if(id >= 0 && id <= 4)
         {
             if(recipesValid == null || recipesValid.size() == 0)
-                recipesValid = new ArrayList<Boolean>(5);
+                recipesValid = new ArrayList<>(5);
             recipesValid.set(id, data == 1);
         }
     }

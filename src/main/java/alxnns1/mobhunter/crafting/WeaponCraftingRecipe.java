@@ -1,14 +1,19 @@
 package alxnns1.mobhunter.crafting;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 
 /**
  * Created by Mark on 09/12/2016.
  */
-public class WeaponCraftingRecipe extends MHCraftingRecipe
+public class WeaponCraftingRecipe extends MHCraftingRecipe<WeaponCraftingRecipe>
 {
-    public WeaponCraftingRecipe(ItemStack result, ItemStack key, Object... recipe)
+    public WeaponCraftingRecipe(Item result, Object... inputs)
     {
-        super(result, key, recipe);
+        super(result, inputs);
+    }
+
+    public WeaponCraftingRecipe(Item result, Item key, Object... inputs)
+    {
+        super(result, key, inputs);
     }
 }

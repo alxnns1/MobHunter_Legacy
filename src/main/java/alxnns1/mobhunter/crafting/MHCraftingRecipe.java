@@ -4,63 +4,97 @@ import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.List;
 
 /**
  * Created by Mark on 07/07/2016.
  */
-public class MHCraftingRecipe extends ShapelessOreRecipe
+public class MHCraftingRecipe<T extends IForgeRegistryEntry<T>> extends IForgeRegistryEntry.Impl<T>
 {
-    private ItemStack inputKey = null;
+    private ItemStack output = ItemStack.EMPTY;
+    private ItemStack inputKey = ItemStack.EMPTY;
+    private NonNullList<Ingredient> inputs = NonNullList.create();
 
-    public MHCraftingRecipe(ItemStack result, ItemStack key, Object ... recipe)
+    public MHCraftingRecipe(Item result, Object... input)
     {
-        super(result, recipe);
-        inputKey = key == null ? ItemStack.EMPTY : key.copy();
+        this(new ItemStack(result), ItemStack.EMPTY, input);
     }
+
+    public MHCraftingRecipe(Item result, Item key, Object... input)
+    {
+        this(new ItemStack(result), new ItemStack(key), input);
+    }
+
+    public MHCraftingRecipe(ItemStack result, ItemStack key, Object... input)
+    {
+        output = result.copy();
+        inputKey = key.copy();
+        for(Object in : input)
+        {
+            Ingredient ingredient = CraftingHelper.getIngredient(in);
+            if(ingredient == null)
+            {
+                StringBuilder sb = new StringBuilder("Invalid MobHunter crafting recipe: Key Input: ")
+                        .append(inputKey).append(", Inputs: ");
+                for(Object obj : input)
+                    sb.append(obj).append(", ");
+                sb.append("Output: ").append(output);
+                throw new RuntimeException(sb.toString());
+            }
+            inputs.add(ingredient);
+        }
+    }
+
+    public ItemStack getOutput(){ return output.copy(); }
 
     public ItemStack getKeyInput()
     {
-        return inputKey;
+        return inputKey.copy();
     }
 
-    @Override
-    public ItemStack getRecipeOutput(){ return output.copy(); }
-
-    @Override
-    public boolean matches(InventoryCrafting inv, World worldIn)
+    public NonNullList<Ingredient> getInputs()
     {
-        ItemStack item = inv.getStackInSlot(0);
-        return (item.isEmpty() && inputKey.isEmpty()) || item.isItemEqualIgnoreDurability(inputKey);
+        return inputs;
+    }
+
+    public boolean matches(InventoryCrafting inv)
+    {
+        return ItemStack.areItemStacksEqual(inv.getStackInSlot(0), inputKey);
     }
 
     @Override
     public String toString()
     {
-        String str = "Output: " + output.getUnlocalizedName() + ", Inputs: ";
-        str += (inputKey == null ? "null" : inputKey.getUnlocalizedName()) + ", ";
-        for(Object o : input)
+        StringBuilder sb = new StringBuilder("Output: ")
+                .append(output.getUnlocalizedName())
+                .append(", Key Input: ")
+                .append(inputKey == null ? "null" : inputKey.getUnlocalizedName())
+                .append(", Inputs: ");
+        for(Object o : inputs)
         {
             if(o instanceof ItemStack)
-                str += ((ItemStack)o).getUnlocalizedName();
+                sb.append(((ItemStack)o).getUnlocalizedName());
             else if(o instanceof Item)
-                str += ((Item)o).getUnlocalizedName();
+                sb.append(((Item)o).getUnlocalizedName());
             else if(o instanceof Block)
-                str += ((Block)o).getUnlocalizedName();
+                sb.append(((Block)o).getUnlocalizedName());
             else if(o instanceof String)
-                str += (String)o;
+                sb.append((String)o);
             else if(o instanceof List)
-                str += "List of " + ((List)o).size();
+                sb.append("List of ").append(((List)o).size());
             else if(o == null)
-                str += "null";
+                sb.append("null");
             else
-                str += o.toString();
-            str += ", ";
+                sb.append(o.toString());
+            sb.append(", ");
         }
-        str = str.substring(0, str.length()-2);
+        String str = sb.toString();
+        str = str.substring(0, str.length() - 2);
         return str;
     }
 }

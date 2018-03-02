@@ -1,34 +1,29 @@
 package alxnns1.mobhunter.crafting;
 
-import com.google.common.collect.Lists;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Mark on 23/10/2016.
  */
-public class ArmourCraftingManager extends AbstractCraftngManager<ArmourCraftingRecipe>
+public class ArmourCraftingManager
 {
-    private static final ArmourCraftingManager instance = new ArmourCraftingManager();
-    private List<ArmourCraftingRecipe> recipes = Lists.newArrayList();
+    public static IForgeRegistry<ArmourCraftingRecipe> REGISTRY;
 
-    public static ArmourCraftingManager getInstance()
+    public static Collection<ArmourCraftingRecipe> getRecipes()
     {
-        return instance;
+        return REGISTRY.getValuesCollection();
     }
 
-    private ArmourCraftingManager() {}
-
-    @Override
-    public List<ArmourCraftingRecipe> getRecipeList()
+    public static Collection<ArmourCraftingRecipe> findMatchingRecipes(InventoryCrafting inv)
     {
-        return recipes;
-    }
-
-    @Override
-    public ArmourCraftingRecipe newRecipe(ItemStack result, ItemStack key, Object... recipe)
-    {
-        return new ArmourCraftingRecipe(result, key, recipe);
+        Collection<ArmourCraftingRecipe> r = new ArrayList<>();
+        for(ArmourCraftingRecipe recipe : getRecipes())
+            if(recipe.matches(inv))
+                r.add(recipe);
+        return r;
     }
 }

@@ -35,7 +35,7 @@ public class GuiArmourCraft extends AbstractGuiCraft
             line1 = I18n.format(TOOLTIP + "button.craft.1.1") + " ";
         else
             line1 = I18n.format(TOOLTIP + "button.craft.1.2") + " ";
-        list.add(line1 + TextFormatting.AQUA + recipe.getRecipeOutput().getDisplayName());
+        list.add(line1 + TextFormatting.AQUA + recipe.getOutput().getDisplayName());
         list.add(I18n.format(TOOLTIP + "button.craft.2"));
         //Get the materials which are not present in player inventory
         ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, recipe.getInput());

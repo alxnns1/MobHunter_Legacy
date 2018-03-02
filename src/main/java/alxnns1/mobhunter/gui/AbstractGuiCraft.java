@@ -66,8 +66,8 @@ public abstract class AbstractGuiCraft extends GuiContainer
             if(recipeActualI < container.recipes.size() && container.recipes.get(recipeActualI) != null)
             {
                 MHCraftingRecipe recipe = container.recipes.get(recipeActualI);
-                button.displayString = recipe.getRecipeOutput().getDisplayName();
-                button.setItem(recipe.getRecipeOutput());
+                button.displayString = recipe.getOutput().getDisplayName();
+                button.setItem(recipe.getOutput());
                 button.enabled = container.recipesValid.get(i);
             }
             else

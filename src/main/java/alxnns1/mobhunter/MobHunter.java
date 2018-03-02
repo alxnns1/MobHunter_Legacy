@@ -94,6 +94,7 @@ public class MobHunter
 
         MHAchievements.init();
         MHQuests.init();
+        MHRecipes.regSmelting();
     }
 
     @Mod.EventHandler

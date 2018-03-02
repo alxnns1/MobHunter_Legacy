@@ -37,8 +37,8 @@ public class MobHunterPlugin extends BlankModPlugin
         registry.handleRecipes(WeaponCraftingRecipe.class, ItemCraftingRecipeWrapper.FACTORY_WEAPON, MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
         registry.handleRecipes(ArmourCraftingRecipe.class, ItemCraftingRecipeWrapper.FACTORY_ARMOUR, MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
 
-        registry.addRecipes(WeaponCraftingManager.getInstance().getRecipeList(), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
-        registry.addRecipes(ArmourCraftingManager.getInstance().getRecipeList(), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
+        registry.addRecipes(WeaponCraftingManager.getRecipes(), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
+        registry.addRecipes(ArmourCraftingManager.getRecipes(), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
 
         registry.addRecipeCategoryCraftingItem(new ItemStack(MHBlocks.blockWeaponCraft), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
         registry.addRecipeCategoryCraftingItem(new ItemStack(MHBlocks.blockArmourCraft), MobHunter.MOD_ID + ":" + ARMOUR_CRAFTING_ID);

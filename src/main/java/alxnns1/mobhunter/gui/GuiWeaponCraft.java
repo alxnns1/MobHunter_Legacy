@@ -33,7 +33,7 @@ public class GuiWeaponCraft extends AbstractGuiCraft
     {
         List<String> list = new ArrayList<String>();
         String line1;
-        ItemStack resultStack = recipe.getRecipeOutput();
+        ItemStack resultStack = recipe.getOutput();
         if(resultStack == null)
         {
             list.add(TextFormatting.RED + "Error - recipe output is null!");
