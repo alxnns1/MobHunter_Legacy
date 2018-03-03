@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.capability.hunterRank;
 
-import alxnns1.mobhunter.util.LogHelper;
+import alxnns1.mobhunter.MobHunter;
 
 /**
  * Created by Mark on 20/01/2017.
@@ -34,7 +34,7 @@ public class HunterRankProgression
 
     public static void init()
     {
-        LogHelper.info("Starting HR progression creation");
+        MobHunter.LOGGER.info("Starting HR progression creation");
         long timeStart = System.nanoTime();
 
         progressPoints[0] = 5;
@@ -51,7 +51,7 @@ public class HunterRankProgression
         }
 
         long time = System.nanoTime() - timeStart;
-        LogHelper.info("HR progression created in " + time + "ns");
+        MobHunter.LOGGER.info("HR progression created in " + time + "ns");
     }
 
     public static int getProgressForRank(int hunterRank)

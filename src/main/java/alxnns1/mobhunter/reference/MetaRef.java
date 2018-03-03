@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.reference;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.util.LogHelper;
 import com.google.common.collect.Lists;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,32 +44,32 @@ public class MetaRef
         ICON
     }
 
-    private static List<String> DRINK = new ArrayList<String>();
-    private static List<String> TOOL = new ArrayList<String>();
-    private static List<String> MISC = new ArrayList<String>();
-    private static List<String> PLANT = new ArrayList<String>();
-    private static List<String> MUSHROOM = new ArrayList<String>();
-    private static List<String> BERRY = new ArrayList<String>();
-    private static List<String> BUG = new ArrayList<String>();
-    private static List<String> ORE = new ArrayList<String>();
-    private static List<String> MISC_DROP = new ArrayList<String>();
-    private static List<String> HERBIVORE_DROP = new ArrayList<String>();
-    private static List<String> LYNIAN_DROP = new ArrayList<String>();
-    private static List<String> NEOPTERAN_DROP = new ArrayList<String>();
-    private static List<String> PISCINE_DROP = new ArrayList<String>();
-    private static List<String> BIRD_DROP = new ArrayList<String>();
-    private static List<String> CARAPACEON_DROP = new ArrayList<String>();
-    private static List<String> BEAST_DROP = new ArrayList<String>();
-    private static List<String> AMPHIBIAN_DROP = new ArrayList<String>();
-    private static List<String> SNAKE_DROP = new ArrayList<String>();
-    private static List<String> BRUTE_DROP = new ArrayList<String>();
-    private static List<String> WYVERN_DROP = new ArrayList<String>();
-    private static List<String> PSEUDO_DROP = new ArrayList<String>();
-    private static List<String> FANGED_DROP = new ArrayList<String>();
-    private static List<String> ZENITH_DROP = new ArrayList<String>();
-    private static List<String> LEVIATHON_DROP = new ArrayList<String>();
-    private static List<String> ELDER_DROP = new ArrayList<String>();
-    private static List<String> ICON = new ArrayList<String>();
+    private static List<String> DRINK = new ArrayList<>();
+    private static List<String> TOOL = new ArrayList<>();
+    private static List<String> MISC = new ArrayList<>();
+    private static List<String> PLANT = new ArrayList<>();
+    private static List<String> MUSHROOM = new ArrayList<>();
+    private static List<String> BERRY = new ArrayList<>();
+    private static List<String> BUG = new ArrayList<>();
+    private static List<String> ORE = new ArrayList<>();
+    private static List<String> MISC_DROP = new ArrayList<>();
+    private static List<String> HERBIVORE_DROP = new ArrayList<>();
+    private static List<String> LYNIAN_DROP = new ArrayList<>();
+    private static List<String> NEOPTERAN_DROP = new ArrayList<>();
+    private static List<String> PISCINE_DROP = new ArrayList<>();
+    private static List<String> BIRD_DROP = new ArrayList<>();
+    private static List<String> CARAPACEON_DROP = new ArrayList<>();
+    private static List<String> BEAST_DROP = new ArrayList<>();
+    private static List<String> AMPHIBIAN_DROP = new ArrayList<>();
+    private static List<String> SNAKE_DROP = new ArrayList<>();
+    private static List<String> BRUTE_DROP = new ArrayList<>();
+    private static List<String> WYVERN_DROP = new ArrayList<>();
+    private static List<String> PSEUDO_DROP = new ArrayList<>();
+    private static List<String> FANGED_DROP = new ArrayList<>();
+    private static List<String> ZENITH_DROP = new ArrayList<>();
+    private static List<String> LEVIATHON_DROP = new ArrayList<>();
+    private static List<String> ELDER_DROP = new ArrayList<>();
+    private static List<String> ICON = new ArrayList<>();
 
     public static List<String> getList(EnumItemType itemType)
     {
@@ -102,7 +102,7 @@ public class MetaRef
             case ELDER_DROP:        return ELDER_DROP;
             case ICON:              return ICON;
             default:
-                LogHelper.error("Who added an item that I didn't know about? Come on, own up!");
+                MobHunter.LOGGER.error("Who added an item that I didn't know about? Come on, own up!");
                 return Lists.newArrayList();
         }
     }
@@ -138,7 +138,7 @@ public class MetaRef
             case ELDER_DROP:        return MHItems.itemElderDragonDrop;
             case ICON:              return MHItems.itemIcon;
             default:
-                LogHelper.error("Who added an item that I didn't know about? Come on, own up!");
+                MobHunter.LOGGER.error("Who added an item that I didn't know about? Come on, own up!");
                 return null;
         }
     }

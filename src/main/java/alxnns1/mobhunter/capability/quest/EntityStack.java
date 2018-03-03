@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.capability.quest;
 
-import alxnns1.mobhunter.reference.Reference;
+import alxnns1.mobhunter.MobHunter;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

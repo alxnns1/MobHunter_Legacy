@@ -3,9 +3,10 @@ package alxnns1.mobhunter.item;
 import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.init.MHItems;
 import alxnns1.mobhunter.util.ClientUtil;
-import alxnns1.mobhunter.util.LogHelper;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -21,6 +22,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public class ItemMHSword extends ItemSword
         setUnlocalizedName(itemName);
         setRegistryName(itemName);
         maxSharpness = EnumSharpness.getById(sharpnessDamageLevels.length - 1);
-        if(maxSharpness == null) LogHelper.warn("Sword " + getUnlocalizedName() + " has a null sharpness! Something must be wrong!");
+        if(maxSharpness == null) MobHunter.LOGGER.warn("Sword " + getUnlocalizedName() + " has a null sharpness! Something must be wrong!");
         damageLevels = sharpnessDamageLevels;
         String levels = "";
         for(int i = 0; i < damageLevels.length; i++)
@@ -77,7 +79,7 @@ public class ItemMHSword extends ItemSword
             return 0f;
         ItemMHSword sword = (ItemMHSword) stack.getItem();
         EnumSharpness currentSharpness = getSharpness(stack);
-        return currentSharpness == null ? sword.getDamageVsEntity() : sword.getDamageVsEntity() * currentSharpness.getDamageMult();
+        return currentSharpness == null ? sword.getAttackDamage() : sword.getAttackDamage() * currentSharpness.getDamageMult();
     }
 
     public void repairSharpness(ItemStack stack, int amount)
@@ -117,14 +119,14 @@ public class ItemMHSword extends ItemSword
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         EnumSharpness currentSharpness = getSharpness(stack);
         if(currentSharpness != null)
         {
             tooltip.add(I18n.format("item.sharpness") + " " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
             tooltip.add(I18n.format("item.maxSharpness") + " " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
-            if(playerIn.isCreative())
+            if(Minecraft.getMinecraft().player.isCreative())
                 tooltip.add(damageLevelsString);
         }
 
@@ -161,10 +163,10 @@ public class ItemMHSword extends ItemSword
             if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetfish, 1, 0)))
             {
                 playerIn.setActiveHand(hand);
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+                return new ActionResult<>(EnumActionResult.SUCCESS, stack);
             }
         }
-        return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+        return new ActionResult<>(EnumActionResult.FAIL, stack);
     }
 
     /**

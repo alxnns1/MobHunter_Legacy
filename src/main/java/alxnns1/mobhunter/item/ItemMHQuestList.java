@@ -22,6 +22,6 @@ public class ItemMHQuestList extends ItemMHBasic
     {
         if(worldIn.isRemote)
             CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST_LIST);
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+        return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 }

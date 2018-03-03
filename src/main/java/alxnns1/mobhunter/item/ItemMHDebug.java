@@ -35,6 +35,6 @@ public class ItemMHDebug extends ItemMHBasic
             entity.setItemToRender(new ItemStack(Items.ENDER_EYE));
             worldIn.spawnEntity(entity);
         }
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
+        return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
     }
 }

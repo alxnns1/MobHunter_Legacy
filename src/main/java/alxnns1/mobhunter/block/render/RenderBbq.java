@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.block.render;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.block.models.ModelBbqMeat;
-import alxnns1.mobhunter.reference.Reference;
 import alxnns1.mobhunter.tileentity.TileBbq;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -22,7 +22,7 @@ public class RenderBbq extends TileEntitySpecialRenderer<TileBbq>
     private static final ResourceLocation tBurnt = new ResourceLocation(MobHunter.MOD_ID + ":textures/models/blocks/meatBurnt.png");
 
     @Override
-    public void renderTileEntityAt(TileBbq te, double x, double y, double z, float partialTicks, int destroyStage)
+    public void render(TileBbq te, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
     {
         //Render meat only if cooking
         if(te.isCooking())

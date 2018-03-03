@@ -107,7 +107,7 @@ public class BlockNatural extends BlockBush
     public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune)
     {
         if(!(world instanceof WorldServer))
-            return new ArrayList<ItemStack>();
+            return new ArrayList<>();
         WorldServer server = (WorldServer) world;
         Biome biome = server.getBiomeForCoordsBody(pos);
         IBlockState stateBelow = server.getBlockState(pos.down());
@@ -123,7 +123,7 @@ public class BlockNatural extends BlockBush
         //Get special drops (0-1 + fortune level)
         if(stateBelow.getMaterial() == Material.SAND)       dropsList = getDropsSand();
         else if(biome.getBiomeName().equals("Hell"))        dropsList = getDropsNether();
-        else if(biome.getTemperature() < 0.2f)              dropsList = getDropsCold();
+        else if(biome.getTemperature(pos) < 0.2f)           dropsList = getDropsCold();
         else if(stateBelow.getMaterial() == Material.ROCK)  dropsList = getDropsRock();
         else                                                dropsList = getDropsOther();
         if(!dropsList.isEmpty())

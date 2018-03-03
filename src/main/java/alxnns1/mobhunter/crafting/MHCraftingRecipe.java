@@ -62,6 +62,11 @@ public class MHCraftingRecipe<T extends IForgeRegistryEntry<T>> extends IForgeRe
         return inputs;
     }
 
+    public int getSize()
+    {
+        return (inputKey.isEmpty() ? 0 : 1) + inputs.size();
+    }
+
     public boolean matches(InventoryCrafting inv)
     {
         return ItemStack.areItemStacksEqual(inv.getStackInSlot(0), inputKey);

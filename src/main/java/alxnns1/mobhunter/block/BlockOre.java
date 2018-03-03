@@ -81,6 +81,6 @@ public class BlockOre extends BlockResource
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
         if(state.getBlock().getUnlocalizedName().contains("Light") || state.getBlock().getUnlocalizedName().contains("Ice") || state.getBlock().getUnlocalizedName().contains("Gossamite"))
-        LogHelper.info(state.getBlock().getUnlocalizedName() + " > " + pos.toString());
+        MobHunter.LOGGER.info(state.getBlock().getUnlocalizedName() + " > " + pos.toString());
     }*/
 }

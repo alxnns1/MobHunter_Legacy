@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.capability.monsters;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.message.MessageCapability;
-import alxnns1.mobhunter.reference.Reference;
 import alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,8 +11,6 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -21,7 +19,7 @@ import java.util.List;
 public class CapabilityMonsters implements IMonsters
 {
     private static final ResourceLocation monstersRL = new ResourceLocation(MobHunter.MOD_ID, "_Monsters");
-    private List<MonsterSize> monsterSizes = new ArrayList<MonsterSize>();
+    private List<MonsterSize> monsterSizes = new ArrayList<>();
 
     public CapabilityMonsters() {}
 
@@ -29,14 +27,7 @@ public class CapabilityMonsters implements IMonsters
     public List<MonsterSize> getAllMonsterSizes()
     {
         //Sort the list before getting it
-        Collections.sort(monsterSizes, new Comparator<MonsterSize>()
-        {
-            @Override
-            public int compare(MonsterSize o1, MonsterSize o2)
-            {
-                return o1.entityID.compareToIgnoreCase(o2.entityID);
-            }
-        });
+        monsterSizes.sort((o1, o2) -> o1.entityID.compareToIgnoreCase(o2.entityID));
         return monsterSizes;
     }
 

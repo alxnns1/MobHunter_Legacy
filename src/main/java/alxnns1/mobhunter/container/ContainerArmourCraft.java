@@ -21,6 +21,6 @@ public class ContainerArmourCraft extends AbstractContainerCraft
     @Override
     protected List<MHCraftingRecipe> getRecipes()
     {
-        return ArmourCraftingManager.getInstance().findMatchingRecipes((InventoryCrafting) inventory, inventoryPlayer, world);
+        return ArmourCraftingManager.findMatchingRecipes((InventoryCrafting) inventory);
     }
 }

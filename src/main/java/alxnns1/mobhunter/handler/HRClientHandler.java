@@ -1,19 +1,19 @@
 package alxnns1.mobhunter.handler;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import alxnns1.mobhunter.capability.hunterRank.IHunterRank;
 import alxnns1.mobhunter.init.MHCapabilities;
-import alxnns1.mobhunter.reference.Reference;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -24,7 +24,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -38,17 +37,12 @@ public class HRClientHandler
     private static final ResourceLocation hunterRankBar = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "hr_bar.png");
     private static Minecraft mc = Minecraft.getMinecraft();
 
-    private static Map<UUID, IHunterRank> playerRankCache = new HashMap<UUID, IHunterRank>();
+    private static Map<UUID, IHunterRank> playerRankCache = new HashMap<>();
     //This is copied from GuiPlayerTabOverlay so we can get the same ordered player list
-    private static final Ordering<NetworkPlayerInfo> ENTRY_ORDERING = Ordering.from(new Comparator<NetworkPlayerInfo>()
-    {
-        @Override
-        public int compare(NetworkPlayerInfo o1, NetworkPlayerInfo o2)
-        {
-            ScorePlayerTeam scoreplayerteam = o1.getPlayerTeam();
-            ScorePlayerTeam scoreplayerteam1 = o2.getPlayerTeam();
-            return ComparisonChain.start().compareTrueFirst(o1.getGameType() != GameType.SPECTATOR, o2.getGameType() != GameType.SPECTATOR).compare(scoreplayerteam != null ? scoreplayerteam.getName() : "", scoreplayerteam1 != null ? scoreplayerteam1.getName() : "").compare(o1.getGameProfile().getName(), o2.getGameProfile().getName()).result();
-        }
+    private static final Ordering<NetworkPlayerInfo> ENTRY_ORDERING = Ordering.from((o1, o2) -> {
+        ScorePlayerTeam scoreplayerteam = o1.getPlayerTeam();
+        ScorePlayerTeam scoreplayerteam1 = o2.getPlayerTeam();
+        return ComparisonChain.start().compareTrueFirst(o1.getGameType() != GameType.SPECTATOR, o2.getGameType() != GameType.SPECTATOR).compare(scoreplayerteam != null ? scoreplayerteam.getName() : "", scoreplayerteam1 != null ? scoreplayerteam1.getName() : "").compare(o1.getGameProfile().getName(), o2.getGameProfile().getName()).result();
     });
 
     /**
@@ -74,14 +68,13 @@ public class HRClientHandler
     public static void drawTexturedModalRect(float xCoord, float yCoord, int minU, int minV, int maxU, int maxV)
     {
         float f = 0.00390625F;
-        float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer vertexbuffer = tessellator.getBuffer();
-        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0d).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0d).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + maxV) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0d).tex((double)((float)(minU + maxU) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
-        vertexbuffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0d).tex((double)((float)(minU + 0) * 0.00390625F), (double)((float)(minV + 0) * 0.00390625F)).endVertex();
+        BufferBuilder buffer = tessellator.getBuffer();
+        buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        buffer.pos((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), 0d).tex((double)((float)minU * f), (double)((float)(minV + maxV) * f)).endVertex();
+        buffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), 0d).tex((double)((float)(minU + maxU) * f), (double)((float)(minV + maxV) * f)).endVertex();
+        buffer.pos((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), 0d).tex((double)((float)(minU + maxU) * f), (double)((float)minV * f)).endVertex();
+        buffer.pos((double)(xCoord + 0.0F), (double)(yCoord + 0.0F), 0d).tex((double)((float)minU * f), (double)((float)minV * f)).endVertex();
         tessellator.draw();
     }
 

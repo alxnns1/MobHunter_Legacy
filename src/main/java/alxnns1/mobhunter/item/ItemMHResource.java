@@ -3,14 +3,16 @@ package alxnns1.mobhunter.item;
 import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.util.ClientUtil;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -55,13 +57,16 @@ public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems)
     {
-        if(hasSubtypes)
-            for(int i = 0; i < getSubNames().length; i++)
-                subItems.add(new ItemStack(itemIn, 1, i));
-        else
-            subItems.add(new ItemStack(itemIn));
+        if(isInCreativeTab(tab))
+        {
+            if(hasSubtypes)
+                for(int i = 0; i < getSubNames().length; i++)
+                    subItems.add(new ItemStack(this, 1, i));
+            else
+                subItems.add(new ItemStack(this));
+        }
     }
 
     /**
@@ -81,7 +86,7 @@ public class ItemMHResource extends Item implements ISubTypes<ItemMHResource>
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         if(addInfo)
             ClientUtil.addTooltip(stack, tooltip);

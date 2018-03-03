@@ -1,11 +1,10 @@
 package alxnns1.mobhunter.capability.quest;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.init.MHCapabilities;
 import alxnns1.mobhunter.init.MHQuests;
 import alxnns1.mobhunter.message.MessageCapability;
 import alxnns1.mobhunter.util.CommonUtil;
-import alxnns1.mobhunter.util.LogHelper;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -286,7 +285,7 @@ public class CapabilityQuest implements IQuest
                     currentQuest.deserializeNBT(tag.getCompoundTag("questData"));
                 }
                 else
-                    LogHelper.error("Quest ID '" + questId + "' couldn't be found!");
+                    MobHunter.LOGGER.error("Quest ID '" + questId + "' couldn't be found!");
             }
         }
         if(nbt.hasKey("completedQuests"))

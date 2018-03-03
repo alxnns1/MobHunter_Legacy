@@ -22,7 +22,7 @@ public class PotionEffectParalyse extends PotionEffectMH
      */
     public void onApplyEffect(EntityLivingBase entityIn)
     {
-        //LogHelper.info("Applying Paralyse!");
+        //MobHunter.LOGGER.info("Applying Paralyse!");
         this.pitch = entityIn.rotationPitch;
         this.yaw = entityIn.rotationYawHead;
         this.x = entityIn.posX;
@@ -36,7 +36,7 @@ public class PotionEffectParalyse extends PotionEffectMH
     public void performEffect(EntityLivingBase entityIn)
     {
         //TODO: Try to allow falling - Use Slowness and Jumping without showing teh potion effect?
-        //LogHelper.info("Paralysing!");
+        //MobHunter.LOGGER.info("Paralysing!");
         if(entityIn instanceof EntityPlayerMP)
             ((EntityPlayerMP)entityIn).connection.setPlayerLocation(this.x, this.y, this.z, this.yaw, this.pitch);
         else

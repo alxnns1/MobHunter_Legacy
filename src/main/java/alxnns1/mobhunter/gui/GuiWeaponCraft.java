@@ -1,10 +1,10 @@
 package alxnns1.mobhunter.gui;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.container.ContainerWeaponCraft;
 import alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import alxnns1.mobhunter.item.EnumSharpness;
 import alxnns1.mobhunter.item.ItemMHSword;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -28,10 +28,12 @@ public class GuiWeaponCraft extends AbstractGuiCraft
         super(new ContainerWeaponCraft(player, world), blockDisplayName);
     }
 
+    //TODO: I'm working on this! ~Mark
+
     @Override
     protected List<String> getButtonTooltip(MHCraftingRecipe recipe)
     {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         String line1;
         ItemStack resultStack = recipe.getOutput();
         if(resultStack == null)

@@ -1,8 +1,8 @@
 package alxnns1.mobhunter.gui;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.container.AbstractContainerCraft;
 import alxnns1.mobhunter.crafting.MHCraftingRecipe;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -50,11 +50,13 @@ public abstract class AbstractGuiCraft extends GuiContainer
         buttonList.add(new ArrowButton(6, 44, 72, false));
     }
 
+    //TODO: Can I not generify the logic into here??
     protected abstract List<String> getButtonTooltip(MHCraftingRecipe recipe);
 
     /**
      * Called from the main game loop to update the screen.
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void updateScreen()
     {
@@ -159,9 +161,9 @@ public abstract class AbstractGuiCraft extends GuiContainer
         }
 
         @Override
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
         {
-            super.drawButton(mc, mouseX, mouseY);
+            super.drawButton(mc, mouseX, mouseY, partialTicks);
             //Draw item at left of button
             if(item != null)
                 itemRender.renderItemAndEffectIntoGUI(item, x + 1, y + 1);
@@ -212,7 +214,7 @@ public abstract class AbstractGuiCraft extends GuiContainer
         }
 
         @Override
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
         {
             if(!visible) return;
             FontRenderer fontrenderer = mc.fontRenderer;

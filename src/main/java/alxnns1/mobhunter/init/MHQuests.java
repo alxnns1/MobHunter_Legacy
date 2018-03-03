@@ -1,9 +1,9 @@
 package alxnns1.mobhunter.init;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import alxnns1.mobhunter.capability.quest.EntityStack;
 import alxnns1.mobhunter.capability.quest.MHQuest;
-import alxnns1.mobhunter.util.LogHelper;
 import alxnns1.mobhunter.capability.quest.EnumQuestType;
 import alxnns1.mobhunter.reference.MetaRef;
 import net.minecraft.item.ItemStack;
@@ -16,15 +16,15 @@ import java.util.List;
  */
 public class MHQuests
 {
-    private static List<MHQuest> ALL_QUESTS = new ArrayList<MHQuest>();
-    private static List<List<MHQuest>> QUESTS_BY_RANK = new ArrayList<List<MHQuest>>();
-    private static List<String> QUEST_IDS = new ArrayList<String>();
+    private static List<MHQuest> ALL_QUESTS = new ArrayList<>();
+    private static List<List<MHQuest>> QUESTS_BY_RANK = new ArrayList<>();
+    private static List<String> QUEST_IDS = new ArrayList<>();
 
     static
     {
         //Setup QUESTS_BY_RANK list
         for(int i = 0; i < HunterRankProgression.HR_MAX; i++)
-            QUESTS_BY_RANK.add(new ArrayList<MHQuest>());
+            QUESTS_BY_RANK.add(new ArrayList<>());
     }
 
     public static MHQuest
@@ -35,9 +35,8 @@ public class MHQuests
      */
     public static List<String> getQuestIds()
     {
-        List<String> idsCopy = new ArrayList<String>(QUEST_IDS.size());
-        for(String s : QUEST_IDS)
-            idsCopy.add(s);
+        List<String> idsCopy = new ArrayList<>(QUEST_IDS.size());
+        idsCopy.addAll(QUEST_IDS);
         return idsCopy;
     }
 
@@ -59,8 +58,7 @@ public class MHQuests
     {
         List<MHQuest> quests = QUESTS_BY_RANK.get(hunterRank);
         List<MHQuest> questsCopy = new ArrayList<MHQuest>(quests.size());
-        for(MHQuest q : quests)
-            questsCopy.add(q);
+        questsCopy.addAll(quests);
         return questsCopy;
     }
 
@@ -77,8 +75,8 @@ public class MHQuests
         for(MHQuest q : ALL_QUESTS)
             if(q.isEqual(quest))
                 throw new RuntimeException("A Quest with the name " + quest.getUnlocName() + " already exists!");
-        if(quest.getObjectives() == null) LogHelper.warn("The quest '" + quest.getQuestId() + "' has no objectives!");
-        if(quest.getRewardItems() == null) LogHelper.warn("The quest '" + quest.getQuestId() + "' has no rewards!");
+        if(quest.getObjectives() == null) MobHunter.LOGGER.warn("The quest '" + quest.getQuestId() + "' has no objectives!");
+        if(quest.getRewardItems() == null) MobHunter.LOGGER.warn("The quest '" + quest.getQuestId() + "' has no rewards!");
         ALL_QUESTS.add(quest);
         QUESTS_BY_RANK.get(quest.getRequiredHR()).add(quest);
         QUEST_IDS.add(quest.getQuestId());

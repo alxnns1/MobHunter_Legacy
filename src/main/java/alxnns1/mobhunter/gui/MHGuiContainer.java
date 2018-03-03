@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.gui;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.container.MHContainer;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.IInventory;
@@ -46,7 +46,7 @@ public class MHGuiContainer extends GuiContainer
 
         mouseX -= guiLeft;
         mouseY -= guiTop;
-        List<String> tooltip = new ArrayList<String>();
+        List<String> tooltip = new ArrayList<>();
         drawTooltips(tooltip, mouseX, mouseY);
         if(!tooltip.isEmpty())
             drawHoveringText(tooltip, mouseX, mouseY);

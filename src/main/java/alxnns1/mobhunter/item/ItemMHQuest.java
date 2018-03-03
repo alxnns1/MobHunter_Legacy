@@ -5,6 +5,8 @@ import alxnns1.mobhunter.handler.EnumGuiID;
 import alxnns1.mobhunter.init.MHCapabilities;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.util.CommonUtil;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -15,6 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemMHQuest extends ItemMHBasic
@@ -34,15 +37,15 @@ public class ItemMHQuest extends ItemMHBasic
             else
                 playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
         }
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+        return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         //Show quest name on tooltip
-        MHQuestObject quest = playerIn.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest();
+        MHQuestObject quest = Minecraft.getMinecraft().player.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest();
         String questName = quest == null ? "No quest accepted" : quest.getQuest().getLocalName();
         tooltip.add("Current quest:");
         tooltip.add(questName);

@@ -97,7 +97,7 @@ public class GuiQuest extends MHGuiScreen
             default:
                 //Process button click on server
                 int buttonId = !isItemSubmitQuest() && button.id > 1 ? button.id + 1 : button.id;
-                //LogHelper.info("Button ID: " + button.id + "   Changed to: " + buttonId);
+                //MobHunter.LOGGER.info("Button ID: " + button.id + "   Changed to: " + buttonId);
                 CommonUtil.NETWORK.sendToServer(new MessageGuiQuest(buttonId, mc.player.getUniqueID()));
         }
     }

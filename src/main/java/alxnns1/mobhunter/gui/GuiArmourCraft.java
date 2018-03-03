@@ -1,11 +1,13 @@
 package alxnns1.mobhunter.gui;
 
+import alxnns1.mobhunter.crafting.ArmourCraftingRecipe;
 import alxnns1.mobhunter.item.ItemMHArmour;
 import alxnns1.mobhunter.container.ContainerArmourCraft;
 import alxnns1.mobhunter.crafting.MHCraftingRecipe;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -26,22 +28,30 @@ public class GuiArmourCraft extends AbstractGuiCraft
         super(new ContainerArmourCraft(player, world), blockDisplayName);
     }
 
+    //TODO: I'm working on this! ~Mark
+
     @Override
     protected List<String> getButtonTooltip(MHCraftingRecipe recipe)
     {
-        List<String> list = new ArrayList<String>();
+        if(!(recipe instanceof ArmourCraftingRecipe)) return;
+        ArmourCraftingRecipe armourRecipe = (ArmourCraftingRecipe) recipe;
+        List<String> list = new ArrayList<>();
         String line1;
-        if(recipe.getKeyInput() != null && recipe.getKeyInput().getItem() instanceof ItemMHArmour)
+        if(armourRecipe.getKeyInput() != null && armourRecipe.getKeyInput().getItem() instanceof ItemMHArmour)
             line1 = I18n.format(TOOLTIP + "button.craft.1.1") + " ";
         else
             line1 = I18n.format(TOOLTIP + "button.craft.1.2") + " ";
-        list.add(line1 + TextFormatting.AQUA + recipe.getOutput().getDisplayName());
+        list.add(line1 + TextFormatting.AQUA + armourRecipe.getOutput().getDisplayName());
         list.add(I18n.format(TOOLTIP + "button.craft.2"));
-        //Get the materials which are not present in player inventory
-        ArrayList<Object> remainingItems = container.checkPlayerInv(container.inventoryPlayer, recipe.getInput());
+
+        NonNullList<Ingredient> inputs = armourRecipe.getInputs();
+
+        //Get the materials which are present in player inventory
+        ArrayList<ItemStack> foundStacks = container.getStacksFromInv(container.inventoryPlayer, armourRecipe.getInputs());
         //Add the materials to the tooltip, coloured yellow if player has enough and red if not
-        for(Object o : recipe.getInput())
+        for(Ingredient ing : inputs)
         {
+
             TextFormatting colour = TextFormatting.YELLOW;
             if(o instanceof ItemStack)
             {

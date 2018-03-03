@@ -5,6 +5,7 @@ import alxnns1.mobhunter.inventory.InventoryPouch;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.util.ClientUtil;
 import alxnns1.mobhunter.util.CommonUtil;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -14,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -40,8 +42,7 @@ public class ItemMHPouch extends ItemMHBasic
     {
         if(!worldIn.isRemote && !playerIn.isSneaking() && hand == EnumHand.MAIN_HAND)
             CommonUtil.openGui(playerIn, worldIn, EnumGuiID.POUCH);
-            //playerIn.displayGUIChest(new PouchInventory(itemStackIn, "Field Pouch", true, 27));
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+        return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
     }
 
     /**
@@ -49,7 +50,7 @@ public class ItemMHPouch extends ItemMHBasic
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         ClientUtil.addTooltip(stack, tooltip);
     }

@@ -1,8 +1,8 @@
 package alxnns1.mobhunter.message;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.capability.quest.EnumQuestDataChange;
 import alxnns1.mobhunter.capability.quest.MHQuest;
-import alxnns1.mobhunter.util.LogHelper;
 import alxnns1.mobhunter.capability.quest.IQuest;
 import alxnns1.mobhunter.init.MHCapabilities;
 import alxnns1.mobhunter.init.MHQuests;
@@ -72,7 +72,7 @@ public class MessageSetQuest implements IMessage
                     {
                         //Try to add the quest
                         MHQuest quest = MHQuests.getQuest(message.questName);
-                        if(quest == null) LogHelper.error("Couldn't find quest '" + message.questName + "'!");
+                        if(quest == null) MobHunter.LOGGER.error("Couldn't find quest '" + message.questName + "'!");
                         questCapability.addQuest(quest, world.getTotalWorldTime());
                     }
                     questCapability.dataChanged(player, EnumQuestDataChange.CURRENT);

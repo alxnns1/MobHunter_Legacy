@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.potion;
 
-import alxnns1.mobhunter.reference.Reference;
+import alxnns1.mobhunter.MobHunter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;

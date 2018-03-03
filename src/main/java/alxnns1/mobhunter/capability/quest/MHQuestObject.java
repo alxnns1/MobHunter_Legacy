@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.capability.quest;
 
-import alxnns1.mobhunter.util.LogHelper;
+import alxnns1.mobhunter.MobHunter;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,7 +28,7 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
         this.quest = quest;
         //Init progress map
         int objSize = quest.getObjectives().length;
-        progress = new HashMap<Integer, Integer>(objSize);
+        progress = new HashMap<>(objSize);
         for(int i = 0; i < objSize; i++)
             progress.put(i, 0);
     }
@@ -79,27 +79,27 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
     public String getQuestGuiObjProgress()
     {
         Object[] objectives = quest.getObjectives();
-        String text = "";
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < objectives.length; i++)
         {
             if(i > 0)
-                text += "\n";
-            text += progress.get(i) + "/";
+                sb.append("\n");
+            sb.append(progress.get(i)).append("/");
             Object object = objectives[i];
             if(object instanceof ItemStack)
             {
                 ItemStack stack = (ItemStack) object;
-                text += stack.getCount() + " " + I18n.format(stack.getUnlocalizedName() + ".name");
+                sb.append(stack.getCount()).append(" ").append(I18n.format(stack.getUnlocalizedName() + ".name"));
             }
             else if(object instanceof EntityStack)
             {
                 EntityStack stack = (EntityStack) object;
-                text += stack.getAmount() + " " + stack.getEntityLocName();
+                sb.append(stack.getAmount()).append(" ").append(stack.getEntityLocName());
             }
         }
 
-        return text;
+        return sb.toString();
     }
 
     /**
@@ -151,7 +151,7 @@ public class MHQuestObject implements INBTSerializable<NBTTagCompound>
         Class storageClass = quest.getQuestType().storageType;
         if(!storageClass.isInstance(objectToProgress))
         {
-            LogHelper.error("Tried to add progress to quest with storage class '" + quest.getQuestType().storageType.toString() +
+            MobHunter.LOGGER.error("Tried to add progress to quest with storage class '" + quest.getQuestType().storageType.toString() +
                     "'!\nObject trying to be progressed:\n" + objectToProgress.toString());
             return 0;
         }

@@ -5,6 +5,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Mark on 23/10/2016.
@@ -18,9 +19,9 @@ public class ArmourCraftingManager
         return REGISTRY.getValuesCollection();
     }
 
-    public static Collection<ArmourCraftingRecipe> findMatchingRecipes(InventoryCrafting inv)
+    public static List<MHCraftingRecipe> findMatchingRecipes(InventoryCrafting inv)
     {
-        Collection<ArmourCraftingRecipe> r = new ArrayList<>();
+        List<MHCraftingRecipe> r = new ArrayList<>();
         for(ArmourCraftingRecipe recipe : getRecipes())
             if(recipe.matches(inv))
                 r.add(recipe);

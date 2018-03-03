@@ -155,7 +155,7 @@ public class EventHandler
             if(entity instanceof EntityMHBirdWyvern) scale = ((EntityMHBirdWyvern) entity).getScale();
             if(entity instanceof EntityMHHerbivore) scale = ((EntityMHHerbivore) entity).getScale();
             if(entity instanceof EntityMHNeopteron) scale = ((EntityMHNeopteron) entity).getScale();
-            //LogHelper.info(entity.getDisplayName().getUnformattedText() + ", " + entity.getPosition().toString() + " (" + entity.getEntityId() + ")");
+            //MobHunter.LOGGER.info(entity.getDisplayName().getUnformattedText() + ", " + entity.getPosition().toString() + " (" + entity.getEntityId() + ")");
         }
     }
     */

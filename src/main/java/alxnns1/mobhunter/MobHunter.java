@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Alex on 20/04/2016.
@@ -33,6 +34,8 @@ public class MobHunter
 
     @Mod.Instance(MOD_ID)
     public static MobHunter instance;
+
+    public static Logger LOGGER;
 
     public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "_items")
     {
@@ -74,6 +77,8 @@ public class MobHunter
     public void preInit(FMLPreInitializationEvent event)
     {
         //Initializing and registering items, blocks and configs
+
+        LOGGER = event.getModLog();
 
         //Passes suggested configuration file into the regBlocks method
         ConfigHandler.init(event.getSuggestedConfigurationFile());

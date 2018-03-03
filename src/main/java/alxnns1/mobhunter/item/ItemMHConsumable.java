@@ -8,11 +8,11 @@ import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -24,6 +24,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 
@@ -150,7 +151,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
         else
             super.onItemRightClick(worldIn, playerIn, hand);
 
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
+        return new ActionResult<>(EnumActionResult.SUCCESS, heldItem);
     }
 
     @Override
@@ -273,13 +274,16 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        if(hasSubtypes)
-            for(int i = 0; i < getSubNames().length; i++)
-                subItems.add(new ItemStack(itemIn, 1, i));
-        else
-            subItems.add(new ItemStack(itemIn));
+        if(isInCreativeTab(tab))
+        {
+            if(hasSubtypes)
+                for(int i = 0; i < getSubNames().length; i++)
+                    items.add(new ItemStack(this, 1, i));
+            else
+                items.add(new ItemStack(this));
+        }
     }
 
     /**
@@ -334,7 +338,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
      */
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         ClientUtil.addTooltip(stack, tooltip);
     }

@@ -11,6 +11,7 @@ import alxnns1.mobhunter.integration.jei.ItemCraftingTables.ItemCraftingRecipeWr
 import alxnns1.mobhunter.reference.MetaRef;
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
+import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -19,7 +20,7 @@ import javax.annotation.Nonnull;
  * Created by Mark on 08/12/2016.
  */
 @JEIPlugin
-public class MobHunterPlugin extends BlankModPlugin
+public class MobHunterPlugin implements IModPlugin
 {
     public static IJeiHelpers jeiHelper;
 
@@ -27,21 +28,28 @@ public class MobHunterPlugin extends BlankModPlugin
     public static final String ARMOUR_CRAFTING_ID = "armourCrafting";
 
     @Override
-    public void register(@Nonnull IModRegistry registry)
+    public void registerCategories(IRecipeCategoryRegistration registry)
     {
         jeiHelper = registry.getJeiHelpers();
 
         registry.addRecipeCategories(
                 new ItemCraftingRecipeCategory(jeiHelper.getGuiHelper(), WEAPON_CRAFTING_ID),
                 new ItemCraftingRecipeCategory(jeiHelper.getGuiHelper(), ARMOUR_CRAFTING_ID));
+    }
+
+    @Override
+    public void register(@Nonnull IModRegistry registry)
+    {
         registry.handleRecipes(WeaponCraftingRecipe.class, ItemCraftingRecipeWrapper.FACTORY_WEAPON, MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
         registry.handleRecipes(ArmourCraftingRecipe.class, ItemCraftingRecipeWrapper.FACTORY_ARMOUR, MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
 
         registry.addRecipes(WeaponCraftingManager.getRecipes(), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
         registry.addRecipes(ArmourCraftingManager.getRecipes(), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
 
-        registry.addRecipeCategoryCraftingItem(new ItemStack(MHBlocks.blockWeaponCraft), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(MHBlocks.blockArmourCraft), MobHunter.MOD_ID + ":" + ARMOUR_CRAFTING_ID);
+        //TODO: Add click area?
+
+        registry.addRecipeCatalyst(new ItemStack(MHBlocks.blockWeaponCraft), MobHunter.MOD_ID + ":" + WEAPON_CRAFTING_ID);
+        registry.addRecipeCatalyst(new ItemStack(MHBlocks.blockArmourCraft), MobHunter.MOD_ID + ":" + ARMOUR_CRAFTING_ID);
 
         //Hide items from JEI
         IIngredientBlacklist blacklist = jeiHelper.getIngredientBlacklist();

@@ -1,11 +1,11 @@
 package alxnns1.mobhunter.handler;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.capability.ICapability;
 import alxnns1.mobhunter.capability.monsters.IMonsters;
 import alxnns1.mobhunter.capability.monsters.MonsterSize;
 import alxnns1.mobhunter.capability.quest.*;
 import alxnns1.mobhunter.entity.IScaledMob;
-import alxnns1.mobhunter.util.LogHelper;
 import alxnns1.mobhunter.capability.monsters.EnumSizeResult;
 import alxnns1.mobhunter.init.MHCapabilities;
 import alxnns1.mobhunter.util.CommonUtil;
@@ -36,7 +36,7 @@ public class CapabilityHandler
         Object c = capability.getDefaultInstance();
         if(!(c instanceof ICapability))
         {
-            LogHelper.error("A capability isn't an instance of ICapability! -> " + capability.getName());
+            MobHunter.LOGGER.error("A capability isn't an instance of ICapability! -> " + capability.getName());
             return null;
         }
         return (ICapability) c;
@@ -186,8 +186,8 @@ public class CapabilityHandler
 
         /*
         if(curSizes != null)
-            LogHelper.info("Cur Sizes: " + curSizes.smallest + "%% - " + curSizes.largest + "%%");
-        LogHelper.info(monsterID + " -> " + monsterPercent + "%%");
+            MobHunter.LOGGER.info("Cur Sizes: " + curSizes.smallest + "%% - " + curSizes.largest + "%%");
+        MobHunter.LOGGER.info(monsterID + " -> " + monsterPercent + "%%");
         */
 
         //Send message to the player

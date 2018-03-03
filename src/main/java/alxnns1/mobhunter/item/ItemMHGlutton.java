@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by Alex on 30/11/2016.
  */
 public class ItemMHGlutton extends ItemMHConsumable {
-    private static ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+    private static ArrayList<ItemStack> drops = new ArrayList<>();
 
     static {
         drops.add(new ItemStack(Items.ARROW));

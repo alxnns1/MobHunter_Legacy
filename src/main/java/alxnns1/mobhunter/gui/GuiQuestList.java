@@ -88,7 +88,7 @@ public class GuiQuestList extends MHGuiScreen
         {
             questList.clear();
             questList = MHQuests.getQuestsForRank(currentHR);
-            //LogHelper.info("Got " + questList.size() + " quests");
+            //MobHunter.LOGGER.info("Got " + questList.size() + " quests");
         }
     }
 

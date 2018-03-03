@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.handler;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Reference;
 import net.minecraft.item.Item;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootPool;

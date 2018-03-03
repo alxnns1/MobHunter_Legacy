@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.capability.hunterRank;
 
+import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.message.MessageCapability;
-import alxnns1.mobhunter.reference.Reference;
 import alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;

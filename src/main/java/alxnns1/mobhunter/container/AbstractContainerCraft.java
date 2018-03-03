@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -14,6 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -56,71 +58,69 @@ public abstract class AbstractContainerCraft extends MHContainer
         });
     }
 
-    public boolean checkHasAllItems(IInventory inv, NonNullList<Object> input)
+    public boolean checkHasAllItems(IInventory inv, NonNullList<Ingredient> input)
     {
-        return checkPlayerInv(inv, input).isEmpty();
+        return getStacksFromInv(inv, input).size() == input.size();
+    }
+
+    private static int getStackCountIfExists(ItemStack stack, Collection<ItemStack> list)
+    {
+        for(ItemStack listStack : list)
+            if(OreDictionary.itemMatches(stack, listStack, false))
+                return listStack.getCount();
+        return 0;
     }
 
     /**
      * Checks the player's inventory for all of the input items.
      * Returns missing items.
      */
-    @SuppressWarnings("unchecked")
-    public ArrayList<Object> checkPlayerInv(IInventory inv, NonNullList<Object> input)
+    public ArrayList<ItemStack> getStacksFromInv(IInventory inv, NonNullList<Ingredient> input)
     {
-        ArrayList<Object> required = new ArrayList<>(input.size());
+        ArrayList<ItemStack> foundComplete = new ArrayList<>();
+        ArrayList<ItemStack> found = new ArrayList<>();
         //Go through all of the ingredients
-        for(int r = 0; r < input.size(); r++)
+        for(Ingredient ing : input)
         {
-            Object o = input.get(r);
-            if(o instanceof ItemStack)
-            {
-                required.add(((ItemStack) o).copy()); //Want a copy, not a reference
-                o = required.get(r);
-            }
-            else
-                required.add(o);
+            NonNullList<ItemStack> ingStacks = NonNullList.from(ItemStack.EMPTY, ing.getMatchingStacks());
             //Check if each ingredient is in the player inventory
             for(int i = 0; i < inv.getSizeInventory(); i++)
             {
                 ItemStack stack = inv.getStackInSlot(i);
-                if(stack == null) continue;
+                if(stack.isEmpty()) continue;
 
-                if(o instanceof ItemStack)
+                int matchedSize = getStackCountIfExists(stack, ingStacks);
+
+                if(matchedSize > 0)
                 {
-                    ItemStack oStack = (ItemStack) o;
-                    if(OreDictionary.itemMatches(oStack, stack, false))
+                    boolean existingStackUpdated = false;
+                    //If we already have the same stack, then update its count
+                    for(ItemStack foundStack : found)
                     {
-                        oStack.shrink(stack.getCount());
-                        if(oStack.getCount() > 0)
-                            required.set(r, oStack);
-                        else
-                            required.set(r, null);
+                        if(foundStack.isItemEqual(stack))
+                        {
+                            int stackSize = Math.max(foundStack.getCount() + stack.getCount(), matchedSize);
+                            foundStack.setCount(stackSize);
+                            existingStackUpdated = true;
+                            if(stackSize == matchedSize) foundComplete.add(foundStack);
+                            break;
+                        }
                     }
-                }
-                else if(o instanceof NonNullList)
-                {
-                    if(OreDictionary.containsMatch(false, (NonNullList<ItemStack>) o, stack))
+
+                    //Add a new stack to the found stacks
+                    if(! existingStackUpdated)
                     {
-                        required.set(r, null);
-                        break;
+                        ItemStack foundNew = stack.copy();
+                        int stackSize = Math.max(foundNew.getCount(), matchedSize);
+                        foundNew.setCount(stackSize);
+                        found.add(foundNew);
+                        if(stackSize == matchedSize) foundComplete.add(foundNew);
                     }
-                }
-                //If all of this ingredient is in inventory, then skip to the next one
-                if(required.get(r) == null)
                     break;
+                }
             }
         }
-        //Remove all null items
-        for(int i = 0; i < required.size(); i++)
-        {
-            if(required.get(i) == null)
-            {
-                required.remove(i);
-                i -= 1;
-            }
-        }
-        return required;
+        return foundComplete;
     }
 
     protected abstract List<MHCraftingRecipe> getRecipes();
@@ -142,7 +142,7 @@ public abstract class AbstractContainerCraft extends MHContainer
             else
             {
                 MHCraftingRecipe r = recipes.get(i);
-                recipesValid.set(i, r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
+                recipesValid.set(i, r == null ? null : checkHasAllItems(inventoryPlayer, r.getInputs()));
             }
         }
     }
@@ -152,7 +152,7 @@ public abstract class AbstractContainerCraft extends MHContainer
      */
     protected void refreshRecipes()
     {
-        //LogHelper.info("Refreshing recipes - start: " + recipeStart);
+        //MobHunter.LOGGER.info("Refreshing recipes - start: " + recipeStart);
         for(int i = 0; i < 5; i++)
         {
             int recipeActualI = recipeStart + i;
@@ -161,7 +161,7 @@ public abstract class AbstractContainerCraft extends MHContainer
             else
             {
                 MHCraftingRecipe r = recipes.get(recipeActualI);
-                recipesValid.set(i, r == null ? null : checkHasAllItems(inventoryPlayer, r.getInput()));
+                recipesValid.set(i, r == null ? null : checkHasAllItems(inventoryPlayer, r.getInputs()));
             }
         }
     }
@@ -201,56 +201,35 @@ public abstract class AbstractContainerCraft extends MHContainer
                 int actualRecipeI = id + recipeStart;
 
                 if(recipes.isEmpty() || recipes.get(actualRecipeI) == null) return false;
-                if(checkHasAllItems(inventoryPlayer, recipes.get(actualRecipeI).getInput()))
+                MHCraftingRecipe recipe = recipes.get(actualRecipeI);
+                ArrayList<ItemStack> foundStacks = getStacksFromInv(inventoryPlayer, recipe.getInputs());
+                if(foundStacks.size() == recipe.getInputs().size())
                 {
                     if(!world.isRemote)
                     {
-                        MHCraftingRecipe recipe = recipes.get(actualRecipeI);
-
                         //Collect the recipe inputs in an inventory for the player crafting event
-                        InventoryBasic inv = new InventoryBasic("MHCraftingRecipe", false, recipe.getRecipeSize() + 1);
+                        InventoryBasic inv = new InventoryBasic("MHCraftingRecipe", false, recipe.getSize());
                         ItemStack keyItem = recipe.getKeyInput();
                         if(keyItem != null)
                             inv.addItem(recipe.getKeyInput());
-                        for(Object object : recipe.getInput())
-                        {
-                            if(object instanceof ItemStack)
-                                inv.addItem((ItemStack) object);
-                            else if(object instanceof List)
-                                inv.addItem(((List<ItemStack>) object).get(0));
-                        }
+                        foundStacks.forEach(foundStack -> inv.addItem(foundStack));
+
                         net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(playerIn, recipe.getOutput(), inv);
 
                         if(!playerIn.capabilities.isCreativeMode)
                         {
                             //Remove ingredients from player inventory
-                            for(Object item : recipe.getInput())
-                            {
-                                if(item instanceof ItemStack)
-                                {
-                                    ItemStack toRemove = (ItemStack) item;
-                                    playerIn.inventory.clearMatchingItems(toRemove.getItem(), toRemove.getMetadata(), toRemove.getCount(), null);
-                                }
-                                else if(item instanceof List)
-                                {
-                                    List<ItemStack> toRemove = (List<ItemStack>) item;
-                                    for(ItemStack s : toRemove)
-                                        if(playerIn.inventory.clearMatchingItems(s.getItem(), s.getMetadata(), 1, null) > 0)
-                                            break;
-                                }
-                            }
+                            foundStacks.forEach(foundStack ->
+                                    playerIn.inventory.clearMatchingItems(foundStack.getItem(), foundStack.getMetadata(), foundStack.getCount(), null));
                         }
 
                         //Change key item to recipe output
                         ItemStack newItem = recipe.getOutput();
-                        if(stack != null)
-                        {
-                            //Set new item to have taken the same amount of damage
-                            newItem.setItemDamage(stack.getItemDamage());
-                            if(stack.isItemEnchanted())
-                                //Copy over enchantments
-                                EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
-                        }
+                        //Set new item to have taken the same amount of damage
+                        newItem.setItemDamage(stack.getItemDamage());
+                        if(stack.isItemEnchanted())
+                            //Copy over enchantments
+                            EnchantmentHelper.setEnchantments(EnchantmentHelper.getEnchantments(stack), newItem);
                         if(putInGuiSlot)
                             inventory.setInventorySlotContents(0, newItem);
                         else

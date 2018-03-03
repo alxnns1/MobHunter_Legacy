@@ -42,11 +42,8 @@ public class ItemMHBow extends Item
             {
                 if (entityIn == null)
                     return 0.0F;
-                else
-                {
-                    ItemStack itemstack = entityIn.getActiveItemStack();
-                    return itemstack != null && itemstack.getItem() == Items.BOW ? (float)(stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
-                }
+                ItemStack itemstack = entityIn.getActiveItemStack();
+                return itemstack.getItem() instanceof ItemMHBow ? (float)(stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
             }
         });
         addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter()
@@ -97,11 +94,11 @@ public class ItemMHBow extends Item
             return ret;
 
         if(!playerIn.capabilities.isCreativeMode && !ammoFound)
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, heldItem);
+            return new ActionResult<>(EnumActionResult.FAIL, heldItem);
         else
         {
             playerIn.setActiveHand(hand);
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, heldItem);
+            return new ActionResult<>(EnumActionResult.SUCCESS, heldItem);
         }
     }
 
@@ -118,12 +115,12 @@ public class ItemMHBow extends Item
             ItemStack itemstack = this.findAmmo(entityplayer);
 
             int i = this.getMaxItemUseDuration(stack) - timeLeft;
-            i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, (EntityPlayer)entityLiving, i, itemstack != null || flag);
+            i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, (EntityPlayer)entityLiving, i, !itemstack.isEmpty() || flag);
             if (i < 0) return;
 
-            if (itemstack != null || flag)
+            if (!itemstack.isEmpty() || flag)
             {
-                if (itemstack == null)
+                if (itemstack.isEmpty())
                 {
                     itemstack = new ItemStack(Items.ARROW);
                 }
@@ -132,13 +129,13 @@ public class ItemMHBow extends Item
 
                 if ((double)f >= 0.1D)
                 {
-                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow ? ((ItemArrow)itemstack.getItem()).isInfinite(itemstack, stack, entityplayer) : false);
+                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
 
                     if (!worldIn.isRemote)
                     {
                         ItemArrow itemarrow = (ItemArrow) (itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW);
                         EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
-                        entityarrow.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
                         if (f == 1.0F)
                         {
@@ -210,9 +207,9 @@ public class ItemMHBow extends Item
         }
     }
 
-    protected boolean isArrow(@Nullable ItemStack stack)
+    protected boolean isArrow(ItemStack stack)
     {
-        return stack != null && stack.getItem() instanceof ItemArrow;
+        return stack.getItem() instanceof ItemArrow;
     }
 
     /**

@@ -6,7 +6,6 @@ import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -15,7 +14,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
@@ -24,8 +22,6 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 /**
  * Created by Mark on 05/04/2017.
@@ -167,7 +163,7 @@ public class BlockBarrelBomb extends Block
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {BARREL});
+        return new BlockStateContainer(this, BARREL);
     }
 
     /**
@@ -175,10 +171,10 @@ public class BlockBarrelBomb extends Block
      */
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab,  NonNullList<ItemStack> list)
+    public void getSubBlocks(CreativeTabs tab,  NonNullList<ItemStack> list)
     {
         for(EnumBarrel barrelType : EnumBarrel.values())
-            list.add(new ItemStack(itemIn, 1, barrelType.ordinal()));
+            list.add(new ItemStack(this, 1, barrelType.ordinal()));
     }
 
     /**

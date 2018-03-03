@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.capability.quest;
 
-import alxnns1.mobhunter.util.LogHelper;
+import alxnns1.mobhunter.MobHunter;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
@@ -63,7 +63,7 @@ public class MHQuest
      */
     public MHQuest setObjectives(Object... objectives)
     {
-        LogHelper.info(objectives[0].getClass().getName());
+        MobHunter.LOGGER.info(objectives[0].getClass().getName());
         if(!questType.storageType.getName().equals(objectives[0].getClass().getName()))
             throw new IllegalArgumentException("Objectives are not an array of the required class: " + questType.storageType.toString());
         this.objectives = objectives;
@@ -120,24 +120,24 @@ public class MHQuest
     {
         if(objList == null || objList.length == 0)
             return "Null List";
-        String text = "";
+        StringBuilder sb = new StringBuilder();
         for(int i = 0; i < objList.length; i++)
         {
             Object object = objList[i];
             if(i > 0)
-                text += ", ";
+                sb.append(", ");
             if(object instanceof ItemStack)
             {
                 ItemStack stack = (ItemStack) object;
-                text += stack.getCount() + "x " + stack.getDisplayName();
+                sb.append(stack.getCount()).append("x ").append(stack.getDisplayName());
             }
             else if(object instanceof EntityStack)
             {
                 EntityStack stack = (EntityStack) object;
-                text += stack.getAmount() + "x " + stack.getEntityLocName();
+                sb.append(stack.getAmount()).append("x ").append(stack.getEntityLocName());
             }
         }
-        return text;
+        return sb.toString();
     }
 
     /**

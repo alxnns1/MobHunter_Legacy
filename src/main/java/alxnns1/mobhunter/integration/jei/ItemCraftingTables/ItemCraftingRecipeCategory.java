@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 /**
  * Created by Mark on 08/12/2016.
  */
-public class ItemCraftingRecipeCategory extends BlankRecipeCategory<ItemCraftingRecipeWrapper>
+public class ItemCraftingRecipeCategory implements IRecipeCategory<ItemCraftingRecipeWrapper>
 {
     private final String uid;
     private final String title;
@@ -37,6 +37,12 @@ public class ItemCraftingRecipeCategory extends BlankRecipeCategory<ItemCrafting
     public String getTitle()
     {
         return title;
+    }
+
+    @Override
+    public String getModName()
+    {
+        return MobHunter.MOD_NAME;
     }
 
     @Override

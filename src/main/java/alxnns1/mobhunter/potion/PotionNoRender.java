@@ -2,7 +2,6 @@ package alxnns1.mobhunter.potion;
 
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Mark on 01/06/2016.
