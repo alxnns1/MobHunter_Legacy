@@ -1,6 +1,6 @@
 package alxnns1.mobhunter.gui;
 
-import alxnns1.mobhunter.reference.Reference;
+import alxnns1.mobhunter.MobHunter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -170,7 +170,7 @@ public class MHGuiScreen extends GuiScreen
         }
 
         @Override
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
         {
             if(!visible) return;
             FontRenderer fontrenderer = mc.fontRenderer;

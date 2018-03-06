@@ -3,14 +3,20 @@ package alxnns1.mobhunter.gui;
 import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.container.AbstractContainerCraft;
 import alxnns1.mobhunter.crafting.MHCraftingRecipe;
+import alxnns1.mobhunter.item.EnumSharpness;
+import alxnns1.mobhunter.item.ItemMHSword;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -24,17 +30,19 @@ import java.util.List;
 public abstract class AbstractGuiCraft extends GuiContainer
 {
     private static final ResourceLocation guiImage = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "guicraft.png");
-    protected AbstractContainerCraft container;
-    protected String invName;
+    private final String tooltip;
+    private AbstractContainerCraft container;
+    private String invName;
 
     public static final byte BUTTON_ID_ARROW_UP = Byte.MAX_VALUE;
     public static final byte BUTTON_ID_ARROW_DOWN = Byte.MAX_VALUE - 1;
 
-    public AbstractGuiCraft(AbstractContainerCraft container, String invName)
+    public AbstractGuiCraft(AbstractContainerCraft container, String invName, String tooltipPrefix)
     {
         super(container);
         this.container = container;
         this.invName = invName;
+        tooltip = tooltipPrefix;
         xSize = 256;
         ySize = 203;
     }
@@ -50,8 +58,53 @@ public abstract class AbstractGuiCraft extends GuiContainer
         buttonList.add(new ArrowButton(6, 44, 72, false));
     }
 
-    //TODO: Can I not generify the logic into here??
-    protected abstract List<String> getButtonTooltip(MHCraftingRecipe recipe);
+    private static String itemStackText(ItemStack stack, TextFormatting colour)
+    {
+        return stack.getCount() + " x " + colour + stack.getDisplayName();
+    }
+
+    private List<String> getButtonTooltip(MHCraftingRecipe recipe)
+    {
+        List<String> tooltipList = new ArrayList<>();
+        ItemStack outputStack = recipe.getOutput();
+        String line1Key = tooltip + (recipe.getKeyInput().isEmpty() ? "button.craft.1.2" : "button.craft.1.1");
+        tooltipList.add(I18n.format(line1Key, TextFormatting.AQUA + outputStack.getDisplayName()));
+        if(this instanceof GuiWeaponCraft)
+        {
+            tooltipList.add(TextFormatting.GRAY + I18n.format(tooltip + "button.craft.2.1", Float.toString(ItemMHSword.getActualAttackDamage(outputStack) + 1f)));
+            EnumSharpness sharpness = ItemMHSword.getSharpness(outputStack);
+            String sharpnessText = sharpness == null ? "None" : sharpness.getChatColour() + sharpness.getLocalizedName();
+            tooltipList.add(TextFormatting.GRAY + I18n.format(tooltip + "button.craft.2.2", sharpnessText));
+            tooltipList.add(I18n.format(tooltip + "button.craft.3"));
+        }
+        else if(this instanceof GuiArmourCraft)
+            tooltipList.add(I18n.format(tooltip + "button.craft.2"));
+
+        NonNullList<Ingredient> inputs = recipe.getInputs();
+        //Get the inputs which are present in player inventory
+        List<ItemStack> foundStacks = container.getStacksFromInv(container.inventoryPlayer, inputs);
+        //Add the materials to the tooltip, coloured yellow if player has enough and red if not
+        for(Ingredient inputIng : inputs)
+        {
+            TextFormatting colour = TextFormatting.RED;
+            ItemStack match = ItemStack.EMPTY;
+            for(ItemStack stack : foundStacks)
+            {
+                if(inputIng.apply(stack))
+                {
+                    colour = TextFormatting.YELLOW;
+                    match = stack;
+                    break;
+                }
+            }
+            String text = match.isEmpty() ?
+                    itemStackText(inputIng.getMatchingStacks()[0], colour) :
+                    itemStackText(match, colour);
+            tooltipList.add(TextFormatting.GRAY + text);
+        }
+
+        return tooltipList;
+    }
 
     /**
      * Called from the main game loop to update the screen.

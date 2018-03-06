@@ -618,19 +618,19 @@ tile.blockbarrelbomb.bouncing.name=Bouncing Barrel Bomb
 
 //GUI
 
-gui.blockweaponupgrade.button.craft.1.1=Upgrade Weapon To:
-gui.blockweaponupgrade.button.craft.1.2=Craft Weapon:
-gui.blockweaponupgrade.button.craft.2.1=Max Attack Damage:
-gui.blockweaponupgrade.button.craft.2.2=Max Sharpness:
+gui.blockweaponupgrade.button.craft.1.1=Upgrade Weapon To: %s
+gui.blockweaponupgrade.button.craft.1.2=Craft Weapon: %s
+gui.blockweaponupgrade.button.craft.2.1=Max Attack Damage: %s
+gui.blockweaponupgrade.button.craft.2.2=Max Sharpness: %s
 gui.blockweaponupgrade.button.craft.3=Required Materials:
-gui.blockweaponupgrade.button.craft.ore=1 x Ore:
+gui.blockweaponupgrade.button.craft.ore=1 x Ore: %s
 gui.blockweaponupgrade.button.up=Up
 gui.blockweaponupgrade.button.down=Down
 
-gui.blockarmourupgrade.button.craft.1.1=Upgrade Armour To:
-gui.blockarmourupgrade.button.craft.1.2=Craft Armour:
+gui.blockarmourupgrade.button.craft.1.1=Upgrade Armour To: %s
+gui.blockarmourupgrade.button.craft.1.2=Craft Armour: %s
 gui.blockarmourupgrade.button.craft.2=Required Materials:
-gui.blockarmourupgrade.button.craft.ore=1 x Ore:
+gui.blockarmourupgrade.button.craft.ore=1 x Ore: %s
 gui.blockarmourupgrade.button.up=Up
 gui.blockarmourupgrade.button.down=Down
 

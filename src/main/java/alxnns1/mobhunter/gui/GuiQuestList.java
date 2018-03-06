@@ -294,9 +294,9 @@ public class GuiQuestList extends MHGuiScreen
         }
 
         @Override
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
         {
-            super.drawButton(mc, mouseX, mouseY);
+            super.drawButton(mc, mouseX, mouseY, partialTicks);
 
             String text = hunterRank >= 0 ? "HR: " + hunterRank : "";
 
@@ -380,7 +380,7 @@ public class GuiQuestList extends MHGuiScreen
         }
 
         @Override
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
         {
             if(!visible) return;
             mc.getTextureManager().bindTexture(guiImage);
@@ -426,7 +426,7 @@ public class GuiQuestList extends MHGuiScreen
         }
 
         @Override
-        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
         {
             if(!visible) return;
             mc.getTextureManager().bindTexture(guiImage);
