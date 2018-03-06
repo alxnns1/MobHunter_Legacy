@@ -130,7 +130,7 @@ public class EntitySpit extends Entity implements IProjectile
      * Copied from EntityArrow and EntityThrowable (both are the same, and only implementations of this method)
      */
     @Override
-    public void setThrowableHeading(double x, double y, double z, float velocity, float inaccuracy)
+    public void shoot(double x, double y, double z, float velocity, float inaccuracy)
     {
         float f = MathHelper.sqrt(x * x + y * y + z * z);
         x = x / (double)f;
@@ -158,7 +158,7 @@ public class EntitySpit extends Entity implements IProjectile
      */
     public void setHeadingFromThrower(Entity entityThrower, float velocity)
     {
-        setThrowableHeading(entityThrower.getLookVec().xCoord, entityThrower.getLookVec().yCoord, entityThrower.getLookVec().zCoord, velocity, 1f);
+        shoot(entityThrower.getLookVec().x, entityThrower.getLookVec().y, entityThrower.getLookVec().z, velocity, 1f);
         motionX += entityThrower.motionX;
         motionZ += entityThrower.motionZ;
 
@@ -220,7 +220,7 @@ public class EntitySpit extends Entity implements IProjectile
         if(ray != null)
             nextPos = ray.hitVec;
 
-        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(motionX, motionY, motionZ).expandXyz(1d));
+        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(motionX, motionY, motionZ).grow(1d));
         Entity closestEntity = null;
         double closestDistance = 0d;
         boolean flag = false;
@@ -237,7 +237,7 @@ public class EntitySpit extends Entity implements IProjectile
             else
             {
                 flag = false;
-                AxisAlignedBB aabb = e.getEntityBoundingBox().expandXyz(0.30000001192092896D);
+                AxisAlignedBB aabb = e.getEntityBoundingBox().grow(0.3D);
                 RayTraceResult rayTrace = aabb.calculateIntercept(pos, nextPos);
                 if(rayTrace != null)
                 {
@@ -279,8 +279,11 @@ public class EntitySpit extends Entity implements IProjectile
         }
         */
 
-        for (rotationPitch = (float)(MathHelper.atan2(motionY, magnitude) * (180D / Math.PI)); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F)
-        {}
+        rotationPitch = (float)(MathHelper.atan2(motionY, magnitude) * (180D / Math.PI));
+        while(rotationPitch - prevRotationPitch < -180.0F)
+        {
+            prevRotationPitch -= 360.0F;
+        }
 
         while (rotationPitch - prevRotationPitch >= 180.0F)
             prevRotationPitch += 360.0F;

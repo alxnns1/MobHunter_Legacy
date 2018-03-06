@@ -1,7 +1,6 @@
 package alxnns1.mobhunter;
 
 import alxnns1.mobhunter.command.CommandHunterRank;
-import alxnns1.mobhunter.handler.ConfigHandler;
 import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import alxnns1.mobhunter.command.CommandMonsters;
@@ -79,16 +78,9 @@ public class MobHunter
         //Initializing and registering items, blocks and configs
 
         LOGGER = event.getModLog();
-
-        //Passes suggested configuration file into the regBlocks method
-        ConfigHandler.init(event.getSuggestedConfigurationFile());
-
         CommonUtil.initNetwork();
-
         MHPotions.init();
-
         MHCapabilities.init();
-
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
     }
 

@@ -77,7 +77,7 @@ public class EntityBarrelBomb extends EntityTNTPrimed
         float y = -MathHelper.sin(rotPitch * 0.017453292f);
         float z = MathHelper.cos(rotYaw * 0.017453292f) * MathHelper.cos(rotPitch * 0.017453292f);
 
-        //This bit is normally in IProjectile#setThrowableHeading
+        //This bit is normally in IProjectile#shoot
         float magnitude = MathHelper.sqrt(x * x + y * y + z * z);
         x = (x / magnitude) * velocity;
         y = (y / magnitude) * velocity;
@@ -107,7 +107,7 @@ public class EntityBarrelBomb extends EntityTNTPrimed
         super.onUpdate();
 
         //Collide with blocks
-        if(hasBeenThrown && isCollided)
+        if(hasBeenThrown && collided)
             explode();
 
         //Collide with living or item entities
