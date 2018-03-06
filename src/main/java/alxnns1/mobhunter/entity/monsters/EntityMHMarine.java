@@ -2,7 +2,7 @@ package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.entity.IScaledMob;
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -27,26 +27,26 @@ public abstract class EntityMHMarine extends EntityAnimal implements IScaledMob
 {
     private static final String KEY_SCALE = "scale";
     private static final DataParameter<Float> ENTITY_SCALE = EntityDataManager.createKey(EntityMHMarine.class, DataSerializers.FLOAT);
-    private static float scaleMax; //= 1.24f;
-    private static float scaleMin; //= 0.79f;
+    private static double scaleMax; //= 1.24d;
+    private static double scaleMin; //= 0.79d;
     private double baseHealth = 5d;
     private double baseSpeed = 0.1d;
     private double baseKnockback = 0.2d;
     private Item breedItem;
 
     public EntityMHMarine(World world) {
-        this(world, Config.scaleMin, Config.scaleMax, Items.WHEAT);
+        this(world, MHConfig.scaleMin, MHConfig.scaleMax, Items.FISH);
     }
 
-    public EntityMHMarine(World world, float minScale, float maxScale) {
+    public EntityMHMarine(World world, double minScale, double maxScale) {
         this(world, minScale, maxScale, Items.FISH);
     }
 
     public EntityMHMarine(World world, Item temptFood) {
-        this(world, Config.scaleMin, Config.scaleMax, temptFood);
+        this(world, MHConfig.scaleMin, MHConfig.scaleMax, temptFood);
     }
 
-    public EntityMHMarine(World world, float minScale, float maxScale, Item temptFood) {
+    public EntityMHMarine(World world, double minScale, double maxScale, Item temptFood) {
         super(world);
         this.setSize(0.9F, 1.3F); //Same as cow
         scaleMin = minScale;
@@ -85,7 +85,7 @@ public abstract class EntityMHMarine extends EntityAnimal implements IScaledMob
      */
     public boolean isBreedingItem(ItemStack stack)
     {
-        return stack == null ? false : stack.getItem() == breedItem;
+        return !stack.isEmpty() && stack.getItem() == breedItem;
     }
 
     /**
@@ -93,14 +93,14 @@ public abstract class EntityMHMarine extends EntityAnimal implements IScaledMob
      * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
-        float scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
+        double scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
         this.setEntityScale(scale);
         return super.onInitialSpawn(difficulty, livingdata);
     }
 
-    private void setEntityScale(float scale) {
+    private void setEntityScale(double scale) {
         //Gets the datawatcher value for the entity scale
-        this.dataManager.set(ENTITY_SCALE, scale);
+        this.dataManager.set(ENTITY_SCALE, (float) scale);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double) Math.round(baseHealth * scale));
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(baseSpeed * scale);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(baseKnockback * scale);
@@ -171,7 +171,7 @@ public abstract class EntityMHMarine extends EntityAnimal implements IScaledMob
 
             if (this.getAir() == -20) {
                 this.setAir(0);
-                this.attackEntityFrom(DamageSource.drown, 2.0F);
+                this.attackEntityFrom(DamageSource.DROWN, 2.0F);
             }
         }
         else {

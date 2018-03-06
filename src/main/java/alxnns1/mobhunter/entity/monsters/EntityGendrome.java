@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.potion.PotionEffectParalyse;
 import alxnns1.mobhunter.reference.MetaRef;
@@ -24,7 +24,7 @@ import net.minecraft.world.World;
  */
 public class EntityGendrome extends EntityMHBirdWyvern {
     public EntityGendrome(World worldIn) {
-        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f);
+        super(worldIn, MHConfig.scaleMin*0.75f, MHConfig.scaleMax*0.75f);
         this.setSize(2.25F, 2.5F);
         setBaseHealth(300);
         setBaseAttack(2*1.5);

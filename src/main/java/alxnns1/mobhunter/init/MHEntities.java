@@ -5,7 +5,7 @@ import alxnns1.mobhunter.entity.EntitySpit;
 import alxnns1.mobhunter.entity.RenderSpit;
 import alxnns1.mobhunter.entity.monsters.*;
 import alxnns1.mobhunter.entity.monsters.render.*;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -80,37 +80,31 @@ public class MHEntities
     public static void init()
     {
         addEntity(EntityAptonoth.class, "aptonoth", 0x7f6d59, 0x382c1e,
-                Config.aptonothSpawnChance, 3, 5,
+                MHConfig.SPAWN_CHANCES.aptonothSpawnChance, 3, 5,
                 BiomeDictionary.Type.PLAINS);
         addEntity(EntityApceros.class, "apceros", 0x664019, 0xccb399,
-                Config.apcerosSpawnChance, 3, 5,
+                MHConfig.SPAWN_CHANCES.apcerosSpawnChance, 3, 5,
                 BiomeDictionary.Type.SAVANNA, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.SANDY);
         addEntity(EntityAltaroth.class, "altaroth", 0x8fbf60, 0xbfbf60,
-                Config.altarothSpawnChance, 3, 5,
+                MHConfig.SPAWN_CHANCES.altarothSpawnChance, 3, 5,
                 BiomeDictionary.Type.SAVANNA, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS);
         addEntity(EntityPopo.class, "popo", 0x402a00, 0x403400,
-                Config.popoSpawnChance, 3, 5,
+                MHConfig.SPAWN_CHANCES.popoSpawnChance, 3, 5,
                 BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.SNOWY);
         addEntity(EntityKelbi.class, "kelbi", 0x20402b, 0xbfbf8f,
-                Config.kelbiSpawnChance, 3, 5,
+                MHConfig.SPAWN_CHANCES.kelbiSpawnChance, 3, 5,
                 BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS);
         addEntity(EntityGargwa.class, "gargwa", 0x804000, 0x0000ff,
-                Config.gargwaSpawnChance, 3, 5,
+                MHConfig.SPAWN_CHANCES.gargwaSpawnChance, 3, 5,
                 BiomeDictionary.Type.JUNGLE);
-        addEntity(EntityGiaprey.class, "giaprey", 0x9fbfdf, 0x476078,
-                Config.giapreySpawnChance, 3, 5,
-                BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.SNOWY);
-        addEntity(EntityIoprey.class, "ioprey", 0xdf2020, 0x0a0a0a,
-                Config.iopreySpawnChance, 3, 5,
-                BiomeDictionary.Type.SWAMP);
 
         addEntity(EntityGreatJaggi.class, "greatjaggi", 0xe2aa72, 0x9f40ff,
-                Config.greatJaggiSpawnChance, 1, 1,
+                MHConfig.SPAWN_CHANCES.greatJaggiSpawnChance, 1, 1,
                 BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.BEACH);
         addEntity(EntityJaggi.class, "jaggi", 0xd56a00, 0xbf80ff);
         addEntity(EntityJaggia.class, "jaggia", 0xff8000, 0x9f40ff);
         addEntity(EntityVelocidrome.class, "velocidrome", 0x0080ff, 0x402000,
-                Config.velocidromeSpawnChance, 1, 1,
+                MHConfig.SPAWN_CHANCES.velocidromeSpawnChance, 1, 1,
                 BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS);
         addEntity(EntityVelociprey.class, "velociprey", 0x0080ff, 0x402000);
         /*
@@ -118,8 +112,11 @@ public class MHEntities
                 Config.giadromeSpawnChance, 1, 1,
                 BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.SNOWY);
         */
+        addEntity(EntityGiaprey.class, "giaprey", 0x9fbfdf, 0x476078,
+                MHConfig.SPAWN_CHANCES.giapreySpawnChance, 3, 5,
+                BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.SNOWY);
         addEntity(EntityGendrome.class, "gendrome", 0x408040, 0x806040,
-                Config.gendromeSpawnChance, 1, 1,
+                MHConfig.SPAWN_CHANCES.gendromeSpawnChance, 1, 1,
                 BiomeDictionary.Type.SAVANNA, BiomeDictionary.Type.SANDY);
         addEntity(EntityGenprey.class, "genprey", 0x408040, 0x806040);
         /*
@@ -127,6 +124,9 @@ public class MHEntities
                 Config.iodromeSpawnChance, 1, 1,
                 BiomeDictionary.Type.SWAMP);
         */
+        addEntity(EntityIoprey.class, "ioprey", 0xdf2020, 0x0a0a0a,
+                MHConfig.SPAWN_CHANCES.iopreySpawnChance, 3, 5,
+                BiomeDictionary.Type.SWAMP);
 
         addEntity(EntitySpit.class, "spit");
     }

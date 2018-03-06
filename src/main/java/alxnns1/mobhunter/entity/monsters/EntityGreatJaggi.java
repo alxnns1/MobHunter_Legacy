@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.reference.MetaRef;
 import net.minecraft.entity.IEntityLivingData;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 public class EntityGreatJaggi extends EntityMHBirdWyvern {
     public EntityGreatJaggi(World worldIn)
     {
-        super(worldIn, Config.scaleMin*0.75f, Config.scaleMax*0.75f);
+        super(worldIn, MHConfig.scaleMin*0.75f, MHConfig.scaleMax*0.75f);
         this.setSize(2.25F, 2.5F);
         setBaseHealth(390);
         setBaseAttack(2*1.5);
@@ -88,11 +88,13 @@ public class EntityGreatJaggi extends EntityMHBirdWyvern {
         setBaseAttack(3*1.5);
         setBaseSpeed(0.3*1.5);
         setBaseKnockback(0.5*1.5);
-        double rand = this.rand.nextInt(8) + 6;
-        for(int i=0;i<rand;i++) {
+        int randBound = MHConfig.SPAWN_CHANCES.jaggiPackSizeMax - MHConfig.SPAWN_CHANCES.jaggiPackSizeMin;
+        double rand = this.rand.nextInt(randBound) + MHConfig.SPAWN_CHANCES.jaggiPackSizeMin;
+        for(int i = 0; i < rand; i++)
+        {
             EntityJaggi jaggi = new EntityJaggi(world);
-            jaggi.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
-            jaggi.onInitialSpawn(difficulty,livingdata);
+            jaggi.setLocationAndAngles(this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ(), 0, 0);
+            jaggi.onInitialSpawn(difficulty, livingdata);
             world.spawnEntity(jaggi);
         }
         return super.onInitialSpawn(difficulty, livingdata);

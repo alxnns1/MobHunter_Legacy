@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.worldgen;
 
 import alxnns1.mobhunter.init.MHBlocks;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -48,7 +48,7 @@ public class WorldGenHandler implements IWorldGenerator
                 break;
             default:
                 //Overworld and other dimensions in the config
-                for(int id : Config.plantGenDimIDs)
+                for(int id : MHConfig.plantGenDimIDs)
                     if(dimId == id)
                     {
                         genOverworld(world, random, chunkX, chunkZ);

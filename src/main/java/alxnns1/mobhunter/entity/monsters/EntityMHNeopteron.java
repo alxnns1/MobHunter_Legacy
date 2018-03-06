@@ -2,7 +2,7 @@ package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.entity.IScaledMob;
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -26,8 +26,8 @@ public class EntityMHNeopteron extends EntityMob implements IScaledMob
 {
     private static final String KEY_SCALE = "scale";
     private static final DataParameter<Float> ENTITY_SCALE = EntityDataManager.createKey(EntityMHHerbivore.class, DataSerializers.FLOAT);
-    private static float scaleMax; //= 1.24f;
-    private static float scaleMin; //= 0.79f;
+    private static double scaleMax; //= 1.24d;
+    private static double scaleMin; //= 0.79d;
     private double baseHealth = 5d;
     private double baseSpeed = 0.1d;
     private double baseKnockback = 0.2d;
@@ -35,15 +35,15 @@ public class EntityMHNeopteron extends EntityMob implements IScaledMob
 
     public EntityMHNeopteron(World world)
     {
-        this(world, Config.scaleMin, Config.scaleMax, MHItems.itemMushroom);
+        this(world, MHConfig.scaleMin, MHConfig.scaleMax, MHItems.itemMushroom);
     }
 
-    public EntityMHNeopteron(World world, float minScale, float maxScale)
+    public EntityMHNeopteron(World world, double minScale, double maxScale)
     {
         this(world, minScale, maxScale, MHItems.itemMushroom);
     }
 
-    public EntityMHNeopteron(World world, float minScale, float maxScale, Item temptFood)
+    public EntityMHNeopteron(World world, double minScale, double maxScale, Item temptFood)
     {
         super(world);
         this.setSize(0.9F, 1.3F); //Same as cow
@@ -82,7 +82,7 @@ public class EntityMHNeopteron extends EntityMob implements IScaledMob
      */
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
-        float scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
+        double scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
         this.setEntityScale(scale);
         return super.onInitialSpawn(difficulty, livingdata);
     }
@@ -93,10 +93,10 @@ public class EntityMHNeopteron extends EntityMob implements IScaledMob
         return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
     }
 
-    private void setEntityScale(float scale)
+    private void setEntityScale(double scale)
     {
         //Gets the datawatcher value for the entity scale
-        this.dataManager.set(ENTITY_SCALE, scale);
+        this.dataManager.set(ENTITY_SCALE, (float) scale);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double) Math.round(baseHealth * scale));
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(baseSpeed * scale);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(baseKnockback * scale);

@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.IEntityLivingData;
@@ -86,10 +86,11 @@ public class EntityJaggi extends EntityMHBirdWyvern
         setBaseSpeed(0.3);
         setBaseKnockback(0.1);
         double rand = this.rand.nextDouble();
-        if(rand< Config.jaggiaChance){
+        if(rand <= MHConfig.SPAWN_CHANCES.jaggiaChance)
+        {
             EntityJaggia jaggia = new EntityJaggia(world);
-            jaggia.setLocationAndAngles(this.getPosition().getX(),this.getPosition().getY(),this.getPosition().getZ(),0,0);
-            jaggia.onInitialSpawn(difficulty,livingdata);
+            jaggia.setLocationAndAngles(this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ(), 0, 0);
+            jaggia.onInitialSpawn(difficulty, livingdata);
             world.spawnEntity(jaggia);
             this.setDead();
         }

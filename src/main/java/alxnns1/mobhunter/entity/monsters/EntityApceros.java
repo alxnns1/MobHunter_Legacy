@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Config;
+import alxnns1.mobhunter.reference.MHConfig;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityAgeable;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class EntityApceros extends EntityMHHerbivore{
     public EntityApceros(World worldIn)
     {
-        super(worldIn, Config.scaleMin*1.5f, Config.scaleMax*1.5f);
+        super(worldIn, MHConfig.scaleMin*1.5f, MHConfig.scaleMax*1.5f);
         this.setSize(3.0F, 3.5F);
         setBaseHealth((int)(20/1.5));
         setBaseSpeed(0.15);
