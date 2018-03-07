@@ -1,0 +1,22 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:iron_helmet"
+        },
+        "title": {
+            "translate": "mobhunter.advancement.small_crown.title"
+        },
+        "description": {
+            "translate": "mobhunter.advancement.small_crown.desc"
+        }
+    },
+    "parent": "mobhunter:root",
+    "criteria": {
+        "small_crown": {
+            "trigger": "mobhunter:small_crown",
+            "conditions": {
+                "scale": 0.84
+            }
+        }
+    }
+}

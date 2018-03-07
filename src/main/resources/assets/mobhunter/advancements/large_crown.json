@@ -1,0 +1,22 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:golden_helmet"
+        },
+        "title": {
+            "translate": "mobhunter.advancement.large_crown.title"
+        },
+        "description": {
+            "translate": "mobhunter.advancement.large_crown.desc"
+        }
+    },
+    "parent": "mobhunter:small_crown",
+    "criteria": {
+        "large_crown": {
+            "trigger": "mobhunter:large_crown",
+            "conditions": {
+                "scale": 1.19
+            }
+        }
+    }
+}
