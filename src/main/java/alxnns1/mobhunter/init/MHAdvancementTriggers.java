@@ -10,6 +10,9 @@ import net.minecraft.advancements.CriteriaTriggers;
  */
 public class MHAdvancementTriggers
 {
+    public static SmallCrownTrigger smallCrown;
+    public static LargeCrownTrigger largeCrown;
+
     private static void register(MHTrigger trigger)
     {
         CriteriaTriggers.register(trigger);
@@ -17,8 +20,8 @@ public class MHAdvancementTriggers
 
     public static void init()
     {
-        register(new SmallCrownTrigger());
-        register(new LargeCrownTrigger());
+        register(smallCrown = new SmallCrownTrigger());
+        register(largeCrown = new LargeCrownTrigger());
     }
 
     /*

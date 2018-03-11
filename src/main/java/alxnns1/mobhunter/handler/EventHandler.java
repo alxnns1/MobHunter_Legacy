@@ -1,13 +1,15 @@
 package alxnns1.mobhunter.handler;
 
-import alxnns1.mobhunter.entity.monsters.*;
-import alxnns1.mobhunter.init.MHAchievements;
-import alxnns1.mobhunter.item.ItemMHSword;
+import alxnns1.mobhunter.entity.monsters.EntityGreatJaggi;
+import alxnns1.mobhunter.entity.monsters.EntityMHBirdWyvern;
+import alxnns1.mobhunter.entity.monsters.EntityMHHerbivore;
+import alxnns1.mobhunter.entity.monsters.EntityMHNeopteron;
+import alxnns1.mobhunter.init.MHAdvancementTriggers;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -15,7 +17,6 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -135,6 +136,8 @@ public class EventHandler
         }
     }
 
+    //TODO: First sword advancement
+    /*
     @SubscribeEvent
     public static void onCrafting(PlayerEvent.ItemCraftedEvent event)
     {
@@ -143,6 +146,7 @@ public class EventHandler
         if(item instanceof ItemMHSword)
             player.addStat(MHAchievements.firstSword);
     }
+    */
 
     /*
     @SubscribeEvent
@@ -179,18 +183,18 @@ public class EventHandler
         {
             //Small and Large Crown Achievements
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            if(scale != -1f && entity instanceof EntityMHBirdWyvern)
+            if(scale != -1f && entity instanceof EntityMHBirdWyvern && player instanceof EntityPlayerMP)
             {
-                if(scale < 0.84f)
-                    player.addStat(MHAchievements.smallCrown);
-                else if(scale > 1.19f)
-                    player.addStat(MHAchievements.largeCrown);
+                MHAdvancementTriggers.smallCrown.trigger((EntityPlayerMP) player, scale);
+                MHAdvancementTriggers.largeCrown.trigger((EntityPlayerMP) player, scale);
             }
 
-            //Boss Monster Achievements
+            //TODO: Boss Monster Achievements
+            /*
             if(entity instanceof EntityGreatJaggi) player.addStat(MHAchievements.greatJaggi);
             if(entity instanceof EntityVelocidrome) player.addStat(MHAchievements.velocidrome);
             if(entity instanceof EntityGendrome) player.addStat(MHAchievements.gendrome);
+            */
             /*
             if(entity instanceof EntityIodrome) player.addStat(MHAchievements.iodrome);
             */
