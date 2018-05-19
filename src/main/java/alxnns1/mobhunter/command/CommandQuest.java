@@ -151,7 +151,7 @@ public class CommandQuest extends CommandBase
                 if(!args[1].equals("clearAll") && !args[1].equals("clearCurrent"))
                     return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
             default:
-                return Collections.<String>emptyList();
+                return Collections.emptyList();
         }
     }
 }

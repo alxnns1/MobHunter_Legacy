@@ -7,6 +7,7 @@ import net.minecraft.potion.PotionEffect;
 /**
  * Created by Mark on 01/06/2016.
  */
+//TODO: We shouldn't be making a custom PotionEffect... It's like making a custom ItemStack - not going to work in a lot of cases
 public class PotionEffectMH extends PotionEffect
 {
     private boolean applyEffect = true;

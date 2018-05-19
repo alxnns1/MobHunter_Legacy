@@ -1,10 +1,10 @@
 package alxnns1.mobhunter.handler;
 
+import alxnns1.mobhunter.entity.IScaledMob;
 import alxnns1.mobhunter.entity.monsters.EntityGreatJaggi;
 import alxnns1.mobhunter.entity.monsters.EntityMHBirdWyvern;
-import alxnns1.mobhunter.entity.monsters.EntityMHHerbivore;
-import alxnns1.mobhunter.entity.monsters.EntityMHNeopteron;
 import alxnns1.mobhunter.init.MHAdvancementTriggers;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -104,9 +104,8 @@ public class EventHandler
     public static void mobDeath(LivingDropsEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
+        Random rand = entity.getEntityWorld().rand;
 
-        //This is called every time a LivingEntityBase dies
-        Random rand = new Random();
         //Checks the dead entity against the ones in the list
         for(Object[] o : mobDrops)
         {
@@ -168,22 +167,20 @@ public class EventHandler
     public static void entityKilled(LivingDeathEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
+        Entity entitySource = event.getSource().getTrueSource();
 
-        float scale = -1f;
-        if(entity instanceof EntityGreatJaggi)
-            scale = ((EntityGreatJaggi)entity).getScale()*1.5f;
-        else if(entity instanceof EntityMHBirdWyvern)
-            scale = ((EntityMHBirdWyvern)entity).getScale();
-        else if(entity instanceof EntityMHHerbivore)
-            scale = ((EntityMHHerbivore)entity).getScale();
-        else if(entity instanceof EntityMHNeopteron)
-            scale = ((EntityMHNeopteron)entity).getScale();
-
-        if(event.getSource() instanceof EntityDamageSource && event.getSource().getTrueSource() instanceof EntityPlayer)
+        if(event.getSource() instanceof EntityDamageSource && entitySource instanceof EntityPlayerMP)
         {
-            //Small and Large Crown Achievements
-            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            if(scale != -1f && entity instanceof EntityMHBirdWyvern && player instanceof EntityPlayerMP)
+            float scale = -1f;
+
+            if(entity instanceof EntityGreatJaggi)
+                scale = ((EntityGreatJaggi)entity).getScale()*1.5f;
+            else if(entity instanceof IScaledMob)
+                scale = ((IScaledMob) entity).getScale();
+
+            //Small and Large Crown Advancements
+            EntityPlayer player = (EntityPlayer) entitySource;
+            if(scale != -1f && entity instanceof EntityMHBirdWyvern)
             {
                 MHAdvancementTriggers.smallCrown.trigger((EntityPlayerMP) player, scale);
                 MHAdvancementTriggers.largeCrown.trigger((EntityPlayerMP) player, scale);

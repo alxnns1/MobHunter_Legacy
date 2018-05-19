@@ -2,14 +2,12 @@ package alxnns1.mobhunter.handler;
 
 import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.block.render.RenderBbq;
+import alxnns1.mobhunter.capability.quest.MHQuest;
 import alxnns1.mobhunter.crafting.ArmourCraftingManager;
 import alxnns1.mobhunter.crafting.ArmourCraftingRecipe;
 import alxnns1.mobhunter.crafting.WeaponCraftingManager;
 import alxnns1.mobhunter.crafting.WeaponCraftingRecipe;
-import alxnns1.mobhunter.init.MHBlocks;
-import alxnns1.mobhunter.init.MHEntities;
-import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.init.MHRecipes;
+import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.tileentity.TileBbq;
 import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
@@ -43,6 +41,7 @@ public class RegHandler
     {
         WeaponCraftingManager.REGISTRY = addRegistry("weapon_recipes", WeaponCraftingRecipe.class);
         ArmourCraftingManager.REGISTRY = addRegistry("armour_recipes", ArmourCraftingRecipe.class);
+        MHQuests.REGISTRY = addRegistry("quests", MHQuest.class);
     }
 
     @SubscribeEvent
@@ -88,5 +87,11 @@ public class RegHandler
     public static void regArmourRecipes(RegistryEvent.Register<ArmourCraftingRecipe> event)
     {
         MHRecipes.regArmourRecipes(event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public static void regQuests(RegistryEvent.Register<MHQuest> event)
+    {
+        MHQuests.regQuests(event.getRegistry());
     }
 }

@@ -24,7 +24,7 @@ public class GuiQuestList extends MHGuiScreen
     private static int numButtons = 7;
     private static final String LANG = "gui.questlist.";
 
-    private List<MHQuest> questList = new ArrayList<MHQuest>();
+    private List<MHQuest> questList = new ArrayList<>();
     private int listStart = 0;
     //This is to know which HR has been clicked on. -1 when displaying the HR list.
     private int currentHR = -1;
@@ -38,7 +38,7 @@ public class GuiQuestList extends MHGuiScreen
     static
     {
         //Creates the hunterRankList array
-        hunterRankList = new ArrayList<Integer>();
+        hunterRankList = new ArrayList<>();
         List<List<MHQuest>> questsByRank = MHQuests.getQuestsByRank();
         for(int i = 0; i < questsByRank.size(); i++)
             if(!questsByRank.get(i).isEmpty())

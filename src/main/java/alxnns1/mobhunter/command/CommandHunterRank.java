@@ -104,7 +104,7 @@ public class CommandHunterRank extends CommandBase
             case 3:
                 return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
             default:
-                return Collections.<String>emptyList();
+                return Collections.emptyList();
         }
     }
 }

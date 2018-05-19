@@ -8,8 +8,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public class MHQuest
+public class MHQuest extends IForgeRegistryEntry.Impl<MHQuest>
 {
     private final EnumQuestType questType;
     /** Unlocalised name for the quest */
@@ -25,6 +26,7 @@ public class MHQuest
     {
         this.questType = questType;
         this.name = name;
+        setRegistryName(name);
         points = pointsRewarded;
         reqHR = requiredHR;
         time = timeLimit;

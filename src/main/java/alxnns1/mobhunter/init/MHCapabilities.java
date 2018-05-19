@@ -12,7 +12,6 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 /**
  * Created by Mark on 17/01/2017.
@@ -26,7 +25,7 @@ public class MHCapabilities
     @CapabilityInject(IMonsters.class)
     public static Capability<IMonsters> MONSTERS = null;
 
-    private static ArrayList<Capability> CAPABILITIES = new ArrayList<Capability>();
+    private static ArrayList<Capability> CAPABILITIES = new ArrayList<>();
 
     public static ArrayList<Capability> getCapabilities()
     {
@@ -41,31 +40,8 @@ public class MHCapabilities
 
     public static void init()
     {
-        CapabilityManager.INSTANCE.register(IHunterRank.class, new Storage<IHunterRank>(), new Callable<IHunterRank>()
-        {
-            @Override
-            public IHunterRank call() throws Exception
-            {
-                return new CapabilityHunterRank();
-            }
-        });
-
-        CapabilityManager.INSTANCE.register(IQuest.class, new Storage<IQuest>(), new Callable<IQuest>()
-        {
-            @Override
-            public IQuest call() throws Exception
-            {
-                return new CapabilityQuest();
-            }
-        });
-
-        CapabilityManager.INSTANCE.register(IMonsters.class, new Storage<IMonsters>(), new Callable<IMonsters>()
-        {
-            @Override
-            public IMonsters call() throws Exception
-            {
-                return new CapabilityMonsters();
-            }
-        });
+        CapabilityManager.INSTANCE.register(IHunterRank.class, new Storage<>(), CapabilityHunterRank::new);
+        CapabilityManager.INSTANCE.register(IQuest.class, new Storage<>(), CapabilityQuest::new);
+        CapabilityManager.INSTANCE.register(IMonsters.class, new Storage<>(), CapabilityMonsters::new);
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.util.text.TextComponentTranslation;
  */
 public class MHPotions
 {
+    //TODO: If we're keeping potions, then register using the Forge registry event
     public static PotionMH potionParalyse;
 
     private static PotionMH createPotion(String name, boolean isBad, int iconX, int iconY)

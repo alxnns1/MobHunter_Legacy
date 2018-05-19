@@ -36,41 +36,10 @@ public class MobHunter
 
     public static Logger LOGGER;
 
-    public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "_items")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
-        }
-    };
-
-    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "_armours")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(MHItems.armourBoneHelmet);
-        }
-    };
-
-    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "_weapons")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(MHItems.weaponHuntersKnife);
-        }
-    };
-
-    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "_blocks")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(MHBlocks.blockWeaponCraft);
-        }
-    };
+    public static final CreativeTabs MH_TAB = new MHTab("items", MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
+    public static final CreativeTabs MHARMOUR_TAB = new MHTab("armours", new ItemStack(MHItems.armourBoneHelmet));
+    public static final CreativeTabs MHWEAPON_TAB = new MHTab("weapons", new ItemStack(MHItems.weaponHuntersKnife));
+    public static final CreativeTabs MHBLOCK_TAB = new MHTab("blocks", new ItemStack(MHBlocks.blockWeaponCraft));
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -89,17 +58,14 @@ public class MobHunter
     {
         //Initializing and registering GUIs, tile entities, recipes and event handlers
 
-        MHAchievements.init();
-        MHQuests.init();
         MHRecipes.regSmelting();
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        //I wonder if I'll use this
-        //Mark: looks like we will now! #whyNot
         HunterRankProgression.init();
+        MHQuests.initLists();
 
         MHItems.ITEMS = null;
         MHItems.FISHABLE = null;
