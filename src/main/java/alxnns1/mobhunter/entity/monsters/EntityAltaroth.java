@@ -1,8 +1,8 @@
 package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.reference.MetaRef;
+import alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;

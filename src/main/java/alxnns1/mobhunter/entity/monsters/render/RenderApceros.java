@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters.render;
 
-import alxnns1.mobhunter.entity.monsters.models.ModelApceros;
 import alxnns1.mobhunter.entity.monsters.EntityApceros;
+import alxnns1.mobhunter.entity.monsters.models.ModelApceros;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

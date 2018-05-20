@@ -2,11 +2,12 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "minecraft:blockearthcrystal"
+            "item": "mobhunter:blockoreearthcrystal"
         }
     ],
     "result": {
         "item": "mobhunter:ore",
+        "data": 0,
         "count": 9
     }
 }

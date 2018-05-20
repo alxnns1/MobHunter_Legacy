@@ -2,11 +2,11 @@ package alxnns1.mobhunter.handler;
 
 import alxnns1.mobhunter.MobHunter;
 import alxnns1.mobhunter.capability.ICapability;
+import alxnns1.mobhunter.capability.monsters.EnumSizeResult;
 import alxnns1.mobhunter.capability.monsters.IMonsters;
 import alxnns1.mobhunter.capability.monsters.MonsterSize;
 import alxnns1.mobhunter.capability.quest.*;
 import alxnns1.mobhunter.entity.IScaledMob;
-import alxnns1.mobhunter.capability.monsters.EnumSizeResult;
 import alxnns1.mobhunter.init.MHCapabilities;
 import alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.entity.Entity;

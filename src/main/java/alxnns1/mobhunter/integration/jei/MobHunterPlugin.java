@@ -1,15 +1,18 @@
 package alxnns1.mobhunter.integration.jei;
 
 import alxnns1.mobhunter.MobHunter;
+import alxnns1.mobhunter.crafting.ArmourCraftingManager;
 import alxnns1.mobhunter.crafting.ArmourCraftingRecipe;
 import alxnns1.mobhunter.crafting.WeaponCraftingManager;
 import alxnns1.mobhunter.crafting.WeaponCraftingRecipe;
-import alxnns1.mobhunter.crafting.ArmourCraftingManager;
 import alxnns1.mobhunter.init.MHBlocks;
 import alxnns1.mobhunter.integration.jei.ItemCraftingTables.ItemCraftingRecipeCategory;
 import alxnns1.mobhunter.integration.jei.ItemCraftingTables.ItemCraftingRecipeWrapper;
 import alxnns1.mobhunter.reference.MetaRef;
-import mezz.jei.api.*;
+import mezz.jei.api.IJeiHelpers;
+import mezz.jei.api.IModPlugin;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;

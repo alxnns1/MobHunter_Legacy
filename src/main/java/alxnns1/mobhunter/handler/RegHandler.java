@@ -13,9 +13,13 @@ import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.ColorizerGrass;
+import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,6 +28,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.RegistryBuilder;
 
+@Mod.EventBusSubscriber(modid = MobHunter.MOD_ID)
 public class RegHandler
 {
     private static <T extends IForgeRegistryEntry<T>> IForgeRegistry<T> addRegistry(String registryName, Class<T> type)
@@ -73,8 +78,24 @@ public class RegHandler
         MHItems.getItems().forEach(ClientUtil::regModel);
 
         MHBlocks.getBlocks().forEach(ClientUtil::regModel);
-        MHBlocks.regColours();
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void regItemColours(ColorHandlerEvent.Item event)
+    {
+        event.getItemColors().registerItemColorHandler(
+                (stack, tintIndex) -> ColorizerGrass.getGrassColor(0.5D, 1.0D),
+                MHBlocks.blockHerb, MHBlocks.blockBerry, MHBlocks.blockBug, MHBlocks.blockShroom);
+    }
+
+    @SubscribeEvent
+    public static void regBlockColours(ColorHandlerEvent.Block event)
+    {
+        event.getBlockColors().registerBlockColorHandler(
+                (state, worldIn, pos, tintIndex) -> worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : ColorizerGrass.getGrassColor(0.5D, 1.0D),
+                MHBlocks.blockHerb, MHBlocks.blockBerry, MHBlocks.blockBug, MHBlocks.blockShroom);
     }
 
     @SubscribeEvent

@@ -1,5 +1,6 @@
 package alxnns1.mobhunter.item;
 
+import alxnns1.mobhunter.capability.quest.IQuest;
 import alxnns1.mobhunter.capability.quest.MHQuestObject;
 import alxnns1.mobhunter.handler.EnumGuiID;
 import alxnns1.mobhunter.init.MHCapabilities;
@@ -45,7 +46,10 @@ public class ItemMHQuest extends ItemMHBasic
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         //Show quest name on tooltip
-        MHQuestObject quest = Minecraft.getMinecraft().player.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest();
+        if(Minecraft.getMinecraft().player == null) return;
+        IQuest questCap = Minecraft.getMinecraft().player.getCapability(MHCapabilities.QUESTS, null);
+        if(questCap == null) return;
+        MHQuestObject quest = questCap.getCurrentQuest();
         String questName = quest == null ? "No quest accepted" : quest.getQuest().getLocalName();
         tooltip.add("Current quest:");
         tooltip.add(questName);

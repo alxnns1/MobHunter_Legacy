@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters.render;
 
-import alxnns1.mobhunter.entity.monsters.models.ModelGreatJaggi;
 import alxnns1.mobhunter.entity.monsters.EntityGreatJaggi;
+import alxnns1.mobhunter.entity.monsters.models.ModelGreatJaggi;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

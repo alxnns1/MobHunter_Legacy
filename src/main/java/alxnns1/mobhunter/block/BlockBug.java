@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.block;
 
-import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.reference.MetaRef;
+import alxnns1.mobhunter.reference.Names;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 

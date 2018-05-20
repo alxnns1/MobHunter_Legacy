@@ -1,12 +1,12 @@
 package alxnns1.mobhunter.gui;
 
 import alxnns1.mobhunter.capability.quest.EnumQuestStatus;
+import alxnns1.mobhunter.capability.quest.IQuest;
 import alxnns1.mobhunter.capability.quest.MHQuest;
 import alxnns1.mobhunter.capability.quest.MHQuestCooldown;
-import alxnns1.mobhunter.message.MessageSetQuest;
-import alxnns1.mobhunter.capability.quest.IQuest;
 import alxnns1.mobhunter.init.MHCapabilities;
 import alxnns1.mobhunter.init.MHQuests;
+import alxnns1.mobhunter.message.MessageSetQuest;
 import alxnns1.mobhunter.util.CommonUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.container;
 
-import alxnns1.mobhunter.gui.AbstractGuiCraft;
 import alxnns1.mobhunter.crafting.MHCraftingRecipe;
+import alxnns1.mobhunter.gui.AbstractGuiCraft;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;

@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.entity.monsters.render;
 
-import alxnns1.mobhunter.entity.monsters.models.ModelGendrome;
 import alxnns1.mobhunter.entity.monsters.EntityGendrome;
+import alxnns1.mobhunter.entity.monsters.models.ModelGendrome;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

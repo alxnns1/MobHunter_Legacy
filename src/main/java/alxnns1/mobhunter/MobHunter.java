@@ -1,14 +1,13 @@
 package alxnns1.mobhunter;
 
-import alxnns1.mobhunter.command.CommandHunterRank;
-import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
+import alxnns1.mobhunter.command.CommandHunterRank;
 import alxnns1.mobhunter.command.CommandMonsters;
 import alxnns1.mobhunter.command.CommandQuest;
+import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.util.CommonUtil;
-import alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -16,7 +15,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -36,10 +34,41 @@ public class MobHunter
 
     public static Logger LOGGER;
 
-    public static final CreativeTabs MH_TAB = new MHTab("items", MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
-    public static final CreativeTabs MHARMOUR_TAB = new MHTab("armours", new ItemStack(MHItems.armourBoneHelmet));
-    public static final CreativeTabs MHWEAPON_TAB = new MHTab("weapons", new ItemStack(MHItems.weaponHuntersKnife));
-    public static final CreativeTabs MHBLOCK_TAB = new MHTab("blocks", new ItemStack(MHBlocks.blockWeaponCraft));
+    public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "_items")
+    {
+        @Override
+        public ItemStack getTabIconItem()
+        {
+            return MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
+        }
+    };
+
+    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "_armours")
+    {
+        @Override
+        public ItemStack getTabIconItem()
+        {
+            return new ItemStack(MHItems.armourBoneHelmet);
+        }
+    };
+
+    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "_weapons")
+    {
+        @Override
+        public ItemStack getTabIconItem()
+        {
+            return new ItemStack(MHItems.weaponHuntersKnife);
+        }
+    };
+
+    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "_blocks")
+    {
+        @Override
+        public ItemStack getTabIconItem()
+        {
+            return new ItemStack(MHBlocks.blockWeaponCraft);
+        }
+    };
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -50,7 +79,7 @@ public class MobHunter
         CommonUtil.initNetwork();
         MHPotions.init();
         MHCapabilities.init();
-        GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
+        MHAdvancementTriggers.init();
     }
 
     @Mod.EventHandler
@@ -58,7 +87,9 @@ public class MobHunter
     {
         //Initializing and registering GUIs, tile entities, recipes and event handlers
 
+        MHBlocks.regOres();
         MHRecipes.regSmelting();
+        //GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
     }
 
     @Mod.EventHandler
@@ -68,9 +99,9 @@ public class MobHunter
         MHQuests.initLists();
 
         MHItems.ITEMS = null;
-        MHItems.FISHABLE = null;
         MHBlocks.BLOCKS = null;
         MHBlocks.ITEM_BLOCKS = null;
+        MHBlocks.ORES = null;
         MHEntities.ENTITIES = null;
     }
 

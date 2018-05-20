@@ -1,8 +1,8 @@
 package alxnns1.mobhunter.block;
 
 import alxnns1.mobhunter.init.MHItems;
-import alxnns1.mobhunter.tileentity.TileBbq;
 import alxnns1.mobhunter.reference.Names;
+import alxnns1.mobhunter.tileentity.TileBbq;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

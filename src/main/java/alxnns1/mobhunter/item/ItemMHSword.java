@@ -12,7 +12,9 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.*;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -126,7 +128,7 @@ public class ItemMHSword extends ItemSword
         {
             tooltip.add(I18n.format("item.sharpness") + " " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
             tooltip.add(I18n.format("item.maxSharpness") + " " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
-            if(Minecraft.getMinecraft().player.isCreative())
+            if(Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().player.isCreative())
                 tooltip.add(damageLevelsString);
         }
 

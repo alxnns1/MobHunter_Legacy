@@ -1,7 +1,7 @@
 package alxnns1.mobhunter.init;
 
-import alxnns1.mobhunter.advancement.trigger.LargeCrownTrigger;
 import alxnns1.mobhunter.advancement.MHTrigger;
+import alxnns1.mobhunter.advancement.trigger.LargeCrownTrigger;
 import alxnns1.mobhunter.advancement.trigger.SmallCrownTrigger;
 import net.minecraft.advancements.CriteriaTriggers;
 

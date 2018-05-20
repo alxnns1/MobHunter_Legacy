@@ -2,21 +2,18 @@ package alxnns1.mobhunter.init;
 
 import alxnns1.mobhunter.block.*;
 import alxnns1.mobhunter.item.ItemBlockBarrelBomb;
-import alxnns1.mobhunter.tileentity.TileBbq;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
+import alxnns1.mobhunter.tileentity.TileBbq;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.world.ColorizerGrass;
-import net.minecraft.world.biome.BiomeColorHelper;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -27,6 +24,7 @@ public class MHBlocks
 {
     public static Set<Block> BLOCKS = new HashSet<>();
     public static Set<Item> ITEM_BLOCKS = new HashSet<>();
+    public static Map<Block, String> ORES = new HashMap<>();
 
     public static BlockOre blockOreEarthCrystal, blockOreMachalite, blockOreDragonite, blockOreLightCrystal, blockOreIceCrystal, blockOreGossamite;
     public static BlockResource blockEarthCrystal, blockMachalite, blockDragonite, blockLightCrystal, blockGossamite, blockIceCrystal;
@@ -42,7 +40,7 @@ public class MHBlocks
     private static void addBlock(Block block, String oreDicName)
     {
         addBlock(block);
-        OreDictionary.registerOre(oreDicName, block);
+        ORES.put(block, oreDicName);
     }
 
     private static void addBlock(Block block)
@@ -114,17 +112,10 @@ public class MHBlocks
         GameRegistry.registerTileEntity(TileBbq.class, Names.Blocks.BBQ);
     }
 
-    @SideOnly(Side.CLIENT)
-    public static void regColours()
+    public static void regOres()
     {
-        FMLClientHandler.instance().getClient().getBlockColors().registerBlockColorHandler(
-                (state, worldIn, pos, tintIndex) ->
-                        worldIn != null && pos != null ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : ColorizerGrass.getGrassColor(0.5D, 1.0D),
-                blockHerb, blockBerry, blockBug, blockShroom);
-        FMLClientHandler.instance().getClient().getItemColors().registerItemColorHandler(
-                (stack, tintIndex) ->
-                        ColorizerGrass.getGrassColor(0.5D, 1.0D),
-                blockHerb, blockBerry, blockBug, blockShroom);
+        if(BLOCKS.isEmpty()) init();
+        ORES.forEach((block, ore) -> OreDictionary.registerOre(ore, block));
     }
 
     public static Set<Block> getBlocks()

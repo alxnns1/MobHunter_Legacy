@@ -2,12 +2,14 @@ package alxnns1.mobhunter.entity.monsters;
 
 import alxnns1.mobhunter.entity.AI.EntityAIAttackMeleeAndSpit;
 import alxnns1.mobhunter.entity.EntitySpit;
-import alxnns1.mobhunter.init.MHItems;
 import alxnns1.mobhunter.entity.ISpitAttackMob;
+import alxnns1.mobhunter.init.MHItems;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILeapAtTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;

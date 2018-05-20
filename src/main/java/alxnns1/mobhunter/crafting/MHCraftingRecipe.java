@@ -32,6 +32,7 @@ public class MHCraftingRecipe<T extends IForgeRegistryEntry<T>> extends IForgeRe
 
     public MHCraftingRecipe(ItemStack result, ItemStack key, Object... input)
     {
+        setRegistryName(key.toString() + "->" + result.toString());
         output = result.copy();
         inputKey = key.copy();
         for(Object in : input)

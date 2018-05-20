@@ -2,8 +2,8 @@ package alxnns1.mobhunter.init;
 
 import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import alxnns1.mobhunter.capability.quest.EntityStack;
-import alxnns1.mobhunter.capability.quest.MHQuest;
 import alxnns1.mobhunter.capability.quest.EnumQuestType;
+import alxnns1.mobhunter.capability.quest.MHQuest;
 import alxnns1.mobhunter.reference.MetaRef;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
