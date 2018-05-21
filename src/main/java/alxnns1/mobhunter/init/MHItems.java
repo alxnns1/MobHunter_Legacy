@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Contains all of the mod's items and registering code
+ * Contains all of the mod's items
  * Created by Mark on 21/04/2016.
  */
 public class MHItems

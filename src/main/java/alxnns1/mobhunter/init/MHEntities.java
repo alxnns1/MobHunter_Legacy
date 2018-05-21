@@ -132,7 +132,7 @@ public class MHEntities
     }
 
     @SideOnly(Side.CLIENT)
-    private static void regRenders()
+    public static void regRenders()
     {
         registerRender(EntityAptonoth.class, RenderAptonoth.FACTORY);
         registerRender(EntityApceros.class, RenderApceros.FACTORY);

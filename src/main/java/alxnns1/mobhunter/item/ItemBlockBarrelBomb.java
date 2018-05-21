@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 /**
  * Created by Mark on 07/04/2017.
  */
+//TODO: This needs to be a metadata item
 public class ItemBlockBarrelBomb extends ItemBlock
 {
     public ItemBlockBarrelBomb(Block block)
@@ -71,15 +72,22 @@ public class ItemBlockBarrelBomb extends ItemBlock
         EntityBarrelBomb bomb = new EntityBarrelBomb(worldIn, player, bombVel);
         worldIn.spawnEntity(bomb);
         worldIn.playSound(null, bomb.posX, bomb.posY, bomb.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        player.getCooldownTracker().setCooldown(this, 40);
         if(!player.capabilities.isCreativeMode)
+        {
+            player.getCooldownTracker().setCooldown(this, 40);
             stack.shrink(1);
+        }
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        playerIn.setActiveHand(hand);
-        return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
+        //If small barrel bomb
+        if(playerIn.getHeldItem(hand).getMetadata() == 0)
+        {
+            playerIn.setActiveHand(hand);
+            return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
+        }
+        return super.onItemRightClick(worldIn, playerIn, hand);
     }
 }

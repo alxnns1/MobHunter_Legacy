@@ -131,6 +131,7 @@ public abstract class AbstractContainerCraft extends MHContainer
     protected void reloadRecipes()
     {
         recipes = getRecipes();
+        recipes.sort(((o1, o2) -> o1.getOutput().getDisplayName().compareToIgnoreCase(o2.getOutput().getDisplayName())));
         recipesValid = new ArrayList<>(Arrays.asList(false, false, false, false, false));
         recipeStart = 0;
 

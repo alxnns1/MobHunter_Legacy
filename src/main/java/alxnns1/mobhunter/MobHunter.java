@@ -4,6 +4,7 @@ import alxnns1.mobhunter.capability.hunterRank.HunterRankProgression;
 import alxnns1.mobhunter.command.CommandHunterRank;
 import alxnns1.mobhunter.command.CommandMonsters;
 import alxnns1.mobhunter.command.CommandQuest;
+import alxnns1.mobhunter.handler.GuiHandler;
 import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
@@ -92,6 +94,7 @@ public class MobHunter
         MHBlocks.regOres();
         MHRecipes.regSmelting();
         GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @Mod.EventHandler

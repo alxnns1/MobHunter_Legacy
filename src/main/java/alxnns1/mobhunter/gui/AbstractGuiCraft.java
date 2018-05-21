@@ -19,6 +19,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Mouse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -106,6 +107,16 @@ public abstract class AbstractGuiCraft extends GuiContainer
         return tooltipList;
     }
 
+    private boolean canScrollUp()
+    {
+        return container.recipeStart > 0;
+    }
+
+    private boolean canScrollDown()
+    {
+        return container.recipes.size() > container.recipeStart + 5;
+    }
+
     /**
      * Called from the main game loop to update the screen.
      */
@@ -134,8 +145,8 @@ public abstract class AbstractGuiCraft extends GuiContainer
         }
 
         //Update arrow buttons
-        ((ArrowButton) buttonList.get(5)).enabled = container.recipeStart > 0;
-        ((ArrowButton) buttonList.get(6)).enabled = container.recipes.size() > container.recipeStart + 5;
+        ((ArrowButton) buttonList.get(5)).enabled = canScrollUp();
+        ((ArrowButton) buttonList.get(6)).enabled = canScrollDown();
     }
 
     @Override
@@ -193,6 +204,23 @@ public abstract class AbstractGuiCraft extends GuiContainer
             //Use the same enchant method for arrow buttons but ids Int Max for up and Int Max - 1 for down.
             int id = ((ArrowButton) button).isUpArrow() ? BUTTON_ID_ARROW_UP : BUTTON_ID_ARROW_DOWN;
             container.enchantItem(this.mc.player, id);
+            mc.playerController.sendEnchantPacket(container.windowId, id);
+        }
+    }
+
+    @Override
+    public void handleMouseInput() throws IOException
+    {
+        super.handleMouseInput();
+
+        int scrolled = Mouse.getEventDWheel();
+        if(scrolled == 0) return;
+
+        boolean scrolledUp = scrolled > 0;
+        if((scrolledUp && canScrollUp()) || (!scrolledUp && canScrollDown()))
+        {
+            int id = scrolled > 0 ? BUTTON_ID_ARROW_UP : BUTTON_ID_ARROW_DOWN;
+            container.enchantItem(mc.player, id);
             mc.playerController.sendEnchantPacket(container.windowId, id);
         }
     }

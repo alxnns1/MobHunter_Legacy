@@ -15,7 +15,6 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 /**
  * Created by Mark on 10/05/2016.
  */
-@Mod.EventBusSubscriber
 public class GuiHandler implements IGuiHandler
 {
     @Override

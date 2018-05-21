@@ -76,9 +76,9 @@ public class RegHandler
     public static void regModels(ModelRegistryEvent event)
     {
         MHItems.getItems().forEach(ClientUtil::regModel);
-
         MHBlocks.getBlocks().forEach(ClientUtil::regModel);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
+        MHEntities.regRenders();
     }
 
     @SideOnly(Side.CLIENT)
