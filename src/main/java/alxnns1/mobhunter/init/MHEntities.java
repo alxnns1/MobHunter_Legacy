@@ -61,7 +61,7 @@ public class MHEntities
                 .entity(entityClass)
                 .name(entityName)
                 .id(new ResourceLocation(MobHunter.MOD_ID, name), modEntityID++)
-                .tracker(64, 1, false);
+                .tracker(64, 20, false);
     }
 
     private static Set<Biome> getBiomes(BiomeDictionary.Type... biomeTypes)

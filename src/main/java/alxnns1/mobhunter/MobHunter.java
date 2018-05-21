@@ -8,6 +8,7 @@ import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.util.CommonUtil;
+import alxnns1.mobhunter.worldgen.WorldGenHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -89,7 +91,7 @@ public class MobHunter
 
         MHBlocks.regOres();
         MHRecipes.regSmelting();
-        //GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
+        GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
     }
 
     @Mod.EventHandler

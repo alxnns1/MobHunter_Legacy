@@ -27,20 +27,32 @@ public class MHPlantGen extends WorldGenerator
         size = groupSize;
     }
 
+    private boolean canPlace(World world, BlockPos pos)
+    {
+        return (world.isAirBlock(pos) || world.getBlockState(pos).getBlock().isReplaceable(world, pos)) && block.canBlockStay(world, pos, block.getDefaultState());
+    }
+
     public boolean generate(World world, Random rand, BlockPos position)
     {
         boolean isNether = world.provider.getDimension() == -1;
         int maxHeight = isNether ? 127 : 255;
 
-        for (int i = 0; i < size; ++i)
+        int numToSpawn = Math.max(1, size + rand.nextInt(3) - 1);
+        for (int i = 0; i < numToSpawn; ++i)
         {
-            BlockPos pos = position.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+            BlockPos pos = position.add(rand.nextInt(5) - 2, 0, rand.nextInt(5) - 2);
             if(world.getBlockState(pos.down()).getBlock() == Blocks.SNOW_LAYER)
                 pos = pos.down();
 
-            if((world.isAirBlock(pos) || world.getBlockState(pos).getBlock() == Blocks.SNOW_LAYER) && (world.provider.hasSkyLight() || pos.getY() < 255) && block.canBlockStay(world, pos, block.getDefaultState()))
-                world.setBlockState(pos, block.getDefaultState(), 2);
-            else if(isNether)
+            if(!isNether)
+            {
+                for(int y = 2; y >= - 2; y--)
+                {
+                    BlockPos newPos = pos.add(0, y, 0);
+                    if(canPlace(world, newPos) && world.setBlockState(newPos, block.getDefaultState(), 2)) break;
+                }
+            }
+            else
             {
                 //Finds a suitable y position within 10 blocks up and down (NETHER ONLY)
                 int minY = pos.getY() - 10 < 1 ? 1 : pos.getY() - 10;
@@ -48,11 +60,8 @@ public class MHPlantGen extends WorldGenerator
                 for(int y = minY; y <= maxY; y++)
                 {
                     BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                    if(world.isAirBlock(newPos) && block.canBlockStay(world, newPos, block.getDefaultState()))
-                    {
-                        world.setBlockState(newPos, block.getDefaultState(), 2);
+                    if(canPlace(world, newPos) && world.setBlockState(newPos, block.getDefaultState(), 2))
                         break;
-                    }
                 }
             }
         }

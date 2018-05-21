@@ -102,7 +102,7 @@ public class MetaRef
             case ELDER_DROP:        return ELDER_DROP;
             case ICON:              return ICON;
             default:
-                MobHunter.LOGGER.error("Who added an item that I didn't know about? Come on, own up!");
+                MobHunter.LOGGER.error("Who added an item that I didn't know about? Come on, own up! -> " + itemType);
                 return Lists.newArrayList();
         }
     }
@@ -138,7 +138,7 @@ public class MetaRef
             case ELDER_DROP:        return MHItems.itemElderDragonDrop;
             case ICON:              return MHItems.itemIcon;
             default:
-                MobHunter.LOGGER.error("Who added an item that I didn't know about? Come on, own up!");
+                MobHunter.LOGGER.error("Who added an item that I didn't know about? Come on, own up! -> " + itemType);
                 return null;
         }
     }
@@ -153,7 +153,7 @@ public class MetaRef
     public static int getMeta(EnumItemType itemType, String subName)
     {
         List<String> list = getList(itemType);
-        return list != null ? list.indexOf(subName) : -1;
+        return list != null ? list.indexOf(subName.toLowerCase()) : -1;
     }
 
     public static ItemStack getStack(EnumItemType itemType, String subName)

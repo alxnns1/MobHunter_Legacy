@@ -19,7 +19,7 @@ public class MHConfig
     public static double scaleMin = 0.79d;
 
     @Config.Comment("The dimension IDs that will generate plants")
-    public static int[] plantGenDimIDs = new int[] {0};
+    public static int[] plantGenDimIDs = new int[] {-1, 0, 1};
 
     @Config.Comment("Mob spawn chance configs")
     public static final SpawnChances SPAWN_CHANCES = new SpawnChances();

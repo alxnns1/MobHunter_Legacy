@@ -6,11 +6,13 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeHell;
 import net.minecraftforge.common.EnumPlantType;
 
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class BlockNatural extends BlockBush
      */
     protected ArrayList<ItemStack> createEmptyList()
     {
-        return new ArrayList<ItemStack>();
+        return new ArrayList<>();
     }
 
     /**
@@ -104,16 +106,14 @@ public class BlockNatural extends BlockBush
      * This returns a complete list of items dropped from this block.
      */
     @Override
-    public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune)
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         if(!(world instanceof WorldServer))
-            return new ArrayList<>();
+            return;
         WorldServer server = (WorldServer) world;
         Biome biome = server.getBiomeForCoordsBody(pos);
         IBlockState stateBelow = server.getBlockState(pos.down());
         Random rand = server.rand;
-
-        ArrayList<ItemStack> drops = createEmptyList();
 
         //Get normal drops (1-2 + fortune level)
         ArrayList<ItemStack> dropsList = getDropsAll();
@@ -122,14 +122,12 @@ public class BlockNatural extends BlockBush
 
         //Get special drops (0-1 + fortune level)
         if(stateBelow.getMaterial() == Material.SAND)       dropsList = getDropsSand();
-        else if(biome.getBiomeName().equals("Hell"))        dropsList = getDropsNether();
+        else if(biome instanceof BiomeHell)                 dropsList = getDropsNether();
         else if(biome.getTemperature(pos) < 0.2f)           dropsList = getDropsCold();
         else if(stateBelow.getMaterial() == Material.ROCK)  dropsList = getDropsRock();
         else                                                dropsList = getDropsOther();
         if(!dropsList.isEmpty())
             for(int i = 0; i < rand.nextInt(2) + fortune; i++)
                 drops.add(getRandStack(rand, dropsList));
-
-        return drops;
     }
 }
