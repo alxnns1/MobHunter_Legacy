@@ -5,6 +5,7 @@ import alxnns1.mobhunter.item.ItemBlockBarrelBomb;
 import alxnns1.mobhunter.reference.MetaRef;
 import alxnns1.mobhunter.reference.Names;
 import alxnns1.mobhunter.tileentity.TileBbq;
+import alxnns1.mobhunter.tileentity.TileGourmetBBQ;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -110,6 +111,7 @@ public class MHBlocks
         addBlock(blockBarrelBomb = new BlockBarrelBomb(), new ItemBlockBarrelBomb(blockBarrelBomb));
 
         GameRegistry.registerTileEntity(TileBbq.class, Names.Blocks.BBQ);
+        GameRegistry.registerTileEntity(TileGourmetBBQ.class, Names.Blocks.BBQ_GOURMET);
     }
 
     public static void regOres()

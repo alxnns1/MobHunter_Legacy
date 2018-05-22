@@ -1,45 +1,27 @@
 package alxnns1.mobhunter.tileentity;
 
+import alxnns1.mobhunter.init.MHItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.common.util.Constants;
 
 /**
  * Created by Mark on 26/04/2016.
  */
 public class TileBbq extends TileEntity implements ITickable
 {
+    private static final int[] COOK_TIMES = new int[] {120, 180, 200}; //6, 9, 10 secs;
+    private static final String KEY_TIME = "cookTime";
     private int cookTime = 0;
     private int rotationAngles = 64;
-    private ItemStack[] cookResults;
-    private int[] cookTimes;
 
-    //These are just used as keys for the NBT saving/reading
-    private static final String KEY_TIME = "cookTime";
-    private static final String KEY_COOK_LIST = "cookList";
-    private static final String KEY_COOK_LIST_TIME = "cookListTime";
-
-    public TileBbq()
-    {
-        cookResults = new ItemStack[0];
-        cookTimes = new int[0];
-    }
-
-    public TileBbq(ItemStack[] cookResults, int[] cookTimes)
-    {
-        if(cookResults == null || cookResults.length <= 0 || cookTimes == null || cookTimes.length <= 0 || cookResults.length - 1 != cookTimes.length)
-            throw new IllegalArgumentException("Input arrays must not be empty and cookResults' length should be 1 greater than the cookTimes' length.");
-        this.cookResults = cookResults;
-        this.cookTimes = cookTimes;
-    }
+    public TileBbq() {}
 
     public boolean isValidInput(ItemStack input)
     {
-        return input.isItemEqual(cookResults[0]);
+        return input.getItem().equals(MHItems.itemRawMeat);
     }
 
     public boolean isCooking()
@@ -65,12 +47,29 @@ public class TileBbq extends TileEntity implements ITickable
     /**
      * Gets the meat at the current cooking time.
      * This is ONLY used to see the item. Use retrieveResult() to take the item out.
-     * @return
      */
     public ItemStack getResult()
     {
         //If not cooking, then return null
-        return isCooking() ? cookResults[getCookingStage()].copy() : null;
+        if(isCooking())
+        {
+            switch(getCookingStage())
+            {
+                case 0: return new ItemStack(MHItems.itemRawMeat);
+                case 1: return new ItemStack(MHItems.itemRareSteak);
+                case 2: return getCookedMeat();
+                case 3: return new ItemStack(MHItems.itemBurntMeat);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the perfectly cooked meat ItemStack
+     */
+    protected ItemStack getCookedMeat()
+    {
+        return new ItemStack(MHItems.itemDoneSteak);
     }
 
     /**
@@ -79,10 +78,10 @@ public class TileBbq extends TileEntity implements ITickable
      */
     public int getCookingStage()
     {
-        for(int i = 0; i < cookTimes.length; i++)
-            if(cookTime < cookTimes[i])
+        for(int i = 0; i < COOK_TIMES.length; i++)
+            if(cookTime < COOK_TIMES[i])
                 return i;
-        return cookTimes.length;
+        return COOK_TIMES.length;
     }
 
     /**
@@ -110,21 +109,6 @@ public class TileBbq extends TileEntity implements ITickable
     {
         super.readFromNBT(tag);
         cookTime = tag.getInteger(KEY_TIME);
-        //Read cook times and results
-        NBTTagList cookList = tag.getTagList(KEY_COOK_LIST, Constants.NBT.TAG_COMPOUND);
-        if(cookResults.length != cookList.tagCount())
-        {
-            int listSize = Math.min(cookList.tagCount(), 0);
-            cookResults = new ItemStack[listSize];
-            cookTimes = new int[Math.max(listSize - 1, 0)];
-        }
-        for(int i = 0; i < cookList.tagCount(); i++)
-        {
-            NBTTagCompound item = cookList.getCompoundTagAt(i);
-            cookResults[i] = new ItemStack(item);
-            if(i > 0)
-                cookTimes[i-1] = item.getInteger(KEY_COOK_LIST_TIME);
-        }
     }
 
     @Override
@@ -132,16 +116,6 @@ public class TileBbq extends TileEntity implements ITickable
     {
         super.writeToNBT(tag);
         tag.setInteger(KEY_TIME, cookTime);
-        //Save cook times and results
-        NBTTagList cookList = new NBTTagList();
-        for(int i = 0; i < cookResults.length; i++)
-        {
-            NBTTagCompound item = new NBTTagCompound();
-            cookResults[i].writeToNBT(item);
-            if(i > 0)
-                item.setInteger(KEY_COOK_LIST_TIME, cookTimes[i-1]);
-        }
-        tag.setTag(KEY_COOK_LIST, cookList);
         return tag;
     }
 

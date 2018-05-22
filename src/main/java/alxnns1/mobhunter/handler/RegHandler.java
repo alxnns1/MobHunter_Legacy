@@ -9,6 +9,7 @@ import alxnns1.mobhunter.crafting.WeaponCraftingManager;
 import alxnns1.mobhunter.crafting.WeaponCraftingRecipe;
 import alxnns1.mobhunter.init.*;
 import alxnns1.mobhunter.tileentity.TileBbq;
+import alxnns1.mobhunter.tileentity.TileGourmetBBQ;
 import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -78,6 +79,7 @@ public class RegHandler
         MHItems.getItems().forEach(ClientUtil::regModel);
         MHBlocks.getBlocks().forEach(ClientUtil::regModel);
         ClientRegistry.bindTileEntitySpecialRenderer(TileBbq.class, new RenderBbq());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileGourmetBBQ.class, new RenderBbq());
         MHEntities.regRenders();
     }
 
