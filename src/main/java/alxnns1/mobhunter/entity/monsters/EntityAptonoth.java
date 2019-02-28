@@ -9,10 +9,8 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 26/05/2016.
  */
-public class EntityAptonoth extends EntityMHHerbivore
-{
-	public EntityAptonoth(World worldIn)
-	{
+public class EntityAptonoth extends EntityMHHerbivore {
+	public EntityAptonoth(World worldIn) {
 		super(worldIn);
 		this.setSize(3.0F, 3.5F);
 		setBaseHealth(8);
@@ -21,48 +19,36 @@ public class EntityAptonoth extends EntityMHHerbivore
 	}
 
 	@Override
-	public float getEyeHeight()
-	{
+	public float getEyeHeight() {
 		return 3.75F;
 	}
 
 	/**
 	 * Drop 0-2 items of this living's type
 	 */
-	protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
-	{
-		if(!hitByPlayer)
-		{
+	protected void dropFewItems(boolean hitByPlayer, int lootingLevel) {
+		if (!hitByPlayer) {
 			int i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
-			for(int j = 0; j < i; ++j)
-			{
+			for (int j = 0; j < i; ++j) {
 				dropSingleItem(MHItems.itemRawMeat);
 			}
 			i = this.rand.nextInt(2) + this.rand.nextInt(1 + lootingLevel);
-			for(int k = 0; k < i; ++k)
-			{
+			for (int k = 0; k < i; ++k) {
 				dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
 			}
-		}
-		else
-		{
-			for(int n = 0; n < 2 + lootingLevel; n++)
-			{
+		} else {
+			for (int n = 0; n < 2 + lootingLevel; n++) {
 				int i = this.rand.nextInt(99);
-				if(i < 75)
-				{
+				if (i < 75) {
 					dropSingleItem(MHItems.itemRawMeat);
-				}
-				else
-				{
+				} else {
 					dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
 				}
 			}
 		}
 	}
 
-	public EntityAptonoth createChild(EntityAgeable ageable)
-	{
+	public EntityAptonoth createChild(EntityAgeable ageable) {
 		return new EntityAptonoth(this.world);
 	}
 }

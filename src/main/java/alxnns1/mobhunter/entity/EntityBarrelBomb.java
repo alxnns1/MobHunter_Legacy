@@ -12,25 +12,21 @@ import java.util.List;
 /**
  * Created by Mark on 05/04/2017.
  */
-public class EntityBarrelBomb extends EntityTNTPrimed
-{
+public class EntityBarrelBomb extends EntityTNTPrimed {
 	private boolean hasBeenThrown = false;
 	private int fuseStart;
 
-	public EntityBarrelBomb(World worldIn)
-	{
+	public EntityBarrelBomb(World worldIn) {
 		super(worldIn);
 		fuseStart = getFuse();
 	}
 
-	public EntityBarrelBomb(World world, EntityLivingBase thrower, float velocity)
-	{
+	public EntityBarrelBomb(World world, EntityLivingBase thrower, float velocity) {
 		this(world, thrower.posX, thrower.posY + (double) thrower.getEyeHeight() - 0.1d, thrower.posZ, thrower);
 		setThrow(thrower, velocity);
 	}
 
-	public EntityBarrelBomb(World worldIn, double x, double y, double z, EntityLivingBase igniter)
-	{
+	public EntityBarrelBomb(World worldIn, double x, double y, double z, EntityLivingBase igniter) {
 		super(worldIn, x, y, z, igniter);
 		motionX = 0;
 		motionY = 0;
@@ -38,8 +34,7 @@ public class EntityBarrelBomb extends EntityTNTPrimed
 	}
 
 	@Override
-	public void setFuse(int fuseIn)
-	{
+	public void setFuse(int fuseIn) {
 		super.setFuse(fuseIn);
 		fuseStart = fuseIn;
 	}
@@ -48,18 +43,16 @@ public class EntityBarrelBomb extends EntityTNTPrimed
 	 * Partly copied from EntityTNTPrimed due to it being private.
 	 * Will kill this entity and create an explosion.
 	 */
-	protected void explode()
-	{
+	protected void explode() {
 		setDead();
-		if(!world.isRemote)
+		if (!world.isRemote)
 			world.createExplosion(this, posX, posY + (double) (height / 16.0F), posZ, 4.0F, true);
 	}
 
 	/**
 	 * Set this entity to bounce for when spawning a bouncing bomb.
 	 */
-	public EntityBarrelBomb setBounce()
-	{
+	public EntityBarrelBomb setBounce() {
 		motionY = 1;
 		return this;
 	}
@@ -67,8 +60,7 @@ public class EntityBarrelBomb extends EntityTNTPrimed
 	/**
 	 * Set this entity to throw in the direction the thrower is looking at the velocity given.
 	 */
-	public EntityBarrelBomb setThrow(EntityLivingBase thrower, float velocity)
-	{
+	public EntityBarrelBomb setThrow(EntityLivingBase thrower, float velocity) {
 		hasBeenThrown = true;
 
 		float rotYaw = thrower.rotationYaw;
@@ -93,7 +85,7 @@ public class EntityBarrelBomb extends EntityTNTPrimed
 
 		motionX += thrower.motionX;
 		motionZ += thrower.motionZ;
-		if(!thrower.onGround)
+		if (!thrower.onGround)
 			motionY += thrower.motionY;
 
 		return this;
@@ -103,20 +95,18 @@ public class EntityBarrelBomb extends EntityTNTPrimed
 	 * Called to update the entity's position/logic.
 	 */
 	@Override
-	public void onUpdate()
-	{
+	public void onUpdate() {
 		super.onUpdate();
 
 		//Collide with blocks
-		if(hasBeenThrown && collided)
+		if (hasBeenThrown && collided)
 			explode();
 
 		//Collide with living or item entities
-		if(hasBeenThrown && getFuse() < fuseStart - 5)
-		{
+		if (hasBeenThrown && getFuse() < fuseStart - 5) {
 			List<Entity> entityList = world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox());
-			for(Entity entity : entityList)
-				if((entity instanceof EntityLivingBase || entity instanceof EntityItem)) //&& CommonUtil.getEntityVelocity(entity) >= 6d)
+			for (Entity entity : entityList)
+				if ((entity instanceof EntityLivingBase || entity instanceof EntityItem)) //&& CommonUtil.getEntityVelocity(entity) >= 6d)
 				{
 					explode();
 					break;

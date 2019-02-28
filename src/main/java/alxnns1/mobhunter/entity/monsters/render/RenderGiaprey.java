@@ -12,34 +12,28 @@ import org.lwjgl.opengl.GL11;
 /**
  * Created by Alex on 27/04/2016.
  */
-public class RenderGiaprey extends RenderLiving<EntityGiaprey>
-{
+public class RenderGiaprey extends RenderLiving<EntityGiaprey> {
 	public static final Factory FACTORY = new Factory();
 	private static final ResourceLocation giapreyTextures = new ResourceLocation("mobhunter:textures/entities/giaprey.png");
 
-	public RenderGiaprey(RenderManager renderManagerIn)
-	{
+	public RenderGiaprey(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelVelociprey(), 0.7f);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityGiaprey entity)
-	{
+	protected ResourceLocation getEntityTexture(EntityGiaprey entity) {
 		return giapreyTextures;
 	}
 
-	public static class Factory implements IRenderFactory<EntityGiaprey>
-	{
+	public static class Factory implements IRenderFactory<EntityGiaprey> {
 		@Override
-		public Render<? super EntityGiaprey> createRenderFor(RenderManager manager)
-		{
+		public Render<? super EntityGiaprey> createRenderFor(RenderManager manager) {
 			return new RenderGiaprey(manager);
 		}
 	}
 
 	@Override
-	protected void preRenderCallback(EntityGiaprey entity, float f)
-	{
+	protected void preRenderCallback(EntityGiaprey entity, float f) {
 		float tSizeMult = entity.getScale();
 		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
 	}

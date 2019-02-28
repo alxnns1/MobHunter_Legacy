@@ -22,8 +22,7 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 02/05/2016.
  */
-public abstract class EntityMHBirdWyvern extends EntityMob implements IScaledMob
-{
+public abstract class EntityMHBirdWyvern extends EntityMob implements IScaledMob {
 	private static final String KEY_SCALE = "scale";
 	private static final DataParameter<Float> ENTITY_SCALE = EntityDataManager.createKey(EntityMHHerbivore.class, DataSerializers.FLOAT);
 	private static double scaleMax; //= 1.24d;
@@ -33,18 +32,15 @@ public abstract class EntityMHBirdWyvern extends EntityMob implements IScaledMob
 	private double baseKnockback = 0.2d;
 	private double baseAttack = 0;
 
-	public EntityMHBirdWyvern(World world)
-	{
+	public EntityMHBirdWyvern(World world) {
 		this(world, MHConfig.scaleMin, MHConfig.scaleMax, MHItems.itemRawMeat);
 	}
 
-	public EntityMHBirdWyvern(World world, double minScale, double maxScale)
-	{
+	public EntityMHBirdWyvern(World world, double minScale, double maxScale) {
 		this(world, minScale, maxScale, MHItems.itemRawMeat);
 	}
 
-	public EntityMHBirdWyvern(World world, double minScale, double maxScale, Item temptFood)
-	{
+	public EntityMHBirdWyvern(World world, double minScale, double maxScale, Item temptFood) {
 		super(world);
 		this.setSize(0.9F, 1.3F); //Same as cow
 		scaleMin = minScale;
@@ -56,23 +52,20 @@ public abstract class EntityMHBirdWyvern extends EntityMob implements IScaledMob
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
 
-	protected void entityInit()
-	{
+	protected void entityInit() {
 		super.entityInit();
 		//Creates the datawatcher object to save the entity scale in
 		this.dataManager.register(ENTITY_SCALE, 1.0f);
 	}
 
 	//Same as pig
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
 	}
 
-	protected Item getDropItem()
-	{
+	protected Item getDropItem() {
 		return MHItems.itemBirdWyvernDrop;
 	}
 
@@ -80,21 +73,18 @@ public abstract class EntityMHBirdWyvern extends EntityMob implements IScaledMob
 	 * Called only once on an entity when first time spawned, via egg, mob spawner, natural spawning etc, but not called
 	 * when entity is reloaded from nbt. Mainly used for initializing attributes and inventory
 	 */
-	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
-	{
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
 		double scale = (this.rand.nextFloat() * (scaleMax - scaleMin)) + scaleMin;
 		this.setEntityScale(scale);
 		return super.onInitialSpawn(difficulty, livingdata);
 	}
 
 	@Override
-	public boolean getCanSpawnHere()
-	{
+	public boolean getCanSpawnHere() {
 		return this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 
-	private void setEntityScale(double scale)
-	{
+	private void setEntityScale(double scale) {
 		//Gets the datawatcher value for the entity scale
 		this.dataManager.set(ENTITY_SCALE, (float) scale);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double) Math.round(baseHealth * scale));
@@ -104,62 +94,52 @@ public abstract class EntityMHBirdWyvern extends EntityMob implements IScaledMob
 		this.setHealth(this.getMaxHealth());
 	}
 
-	public float getScale()
-	{
+	public float getScale() {
 		return this.dataManager.get(ENTITY_SCALE);
 	}
 
-	public void writeEntityToNBT(NBTTagCompound tagCompound)
-	{
+	public void writeEntityToNBT(NBTTagCompound tagCompound) {
 		super.writeEntityToNBT(tagCompound);
 		tagCompound.setFloat(KEY_SCALE, getScale());
 	}
 
-	public void readEntityFromNBT(NBTTagCompound tagCompund)
-	{
+	public void readEntityFromNBT(NBTTagCompound tagCompund) {
 		super.readEntityFromNBT(tagCompund);
 		setEntityScale(tagCompund.getFloat(KEY_SCALE));
 	}
 
 	@Override
-	protected boolean canDespawn()
-	{
+	protected boolean canDespawn() {
 		return false;
 	}
 
-	protected void setBaseHealth(int health)
-	{
+	protected void setBaseHealth(int health) {
 		baseHealth = (double) health;
 	}
 
-	protected void setBaseSpeed(double speed)
-	{
+	protected void setBaseSpeed(double speed) {
 		baseSpeed = speed;
 	}
 
-	protected void setBaseKnockback(double knockback)
-	{
+	protected void setBaseKnockback(double knockback) {
 		baseKnockback = knockback;
 	}
 
-	protected void setBaseAttack(double attack)
-	{
+	protected void setBaseAttack(double attack) {
 		baseAttack = attack;
 	}
 
 	/**
 	 * Drops a single item
 	 */
-	public EntityItem dropSingleItem(Item item)
-	{
+	public EntityItem dropSingleItem(Item item) {
 		return dropSingleItem(item, 0);
 	}
 
 	/**
 	 * Drops a single item
 	 */
-	public EntityItem dropSingleItem(Item item, int meta)
-	{
+	public EntityItem dropSingleItem(Item item, int meta) {
 		return entityDropItem(new ItemStack(item, 1, meta), 0);
 	}
 }

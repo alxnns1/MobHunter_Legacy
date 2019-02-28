@@ -5,8 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 /**
  * Created by Alex on 08/12/2016.
  */
-public interface ISpitAttackMob
-{
+public interface ISpitAttackMob {
 	/**
 	 * Attack the specified entity using a ranged attack.
 	 */

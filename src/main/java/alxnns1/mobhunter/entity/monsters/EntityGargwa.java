@@ -9,10 +9,8 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 17/05/2016.
  */
-public class EntityGargwa extends EntityMHHerbivore
-{
-	public EntityGargwa(World worldIn)
-	{
+public class EntityGargwa extends EntityMHHerbivore {
+	public EntityGargwa(World worldIn) {
 		super(worldIn, MHItems.itemBug);
 		this.setSize(1.0F, 1.25F);
 		setBaseHealth(7);
@@ -21,62 +19,43 @@ public class EntityGargwa extends EntityMHHerbivore
 	}
 
 	@Override
-	public float getEyeHeight()
-	{
+	public float getEyeHeight() {
 		return 1.5625F;
 	}
 
-	protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
-	{
-		if(!hitByPlayer)
-		{
+	protected void dropFewItems(boolean hitByPlayer, int lootingLevel) {
+		if (!hitByPlayer) {
 			int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
-			for(int j = 0; j < i; ++j)
-			{
+			for (int j = 0; j < i; ++j) {
 				dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
 			}
 			i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
-			for(int k = 0; k < i; ++k)
-			{
+			for (int k = 0; k < i; ++k) {
 				dropSingleItem(MHItems.itemRawMeat);
 			}
-		}
-		else
-		{
-			for(int n = 0; n < 1 + lootingLevel; n++)
-			{
+		} else {
+			for (int n = 0; n < 1 + lootingLevel; n++) {
 				int i = this.rand.nextInt(99);
-				if(i < 70)
-				{
+				if (i < 70) {
 					dropSingleItem(MHItems.itemRawMeat);
-				}
-				else if(i < 85)
-				{
+				} else if (i < 85) {
 					dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
-				}
-				else
-				{
+				} else {
 					dropSingleItem(MHItems.itemHerbivoreDrop, MetaRef.getMeta(MetaRef.EnumItemType.HERBIVORE_DROP, Names.Items.GARGWA_FEATHER));
 				}
 			}
 			int i = this.rand.nextInt(99);
-			if(i < 60)
-			{
+			if (i < 60) {
 				dropSingleItem(MHItems.itemMisc, MetaRef.getMeta(MetaRef.EnumItemType.MISC, Names.Items.STEEL_EGG));
-			}
-			else if(i < 90)
-			{
+			} else if (i < 90) {
 				dropSingleItem(MHItems.itemPlant, MetaRef.getMeta(MetaRef.EnumItemType.PLANT, Names.Items.HERB));
-			}
-			else
-			{
+			} else {
 				dropSingleItem(MHItems.itemBug, MetaRef.getMeta(MetaRef.EnumItemType.BUG, Names.Items.INSECT_HUSK));
 			}
 		}
 	}
 
-	public EntityGargwa createChild(EntityAgeable ageable)
-	{
+	public EntityGargwa createChild(EntityAgeable ageable) {
 		return new EntityGargwa(this.world);
 	}
 }

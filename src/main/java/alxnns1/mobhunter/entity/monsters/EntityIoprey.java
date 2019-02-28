@@ -26,10 +26,8 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 10/06/2016.
  */
-public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob
-{
-	public EntityIoprey(World worldIn)
-	{
+public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob {
+	public EntityIoprey(World worldIn) {
 		super(worldIn, 1, 1);
 		this.setSize(1.5F, 1.8125F);
 		setBaseHealth(15);
@@ -47,48 +45,33 @@ public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob
 	}
 
 	@Override
-	public float getEyeHeight()
-	{
+	public float getEyeHeight() {
 		return 2.5625F;
 	}
 
 	/**
 	 * Drop 0-2 items of this living's type
 	 */
-	protected void dropFewItems(boolean hitByPlayer, int lootingLevel)
-	{
-		if(!hitByPlayer)
-		{
+	protected void dropFewItems(boolean hitByPlayer, int lootingLevel) {
+		if (!hitByPlayer) {
 			int i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
-			for(int j = 0; j < i; ++j)
-			{
+			for (int j = 0; j < i; ++j) {
 				dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
 			}
 			i = this.rand.nextInt(1) + this.rand.nextInt(1 + lootingLevel);
-			for(int k = 0; k < i; ++k)
-			{
+			for (int k = 0; k < i; ++k) {
 				dropSingleItem(MHItems.itemBirdWyvernDrop, MetaRef.getMeta(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_FANG));
 			}
-		}
-		else
-		{
-			for(int n = 0; n < 1 + lootingLevel; n++)
-			{
+		} else {
+			for (int n = 0; n < 1 + lootingLevel; n++) {
 				int i = this.rand.nextInt(99);
-				if(i < 40)
-				{
+				if (i < 40) {
 					dropSingleItem(MHItems.itemBirdWyvernDrop, MetaRef.getMeta(MetaRef.EnumItemType.BIRD_DROP, Names.Items.IOPREY_FANG));
-				}
-				else if(i < 69)
-				{
+				} else if (i < 69) {
 					dropSingleItem(MHItems.itemBirdWyvernDrop, MetaRef.getMeta(MetaRef.EnumItemType.BIRD_DROP, Names.Items.IOPREY_SCALE));
-				}
-				else if(i < 92)
-				{
+				} else if (i < 92) {
 					dropSingleItem(MHItems.itemBirdWyvernDrop, MetaRef.getMeta(MetaRef.EnumItemType.BIRD_DROP, Names.Items.IOPREY_HIDE));
-				}
-				else
-				{
+				} else {
 					dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S));
 				}
 			}
@@ -96,16 +79,14 @@ public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob
 	}
 
 	@Override
-	public boolean isPotionApplicable(PotionEffect potioneffectIn)
-	{
+	public boolean isPotionApplicable(PotionEffect potioneffectIn) {
 		Potion potion = potioneffectIn.getPotion();
-		if(potion == MobEffects.POISON) return false;
+		if (potion == MobEffects.POISON) return false;
 		return true;
 	}
 
 	@Override
-	public void attackEntityWithSpitAttack(EntityLivingBase target)
-	{
+	public void attackEntityWithSpitAttack(EntityLivingBase target) {
 		EntitySpit spit = new EntitySpit(this.world, this, "iopreySpit", 0f, 1f, new PotionEffect(MobEffects.POISON, 200));
 		double d0 = target.posY + (double) target.getEyeHeight() - 1.100000023841858D;
 		double d1 = target.posX - this.posX;

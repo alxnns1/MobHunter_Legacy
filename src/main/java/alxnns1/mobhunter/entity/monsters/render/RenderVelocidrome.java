@@ -12,34 +12,28 @@ import org.lwjgl.opengl.GL11;
 /**
  * Created by Alex on 01/06/2016.
  */
-public class RenderVelocidrome extends RenderLiving<EntityVelocidrome>
-{
+public class RenderVelocidrome extends RenderLiving<EntityVelocidrome> {
 	public static final Factory FACTORY = new Factory();
 	private static final ResourceLocation velocidromeTextures = new ResourceLocation("mobhunter:textures/entities/velocidrome.png");
 
-	public RenderVelocidrome(RenderManager renderManagerIn)
-	{
+	public RenderVelocidrome(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelVelocidrome(), 0.7f);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityVelocidrome entity)
-	{
+	protected ResourceLocation getEntityTexture(EntityVelocidrome entity) {
 		return velocidromeTextures;
 	}
 
-	public static class Factory implements IRenderFactory<EntityVelocidrome>
-	{
+	public static class Factory implements IRenderFactory<EntityVelocidrome> {
 		@Override
-		public Render<? super EntityVelocidrome> createRenderFor(RenderManager manager)
-		{
+		public Render<? super EntityVelocidrome> createRenderFor(RenderManager manager) {
 			return new RenderVelocidrome(manager);
 		}
 	}
 
 	@Override
-	protected void preRenderCallback(EntityVelocidrome entity, float f)
-	{
+	protected void preRenderCallback(EntityVelocidrome entity, float f) {
 		float tSizeMult = entity.getScale();
 		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
 	}

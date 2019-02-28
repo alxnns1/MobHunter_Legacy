@@ -12,34 +12,28 @@ import org.lwjgl.opengl.GL11;
 /**
  * Created by Alex on 01/06/2016.
  */
-public class RenderGreatJaggi extends RenderLiving<EntityGreatJaggi>
-{
+public class RenderGreatJaggi extends RenderLiving<EntityGreatJaggi> {
 	public static final Factory FACTORY = new Factory();
 	private static final ResourceLocation greatJaggiTextures = new ResourceLocation("mobhunter:textures/entities/great_jaggi.png");
 
-	public RenderGreatJaggi(RenderManager renderManagerIn)
-	{
+	public RenderGreatJaggi(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelGreatJaggi(), 0.7f);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityGreatJaggi entity)
-	{
+	protected ResourceLocation getEntityTexture(EntityGreatJaggi entity) {
 		return greatJaggiTextures;
 	}
 
-	public static class Factory implements IRenderFactory<EntityGreatJaggi>
-	{
+	public static class Factory implements IRenderFactory<EntityGreatJaggi> {
 		@Override
-		public Render<? super EntityGreatJaggi> createRenderFor(RenderManager manager)
-		{
+		public Render<? super EntityGreatJaggi> createRenderFor(RenderManager manager) {
 			return new RenderGreatJaggi(manager);
 		}
 	}
 
 	@Override
-	protected void preRenderCallback(EntityGreatJaggi entity, float f)
-	{
+	protected void preRenderCallback(EntityGreatJaggi entity, float f) {
 		float tSizeMult = entity.getScale();
 		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
 	}

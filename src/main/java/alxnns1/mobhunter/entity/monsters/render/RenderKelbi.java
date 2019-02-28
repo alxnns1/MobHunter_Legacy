@@ -12,34 +12,28 @@ import org.lwjgl.opengl.GL11;
 /**
  * Created by Alex on 27/04/2016.
  */
-public class RenderKelbi extends RenderLiving<EntityKelbi>
-{
+public class RenderKelbi extends RenderLiving<EntityKelbi> {
 	public static final Factory FACTORY = new Factory();
 	private static final ResourceLocation kelbiTextures = new ResourceLocation("mobhunter:textures/entities/kelbi.png");
 
-	public RenderKelbi(RenderManager renderManagerIn)
-	{
+	public RenderKelbi(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelKelbi(), 0.7f);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityKelbi entity)
-	{
+	protected ResourceLocation getEntityTexture(EntityKelbi entity) {
 		return kelbiTextures;
 	}
 
-	public static class Factory implements IRenderFactory<EntityKelbi>
-	{
+	public static class Factory implements IRenderFactory<EntityKelbi> {
 		@Override
-		public Render<? super EntityKelbi> createRenderFor(RenderManager manager)
-		{
+		public Render<? super EntityKelbi> createRenderFor(RenderManager manager) {
 			return new RenderKelbi(manager);
 		}
 	}
 
 	@Override
-	protected void preRenderCallback(EntityKelbi entity, float f)
-	{
+	protected void preRenderCallback(EntityKelbi entity, float f) {
 		float tSizeMult = entity.getScale();
 		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
 	}

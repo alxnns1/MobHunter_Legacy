@@ -12,34 +12,28 @@ import org.lwjgl.opengl.GL11;
 /**
  * Created by Alex on 27/04/2016.
  */
-public class RenderVelociprey extends RenderLiving<EntityVelociprey>
-{
+public class RenderVelociprey extends RenderLiving<EntityVelociprey> {
 	public static final Factory FACTORY = new Factory();
 	private static final ResourceLocation velocipreyTextures = new ResourceLocation("mobhunter:textures/entities/velociprey.png");
 
-	public RenderVelociprey(RenderManager renderManagerIn)
-	{
+	public RenderVelociprey(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelVelociprey(), 0.7f);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(EntityVelociprey entity)
-	{
+	protected ResourceLocation getEntityTexture(EntityVelociprey entity) {
 		return velocipreyTextures;
 	}
 
-	public static class Factory implements IRenderFactory<EntityVelociprey>
-	{
+	public static class Factory implements IRenderFactory<EntityVelociprey> {
 		@Override
-		public Render<? super EntityVelociprey> createRenderFor(RenderManager manager)
-		{
+		public Render<? super EntityVelociprey> createRenderFor(RenderManager manager) {
 			return new RenderVelociprey(manager);
 		}
 	}
 
 	@Override
-	protected void preRenderCallback(EntityVelociprey entity, float f)
-	{
+	protected void preRenderCallback(EntityVelociprey entity, float f) {
 		float tSizeMult = entity.getScale();
 		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
 	}

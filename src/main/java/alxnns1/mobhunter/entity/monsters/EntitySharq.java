@@ -6,10 +6,8 @@ import net.minecraft.world.World;
 /**
  * Created by Alex on 24/02/2017.
  */
-public class EntitySharq extends EntityMHMarine
-{
-	public EntitySharq(World worldIn)
-	{
+public class EntitySharq extends EntityMHMarine {
+	public EntitySharq(World worldIn) {
 		super(worldIn);
 		this.setSize(3.0F, 3.5F);
 		setBaseHealth(10);
@@ -17,8 +15,7 @@ public class EntitySharq extends EntityMHMarine
 		setBaseKnockback(0.5);
 	}
 
-	public EntitySharq createChild(EntityAgeable ageable)
-	{
+	public EntitySharq createChild(EntityAgeable ageable) {
 		return new EntitySharq(this.world);
 	}
 }
