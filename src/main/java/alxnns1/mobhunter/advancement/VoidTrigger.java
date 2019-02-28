@@ -8,14 +8,14 @@ import com.google.gson.JsonObject;
  */
 public class VoidTrigger extends MHTrigger<VoidCriterionInstance, Void>
 {
-    public VoidTrigger(String name)
-    {
-        super(name, null);
-    }
+	public VoidTrigger(String name)
+	{
+		super(name, null);
+	}
 
-    @Override
-    public VoidCriterionInstance deserializeInstance(JsonObject json, JsonDeserializationContext context)
-    {
-        return new VoidCriterionInstance(ID);
-    }
+	@Override
+	public VoidCriterionInstance deserializeInstance(JsonObject json, JsonDeserializationContext context)
+	{
+		return new VoidCriterionInstance(ID);
+	}
 }

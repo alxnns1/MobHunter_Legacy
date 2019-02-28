@@ -9,8 +9,8 @@ import net.minecraft.world.World;
  */
 public class GuiArmourCraft extends AbstractGuiCraft
 {
-    public GuiArmourCraft(EntityPlayer player, World world, String blockDisplayName)
-    {
-        super(new ContainerArmourCraft(player, world), blockDisplayName, "gui.blockarmourupgrade.");
-    }
+	public GuiArmourCraft(EntityPlayer player, World world, String blockDisplayName)
+	{
+		super(new ContainerArmourCraft(player, world), blockDisplayName, "gui.blockarmourupgrade.");
+	}
 }

@@ -22,91 +22,91 @@ import net.minecraftforge.fml.relauncher.Side;
  */
 public class CommonUtil
 {
-    public static SimpleNetworkWrapper NETWORK;
-    private static int messageID = 0;
+	public static SimpleNetworkWrapper NETWORK;
+	private static int messageID = 0;
 
-    public static void initNetwork()
-    {
-        NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MobHunter.MOD_ID);
-        NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, messageID++, Side.CLIENT);
-        NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, messageID++, Side.SERVER);
-        NETWORK.registerMessage(MessageSetQuest.Handler.class, MessageSetQuest.class, messageID++, Side.SERVER);
-    }
+	public static void initNetwork()
+	{
+		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MobHunter.MOD_ID);
+		NETWORK.registerMessage(MessageCapability.Handler.class, MessageCapability.class, messageID++, Side.CLIENT);
+		NETWORK.registerMessage(MessageGuiQuest.Handler.class, MessageGuiQuest.class, messageID++, Side.SERVER);
+		NETWORK.registerMessage(MessageSetQuest.Handler.class, MessageSetQuest.class, messageID++, Side.SERVER);
+	}
 
-    /**
-     * Copied from EntityLivingBase due to it being private.
-     * Determines whether the entity can block the damage source based on the damage source's location, whether the
-     * damage source is blockable, and whether the entity is blocking.
-     */
-    public static boolean canBlockDamageSource(EntityLivingBase entity, DamageSource damageSourceIn)
-    {
-        if (!damageSourceIn.isUnblockable() && entity.isActiveItemStackBlocking())
-        {
-            Vec3d vec3d = damageSourceIn.getDamageLocation();
+	/**
+	 * Copied from EntityLivingBase due to it being private.
+	 * Determines whether the entity can block the damage source based on the damage source's location, whether the
+	 * damage source is blockable, and whether the entity is blocking.
+	 */
+	public static boolean canBlockDamageSource(EntityLivingBase entity, DamageSource damageSourceIn)
+	{
+		if(!damageSourceIn.isUnblockable() && entity.isActiveItemStackBlocking())
+		{
+			Vec3d vec3d = damageSourceIn.getDamageLocation();
 
-            if (vec3d != null)
-            {
-                Vec3d vec3d1 = entity.getLook(1.0F);
-                Vec3d vec3d2 = vec3d.subtractReverse(new Vec3d(entity.posX, entity.posY, entity.posZ)).normalize();
-                vec3d2 = new Vec3d(vec3d2.x, 0.0D, vec3d2.z);
+			if(vec3d != null)
+			{
+				Vec3d vec3d1 = entity.getLook(1.0F);
+				Vec3d vec3d2 = vec3d.subtractReverse(new Vec3d(entity.posX, entity.posY, entity.posZ)).normalize();
+				vec3d2 = new Vec3d(vec3d2.x, 0.0D, vec3d2.z);
 
-                if (vec3d2.dotProduct(vec3d1) < 0.0D)
-                {
-                    return true;
-                }
-            }
-        }
+				if(vec3d2.dotProduct(vec3d1) < 0.0D)
+				{
+					return true;
+				}
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    /**
-     * Open a GUI for a block (Uses a guiID of -1).
-     */
-    public static void openGui(EntityPlayer player, World world, BlockPos pos)
-    {
-        player.openGui(MobHunter.instance, -1, world, pos.getX(), pos.getY(), pos.getZ());
-    }
+	/**
+	 * Open a GUI for a block (Uses a guiID of -1).
+	 */
+	public static void openGui(EntityPlayer player, World world, BlockPos pos)
+	{
+		player.openGui(MobHunter.instance, -1, world, pos.getX(), pos.getY(), pos.getZ());
+	}
 
-    /**
-     * Open a GUI for an item (Uses the position of the player).
-     */
-    public static void openGui(EntityPlayer player, World world, EnumGuiID guiID)
-    {
-        openGui(player, world, guiID.ordinal());
-    }
+	/**
+	 * Open a GUI for an item (Uses the position of the player).
+	 */
+	public static void openGui(EntityPlayer player, World world, EnumGuiID guiID)
+	{
+		openGui(player, world, guiID.ordinal());
+	}
 
-    /**
-     * Open a GUI for an item (Uses the position of the player).
-     */
-    public static void openGui(EntityPlayer player, World world, int guiID)
-    {
-        BlockPos pos = player.getPosition();
-        player.openGui(MobHunter.instance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
-    }
+	/**
+	 * Open a GUI for an item (Uses the position of the player).
+	 */
+	public static void openGui(EntityPlayer player, World world, int guiID)
+	{
+		BlockPos pos = player.getPosition();
+		player.openGui(MobHunter.instance, guiID, world, pos.getX(), pos.getY(), pos.getZ());
+	}
 
-    /**
-     * This method will replace all commas (',') with new line markers ('\n').
-     * Mainly for converting a text comma separated list to a vertical list where each value is on it's own line.
-     */
-    public static String replaceCommasWithNewlines(String text, boolean addSpaceAroundNewlines)
-    {
-        return text.replaceAll(", ", addSpaceAroundNewlines ? " \n " : "\n");
-    }
+	/**
+	 * This method will replace all commas (',') with new line markers ('\n').
+	 * Mainly for converting a text comma separated list to a vertical list where each value is on it's own line.
+	 */
+	public static String replaceCommasWithNewlines(String text, boolean addSpaceAroundNewlines)
+	{
+		return text.replaceAll(", ", addSpaceAroundNewlines ? " \n " : "\n");
+	}
 
-    /**
-     * Gets the velocity of the given Entity.
-     */
-    public static double getEntityVelocity(Entity entity)
-    {
-        return Math.sqrt(Math.pow(entity.motionX, 2) + Math.pow(entity.motionY, 2) + Math.pow(entity.motionZ, 2));
-    }
+	/**
+	 * Gets the velocity of the given Entity.
+	 */
+	public static double getEntityVelocity(Entity entity)
+	{
+		return Math.sqrt(Math.pow(entity.motionX, 2) + Math.pow(entity.motionY, 2) + Math.pow(entity.motionZ, 2));
+	}
 
-    /**
-     * Turns the float into a percentage which is rounded to 2 decimal places.
-     */
-    public static String floatAsPercentage(float f)
-    {
-        return String.format("%.2f", f * 100);
-    }
+	/**
+	 * Turns the float into a percentage which is rounded to 2 decimal places.
+	 */
+	public static String floatAsPercentage(float f)
+	{
+		return String.format("%.2f", f * 100);
+	}
 }

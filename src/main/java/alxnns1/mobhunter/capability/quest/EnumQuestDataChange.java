@@ -5,8 +5,8 @@ package alxnns1.mobhunter.capability.quest;
  */
 public enum EnumQuestDataChange
 {
-    ALL,
-    CURRENT,
-    COMPLETED,
-    COOLDOWN
+	ALL,
+	CURRENT,
+	COMPLETED,
+	COOLDOWN
 }

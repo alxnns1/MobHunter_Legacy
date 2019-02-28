@@ -14,33 +14,33 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderVelocidrome extends RenderLiving<EntityVelocidrome>
 {
-    public static final Factory FACTORY = new Factory();
-    private static final ResourceLocation velocidromeTextures = new ResourceLocation("mobhunter:textures/entities/velocidrome.png");
+	public static final Factory FACTORY = new Factory();
+	private static final ResourceLocation velocidromeTextures = new ResourceLocation("mobhunter:textures/entities/velocidrome.png");
 
-    public RenderVelocidrome(RenderManager renderManagerIn)
-    {
-        super(renderManagerIn, new ModelVelocidrome(), 0.7f);
-    }
+	public RenderVelocidrome(RenderManager renderManagerIn)
+	{
+		super(renderManagerIn, new ModelVelocidrome(), 0.7f);
+	}
 
-    @Override
-    protected ResourceLocation getEntityTexture(EntityVelocidrome entity)
-    {
-        return velocidromeTextures;
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(EntityVelocidrome entity)
+	{
+		return velocidromeTextures;
+	}
 
-    public static class Factory implements IRenderFactory<EntityVelocidrome>
-    {
-        @Override
-        public Render<? super EntityVelocidrome> createRenderFor(RenderManager manager)
-        {
-            return new RenderVelocidrome(manager);
-        }
-    }
+	public static class Factory implements IRenderFactory<EntityVelocidrome>
+	{
+		@Override
+		public Render<? super EntityVelocidrome> createRenderFor(RenderManager manager)
+		{
+			return new RenderVelocidrome(manager);
+		}
+	}
 
-    @Override
-    protected void preRenderCallback(EntityVelocidrome entity, float f)
-    {
-        float tSizeMult = entity.getScale();
-        GL11.glScalef(tSizeMult,tSizeMult,tSizeMult);
-    }
+	@Override
+	protected void preRenderCallback(EntityVelocidrome entity, float f)
+	{
+		float tSizeMult = entity.getScale();
+		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
+	}
 }

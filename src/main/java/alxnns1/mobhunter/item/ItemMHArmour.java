@@ -18,26 +18,26 @@ import java.util.List;
  */
 public class ItemMHArmour extends ItemArmor
 {
-    public ItemMHArmour(ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipSlot, String itemName)
-    {
-        super(material, renderIndex, equipSlot);
-        setUnlocalizedName(itemName);
-        setCreativeTab(MobHunter.MHARMOUR_TAB);
-        setRegistryName(itemName);
-    }
+	public ItemMHArmour(ArmorMaterial material, int renderIndex, EntityEquipmentSlot equipSlot, String itemName)
+	{
+		super(material, renderIndex, equipSlot);
+		setUnlocalizedName(itemName);
+		setCreativeTab(MobHunter.MHARMOUR_TAB);
+		setRegistryName(itemName);
+	}
 
-    public ItemMHArmour(ArmorMaterial material, EntityEquipmentSlot equipSlot, String itemName)
-    {
-        this(material, equipSlot.equals(EntityEquipmentSlot.LEGS) ? 2 : 1, equipSlot, itemName);
-    }
+	public ItemMHArmour(ArmorMaterial material, EntityEquipmentSlot equipSlot, String itemName)
+	{
+		this(material, equipSlot.equals(EntityEquipmentSlot.LEGS) ? 2 : 1, equipSlot, itemName);
+	}
 
-    /**
-     * Allows items to add custom lines of information to the mouseover description
-     */
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        ClientUtil.addTooltip(stack, tooltip);
-    }
+	/**
+	 * Allows items to add custom lines of information to the mouseover description
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		ClientUtil.addTooltip(stack, tooltip);
+	}
 }

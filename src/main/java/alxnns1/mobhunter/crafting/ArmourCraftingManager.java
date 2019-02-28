@@ -12,19 +12,19 @@ import java.util.List;
  */
 public class ArmourCraftingManager
 {
-    public static IForgeRegistry<ArmourCraftingRecipe> REGISTRY;
+	public static IForgeRegistry<ArmourCraftingRecipe> REGISTRY;
 
-    public static Collection<ArmourCraftingRecipe> getRecipes()
-    {
-        return REGISTRY.getValuesCollection();
-    }
+	public static Collection<ArmourCraftingRecipe> getRecipes()
+	{
+		return REGISTRY.getValuesCollection();
+	}
 
-    public static List<MHCraftingRecipe> findMatchingRecipes(InventoryCrafting inv)
-    {
-        List<MHCraftingRecipe> r = new ArrayList<>();
-        for(ArmourCraftingRecipe recipe : getRecipes())
-            if(recipe.matches(inv))
-                r.add(recipe);
-        return r;
-    }
+	public static List<MHCraftingRecipe> findMatchingRecipes(InventoryCrafting inv)
+	{
+		List<MHCraftingRecipe> r = new ArrayList<>();
+		for(ArmourCraftingRecipe recipe : getRecipes())
+			if(recipe.matches(inv))
+				r.add(recipe);
+		return r;
+	}
 }

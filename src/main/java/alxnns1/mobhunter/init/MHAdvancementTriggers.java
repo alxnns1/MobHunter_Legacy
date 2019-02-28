@@ -10,19 +10,19 @@ import net.minecraft.advancements.CriteriaTriggers;
  */
 public class MHAdvancementTriggers
 {
-    public static SmallCrownTrigger smallCrown;
-    public static LargeCrownTrigger largeCrown;
+	public static SmallCrownTrigger smallCrown;
+	public static LargeCrownTrigger largeCrown;
 
-    private static void register(MHTrigger trigger)
-    {
-        CriteriaTriggers.register(trigger);
-    }
+	private static void register(MHTrigger trigger)
+	{
+		CriteriaTriggers.register(trigger);
+	}
 
-    public static void init()
-    {
-        register(smallCrown = new SmallCrownTrigger());
-        register(largeCrown = new LargeCrownTrigger());
-    }
+	public static void init()
+	{
+		register(smallCrown = new SmallCrownTrigger());
+		register(largeCrown = new LargeCrownTrigger());
+	}
 
     /*
     public static Achievement firstSword = new Achievement("achievment.firstSword", "firstSword", -2, -1, MHItems.weaponHuntersKnife, null);

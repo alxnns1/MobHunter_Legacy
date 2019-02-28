@@ -5,7 +5,7 @@ package alxnns1.mobhunter.capability.hunterRank;
  */
 public enum EnumHRDataChange
 {
-    ALL,
-    RANK,
-    PROGRESS
+	ALL,
+	RANK,
+	PROGRESS
 }

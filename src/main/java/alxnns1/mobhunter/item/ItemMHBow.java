@@ -22,209 +22,209 @@ import javax.annotation.Nullable;
  */
 public class ItemMHBow extends Item
 {
-    protected final EnumBowCharge chargeType;
-    protected final byte chargeLevel;
+	protected final EnumBowCharge chargeType;
+	protected final byte chargeLevel;
 
-    public ItemMHBow(String itemName, EnumBowCharge chargeType, int chargeLevel)
-    {
-        setMaxStackSize(1);
-        setCreativeTab(MobHunter.MHWEAPON_TAB);
-        setUnlocalizedName(itemName);
-        setRegistryName(itemName);
-        this.chargeType = chargeType;
-        this.chargeLevel = chargeLevel > 4 ? 4 : chargeLevel < 1 ? 1 : (byte) chargeLevel;
-        //These property overrides are atm the same as vanilla and are used to change the item texture
-        //Look at ItemBow.java and minecraft/models/item/bow.json
-        addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter()
-        {
-            @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
-            {
-                if (entityIn == null)
-                    return 0.0F;
-                ItemStack itemstack = entityIn.getActiveItemStack();
-                return itemstack.getItem() instanceof ItemMHBow ? (float)(stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
-            }
-        });
-        addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter()
-        {
-            @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
-            {
-                return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
-            }
-        });
-    }
+	public ItemMHBow(String itemName, EnumBowCharge chargeType, int chargeLevel)
+	{
+		setMaxStackSize(1);
+		setCreativeTab(MobHunter.MHWEAPON_TAB);
+		setUnlocalizedName(itemName);
+		setRegistryName(itemName);
+		this.chargeType = chargeType;
+		this.chargeLevel = chargeLevel > 4 ? 4 : chargeLevel < 1 ? 1 : (byte) chargeLevel;
+		//These property overrides are atm the same as vanilla and are used to change the item texture
+		//Look at ItemBow.java and minecraft/models/item/bow.json
+		addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter()
+		{
+			@SideOnly(Side.CLIENT)
+			public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
+			{
+				if(entityIn == null)
+					return 0.0F;
+				ItemStack itemstack = entityIn.getActiveItemStack();
+				return itemstack.getItem() instanceof ItemMHBow ? (float) (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
+			}
+		});
+		addPropertyOverride(new ResourceLocation("pulling"), new IItemPropertyGetter()
+		{
+			@SideOnly(Side.CLIENT)
+			public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
+			{
+				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
+			}
+		});
+	}
 
-    /**
-     * Returns the action that specifies what animation to play when the items is being used
-     */
-    @Override
-    public EnumAction getItemUseAction(ItemStack stack)
-    {
-        return EnumAction.BOW;
-    }
+	/**
+	 * Returns the action that specifies what animation to play when the items is being used
+	 */
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack)
+	{
+		return EnumAction.BOW;
+	}
 
-    /**
-     * How long it takes to use or consume an item
-     */
-    @Override
-    public int getMaxItemUseDuration(ItemStack stack)
-    {
-        return 72000;
-    }
+	/**
+	 * How long it takes to use or consume an item
+	 */
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack)
+	{
+		return 72000;
+	}
 
-    /**
-     * Return the enchantability factor of the item, most of the time is based on material.
-     */
-    @Override
-    public int getItemEnchantability()
-    {
-        return 1;
-    }
+	/**
+	 * Return the enchantability factor of the item, most of the time is based on material.
+	 */
+	@Override
+	public int getItemEnchantability()
+	{
+		return 1;
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-        boolean ammoFound = findAmmo(playerIn) != null;
-        ItemStack heldItem = playerIn.getHeldItem(hand);
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
+	{
+		boolean ammoFound = findAmmo(playerIn) != null;
+		ItemStack heldItem = playerIn.getHeldItem(hand);
 
-        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(heldItem, worldIn, playerIn, hand, ammoFound);
-        if(ret != null)
-            return ret;
+		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(heldItem, worldIn, playerIn, hand, ammoFound);
+		if(ret != null)
+			return ret;
 
-        if(!playerIn.capabilities.isCreativeMode && !ammoFound)
-            return new ActionResult<>(EnumActionResult.FAIL, heldItem);
-        else
-        {
-            playerIn.setActiveHand(hand);
-            return new ActionResult<>(EnumActionResult.SUCCESS, heldItem);
-        }
-    }
+		if(!playerIn.capabilities.isCreativeMode && !ammoFound)
+			return new ActionResult<>(EnumActionResult.FAIL, heldItem);
+		else
+		{
+			playerIn.setActiveHand(hand);
+			return new ActionResult<>(EnumActionResult.SUCCESS, heldItem);
+		}
+	}
 
-    /**
-     * Called when the player stops using an Item (stops holding the right mouse button).
-     */
-    @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
-    {
-        if (entityLiving instanceof EntityPlayer)
-        {
-            EntityPlayer entityplayer = (EntityPlayer)entityLiving;
-            boolean flag = entityplayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
-            ItemStack itemstack = this.findAmmo(entityplayer);
+	/**
+	 * Called when the player stops using an Item (stops holding the right mouse button).
+	 */
+	@Override
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
+	{
+		if(entityLiving instanceof EntityPlayer)
+		{
+			EntityPlayer entityplayer = (EntityPlayer) entityLiving;
+			boolean flag = entityplayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
+			ItemStack itemstack = this.findAmmo(entityplayer);
 
-            int i = this.getMaxItemUseDuration(stack) - timeLeft;
-            i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, (EntityPlayer)entityLiving, i, !itemstack.isEmpty() || flag);
-            if (i < 0) return;
+			int i = this.getMaxItemUseDuration(stack) - timeLeft;
+			i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, (EntityPlayer) entityLiving, i, !itemstack.isEmpty() || flag);
+			if(i < 0) return;
 
-            if (!itemstack.isEmpty() || flag)
-            {
-                if (itemstack.isEmpty())
-                {
-                    itemstack = new ItemStack(Items.ARROW);
-                }
+			if(!itemstack.isEmpty() || flag)
+			{
+				if(itemstack.isEmpty())
+				{
+					itemstack = new ItemStack(Items.ARROW);
+				}
 
-                float f = getArrowVelocity(i);
+				float f = getArrowVelocity(i);
 
-                if ((double)f >= 0.1D)
-                {
-                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
+				if((double) f >= 0.1D)
+				{
+					boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
 
-                    if (!worldIn.isRemote)
-                    {
-                        ItemArrow itemarrow = (ItemArrow) (itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW);
-                        EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
-                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+					if(!worldIn.isRemote)
+					{
+						ItemArrow itemarrow = (ItemArrow) (itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW);
+						EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
+						entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
-                        if (f == 1.0F)
-                        {
-                            entityarrow.setIsCritical(true);
-                        }
+						if(f == 1.0F)
+						{
+							entityarrow.setIsCritical(true);
+						}
 
-                        int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
+						int j = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER, stack);
 
-                        if (j > 0)
-                        {
-                            entityarrow.setDamage(entityarrow.getDamage() + (double)j * 0.5D + 0.5D);
-                        }
+						if(j > 0)
+						{
+							entityarrow.setDamage(entityarrow.getDamage() + (double) j * 0.5D + 0.5D);
+						}
 
-                        int k = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
+						int k = EnchantmentHelper.getEnchantmentLevel(Enchantments.PUNCH, stack);
 
-                        if (k > 0)
-                        {
-                            entityarrow.setKnockbackStrength(k);
-                        }
+						if(k > 0)
+						{
+							entityarrow.setKnockbackStrength(k);
+						}
 
-                        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0)
-                        {
-                            entityarrow.setFire(100);
-                        }
+						if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0)
+						{
+							entityarrow.setFire(100);
+						}
 
-                        stack.damageItem(1, entityplayer);
+						stack.damageItem(1, entityplayer);
 
-                        if (flag1)
-                        {
-                            entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
-                        }
+						if(flag1)
+						{
+							entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+						}
 
-                        worldIn.spawnEntity(entityarrow);
-                    }
+						worldIn.spawnEntity(entityarrow);
+					}
 
-                    worldIn.playSound(null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+					worldIn.playSound(null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
-                    if (!flag1)
-                    {
-                        itemstack.shrink(1);
+					if(!flag1)
+					{
+						itemstack.shrink(1);
 
-                        if (itemstack.getCount() == 0)
-                        {
-                            entityplayer.inventory.deleteStack(itemstack);
-                        }
-                    }
+						if(itemstack.getCount() == 0)
+						{
+							entityplayer.inventory.deleteStack(itemstack);
+						}
+					}
 
-                    entityplayer.addStat(StatList.getObjectUseStats(this));
-                }
-            }
-        }
-    }
+					entityplayer.addStat(StatList.getObjectUseStats(this));
+				}
+			}
+		}
+	}
 
-    protected ItemStack findAmmo(EntityPlayer player)
-    {
-        if (isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
-            return player.getHeldItem(EnumHand.OFF_HAND);
-        else if (isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
-            return player.getHeldItem(EnumHand.MAIN_HAND);
-        else
-        {
-            for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
-            {
-                ItemStack itemstack = player.inventory.getStackInSlot(i);
-                if (isArrow(itemstack))
-                    return itemstack;
-            }
-            return null;
-        }
-    }
+	protected ItemStack findAmmo(EntityPlayer player)
+	{
+		if(isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
+			return player.getHeldItem(EnumHand.OFF_HAND);
+		else if(isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
+			return player.getHeldItem(EnumHand.MAIN_HAND);
+		else
+		{
+			for(int i = 0; i < player.inventory.getSizeInventory(); ++i)
+			{
+				ItemStack itemstack = player.inventory.getStackInSlot(i);
+				if(isArrow(itemstack))
+					return itemstack;
+			}
+			return null;
+		}
+	}
 
-    protected boolean isArrow(ItemStack stack)
-    {
-        return stack.getItem() instanceof ItemArrow;
-    }
+	protected boolean isArrow(ItemStack stack)
+	{
+		return stack.getItem() instanceof ItemArrow;
+	}
 
-    /**
-     * Gets the velocity of the arrow entity from the bow's charge
-     */
-    public static float getArrowVelocity(int charge)
-    {
-        float f = (float)charge / 20.0F;
-        f = (f * f + f * 2.0F) / 3.0F;
+	/**
+	 * Gets the velocity of the arrow entity from the bow's charge
+	 */
+	public static float getArrowVelocity(int charge)
+	{
+		float f = (float) charge / 20.0F;
+		f = (f * f + f * 2.0F) / 3.0F;
 
-        if (f > 1.0F)
-        {
-            f = 1.0F;
-        }
+		if(f > 1.0F)
+		{
+			f = 1.0F;
+		}
 
-        return f;
-    }
+		return f;
+	}
 }

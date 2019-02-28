@@ -7,13 +7,13 @@ import net.minecraft.item.Item;
  */
 public class ArmourCraftingRecipe extends MHCraftingRecipe<ArmourCraftingRecipe>
 {
-    public ArmourCraftingRecipe(Item result, Object... inputs)
-    {
-        super(result, inputs);
-    }
+	public ArmourCraftingRecipe(Item result, Object... inputs)
+	{
+		super(result, inputs);
+	}
 
-    public ArmourCraftingRecipe(Item result, Item key, Object... inputs)
-    {
-        super(result, key, inputs);
-    }
+	public ArmourCraftingRecipe(Item result, Item key, Object... inputs)
+	{
+		super(result, key, inputs);
+	}
 }

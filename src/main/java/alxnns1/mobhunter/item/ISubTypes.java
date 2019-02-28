@@ -7,13 +7,13 @@ import alxnns1.mobhunter.reference.MetaRef;
  */
 public interface ISubTypes<O extends Object>
 {
-    /**
-     * Returns the sub names for this item.
-     */
-    String[] getSubNames();
+	/**
+	 * Returns the sub names for this item.
+	 */
+	String[] getSubNames();
 
-    /**
-     * Override this method and use it for adding the item's sub names to the MetaRef class.
-     */
-    O addToMetaRef(MetaRef.EnumItemType itemType);
+	/**
+	 * Override this method and use it for adding the item's sub names to the MetaRef class.
+	 */
+	O addToMetaRef(MetaRef.EnumItemType itemType);
 }

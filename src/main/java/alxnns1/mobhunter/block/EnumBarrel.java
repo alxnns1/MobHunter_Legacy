@@ -7,18 +7,18 @@ import net.minecraft.util.IStringSerializable;
  */
 public enum EnumBarrel implements IStringSerializable
 {
-    SMALL,
-    LARGE,
-    BOUNCING;
+	SMALL,
+	LARGE,
+	BOUNCING;
 
-    @Override
-    public String getName()
-    {
-        return toString().toLowerCase();
-    }
+	@Override
+	public String getName()
+	{
+		return toString().toLowerCase();
+	}
 
-    public static String getName(int metadata)
-    {
-        return metadata < 0 || metadata >= values().length ? "invalid" : values()[metadata].getName();
-    }
+	public static String getName(int metadata)
+	{
+		return metadata < 0 || metadata >= values().length ? "invalid" : values()[metadata].getName();
+	}
 }

@@ -18,32 +18,32 @@ import java.util.List;
  */
 public class ItemCraftingRecipeWrapper extends BlankRecipeWrapper
 {
-    public static final Factory<WeaponCraftingRecipe> FACTORY_WEAPON = new Factory<WeaponCraftingRecipe>();
-    public static final Factory<ArmourCraftingRecipe> FACTORY_ARMOUR = new Factory<ArmourCraftingRecipe>();
+	public static final Factory<WeaponCraftingRecipe> FACTORY_WEAPON = new Factory<WeaponCraftingRecipe>();
+	public static final Factory<ArmourCraftingRecipe> FACTORY_ARMOUR = new Factory<ArmourCraftingRecipe>();
 
-    private final List<List<ItemStack>> inputs;
-    private final ItemStack output;
+	private final List<List<ItemStack>> inputs;
+	private final ItemStack output;
 
-    public ItemCraftingRecipeWrapper(MHCraftingRecipe recipe)
-    {
-        inputs = MobHunterPlugin.jeiHelper.getStackHelper().expandRecipeItemStackInputs(recipe.getInputs());
-        inputs.add(0, Collections.singletonList(recipe.getKeyInput()));
-        output = recipe.getOutput();
-    }
+	public ItemCraftingRecipeWrapper(MHCraftingRecipe recipe)
+	{
+		inputs = MobHunterPlugin.jeiHelper.getStackHelper().expandRecipeItemStackInputs(recipe.getInputs());
+		inputs.add(0, Collections.singletonList(recipe.getKeyInput()));
+		output = recipe.getOutput();
+	}
 
-    @Override
-    public void getIngredients(IIngredients ingredients)
-    {
-        ingredients.setInputLists(ItemStack.class, inputs);
-        ingredients.setOutput(ItemStack.class, output);
-    }
+	@Override
+	public void getIngredients(IIngredients ingredients)
+	{
+		ingredients.setInputLists(ItemStack.class, inputs);
+		ingredients.setOutput(ItemStack.class, output);
+	}
 
-    private static class Factory<T extends MHCraftingRecipe> implements IRecipeWrapperFactory<T>
-    {
-        @Override
-        public IRecipeWrapper getRecipeWrapper(T recipe)
-        {
-            return new ItemCraftingRecipeWrapper(recipe);
-        }
-    }
+	private static class Factory<T extends MHCraftingRecipe> implements IRecipeWrapperFactory<T>
+	{
+		@Override
+		public IRecipeWrapper getRecipeWrapper(T recipe)
+		{
+			return new ItemCraftingRecipeWrapper(recipe);
+		}
+	}
 }

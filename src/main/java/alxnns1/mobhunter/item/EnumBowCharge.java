@@ -5,7 +5,7 @@ package alxnns1.mobhunter.item;
  */
 public enum EnumBowCharge
 {
-    SCATTER,
-    PIERCE,
-    RAPID;
+	SCATTER,
+	PIERCE,
+	RAPID;
 }

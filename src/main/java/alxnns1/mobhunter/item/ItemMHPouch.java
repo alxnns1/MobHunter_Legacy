@@ -23,35 +23,35 @@ import java.util.List;
  */
 public class ItemMHPouch extends ItemMHBasic
 {
-    public ItemMHPouch()
-    {
-        super(Names.Items.FIELD_POUCH);
-        setMaxStackSize(1);
-    }
+	public ItemMHPouch()
+	{
+		super(Names.Items.FIELD_POUCH);
+		setMaxStackSize(1);
+	}
 
-    /**
-     * Gets the pouch's inventory from the ItemStack.
-     */
-    public static InventoryPouch getInventory(ItemStack stack)
-    {
-        return new InventoryPouch(stack, stack.getDisplayName(), true, 27);
-    }
+	/**
+	 * Gets the pouch's inventory from the ItemStack.
+	 */
+	public static InventoryPouch getInventory(ItemStack stack)
+	{
+		return new InventoryPouch(stack, stack.getDisplayName(), true, 27);
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-        if(!worldIn.isRemote && !playerIn.isSneaking() && hand == EnumHand.MAIN_HAND)
-            CommonUtil.openGui(playerIn, worldIn, EnumGuiID.POUCH);
-        return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
+	{
+		if(!worldIn.isRemote && !playerIn.isSneaking() && hand == EnumHand.MAIN_HAND)
+			CommonUtil.openGui(playerIn, worldIn, EnumGuiID.POUCH);
+		return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+	}
 
-    /**
-     * Allows items to add custom lines of information to the mouseover description
-     */
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        ClientUtil.addTooltip(stack, tooltip);
-    }
+	/**
+	 * Allows items to add custom lines of information to the mouseover description
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		ClientUtil.addTooltip(stack, tooltip);
+	}
 }

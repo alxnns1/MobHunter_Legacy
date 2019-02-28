@@ -5,8 +5,8 @@ package alxnns1.mobhunter.entity;
  */
 public interface IScaledMob
 {
-    /**
-     * Gets the mobs scale.
-     */
-    float getScale();
+	/**
+	 * Gets the mobs scale.
+	 */
+	float getScale();
 }

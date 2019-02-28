@@ -13,35 +13,35 @@ import javax.annotation.Nullable;
  */
 public class CapabilityQuestProvider implements ICapabilitySerializable<NBTTagCompound>
 {
-    private IQuest quests;
+	private IQuest quests;
 
-    public CapabilityQuestProvider()
-    {
-        quests = new CapabilityQuest();
-    }
+	public CapabilityQuestProvider()
+	{
+		quests = new CapabilityQuest();
+	}
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
-    {
-        return capability == MHCapabilities.QUESTS;
-    }
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+	{
+		return capability == MHCapabilities.QUESTS;
+	}
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
-    {
-        return hasCapability(capability, facing) ? (T) quests : null;
-    }
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+	{
+		return hasCapability(capability, facing) ? (T) quests : null;
+	}
 
-    @Override
-    public NBTTagCompound serializeNBT()
-    {
-        return quests.serializeNBT();
-    }
+	@Override
+	public NBTTagCompound serializeNBT()
+	{
+		return quests.serializeNBT();
+	}
 
-    @Override
-    public void deserializeNBT(NBTTagCompound nbt)
-    {
-        quests.deserializeNBT(nbt);
-    }
+	@Override
+	public void deserializeNBT(NBTTagCompound nbt)
+	{
+		quests.deserializeNBT(nbt);
+	}
 }

@@ -10,44 +10,44 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class EntityStack
 {
-    private final String entityName;
-    private final int amount;
+	private final String entityName;
+	private final int amount;
 
-    public EntityStack(boolean prefixModid, String entityName, int amount)
-    {
-        this(MobHunter.MOD_ID + "." + entityName, amount);
-    }
+	public EntityStack(boolean prefixModid, String entityName, int amount)
+	{
+		this(MobHunter.MOD_ID + "." + entityName, amount);
+	}
 
-    public EntityStack(String entityName, int amount)
-    {
-        this.entityName = entityName;
-        this.amount = amount;
-    }
+	public EntityStack(String entityName, int amount)
+	{
+		this.entityName = entityName;
+		this.amount = amount;
+	}
 
-    public String getEntityUnlocName()
-    {
-        return "entity." + entityName + ".name";
-    }
+	public String getEntityUnlocName()
+	{
+		return "entity." + entityName + ".name";
+	}
 
-    @SideOnly(Side.CLIENT)
-    public String getEntityLocName()
-    {
-        return I18n.format(getEntityUnlocName());
-    }
+	@SideOnly(Side.CLIENT)
+	public String getEntityLocName()
+	{
+		return I18n.format(getEntityUnlocName());
+	}
 
-    public int getAmount()
-    {
-        return amount;
-    }
+	public int getAmount()
+	{
+		return amount;
+	}
 
-    public boolean isEqualTo(EntityStack other)
-    {
-        return other != null && entityName.equals(other.entityName);
-    }
+	public boolean isEqualTo(EntityStack other)
+	{
+		return other != null && entityName.equals(other.entityName);
+	}
 
-    @Override
-    public String toString()
-    {
-        return amount + "x" + entityName;
-    }
+	@Override
+	public String toString()
+	{
+		return amount + "x" + entityName;
+	}
 }

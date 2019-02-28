@@ -13,25 +13,25 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
  */
 public class RenderSpit extends RenderSnowball<EntitySpit>
 {
-    public static final RenderSpit.Factory FACTORY = new RenderSpit.Factory();
+	public static final RenderSpit.Factory FACTORY = new RenderSpit.Factory();
 
-    public RenderSpit(RenderManager renderManager, RenderItem itemRenderer)
-    {
-        super(renderManager, null, itemRenderer);
-    }
+	public RenderSpit(RenderManager renderManager, RenderItem itemRenderer)
+	{
+		super(renderManager, null, itemRenderer);
+	}
 
-    @Override
-    public ItemStack getStackToRender(EntitySpit entityIn)
-    {
-        return entityIn.getItemToRender();
-    }
+	@Override
+	public ItemStack getStackToRender(EntitySpit entityIn)
+	{
+		return entityIn.getItemToRender();
+	}
 
-    public static class Factory implements IRenderFactory<EntitySpit>
-    {
-        @Override
-        public Render<? super EntitySpit> createRenderFor(RenderManager manager)
-        {
-            return new RenderSpit(manager, Minecraft.getMinecraft().getRenderItem());
-        }
-    }
+	public static class Factory implements IRenderFactory<EntitySpit>
+	{
+		@Override
+		public Render<? super EntitySpit> createRenderFor(RenderManager manager)
+		{
+			return new RenderSpit(manager, Minecraft.getMinecraft().getRenderItem());
+		}
+	}
 }

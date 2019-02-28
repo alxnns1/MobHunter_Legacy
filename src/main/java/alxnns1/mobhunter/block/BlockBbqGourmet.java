@@ -10,14 +10,14 @@ import net.minecraft.world.World;
  */
 public class BlockBbqGourmet extends BlockBbq
 {
-    public BlockBbqGourmet()
-    {
-        super(Names.Blocks.BBQ_GOURMET);
-    }
+	public BlockBbqGourmet()
+	{
+		super(Names.Blocks.BBQ_GOURMET);
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta)
-    {
-        return new TileGourmetBBQ();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta)
+	{
+		return new TileGourmetBBQ();
+	}
 }

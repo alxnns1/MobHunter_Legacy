@@ -14,33 +14,33 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderGiaprey extends RenderLiving<EntityGiaprey>
 {
-    public static final Factory FACTORY = new Factory();
-    private static final ResourceLocation giapreyTextures = new ResourceLocation("mobhunter:textures/entities/giaprey.png");
+	public static final Factory FACTORY = new Factory();
+	private static final ResourceLocation giapreyTextures = new ResourceLocation("mobhunter:textures/entities/giaprey.png");
 
-    public RenderGiaprey(RenderManager renderManagerIn)
-    {
-        super(renderManagerIn, new ModelVelociprey(), 0.7f);
-    }
+	public RenderGiaprey(RenderManager renderManagerIn)
+	{
+		super(renderManagerIn, new ModelVelociprey(), 0.7f);
+	}
 
-    @Override
-    protected ResourceLocation getEntityTexture(EntityGiaprey entity)
-    {
-        return giapreyTextures;
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(EntityGiaprey entity)
+	{
+		return giapreyTextures;
+	}
 
-    public static class Factory implements IRenderFactory<EntityGiaprey>
-    {
-        @Override
-        public Render<? super EntityGiaprey> createRenderFor(RenderManager manager)
-        {
-            return new RenderGiaprey(manager);
-        }
-    }
+	public static class Factory implements IRenderFactory<EntityGiaprey>
+	{
+		@Override
+		public Render<? super EntityGiaprey> createRenderFor(RenderManager manager)
+		{
+			return new RenderGiaprey(manager);
+		}
+	}
 
-    @Override
-    protected void preRenderCallback(EntityGiaprey entity, float f)
-    {
-        float tSizeMult = entity.getScale();
-        GL11.glScalef(tSizeMult,tSizeMult,tSizeMult);
-    }
+	@Override
+	protected void preRenderCallback(EntityGiaprey entity, float f)
+	{
+		float tSizeMult = entity.getScale();
+		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
+	}
 }

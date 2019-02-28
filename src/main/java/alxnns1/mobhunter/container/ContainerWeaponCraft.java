@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class ContainerWeaponCraft extends AbstractContainerCraft
 {
-    public ContainerWeaponCraft(EntityPlayer player, World worldIn)
-    {
-        super(player, worldIn);
-    }
+	public ContainerWeaponCraft(EntityPlayer player, World worldIn)
+	{
+		super(player, worldIn);
+	}
 
-    @Override
-    protected List<MHCraftingRecipe> getRecipes()
-    {
-        return WeaponCraftingManager.findMatchingRecipes((InventoryCrafting) inventory);
-    }
+	@Override
+	protected List<MHCraftingRecipe> getRecipes()
+	{
+		return WeaponCraftingManager.findMatchingRecipes((InventoryCrafting) inventory);
+	}
 }

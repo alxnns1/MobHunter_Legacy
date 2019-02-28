@@ -32,167 +32,169 @@ import java.util.List;
  */
 public class ItemMHSword extends ItemSword
 {
-    private final EnumSharpness maxSharpness;
-    private final int[] damageLevels;
-    private final String damageLevelsString;
+	private final EnumSharpness maxSharpness;
+	private final int[] damageLevels;
+	private final String damageLevelsString;
 
-    public ItemMHSword(String itemName, float damage, int... sharpnessDamageLevels)
-    {
-        super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
-        setCreativeTab(MobHunter.MHWEAPON_TAB);
-        setUnlocalizedName(itemName);
-        setRegistryName(itemName);
-        maxSharpness = EnumSharpness.getById(sharpnessDamageLevels.length - 1);
-        if(maxSharpness == null) MobHunter.LOGGER.warn("Sword " + getUnlocalizedName() + " has a null sharpness! Something must be wrong!");
-        damageLevels = sharpnessDamageLevels;
-        String levels = "";
-        for(int i = 0; i < damageLevels.length; i++)
-        {
-            levels += damageLevels[i];
-            if(i < damageLevels.length - 1)
-                levels += " <- ";
-        }
-        damageLevelsString = levels;
-    }
+	public ItemMHSword(String itemName, float damage, int... sharpnessDamageLevels)
+	{
+		super(EnumHelper.addToolMaterial(itemName + "Mat", 0, sharpnessDamageLevels[sharpnessDamageLevels.length - 1], 0, damage - 1, 0).setRepairItem(new ItemStack(MHItems.itemMisc, 1, 1)));
+		setCreativeTab(MobHunter.MHWEAPON_TAB);
+		setUnlocalizedName(itemName);
+		setRegistryName(itemName);
+		maxSharpness = EnumSharpness.getById(sharpnessDamageLevels.length - 1);
+		if(maxSharpness == null)
+			MobHunter.LOGGER.warn("Sword " + getUnlocalizedName() + " has a null sharpness! Something must be wrong!");
+		damageLevels = sharpnessDamageLevels;
+		String levels = "";
+		for(int i = 0; i < damageLevels.length; i++)
+		{
+			levels += damageLevels[i];
+			if(i < damageLevels.length - 1)
+				levels += " <- ";
+		}
+		damageLevelsString = levels;
+	}
 
-    /**
-     * Gets the current sharpness level from the ItemStack's metadata
-     */
-    public static EnumSharpness getSharpness(ItemStack stack)
-    {
-        if(!(stack.getItem() instanceof ItemMHSword))
-            return null;
-        ItemMHSword sword = (ItemMHSword) stack.getItem();
-        if(sword.damageLevels != null) {
-            for (int i = 0; i < sword.damageLevels.length; i++)
-                if ((stack.getMaxDamage() - stack.getItemDamage()) < sword.damageLevels[i])
-                    return EnumSharpness.getById(i);
-            return sword.maxSharpness;
-        }
-        return EnumSharpness.RED;
-    }
+	/**
+	 * Gets the current sharpness level from the ItemStack's metadata
+	 */
+	public static EnumSharpness getSharpness(ItemStack stack)
+	{
+		if(!(stack.getItem() instanceof ItemMHSword))
+			return null;
+		ItemMHSword sword = (ItemMHSword) stack.getItem();
+		if(sword.damageLevels != null)
+		{
+			for(int i = 0; i < sword.damageLevels.length; i++)
+				if((stack.getMaxDamage() - stack.getItemDamage()) < sword.damageLevels[i])
+					return EnumSharpness.getById(i);
+			return sword.maxSharpness;
+		}
+		return EnumSharpness.RED;
+	}
 
-    /**
-     * Calculates the actual damage of this weapon using the sharpness
-     */
-    public static float getActualAttackDamage(ItemStack stack)
-    {
-        if(!(stack.getItem() instanceof ItemMHSword))
-            return 0f;
-        ItemMHSword sword = (ItemMHSword) stack.getItem();
-        EnumSharpness currentSharpness = getSharpness(stack);
-        return currentSharpness == null ? sword.getAttackDamage() : sword.getAttackDamage() * currentSharpness.getDamageMult();
-    }
+	/**
+	 * Calculates the actual damage of this weapon using the sharpness
+	 */
+	public static float getActualAttackDamage(ItemStack stack)
+	{
+		if(!(stack.getItem() instanceof ItemMHSword))
+			return 0f;
+		ItemMHSword sword = (ItemMHSword) stack.getItem();
+		EnumSharpness currentSharpness = getSharpness(stack);
+		return currentSharpness == null ? sword.getAttackDamage() : sword.getAttackDamage() * currentSharpness.getDamageMult();
+	}
 
-    public void repairSharpness(ItemStack stack, int amount)
-    {
-        if(stack.getItemDamage()<amount)
-            stack.setItemDamage(0);
-        else
-            stack.setItemDamage(stack.getItemDamage()-amount);
-    }
+	public void repairSharpness(ItemStack stack, int amount)
+	{
+		if(stack.getItemDamage() < amount)
+			stack.setItemDamage(0);
+		else
+			stack.setItemDamage(stack.getItemDamage() - amount);
+	}
 
-    @Override
-    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
-    {
-        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
-        if (slot == EntityEquipmentSlot.MAINHAND)
-        {
-            multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getName());
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) getActualAttackDamage(stack), 0));
-        }
-        return multimap;
-    }
+	@Override
+	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
+	{
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
+		if(slot == EntityEquipmentSlot.MAINHAND)
+		{
+			multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getName());
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", (double) getActualAttackDamage(stack), 0));
+		}
+		return multimap;
+	}
 
-    /**
-     * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
-     * the damage on the stack.
-     */
-    @Override
-    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
-    {
-        if (!(attacker instanceof EntityPlayer) || !((EntityPlayer)attacker).capabilities.isCreativeMode)
-            stack.damageItem(1, attacker);
-        return true;
-    }
+	/**
+	 * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
+	 * the damage on the stack.
+	 */
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
+	{
+		if(!(attacker instanceof EntityPlayer) || !((EntityPlayer) attacker).capabilities.isCreativeMode)
+			stack.damageItem(1, attacker);
+		return true;
+	}
 
-    /**
-     * Allows items to add custom lines of information to the mouseover description
-     */
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        EnumSharpness currentSharpness = getSharpness(stack);
-        if(currentSharpness != null)
-        {
-            tooltip.add(I18n.format("item.sharpness") + " " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
-            tooltip.add(I18n.format("item.maxSharpness") + " " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
-            if(Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().player.isCreative())
-                tooltip.add(damageLevelsString);
-        }
+	/**
+	 * Allows items to add custom lines of information to the mouseover description
+	 */
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		EnumSharpness currentSharpness = getSharpness(stack);
+		if(currentSharpness != null)
+		{
+			tooltip.add(I18n.format("item.sharpness") + " " + currentSharpness.getChatColour() + new TextComponentTranslation(currentSharpness.getUnlocalizedName()).getUnformattedText());
+			tooltip.add(I18n.format("item.maxSharpness") + " " + maxSharpness.getChatColour() + new TextComponentTranslation(maxSharpness.getUnlocalizedName()).getUnformattedText());
+			if(Minecraft.getMinecraft().player != null && Minecraft.getMinecraft().player.isCreative())
+				tooltip.add(damageLevelsString);
+		}
 
-        ClientUtil.addTooltip(stack, tooltip);
-    }
+		ClientUtil.addTooltip(stack, tooltip);
+	}
 
-    /**
-     * Returns the action that specifies what animation to play when the items is being used
-     */
-    @Override
-    public EnumAction getItemUseAction(ItemStack stack)
-    {
-        return EnumAction.EAT;
-    }
+	/**
+	 * Returns the action that specifies what animation to play when the items is being used
+	 */
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack)
+	{
+		return EnumAction.EAT;
+	}
 
-    /**
-     * How long it takes to use or consume an item
-     */
-    @Override
-    public int getMaxItemUseDuration(ItemStack stack)
-    {
-        return 200;
-    }
+	/**
+	 * How long it takes to use or consume an item
+	 */
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack)
+	{
+		return 200;
+	}
 
-    /**
-     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-     */
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-        ItemStack stack = playerIn.getHeldItem(hand);
-        if(playerIn.isSneaking() && stack.getItemDamage()>0)
-        {
-            if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetfish, 1, 0)))
-            {
-                playerIn.setActiveHand(hand);
-                return new ActionResult<>(EnumActionResult.SUCCESS, stack);
-            }
-        }
-        return new ActionResult<>(EnumActionResult.FAIL, stack);
-    }
+	/**
+	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 */
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
+	{
+		ItemStack stack = playerIn.getHeldItem(hand);
+		if(playerIn.isSneaking() && stack.getItemDamage() > 0)
+		{
+			if(playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 1)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemMisc, 1, 2)) || playerIn.inventory.hasItemStack(new ItemStack(MHItems.itemWhetfish, 1, 0)))
+			{
+				playerIn.setActiveHand(hand);
+				return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+			}
+		}
+		return new ActionResult<>(EnumActionResult.FAIL, stack);
+	}
 
-    /**
-     * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
-     * the Item before the action is complete.
-     */
-    @Override
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
-    {
-        if (entityLiving instanceof EntityPlayer)
-        {
-            int sharpen = 0;
-            if(((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 1, 1, null) > 0)
-                //Whetstone
-                sharpen = 200;
-            else if (((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 2, 1, null) > 0)
-                //Mini Whetstone
-                sharpen = 100;
-            else if (((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemWhetfish, 0, 1, null) > 0)
-                sharpen = 200;
+	/**
+	 * Called when the player finishes using this Item (E.g. finishes eating.). Not called when the player stops using
+	 * the Item before the action is complete.
+	 */
+	@Override
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
+	{
+		if(entityLiving instanceof EntityPlayer)
+		{
+			int sharpen = 0;
+			if(((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 1, 1, null) > 0)
+				//Whetstone
+				sharpen = 200;
+			else if(((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemMisc, 2, 1, null) > 0)
+				//Mini Whetstone
+				sharpen = 100;
+			else if(((EntityPlayer) entityLiving).inventory.clearMatchingItems(MHItems.itemWhetfish, 0, 1, null) > 0)
+				sharpen = 200;
 
-            if(sharpen > 0)
-                repairSharpness(stack, sharpen);
-        }
-        return stack;
-    }
+			if(sharpen > 0)
+				repairSharpness(stack, sharpen);
+		}
+		return stack;
+	}
 }

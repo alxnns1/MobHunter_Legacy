@@ -22,43 +22,43 @@ import java.util.List;
 @SideOnly(Side.CLIENT)
 public class ClientUtil
 {
-    public static void regModel(Block block)
-    {
-        regModel(Item.getItemFromBlock(block));
-    }
+	public static void regModel(Block block)
+	{
+		regModel(Item.getItemFromBlock(block));
+	}
 
-    public static void regModel(Item item)
-    {
-        if(item instanceof ISubTypes && item.getHasSubtypes())
-            for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
-                regModel(item, meta);
-        else
-            regModel(item, 0);
-    }
+	public static void regModel(Item item)
+	{
+		if(item instanceof ISubTypes && item.getHasSubtypes())
+			for(int meta = 0; meta < ((ISubTypes) item).getSubNames().length; meta++)
+				regModel(item, meta);
+		else
+			regModel(item, 0);
+	}
 
-    public static void regModel(Item item, int meta)
-    {
-        String itemPath = item.getRegistryName().getResourcePath();
-        if(item instanceof ItemBlock)
-            itemPath = "block/" + itemPath;
-        else if(item instanceof ItemMHArmour)
-            itemPath = "armour/" + itemPath;
-        else if(item instanceof ItemMHSword)
-            itemPath = "weapon/sword/" + itemPath;
-        else if(item instanceof ItemMHBow)
-            itemPath = "weapon/bow/" + itemPath;
-        if(item.getHasSubtypes() && item instanceof ISubTypes)
-            itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
-        ModelResourceLocation loc = new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + itemPath, "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, meta, loc);
-    }
+	public static void regModel(Item item, int meta)
+	{
+		String itemPath = item.getRegistryName().getResourcePath();
+		if(item instanceof ItemBlock)
+			itemPath = "block/" + itemPath;
+		else if(item instanceof ItemMHArmour)
+			itemPath = "armour/" + itemPath;
+		else if(item instanceof ItemMHSword)
+			itemPath = "weapon/sword/" + itemPath;
+		else if(item instanceof ItemMHBow)
+			itemPath = "weapon/bow/" + itemPath;
+		if(item.getHasSubtypes() && item instanceof ISubTypes)
+			itemPath += "/" + ((ISubTypes) item).getSubNames()[meta];
+		ModelResourceLocation loc = new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + itemPath, "inventory");
+		ModelLoader.setCustomModelResourceLocation(item, meta, loc);
+	}
 
-    public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
-    {
-        String unlocName = stack.getUnlocalizedName() + ".tooltip";
-        String tooltipText = I18n.format(unlocName);
-        if(!tooltipText.equals(unlocName))
-            tooltip.add(tooltipText);
-        return tooltip;
-    }
+	public static List<String> addTooltip(ItemStack stack, List<String> tooltip)
+	{
+		String unlocName = stack.getUnlocalizedName() + ".tooltip";
+		String tooltipText = I18n.format(unlocName);
+		if(!tooltipText.equals(unlocName))
+			tooltip.add(tooltipText);
+		return tooltip;
+	}
 }

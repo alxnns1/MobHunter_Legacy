@@ -14,33 +14,33 @@ import org.lwjgl.opengl.GL11;
  */
 public class RenderGreatJaggi extends RenderLiving<EntityGreatJaggi>
 {
-    public static final Factory FACTORY = new Factory();
-    private static final ResourceLocation greatJaggiTextures = new ResourceLocation("mobhunter:textures/entities/great_jaggi.png");
+	public static final Factory FACTORY = new Factory();
+	private static final ResourceLocation greatJaggiTextures = new ResourceLocation("mobhunter:textures/entities/great_jaggi.png");
 
-    public RenderGreatJaggi(RenderManager renderManagerIn)
-    {
-        super(renderManagerIn, new ModelGreatJaggi(), 0.7f);
-    }
+	public RenderGreatJaggi(RenderManager renderManagerIn)
+	{
+		super(renderManagerIn, new ModelGreatJaggi(), 0.7f);
+	}
 
-    @Override
-    protected ResourceLocation getEntityTexture(EntityGreatJaggi entity)
-    {
-        return greatJaggiTextures;
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(EntityGreatJaggi entity)
+	{
+		return greatJaggiTextures;
+	}
 
-    public static class Factory implements IRenderFactory<EntityGreatJaggi>
-    {
-        @Override
-        public Render<? super EntityGreatJaggi> createRenderFor(RenderManager manager)
-        {
-            return new RenderGreatJaggi(manager);
-        }
-    }
+	public static class Factory implements IRenderFactory<EntityGreatJaggi>
+	{
+		@Override
+		public Render<? super EntityGreatJaggi> createRenderFor(RenderManager manager)
+		{
+			return new RenderGreatJaggi(manager);
+		}
+	}
 
-    @Override
-    protected void preRenderCallback(EntityGreatJaggi entity, float f)
-    {
-        float tSizeMult = entity.getScale();
-        GL11.glScalef(tSizeMult,tSizeMult,tSizeMult);
-    }
+	@Override
+	protected void preRenderCallback(EntityGreatJaggi entity, float f)
+	{
+		float tSizeMult = entity.getScale();
+		GL11.glScalef(tSizeMult, tSizeMult, tSizeMult);
+	}
 }

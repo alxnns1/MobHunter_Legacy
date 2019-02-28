@@ -8,10 +8,10 @@ import net.minecraft.item.Item;
  */
 public class ItemMHBasic extends Item
 {
-    public ItemMHBasic(String name)
-    {
-        setCreativeTab(MobHunter.MH_TAB);
-        setUnlocalizedName(name);
-        setRegistryName(name);
-    }
+	public ItemMHBasic(String name)
+	{
+		setCreativeTab(MobHunter.MH_TAB);
+		setUnlocalizedName(name);
+		setRegistryName(name);
+	}
 }

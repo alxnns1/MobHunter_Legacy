@@ -25,97 +25,97 @@ import org.apache.logging.log4j.Logger;
  * Created by Alex on 20/04/2016.
  */
 
-@Mod(modid= MobHunter.MOD_ID, name= MobHunter.MOD_NAME, version= MobHunter.VERSION)
+@Mod(modid = MobHunter.MOD_ID, name = MobHunter.MOD_NAME, version = MobHunter.VERSION)
 public class MobHunter
 {
-    public static final String MOD_ID = "mobhunter";
-    public static final String MOD_NAME = "Mob Hunter";
-    public static final String VERSION = "@VERSION@";
-    public static final String GUI_TEXTURE_DIR = "textures/gui/";
+	public static final String MOD_ID = "mobhunter";
+	public static final String MOD_NAME = "Mob Hunter";
+	public static final String VERSION = "@VERSION@";
+	public static final String GUI_TEXTURE_DIR = "textures/gui/";
 
-    @Mod.Instance(MOD_ID)
-    public static MobHunter instance;
+	@Mod.Instance(MOD_ID)
+	public static MobHunter instance;
 
-    public static Logger LOGGER;
+	public static Logger LOGGER;
 
-    public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "_items")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
-        }
-    };
+	public static final CreativeTabs MH_TAB = new CreativeTabs(MOD_ID + "_items")
+	{
+		@Override
+		public ItemStack getTabIconItem()
+		{
+			return MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S);
+		}
+	};
 
-    public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "_armours")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(MHItems.armourBoneHelmet);
-        }
-    };
+	public static final CreativeTabs MHARMOUR_TAB = new CreativeTabs(MOD_ID + "_armours")
+	{
+		@Override
+		public ItemStack getTabIconItem()
+		{
+			return new ItemStack(MHItems.armourBoneHelmet);
+		}
+	};
 
-    public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "_weapons")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(MHItems.weaponHuntersKnife);
-        }
-    };
+	public static final CreativeTabs MHWEAPON_TAB = new CreativeTabs(MOD_ID + "_weapons")
+	{
+		@Override
+		public ItemStack getTabIconItem()
+		{
+			return new ItemStack(MHItems.weaponHuntersKnife);
+		}
+	};
 
-    public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "_blocks")
-    {
-        @Override
-        public ItemStack getTabIconItem()
-        {
-            return new ItemStack(MHBlocks.blockWeaponCraft);
-        }
-    };
+	public static final CreativeTabs MHBLOCK_TAB = new CreativeTabs(MOD_ID + "_blocks")
+	{
+		@Override
+		public ItemStack getTabIconItem()
+		{
+			return new ItemStack(MHBlocks.blockWeaponCraft);
+		}
+	};
 
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        //Initializing and registering items, blocks and configs
+	@Mod.EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		//Initializing and registering items, blocks and configs
 
-        LOGGER = event.getModLog();
-        CommonUtil.initNetwork();
-        MHPotions.init();
-        MHCapabilities.init();
-        MHAdvancementTriggers.init();
-    }
+		LOGGER = event.getModLog();
+		CommonUtil.initNetwork();
+		MHPotions.init();
+		MHCapabilities.init();
+		MHAdvancementTriggers.init();
+	}
 
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-        //Initializing and registering GUIs, tile entities, recipes and event handlers
+	@Mod.EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		//Initializing and registering GUIs, tile entities, recipes and event handlers
 
-        MHBlocks.regOres();
-        MHRecipes.regSmelting();
-        GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-    }
+		MHBlocks.regOres();
+		MHRecipes.regSmelting();
+		GameRegistry.registerWorldGenerator(new WorldGenHandler(), 0);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+	}
 
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
-        HunterRankProgression.init();
-        MHQuests.initLists();
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		HunterRankProgression.init();
+		MHQuests.initLists();
 
-        MHItems.ITEMS = null;
-        MHBlocks.BLOCKS = null;
-        MHBlocks.ITEM_BLOCKS = null;
-        MHBlocks.ORES = null;
-        MHEntities.ENTITIES = null;
-    }
+		MHItems.ITEMS = null;
+		MHBlocks.BLOCKS = null;
+		MHBlocks.ITEM_BLOCKS = null;
+		MHBlocks.ORES = null;
+		MHEntities.ENTITIES = null;
+	}
 
-    @Mod.EventHandler
-    public void serverStarting(FMLServerStartingEvent event)
-    {
-        //Register commands
-        event.registerServerCommand(new CommandQuest());
-        event.registerServerCommand(new CommandHunterRank());
-        event.registerServerCommand(new CommandMonsters());
-    }
+	@Mod.EventHandler
+	public void serverStarting(FMLServerStartingEvent event)
+	{
+		//Register commands
+		event.registerServerCommand(new CommandQuest());
+		event.registerServerCommand(new CommandHunterRank());
+		event.registerServerCommand(new CommandMonsters());
+	}
 }

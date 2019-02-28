@@ -18,30 +18,30 @@ import java.util.ArrayList;
  */
 public class MHCapabilities
 {
-    @CapabilityInject(IQuest.class)
-    public static Capability<IQuest> QUESTS = null;
-    @CapabilityInject(IHunterRank.class)
-    public static Capability<IHunterRank> HUNTER_RANK = null;
-    @CapabilityInject(IMonsters.class)
-    public static Capability<IMonsters> MONSTERS = null;
+	@CapabilityInject(IQuest.class)
+	public static Capability<IQuest> QUESTS = null;
+	@CapabilityInject(IHunterRank.class)
+	public static Capability<IHunterRank> HUNTER_RANK = null;
+	@CapabilityInject(IMonsters.class)
+	public static Capability<IMonsters> MONSTERS = null;
 
-    private static ArrayList<Capability> CAPABILITIES = new ArrayList<>();
+	private static ArrayList<Capability> CAPABILITIES = new ArrayList<>();
 
-    public static ArrayList<Capability> getCapabilities()
-    {
-        if(CAPABILITIES.isEmpty())
-        {
-            CAPABILITIES.add(QUESTS);
-            CAPABILITIES.add(HUNTER_RANK);
-            CAPABILITIES.add(MONSTERS);
-        }
-        return CAPABILITIES;
-    }
+	public static ArrayList<Capability> getCapabilities()
+	{
+		if(CAPABILITIES.isEmpty())
+		{
+			CAPABILITIES.add(QUESTS);
+			CAPABILITIES.add(HUNTER_RANK);
+			CAPABILITIES.add(MONSTERS);
+		}
+		return CAPABILITIES;
+	}
 
-    public static void init()
-    {
-        CapabilityManager.INSTANCE.register(IHunterRank.class, new Storage<>(), CapabilityHunterRank::new);
-        CapabilityManager.INSTANCE.register(IQuest.class, new Storage<>(), CapabilityQuest::new);
-        CapabilityManager.INSTANCE.register(IMonsters.class, new Storage<>(), CapabilityMonsters::new);
-    }
+	public static void init()
+	{
+		CapabilityManager.INSTANCE.register(IHunterRank.class, new Storage<>(), CapabilityHunterRank::new);
+		CapabilityManager.INSTANCE.register(IQuest.class, new Storage<>(), CapabilityQuest::new);
+		CapabilityManager.INSTANCE.register(IMonsters.class, new Storage<>(), CapabilityMonsters::new);
+	}
 }

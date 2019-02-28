@@ -12,15 +12,16 @@ import net.minecraft.potion.PotionEffect;
  */
 public class PotionNoRender extends Potion
 {
-    public PotionNoRender(boolean badEffect, int potionColor)
-    {
-        super(badEffect, potionColor);
-    }
+	public PotionNoRender(boolean badEffect, int potionColor)
+	{
+		super(badEffect, potionColor);
+	}
 
-    /**
-     * If the Potion effect should be displayed in the players inventory
-     * @param effect the active PotionEffect
-     * @return true to display it (default), false to hide it.
-     */
-    public boolean shouldRender(PotionEffect effect) { return false; }
+	/**
+	 * If the Potion effect should be displayed in the players inventory
+	 *
+	 * @param effect the active PotionEffect
+	 * @return true to display it (default), false to hide it.
+	 */
+	public boolean shouldRender(PotionEffect effect){ return false; }
 }

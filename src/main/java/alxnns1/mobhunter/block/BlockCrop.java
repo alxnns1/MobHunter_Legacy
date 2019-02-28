@@ -18,158 +18,184 @@ import java.util.Random;
 /**
  * Created by Alex on 13/01/2017.
  */
-public class BlockCrop extends BlockCrops {
-    public ItemStack crop;
-    public ItemStack seed;
+public class BlockCrop extends BlockCrops
+{
+	public ItemStack crop;
+	public ItemStack seed;
 
-    public BlockCrop(String name, ItemStack cropIn) {
-        this(name, cropIn, cropIn);
-    }
+	public BlockCrop(String name, ItemStack cropIn)
+	{
+		this(name, cropIn, cropIn);
+	}
 
-    public BlockCrop(String name, ItemStack cropIn, ItemStack seedIn) {
-        super();
-        crop = cropIn;
-        seed = seedIn;
-        setUnlocalizedName(name);
-        setRegistryName(name);
-    }
+	public BlockCrop(String name, ItemStack cropIn, ItemStack seedIn)
+	{
+		super();
+		crop = cropIn;
+		seed = seedIn;
+		setUnlocalizedName(name);
+		setRegistryName(name);
+	}
 
-    protected ItemStack getSeed(IBlockState state) {
-        return seed.copy();
-    }
+	protected ItemStack getSeed(IBlockState state)
+	{
+		return seed.copy();
+	}
 
-    protected ItemStack getCrop(IBlockState state) {
-        return crop.copy();
-    }
+	protected ItemStack getCrop(IBlockState state)
+	{
+		return crop.copy();
+	}
 
-    protected static float getGrowthChance(Block blockIn, World worldIn, BlockPos pos) {
-        float f = 1.0F;
-        BlockPos blockpos = pos.down();
+	protected static float getGrowthChance(Block blockIn, World worldIn, BlockPos pos)
+	{
+		float f = 1.0F;
+		BlockPos blockpos = pos.down();
 
-        for (int i = -1; i <= 1; ++i) {
-            for (int j = -1; j <= 1; ++j) {
-                float f1 = 0.0F;
-                IBlockState iblockstate = worldIn.getBlockState(blockpos.add(i, 0, j));
+		for(int i = -1; i <= 1; ++i)
+		{
+			for(int j = -1; j <= 1; ++j)
+			{
+				float f1 = 0.0F;
+				IBlockState iblockstate = worldIn.getBlockState(blockpos.add(i, 0, j));
 
-                if (iblockstate.getBlock()==Blocks.FARMLAND || iblockstate.getBlock()==Blocks.LOG || iblockstate.getBlock()==Blocks.LOG2 || iblockstate.getBlock()==Blocks.MYCELIUM) {
-                    f1 = 1.0F;
+				if(iblockstate.getBlock() == Blocks.FARMLAND || iblockstate.getBlock() == Blocks.LOG || iblockstate.getBlock() == Blocks.LOG2 || iblockstate.getBlock() == Blocks.MYCELIUM)
+				{
+					f1 = 1.0F;
 
-                    if (iblockstate.getBlock().isFertile(worldIn, blockpos.add(i, 0, j))) {
-                        f1 = 3.0F;
-                    }
-                }
+					if(iblockstate.getBlock().isFertile(worldIn, blockpos.add(i, 0, j)))
+					{
+						f1 = 3.0F;
+					}
+				}
 
-                if (i != 0 || j != 0) {
-                    f1 /= 4.0F;
-                }
+				if(i != 0 || j != 0)
+				{
+					f1 /= 4.0F;
+				}
 
-                f += f1;
-            }
-        }
+				f += f1;
+			}
+		}
 
-        BlockPos blockpos1 = pos.north();
-        BlockPos blockpos2 = pos.south();
-        BlockPos blockpos3 = pos.west();
-        BlockPos blockpos4 = pos.east();
-        boolean flag = blockIn == worldIn.getBlockState(blockpos3).getBlock() || blockIn == worldIn.getBlockState(blockpos4).getBlock();
-        boolean flag1 = blockIn == worldIn.getBlockState(blockpos1).getBlock() || blockIn == worldIn.getBlockState(blockpos2).getBlock();
+		BlockPos blockpos1 = pos.north();
+		BlockPos blockpos2 = pos.south();
+		BlockPos blockpos3 = pos.west();
+		BlockPos blockpos4 = pos.east();
+		boolean flag = blockIn == worldIn.getBlockState(blockpos3).getBlock() || blockIn == worldIn.getBlockState(blockpos4).getBlock();
+		boolean flag1 = blockIn == worldIn.getBlockState(blockpos1).getBlock() || blockIn == worldIn.getBlockState(blockpos2).getBlock();
 
-        if (flag && flag1) {
-            f /= 2.0F;
-        } else {
-            boolean flag2 = blockIn == worldIn.getBlockState(blockpos3.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.south()).getBlock() || blockIn == worldIn.getBlockState(blockpos3.south()).getBlock();
+		if(flag && flag1)
+		{
+			f /= 2.0F;
+		}
+		else
+		{
+			boolean flag2 = blockIn == worldIn.getBlockState(blockpos3.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.south()).getBlock() || blockIn == worldIn.getBlockState(blockpos3.south()).getBlock();
 
-            if (flag2) {
-                f /= 2.0F;
-            }
-        }
+			if(flag2)
+			{
+				f /= 2.0F;
+			}
+		}
 
-        return f;
-    }
+		return f;
+	}
 
-    @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-        super.updateTick(worldIn, pos, state, rand);
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+	{
+		super.updateTick(worldIn, pos, state, rand);
 
-        if (worldIn.getLightFromNeighbors(pos.up()) >= 9)
-        {
-            int i = this.getAge(state);
+		if(worldIn.getLightFromNeighbors(pos.up()) >= 9)
+		{
+			int i = this.getAge(state);
 
-            if (i < this.getMaxAge())
-            {
-                float f = getGrowthChance(this, worldIn, pos);
+			if(i < this.getMaxAge())
+			{
+				float f = getGrowthChance(this, worldIn, pos);
 
-                if (rand.nextInt((int)(25.0F / f) + 1) == 0)
-                {
-                    worldIn.setBlockState(pos, this.withAge(i + 1), 2);
-                }
-            }
-        }
-    }
+				if(rand.nextInt((int) (25.0F / f) + 1) == 0)
+				{
+					worldIn.setBlockState(pos, this.withAge(i + 1), 2);
+				}
+			}
+		}
+	}
 
-    @Override
-    public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
-        IBlockState soil = worldIn.getBlockState(pos.down());
+	@Override
+	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state)
+	{
+		IBlockState soil = worldIn.getBlockState(pos.down());
 
-        return (soil.getBlock()==Blocks.FARMLAND || soil.getBlock()==Blocks.LOG || soil.getBlock()==Blocks.LOG2 || soil.getBlock()==Blocks.MYCELIUM);
-    }
+		return (soil.getBlock() == Blocks.FARMLAND || soil.getBlock() == Blocks.LOG || soil.getBlock() == Blocks.LOG2 || soil.getBlock() == Blocks.MYCELIUM);
+	}
 
-    @Override
-    public List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        List<ItemStack> ret = new ArrayList<ItemStack>();
-        int age = getAge(state);
-        Random rand = world instanceof World ? ((World)world).rand : new Random();
+	@Override
+	public List<ItemStack> getDrops(net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	{
+		List<ItemStack> ret = new ArrayList<ItemStack>();
+		int age = getAge(state);
+		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
-        for (int i = 0; i < Math.floor(((float) age/(float) getMaxAge())*4) + 1 + fortune; ++i) {
-            if(rand.nextDouble() < 0.5){
-                ret.add(this.getCrop(state));
-            }else{
-                ret.add(this.getSeed(state));
-            }
-        }
+		for(int i = 0; i < Math.floor(((float) age / (float) getMaxAge()) * 4) + 1 + fortune; ++i)
+		{
+			if(rand.nextDouble() < 0.5)
+			{
+				ret.add(this.getCrop(state));
+			}
+			else
+			{
+				ret.add(this.getSeed(state));
+			}
+		}
 
-        return ret;
-    }
+		return ret;
+	}
 
-    /**
-     * Get the Item that this Block should drop when harvested.
-     */
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return null;
-    }
+	/**
+	 * Get the Item that this Block should drop when harvested.
+	 */
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+		return null;
+	}
 
-    @Override
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return this.getSeed(state);
-    }
+	@Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+	{
+		return this.getSeed(state);
+	}
 
-    public IBlockState withProperties(int age)
-    {
-        return this.getDefaultState().withProperty(this.getAgeProperty(), Integer.valueOf(age));
-    }
+	public IBlockState withProperties(int age)
+	{
+		return this.getDefaultState().withProperty(this.getAgeProperty(), Integer.valueOf(age));
+	}
 
-    /**
-     * Convert the given metadata into a BlockState for this Block
-     */
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        int age = meta;
-        return this.withProperties(age);
-    }
+	/**
+	 * Convert the given metadata into a BlockState for this Block
+	 */
+	@Override
+	public IBlockState getStateFromMeta(int meta)
+	{
+		int age = meta;
+		return this.withProperties(age);
+	}
 
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        int age = this.getAge(state);
-        return age;
-    }
+	/**
+	 * Convert the BlockState into the correct metadata value
+	 */
+	@Override
+	public int getMetaFromState(IBlockState state)
+	{
+		int age = this.getAge(state);
+		return age;
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[] {AGE});
-    }
+	@Override
+	protected BlockStateContainer createBlockState()
+	{
+		return new BlockStateContainer(this, new IProperty[]{AGE});
+	}
 }

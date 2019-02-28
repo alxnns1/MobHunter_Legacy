@@ -10,15 +10,15 @@ import net.minecraftforge.common.capabilities.Capability;
  */
 public class Storage<T extends ICapability> implements Capability.IStorage<T>
 {
-    @Override
-    public NBTBase writeNBT(Capability<T> capability, T instance, EnumFacing side)
-    {
-        return instance.serializeNBT();
-    }
+	@Override
+	public NBTBase writeNBT(Capability<T> capability, T instance, EnumFacing side)
+	{
+		return instance.serializeNBT();
+	}
 
-    @Override
-    public void readNBT(Capability<T> capability, T instance, EnumFacing side, NBTBase nbt)
-    {
-        instance.deserializeNBT((NBTTagCompound) nbt);
-    }
+	@Override
+	public void readNBT(Capability<T> capability, T instance, EnumFacing side, NBTBase nbt)
+	{
+		instance.deserializeNBT((NBTTagCompound) nbt);
+	}
 }

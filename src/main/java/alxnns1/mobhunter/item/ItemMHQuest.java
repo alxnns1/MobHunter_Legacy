@@ -23,35 +23,35 @@ import java.util.List;
 
 public class ItemMHQuest extends ItemMHBasic
 {
-    public ItemMHQuest()
-    {
-        super(Names.Items.QUEST);
-    }
+	public ItemMHQuest()
+	{
+		super(Names.Items.QUEST);
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
-        if(worldIn.isRemote)
-        {
-            if(playerIn.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest() != null)
-                CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST);
-            else
-                playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
-        }
-        return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
+	{
+		if(worldIn.isRemote)
+		{
+			if(playerIn.getCapability(MHCapabilities.QUESTS, null).getCurrentQuest() != null)
+				CommonUtil.openGui(playerIn, worldIn, EnumGuiID.QUEST);
+			else
+				playerIn.sendMessage(new TextComponentString("No Quest Accepted."));
+		}
+		return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(hand));
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        //Show quest name on tooltip
-        if(Minecraft.getMinecraft().player == null) return;
-        IQuest questCap = Minecraft.getMinecraft().player.getCapability(MHCapabilities.QUESTS, null);
-        if(questCap == null) return;
-        MHQuestObject quest = questCap.getCurrentQuest();
-        String questName = quest == null ? "No quest accepted" : quest.getQuest().getLocalName();
-        tooltip.add("Current quest:");
-        tooltip.add(questName);
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		//Show quest name on tooltip
+		if(Minecraft.getMinecraft().player == null) return;
+		IQuest questCap = Minecraft.getMinecraft().player.getCapability(MHCapabilities.QUESTS, null);
+		if(questCap == null) return;
+		MHQuestObject quest = questCap.getCurrentQuest();
+		String questName = quest == null ? "No quest accepted" : quest.getQuest().getLocalName();
+		tooltip.add("Current quest:");
+		tooltip.add(questName);
+	}
 }

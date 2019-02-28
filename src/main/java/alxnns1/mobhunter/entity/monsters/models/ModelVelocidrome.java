@@ -10,13 +10,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelVelocidrome extends ModelDromeBase
 {
-    ModelRenderer crest;
+	ModelRenderer crest;
 
-    public ModelVelocidrome()
-    {
-        this.crest = new ModelRenderer(this,88,116);
-        this.head.addChild(crest);
-        this.crest.addBox(0.0f,-12.0f,-24.0f,0,24,36 );
-        this.crest.setRotationPoint(0.0f,-10.0f,12.0f);
-    }
+	public ModelVelocidrome()
+	{
+		this.crest = new ModelRenderer(this, 88, 116);
+		this.head.addChild(crest);
+		this.crest.addBox(0.0f, -12.0f, -24.0f, 0, 24, 36);
+		this.crest.setRotationPoint(0.0f, -10.0f, 12.0f);
+	}
 }

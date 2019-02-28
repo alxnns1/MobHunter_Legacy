@@ -16,24 +16,24 @@ import net.minecraft.world.World;
  */
 public class BlockCraft extends Block
 {
-    public BlockCraft(String name)
-    {
-        super(Material.ROCK);
-        setCreativeTab(MobHunter.MHBLOCK_TAB);
-        setHardness(2f);
-        setResistance(10f);
-        setUnlocalizedName(name);
-        setRegistryName(name);
-    }
+	public BlockCraft(String name)
+	{
+		super(Material.ROCK);
+		setCreativeTab(MobHunter.MHBLOCK_TAB);
+		setHardness(2f);
+		setResistance(10f);
+		setUnlocalizedName(name);
+		setRegistryName(name);
+	}
 
-    //Used to open the block's GUI
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        //Open crafting gui
-        if(!world.isRemote && !player.isSneaking())
-            CommonUtil.openGui(player, world, pos);
-            //player.openGui(MobHunter.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
-        return true;
-    }
+	//Used to open the block's GUI
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		//Open crafting gui
+		if(!world.isRemote && !player.isSneaking())
+			CommonUtil.openGui(player, world, pos);
+		//player.openGui(MobHunter.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+		return true;
+	}
 }

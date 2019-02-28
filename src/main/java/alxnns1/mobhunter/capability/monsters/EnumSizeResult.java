@@ -5,8 +5,8 @@ package alxnns1.mobhunter.capability.monsters;
  */
 public enum EnumSizeResult
 {
-    SMALLEST,
-    LARGEST,
-    NONE,
-    NEW
+	SMALLEST,
+	LARGEST,
+	NONE,
+	NEW
 }

@@ -7,14 +7,14 @@ import net.minecraft.util.ResourceLocation;
  */
 public class VoidCriterionInstance extends MHCriterionInstance<Void>
 {
-    public VoidCriterionInstance(ResourceLocation id)
-    {
-        super(id, null);
-    }
+	public VoidCriterionInstance(ResourceLocation id)
+	{
+		super(id, null);
+	}
 
-    @Override
-    public boolean test(Void object)
-    {
-        return true;
-    }
+	@Override
+	public boolean test(Void object)
+	{
+		return true;
+	}
 }

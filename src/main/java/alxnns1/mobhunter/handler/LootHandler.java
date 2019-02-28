@@ -20,20 +20,20 @@ import java.util.Map;
 @Mod.EventBusSubscriber
 public class LootHandler
 {
-    private static void addLoot(LootPool pool, Item item, int weight)
-    {
-        pool.addEntry(new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0], MobHunter.MOD_ID + item.getUnlocalizedName()));
-    }
+	private static void addLoot(LootPool pool, Item item, int weight)
+	{
+		pool.addEntry(new LootEntryItem(item, weight, 0, new LootFunction[0], new LootCondition[0], MobHunter.MOD_ID + item.getUnlocalizedName()));
+	}
 
-    @SubscribeEvent
-    public static void addLoot(LootTableLoadEvent event)
-    {
-        if(event.getName().equals(LootTableList.GAMEPLAY_FISHING_FISH))
-        {
-            //Add fishable fish
-            LootPool pool = event.getTable().getPool("main");
-            for(Map.Entry<Item, Integer> entry : MHItems.FISHABLE.entrySet())
-                addLoot(pool, entry.getKey(), entry.getValue());
-        }
-    }
+	@SubscribeEvent
+	public static void addLoot(LootTableLoadEvent event)
+	{
+		if(event.getName().equals(LootTableList.GAMEPLAY_FISHING_FISH))
+		{
+			//Add fishable fish
+			LootPool pool = event.getTable().getPool("main");
+			for(Map.Entry<Item, Integer> entry : MHItems.FISHABLE.entrySet())
+				addLoot(pool, entry.getKey(), entry.getValue());
+		}
+	}
 }

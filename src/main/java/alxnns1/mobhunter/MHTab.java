@@ -8,17 +8,17 @@ import net.minecraft.item.ItemStack;
  */
 public class MHTab extends CreativeTabs
 {
-    private final ItemStack stack;
+	private final ItemStack stack;
 
-    public MHTab(String label, ItemStack stack)
-    {
-        super(MobHunter.MOD_ID + "_" + label);
-        this.stack = stack;
-    }
+	public MHTab(String label, ItemStack stack)
+	{
+		super(MobHunter.MOD_ID + "_" + label);
+		this.stack = stack;
+	}
 
-    @Override
-    public ItemStack getTabIconItem()
-    {
-        return stack;
-    }
+	@Override
+	public ItemStack getTabIconItem()
+	{
+		return stack;
+	}
 }

@@ -8,46 +8,46 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class MHQuestCooldown
 {
-    private MHQuest quest;
-    private long cooldownStart;
+	private MHQuest quest;
+	private long cooldownStart;
 
-    public MHQuestCooldown(MHQuest quest, long worldTime)
-    {
-        this.quest = quest;
-        cooldownStart = worldTime;
-    }
+	public MHQuestCooldown(MHQuest quest, long worldTime)
+	{
+		this.quest = quest;
+		cooldownStart = worldTime;
+	}
 
-    public boolean isQuestEqual(MHQuest questIn)
-    {
-        return quest.isEqual(questIn);
-    }
+	public boolean isQuestEqual(MHQuest questIn)
+	{
+		return quest.isEqual(questIn);
+	}
 
-    /**
-     * Gets whether enough time has passed for this quest to has finished it's cooldown
-     */
-    public boolean isCoolEnough(long worldTime)
-    {
-        return getMinsLeft(worldTime) <= 0;
-    }
+	/**
+	 * Gets whether enough time has passed for this quest to has finished it's cooldown
+	 */
+	public boolean isCoolEnough(long worldTime)
+	{
+		return getMinsLeft(worldTime) <= 0;
+	}
 
-    /**
-     * Calculates the cooldown time remaining in minutes
-     */
-    public int getMinsLeft(long worldTime)
-    {
-        return (int) ((cooldownStart + (long) quest.getRepeatCooldown() - worldTime) / 1200L);
-    }
+	/**
+	 * Calculates the cooldown time remaining in minutes
+	 */
+	public int getMinsLeft(long worldTime)
+	{
+		return (int) ((cooldownStart + (long) quest.getRepeatCooldown() - worldTime) / 1200L);
+	}
 
-    public NBTTagCompound writeToNBT()
-    {
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setString("questId", quest.getQuestId());
-        tag.setLong("cooldownStart", cooldownStart);
-        return tag;
-    }
+	public NBTTagCompound writeToNBT()
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("questId", quest.getQuestId());
+		tag.setLong("cooldownStart", cooldownStart);
+		return tag;
+	}
 
-    public static MHQuestCooldown readFromNBT(NBTTagCompound nbt)
-    {
-        return new MHQuestCooldown(MHQuests.getQuest(nbt.getString("questId")), nbt.getLong("cooldownStart"));
-    }
+	public static MHQuestCooldown readFromNBT(NBTTagCompound nbt)
+	{
+		return new MHQuestCooldown(MHQuests.getQuest(nbt.getString("questId")), nbt.getLong("cooldownStart"));
+	}
 }

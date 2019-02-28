@@ -7,13 +7,13 @@ import net.minecraft.item.Item;
  */
 public class WeaponCraftingRecipe extends MHCraftingRecipe<WeaponCraftingRecipe>
 {
-    public WeaponCraftingRecipe(Item result, Object... inputs)
-    {
-        super(result, inputs);
-    }
+	public WeaponCraftingRecipe(Item result, Object... inputs)
+	{
+		super(result, inputs);
+	}
 
-    public WeaponCraftingRecipe(Item result, Item key, Object... inputs)
-    {
-        super(result, key, inputs);
-    }
+	public WeaponCraftingRecipe(Item result, Item key, Object... inputs)
+	{
+		super(result, key, inputs);
+	}
 }

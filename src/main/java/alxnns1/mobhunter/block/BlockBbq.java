@@ -28,117 +28,117 @@ import java.util.Random;
  */
 public class BlockBbq extends BlockContainer
 {
-    public BlockBbq(String name)
-    {
-        super(Material.ROCK);
-        setUnlocalizedName(name);
-        setRegistryName(name);
-        setCreativeTab(MobHunter.MHBLOCK_TAB);
-        setHardness(2f);
-        setResistance(10f);
-        //setLightOpacity(0);
-    }
+	public BlockBbq(String name)
+	{
+		super(Material.ROCK);
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(MobHunter.MHBLOCK_TAB);
+		setHardness(2f);
+		setResistance(10f);
+		//setLightOpacity(0);
+	}
 
-    public BlockBbq()
-    {
-        this(Names.Blocks.BBQ);
-    }
+	public BlockBbq()
+	{
+		this(Names.Blocks.BBQ);
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta)
-    {
-        return new TileBbq();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta)
+	{
+		return new TileBbq();
+	}
 
-    @Override
-    public boolean isOpaqueCube(IBlockState state)
-    {
-        return false;
-    }
+	@Override
+	public boolean isOpaqueCube(IBlockState state)
+	{
+		return false;
+	}
 
-    @Override
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
+	@Override
+	public boolean isFullCube(IBlockState state)
+	{
+		return false;
+	}
 
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
-        return EnumBlockRenderType.MODEL;
-    }
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state)
+	{
+		return EnumBlockRenderType.MODEL;
+	}
 
-    @Override
-    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
-    {
-        TileEntity te = world.getTileEntity(pos);
-        return te == null || !(te instanceof TileBbq) || !((TileBbq)te).isCooking() ? 0 : 14;
-    }
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
+	{
+		TileEntity te = world.getTileEntity(pos);
+		return te == null || !(te instanceof TileBbq) || !((TileBbq) te).isCooking() ? 0 : 14;
+	}
 
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        TileBbq te = (TileBbq) world.getTileEntity(pos);
-        if(te == null) return false;
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		TileBbq te = (TileBbq) world.getTileEntity(pos);
+		if(te == null) return false;
 
-        ItemStack heldItem = player.getHeldItem(hand);
+		ItemStack heldItem = player.getHeldItem(hand);
 
-        if(te.isValidInput(heldItem) && te.putInputItem())
-        {
-            //Start cooking held item
-            heldItem.shrink(1);
-            return true;
-        }
-        else if(te.isCooking())
-        {
-            //Try to get the item from the bbq spit
-            ItemStack product = te.retrieveResult();
-            if(product != null && !world.isRemote)
-            {
-                //Trigger crafting event
-                net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(player, product, null);
-                //Drop item on the ground
-                BlockPos pPos = player.getPosition();
-                EntityItem itemDrop = new EntityItem(world, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, product);
-                itemDrop.setNoPickupDelay();
-                world.spawnEntity(itemDrop);
-                return true;
-            }
-        }
-        return false;
-    }
+		if(te.isValidInput(heldItem) && te.putInputItem())
+		{
+			//Start cooking held item
+			heldItem.shrink(1);
+			return true;
+		}
+		else if(te.isCooking())
+		{
+			//Try to get the item from the bbq spit
+			ItemStack product = te.retrieveResult();
+			if(product != null && !world.isRemote)
+			{
+				//Trigger crafting event
+				net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerCraftingEvent(player, product, null);
+				//Drop item on the ground
+				BlockPos pPos = player.getPosition();
+				EntityItem itemDrop = new EntityItem(world, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, product);
+				itemDrop.setNoPickupDelay();
+				world.spawnEntity(itemDrop);
+				return true;
+			}
+		}
+		return false;
+	}
 
-    private void spawnParticle(World world, BlockPos pos, Random rand, boolean isFire)
-    {
-        double x = pos.getX() + 0.375d + (rand.nextDouble() * 0.25d);
-        double y = pos.getY() + 0.25d + (rand.nextDouble() * 0.125d);
-        double z = pos.getZ() + 0.375d + (rand.nextDouble() * 0.25d);
-        EnumParticleTypes type;
-        if(isFire)
-            type = EnumParticleTypes.FLAME;
-        else
-            type = EnumParticleTypes.SMOKE_NORMAL;
-        world.spawnParticle(type, x, y, z, 0, 0, 0);
-    }
+	private void spawnParticle(World world, BlockPos pos, Random rand, boolean isFire)
+	{
+		double x = pos.getX() + 0.375d + (rand.nextDouble() * 0.25d);
+		double y = pos.getY() + 0.25d + (rand.nextDouble() * 0.125d);
+		double z = pos.getZ() + 0.375d + (rand.nextDouble() * 0.25d);
+		EnumParticleTypes type;
+		if(isFire)
+			type = EnumParticleTypes.FLAME;
+		else
+			type = EnumParticleTypes.SMOKE_NORMAL;
+		world.spawnParticle(type, x, y, z, 0, 0, 0);
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void randomDisplayTick(IBlockState state, World worldIn, BlockPos pos, Random rand)
-    {
-        worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-        worldIn.checkLightFor(EnumSkyBlock.BLOCK, pos);
-        //This is where the particles are spawned when cooking
-        TileEntity te = worldIn.getTileEntity(pos);
-        if(te == null) return;
-        boolean cooking = ((TileBbq) te).isCooking();
-        if(cooking)
-        {
-            //Spawns between 2 and 5 fire particles
-            for(int i = 0; i < rand.nextInt(3) + 1; i++)
-                spawnParticle(worldIn, pos, rand, true);
-            //Spawns between 0 and 3 smoke particles
-            for(int i = 1; i < rand.nextInt(4); i++)
-                spawnParticle(worldIn, pos, rand, false);
-        }
-    }
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void randomDisplayTick(IBlockState state, World worldIn, BlockPos pos, Random rand)
+	{
+		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+		worldIn.checkLightFor(EnumSkyBlock.BLOCK, pos);
+		//This is where the particles are spawned when cooking
+		TileEntity te = worldIn.getTileEntity(pos);
+		if(te == null) return;
+		boolean cooking = ((TileBbq) te).isCooking();
+		if(cooking)
+		{
+			//Spawns between 2 and 5 fire particles
+			for(int i = 0; i < rand.nextInt(3) + 1; i++)
+				spawnParticle(worldIn, pos, rand, true);
+			//Spawns between 0 and 3 smoke particles
+			for(int i = 1; i < rand.nextInt(4); i++)
+				spawnParticle(worldIn, pos, rand, false);
+		}
+	}
 }

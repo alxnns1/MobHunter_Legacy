@@ -8,13 +8,13 @@ import net.minecraft.util.ResourceLocation;
  */
 public abstract class MHCriterionInstance<T> extends AbstractCriterionInstance
 {
-    protected final T object;
+	protected final T object;
 
-    public MHCriterionInstance(ResourceLocation id, T object)
-    {
-        super(id);
-        this.object = object;
-    }
+	public MHCriterionInstance(ResourceLocation id, T object)
+	{
+		super(id);
+		this.object = object;
+	}
 
-    public abstract boolean test(T object);
+	public abstract boolean test(T object);
 }

@@ -8,14 +8,14 @@ import net.minecraft.item.ItemStack;
  */
 public class TileGourmetBBQ extends TileBbq
 {
-    public TileGourmetBBQ()
-    {
-        super();
-    }
+	public TileGourmetBBQ()
+	{
+		super();
+	}
 
-    @Override
-    protected ItemStack getCookedMeat()
-    {
-        return new ItemStack(MHItems.itemGourmetSteak);
-    }
+	@Override
+	protected ItemStack getCookedMeat()
+	{
+		return new ItemStack(MHItems.itemGourmetSteak);
+	}
 }

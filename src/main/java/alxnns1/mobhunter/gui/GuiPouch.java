@@ -9,9 +9,9 @@ import net.minecraft.world.World;
  */
 public class GuiPouch extends MHGuiContainer
 {
-    public GuiPouch(EntityPlayer player, World world)
-    {
-        super(new ContainerPouch(player, world), "pouch");
-        textPlayerInvY = 74;
-    }
+	public GuiPouch(EntityPlayer player, World world)
+	{
+		super(new ContainerPouch(player, world), "pouch");
+		textPlayerInvY = 74;
+	}
 }

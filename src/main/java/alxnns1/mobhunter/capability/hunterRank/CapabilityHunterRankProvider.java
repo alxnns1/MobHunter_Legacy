@@ -13,35 +13,35 @@ import javax.annotation.Nullable;
  */
 public class CapabilityHunterRankProvider implements ICapabilitySerializable<NBTTagCompound>
 {
-    private IHunterRank hunterRank;
+	private IHunterRank hunterRank;
 
-    public CapabilityHunterRankProvider()
-    {
-        hunterRank = new CapabilityHunterRank();
-    }
+	public CapabilityHunterRankProvider()
+	{
+		hunterRank = new CapabilityHunterRank();
+	}
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
-    {
-        return capability == MHCapabilities.HUNTER_RANK;
-    }
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+	{
+		return capability == MHCapabilities.HUNTER_RANK;
+	}
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
-    {
-        return hasCapability(capability, facing) ? (T)hunterRank : null;
-    }
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+	{
+		return hasCapability(capability, facing) ? (T) hunterRank : null;
+	}
 
-    @Override
-    public NBTTagCompound serializeNBT()
-    {
-        return hunterRank.serializeNBT();
-    }
+	@Override
+	public NBTTagCompound serializeNBT()
+	{
+		return hunterRank.serializeNBT();
+	}
 
-    @Override
-    public void deserializeNBT(NBTTagCompound nbt)
-    {
-        hunterRank.deserializeNBT(nbt);
-    }
+	@Override
+	public void deserializeNBT(NBTTagCompound nbt)
+	{
+		hunterRank.deserializeNBT(nbt);
+	}
 }

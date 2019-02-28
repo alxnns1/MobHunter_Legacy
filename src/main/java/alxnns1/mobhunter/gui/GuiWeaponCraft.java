@@ -9,8 +9,8 @@ import net.minecraft.world.World;
  */
 public class GuiWeaponCraft extends AbstractGuiCraft
 {
-    public GuiWeaponCraft(EntityPlayer player, World world, String blockDisplayName)
-    {
-        super(new ContainerWeaponCraft(player, world), blockDisplayName, "gui.blockweaponupgrade.");
-    }
+	public GuiWeaponCraft(EntityPlayer player, World world, String blockDisplayName)
+	{
+		super(new ContainerWeaponCraft(player, world), blockDisplayName, "gui.blockweaponupgrade.");
+	}
 }

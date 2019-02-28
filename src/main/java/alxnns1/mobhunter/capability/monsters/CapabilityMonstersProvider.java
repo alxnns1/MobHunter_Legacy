@@ -13,35 +13,35 @@ import javax.annotation.Nullable;
  */
 public class CapabilityMonstersProvider implements ICapabilitySerializable<NBTTagCompound>
 {
-    private IMonsters monsters;
+	private IMonsters monsters;
 
-    public CapabilityMonstersProvider()
-    {
-        monsters = new CapabilityMonsters();
-    }
+	public CapabilityMonstersProvider()
+	{
+		monsters = new CapabilityMonsters();
+	}
 
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
-    {
-        return capability == MHCapabilities.MONSTERS;
-    }
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+	{
+		return capability == MHCapabilities.MONSTERS;
+	}
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
-    {
-        return hasCapability(capability, facing) ? (T) monsters : null;
-    }
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+	{
+		return hasCapability(capability, facing) ? (T) monsters : null;
+	}
 
-    @Override
-    public NBTTagCompound serializeNBT()
-    {
-        return monsters.serializeNBT();
-    }
+	@Override
+	public NBTTagCompound serializeNBT()
+	{
+		return monsters.serializeNBT();
+	}
 
-    @Override
-    public void deserializeNBT(NBTTagCompound nbt)
-    {
-        monsters.deserializeNBT(nbt);
-    }
+	@Override
+	public void deserializeNBT(NBTTagCompound nbt)
+	{
+		monsters.deserializeNBT(nbt);
+	}
 }
