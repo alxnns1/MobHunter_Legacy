@@ -81,7 +81,6 @@ public class MobHunter
 
 		LOGGER = event.getModLog();
 		CommonUtil.initNetwork();
-		MHPotions.init();
 		MHCapabilities.init();
 		MHAdvancementTriggers.init();
 	}

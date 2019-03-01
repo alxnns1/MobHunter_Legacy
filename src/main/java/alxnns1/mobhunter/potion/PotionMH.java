@@ -14,16 +14,11 @@ public class PotionMH extends Potion
 {
 	public static ResourceLocation textures = new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "effects.png");
 
-	public PotionMH(String name, boolean badEffect, int potionColor)
+	public PotionMH(String name, boolean badEffect, int potionColor, int iconIndexX, int iconIndexY)
 	{
 		super(badEffect, potionColor);
-		setPotionName(name);
-	}
-
-	@Override
-	public Potion setIconIndex(int x, int y)
-	{
-		return super.setIconIndex(x, y);
+		setPotionName("effect." + name + ".name");
+		setIconIndex(iconIndexX, iconIndexY);
 	}
 
 	@Override

@@ -4,6 +4,7 @@ package alxnns1.mobhunter.reference;
  * This class will contain all of the unlocalised names we're assigning to s and blocks (etc)
  * Created by Mark on 21/04/2016.
  */
+//TODO: Remove this class
 public class Names
 {
 	public static class Items

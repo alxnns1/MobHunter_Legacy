@@ -68,6 +68,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
 		String[] itemNameSplit = stack.getUnlocalizedName().split("\\W");
 		String itemName = itemNameSplit[itemNameSplit.length - 1];
 
+		//TODO: Don't use itemName.equals(name)
 		if(itemName.equals(Names.Items.HERB))
 		{
 			return MHBlocks.blockCropHerb;
@@ -218,6 +219,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
 		String[] itemNameSplit = stack.getUnlocalizedName().split("\\W");
 		String itemName = itemNameSplit[itemNameSplit.length - 1];
 
+		//TODO: Don't use itemName.equals(name)
 		if(itemName.equals(Names.Items.HERB))
 			player.heal(2f);
 		else if(itemName.equals(Names.Items.NULBERRY) && player.getActivePotionEffects().size() > 0)
@@ -237,6 +239,7 @@ public class ItemMHConsumable extends ItemFood implements ISubTypes<ItemMHConsum
 		}
 		else if(itemRand.nextFloat() < 0.5f)
 		{
+			//TODO: Don't use itemName.equals(name)
 			//HERBS
 			if(itemName.equals(Names.Items.ANTIDOTE_HERB))
 			{

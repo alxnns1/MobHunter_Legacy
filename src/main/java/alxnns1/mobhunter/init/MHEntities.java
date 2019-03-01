@@ -77,7 +77,7 @@ public class MHEntities
 		RenderingRegistry.registerEntityRenderingHandler(entityClass, renderFactory);
 	}
 
-	public static void init()
+	private static void init()
 	{
 		addEntity(EntityAptonoth.class, "aptonoth", 0x7f6d59, 0x382c1e,
 				MHConfig.SPAWN_CHANCES.aptonothSpawnChance, 3, 5,

@@ -13,6 +13,7 @@ import alxnns1.mobhunter.tileentity.TileGourmetBBQ;
 import alxnns1.mobhunter.util.ClientUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.biome.BiomeColorHelper;
@@ -70,6 +71,13 @@ public class RegHandler
 	{
 		IForgeRegistry<EntityEntry> registry = event.getRegistry();
 		MHEntities.getEntities().forEach(registry::register);
+	}
+
+	@SubscribeEvent
+	public static void regPotions(RegistryEvent.Register<Potion> event)
+	{
+		IForgeRegistry<Potion> registry = event.getRegistry();
+		MHPotions.getPotions().forEach(registry::register);
 	}
 
 	@SideOnly(Side.CLIENT)
