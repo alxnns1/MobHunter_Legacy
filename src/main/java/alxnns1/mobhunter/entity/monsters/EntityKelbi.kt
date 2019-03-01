@@ -6,22 +6,16 @@ import alxnns1.mobhunter.reference.Names
 import net.minecraft.entity.EntityAgeable
 import net.minecraft.world.World
 
-/**
- * Created by Alex on 27/04/2016.
- */
 class EntityKelbi(worldIn: World) : EntityMHHerbivore(worldIn) {
     init {
         setSize(0.9f, 1.3f)
-        setBaseHealth(5)
-        setBaseSpeed(0.2)
-        setBaseKnockback(0.2)
+        baseHealth = 5.0
+        baseSpeed = 0.2
+        baseKnockBack = 0.2
     }
 
     override fun getEyeHeight() = 1.375f
 
-    /**
-     * Drop 0-2 items of this living's type
-     */
     override fun dropFewItems(hitByPlayer: Boolean, lootingLevel: Int) {
         for (n in 0..lootingLevel) {
             val randomDrop = rand.nextInt(100)
@@ -34,7 +28,7 @@ class EntityKelbi(worldIn: World) : EntityMHHerbivore(worldIn) {
                 }
             } else {
                 when {
-                    randomDrop < 70 -> dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MYSTERY_BONE))
+                    randomDrop < 73 -> dropSingleItem(MHItems.itemMiscDrop, MetaRef.getMeta(MetaRef.EnumItemType.MISC_DROP, Names.Items.MYSTERY_BONE))
                     else -> dropSingleItem(MHItems.itemRawMeat)
                 }
             }
