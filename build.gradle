@@ -43,6 +43,11 @@ minecraft {
 }
 
 repositories {
+    jcenter()
+    maven {
+        // location of the maven for Forgelin
+        url "http://maven.shadowfacts.net/"
+    }
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -56,6 +61,8 @@ repositories {
 }
 
 dependencies {
+    compile group: "net.shadowfacts", name: "Forgelin", version: "1.8.2"
+
     // compile against the JEI API
     deobfCompile "mezz.jei:jei_${project.minecraft_version}:${project.jei_version}:api"
     // at runtime, use the full JEI jar
