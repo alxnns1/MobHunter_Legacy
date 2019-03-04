@@ -108,7 +108,7 @@ public class MHBlocks
 		addBlock(blockWeaponCraft = new BlockCraft(Names.Blocks.WEAPON_CRAFT));
 		addBlock(blockArmourCraft = new BlockCraft(Names.Blocks.ARMOUR_CRAFT));
 
-//		addBlock(blockBarrelBomb = new BlockBarrelBomb(), new ItemBlockBarrelBomb(blockBarrelBomb));
+		addBlock(blockBarrelBomb = new BlockBarrelBomb(), new ItemBlockBarrelBomb(blockBarrelBomb));
 
 		GameRegistry.registerTileEntity(TileBbq.class, Names.Blocks.BBQ);
 		GameRegistry.registerTileEntity(TileGourmetBBQ.class, Names.Blocks.BBQ_GOURMET);
