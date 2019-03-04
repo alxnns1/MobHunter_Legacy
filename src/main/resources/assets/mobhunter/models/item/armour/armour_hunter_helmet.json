@@ -1,0 +1,6 @@
+{
+  "parent": "mobhunter:item/item_default",
+  "textures": {
+    "layer0": "mobhunter:items/armour_hunter_helmet"
+  }
+}

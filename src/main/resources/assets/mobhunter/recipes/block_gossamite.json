@@ -8,10 +8,10 @@
     "key": {
         "x": {
             "item": "mobhunter:ore",
-            "data": 6
+            "data": 5
         }
     },
     "result": {
-        "item": "mobhunter:blockgossamite"
+        "item": "mobhunter:block_gossamite"
     }
 }

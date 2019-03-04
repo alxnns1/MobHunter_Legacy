@@ -30,7 +30,7 @@ public class ItemMHDebug extends ItemMHBasic
 	{
 		if(!worldIn.isRemote)
 		{
-			EntitySpit entity = new EntitySpit(worldIn, playerIn, "debugSpit", 2f, 1f, new PotionEffect(MobEffects.GLOWING, 40));
+			EntitySpit entity = new EntitySpit(worldIn, playerIn, "debug_spit", 2f, 1f, new PotionEffect(MobEffects.GLOWING, 40));
 			entity.setPosition(playerIn.posX, playerIn.posY + 1.5d, playerIn.posZ);
 			entity.setItemToRender(new ItemStack(Items.ENDER_EYE));
 			worldIn.spawnEntity(entity);

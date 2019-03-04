@@ -8,7 +8,7 @@
     "key": {
         "M": {
             "item": "mobhunter:ore",
-            "data": 6
+            "data": 5
         },
         "S": {
             "type": "forge:ore_dict",
@@ -16,6 +16,6 @@
         }
     },
     "result": {
-        "item": "mobhunter:itemgossamitepickaxe"
+        "item": "mobhunter:item_gossamite_pickaxe"
     }
 }

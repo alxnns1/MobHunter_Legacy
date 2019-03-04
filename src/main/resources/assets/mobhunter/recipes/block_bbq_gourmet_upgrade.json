@@ -14,7 +14,7 @@
             "data": 1
         },
         "B": {
-            "item": "mobhunter:blockbbq"
+            "item": "mobhunter:block_bbq"
         },
         "N": {
             "type": "forge:ore_dict",
@@ -22,6 +22,6 @@
         }
     },
     "result": {
-        "item": "mobhunter:blockbbqgourmet"
+        "item": "mobhunter:block_bbq_gourmet"
     }
 }

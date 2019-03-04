@@ -2,12 +2,12 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "mobhunter:blockoregossamite"
+            "item": "mobhunter:block_ore_gossamite"
         }
     ],
     "result": {
         "item": "mobhunter:ore",
-        "data": 6,
+        "data": 5,
         "count": 9
     }
 }

@@ -47,7 +47,7 @@ public class GuiQuestList extends MHGuiScreen
 
 	public GuiQuestList(EntityPlayer player)
 	{
-		super("questlist");
+		super("quest_list");
 		questCapability = player.getCapability(MHCapabilities.QUESTS, null);
 		xSize = 256;
 		ySize = 204;

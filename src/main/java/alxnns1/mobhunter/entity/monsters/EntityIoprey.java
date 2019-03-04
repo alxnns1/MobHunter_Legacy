@@ -87,7 +87,7 @@ public class EntityIoprey extends EntityMHBirdWyvern implements ISpitAttackMob {
 
 	@Override
 	public void attackEntityWithSpitAttack(EntityLivingBase target) {
-		EntitySpit spit = new EntitySpit(this.world, this, "iopreySpit", 0f, 1f, new PotionEffect(MobEffects.POISON, 200));
+		EntitySpit spit = new EntitySpit(this.world, this, "ioprey_spit", 0f, 1f, new PotionEffect(MobEffects.POISON, 200));
 		double d0 = target.posY + (double) target.getEyeHeight() - 1.100000023841858D;
 		double d1 = target.posX - this.posX;
 		double d2 = d0 - spit.posY;

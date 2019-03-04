@@ -2,7 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "mobhunter:blockoremachalite"
+            "item": "mobhunter:block_ore_machalite"
         }
     ],
     "result": {

@@ -1,6 +1,0 @@
-{
-  "parent": "mobhunter:item/itemdefault",
-  "textures": {
-    "layer0": "mobhunter:items/altaroth_stomach"
-  }
-}

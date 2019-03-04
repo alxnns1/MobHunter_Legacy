@@ -41,7 +41,7 @@ public class EntitySpit extends Entity implements IProjectile {
 	private int ignoreTime;
 
 	public EntitySpit(World world) {
-		this(world, null, "Spit", 0f, 1f);
+		this(world, null, "spit", 0f, 1f);
 	}
 
 	public EntitySpit(World world, EntityLivingBase sourceEntity, String damageTypeIn, float attackDamage, float velocity, PotionEffect... potionEffects) {

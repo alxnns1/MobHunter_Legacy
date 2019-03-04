@@ -1,5 +1,5 @@
 {
-  "parent": "mobhunter:item/itemdefault",
+  "parent": "mobhunter:item/item_default",
   "textures": {
     "layer0": "mobhunter:items/immunizer"
   }

@@ -1,7 +1,7 @@
 {
     "display": {
         "icon": {
-            "item": "mobhunter:weaponsoldiersdagger"
+            "item": "mobhunter:weapon_soldiers_dagger"
         },
         "title": {
             "translate": "mobhunter.advancement.root.title"
