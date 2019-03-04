@@ -24,7 +24,7 @@ public class ItemCraftingRecipeCategory implements IRecipeCategory<ItemCraftingR
 	{
 		uid = MobHunter.MOD_ID + ":" + unlocName;
 		title = I18n.format("jei.recipe." + unlocName);
-		background = guiHelper.createDrawable(new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "guicraftupgrade_jei.png"), 0, 0, 166, 56);
+		background = guiHelper.createDrawable(new ResourceLocation(MobHunter.MOD_ID, MobHunter.GUI_TEXTURE_DIR + "gui_craft_upgrade_jei.png"), 0, 0, 166, 56);
 	}
 
 	@Override

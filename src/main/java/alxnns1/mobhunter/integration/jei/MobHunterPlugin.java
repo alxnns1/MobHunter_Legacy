@@ -27,8 +27,8 @@ public class MobHunterPlugin implements IModPlugin
 {
 	public static IJeiHelpers jeiHelper;
 
-	public static final String WEAPON_CRAFTING_ID = "weaponCrafting";
-	public static final String ARMOUR_CRAFTING_ID = "armourCrafting";
+	public static final String WEAPON_CRAFTING_ID = "weapon_crafting";
+	public static final String ARMOUR_CRAFTING_ID = "armour_crafting";
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry)

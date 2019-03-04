@@ -1,6 +1,0 @@
-{
-  "parent": "mobhunter:item/itemtooldefault",
-  "textures": {
-    "layer0": "mobhunter:items/machalite_pickaxe"
-  }
-}

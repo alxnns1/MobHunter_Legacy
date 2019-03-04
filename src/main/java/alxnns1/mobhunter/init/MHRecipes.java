@@ -14,8 +14,7 @@ import net.minecraftforge.registries.IForgeRegistry;
  * Contains the recipes to be added
  * Created by Mark on 21/04/2016.
  */
-public class MHRecipes
-{
+public class MHRecipes {
 	//Leaving these old recipes commented out here so we can add them as json recipes later
 
 	//TODO Add Dash Extract
@@ -35,8 +34,7 @@ public class MHRecipes
 	//      MetaRef.getStack(MetaRef.EnumItemType.DRINK, Names.Items.ARMOURSKIN),
 	//      MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PALE_EXTRACT);
 
-	public static void regSmelting()
-	{
+	public static void regSmelting() {
 		GameRegistry.addSmelting(MHItems.itemRawMeat,
 				new ItemStack(MHItems.itemRareSteak), 0.2f);
 		GameRegistry.addSmelting(MHBlocks.blockOreMachalite,
@@ -47,8 +45,7 @@ public class MHRecipes
 				MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.GOSSAMITE_INGOT), 0.2f);
 	}
 
-	public static void regWeaponRecipes(IForgeRegistry<WeaponCraftingRecipe> registry)
-	{
+	public static void regWeaponRecipes(IForgeRegistry<WeaponCraftingRecipe> registry) {
 		registry.registerAll(
 				new WeaponCraftingRecipe(MHItems.weaponHuntersKnife, new ItemStack(Items.IRON_INGOT, 6)),
 				new WeaponCraftingRecipe(MHItems.weaponSoldiersDagger, MHItems.weaponHuntersKnifePlus,
@@ -68,32 +65,29 @@ public class MHRecipes
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.KINGS_FRILL, 2),
 						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_PLUS, 2),
 						MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.DRAGONITE_INGOT, 7)),
-				//TODO: Add Great Jaggi High Rank and G Rank weapons
-                /*
-                new WeaponCraftingRecipe(MHItems.weaponNatchKnife, MHItems.weaponDeadlyKnifePlus,
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 4),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_HIDE_PLUS, 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.KINGS_FRILL, 2),
-                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.CARBALITE_INGOT, 5)),
-                new WeaponCraftingRecipe(MHItems.weaponAcclimatedKnife, MHItems.weaponNatchKnife,
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 3),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.AVIAN_FINEBONE, 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.JAGGI_SCALE_PLUS, 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 1)),
-                new WeaponCraftingRecipe(MHItems.weaponRebelliousKnife, MHItems.weaponAcclimatedKnife,
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 4),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.TOUGH_BIRD_WYVERN_HIDE, 2),
-                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.FUCIUM_INGOT, 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 2)),
-                new WeaponCraftingRecipe(MHItems.weaponRebelliousKnifePlus, MHItems.weaponRebelliousKnife,
-                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ELTALITE_INGOT, 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.AVIAN_STOUTBONE, 5),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 5));
-                new WeaponCraftingRecipe(MHItems.weaponVengefulKnife, MHItems.weaponRebelliousKnifePlus,
-                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MELDSPAR_INGOT, 3),
-                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ELTALITE_INGOT, 10),
-                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 3)),
-                */
+//                new WeaponCraftingRecipe(MHItems.weaponNatchKnife, MHItems.weaponDeadlyKnifePlus,
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 4),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_HIDE_PLUS, 5),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.KINGS_FRILL, 2),
+//                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.CARBALITE_INGOT, 5)),
+//                new WeaponCraftingRecipe(MHItems.weaponAcclimatedKnife, MHItems.weaponNatchKnife,
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 3),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.AVIAN_FINEBONE, 5),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.JAGGI_SCALE_PLUS, 5),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 1)),
+//                new WeaponCraftingRecipe(MHItems.weaponRebelliousKnife, MHItems.weaponAcclimatedKnife,
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 4),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.TOUGH_BIRD_WYVERN_HIDE, 2),
+//                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.FUCIUM_INGOT, 5),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 2)),
+//                new WeaponCraftingRecipe(MHItems.weaponRebelliousKnifePlus, MHItems.weaponRebelliousKnife,
+//                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ELTALITE_INGOT, 5),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.AVIAN_STOUTBONE, 5),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GREAT_JAGGI_CLAW_PLUS, 5));
+//                new WeaponCraftingRecipe(MHItems.weaponVengefulKnife, MHItems.weaponRebelliousKnifePlus,
+//                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MELDSPAR_INGOT, 3),
+//                        MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.ELTALITE_INGOT, 10),
+//                        MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 3)),
 				new WeaponCraftingRecipe(MHItems.weaponSerpentBite, MHItems.weaponHuntersKnife,
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.VELOCIPREY_HIDE, 5),
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.VELOCIPREY_FANG, 10),
@@ -171,26 +165,26 @@ public class MHRecipes
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_HEAD, 1),
 						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.JUMBO_BONE, 3),
 						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 2)),
-				new WeaponCraftingRecipe(MHItems.weaponGendromeFang, MHItems.weaponGendromeBitePlus,
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW_PLUS, 3),
-						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_PLUS, 1),
-						MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 5),
-						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 3)),
-				new WeaponCraftingRecipe(MHItems.weaponGendromeFangPlus, MHItems.weaponGendromeFang,
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW_PLUS, 3),
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_HIDE_PLUS, 7),
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.TOUGH_BIRD_WYVERN_HIDE, 4),
-						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 4)),
-				new WeaponCraftingRecipe(MHItems.weaponDromeToxinDagger, MHItems.weaponGendromeFangPlus,
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_SCALE_PLUS, 4),
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW_PLUS, 3),
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 1),
-						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 5)),
-				new WeaponCraftingRecipe(MHItems.weaponGreatParadag, MHItems.weaponDromeToxinDagger,
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_HARDCLAW, 4),
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.TOUGH_BIRD_WYVERN_HIDE, 8),
-						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.FEY_WYVERN_GEM, 2),
-						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 6)),
+//				new WeaponCraftingRecipe(MHItems.weaponGendromeFang, MHItems.weaponGendromeBitePlus,
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW_PLUS, 3),
+//						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_PLUS, 1),
+//						MetaRef.getStack(MetaRef.EnumItemType.ORE, Names.Items.MACHALITE_INGOT, 5),
+//						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 3)),
+//				new WeaponCraftingRecipe(MHItems.weaponGendromeFangPlus, MHItems.weaponGendromeFang,
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW_PLUS, 3),
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_HIDE_PLUS, 7),
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.TOUGH_BIRD_WYVERN_HIDE, 4),
+//						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 4)),
+//				new WeaponCraftingRecipe(MHItems.weaponDromeToxinDagger, MHItems.weaponGendromeFangPlus,
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENPREY_SCALE_PLUS, 4),
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_CLAW_PLUS, 3),
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.BIRD_WYVERN_GEM, 1),
+//						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 5)),
+//				new WeaponCraftingRecipe(MHItems.weaponGreatParadag, MHItems.weaponDromeToxinDagger,
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.GENDROME_HARDCLAW, 4),
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.TOUGH_BIRD_WYVERN_HIDE, 8),
+//						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.FEY_WYVERN_GEM, 2),
+//						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.PARALYSIS_SAC, 6)),
 				new WeaponCraftingRecipe(MHItems.weaponHydraBite, MHItems.weaponHuntersKnife,
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.IOPREY_HIDE, 5),
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.IOPREY_FANG, 4),
@@ -203,7 +197,6 @@ public class MHRecipes
 						MetaRef.getStack(MetaRef.EnumItemType.BIRD_DROP, Names.Items.IOPREY_FANG, 9),
 						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_M, 9),
 						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.POISON_SAC, 4)),
-				//TODO Iodrome weapons
 				new WeaponCraftingRecipe(MHItems.weaponHuntersKnifePlus, MHItems.weaponHuntersKnife,
 						new ItemStack(Items.IRON_INGOT, 5)),
 				new WeaponCraftingRecipe(MHItems.weaponHuntersDagger, MHItems.weaponHuntersKnifePlus,
@@ -318,8 +311,7 @@ public class MHRecipes
 		);
 	}
 
-	public static void regArmourRecipes(IForgeRegistry<ArmourCraftingRecipe> registry)
-	{
+	public static void regArmourRecipes(IForgeRegistry<ArmourCraftingRecipe> registry) {
 		registry.registerAll(
 				new ArmourCraftingRecipe(MHItems.armourDerringHelmet,
 						MetaRef.getStack(MetaRef.EnumItemType.MISC_DROP, Names.Items.MONSTER_BONE_S)),

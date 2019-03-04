@@ -2,7 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "mobhunter:blockoredragonite"
+            "item": "mobhunter:block_ore_dragonite"
         }
     ],
     "result": {

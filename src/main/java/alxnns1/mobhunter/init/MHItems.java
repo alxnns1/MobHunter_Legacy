@@ -463,7 +463,7 @@ public class MHItems
 		addItem(weaponBlazingTempest = new ItemMHSword(Names.Items.BLAZING_TEMPEST, 8f, 120, 240, 360, 480));
 		addItem(weaponBlazingInferno = new ItemMHSword(Names.Items.BLAZING_INFERNO, 10f, 100, 200, 300, 400, 500));
 
-		addItem(weaponTestBow = new ItemMHBow("weapontestbow", EnumBowCharge.PIERCE, 1));
+		addItem(weaponTestBow = new ItemMHBow("weapon_test_bow", EnumBowCharge.PIERCE, 1));
 
 		addItem(itemQuest = new ItemMHQuest());
 		addItem(itemQuestList = new ItemMHQuestList());

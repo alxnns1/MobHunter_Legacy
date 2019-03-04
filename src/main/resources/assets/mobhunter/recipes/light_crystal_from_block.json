@@ -2,7 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "mobhunter:blockorelightcrystal"
+            "item": "mobhunter:block_ore_light_crystal"
         }
     ],
     "result": {

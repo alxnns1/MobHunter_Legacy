@@ -2,7 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "mobhunter:miscdrop",
+            "item": "mobhunter:misc_drop",
             "data": 1
         },
         {

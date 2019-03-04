@@ -2,7 +2,7 @@
     "type": "forge:ore_shapeless",
     "ingredients": [
         {
-            "item": "mobhunter:blockoregossamite"
+            "item": "mobhunter:block_ore_gossamite"
         }
     ],
     "result": {

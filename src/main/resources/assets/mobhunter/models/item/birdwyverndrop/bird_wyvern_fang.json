@@ -1,0 +1,6 @@
+{
+  "parent": "mobhunter:item/item_tool_default",
+  "textures": {
+    "layer0": "mobhunter:items/bird_wyvern_fang"
+  }
+}
